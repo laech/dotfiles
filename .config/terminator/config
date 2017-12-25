@@ -1,0 +1,24 @@
+[global_config]
+  enabled_plugins = ,
+  handle_size = 1
+  inactive_color_offset = 1.0
+  title_hide_sizetext = True
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      profile = default
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    cursor_blink = False
+    cursor_color = "#aaaaaa"
+    scrollback_lines = 2000
+    scrollbar_position = hidden
+    show_titlebar = False
+    use_theme_colors = True
