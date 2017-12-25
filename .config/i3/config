@@ -156,6 +156,14 @@ bindsym $mod+q exec i3lock --color=333333
 # finds out, if available)
 bar {
         status_command i3status
+        colors {
+                #class             border  background text
+                focused_workspace  #285577 #285577    #ffffff
+                active_workspace   #5f676a #5f676a    #ffffff
+                inactive_workspace #222222 #222222    #888888
+                urgent_workspace   #900000 #900000    #ffffff
+                binding_mode       #900000 #900000    #ffffff
+        }
 }
 
 focus_follows_mouse no
