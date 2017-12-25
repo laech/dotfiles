@@ -1,0 +1,28 @@
+general {
+  output_format = "i3bar"
+  colors = true
+  color_good = "#ffffff"
+  color_degraded = "#ffffff"
+  interval = 5
+}
+
+order += "ethernet enp0s3"
+order += "volume master"
+order += "tztime local"
+
+ethernet enp0s3 {
+  format_up = ""
+  format_down = ""
+}
+
+volume master {
+  format = ""
+  format_muted = ""
+  device = "default"
+  mixer = "Master"
+  mixer_idx = 0
+}
+
+tztime local {
+  format = "%F %I:%M %p"
+}
