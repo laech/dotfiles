@@ -2,7 +2,8 @@ general {
   output_format = "i3bar"
   colors = true
   color_good = "#ffffff"
-  color_degraded = "#ffffff"
+  color_degraded = "#555555"
+  color_bad = "#555555"
   interval = 5
 }
 
@@ -11,8 +12,8 @@ order += "volume master"
 order += "tztime local"
 
 ethernet _first_ {
-  format_up = ""
-  format_down = ""
+  format_up = ""
+  format_down = ""
 }
 
 volume master {
