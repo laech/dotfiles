@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 
 set -o errexit
+set -o nounset
 
 readonly packages=(
   i3
   firefox-esr
 
-  dbus-x11   # required by terminator
+  # Required by terminator
+  dbus-x11
   terminator
 
   git
@@ -17,7 +19,8 @@ readonly packages=(
   pulseaudio
   pavucontrol
 
-  fonts-font-awesome # Used in i3bar config
+  # Used in i3bar config
+  fonts-font-awesome
 )
 
 apt update
