@@ -21,6 +21,9 @@ readonly packages=(
 
   # Used in i3bar config
   fonts-font-awesome
+
+  # Use in default fonts
+  fonts-noto
 )
 
 apt update
