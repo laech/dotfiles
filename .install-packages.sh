@@ -24,6 +24,9 @@ readonly packages=(
 
   # Use in default fonts
   fonts-noto
+
+  openjdk-8-jdk
+  openjdk-8-source
 )
 
 apt update
