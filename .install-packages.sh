@@ -27,6 +27,8 @@ readonly packages=(
 
   openjdk-8-jdk
   openjdk-8-source
+
+  compton
 )
 
 apt update
