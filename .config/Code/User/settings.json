@@ -4,4 +4,5 @@
     "editor.lineNumbers": "off",
     "editor.minimap.enabled": false,
     "editor.renderIndentGuides": false,
+    "files.autoSave": "afterDelay",
 }
