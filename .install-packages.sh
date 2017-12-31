@@ -29,6 +29,7 @@ readonly packages=(
   openjdk-8-source
 
   compton
+  numlockx
 )
 
 apt update
