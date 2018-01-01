@@ -4,6 +4,7 @@ general {
   color_good = "#ffffff"
   color_degraded = "#555555"
   color_bad = "#555555"
+  separator = ""
   interval = 5
 }
 
