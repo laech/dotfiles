@@ -5,7 +5,7 @@ general {
   color_degraded = "#555555"
   color_bad = "#555555"
   separator = ""
-  interval = 5
+  interval = 10
 }
 
 order += "ethernet _first_"
