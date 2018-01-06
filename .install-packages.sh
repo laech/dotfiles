@@ -4,7 +4,14 @@ set -o errexit
 set -o nounset
 
 readonly packages=(
+
+  # Use j4-dmenu-desktop instead of the default dmenu_run in i3
+  # as apps started j4-demnu-desktop can receive SIGINT, e.g.
+  # without this IntelliJ won't be able to terminate running
+  # process when stop button is clicked.
+  j4-dmenu-desktop
   i3
+
   firefox-esr
 
   # Required by terminator
@@ -29,6 +36,7 @@ readonly packages=(
   openjdk-8-source
 
   compton
+  numlockx
 )
 
 apt update

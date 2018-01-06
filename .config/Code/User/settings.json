@@ -5,4 +5,5 @@
     "editor.minimap.enabled": false,
     "editor.renderIndentGuides": false,
     "files.autoSave": "afterDelay",
+    "workbench.colorTheme": "Default Light+",
 }
