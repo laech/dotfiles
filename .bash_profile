@@ -1,8 +1,15 @@
-. ~/.bash.conf
 
-hash numlockx &> /dev/null && numlockx on
+if [ -f ~/.bashrc ]; then
+ . ~/.bashrc
+fi
 
-if [[ -z "${DISPLAY}" && -n "${XDG_VTNR}" && "${XDG_VTNR}" -eq 1 ]]
+
+if [[ -z "${TMUX}" ]]
+then
+  setleds -D +num
+fi
+
+if [[ -z "${TMUX}" && -z "${DISPLAY}" && -n "${XDG_VTNR}" && "${XDG_VTNR}" -eq 1 ]]
 then
   exec startx
 fi
