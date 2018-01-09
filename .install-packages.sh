@@ -17,6 +17,7 @@ readonly packages=(
   # Required by terminator
   dbus-x11
   terminator
+  tmux
 
   git
 
