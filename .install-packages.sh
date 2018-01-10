@@ -19,6 +19,9 @@ readonly packages=(
   terminator
   tmux
 
+  # Integration with tmux and system clipboard
+  xsel
+
   git
 
   vim
