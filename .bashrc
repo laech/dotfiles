@@ -152,16 +152,6 @@ HISTCONTROL=ignoredups:erasedups
 #            # list.
 PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
-
-# Requires ssh-agent for ForwardAgent, see ~/.ssh/config
-if [[ ! -S ~/.ssh/ssh_auth_sock ]]
-then
-  eval $(ssh-agent) > /dev/null
-  ln -sfn "${SSH_AUTH_SOCK}" ~/.ssh/ssh_auth_sock
-fi
-export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
-
-
 PATH="${PATH}:${HOME}/.cargo/bin"
 PATH="${PATH}:${HOME}/.local/bin"
 PATH="${PATH}:${HOME}/opt/android-sdk/platform-tools"
