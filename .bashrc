@@ -154,6 +154,7 @@ PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 PATH="${PATH}:${HOME}/.cargo/bin"
 PATH="${PATH}:${HOME}/.local/bin"
+PATH="${PATH}:${HOME}/.local/bin/sli"
 PATH="${PATH}:${HOME}/opt/android-sdk/platform-tools"
 PATH="${PATH}:${HOME}/opt/android-sdk/tools"
 
