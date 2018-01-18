@@ -165,7 +165,8 @@ then
   MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}"
 fi
 
-EDITOR=emacs
+export EDITOR=emacs
+export TERMINAL=terminator
 
 alias ls='ls --color=auto'
 alias l='ls -1'
