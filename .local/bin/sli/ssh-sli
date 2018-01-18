@@ -28,7 +28,7 @@ for host in "$@"; do
     fi
     win=$(tmux "$cmd" -P ssh "$user@$host")
     tmux select-layout -t "$win" "$layout"
-    tmux select-pane -t "$win" -T "$host"
+    tmux select-pane -t "$win" -T "$host" || true # -T requires tmux 2.6
 done
 
 tmux rename-window -t "$win" "$name"
