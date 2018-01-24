@@ -1,6 +1,10 @@
 
 if [ -f /etc/bashrc ]; then
- . /etc/bashrc
+      . /etc/bashrc
+fi
+
+if [ -f /etc/skel/.bashrc ]; then
+      . /etc/skel/.bashrc
 fi
 
 # If set, bash does not overwrite an existing file with the >, >&, and <>
