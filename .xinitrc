@@ -1,4 +1,4 @@
-[[ -e ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
+xrdb -merge -I"${HOME}" ~/.Xresources
 
 hash numlockx &> /dev/null && numlockx on
 
