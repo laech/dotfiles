@@ -165,14 +165,14 @@ PATH="${PATH}:${HOME}/opt/android-sdk/tools"
 # Prefer coreutils on macOS
 if [[ "${OSTYPE}" == darwin* ]]
 then
-     PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
-  MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}"
+    alias ls='ls -G'
+else
+    alias ls='ls --color=auto'
 fi
 
 export EDITOR=emacs
 export TERMINAL=terminator
 
-alias ls='ls --color=auto'
 alias l='ls -1'
 alias ll='ls -lh'
 alias la='ll -a'
