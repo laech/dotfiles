@@ -162,7 +162,6 @@ PATH="${PATH}:${HOME}/.local/bin/sli"
 PATH="${PATH}:${HOME}/opt/android-sdk/platform-tools"
 PATH="${PATH}:${HOME}/opt/android-sdk/tools"
 
-# Prefer coreutils on macOS
 if [[ "${OSTYPE}" == darwin* ]]
 then
     alias ls='ls -G'
