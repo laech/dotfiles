@@ -1,0 +1,13 @@
+
+Include ~/.ssh/config /etc/ssh/ssh_config
+LogLevel ERROR
+PubkeyAcceptedKeyTypes +ssh-dss
+ServerAliveInterval 60
+StrictHostKeyChecking no
+UserKnownHostsFile /dev/null
+
+Match user gbrain
+  IdentityFile ~/.sli/ssh/gbrain_id_dsa
+
+Match user root
+  ProxyCommand sshsli -o ForwardAgent=yes gbrain@mcbain.globalbrain.net 'echo Forwarded connection to mcbain. 1>&2 && ssh-add ~gbrain/search_production_root/identity_root && nc %h %p'
