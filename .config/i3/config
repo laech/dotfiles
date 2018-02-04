@@ -160,9 +160,16 @@ bar {
                 urgent_workspace   #900000 #900000    #ffffff
                 binding_mode       #900000 #900000    #ffffff
         }
+
+       # Disable switching workspace on scroll
+       bindsym button4 nop
+       bindsym button5 nop
 }
 
+# Disable mouse focus and switch window on scroll
 focus_follows_mouse no
+bindsym button4 nop
+bindsym button5 nop
 
 hide_edge_borders smart
 
