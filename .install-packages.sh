@@ -14,9 +14,7 @@ readonly packages=(
 
   firefox-esr
 
-  # Required by terminator
-  dbus-x11
-  terminator
+  xterm
   tmux
 
   # Integration with tmux and system clipboard
@@ -33,7 +31,7 @@ readonly packages=(
   # Used in i3bar config
   fonts-font-awesome
 
-  # Use in default fonts
+  # Use in default fonts and xterm ~/.Xresources
   fonts-noto
 
   openjdk-8-jdk
