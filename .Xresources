@@ -6,3 +6,16 @@ Xft.hintstyle:  hintslight
 Xft.lcdfilter:  lcddefault
 Xft.rgba:       rgb
 
+XTerm.termName: xterm-256color
+XTerm.ttyModes: erase ^?
+XTerm.vt100.backarrowKey: false
+XTerm.vt100.saveLines: 4096
+XTerm.vt100.metaSendsEscape: true
+XTerm.vt100.faceName: monospace
+XTerm.vt100.faceNameDoublesize: Noto Sans CJK SC
+XTerm.vt100.faceSize: 11
+XTerm.vt100.reverseVideo: true
+XTerm.vt100.translations: #override \n\
+    <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0) \n\
+    Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
+    Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
