@@ -170,7 +170,6 @@ else
 fi
 
 export EDITOR=emacs
-export TERMINAL=terminator
 
 alias l='ls -1'
 alias ll='ls -lh'
