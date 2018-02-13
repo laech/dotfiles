@@ -8,6 +8,7 @@ Xft.rgba:       rgb
 
 UXTerm.termName: xterm-256color
 UXTerm.ttyModes: erase ^?
+UXTerm.vt100.scrollBar: false
 UXTerm.vt100.backarrowKey: false
 UXTerm.vt100.saveLines: 4096
 UXTerm.vt100.metaSendsEscape: true
