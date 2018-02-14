@@ -39,6 +39,9 @@ readonly packages=(
 
   compton
   numlockx
+
+  fcitx
+  fcitx-libpinyin
 )
 
 apt update
