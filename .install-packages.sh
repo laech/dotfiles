@@ -31,7 +31,7 @@ readonly packages=(
   # Used in i3bar config
   fonts-font-awesome
 
-  # Use in default fonts and xterm ~/.Xresources
+  # Use in default fonts and xterm ~/.Xresources and fcitx
   fonts-noto
 
   openjdk-8-jdk
