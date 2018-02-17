@@ -1,6 +1,4 @@
 
-[[ -f ~/.bashrc ]] && source ~/.bashrc
-
 # Requires ssh-agent for ForwardAgent, see ~/.ssh/config
 
 if [[ -t 0 && $(tty) == /dev/tty1 && ! $DISPLAY ]]; then
