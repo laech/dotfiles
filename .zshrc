@@ -19,8 +19,8 @@ zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:
 
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:*' formats       ' %B%F{cyan}git(%b%f%F{cyan})%f%%b'
-zstyle ':vcs_info:*' actionformats ' %B%F{cyan}git(%b|%a%f%F{cyan})%f%%b'
+zstyle ':vcs_info:*' formats       ' %B%F{92}git(%b%f%F{92})%f%%b'
+zstyle ':vcs_info:*' actionformats ' %B%F{92}git(%b|%a%f%F{92})%f%%b'
 zstyle ':vcs_info:git*+set-message:*' hooks git-st
 precmd() { vcs_info }
 
@@ -33,11 +33,11 @@ function +vi-git-st() {
         behind=$(git rev-list HEAD.."${hook_com[branch]}"@{upstream} --count)
         ahead=$(git rev-list "${hook_com[branch]}"@{upstream}..HEAD --count)
 	((${behind})) && hook_com[branch]="${hook_com[branch]} %F{red}-${behind}%f"
-	((${ahead}))  && hook_com[branch]="${hook_com[branch]} %F{green}+${ahead}%f"
+	((${ahead})) &&  hook_com[branch]="${hook_com[branch]} %F{28}+${ahead}%f"
     fi
 }
 
-PROMPT='%B%F{green}%n@%m%f %F{blue}%1~%f%b${vcs_info_msg_0_} $ '
+PROMPT='%B%F{28}%n@%m%f %F{25}%1~%f%b${vcs_info_msg_0_} $ '
 
 PATH="${PATH}:${HOME}/.cargo/bin"
 PATH="${PATH}:${HOME}/.local/bin"
