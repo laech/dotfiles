@@ -11,6 +11,9 @@ export HISTSIZE=2000
 export HISTFILE="${HOME}/.history"
 export SAVEHIST="${HISTSIZE}"
 
+autoload -U select-word-style
+select-word-style bash
+
 autoload -U compinit
 compinit
 zstyle ':completion:*' menu select
