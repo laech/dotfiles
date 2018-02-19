@@ -168,7 +168,13 @@ HISTCONTROL=ignoredups:erasedups
 # history -c # Clear the history list.
 # history -r # Read the history file and append its contents to the history
 #            # list.
-PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+PROMPT_COMMAND="history -a; history -c; history -r"
+
+if hash __git_ps1 &> /dev/null; then
+    #source /etc/bash_completion.d/git-prompt
+    GIT_PS1_SHOWUPSTREAM="verbose"
+    PROMPT_COMMAND="${PROMPT_COMMAND}; __git_ps1 '\u@\h \W' ' \\\$ '"
+fi
 
 PATH="${PATH}:${HOME}/.cargo/bin"
 PATH="${PATH}:${HOME}/.local/bin"
