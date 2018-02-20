@@ -1,4 +1,7 @@
 
+bindkey "${terminfo[khome]}" beginning-of-line
+bindkey "${terminfo[kend]}" end-of-line
+
 setopt auto_cd
 setopt correct_all
 setopt prompt_subst
