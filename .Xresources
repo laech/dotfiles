@@ -6,6 +6,7 @@ Xft.hintstyle:  hintslight
 Xft.lcdfilter:  lcddefault
 Xft.rgba:       rgb
 
+UXTerm.termName: xterm-256color
 UXTerm.ttyModes: erase ^?
 UXTerm.vt100.scrollBar: false
 UXTerm.vt100.backarrowKey: false
