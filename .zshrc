@@ -43,19 +43,11 @@ precmd() {
     __git_ps1 "%B%F{28}%n@%m%f %F{25}%1~%f%F{92}" "%f%b $ "
 }
 
-PATH="${PATH}:${HOME}/.cargo/bin"
-PATH="${PATH}:${HOME}/.local/bin"
-PATH="${PATH}:${HOME}/.sli/bin"
-PATH="${PATH}:${HOME}/opt/android-sdk/platform-tools"
-PATH="${PATH}:${HOME}/opt/android-sdk/tools"
-
 if [[ "${OSTYPE}" == darwin* ]]; then
     alias ls='ls -G'
 else
     alias ls='ls --color=auto'
 fi
-
-export EDITOR=emacs
 
 alias l='ls -1'
 alias ll='ls -lh'
