@@ -20,27 +20,11 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==01}:${(s.:.)LS_COLORS}")'
 
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:*' formats       ' %B%F{92}git(%b%f%F{92})%f%%b'
-zstyle ':vcs_info:*' actionformats ' %B%F{92}git(%b|%a%f%F{92})%f%%b'
-zstyle ':vcs_info:git*+set-message:*' hooks git-st
-precmd() { vcs_info }
-
-function +vi-git-st() {
-    local ahead
-    local behind
-    local remote="$(git for-each-ref --format='%(upstream:short)' $(git symbolic-ref -q HEAD))"
-
-    if [[ -n "${remote}" ]]; then
-        behind=$(git rev-list HEAD.."${hook_com[branch]}"@{upstream} --count)
-        ahead=$(git rev-list "${hook_com[branch]}"@{upstream}..HEAD --count)
-	((${behind})) && hook_com[branch]="${hook_com[branch]} %F{red}-${behind}%f"
-	((${ahead})) &&  hook_com[branch]="${hook_com[branch]} %F{28}+${ahead}%f"
-    fi
+source /etc/bash_completion.d/git-prompt
+precmd() {
+    GIT_PS1_SHOWUPSTREAM="verbose"
+    __git_ps1 "%B%F{28}%n@%m%f %F{25}%1~%f%F{92}" "%f%b $ "
 }
-
-PROMPT='%B%F{28}%n@%m%f %F{25}%1~%f%b${vcs_info_msg_0_} $ '
 
 PATH="${PATH}:${HOME}/.cargo/bin"
 PATH="${PATH}:${HOME}/.local/bin"
