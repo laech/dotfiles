@@ -22,12 +22,21 @@ zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:
 
 autoload -U bashcompinit
 bashcompinit
+
+# macOS
 for f in $(ls /usr/local/etc/bash_completion.d     2> /dev/null); do
     source   "/usr/local/etc/bash_completion.d/$f" 2> /dev/null
 done
+
+# Debian
 for f in $(ls /etc/bash_completion.d     2> /dev/null); do
     source   "/etc/bash_completion.d/$f" 2> /dev/null
 done
+
+# Fedora
+[[ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]] && \
+    . /usr/share/git-core/contrib/completion/git-prompt.sh
+
 precmd() {
     GIT_PS1_DESCRIBE_STYLE="branch"
     GIT_PS1_SHOWUPSTREAM="verbose"
