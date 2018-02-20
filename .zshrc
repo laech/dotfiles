@@ -20,10 +20,14 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==01}:${(s.:.)LS_COLORS}")'
 
-[[ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]] && \
-    . /usr/local/etc/bash_completion.d/git-prompt.sh
-[[ -f /etc/bash_completion.d/git-prompt ]] && \
-    . /etc/bash_completion.d/git-prompt
+autoload -U bashcompinit
+bashcompinit
+for f in $(ls /usr/local/etc/bash_completion.d     2> /dev/null); do
+    source   "/usr/local/etc/bash_completion.d/$f" 2> /dev/null
+done
+for f in $(ls /etc/bash_completion.d     2> /dev/null); do
+    source   "/etc/bash_completion.d/$f" 2> /dev/null
+done
 precmd() {
     GIT_PS1_DESCRIBE_STYLE="branch"
     GIT_PS1_SHOWUPSTREAM="verbose"
