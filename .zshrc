@@ -27,8 +27,7 @@ zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:
 precmd() {
     GIT_PS1_DESCRIBE_STYLE="branch"
     GIT_PS1_SHOWUPSTREAM="verbose"
-    GIT_PS1_SHOWCOLORHINTS=1
-    __git_ps1 "%B%F{28}%n@%m%f %F{25}%1~%f%b" " $ "
+    __git_ps1 "%B%F{28}%n@%m%f %F{25}%1~%f%F{92}" "%f%b $ "
 }
 
 PATH="${PATH}:${HOME}/.cargo/bin"
