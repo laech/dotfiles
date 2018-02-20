@@ -20,7 +20,7 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==01}:${(s.:.)LS_COLORS}")'
 
-source /etc/bash_completion.d/git-prompt
+[[ -f /etc/bash_completion.d/git-prompt ]] && source /etc/bash_completion.d/git-prompt
 precmd() {
     GIT_PS1_SHOWUPSTREAM="verbose"
     __git_ps1 "%B%F{28}%n@%m%f %F{25}%1~%f%F{92}" "%f%b $ "
