@@ -31,8 +31,8 @@ if ! hash __git_ps1 &> /dev/null; then
     if [[ -f   /etc/bash_completion.d/git-prompt ]]; then
 	source /etc/bash_completion.d/git-prompt
 
-    elif [[ -f /usr/local/etc/bash_completion.d/git-prompt ]]; then
-	source /usr/local/etc/bash_completion.d/git-prompt
+    elif [[ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]]; then
+	source /usr/local/etc/bash_completion.d/git-prompt.sh
 
     elif [[ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]]; then
 	source /usr/share/git-core/contrib/completion/git-prompt.sh
