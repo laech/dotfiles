@@ -26,19 +26,18 @@ zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:
 autoload -U bashcompinit
 bashcompinit
 
-# macOS
-for f in $(ls /usr/local/etc/bash_completion.d     2> /dev/null); do
-    source   "/usr/local/etc/bash_completion.d/$f" 2> /dev/null
-done
+if ! hash __git_ps1 &> /dev/null; then
 
-# Debian
-for f in $(ls /etc/bash_completion.d     2> /dev/null); do
-    source   "/etc/bash_completion.d/$f" 2> /dev/null
-done
+    if [[ -f   /etc/bash_completion.d/git-prompt ]]; then
+	source /etc/bash_completion.d/git-prompt
 
-# Fedora
-[[ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]] && \
-    . /usr/share/git-core/contrib/completion/git-prompt.sh
+    elif [[ -f /usr/local/etc/bash_completion.d/git-prompt ]]; then
+	source /usr/local/etc/bash_completion.d/git-prompt
+
+    elif [[ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]]; then
+	source /usr/share/git-core/contrib/completion/git-prompt.sh
+    fi
+fi
 
 precmd() {
     GIT_PS1_DESCRIBE_STYLE="branch"
