@@ -16,6 +16,8 @@ readonly packages=(
 
   xterm
   tmux
+  zsh
+  zsh-syntax-highlighting
 
   # Integration with tmux and system clipboard
   xsel

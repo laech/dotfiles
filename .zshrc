@@ -58,3 +58,6 @@ alias ll='ls -lh'
 alias la='ll -a'
 
 alias config='git --git-dir="${HOME}/.cfg" --work-tree="${HOME}"'
+
+# This needs to be at the end for it to work.
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
