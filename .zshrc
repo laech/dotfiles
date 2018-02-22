@@ -1,8 +1,9 @@
 
-bindkey "${terminfo[khome]}" beginning-of-line
-bindkey "${terminfo[kend]}"  end-of-line
-bindkey "${terminfo[kdch1]}" delete-char
-bindkey "${terminfo[kich1]}" overwrite-mode
+# To find out key sequence, type Ctrl-v on terminal then the key
+bindkey "^[[1~" beginning-of-line # Home
+bindkey "^[[4~" end-of-line       # End
+bindkey "^[[3~" delete-char       # Delete
+bindkey "^[[2~" overwrite-mode    # Insert
 
 setopt auto_cd
 setopt correct_all
