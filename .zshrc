@@ -44,7 +44,7 @@ fi
 precmd() {
     GIT_PS1_DESCRIBE_STYLE="branch"
     GIT_PS1_SHOWUPSTREAM="verbose"
-    __git_ps1 "%B%F{28}%n@%m%f %F{25}%1~%f%F{92}" "%f%b $ "
+    __git_ps1 "%B%F{28}%n@%m%f %F{25}%1~%f%F{92}" "%f%b %(?.%%.%F{red}%%%f) "
 }
 
 alias l='ls -1'
