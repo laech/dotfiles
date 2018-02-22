@@ -35,10 +35,6 @@ if ! hash __git_ps1 &> /dev/null; then
     if [[ -f   /etc/bash_completion.d/git-prompt ]]; then
 	source /etc/bash_completion.d/git-prompt
 
-    # macOS
-    elif [[ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]]; then
-	source /usr/local/etc/bash_completion.d/git-prompt.sh
-
     # Fedora
     elif [[ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]]; then
 	source /usr/share/git-core/contrib/completion/git-prompt.sh
@@ -51,12 +47,6 @@ precmd() {
     __git_ps1 "%B%F{28}%n@%m%f %F{25}%1~%f%F{92}" "%f%b $ "
 }
 
-if [[ "${OSTYPE}" == darwin* ]]; then
-    alias ls='ls -G'
-else
-    alias ls='ls --color=auto'
-fi
-
 alias l='ls -1'
 alias ll='ls -lh'
 alias la='ll -a'
@@ -67,6 +57,13 @@ alias config='git --git-dir="${HOME}/.cfg" --work-tree="${HOME}"'
 # Fedora
 [[ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && \
     . /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# macOS
-[[ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && \
+
+if [[ "${OSTYPE}" == darwin* ]]; then
+    alias ls='ls -G'
+    . /usr/local/etc/bash_completion.d/git-prompt.sh
+    . /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
     . /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    # zsh-syntax-highlighting needs to be at the end for it to work.
+else
+    alias ls='ls --color=auto'
+fi
