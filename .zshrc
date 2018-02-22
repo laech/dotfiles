@@ -14,7 +14,7 @@ setopt hist_find_no_dups
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 export HISTSIZE=2000
-export HISTFILE="${HOME}/.history"
+export HISTFILE="${HOME}/.zsh_history"
 export SAVEHIST="${HISTSIZE}"
 
 autoload -U select-word-style
