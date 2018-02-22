@@ -31,12 +31,15 @@ bashcompinit
 
 if ! hash __git_ps1 &> /dev/null; then
 
+    # Debian
     if [[ -f   /etc/bash_completion.d/git-prompt ]]; then
 	source /etc/bash_completion.d/git-prompt
 
+    # macOS
     elif [[ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]]; then
 	source /usr/local/etc/bash_completion.d/git-prompt.sh
 
+    # Fedora
     elif [[ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]]; then
 	source /usr/share/git-core/contrib/completion/git-prompt.sh
     fi
@@ -61,4 +64,9 @@ alias la='ll -a'
 alias config='git --git-dir="${HOME}/.cfg" --work-tree="${HOME}"'
 
 # This needs to be at the end for it to work.
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Fedora
+[[ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && \
+    . /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# macOS
+[[ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && \
+    . /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
