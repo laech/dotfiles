@@ -5,46 +5,46 @@ set -o nounset
 
 readonly packages=(
 
-  # Use j4-dmenu-desktop instead of the default dmenu_run in i3
-  # as apps started j4-demnu-desktop can receive SIGINT, e.g.
-  # without this IntelliJ won't be able to terminate running
-  # process when stop button is clicked.
-  j4-dmenu-desktop
-  i3
+  dmenu
+  i3-wm
+  i3lock
+  i3status
+  xorg-server
+  xorg-xinit
 
-  firefox-esr
+  firefox
 
   xterm
+  xsel
   tmux
   zsh
   zsh-syntax-highlighting
 
-  # Integration with tmux and system clipboard
-  xsel
-
   git
 
   vim
-  emacs25
+  emacs
 
   pulseaudio
   pavucontrol
 
-  # Used in i3bar config
-  fonts-font-awesome
+  ttf-dejavu
+  noto-fonts-cjk
 
-  # Use in default fonts and xterm ~/.Xresources and fcitx
-  fonts-noto
-
-  openjdk-8-jdk
-  openjdk-8-source
+  jdk8-openjdk
+  openjdk8-src
 
   compton
   numlockx
 
   fcitx
+  fcitx-gtk3
   fcitx-libpinyin
+  fcitx-configtool
+
+  wpa_supplicant
+
+  openssh
 )
 
-apt update
-apt install -y "${packages[@]}"
+pacman -S --needed "${packages[@]}"

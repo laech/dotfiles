@@ -6,7 +6,7 @@ bindkey "^[[3~" delete-char       # Delete
 bindkey "^[[2~" overwrite-mode    # Insert
 
 setopt auto_cd
-setopt correct_all
+setopt correct
 setopt prompt_subst
 
 setopt share_history
@@ -31,9 +31,9 @@ bashcompinit
 
 if ! hash __git_ps1 &> /dev/null; then
 
-    # Debian
-    if [[ -f   /etc/bash_completion.d/git-prompt ]]; then
-	source /etc/bash_completion.d/git-prompt
+    # Arch
+    if [[ -f   /usr/share/git/completion/git-prompt.sh ]]; then
+	source /usr/share/git/completion/git-prompt.sh
 
     # Fedora
     elif [[ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]]; then
@@ -54,6 +54,9 @@ alias la='ll -a'
 alias config='git --git-dir="${HOME}/.cfg" --work-tree="${HOME}"'
 
 # This needs to be at the end for it to work.
+# Arch
+[[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && \
+    . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]
 # Fedora
 [[ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && \
     . /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

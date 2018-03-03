@@ -1,25 +1,26 @@
 general {
   output_format = "i3bar"
-  colors = true
-  color_good = "#ffffff"
-  color_degraded = "#555555"
-  color_bad = "#555555"
-  separator = ""
   interval = 10
 }
 
+order += "wireless _first_"
 order += "ethernet _first_"
 order += "volume master"
 order += "time"
 
+wireless _first_ {
+  format_up = "W: (%essid) %ip"
+  format_down = "W: down"
+}
+
 ethernet _first_ {
-  format_up = ""
-  format_down = ""
+  format_up = "E: %ip"
+  format_down = "E: down"
 }
 
 volume master {
-  format = ""
-  format_muted = ""
+  format = "V: %volume"
+  format_muted = "V: muted"
   device = "default"
   mixer = "Master"
   mixer_idx = 0
