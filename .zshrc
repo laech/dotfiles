@@ -47,11 +47,6 @@ precmd() {
     __git_ps1 "%B%F{25}%~%f%F{92}" " %f%b%(?.%%.%F{red}%#%f) "
 }
 
-# Arch integrate git with gnomekeyring for HTTPS repos
-# https://wiki.archlinux.org/index.php/GNOME/Keyring#Git_integration
-[[ -f                                     /usr/lib/git-core/git-credential-libsecret ]] && \
-    git config --global credential.helper /usr/lib/git-core/git-credential-libsecret
-
 alias l='ls -1'
 alias ll='ls -lh'
 alias la='ll -a'
