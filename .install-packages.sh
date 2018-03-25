@@ -5,46 +5,44 @@ set -o nounset
 
 readonly packages=(
 
-  dmenu
-  i3-wm
-  i3lock
-  i3status
-  xorg-server
-  xorg-xinit
+  j4-dmenu-desktop
+  i3
+  xinit
+  x11-xserver-utils
 
-  firefox
+  firefox-esr
 
   xterm
   xsel
-  tmux
   zsh
   zsh-syntax-highlighting
 
   git
 
   vim
-  emacs
+  emacs25
 
   pulseaudio
   pavucontrol
 
-  ttf-dejavu
-  noto-fonts-cjk
+  fonts-noto
 
-  jdk8-openjdk
-  openjdk8-src
+  openjdk-8-jdk
+  openjdk-8-source
 
   compton
   numlockx
 
   fcitx
-  fcitx-gtk3
+#  fcitx-gtk3
   fcitx-libpinyin
-  fcitx-configtool
+#  fcitx-configtool
 
-  wpa_supplicant
+  wpasupplicant
 
-  openssh
+  openssh-server
+  openssh-client
 )
 
-pacman -S --needed "${packages[@]}"
+apt update
+apt install "${packages[@]}"

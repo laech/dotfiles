@@ -1,9 +1,0 @@
-{
-    "telemetry.enableTelemetry": false,
-    "telemetry.enableCrashReporter": false,
-    "editor.lineNumbers": "off",
-    "editor.minimap.enabled": false,
-    "editor.renderIndentGuides": false,
-    "files.autoSave": "afterDelay",
-    "workbench.colorTheme": "Default Light+",
-}

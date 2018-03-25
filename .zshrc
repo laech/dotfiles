@@ -31,9 +31,9 @@ bashcompinit
 
 if ! hash __git_ps1 &> /dev/null; then
 
-    # Arch
-    if [[ -f   /usr/share/git/completion/git-prompt.sh ]]; then
-	source /usr/share/git/completion/git-prompt.sh
+    # Debian
+    if [[ -f   /etc/bash_completion.d/git-prompt ]]; then
+	source /etc/bash_completion.d/git-prompt
 
     # Fedora
     elif [[ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]]; then
