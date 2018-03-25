@@ -34,9 +34,8 @@ readonly packages=(
   numlockx
 
   fcitx
-#  fcitx-gtk3
   fcitx-libpinyin
-#  fcitx-configtool
+  dbus-x11
 
   wpasupplicant
 
