@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-set -o errexit
-set -o nounset
-
-hash j4-dmenu-desktop &> /dev/null \
-    && j4-dmenu-desktop --display-binary --no-generic --dmenu='dmenu -i -b' \
-    || dmenu_run -i -b
