@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Workaround to get SIGINT working in IntelliJ so it can stop processes properly
+xterm -e bash -c "exec nohup ""${HOME}""/opt/idea/bin/idea.sh"
