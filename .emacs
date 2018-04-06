@@ -1,4 +1,6 @@
 
+(setq inhibit-startup-screen t)
+
 (setq package-archives
       '(("gnu" . "https://elpa.gnu.org/packages/")
 	("melpa-stable" . "https://stable.melpa.org/packages/")
@@ -56,6 +58,7 @@
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 (add-hook 'haskell-mode-hook 'intero-mode)
+(add-hook 'haskell-mode-hook 'flyspell-prog-mode)
 (add-hook 'speedbar-load-hook (lambda () (speedbar-add-supported-extension ".hs")))
 
 (setq speedbar-use-images nil)
