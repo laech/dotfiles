@@ -5,6 +5,10 @@ bindkey "^[[4~" end-of-line       # End
 bindkey "^[[3~" delete-char       # Delete
 bindkey "^[[2~" overwrite-mode    # Insert
 
+# For xfce4-terminal/terminator etc
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
+
 setopt auto_cd
 setopt correct
 setopt prompt_subst
