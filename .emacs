@@ -21,7 +21,7 @@
  '(global-auto-revert-mode t)
  '(package-selected-packages
    (quote
-    (projectile sr-speedbar multiple-cursors intero haskell-mode magit rainbow-delimiters paredit exec-path-from-shell smex ido-ubiquitous)))
+    (haskell-snippets which-key hindent projectile sr-speedbar multiple-cursors intero haskell-mode magit rainbow-delimiters paredit exec-path-from-shell smex ido-ubiquitous)))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
@@ -60,10 +60,15 @@
 (add-hook 'haskell-mode-hook 'intero-mode)
 (add-hook 'haskell-mode-hook 'flyspell-prog-mode)
 (add-hook 'speedbar-load-hook (lambda () (speedbar-add-supported-extension ".hs")))
+(with-eval-after-load 'intero
+  (with-eval-after-load 'flycheck
+    (flycheck-add-next-checker 'intero '(warning . haskell-hlint))))
+
 
 (setq speedbar-use-images nil)
 (setq sr-speedbar-width 26)
 (setq sr-speedbar-right-side nil)
+
 
 (global-set-key (kbd "M-x") 'smex)
 
@@ -78,5 +83,6 @@
 (global-set-key (kbd "C->")         'mc/unmark-next-like-this)
 (global-set-key (kbd "C-<")         'mc/unmark-previous-like-this)
 
-
 (projectile-global-mode)
+(yas-global-mode)
+(which-key-mode)
