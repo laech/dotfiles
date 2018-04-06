@@ -17,11 +17,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(blink-cursor-mode nil)
- '(fringe-mode 0 nil (fringe))
  '(global-auto-revert-mode t)
+ '(indicate-empty-lines t)
  '(package-selected-packages
    (quote
-    (haskell-snippets which-key hindent projectile sr-speedbar multiple-cursors intero haskell-mode magit rainbow-delimiters paredit exec-path-from-shell smex ido-ubiquitous)))
+    (diff-hl haskell-snippets which-key hindent projectile sr-speedbar multiple-cursors intero haskell-mode magit rainbow-delimiters paredit exec-path-from-shell smex ido-ubiquitous)))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
@@ -86,3 +86,5 @@
 (projectile-global-mode)
 (yas-global-mode)
 (which-key-mode)
+(global-diff-hl-mode)
+(diff-hl-flydiff-mode)
