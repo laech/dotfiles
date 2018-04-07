@@ -1,6 +1,15 @@
 
 (set-face-attribute 'fringe nil :background nil)
+(set-face-attribute 'border nil :background "red")
+(set-face-attribute 'border nil :foreground "red")
 (setq inhibit-startup-screen t)
+
+(set-face-attribute 'mode-line nil
+   :foreground "gray0"
+   :background nil
+   :overline nil
+   :underline nil
+   :box nil)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -38,12 +47,18 @@
 (package-install-selected-packages)
 
 
-;; mac
+;; os specific
 
 (when (memq window-system '(mac ns x))
-  (exec-path-from-shell-initialize)
+  (exec-path-from-shell-initialize))
+
+(when (memq window-system '(mac))
   (set-face-attribute 'default nil :font "Inconsolata-16" )
   (set-frame-font "Inconsolata-16" nil t))
+
+(when (memq window-system '(x))
+  (set-face-attribute 'default nil :font "Inconsolata-12" )
+  (set-frame-font "Inconsolata-12" nil t))
 
 
 ;; ido
@@ -110,9 +125,26 @@
 
 ;; writeroom-mode
 
+(add-to-list
+ 'window-size-change-functions
+ (lambda (frame)
+   (progn
+
+     ;; Show bottom divider if there is more than 1 window
+     (when (and (> (count-windows) 1)
+                (= (frame-parameter frame 'bottom-divider-width) 0))
+       (set-frame-parameter frame 'bottom-divider-width 1))
+
+     ;; Hide bottom divider if there is only 1 window
+     (when (and (= (count-windows) 1)
+                (> (frame-parameter frame 'bottom-divider-width) 0))
+       (set-frame-parameter frame 'bottom-divider-width 0)))))
+
 (add-hook 'find-file-hook #'writeroom-mode)
+
 (with-eval-after-load 'writeroom-mode
-  (setq writeroom-fullscreen-effect nil)
+  (setq writeroom-fullscreen-effect nil
+        writeroom-bottom-divider-width 0)
   (define-key writeroom-mode-map (kbd "C-M-<") #'writeroom-decrease-width)
   (define-key writeroom-mode-map (kbd "C-M->") #'writeroom-increase-width)
   (define-key writeroom-mode-map (kbd "C-M-=") #'writeroom-adjust-width)
