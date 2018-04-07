@@ -17,7 +17,7 @@
  '(line-spacing 0.2)
  '(package-selected-packages
    (quote
-    (expand-region writeroom-mode diff-hl haskell-snippets which-key hindent projectile sr-speedbar multiple-cursors intero haskell-mode magit rainbow-delimiters paredit exec-path-from-shell smex ido-ubiquitous)))
+    (ido-vertical-mode expand-region writeroom-mode diff-hl haskell-snippets which-key hindent projectile sr-speedbar multiple-cursors intero haskell-mode magit rainbow-delimiters paredit exec-path-from-shell smex ido-ubiquitous)))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
@@ -60,11 +60,12 @@
 
 ;; ido
 
-(ido-mode t)
-(ido-everywhere t)
 (setq ido-enable-flex-matching t)
 (setq ido-use-virtual-buffers t)
+(ido-mode t)
+(ido-everywhere t)
 (ido-ubiquitous-mode t)
+(ido-vertical-mode t)
 
 
 ;; lisp
