@@ -1,12 +1,9 @@
 
 (set-face-attribute 'fringe nil :background nil)
-(set-face-attribute 'border nil :background "red")
-(set-face-attribute 'border nil :foreground "red")
 (setq inhibit-startup-screen t)
 
 (set-face-attribute 'mode-line nil
-   :foreground "gray0"
-   :background nil
+   :background "gray90"
    :overline nil
    :underline nil
    :box nil)
