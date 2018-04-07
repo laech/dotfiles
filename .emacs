@@ -1,12 +1,10 @@
 
-(set-face-attribute 'fringe nil :background nil)
 (setq inhibit-startup-screen t)
+(set-face-attribute 'fringe nil :background nil)
+(add-to-list 'default-frame-alist '(internal-border-width  . 0))
 
-(set-face-attribute 'mode-line nil
-   :background "gray90"
-   :overline nil
-   :underline nil
-   :box nil)
+(set-face-attribute 'mode-line-inactive nil :box nil)
+(set-face-attribute 'mode-line nil :box nil :background "gray90")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -15,6 +13,7 @@
  ;; If there is more than one, they won't work right.
  '(blink-cursor-mode nil)
  '(global-auto-revert-mode t)
+ '(indent-tabs-mode nil)
  '(line-spacing 0.2)
  '(package-selected-packages
    (quote
@@ -29,15 +28,15 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-)
+ )
 
 
 ;; package
 
 (setq package-archives
       '(("gnu" . "https://elpa.gnu.org/packages/")
-	("melpa-stable" . "https://stable.melpa.org/packages/")
-	("marmalade" . "https://marmalade-repo.org/packages/")))
+        ("melpa-stable" . "https://stable.melpa.org/packages/")
+        ("marmalade" . "https://marmalade-repo.org/packages/")))
 
 (package-initialize)
 (unless package-archive-contents (package-refresh-contents))
@@ -54,6 +53,7 @@
   (set-frame-font "Inconsolata-16" nil t))
 
 (when (memq window-system '(x))
+  (setq menu-bar-mode nil)
   (set-face-attribute 'default nil :font "Inconsolata-12" )
   (set-frame-font "Inconsolata-12" nil t))
 
@@ -111,11 +111,11 @@
 ;; multiple-cursors
 
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C-c C-.")     'mc/mark-all-like-this)
-(global-set-key (kbd "C-.")         'mc/mark-next-like-this)
-(global-set-key (kbd "C-,")         'mc/mark-previous-like-this)
-(global-set-key (kbd "C->")         'mc/unmark-next-like-this)
-(global-set-key (kbd "C-<")         'mc/unmark-previous-like-this)
+(global-set-key (kbd "C-c C-.") 'mc/mark-all-like-this)
+(global-set-key (kbd "C-.") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-,") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C->") 'mc/unmark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/unmark-previous-like-this)
 (with-eval-after-load 'flyspell
   (define-key flyspell-mode-map (kbd "C-.") nil))
 
@@ -140,7 +140,7 @@
 (add-hook 'find-file-hook #'writeroom-mode)
 
 (with-eval-after-load 'writeroom-mode
-  (setq writeroom-fullscreen-effect nil
+  (setq writeroom-global-effects '(writeroom-set-bottom-divider-width)
         writeroom-bottom-divider-width 0)
   (define-key writeroom-mode-map (kbd "C-M-<") #'writeroom-decrease-width)
   (define-key writeroom-mode-map (kbd "C-M->") #'writeroom-increase-width)
