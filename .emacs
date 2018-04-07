@@ -49,7 +49,7 @@
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
 
-(when (memq window-system '(mac))
+(when (memq window-system '(mac ns))
   (set-face-attribute 'default nil :font "Inconsolata-16" )
   (set-frame-font "Inconsolata-16" nil t))
 
