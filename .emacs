@@ -1,5 +1,28 @@
 
+(set-face-attribute 'fringe nil :background nil)
 (setq inhibit-startup-screen t)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(line-spacing 0.2)
+ '(blink-cursor-mode nil)
+ '(global-auto-revert-mode t)
+ '(package-selected-packages
+   (quote
+    (diff-hl haskell-snippets which-key hindent projectile sr-speedbar multiple-cursors intero haskell-mode magit rainbow-delimiters paredit exec-path-from-shell smex ido-ubiquitous)))
+ '(scroll-bar-mode nil)
+ '(show-paren-mode t)
+ '(tool-bar-mode nil))
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+)
 
 (setq package-archives
       '(("gnu" . "https://elpa.gnu.org/packages/")
@@ -11,33 +34,13 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(blink-cursor-mode nil)
- '(global-auto-revert-mode t)
- '(indicate-empty-lines t)
- '(package-selected-packages
-   (quote
-    (diff-hl haskell-snippets which-key hindent projectile sr-speedbar multiple-cursors intero haskell-mode magit rainbow-delimiters paredit exec-path-from-shell smex ido-ubiquitous)))
- '(scroll-bar-mode nil)
- '(show-paren-mode t)
- '(tool-bar-mode nil))
-
 (package-install-selected-packages)
 
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-
 (when (memq window-system '(mac ns x))
-  (exec-path-from-shell-initialize))
+  (exec-path-from-shell-initialize)
+  (set-face-attribute 'default nil :font "Inconsolata-16" )
+  (set-frame-font "Inconsolata-16" nil t))
 
 
 (ido-mode t)
@@ -88,3 +91,4 @@
 (which-key-mode)
 (global-diff-hl-mode)
 (diff-hl-flydiff-mode)
+(diff-hl-margin-mode)
