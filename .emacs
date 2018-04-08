@@ -149,10 +149,15 @@
   (define-key writeroom-mode-map (kbd "C-M-?") #'writeroom-toggle-mode-line))
 
 
+;; diff-hl
+
+(global-diff-hl-mode)
+(diff-hl-flydiff-mode)
+(add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
+
+
 ;; modes
 
 (projectile-global-mode)
 (yas-global-mode)
 (which-key-mode)
-(global-diff-hl-mode)
-(diff-hl-flydiff-mode)
