@@ -142,6 +142,7 @@
 
 (with-eval-after-load 'writeroom-mode
   (setq writeroom-global-effects '(writeroom-set-bottom-divider-width)
+        writeroom-fringes-outside-margins nil
         writeroom-bottom-divider-width 0)
   (define-key writeroom-mode-map (kbd "C-M-<") #'writeroom-decrease-width)
   (define-key writeroom-mode-map (kbd "C-M->") #'writeroom-increase-width)
