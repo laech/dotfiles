@@ -112,13 +112,9 @@
 ;; multiple-cursors
 
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C-c C-.") 'mc/mark-all-like-this)
-(global-set-key (kbd "C-.") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-,") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C->") 'mc/unmark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/unmark-previous-like-this)
-(with-eval-after-load 'flyspell
-  (define-key flyspell-mode-map (kbd "C-.") nil))
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 
 
 ;; writeroom-mode
