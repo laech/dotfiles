@@ -6,6 +6,19 @@
 (set-face-attribute 'mode-line-inactive nil :box nil)
 (set-face-attribute 'mode-line nil :box nil :background "gray90")
 
+
+(when (memq window-system '(mac ns))
+  (set-face-attribute 'default nil :font "Inconsolata-16" )
+  (set-frame-font "Inconsolata-16" nil t))
+
+
+(when (memq window-system '(x))
+  (custom-set-variables
+   '(menu-bar-mode nil))
+  (set-face-attribute 'default nil :font "Inconsolata-12" )
+  (set-frame-font "Inconsolata-12" nil t))
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -43,19 +56,10 @@
 (package-install-selected-packages)
 
 
-;; os specific
+;; os
 
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
-
-(when (memq window-system '(mac ns))
-  (set-face-attribute 'default nil :font "Inconsolata-16" )
-  (set-frame-font "Inconsolata-16" nil t))
-
-(when (memq window-system '(x))
-  (setq menu-bar-mode nil)
-  (set-face-attribute 'default nil :font "Inconsolata-12" )
-  (set-frame-font "Inconsolata-12" nil t))
 
 
 ;; ido
