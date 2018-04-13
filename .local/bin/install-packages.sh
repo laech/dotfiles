@@ -29,6 +29,7 @@ readonly packages=(
   pavucontrol
 
   ttf-dejavu
+  ttf-inconsolata
   noto-fonts-cjk
 
   jdk8-openjdk
