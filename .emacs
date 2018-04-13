@@ -96,6 +96,9 @@
 (setq speedbar-use-images nil)
 (setq sr-speedbar-width 26)
 (setq sr-speedbar-right-side nil)
+(with-eval-after-load 'speedbar
+  (defun speedbar-set-mode-line-format ()
+    (setq mode-line-format nil)))
 
 
 ;; smex
