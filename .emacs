@@ -1,7 +1,12 @@
 
 (setq inhibit-startup-screen t)
-(set-face-attribute 'fringe nil :background nil)
 (add-to-list 'default-frame-alist '(internal-border-width  . 0))
+
+(defun fix-fringes ()
+  (interactive)
+  (set-face-attribute 'fringe nil :background nil))
+
+(fix-fringes)
 
 (set-face-attribute 'mode-line-inactive nil :box nil)
 (set-face-attribute 'mode-line nil :box nil :background "gray90")
