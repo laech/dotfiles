@@ -13,10 +13,6 @@
  "config"
 
  (add-to-list 'default-frame-alist '(internal-border-width . 0))
- (add-to-list 'default-frame-alist '(vertical-scroll-bars . nil))
- (add-to-list 'default-frame-alist '(horizontal-scroll-bars . nil))
- (add-to-list 'default-frame-alist '(tool-bar-lines . 0))
- (add-to-list 'default-frame-alist '(line-spacing . 0.2))
 
  (setq-default inhibit-startup-screen t)
 
@@ -28,7 +24,8 @@
      (add-to-list 'default-frame-alist '(font . "Inconsolata-16"))
    (progn
      (add-to-list 'default-frame-alist '(font . "Inconsolata-12"))
-     (add-to-list 'default-frame-alist '(menu-bar-lines . 0)))))
+     (custom-set-variables
+      '(menu-bar-mode nil)))))
 
 
 (time
@@ -51,7 +48,10 @@
   '(blink-cursor-mode nil)
   '(global-auto-revert-mode t)
   '(indent-tabs-mode nil)
+  '(line-spacing 0.2)
   '(show-paren-mode t)
+  '(scroll-bar-mode nil)
+  '(tool-bar-mode nil)
   '(package-selected-packages
     (quote
      (exec-path-from-shell
