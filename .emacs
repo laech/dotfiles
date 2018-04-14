@@ -1,32 +1,40 @@
 
-(setq inhibit-startup-screen t)
-(add-to-list 'default-frame-alist '(internal-border-width  . 0))
+(defmacro time (name &rest body)
+  "Measure function execution time."
+  `(let ((start (current-time)))
+     ,@body
+     (message "==> %.06fs %s" (float-time (time-since start)) ,name)))
 
 (defun fix-fringes ()
   (interactive)
   (set-face-attribute 'fringe nil :background nil))
 
-(fix-fringes)
+(time
+ "config"
 
-(set-face-attribute 'mode-line-inactive nil :box nil)
-(set-face-attribute 'mode-line nil :box nil :background "gray90")
+ (add-to-list 'default-frame-alist '(internal-border-width . 0))
+ (add-to-list 'default-frame-alist '(vertical-scroll-bars . nil))
+ (add-to-list 'default-frame-alist '(horizontal-scroll-bars . nil))
+ (add-to-list 'default-frame-alist '(tool-bar-lines . 0))
+ (add-to-list 'default-frame-alist '(line-spacing . 0.2))
+
+ (setq-default inhibit-startup-screen t)
+
+ (set-face-attribute 'mode-line-inactive nil :box nil)
+ (set-face-attribute 'mode-line nil :box nil :background "gray90")
+ (fix-fringes)
+
+ (if (string-equal system-type "darwin")
+     (add-to-list 'default-frame-alist '(font . "Inconsolata-16"))
+   (progn
+     (add-to-list 'default-frame-alist '(font . "Inconsolata-12"))
+     (add-to-list 'default-frame-alist '(menu-bar-lines . 0)))))
 
 
-(when (memq window-system '(mac ns))
-  (set-face-attribute 'default nil :font "Inconsolata-16" )
-  (set-frame-font "Inconsolata-16" nil t))
-
-
-(when (memq window-system '(x))
-  (custom-set-variables
-   '(menu-bar-mode nil))
-  (set-face-attribute 'default nil :font "Inconsolata-12" )
-  (set-frame-font "Inconsolata-12" nil t))
-
-
-;; scroll one line at a time (less "jumpy" than defaults)
-
-(setq redisplay-dont-pause t
+(time
+ "smooth-scroll"
+ (setq-default
+  redisplay-dont-pause t
   scroll-step 1
   scroll-margin 1
   scroll-conservatively 10000
@@ -34,151 +42,151 @@
   auto-window-vscroll nil
   mouse-wheel-scroll-amount '(1 ((shift) . 1))
   mouse-wheel-progressive-speed nil
-  ouse-wheel-follow-mouse 't)
+  mouse-wheel-follow-mouse 't))
 
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(blink-cursor-mode nil)
- '(global-auto-revert-mode t)
- '(indent-tabs-mode nil)
- '(line-spacing 0.2)
- '(package-selected-packages
-   (quote
-    (expand-region writeroom-mode diff-hl haskell-snippets which-key hindent projectile sr-speedbar multiple-cursors intero haskell-mode magit rainbow-delimiters paredit exec-path-from-shell smex ido-ubiquitous)))
- '(scroll-bar-mode nil)
- '(show-paren-mode t)
- '(tool-bar-mode nil))
+(time
+ "custom-set-variables"
+ (custom-set-variables
+  '(blink-cursor-mode nil)
+  '(global-auto-revert-mode t)
+  '(indent-tabs-mode nil)
+  '(show-paren-mode t)
+  '(package-selected-packages
+    (quote
+     (exec-path-from-shell
+      expand-region
+      diff-hl
+      haskell-mode
+      haskell-snippets
+      hindent
+      ido-ubiquitous
+      intero
+      magit
+      multiple-cursors
+      paredit
+      projectile
+      rainbow-delimiters
+      smex
+      sr-speedbar
+      which-key
+      writeroom-mode)))))
 
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(time
+ "package"
+ (setq package-archives
+       '(("gnu" . "https://elpa.gnu.org/packages/")
+	 ("melpa-stable" . "https://stable.melpa.org/packages/")
+	 ("marmalade" . "https://marmalade-repo.org/packages/")))
+ (package-initialize)
+ (unless package-archive-contents
+   (package-refresh-contents))
+ (package-install-selected-packages))
 
 
-;; package
-
-(setq package-archives
-      '(("gnu" . "https://elpa.gnu.org/packages/")
-        ("melpa-stable" . "https://stable.melpa.org/packages/")
-        ("marmalade" . "https://marmalade-repo.org/packages/")))
-
-(package-initialize)
-(unless package-archive-contents (package-refresh-contents))
-(package-install-selected-packages)
+(if (string-equal system-type "darwin")
+    (time "exec-path-from-shell-initialize"
+          (exec-path-from-shell-initialize)))
 
 
-;; os
-
-(when (memq window-system '(mac ns x))
-  (exec-path-from-shell-initialize))
-
-
-;; ido
-
-(setq ido-enable-flex-matching t)
-(setq ido-use-virtual-buffers t)
-(ido-mode t)
-(ido-everywhere t)
-(ido-ubiquitous-mode t)
+(time
+ "ido"
+ (setq ido-enable-flex-matching t)
+ (setq ido-use-virtual-buffers t)
+ (ido-mode t)
+ (ido-everywhere t)
+ (ido-ubiquitous-mode t))
 
 
-;; lisp
-
-(autoload 'enable-paredit-mode "paredit" "Turn on paredit." t)
-(add-hook 'emacs-lisp-mode-hook                  #'enable-paredit-mode)
-(add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
-(add-hook 'ielm-mode-hook                        #'enable-paredit-mode)
-(add-hook 'lisp-mode-hook                        #'enable-paredit-mode)
-(add-hook 'lisp-interaction-mode-hook            #'enable-paredit-mode)
-(add-hook 'scheme-mode-hook                      #'enable-paredit-mode)
-(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
-
-
-;; haskell
-
-(add-hook 'haskell-mode-hook 'intero-mode)
-(add-hook 'haskell-mode-hook 'flyspell-prog-mode)
-(with-eval-after-load 'speedbar
-  (speedbar-add-supported-extension ".hs"))
-(with-eval-after-load 'intero
-  (with-eval-after-load 'flycheck
-    (flycheck-add-next-checker 'intero '(warning . haskell-hlint))))
+(time
+ "lisp"
+ (autoload 'enable-paredit-mode "paredit" "Turn on paredit." t)
+ (add-hook 'emacs-lisp-mode-hook                  #'enable-paredit-mode)
+ (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
+ (add-hook 'ielm-mode-hook                        #'enable-paredit-mode)
+ (add-hook 'lisp-mode-hook                        #'enable-paredit-mode)
+ (add-hook 'lisp-interaction-mode-hook            #'enable-paredit-mode)
+ (add-hook 'scheme-mode-hook                      #'enable-paredit-mode)
+ (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 
-;; speedbar/sr-speedbar
-
-(setq speedbar-use-images nil)
-(setq sr-speedbar-width 26)
-(setq sr-speedbar-right-side nil)
-(with-eval-after-load 'speedbar
-  (defun speedbar-set-mode-line-format ()
-    (setq mode-line-format nil)))
-
-
-;; smex
-
-(global-set-key (kbd "M-x") 'smex)
+(time
+ "haskell"
+ (add-hook 'haskell-mode-hook 'intero-mode)
+ (add-hook 'haskell-mode-hook 'flyspell-prog-mode)
+ (with-eval-after-load 'speedbar
+   (speedbar-add-supported-extension ".hs"))
+ (with-eval-after-load 'intero
+   (with-eval-after-load 'flycheck
+     (flycheck-add-next-checker 'intero '(warning . haskell-hlint)))))
 
 
-;; expand-region
-
-(global-set-key (kbd "C-=") 'er/expand-region)
-;; "C-- C-=" to contract
-
-
-;; multiple-cursors
-
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(time
+ "speedbar"
+ (setq speedbar-use-images nil)
+ (setq sr-speedbar-width 26)
+ (setq sr-speedbar-right-side nil)
+ (with-eval-after-load 'speedbar
+   (defun speedbar-set-mode-line-format ()
+     (setq mode-line-format nil))))
 
 
-;; writeroom-mode
-
-(add-to-list
- 'window-size-change-functions
- (lambda (frame)
-   (progn
-
-     ;; Show bottom divider if there is more than 1 window
-     (when (and (> (count-windows) 1)
-                (= (frame-parameter frame 'bottom-divider-width) 0))
-       (set-frame-parameter frame 'bottom-divider-width 1))
-
-     ;; Hide bottom divider if there is only 1 window
-     (when (and (= (count-windows) 1)
-                (> (frame-parameter frame 'bottom-divider-width) 0))
-       (set-frame-parameter frame 'bottom-divider-width 0)))))
-
-(add-hook 'find-file-hook #'writeroom-mode)
-
-(with-eval-after-load 'writeroom-mode
-  (setq writeroom-global-effects '(writeroom-set-bottom-divider-width)
-        writeroom-fringes-outside-margins nil
-        writeroom-bottom-divider-width 0)
-  (define-key writeroom-mode-map (kbd "C-M-<") #'writeroom-decrease-width)
-  (define-key writeroom-mode-map (kbd "C-M->") #'writeroom-increase-width)
-  (define-key writeroom-mode-map (kbd "C-M-=") #'writeroom-adjust-width)
-  (define-key writeroom-mode-map (kbd "C-M-?") #'writeroom-toggle-mode-line))
+(time
+ "smex"
+ (global-set-key (kbd "M-x") 'smex))
 
 
-;; diff-hl
-
-(global-diff-hl-mode)
-(diff-hl-flydiff-mode)
-(add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
+(time
+ "expand-region"
+ (global-set-key (kbd "C-=") 'er/expand-region)) ; "C-- C-=" to contract
 
 
-;; modes
+(time
+ "multiple-cursors"
+ (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+ (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+ (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+ (global-set-key (kbd "C-<") 'mc/mark-previous-like-this))
 
-(projectile-global-mode)
-(yas-global-mode)
-(which-key-mode)
+
+(time
+ "writeroom-mode"
+
+ (add-to-list
+  'window-size-change-functions
+  (lambda (frame)
+    (progn
+
+      ;; Show bottom divider if there is more than 1 window
+      (when (and (> (count-windows) 1)
+                 (= (frame-parameter frame 'bottom-divider-width) 0))
+        (set-frame-parameter frame 'bottom-divider-width 1))
+
+      ;; Hide bottom divider if there is only 1 window
+      (when (and (= (count-windows) 1)
+                 (> (frame-parameter frame 'bottom-divider-width) 0))
+        (set-frame-parameter frame 'bottom-divider-width 0)))))
+
+ (add-hook 'find-file-hook #'writeroom-mode)
+
+ (with-eval-after-load 'writeroom-mode
+   (setq writeroom-global-effects '(writeroom-set-bottom-divider-width)
+         writeroom-fringes-outside-margins nil
+         writeroom-bottom-divider-width 0)
+   (define-key writeroom-mode-map (kbd "C-M-<") #'writeroom-decrease-width)
+   (define-key writeroom-mode-map (kbd "C-M->") #'writeroom-increase-width)
+   (define-key writeroom-mode-map (kbd "C-M-=") #'writeroom-adjust-width)
+   (define-key writeroom-mode-map (kbd "C-M-?") #'writeroom-toggle-mode-line)))
+
+
+(time
+ "diff-hl"
+ (global-diff-hl-mode)
+ (diff-hl-flydiff-mode)
+ (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
+
+
+(time "projectile" (add-hook 'prog-mode-hook #'projectile-mode))
+(time "yas" (add-hook 'prog-mode-hook #'yas-minor-mode))
+(time "which-key" (which-key-mode))
