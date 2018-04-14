@@ -19,6 +19,14 @@
   (set-frame-font "Inconsolata-12" nil t))
 
 
+;; scroll one line at a time (less "jumpy" than defaults)
+
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+(setq scroll-step 1) ;; keyboard scroll one line at a time
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -30,7 +38,7 @@
  '(line-spacing 0.2)
  '(package-selected-packages
    (quote
-    (ido-vertical-mode expand-region writeroom-mode diff-hl haskell-snippets which-key hindent projectile sr-speedbar multiple-cursors intero haskell-mode magit rainbow-delimiters paredit exec-path-from-shell smex ido-ubiquitous)))
+    (expand-region writeroom-mode diff-hl haskell-snippets which-key hindent projectile sr-speedbar multiple-cursors intero haskell-mode magit rainbow-delimiters paredit exec-path-from-shell smex ido-ubiquitous)))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
@@ -69,7 +77,6 @@
 (ido-mode t)
 (ido-everywhere t)
 (ido-ubiquitous-mode t)
-(ido-vertical-mode t)
 
 
 ;; lisp
