@@ -80,6 +80,8 @@
 
 (use-package magit :defer t)
 
+(use-package intero :defer t)
+(use-package hindent :defer t)
 (use-package
   haskell-mode
   :defer t
@@ -91,9 +93,6 @@
   (with-eval-after-load 'intero
     (with-eval-after-load 'flycheck
       (flycheck-add-next-checker 'intero '(warning . haskell-hlint)))))
-
-(use-package hindent :defer t)
-(use-package intero :defer t)
 
 (use-package
   speedbar
