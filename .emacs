@@ -58,7 +58,6 @@
       expand-region
       diff-hl
       haskell-mode
-      haskell-snippets
       hindent
       ido-ubiquitous
       intero
@@ -68,7 +67,6 @@
       projectile
       rainbow-delimiters
       smex
-      sr-speedbar
       which-key
       writeroom-mode)))))
 
@@ -125,8 +123,6 @@
 (time
  "speedbar"
  (setq speedbar-use-images nil)
- (setq sr-speedbar-width 26)
- (setq sr-speedbar-right-side nil)
  (with-eval-after-load 'speedbar
    (defun speedbar-set-mode-line-format ()
      (setq mode-line-format nil))))
@@ -188,5 +184,4 @@
 
 
 (time "projectile" (add-hook 'prog-mode-hook #'projectile-mode))
-(time "yas" (add-hook 'prog-mode-hook #'yas-minor-mode))
 (time "which-key" (which-key-mode))
