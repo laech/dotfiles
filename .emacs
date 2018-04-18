@@ -41,8 +41,8 @@
  '(global-auto-revert-mode t)
  '(indent-tabs-mode nil)
  '(line-spacing 0.2)
- '(show-paren-mode t)
  '(scroll-bar-mode nil)
+ '(show-paren-mode t)
  '(tool-bar-mode nil))
 
 (if (string-equal system-type "darwin")
@@ -78,10 +78,17 @@
   :init
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
+(use-package
+  yasnippet
+  :defer t
+  :init
+  (yas-global-mode 1))
+
 (use-package magit :defer t)
 
 (use-package intero :defer t)
 (use-package hindent :defer t)
+(use-package haskell-snippets :defer t)
 (use-package
   haskell-mode
   :defer t
@@ -172,4 +179,4 @@
   projectile
   :defer t
   :init
-  (add-hook 'prog-mode-hook #'projectile-mode))
+  (add-hook 'after-init-hook #'projectile-global-mode))
