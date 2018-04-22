@@ -135,20 +135,21 @@
   writeroom-mode
   :defer t
   :init
-  (add-to-list
-   'window-size-change-functions
-   (lambda (frame)
-     (progn
+  (when (window-system)
+    (add-to-list
+     'window-size-change-functions
+     (lambda (frame)
+       (progn
 
-       ;; Show bottom divider if there is more than 1 window
-       (when (and (> (count-windows) 1)
-                  (= (frame-parameter frame 'bottom-divider-width) 0))
-         (set-frame-parameter frame 'bottom-divider-width 1))
+         ;; Show bottom divider if there is more than 1 window
+         (when (and (> (count-windows) 1)
+                    (= (frame-parameter frame 'bottom-divider-width) 0))
+           (set-frame-parameter frame 'bottom-divider-width 1))
 
-       ;; Hide bottom divider if there is only 1 window
-       (when (and (= (count-windows) 1)
-                  (> (frame-parameter frame 'bottom-divider-width) 0))
-         (set-frame-parameter frame 'bottom-divider-width 0)))))
+         ;; Hide bottom divider if there is only 1 window
+         (when (and (= (count-windows) 1)
+                    (> (frame-parameter frame 'bottom-divider-width) 0))
+           (set-frame-parameter frame 'bottom-divider-width 0))))))
 
   (add-hook 'find-file-hook #'writeroom-mode)
 
