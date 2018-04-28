@@ -24,6 +24,10 @@ export SAVEHIST="${HISTSIZE}"
 autoload -U select-word-style
 select-word-style bash
 
+
+if [[ "${OSTYPE}" == darwin* ]]; then
+    fpath=(/usr/local/share/zsh-completions $fpath)
+fi
 autoload -U compinit
 compinit
 zstyle ':completion:*' menu select
