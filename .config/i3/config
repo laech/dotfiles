@@ -165,7 +165,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Lock screen and put screen to sleep
-bindsym $mod+q exec i3lock --color=333333 && sleep 1 && xset dpms force off
+bindsym $mod+q exec '~/.local/bin/lock'
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -201,3 +201,5 @@ client.unfocused        #222222 #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #0c0c0c #0c0c0c #ffffff #000000   #0c0c0c
 client.background       #ffffff
+
+exec xautolock -time 5 -locker '~/.local/bin/lock' &
