@@ -92,6 +92,9 @@
   </action>
   <action id="EmmetNextEditPoint" />
   <action id="EmmetPreviousEditPoint" />
+  <action id="Exit">
+    <keyboard-shortcut first-keystroke="ctrl q" />
+  </action>
   <action id="ExportToTextFile" />
   <action id="FileChooser.NewFolder">
     <keyboard-shortcut first-keystroke="alt insert" />
