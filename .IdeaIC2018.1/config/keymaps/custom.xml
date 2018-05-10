@@ -30,6 +30,7 @@
     <keyboard-shortcut first-keystroke="ctrl z" />
     <keyboard-shortcut first-keystroke="alt z" />
   </action>
+  <action id="ActivateTerminalToolWindow" />
   <action id="AddToFavoritesPopup" />
   <action id="Back">
     <keyboard-shortcut first-keystroke="ctrl alt left" />
@@ -184,6 +185,7 @@
     <keyboard-shortcut first-keystroke="shift ctrl f12" />
     <keyboard-shortcut first-keystroke="shift alt f12" />
   </action>
+  <action id="JumpToLastWindow" />
   <action id="NextEditorTab" />
   <action id="NextTab" />
   <action id="ParameterInfo">
@@ -217,6 +219,15 @@
   <action id="SmartTypeCompletion">
     <keyboard-shortcut first-keystroke="shift ctrl space" />
     <keyboard-shortcut first-keystroke="shift alt space" />
+  </action>
+  <action id="Tool_External Tools_Emacs">
+    <keyboard-shortcut first-keystroke="f12" />
+  </action>
+  <action id="Tool_External Tools_Open in Terminal">
+    <keyboard-shortcut first-keystroke="alt f11" />
+  </action>
+  <action id="Tool_External Tools_Terminal">
+    <keyboard-shortcut first-keystroke="alt f12" />
   </action>
   <action id="Unwrap">
     <keyboard-shortcut first-keystroke="shift ctrl delete" />
