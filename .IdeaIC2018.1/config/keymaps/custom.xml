@@ -9,6 +9,9 @@
     <keyboard-shortcut first-keystroke="shift delete" />
     <keyboard-shortcut first-keystroke="alt x" />
   </action>
+  <action id="$LRU">
+    <keyboard-shortcut first-keystroke="ctrl alt e" />
+  </action>
   <action id="$Paste">
     <keyboard-shortcut first-keystroke="ctrl v" />
     <keyboard-shortcut first-keystroke="shift insert" />
@@ -58,6 +61,9 @@
   </action>
   <action id="Editor Cut">
     <keyboard-shortcut first-keystroke="alt x" />
+  </action>
+  <action id="Editor LRU">
+    <keyboard-shortcut first-keystroke="ctrl alt e" />
   </action>
   <action id="Editor Paste">
     <keyboard-shortcut first-keystroke="alt v" />
