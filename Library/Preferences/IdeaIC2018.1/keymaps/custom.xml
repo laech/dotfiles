@@ -1,0 +1,14 @@
+<keymap version="1" name="custom" parent="Mac OS X 10.5+">
+  <action id="EditorNextWord">
+    <keyboard-shortcut first-keystroke="alt right" />
+    <keyboard-shortcut first-keystroke="alt f" />
+  </action>
+  <action id="EditorPreviousWord">
+    <keyboard-shortcut first-keystroke="alt left" />
+    <keyboard-shortcut first-keystroke="alt b" />
+  </action>
+  <action id="Unwrap">
+    <keyboard-shortcut first-keystroke="shift meta delete" />
+    <keyboard-shortcut first-keystroke="alt r" />
+  </action>
+</keymap>
