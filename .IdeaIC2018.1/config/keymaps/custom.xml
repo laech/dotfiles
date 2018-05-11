@@ -23,7 +23,6 @@
     <keyboard-shortcut first-keystroke="shift alt z" />
   </action>
   <action id="$SelectAll">
-    <keyboard-shortcut first-keystroke="ctrl a" />
     <keyboard-shortcut first-keystroke="alt a" />
   </action>
   <action id="$Undo">
@@ -123,6 +122,14 @@
     <keyboard-shortcut first-keystroke="escape" />
     <keyboard-shortcut first-keystroke="alt g" />
   </action>
+  <action id="EditorLineEnd">
+    <keyboard-shortcut first-keystroke="end" />
+    <keyboard-shortcut first-keystroke="ctrl e" />
+  </action>
+  <action id="EditorLineStart">
+    <keyboard-shortcut first-keystroke="home" />
+    <keyboard-shortcut first-keystroke="ctrl a" />
+  </action>
   <action id="EditorMatchBrace">
     <keyboard-shortcut first-keystroke="shift ctrl m" />
     <keyboard-shortcut first-keystroke="shift alt m" />
@@ -204,7 +211,6 @@
   </action>
   <action id="RecentChanges" />
   <action id="RecentFiles">
-    <keyboard-shortcut first-keystroke="ctrl e" />
     <keyboard-shortcut first-keystroke="alt e" />
   </action>
   <action id="ReformatCode">
