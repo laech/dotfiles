@@ -48,6 +48,7 @@ readonly packages=(
   wpa_supplicant
 
   openssh
+  x11-ssh-askpass
 )
 
 pacman -S --needed "${packages[@]}"
