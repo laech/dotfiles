@@ -38,6 +38,7 @@
 
 (custom-set-variables
  '(blink-cursor-mode nil)
+ '(cursor-type 'bar)
  ;; Fix for running in tmux with screen-256color and white background
  '(frame-background-mode 'light)
  '(global-auto-revert-mode t)
@@ -122,16 +123,19 @@
   expand-region
   :defer t
   :init
-  (global-set-key (kbd "C-=") 'er/expand-region)) ; "C-- C-=" to contract
+  (global-set-key (kbd "C-=") 'er/expand-region) ; "C-- C-=" to contract by one
+  (global-set-key (kbd "C-+") 'er/contract-region)) 
 
 (use-package
   multiple-cursors
   :defer t
   :init
   (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-  (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-  (global-set-key (kbd "C->") 'mc/mark-next-like-this)
-  (global-set-key (kbd "C-<") 'mc/mark-previous-like-this))
+  (global-set-key (kbd "C-c C->") 'mc/mark-all-like-this)
+  (global-set-key (kbd "C-.") 'mc/mark-next-like-this)
+  (global-set-key (kbd "C->") 'mc/unmark-next-like-this)
+  (global-set-key (kbd "C-,") 'mc/mark-previous-like-this)
+  (global-set-key (kbd "C-<") 'mc/unmark-previous-like-this))
 
 (use-package
   writeroom-mode
