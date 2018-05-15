@@ -38,6 +38,8 @@
 
 (custom-set-variables
  '(blink-cursor-mode nil)
+ ;; Fix for running in tmux with screen-256color and white background
+ '(frame-background-mode 'light)
  '(global-auto-revert-mode t)
  '(indent-tabs-mode nil)
  '(line-spacing 0.2)
