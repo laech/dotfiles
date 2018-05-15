@@ -159,6 +159,9 @@
   <action id="FindWordAtCaret">
     <keyboard-shortcut first-keystroke="ctrl s" />
   </action>
+  <action id="GotoAction">
+    <keyboard-shortcut first-keystroke="alt x" />
+  </action>
   <action id="GotoClass">
     <keyboard-shortcut first-keystroke="ctrl o" />
     <keyboard-shortcut first-keystroke="ctrl c" second-keystroke="f" />
