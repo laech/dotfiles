@@ -164,6 +164,9 @@
     <keyboard-shortcut first-keystroke="alt s" second-keystroke="period" />
   </action>
   <action id="MethodHierarchy.OverrideMethodAction" />
+  <action id="OptimizeImports">
+    <keyboard-shortcut first-keystroke="ctrl back_slash" />
+  </action>
   <action id="OverrideMethods" />
   <action id="ParameterInfo">
     <keyboard-shortcut first-keystroke="f1" />
