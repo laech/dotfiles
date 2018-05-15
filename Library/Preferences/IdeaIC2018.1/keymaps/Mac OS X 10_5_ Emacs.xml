@@ -1,4 +1,4 @@
-<keymap version="1" name="custom - mac" parent="Mac OS X 10.5+">
+<keymap version="1" name="Mac OS X 10.5+ Emacs" parent="Mac OS X 10.5+">
   <action id="$Copy">
     <keyboard-shortcut first-keystroke="ctrl insert" />
     <keyboard-shortcut first-keystroke="alt w" />
