@@ -46,6 +46,12 @@
   <action id="CommentByLineComment">
     <keyboard-shortcut first-keystroke="alt semicolon" />
   </action>
+  <action id="Diff.ApplyLeftSide">
+    <keyboard-shortcut first-keystroke="ctrl alt period" />
+  </action>
+  <action id="Diff.ApplyRightSide">
+    <keyboard-shortcut first-keystroke="ctrl alt comma" />
+  </action>
   <action id="Editor Copy">
     <keyboard-shortcut first-keystroke="alt w" />
   </action>
