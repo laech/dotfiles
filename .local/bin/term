@@ -1,1 +1,1 @@
-exec uxterm -e tmux -2
+exec xfce4-terminal -e "tmux -2"

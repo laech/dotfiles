@@ -5,18 +5,3 @@ Xft.hinting:    1
 Xft.hintstyle:  hintslight
 Xft.lcdfilter:  lcddefault
 Xft.rgba:       rgb
-
-UXTerm.termName: xterm-256color
-UXTerm.ttyModes: erase ^?
-UXTerm.vt100.scrollBar: false
-UXTerm.vt100.backarrowKey: false
-UXTerm.vt100.saveLines: 4096
-UXTerm.vt100.metaSendsEscape: true
-UXTerm.vt100.faceName: monospace
-UXTerm.vt100.faceNameDoublesize: Noto Sans CJK SC
-UXTerm.vt100.faceSize: 12
-UXTerm.vt100.reverseVideo: false
-UXTerm.vt100.translations: #override \n\
-    <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0) \n\
-    Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
-    Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
