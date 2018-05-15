@@ -7,6 +7,10 @@
     <keyboard-shortcut first-keystroke="shift delete" />
     <keyboard-shortcut first-keystroke="ctrl w" />
   </action>
+  <action id="$Delete">
+    <keyboard-shortcut first-keystroke="delete" />
+    <keyboard-shortcut first-keystroke="ctrl d" />
+  </action>
   <action id="$LRU">
     <keyboard-shortcut first-keystroke="ctrl c" second-keystroke="p" />
   </action>
@@ -27,6 +31,10 @@
     <keyboard-shortcut first-keystroke="ctrl slash" />
     <keyboard-shortcut first-keystroke="ctrl z" />
   </action>
+  <action id="CloseContent">
+    <keyboard-shortcut first-keystroke="ctrl x" second-keystroke="k" />
+    <keyboard-shortcut first-keystroke="ctrl x" second-keystroke="0" />
+  </action>
   <action id="CloseProject">
     <keyboard-shortcut first-keystroke="ctrl c" second-keystroke="k" />
   </action>
@@ -43,6 +51,9 @@
   </action>
   <action id="Editor Cut">
     <keyboard-shortcut first-keystroke="ctrl w" />
+  </action>
+  <action id="Editor Delete">
+    <keyboard-shortcut first-keystroke="ctrl d" />
   </action>
   <action id="Editor LRU">
     <keyboard-shortcut first-keystroke="ctrl c" second-keystroke="p" />
@@ -110,6 +121,9 @@
     <keyboard-shortcut first-keystroke="right" />
     <keyboard-shortcut first-keystroke="ctrl f" />
   </action>
+  <action id="EditorScrollToCenter">
+    <keyboard-shortcut first-keystroke="ctrl l" />
+  </action>
   <action id="EditorSelectWord">
     <keyboard-shortcut first-keystroke="ctrl equals" />
   </action>
@@ -163,7 +177,13 @@
     <keyboard-shortcut first-keystroke="shift ctrl alt o" />
     <keyboard-shortcut first-keystroke="alt s" second-keystroke="period" />
   </action>
+  <action id="MethodHierarchy">
+    <keyboard-shortcut first-keystroke="ctrl h" second-keystroke="shift h" />
+  </action>
   <action id="MethodHierarchy.OverrideMethodAction" />
+  <action id="NextSplitter">
+    <keyboard-shortcut first-keystroke="ctrl x" second-keystroke="o" />
+  </action>
   <action id="OptimizeImports">
     <keyboard-shortcut first-keystroke="ctrl back_slash" />
   </action>
@@ -174,6 +194,13 @@
   <action id="PasteMultiple">
     <keyboard-shortcut first-keystroke="shift ctrl insert" />
     <keyboard-shortcut first-keystroke="shift ctrl y" />
+  </action>
+  <action id="PlaybackLastMacro">
+    <keyboard-shortcut first-keystroke="ctrl x" second-keystroke="e" />
+  </action>
+  <action id="QuickJavaDoc">
+    <mouse-shortcut keystroke="alt button2" />
+    <keyboard-shortcut first-keystroke="ctrl h" second-keystroke="i" />
   </action>
   <action id="RecentChangedFiles">
     <keyboard-shortcut first-keystroke="ctrl x" second-keystroke="b" />
@@ -189,6 +216,7 @@
   <action id="Replace">
     <keyboard-shortcut first-keystroke="shift alt 5" />
     <keyboard-shortcut first-keystroke="ctrl s" />
+    <keyboard-shortcut first-keystroke="ctrl r" />
   </action>
   <action id="ReplaceInPath">
     <keyboard-shortcut first-keystroke="shift ctrl s" />
@@ -207,11 +235,26 @@
     <keyboard-shortcut first-keystroke="shift ctrl space" />
     <keyboard-shortcut first-keystroke="shift alt slash" />
   </action>
+  <action id="SplitHorizontally">
+    <keyboard-shortcut first-keystroke="ctrl x" second-keystroke="2" />
+  </action>
+  <action id="SplitVertically">
+    <keyboard-shortcut first-keystroke="ctrl x" second-keystroke="3" />
+  </action>
   <action id="StartStopMacroRecording">
     <keyboard-shortcut first-keystroke="f3" />
   </action>
+  <action id="Tool_External Tools_Emacs">
+    <keyboard-shortcut first-keystroke="ctrl c" second-keystroke="e" />
+  </action>
+  <action id="TypeHierarchy">
+    <keyboard-shortcut first-keystroke="ctrl h" second-keystroke="h" />
+  </action>
   <action id="UnselectPreviousOccurrence">
     <keyboard-shortcut first-keystroke="shift ctrl period" />
+  </action>
+  <action id="UnsplitAll">
+    <keyboard-shortcut first-keystroke="ctrl x" second-keystroke="1" />
   </action>
   <action id="Unwrap">
     <keyboard-shortcut first-keystroke="alt r" />
