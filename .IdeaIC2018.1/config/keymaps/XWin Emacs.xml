@@ -203,6 +203,9 @@
     <keyboard-shortcut first-keystroke="ctrl c" second-keystroke="f" />
   </action>
   <action id="GotoDeclaration">
+    <keyboard-shortcut first-keystroke="meta b" />
+    <mouse-shortcut keystroke="meta button1" />
+    <mouse-shortcut keystroke="button2" />
     <mouse-shortcut keystroke="control button1" />
   </action>
   <action id="GotoFile">
