@@ -9,6 +9,8 @@
   </action>
   <action id="$Delete">
     <keyboard-shortcut first-keystroke="delete" />
+    <keyboard-shortcut first-keystroke="back_space" />
+    <keyboard-shortcut first-keystroke="meta back_space" />
     <keyboard-shortcut first-keystroke="ctrl d" />
   </action>
   <action id="$LRU">
@@ -19,17 +21,13 @@
     <keyboard-shortcut first-keystroke="ctrl y" />
   </action>
   <action id="$Redo">
-    <keyboard-shortcut first-keystroke="shift ctrl z" />
-    <keyboard-shortcut first-keystroke="shift alt back_space" />
     <keyboard-shortcut first-keystroke="shift ctrl slash" />
   </action>
   <action id="$SelectAll">
     <keyboard-shortcut first-keystroke="ctrl x" second-keystroke="h" />
   </action>
   <action id="$Undo">
-    <keyboard-shortcut first-keystroke="alt back_space" />
     <keyboard-shortcut first-keystroke="ctrl slash" />
-    <keyboard-shortcut first-keystroke="ctrl z" />
   </action>
   <action id="CloseContent">
     <keyboard-shortcut first-keystroke="ctrl x" second-keystroke="k" />
@@ -75,7 +73,6 @@
   </action>
   <action id="Editor Undo">
     <keyboard-shortcut first-keystroke="ctrl slash" />
-    <keyboard-shortcut first-keystroke="ctrl z" />
   </action>
   <action id="EditorDown">
     <keyboard-shortcut first-keystroke="down" />
