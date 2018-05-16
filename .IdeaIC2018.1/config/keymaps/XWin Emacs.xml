@@ -74,10 +74,10 @@
   <action id="Editor Undo">
     <keyboard-shortcut first-keystroke="ctrl slash" />
   </action>
-  <action id="EditorDeleteLine" />
   <action id="EditorCutLineEnd">
     <keyboard-shortcut first-keystroke="ctrl k" />
   </action>
+  <action id="EditorDeleteLine" />
   <action id="EditorDown">
     <keyboard-shortcut first-keystroke="down" />
     <keyboard-shortcut first-keystroke="ctrl n" />
