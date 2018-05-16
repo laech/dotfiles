@@ -197,6 +197,7 @@
   <action id="GotoClass">
     <keyboard-shortcut first-keystroke="ctrl o" />
     <keyboard-shortcut first-keystroke="ctrl c" second-keystroke="f" />
+    <keyboard-shortcut first-keystroke="meta o" />
   </action>
   <action id="GotoDeclaration">
     <keyboard-shortcut first-keystroke="meta b" />
@@ -207,6 +208,7 @@
   <action id="GotoFile">
     <keyboard-shortcut first-keystroke="ctrl x" second-keystroke="ctrl f" />
     <keyboard-shortcut first-keystroke="shift ctrl o" />
+    <keyboard-shortcut first-keystroke="shift meta o" />
   </action>
   <action id="GotoLine">
     <keyboard-shortcut first-keystroke="alt g" second-keystroke="g" />
@@ -214,6 +216,7 @@
   <action id="GotoSymbol">
     <keyboard-shortcut first-keystroke="shift ctrl alt o" />
     <keyboard-shortcut first-keystroke="alt s" second-keystroke="period" />
+    <keyboard-shortcut first-keystroke="meta alt o" />
   </action>
   <action id="MethodHierarchy">
     <keyboard-shortcut first-keystroke="ctrl h" second-keystroke="shift h" />
@@ -243,10 +246,12 @@
   <action id="RecentChangedFiles">
     <keyboard-shortcut first-keystroke="ctrl x" second-keystroke="b" />
     <keyboard-shortcut first-keystroke="shift alt e" />
+    <keyboard-shortcut first-keystroke="shift meta e" />
   </action>
   <action id="RecentFiles">
     <keyboard-shortcut first-keystroke="ctrl x" second-keystroke="ctrl b" />
     <keyboard-shortcut first-keystroke="alt e" />
+    <keyboard-shortcut first-keystroke="meta e" />
   </action>
   <action id="ReformatCode">
     <keyboard-shortcut first-keystroke="ctrl alt back_slash" />
