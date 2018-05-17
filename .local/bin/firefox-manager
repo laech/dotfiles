@@ -1,1 +1,4 @@
-firefox --new-instance --ProfileManager
+# Requires turning on cgroup2 in kernel boot parameters
+# systemd.unified_cgroup_hierarchy=true in /etc/default/grub
+# and regenerate config
+systemd-run --user --scope -p MemoryMax=6G firefox --new-instance --ProfileManager
