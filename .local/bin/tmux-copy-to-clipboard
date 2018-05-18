@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+buf=$( cat "$@" )
+
+if [[ "$buf" != "$(tmux saveb -)" ]]; then
+    tmux setb "$buf"
+fi
+
+if [[ -n "$DISPLAY" ]]; then
+    echo -n "$buf" | (pbcopy 2> /dev/null || xsel -ib)
+fi

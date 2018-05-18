@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+buf="$(pbpaste 2> /dev/null || xsel -ob)"
+
+if [[ -n "$buf" && "$buf" != "$(tmux saveb -)" ]]; then
+    tmux setb "$buf"
+fi
