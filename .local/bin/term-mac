@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+# Referenced in Terminal.app -> 'Shells open with' -> 'Command'
+
+# Required to fix PATH
+. /etc/zprofile
+. ~/.zshenv
+
+exec tmux new -A -s 0
