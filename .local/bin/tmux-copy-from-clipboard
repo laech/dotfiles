@@ -2,6 +2,10 @@
 
 buf="$(pbpaste 2> /dev/null || xsel -ob)"
 
-if [[ -n "$buf" && "$buf" != "$(tmux saveb -)" ]]; then
-    tmux setb "$buf"
+if [[ -z "$buf" ]]; then
+    exit 0
+fi
+
+if [[ -z "$(tmux lsb)" || "$buf" != "$(tmux saveb -)" ]]; then
+    tmux setb -- "$buf"
 fi

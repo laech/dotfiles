@@ -2,8 +2,15 @@
 
 buf=$( cat "$@" )
 
-if [[ "$buf" != "$(tmux saveb -)" ]]; then
-    tmux setb "$buf"
+echo $buf
+
+if [[ -z "$buf" ]]; then
+    echo "no input"
+    exit 1
+fi
+
+if [[ -z "$(tmux lsb)" || "$buf" != "$(tmux saveb -)" ]]; then
+    tmux setb -- "$buf"
 fi
 
 if [[ -n "$DISPLAY" ]]; then
