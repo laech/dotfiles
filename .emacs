@@ -187,3 +187,9 @@
   :defer t
   :init
   (add-hook 'after-init-hook #'projectile-global-mode))
+
+(use-package
+  undo-tree
+  :defer t
+  :init
+  (add-hook 'after-init-hook #'global-undo-tree-mode))
