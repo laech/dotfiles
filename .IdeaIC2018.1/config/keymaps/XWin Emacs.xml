@@ -78,6 +78,15 @@
     <keyboard-shortcut first-keystroke="ctrl k" />
   </action>
   <action id="EditorDeleteLine" />
+  <action id="EditorDeleteToWordEnd">
+    <keyboard-shortcut first-keystroke="ctrl delete" />
+    <keyboard-shortcut first-keystroke="alt delete" />
+    <keyboard-shortcut first-keystroke="alt d" />
+  </action>
+  <action id="EditorDeleteToWordStart">
+    <keyboard-shortcut first-keystroke="ctrl back_space" />
+    <keyboard-shortcut first-keystroke="alt back_space" />
+  </action>
   <action id="EditorDown">
     <keyboard-shortcut first-keystroke="down" />
     <keyboard-shortcut first-keystroke="ctrl n" />
@@ -197,8 +206,8 @@
   </action>
   <action id="GotoClass">
     <keyboard-shortcut first-keystroke="ctrl o" />
-    <keyboard-shortcut first-keystroke="ctrl c" second-keystroke="f" />
     <keyboard-shortcut first-keystroke="meta o" />
+    <keyboard-shortcut first-keystroke="alt o" />
   </action>
   <action id="GotoDeclaration">
     <keyboard-shortcut first-keystroke="meta b" />
@@ -210,13 +219,13 @@
     <keyboard-shortcut first-keystroke="ctrl x" second-keystroke="ctrl f" />
     <keyboard-shortcut first-keystroke="shift ctrl o" />
     <keyboard-shortcut first-keystroke="shift meta o" />
+    <keyboard-shortcut first-keystroke="shift alt o" />
   </action>
   <action id="GotoLine">
     <keyboard-shortcut first-keystroke="alt g" second-keystroke="g" />
   </action>
   <action id="GotoSymbol">
     <keyboard-shortcut first-keystroke="shift ctrl alt o" />
-    <keyboard-shortcut first-keystroke="alt s" second-keystroke="period" />
     <keyboard-shortcut first-keystroke="meta alt o" />
   </action>
   <action id="MethodHierarchy">
@@ -291,6 +300,9 @@
   <action id="Tool_External Tools_Emacs">
     <keyboard-shortcut first-keystroke="ctrl c" second-keystroke="e" />
   </action>
+  <action id="Tool_External Tools_Terminal">
+    <keyboard-shortcut first-keystroke="alt f12" />
+  </action>
   <action id="TypeHierarchy">
     <keyboard-shortcut first-keystroke="ctrl h" second-keystroke="h" />
   </action>
@@ -302,5 +314,8 @@
   </action>
   <action id="Unwrap">
     <keyboard-shortcut first-keystroke="alt r" />
+  </action>
+  <action id="Vcs.ShowMessageHistory">
+    <keyboard-shortcut first-keystroke="ctrl m" />
   </action>
 </keymap>
