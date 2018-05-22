@@ -38,7 +38,6 @@
 
 (custom-set-variables
  '(blink-cursor-mode nil)
- '(cursor-type 'bar)
  ;; Fix for running in tmux with screen-256color and white background
  '(frame-background-mode 'light)
  '(global-auto-revert-mode t)
