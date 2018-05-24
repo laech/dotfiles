@@ -2,8 +2,6 @@
 
 buf=$( cat "$@" )
 
-echo $buf
-
 if [[ -z "$buf" ]]; then
     echo "no input"
     exit 1
