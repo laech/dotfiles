@@ -125,6 +125,8 @@
   (global-set-key (kbd "C-=") 'er/expand-region) ; "C-- C-=" to contract by one
   (global-set-key (kbd "C-+") 'er/contract-region)) 
 
+(with-eval-after-load 'flyspell
+  (define-key flyspell-mode-map (kbd "C-.") nil))
 (use-package
   multiple-cursors
   :defer t
