@@ -29,7 +29,9 @@
  redisplay-dont-pause t
  scroll-step 1
  scroll-margin 1
- scroll-conservatively 10000
+ scroll-conservatively 0
+ scroll-up-aggressively 0.01
+ scroll-down-aggressively 0.01
  scroll-preserve-screen-position 1
  auto-window-vscroll nil
  mouse-wheel-scroll-amount '(1 ((shift) . 1))
@@ -84,7 +86,7 @@
   yasnippet
   :defer t
   :init
-  (yas-global-mode 1))
+  (add-hook 'prog-mode-hook #'yas-minor-mode))
 
 (use-package magit :defer t)
 
@@ -126,6 +128,7 @@
   (global-set-key (kbd "C-+") 'er/contract-region)) 
 
 (with-eval-after-load 'flyspell
+  (define-key flyspell-mode-map (kbd "C-,") nil)
   (define-key flyspell-mode-map (kbd "C-.") nil))
 (use-package
   multiple-cursors
