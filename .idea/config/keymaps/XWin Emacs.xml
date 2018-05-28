@@ -203,6 +203,9 @@
   <action id="Exit">
     <keyboard-shortcut first-keystroke="ctrl x" second-keystroke="ctrl c" />
   </action>
+  <action id="FileChooser.NewFolder">
+    <keyboard-shortcut first-keystroke="alt insert" />
+  </action>
   <action id="Find" />
   <action id="FindInPath" />
   <action id="FindNext">
@@ -211,12 +214,11 @@
   <action id="FindPrevious">
     <keyboard-shortcut first-keystroke="ctrl r" />
   </action>
-  <action id="FindWordAtCaret">
-    <keyboard-shortcut first-keystroke="ctrl s" />
-  </action>
+  <action id="FindWordAtCaret" />
   <action id="GotoAction">
     <keyboard-shortcut first-keystroke="alt x" />
   </action>
+  <action id="GotoChangedFile" />
   <action id="GotoClass">
     <keyboard-shortcut first-keystroke="ctrl o" />
     <keyboard-shortcut first-keystroke="meta o" />
@@ -259,6 +261,10 @@
   <action id="NextSplitter">
     <keyboard-shortcut first-keystroke="ctrl x" second-keystroke="o" />
   </action>
+  <action id="NextTab">
+    <keyboard-shortcut first-keystroke="alt right" />
+    <keyboard-shortcut first-keystroke="alt f" />
+  </action>
   <action id="OptimizeImports">
     <keyboard-shortcut first-keystroke="ctrl back_slash" />
   </action>
@@ -272,6 +278,10 @@
   </action>
   <action id="PlaybackLastMacro">
     <keyboard-shortcut first-keystroke="ctrl x" second-keystroke="e" />
+  </action>
+  <action id="PreviousTab">
+    <keyboard-shortcut first-keystroke="alt left" />
+    <keyboard-shortcut first-keystroke="alt b" />
   </action>
   <action id="QuickJavaDoc">
     <mouse-shortcut keystroke="alt button2" />
@@ -298,8 +308,8 @@
   </action>
   <action id="Replace">
     <keyboard-shortcut first-keystroke="shift alt 5" />
-    <keyboard-shortcut first-keystroke="ctrl s" />
     <keyboard-shortcut first-keystroke="ctrl r" />
+    <keyboard-shortcut first-keystroke="ctrl s" />
   </action>
   <action id="ReplaceInPath">
     <keyboard-shortcut first-keystroke="shift ctrl s" />
