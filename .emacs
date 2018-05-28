@@ -98,6 +98,7 @@
   :defer t
   :init
   (add-hook 'haskell-mode-hook #'intero-mode)
+  (add-hook 'haskell-mode-hook #'hindent-mode)
   (with-eval-after-load 'speedbar
     (speedbar-add-supported-extension ".hs"))
   (with-eval-after-load 'intero
