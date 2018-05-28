@@ -98,7 +98,6 @@
   :defer t
   :init
   (add-hook 'haskell-mode-hook #'intero-mode)
-  (add-hook 'haskell-mode-hook #'flyspell-prog-mode)
   (with-eval-after-load 'speedbar
     (speedbar-add-supported-extension ".hs"))
   (with-eval-after-load 'intero
@@ -127,18 +126,28 @@
   (global-set-key (kbd "C-=") 'er/expand-region) ; "C-- C-=" to contract by one
   (global-set-key (kbd "C-+") 'er/contract-region)) 
 
-(with-eval-after-load 'flyspell
+(use-package
+  flyspell
+  :defer t
+  :init
+  (setq flyspell-issue-message-flag nil)
+  (add-hook 'prog-mode-hook #'flyspell-prog-mode)
+  :config
+  (define-key flyspell-mode-map (kbd "C-c $") nil)
+  (define-key flyspell-mode-map (kbd "C-;") nil)
   (define-key flyspell-mode-map (kbd "C-,") nil)
-  (define-key flyspell-mode-map (kbd "C-.") nil))
+  (define-key flyspell-mode-map (kbd "C-.") nil)
+  (define-key flyspell-mode-map (kbd "C-M-i") nil))
+
 (use-package
   multiple-cursors
   :defer t
   :init
   (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
   (global-set-key (kbd "C-c C->") 'mc/mark-all-like-this)
-  (global-set-key (kbd "C-.") 'mc/mark-next-like-this)
+  (global-set-key (kbd "C-.") 'mc/mark-next-like-this-word)
   (global-set-key (kbd "C->") 'mc/unmark-next-like-this)
-  (global-set-key (kbd "C-,") 'mc/mark-previous-like-this)
+  (global-set-key (kbd "C-,") 'mc/mark-previous-like-this-word)
   (global-set-key (kbd "C-<") 'mc/unmark-previous-like-this))
 
 (use-package
