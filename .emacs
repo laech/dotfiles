@@ -6,37 +6,6 @@
 ;; want to reverse the direction of the scroll, customize
 ;; 'mouse-wheel-flip-direction'.
 
-;; ** Emacs now supports optional display of line numbers in the buffer.
-;; This is similar to what 'linum-mode' provides, but much faster and
-;; doesn't usurp the display margin for the line numbers.  Customize the
-;; buffer-local variable 'display-line-numbers' to activate this optional
-;; display.  Alternatively, you can use the 'display-line-numbers-mode'
-;; minor mode or the global 'global-display-line-numbers-mode'.  When
-;; using these modes, customize 'display-line-numbers-type' with the same
-;; value as you would use with 'display-line-numbers'.
-;; 
-;; Line numbers are not displayed at all in minibuffer windows and in
-;; tooltips, as they are not useful there.
-;; 
-;; Lisp programs can disable line-number display for a particular screen
-;; line by putting the 'display-line-numbers-disable' text property or
-;; overlay property on the first character of that screen line.  This is
-;; intended for add-on packages that need a finer control of the display.
-;; 
-;; Lisp programs that need to know how much screen estate is used up for
-;; line-number display in a window can use the new function
-;; 'line-number-display-width'.
-;; 
-;; 'linum-mode' and all similar packages are henceforth becoming obsolete.
-;; Users and developers are encouraged to switch to this new feature
-;; instead.
-
-;; ** Emacs can now auto-save buffers to visited files in a more robust
-;; manner via the new mode 'auto-save-visited-mode'.  Unlike
-;; 'auto-save-visited-file-name', this mode uses the normal saving
-;; procedure and therefore obeys saving hooks.
-;; 'auto-save-visited-file-name' is now obsolete.
-
 ;; ** 'ns-appearance' and 'ns-transparent-titlebar' change the appearance
 ;; of frame decorations on macOS 10.9+.
 
@@ -88,10 +57,12 @@
 (custom-set-variables
  '(blink-cursor-mode nil)
  ;; Fix for running in tmux with screen-256color and white background
- '(frame-background-mode 'light)
+ '(frame-background-mode (quote light))
  '(global-auto-revert-mode t)
  '(indent-tabs-mode nil)
  '(line-spacing 0.2)
+ '(mouse-wheel-flip-direction t)
+ '(mouse-wheel-tilt-scroll t)
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
