@@ -47,8 +47,6 @@
 ;; 'ns-use-mwheel-acceleration' and 'ns-use-mwheel-momentum' can be used
 ;; to customize the behavior.
 
-;; ** New minor mode 'pixel-scroll-mode' provides smooth pixel-level scrolling.
-
 (setq package-enable-at-startup nil)
 (setq package-archives
       '(("gnu" . "https://elpa.gnu.org/packages/")
@@ -84,9 +82,8 @@
  scroll-down-aggressively 0.01
  scroll-preserve-screen-position 1
  auto-window-vscroll nil
- mouse-wheel-scroll-amount '(1 ((shift) . 1))
- mouse-wheel-progressive-speed nil
- mouse-wheel-follow-mouse 't)
+ mouse-wheel-scroll-amount '(3 ((shift) . 1) ((control)))
+ mouse-wheel-progressive-speed nil)
 
 (custom-set-variables
  '(blink-cursor-mode nil)
