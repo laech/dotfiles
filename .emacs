@@ -140,6 +140,13 @@
 
 (use-package magit :defer t)
 
+(defun hindent-reformat-region-or-buffer ()
+  "Reformat a region if selected, otherwise the whole buffer."
+  (interactive)
+  (if (region-active-p)
+      (hindent-reformat-region (region-beginning) (region-end))
+    (hindent-reformat-buffer)))
+
 (use-package intero :defer t)
 (use-package hindent :defer t)
 (use-package haskell-snippets :defer t)
@@ -153,7 +160,9 @@
     (speedbar-add-supported-extension ".hs"))
   (with-eval-after-load 'intero
     (with-eval-after-load 'flycheck
-      (flycheck-add-next-checker 'intero '(warning . haskell-hlint)))))
+      (flycheck-add-next-checker 'intero '(warning . haskell-hlint))))
+  :bind
+  ("C-M-\\" . hindent-reformat-region-or-buffer))
 
 (use-package
   speedbar
