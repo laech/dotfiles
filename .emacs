@@ -1,21 +1,4 @@
 
-;; TODO Emacs 26
-
-;; ** Emacs can scroll horizontally using mouse, touchpad, and trackbar.
-;; You can enable this by customizing 'mouse-wheel-tilt-scroll'.  If you
-;; want to reverse the direction of the scroll, customize
-;; 'mouse-wheel-flip-direction'.
-
-;; ** 'ns-appearance' and 'ns-transparent-titlebar' change the appearance
-;; of frame decorations on macOS 10.9+.
-
-;; ** 'ns-use-thin-smoothing' enables thin font smoothing on macOS 10.8+.
-
-;; ** Mousewheel and trackpad scrolling on macOS 10.7+ now behaves more
-;; like the macOS default.  The new variables 'ns-mwheel-line-height',
-;; 'ns-use-mwheel-acceleration' and 'ns-use-mwheel-momentum' can be used
-;; to customize the behavior.
-
 (setq package-enable-at-startup nil)
 (setq package-archives
       '(("gnu" . "https://elpa.gnu.org/packages/")
@@ -36,23 +19,21 @@
 (set-face-attribute 'mode-line nil :box nil :background "gray90")
 (fix-fringes)
 (if (string-equal system-type "darwin")
-    (add-to-list 'default-frame-alist '(font . "Inconsolata-16"))
+    (progn
+      (add-to-list 'default-frame-alist '(font . "Inconsolata-16"))
+      (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+      (add-to-list 'default-frame-alist '(ns-appearance . light)))
   (progn
     (add-to-list 'default-frame-alist '(font . "Inconsolata-12"))
     (custom-set-variables
-     '(menu-bar-mode nil))))
+     '(menu-bar-mode nil))
+    (setq
+     mouse-wheel-scroll-amount '(3 ((shift) . 1) ((control)))
+     mouse-wheel-progressive-speed nil)))
 
 (setq
- redisplay-dont-pause t
- scroll-step 1
  scroll-margin 1
- scroll-conservatively 0
- scroll-up-aggressively 0.01
- scroll-down-aggressively 0.01
- scroll-preserve-screen-position 1
- auto-window-vscroll nil
- mouse-wheel-scroll-amount '(3 ((shift) . 1) ((control)))
- mouse-wheel-progressive-speed nil)
+ scroll-conservatively 1)
 
 (custom-set-variables
  '(blink-cursor-mode nil)
