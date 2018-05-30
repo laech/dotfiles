@@ -191,6 +191,11 @@ focus_follows_mouse no
 bindsym button4 nop
 bindsym button5 nop
 
+# Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set -q Master 5%+ unmute
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer set -q Master 5%- unmute
+bindsym XF86AudioMute        exec --no-startup-id amixer set -q Master toggle
+
 hide_edge_borders both
 new_window pixel
 
