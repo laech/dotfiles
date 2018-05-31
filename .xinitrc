@@ -1,7 +1,8 @@
 xrdb -merge -I"${HOME}" ~/.Xresources
 
+hash xmodmap && [[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
 # CapsLock is Control, both shift turns on CapsLock
-hash setxkbmap && setxkbmap -option ctrl:nocaps -option shift:both_capslock
+# hash setxkbmap && setxkbmap -option ctrl:nocaps -option shift:both_capslock
 
 hash numlockx && numlockx on
 hash fcitx && fcitx
