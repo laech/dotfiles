@@ -21,6 +21,10 @@ export HISTSIZE=2000
 export HISTFILE="${HOME}/.zsh_history"
 export SAVEHIST="${HISTSIZE}"
 
+# Stop blinking dead links in ls output
+# Need this for Fedora as it blinks by default via /etc/DIR_COLORS
+eval $(dircolors)
+
 autoload -U select-word-style
 select-word-style bash
 

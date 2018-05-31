@@ -7,7 +7,3 @@ if [[ ! -e "${SSH_AUTH_SOCK}" ]]; then
        && eval "$(ssh-agent -s)" > /dev/null \
        && trap "kill ${SSH_AGENT_PID}" EXIT
 fi
-
-# Stop blinking dead links in ls output
-# Need this for Fedora as it blinks by default via /etc/DIR_COLORS
-eval $(dircolors)
