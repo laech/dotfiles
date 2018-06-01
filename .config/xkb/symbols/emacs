@@ -32,9 +32,6 @@ xkb_symbols "basic" {
     key <AC08> {[ k, K, Up,    Up    ]};
     key <AC07> {[ j, J, Down,  Down  ]};
 
-    // Right shift becomes caps
-    // Caps become a new modifier
-    key <RTSH> {[ Caps_Lock        ]};
     key <CAPS> {[ ISO_Level3_Shift ]};
 
     modifier_map Mod5 { <CAPS> };
