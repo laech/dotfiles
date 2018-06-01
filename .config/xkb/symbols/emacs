@@ -8,6 +8,7 @@
 // https://michal.kosmulski.org/computing/articles/custom-keyboard-layouts-xkb.html
 // https://wiki.archlinux.org/index.php/X_Keyboard_Extension
 // https://www.vinc17.net/unix/xkb.en.html
+// ftp://www.x.org/pub/X11R7.7-RC1/doc/xorg-docs/input/XKB-Enhancing.html
 // /usr/include/X11/keysymdef.h
 
 partial alphanumeric_keys modifier_keys
