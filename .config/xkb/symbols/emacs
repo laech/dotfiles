@@ -32,7 +32,9 @@ xkb_symbols "basic" {
     key <AC08> {[ k, K, Up,    Up    ]};
     key <AC07> {[ j, J, Down,  Down  ]};
 
-    key <CAPS> {[ ISO_Level3_Shift ]};
+    // CAPS on its own as a modifier, with Shift to be Caps_Lock
+    key <CAPS> { type[Group1]="TWO_LEVEL",
+                 [ ISO_Level3_Shift, Caps_Lock ]};
 
     modifier_map Mod5 { <CAPS> };
 };
