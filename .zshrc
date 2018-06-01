@@ -23,7 +23,9 @@ export SAVEHIST="${HISTSIZE}"
 
 # Stop blinking dead links in ls output
 # Need this for Fedora as it blinks by default via /etc/DIR_COLORS
-eval $(dircolors)
+if [[ "${OSTYPE}" == linux* ]]; then
+    eval $(dircolors)
+fi
 
 autoload -U select-word-style
 select-word-style bash
