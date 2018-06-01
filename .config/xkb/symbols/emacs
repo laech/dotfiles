@@ -22,6 +22,7 @@ xkb_symbols "basic" {
     key <AC01> {[ a,     A,        Home,   Home   ]};
     key <AD03> {[ e,     E,        End,    End    ]};
     key <AC05> {[ g,     G,        Escape, Escape ]};
+    key <AC03> {[ d,     D,        Delete, Delete ]};
     key <AB10> {[ slash, question, Undo,   Redo   ]};
 
     // VIM like keys
