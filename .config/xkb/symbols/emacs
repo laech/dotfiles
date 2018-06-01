@@ -1,0 +1,39 @@
+
+// Systemwide Emacs/VIM like navigation keys with CAPS as modifier
+// See ~/.local/bin/set-xkb
+// To reset run `setxkbmap`
+
+// References:
+// https://www.x.org/wiki/XKB/
+// https://michal.kosmulski.org/computing/articles/custom-keyboard-layouts-xkb.html
+// https://wiki.archlinux.org/index.php/X_Keyboard_Extension
+// /usr/include/X11/keysymdef.h
+
+partial alphanumeric_keys modifier_keys
+xkb_symbols "basic" {
+
+    name[Group1]="Emacs";
+
+    // Emacs like keys
+    key <AB05> {[ b,     B,        Left,   Left   ]};
+    key <AC04> {[ f,     F,        Right,  Right  ]};
+    key <AD10> {[ p,     P,        Up,     Up     ]};
+    key <AB06> {[ n,     N,        Down,   Down   ]};
+    key <AC01> {[ a,     A,        Home,   Home   ]};
+    key <AD03> {[ e,     E,        End,    End    ]};
+    key <AC05> {[ g,     G,        Escape, Escape ]};
+    key <AB10> {[ slash, question, Undo,   Redo   ]};
+
+    // VIM like keys
+    key <AC06> {[ h, H, Left,  Left  ]};
+    key <AC09> {[ l, L, Right, Right ]};
+    key <AC08> {[ k, K, Up,    Up    ]};
+    key <AC07> {[ j, J, Down,  Down  ]};
+
+    // Right shift becomes caps
+    // Caps become a new modifier
+    key <RTSH> {[ Caps_Lock        ]};
+    key <CAPS> {[ ISO_Level3_Shift ]};
+
+    modifier_map Mod5 { <CAPS> };
+};
