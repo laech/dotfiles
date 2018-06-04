@@ -15,6 +15,7 @@
   (set-face-attribute 'fringe nil :background nil))
 
 (setq inhibit-startup-screen t)
+(add-to-list 'default-frame-alist '(internal-border-width . 0))
 (set-face-attribute 'mode-line-inactive nil :box nil)
 (set-face-attribute 'mode-line nil :box nil :background "gray90")
 (fix-fringes)
@@ -37,7 +38,6 @@
 
 (custom-set-variables
  '(blink-cursor-mode nil)
- ;; Fix for running in tmux with screen-256color and white background
  '(frame-background-mode (quote light))
  '(global-auto-revert-mode t)
  '(indent-tabs-mode nil)
@@ -140,7 +140,6 @@
   :defer t
   :init
   (setq flyspell-issue-message-flag nil)
-  (add-hook 'prog-mode-hook #'flyspell-prog-mode)
   :config
   (define-key flyspell-mode-map (kbd "C-c $") nil)
   (define-key flyspell-mode-map (kbd "C-;") nil)
@@ -163,32 +162,19 @@
   writeroom-mode
   :defer t
   :init
-  (when (window-system)
-    (add-to-list
-     'window-size-change-functions
-     (lambda (frame)
-       (progn
-
-         ;; Show bottom divider if there is more than 1 window
-         (when (and (> (count-windows) 1)
-                    (= (frame-parameter frame 'bottom-divider-width) 0))
-           (set-frame-parameter frame 'bottom-divider-width 1))
-
-         ;; Hide bottom divider if there is only 1 window
-         (when (and (= (count-windows) 1)
-                    (> (frame-parameter frame 'bottom-divider-width) 0))
-           (set-frame-parameter frame 'bottom-divider-width 0))))))
-
-  (add-hook 'find-file-hook #'writeroom-mode)
-
-  (with-eval-after-load 'writeroom-mode
-    (setq writeroom-global-effects '(writeroom-set-bottom-divider-width)
-          writeroom-fringes-outside-margins nil
-          writeroom-bottom-divider-width 0)
-    (define-key writeroom-mode-map (kbd "C-M-<") #'writeroom-decrease-width)
-    (define-key writeroom-mode-map (kbd "C-M->") #'writeroom-increase-width)
-    (define-key writeroom-mode-map (kbd "C-M-=") #'writeroom-adjust-width)
-    (define-key writeroom-mode-map (kbd "C-M-?") #'writeroom-toggle-mode-line)))
+  (setq writeroom-fringes-outside-margins nil)
+  (setq
+   writeroom-global-effects
+   '(writeroom-set-alpha
+     writeroom-set-menu-bar-lines
+     writeroom-set-tool-bar-lines
+     writeroom-set-vertical-scroll-bars
+     writeroom-set-bottom-divider-width))
+  :bind
+  (("C-M-<" . writeroom-decrease-width)
+   ("C-M->" . writeroom-increase-width)
+   ("C-M-=" . writeroom-adjust-width)
+   ("C-M-?" . writeroom-toggle-mode-line)))
 
 (use-package
   diff-hl
