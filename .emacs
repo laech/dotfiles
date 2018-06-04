@@ -201,3 +201,25 @@
   :defer t
   :init
   (add-hook 'after-init-hook #'global-undo-tree-mode))
+
+;; Copy/paste to/from clipboard when running in terminal mode.
+;; This also allows integration with configured tmux using the
+;; same C-y, M-y keys and see history in tmux's paste buffer.
+(unless window-system
+  (defun paste-from-clipboard ()
+    (shell-command-to-string
+     (if (string-equal system-type "darwin")
+         "pbpaste"
+       "xsel -ob")))
+
+  (defun copy-to-clipboard (text &optional push)
+    (let ((process-connection-type nil))
+      (let ((proc (start-process "emacs-copy" "*Messages*"
+                                 (if (string-equal system-type "darwin")
+                                     "pbcopy"
+                                   "xsel -ib"))))
+        (process-send-string proc text)
+        (process-send-eof proc))))
+
+  (setq interprogram-cut-function 'copy-to-clipboard)
+  (setq interprogram-paste-function 'paste-from-clipboard))
