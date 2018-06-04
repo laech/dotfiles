@@ -214,10 +214,9 @@
 
   (defun copy-to-clipboard (text &optional push)
     (let ((process-connection-type nil))
-      (let ((proc (start-process "emacs-copy" "*Messages*"
-                                 (if (string-equal system-type "darwin")
-                                     "pbcopy"
-                                   "xsel -ib"))))
+      (let ((proc (if (string-equal system-type "darwin")
+                      (start-process "phcopy" "*Messages*" "pbcopy")
+                    (start-process "xsel" "*Messages*" "xsel" "-ib"))))
         (process-send-string proc text)
         (process-send-eof proc))))
 
