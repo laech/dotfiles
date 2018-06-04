@@ -9,6 +9,9 @@ bindkey "^[[2~" overwrite-mode    # Insert
 bindkey "^[[H" beginning-of-line
 bindkey "^[[F" end-of-line
 
+# Turn off XOFF/XON to allow C-s to forward search history
+[[ $- == *i* ]] && stty -ixon
+
 setopt auto_cd
 setopt correct
 setopt prompt_subst
