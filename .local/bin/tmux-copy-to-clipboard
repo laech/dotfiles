@@ -8,7 +8,8 @@ if [[ -z "$buf" ]]; then
 fi
 
 if [[ -z "$(tmux lsb)" || "$buf" != "$(tmux saveb -)" ]]; then
-    tmux setb -- "$buf"
+    # Use loadb instead of setb to handle big content
+    echo "$buf" | tmux loadb -
 fi
 
 if [[ -n "$DISPLAY" ]]; then
