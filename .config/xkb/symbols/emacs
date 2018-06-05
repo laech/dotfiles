@@ -9,33 +9,49 @@
 // https://wiki.archlinux.org/index.php/X_Keyboard_Extension
 // https://www.vinc17.net/unix/xkb.en.html
 // ftp://www.x.org/pub/X11R7.7-RC1/doc/xorg-docs/input/XKB-Enhancing.html
+// https://www.spinics.net/lists/xorg/msg35931.html
 // /usr/include/X11/keysymdef.h
 
-partial alphanumeric_keys modifier_keys
+partial alphanumeric_keys
 xkb_symbols "basic" {
+    include "us"
+    include "level3(caps_switch)"
 
-    name[Group1]="Emacs";
+    // Redirect clear mod is so that it works for Java Swing apps too.
 
     // Emacs like keys
-    key <AB05> {[ b,     B,        Left,   Left   ]};
-    key <AC04> {[ f,     F,        Right,  Right  ]};
-    key <AD10> {[ p,     P,        Up,     Up     ]};
-    key <AB06> {[ n,     N,        Down,   Down   ]};
-    key <AC01> {[ a,     A,        Home,   Home   ]};
-    key <AD03> {[ e,     E,        End,    End    ]};
-    key <AC05> {[ g,     G,        Escape, Escape ]};
-    key <AC03> {[ d,     D,        Delete, Delete ]};
-    key <AB10> {[ slash, question, Undo,   Redo   ]};
+    key <AB05> { [NoSymbol, NoSymbol, Left, Left], // b
+        actions[Group1] = [NoAction(), NoAction(), RedirectKey(key=<LEFT>, clearmods=ISO_Level3_Shift)]
+    };
+    key <AC04> { [NoSymbol, NoSymbol, Right, Right], // f
+        actions[Group1] = [NoAction(), NoAction(), RedirectKey(key=<RGHT>, clearmods=ISO_Level3_Shift)]
+    };
+    key <AD10> { [NoSymbol, NoSymbol, Up, Up], // p
+        actions[Group1] = [NoAction(), NoAction(), RedirectKey(key=<UP>, clearmods=ISO_Level3_Shift)]
+    };
+    key <AB06> { [NoSymbol, NoSymbol, Down, Down], // n
+        actions[Group1] = [NoAction(), NoAction(), RedirectKey(key=<DOWN>, clearmods=ISO_Level3_Shift)]
+    };
+
+// TODO
+//    key <AC01> {[ a,     A,        Home,   Home   ]};
+//    key <AD03> {[ e,     E,        End,    End    ]};
+//    key <AC05> {[ g,     G,        Escape, Escape ]};
+//    key <AC03> {[ d,     D,        Delete, Delete ]};
+//    key <AB10> {[ slash, question, Undo,   Redo   ]};
 
     // VIM like keys
-    key <AC06> {[ h, H, Left,  Left  ]};
-    key <AC09> {[ l, L, Right, Right ]};
-    key <AC08> {[ k, K, Up,    Up    ]};
-    key <AC07> {[ j, J, Down,  Down  ]};
+    key <AC06> { [NoSymbol, NoSymbol, Left, Left], // h
+        actions[Group1] = [NoAction(), NoAction(), RedirectKey(key=<LEFT>, clearmods=ISO_Level3_Shift)]
+    };
+    key <AC09> { [NoSymbol, NoSymbol, Right, Right], // l
+        actions[Group1] = [NoAction(), NoAction(), RedirectKey(key=<RGHT>, clearmods=ISO_Level3_Shift)]
+    };
+    key <AC08> { [NoSymbol, NoSymbol, Up, Up], // k
+        actions[Group1] = [NoAction(), NoAction(), RedirectKey(key=<UP>, clearmods=ISO_Level3_Shift)]
+    };
+    key <AC07> { [NoSymbol, NoSymbol, Down, Down], // j
+        actions[Group1] = [NoAction(), NoAction(), RedirectKey(key=<DOWN>, clearmods=ISO_Level3_Shift)]
+    };
 
-    // CAPS on its own as a modifier, with Shift to be Caps_Lock
-    key <CAPS> { type[Group1]="TWO_LEVEL",
-                 [ ISO_Level3_Shift, Caps_Lock ]};
-
-    modifier_map Mod5 { <CAPS> };
 };

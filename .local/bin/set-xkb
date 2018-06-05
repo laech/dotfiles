@@ -4,4 +4,9 @@ set -o nounset
 set -o errexit
 set -o pipefail
 
-setxkbmap -print | sed -e '/xkb_symbols/s/"[[:space:]]/+emacs&/' | xkbcomp -w0 -I"$HOME/.config/xkb" - "$DISPLAY"
+if [[ -f /usr/share/X11/xkb/symbols/emacs ]]; then
+    setxkbmap -option '' "emacs(basic)"
+else
+    echo "/usr/share/X11/xkb/symbols/emacs does not exist, copy it from ~/.local/xkb/symbols/emacs first."
+    exit 1
+fi

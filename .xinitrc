@@ -1,9 +1,5 @@
 xrdb -merge -I"${HOME}" ~/.Xresources
 
-hash xmodmap && [[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
-# CapsLock is Control, both shift turns on CapsLock
-# hash setxkbmap && setxkbmap -option ctrl:nocaps -option shift:both_capslock
-
 hash numlockx && numlockx on
 hash fcitx && fcitx
 hash feh && feh --bg-fill --randomize ~/wallpapers
