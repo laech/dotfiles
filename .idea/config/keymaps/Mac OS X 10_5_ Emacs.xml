@@ -23,6 +23,7 @@
   <action id="$Redo">
     <keyboard-shortcut first-keystroke="shift ctrl slash" />
     <keyboard-shortcut first-keystroke="shift alt minus" />
+    <keyboard-shortcut first-keystroke="shift undo" />
   </action>
   <action id="$SelectAll">
     <keyboard-shortcut first-keystroke="ctrl x" second-keystroke="h" />
@@ -30,6 +31,7 @@
   <action id="$Undo">
     <keyboard-shortcut first-keystroke="ctrl slash" />
     <keyboard-shortcut first-keystroke="shift ctrl minus" />
+    <keyboard-shortcut first-keystroke="undo" />
   </action>
   <action id="ChangeSignature">
     <keyboard-shortcut first-keystroke="ctrl c" second-keystroke="s" />
@@ -79,6 +81,7 @@
   <action id="Editor Redo">
     <keyboard-shortcut first-keystroke="shift ctrl slash" />
     <keyboard-shortcut first-keystroke="shift alt minus" />
+    <keyboard-shortcut first-keystroke="shift undo" />
   </action>
   <action id="Editor SelectAll">
     <keyboard-shortcut first-keystroke="ctrl x" second-keystroke="h" />
@@ -86,6 +89,7 @@
   <action id="Editor Undo">
     <keyboard-shortcut first-keystroke="ctrl slash" />
     <keyboard-shortcut first-keystroke="shift ctrl minus" />
+    <keyboard-shortcut first-keystroke="undo" />
   </action>
   <action id="EditorDeleteToWordEnd">
     <keyboard-shortcut first-keystroke="ctrl delete" />
