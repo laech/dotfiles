@@ -5,7 +5,7 @@ set -o errexit
 set -o pipefail
 
 if [[ -f /usr/share/X11/xkb/symbols/emacs ]]; then
-    setxkbmap -option '' "emacs(basic)"
+    setxkbmap -option '' "emacs"
 else
     echo "/usr/share/X11/xkb/symbols/emacs does not exist, copy it from ~/.local/xkb/symbols/emacs first."
     exit 1

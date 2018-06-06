@@ -1,57 +1,42 @@
 
-// Systemwide Emacs/VIM like navigation keys with CAPS as modifier
-// See ~/.local/bin/set-xkb
-// To reset run `setxkbmap`
+// Emacs like keys with CAPS as overlay switch,
+// place this file into /usr/share/X11/xkb/symbols/ then
+//   setxkbmap -option '' "emacs"
+// to enable it
 
-// References:
-// https://www.x.org/wiki/XKB/
-// https://michal.kosmulski.org/computing/articles/custom-keyboard-layouts-xkb.html
-// https://wiki.archlinux.org/index.php/X_Keyboard_Extension
-// https://www.vinc17.net/unix/xkb.en.html
-// ftp://www.x.org/pub/X11R7.7-RC1/doc/xorg-docs/input/XKB-Enhancing.html
-// https://www.spinics.net/lists/xorg/msg35931.html
-// /usr/include/X11/keysymdef.h
-
-partial alphanumeric_keys
+default partial alphanumeric_keys
 xkb_symbols "basic" {
+
+    // Base keyboard functionality, using 'us' here
+    // See definitions in /usr/share/X11/xkb/symbols
+    // e.g. 'include "us(intl)"' where 'intl' is defined inside the 'us' file
     include "us"
-    include "level3(caps_switch)"
 
-    // Redirect clear mod is so that it works for Java Swing apps too.
+    // Press Shift_L + Shift_R together as an alternative way to toggle Caps_Lock,
+    // then turn CAPS key to enable overlay1 mode when and only when holding down.
+    include "shift(both_capslock)"
+    key <CAPS> {actions[Group1]=[SetControls(controls=overlay1)]};
 
-    // Emacs like keys
-    key <AB05> { [NoSymbol, NoSymbol, Left, Left], // b
-        actions[Group1] = [NoAction(), NoAction(), RedirectKey(key=<LEFT>, clearmods=ISO_Level3_Shift)]
-    };
-    key <AC04> { [NoSymbol, NoSymbol, Right, Right], // f
-        actions[Group1] = [NoAction(), NoAction(), RedirectKey(key=<RGHT>, clearmods=ISO_Level3_Shift)]
-    };
-    key <AD10> { [NoSymbol, NoSymbol, Up, Up], // p
-        actions[Group1] = [NoAction(), NoAction(), RedirectKey(key=<UP>, clearmods=ISO_Level3_Shift)]
-    };
-    key <AB06> { [NoSymbol, NoSymbol, Down, Down], // n
-        actions[Group1] = [NoAction(), NoAction(), RedirectKey(key=<DOWN>, clearmods=ISO_Level3_Shift)]
-    };
+    // Emacs like navigation keys when holding down <CAPS>
+    // e.g. caps + n to go down
+    key <AB05> {overlay1=<LEFT>}; // b
+    key <AC04> {overlay1=<RGHT>}; // f
+    key <AD10> {overlay1=<UP>  }; // p
+    key <AB06> {overlay1=<DOWN>}; // n
+    key <AC01> {overlay1=<HOME>}; // a
+    key <AD03> {overlay1=<END> }; // e
+    key <AC05> {overlay1=<ESC> }; // g
 
-// TODO
-//    key <AC01> {[ a,     A,        Home,   Home   ]};
-//    key <AD03> {[ e,     E,        End,    End    ]};
-//    key <AC05> {[ g,     G,        Escape, Escape ]};
-//    key <AC03> {[ d,     D,        Delete, Delete ]};
-//    key <AB10> {[ slash, question, Undo,   Redo   ]};
+    // Emacs like editing keys when holding down <CAPS>
+    // Redo/Undo only work with applications that understand the them
+    key <AB10> {overlay1=<UNDO>}; // /
+    key <UNDO> {[Undo, Redo]};    // Shift + / -> Redo
+    key <AC03> {overlay1=<DELE>}; // d
 
-    // VIM like keys
-    key <AC06> { [NoSymbol, NoSymbol, Left, Left], // h
-        actions[Group1] = [NoAction(), NoAction(), RedirectKey(key=<LEFT>, clearmods=ISO_Level3_Shift)]
-    };
-    key <AC09> { [NoSymbol, NoSymbol, Right, Right], // l
-        actions[Group1] = [NoAction(), NoAction(), RedirectKey(key=<RGHT>, clearmods=ISO_Level3_Shift)]
-    };
-    key <AC08> { [NoSymbol, NoSymbol, Up, Up], // k
-        actions[Group1] = [NoAction(), NoAction(), RedirectKey(key=<UP>, clearmods=ISO_Level3_Shift)]
-    };
-    key <AC07> { [NoSymbol, NoSymbol, Down, Down], // j
-        actions[Group1] = [NoAction(), NoAction(), RedirectKey(key=<DOWN>, clearmods=ISO_Level3_Shift)]
-    };
+    // VIM like navigation keys when holding down <CAPS>
+    key <AC06> {overlay1=<LEFT>}; // h
+    key <AC09> {overlay1=<RGHT>}; // l
+    key <AC08> {overlay1=<UP>  }; // k
+    key <AC07> {overlay1=<DOWN>}; // j
 
 };
