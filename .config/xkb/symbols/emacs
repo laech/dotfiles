@@ -67,4 +67,3 @@ xkb_symbols "basic" {
     key <AC07> {overlay1=<DOWN>}; // j
 
 };
-/
