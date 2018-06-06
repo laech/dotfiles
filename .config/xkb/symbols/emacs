@@ -1,5 +1,5 @@
 
-// Emacs like keys with CAPS as overlay switch,
+// Emacs like keys with CAPS as overlay switch.
 
 // Using ISO_Level3_Shift or ISO_Level5_Shift would also make
 // most applications work and would have been more flexible,
@@ -55,7 +55,7 @@ xkb_symbols "basic" {
     key <AC05> {overlay1=<ESC> }; // g
 
     // Emacs like editing keys when holding down <CAPS>
-    // Redo/Undo only work with applications that understand the them
+    // Redo/Undo only work with applications that understand them.
     key <AB10> {overlay1=<UNDO>}; // /
     key <UNDO> {[Undo, Redo]};    // Shift + / -> Redo
     key <AC03> {overlay1=<DELE>}; // d
