@@ -208,4 +208,3 @@ client.placeholder      #0c0c0c #0c0c0c #ffffff #000000   #0c0c0c
 client.background       #ffffff
 
 exec xautolock -time 10 -locker ~/.local/bin/lock &
-exec ~/.local/bin/set-xkb
