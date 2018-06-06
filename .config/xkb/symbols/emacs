@@ -4,6 +4,11 @@
 //   setxkbmap -option '' "emacs"
 // to enable it
 
+// Using ISO_Level3_Shift or ISO_Level5_Shift would also make
+// most applications work and would have been more flexible,
+// however they don't work in Java Swing apps (e.g. IntelliJ IDEA)
+// but using overlay works
+
 default partial alphanumeric_keys
 xkb_symbols "basic" {
 
