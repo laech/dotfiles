@@ -193,12 +193,16 @@ bindsym button4 nop
 bindsym button5 nop
 
 # Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set -q Master 5%+ unmute
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer set -q Master 5%- unmute
-bindsym XF86AudioMute        exec --no-startup-id amixer set -q Master toggle
+bindsym XF86AudioRaiseVolume   exec --no-startup-id pactl set-sink-volume 0 +5% && pactl set-sink-mute 0 0
+bindsym XF86AudioLowerVolume   exec --no-startup-id pactl set-sink-volume 0 -5% && pactl set-sink-mute 0 0
+bindsym XF86AudioMute          exec --no-startup-id pactl set-sink-mute 0 toggle
+bindsym $mod+Control+Up        exec --no-startup-id pactl set-sink-volume 0 +5% && pactl set-sink-mute 0 0
+bindsym $mod+Control+Down      exec --no-startup-id pactl set-sink-volume 0 -5% && pactl set-sink-mute 0 0
+bindsym $mod+Control+Mod1+Up   exec --no-startup-id pactl set-sink-mute 0 0
+bindsym $mod+Control+Mod1+Down exec --no-startup-id pactl set-sink-mute 0 1
 
 hide_edge_borders both
-new_window pixel
+default_border pixel 1
 
 # class                 border  backgr. text    indicator child_border
 client.focused          #285577 #285577 #ffffff #2e9ef4   #000000
@@ -207,5 +211,7 @@ client.unfocused        #222222 #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #0c0c0c #0c0c0c #ffffff #000000   #0c0c0c
 client.background       #ffffff
+
+for_window [title="Volume Control"] floating enable border normal
 
 exec xautolock -time 10 -locker ~/.local/bin/lock &
