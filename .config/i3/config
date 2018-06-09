@@ -185,6 +185,7 @@ bar {
         bindsym button4 nop
         bindsym button5 nop
 }
+bindsym $mod+m bar mode toggle
 
 # Disable mouse focus and switch window on scroll
 focus_follows_mouse no
