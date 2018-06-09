@@ -8,18 +8,19 @@
  '(mode-line ((t (:background "gray90" :foreground "black" :box nil))))
  '(mode-line-inactive ((t (:inherit mode-line :background "grey90" :foreground "grey20" :box nil :weight light)))))
 
+(add-to-list 'default-frame-alist '(internal-border-width . 0))
+(add-to-list 'default-frame-alist '(ns-appearance . light))
+(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+(if (eq system-type 'darwin)
+    (add-to-list 'default-frame-alist '(font . "Inconsolata-16"))
+  (add-to-list 'default-frame-alist '(font . "Inconsolata-12")))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(blink-cursor-mode nil)
- '(default-frame-alist
-    (quote
-     ((ns-appearance . light)
-      (ns-transparent-titlebar . t)
-      (font . "Inconsolata-16")
-      (internal-border-width . 0))))
  '(frame-background-mode (quote light))
  '(global-auto-revert-mode t)
  '(ido-enable-flex-matching t)
@@ -130,7 +131,7 @@
    interprogram-cut-function
    (lambda  (text &optional push)
      (let ((process-connection-type nil))
-       (let  ((proc (if (string-equal system-type "darwin")
+       (let  ((proc (if (eq system-type 'darwin)
                         (start-process "phcopy" "*Messages*" "pbcopy")
                       (start-process "xsel" "*Messages*" "xsel" "-ib"))))
          (process-send-string proc text)
