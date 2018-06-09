@@ -258,6 +258,12 @@
   <action id="HighlightUsagesInFile">
     <keyboard-shortcut first-keystroke="alt s" second-keystroke="period" />
   </action>
+  <action id="Macro.transpose-chars">
+    <keyboard-shortcut first-keystroke="ctrl t" />
+  </action>
+  <action id="Macro.transpose-words">
+    <keyboard-shortcut first-keystroke="alt t" />
+  </action>
   <action id="MethodHierarchy">
     <keyboard-shortcut first-keystroke="ctrl h" second-keystroke="shift h" />
   </action>
@@ -340,6 +346,7 @@
   </action>
   <action id="StartStopMacroRecording">
     <keyboard-shortcut first-keystroke="f3" />
+    <keyboard-shortcut first-keystroke="f4" />
   </action>
   <action id="Tool_External Tools_Emacs">
     <keyboard-shortcut first-keystroke="ctrl c" second-keystroke="e" />
