@@ -13,7 +13,9 @@
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
 (if (eq system-type 'darwin)
     (add-to-list 'default-frame-alist '(font . "Inconsolata-16"))
-  (add-to-list 'default-frame-alist '(font . "Inconsolata-12")))
+  (progn
+    (add-to-list 'default-frame-alist '(font . "Inconsolata-12"))
+    (custom-set-variables '(menu-bar-mode nil))))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -21,6 +23,15 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(blink-cursor-mode nil)
+ '(company-idle-delay 0)
+ '(company-minimum-prefix-length 1)
+ '(company-tooltip-idle-delay 0)
+ '(elfeed-feeds
+   (quote
+    (("https://news.ycombinator.com/rss")
+     ("https://rachelbythebay.com/w/atom.xml"))))
+ '(elfeed-search-title-max-width 120)
+ '(elfeed-search-title-min-width 80)
  '(frame-background-mode (quote light))
  '(global-auto-revert-mode t)
  '(ido-enable-flex-matching t)
@@ -28,7 +39,6 @@
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(line-spacing 0.2)
- '(menu-bar-mode nil)
  '(mode-require-final-newline nil)
  '(mouse-wheel-flip-direction t)
  '(mouse-wheel-progressive-speed nil)
