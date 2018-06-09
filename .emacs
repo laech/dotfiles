@@ -29,6 +29,7 @@
  '(inhibit-startup-screen t)
  '(line-spacing 0.2)
  '(menu-bar-mode nil)
+ '(mode-require-final-newline nil)
  '(mouse-wheel-flip-direction t)
  '(mouse-wheel-progressive-speed nil)
  '(mouse-wheel-scroll-amount (quote (3 ((shift) . 1) ((control)))))
