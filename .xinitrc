@@ -1,5 +1,7 @@
 xrdb -merge -I"${HOME}" ~/.Xresources
 
+hash setxkbmap && [[ -f /usr/share/X11/xkb/symbols/emacs ]] && setxkbmap -option '' emacs
+
 hash numlockx && numlockx on
 hash fcitx && fcitx
 hash feh && feh --bg-fill --randomize ~/wallpapers

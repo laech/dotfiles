@@ -10,26 +10,10 @@
 //
 //   setxkbmap -option '' "emacs"
 //
-// However it may not persist and can get reset back to the default by other things.
-// Alternatively, insert the following into /usr/share/X11/xkb/rules/evdev.xml
-// ...
-// <layoutList>
-//   ...
-//   <layout>
-//     <configItem>
-//       <name>emacs</name>
-//       <shortDescription>en</shortDescription>
-//       <description>English (US, Emacs)</description>
-//       <languageList>
-//         <iso639Id>eng</iso639Id>
-//       </languageList>
-//     </configItem>
-//   </layout>
-//   ...
-// </layoutList>
-// ...
-// Then you should be able to choose 'English (US, Emacs)' in a keyboard preference
-// GUI such as fcitx and have it persist.
+// If fcitx/ibus is in use, they need to be configured not to override the system setting.
+// For ibus enable: Preference | Advanced | Use system keyboard layout
+// For fcitx disable: Configure | Addon | Advanced | X Keyboard Integration | Configure
+// | Allow to Override System XKB Settings
 
 default partial alphanumeric_keys
 xkb_symbols "basic" {
@@ -57,7 +41,7 @@ xkb_symbols "basic" {
     // Emacs like editing keys when holding down <CAPS>
     // Redo/Undo only work with applications that understand them.
     key <AB10> {overlay1=<UNDO>}; // /
-    key <UNDO> {[Undo, Redo]};    // Shift + / -> Redo
+    key <UNDO> {[Undo, Redo]   }; // Shift + / -> Redo
     key <AC03> {overlay1=<DELE>}; // d
 
     // VIM like navigation keys when holding down <CAPS>
