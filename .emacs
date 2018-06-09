@@ -28,6 +28,7 @@
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(line-spacing 0.2)
+ '(menu-bar-mode nil)
  '(mouse-wheel-flip-direction t)
  '(mouse-wheel-progressive-speed nil)
  '(mouse-wheel-scroll-amount (quote (3 ((shift) . 1) ((control)))))
