@@ -187,7 +187,6 @@ bindsym $mod+q exec --no-startup-id ~/.local/bin/lock
 # finds out, if available)
 bar {
         status_command i3status
-        font pango:sans 8
         colors {
                 background #33333d
 
