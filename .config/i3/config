@@ -42,40 +42,47 @@ bindsym $mod+d exec dmenu_run -i -b
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-set $up p
-set $down n
-set $left b
-set $right f
+set $up1 k
+set $down1 j
+set $left1 h
+set $right1 l
+
+set $up2 p
+set $down2 n
+set $left2 b
+set $right2 f
 
 # change focus
-bindsym $mod+$left focus left
-bindsym $mod+$down focus down
-bindsym $mod+$up focus up
-bindsym $mod+$right focus right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $mod+$left1  focus left
+bindsym $mod+$left2  focus left
+bindsym $mod+Left    focus left
+bindsym $mod+$down1  focus down
+bindsym $mod+$down2  focus down
+bindsym $mod+Down    focus down
+bindsym $mod+$up1    focus up
+bindsym $mod+$up2    focus up
+bindsym $mod+Up      focus up
+bindsym $mod+$right1 focus right
+bindsym $mod+$right2 focus right
+bindsym $mod+Right   focus right
 
 # move focused window
-bindsym $mod+Shift+$left move left
-bindsym $mod+Shift+$down move down
-bindsym $mod+Shift+$up move up
-bindsym $mod+Shift+$right move right
+bindsym $mod+Shift+$left1  move left
+bindsym $mod+Shift+$left2  move left
+bindsym $mod+Shift+Left    move left
+bindsym $mod+Shift+$down1  move down
+bindsym $mod+Shift+$down2  move down
+bindsym $mod+Shift+Down    move down
+bindsym $mod+Shift+$up1    move up
+bindsym $mod+Shift+$up2    move up
+bindsym $mod+Shift+Up      move up
+bindsym $mod+Shift+$right1 move right
+bindsym $mod+Shift+$right2 move right
+bindsym $mod+Shift+Right   move right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
-# split in horizontal orientation
-bindsym $mod+backslash split h
-
-# split in vertical orientation
-bindsym $mod+minus split v
+# split
+bindsym $mod+backslash split h  # -
+bindsym $mod+minus     split v  # |
 
 # enter fullscreen mode for the focused container
 # bindsym $mod+f fullscreen toggle
@@ -145,16 +152,18 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
-        bindsym $left resize shrink width 10 px or 10 ppt
-        bindsym $down resize grow height 10 px or 10 ppt
-        bindsym $up resize shrink height 10 px or 10 ppt
-        bindsym $right resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym $left1  resize shrink width  10 px or 10 ppt
+        bindsym $left2  resize shrink width  10 px or 10 ppt
+        bindsym Left    resize shrink width  10 px or 10 ppt
+        bindsym $down1  resize grow   height 10 px or 10 ppt
+        bindsym $down2  resize grow   height 10 px or 10 ppt
+        bindsym Down    resize grow   height 10 px or 10 ppt
+        bindsym $up1    resize shrink height 10 px or 10 ppt
+        bindsym $up2    resize shrink height 10 px or 10 ppt
+        bindsym Up      resize shrink height 10 px or 10 ppt
+        bindsym $right1 resize grow   width  10 px or 10 ppt
+        bindsym $right2 resize grow   width  10 px or 10 ppt
+        bindsym Right   resize grow   width  10 px or 10 ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -180,7 +189,7 @@ bar {
                 binding_mode       #900000 #900000    #ffffff
         }
 
-        mode hide
+        # mode hide
         # Disable switching workspace on scroll
         bindsym button4 nop
         bindsym button5 nop
@@ -202,13 +211,13 @@ bindsym $mod+Control+Mod1+Up   exec --no-startup-id pactl set-sink-mute 0 0
 bindsym $mod+Control+Mod1+Down exec --no-startup-id pactl set-sink-mute 0 1
 
 hide_edge_borders both
-default_border pixel 1
+default_border normal 1
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #285577 #285577 #ffffff #2e9ef4   #000000
-client.focused_inactive #5f676a #5f676a #ffffff #484e50   #000000
+client.focused          #285577 #285577 #ffffff #2e9ef4   #285577
+client.focused_inactive #5f676a #5f676a #ffffff #484e50   #5f676a
 client.unfocused        #222222 #222222 #888888 #292d2e   #222222
-client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.urgent           #2f343a #900000 #ffffff #900000   #2f343a
 client.placeholder      #0c0c0c #0c0c0c #ffffff #000000   #0c0c0c
 client.background       #ffffff
 
