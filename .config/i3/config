@@ -188,12 +188,14 @@ bindsym $mod+q exec --no-startup-id ~/.local/bin/lock
 bar {
         status_command i3status
         colors {
+                background #263238
+
                 #class             border  background text
-                focused_workspace  #285577 #285577    #ffffff
+                focused_workspace  #006064 #006064    #ffffff
                 active_workspace   #5f676a #5f676a    #ffffff
-                inactive_workspace #222222 #222222    #888888
+                inactive_workspace #263238 #263238    #888888
                 urgent_workspace   #900000 #900000    #ffffff
-                binding_mode       #900000 #900000    #ffffff
+                binding_mode       #E65100 #E65100    #ffffff
         }
 
         # mode hide
@@ -225,9 +227,9 @@ hide_edge_borders both
 default_border normal 1
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #285577 #285577 #ffffff #2e9ef4   #285577
-client.focused_inactive #5f676a #5f676a #ffffff #484e50   #5f676a
-client.unfocused        #222222 #222222 #888888 #292d2e   #222222
+client.focused          #006064 #006064 #ffffff #2e9ef4   #006064
+client.focused_inactive #006064 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #263238 #263238 #888888 #292d2e   #263238
 client.urgent           #2f343a #900000 #ffffff #900000   #2f343a
 client.placeholder      #0c0c0c #0c0c0c #ffffff #000000   #0c0c0c
 client.background       #ffffff
