@@ -80,9 +80,9 @@ bindsym $mod+Shift+$right1 move right
 bindsym $mod+Shift+$right2 move right
 bindsym $mod+Shift+Right   move right
 
-# split
-bindsym $mod+backslash split h  # -
-bindsym $mod+minus     split v  # |
+# split via '-' and '|'
+bindsym $mod+backslash split h
+bindsym $mod+minus     split v
 
 # enter fullscreen mode for the focused container
 # bindsym $mod+f fullscreen toggle
@@ -141,6 +141,8 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
+workspace_auto_back_and_forth yes
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -148,10 +150,7 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
         bindsym $left1  resize shrink width  10 px or 10 ppt
         bindsym $left2  resize shrink width  10 px or 10 ppt
         bindsym Left    resize shrink width  10 px or 10 ppt
@@ -165,13 +164,21 @@ mode "resize" {
         bindsym $right2 resize grow   width  10 px or 10 ppt
         bindsym Right   resize grow   width  10 px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
 }
-
 bindsym $mod+r mode "resize"
+
+mode "focused" {
+        bindsym f [class="(?i)firefox"]  focus; mode "default"
+        bindsym t [class="(?i)xterm"]    focus; mode "default"
+        bindsym e [class="(?i)emacs"]    focus; mode "default"
+        bindsym j [class="(?i)intellij"] focus; mode "default"
+
+        bindsym Escape mode "default"
+        bindsym $mod+slash mode "default"
+}
+bindsym $mod+slash mode "focused"
 
 # Lock screen and put screen to sleep
 bindsym $mod+q exec ~/.local/bin/lock
