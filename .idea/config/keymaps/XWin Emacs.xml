@@ -334,7 +334,7 @@
   <action id="ReplaceInPath" />
   <action id="SaveAll" />
   <action id="SelectAllOccurrences">
-    <keyboard-shortcut first-keystroke="ctrl c" second-keystroke="shift ctrl period" />
+    <keyboard-shortcut first-keystroke="ctrl c" second-keystroke="ctrl period" />
   </action>
   <action id="SelectNextOccurrence">
     <keyboard-shortcut first-keystroke="ctrl period" />
