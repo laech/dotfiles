@@ -206,8 +206,13 @@
   <action id="FileChooser.NewFolder">
     <keyboard-shortcut first-keystroke="alt insert" />
   </action>
-  <action id="Find" />
-  <action id="FindInPath" />
+  <action id="Find">
+    <keyboard-shortcut first-keystroke="ctrl s" />
+    <keyboard-shortcut first-keystroke="ctrl r" />
+  </action>
+  <action id="FindInPath">
+    <keyboard-shortcut first-keystroke="shift ctrl s" />
+  </action>
   <action id="FindNext">
     <keyboard-shortcut first-keystroke="ctrl s" />
   </action>
@@ -320,12 +325,8 @@
   </action>
   <action id="Replace">
     <keyboard-shortcut first-keystroke="shift alt 5" />
-    <keyboard-shortcut first-keystroke="ctrl r" />
-    <keyboard-shortcut first-keystroke="ctrl s" />
   </action>
-  <action id="ReplaceInPath">
-    <keyboard-shortcut first-keystroke="shift ctrl s" />
-  </action>
+  <action id="ReplaceInPath" />
   <action id="SaveAll" />
   <action id="SelectAllOccurrences">
     <keyboard-shortcut first-keystroke="ctrl c" second-keystroke="shift ctrl period" />
