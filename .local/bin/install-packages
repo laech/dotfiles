@@ -33,6 +33,7 @@ readonly packages=(
 
   ttf-dejavu
   ttf-inconsolata
+  ttf-liberation
   noto-fonts-cjk
 
   jdk8-openjdk

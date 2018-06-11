@@ -118,7 +118,7 @@
   (define-key flyspell-mode-map (kbd "C-M-i") nil))
 
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C-c C->") 'mc/mark-all-like-this)
+(global-set-key (kbd "C-c C-.") 'mc/mark-all-like-this)
 (global-set-key (kbd "C-.") 'mc/mark-next-like-this-word)
 (global-set-key (kbd "C->") 'mc/unmark-next-like-this)
 (global-set-key (kbd "C-,") 'mc/mark-previous-like-this)
@@ -127,6 +127,29 @@
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "C-=") 'er/expand-region)
 (global-set-key (kbd "C-+") 'er/contract-region)
+
+(defmacro save-column (&rest body)
+  `(let ((column (current-column)))
+     (unwind-protect
+         (progn ,@body)
+       (move-to-column column))))
+(put 'save-column 'lisp-indent-function 0)
+
+(defun move-line-up ()
+  (interactive)
+  (save-column
+    (transpose-lines 1)
+    (forward-line -2)))
+
+(defun move-line-down ()
+  (interactive)
+  (save-column
+    (forward-line 1)
+    (transpose-lines 1)
+    (forward-line -1)))
+
+(global-set-key (kbd "M-N") 'move-line-down)
+(global-set-key (kbd "M-P") 'move-line-up)
 
 (with-eval-after-load 'writeroom-mode
   (define-key writeroom-mode-map (kbd "C-M-<") 'writeroom-decrease-width)
