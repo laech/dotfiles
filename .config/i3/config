@@ -170,10 +170,11 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 mode "focused" {
-        bindsym f [class="(?i)firefox"]  focus; mode "default"
-        bindsym t [class="(?i)xterm"]    focus; mode "default"
-        bindsym e [class="(?i)emacs"]    focus; mode "default"
-        bindsym j [class="(?i)intellij"] focus; mode "default"
+        # Use xprop to find these
+        bindsym f [class="(?i)firefox"]   focus; mode "default"
+        bindsym t [class="(?i)xterm"]     focus; mode "default"
+        bindsym e [class="(?i)emacs"]     focus; mode "default"
+        bindsym j [class="(?i)jetbrains"] focus; mode "default"
 
         bindsym Escape mode "default"
         bindsym $mod+slash mode "default"
