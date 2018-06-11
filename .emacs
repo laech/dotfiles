@@ -137,6 +137,7 @@
 ;; Copy/paste to/from clipboard when running in terminal mode.
 ;; This also allows integration with configured tmux using the
 ;; same C-y, M-y keys and see history in tmux's paste buffer.
+;; https://emacs.stackexchange.com/a/10963
 (unless window-system
 
   (setq
@@ -154,6 +155,51 @@
    (lambda ()
      (shell-command-to-string
       (if (string-equal system-type "darwin") "pbpaste" "xsel -ob")))))
+
+;; M-w copy whole line when no region
+;; https://emacs-fu.blogspot.com/2009/11/copying-lines-without-selecting-them.html
+(defadvice kill-ring-save (before slick-copy activate compile)
+  "When called interactively with no active region, copy the whole line."
+  (interactive
+   (if (use-region-p)
+       (list (region-beginning) (region-end))
+     (message "Copied line")
+     (list (line-beginning-position)
+           (line-beginning-position 2)))))
+
+;; C-w cut whole line when no region
+;; same as C-S-backspace (kill-whole-line) when no region
+;; https://emacs-fu.blogspot.com/2009/11/copying-lines-without-selecting-them.html
+(defadvice kill-region (before slick-cut activate compile)
+  "When called interactively with no active region, kill the whole line."
+  (interactive
+   (if (use-region-p)
+       (list (region-beginning) (region-end))
+     (list (line-beginning-position)
+           (line-beginning-position 2)))))
+
+;; https://stackoverflow.com/a/998472
+(defun duplicate-line (arg)
+  "Duplicate current line, leaving point in lower line."
+  (interactive "*p")
+
+  ;; save the point for undo
+  (setq buffer-undo-list (cons (point) buffer-undo-list))
+  (let ((bol (line-beginning-position))
+        (eol (line-end-position)))
+
+    (save-excursion
+      (let ((line (buffer-substring bol eol))
+            (buffer-undo-list t))
+        (end-of-line)
+        (dotimes (i arg)
+          (newline)
+          (insert line)))
+
+      ;; create the undo information
+      (setq buffer-undo-list (cons (cons eol (point)) buffer-undo-list))))
+
+  (next-line arg))
 
 (if (string-equal system-type "darwin")
     (exec-path-from-shell-initialize))
