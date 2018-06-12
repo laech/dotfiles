@@ -200,8 +200,18 @@
      (list (line-beginning-position)
            (line-beginning-position 2)))))
 
+(defun duplicate-region (n)
+  "Duplicate region and activate new region with point."
+  (interactive "*p")
+  (when (use-region-p)
+    (let ((backward (= (point) (region-beginning)))
+          (text (buffer-substring (region-beginning) (region-end))))
+      (dotimes (i n) (insert text))
+      (push-mark (funcall (if backward '+ '-) (point) (* n (length text))))
+      (setq deactivate-mark nil))))
+
 ;; https://stackoverflow.com/a/998472
-(defun duplicate-line (arg)
+(defun duplicate-line (n)
   "Duplicate current line, leaving point in lower line."
   (interactive "*p")
 
@@ -214,14 +224,23 @@
       (let ((line (buffer-substring bol eol))
             (buffer-undo-list t))
         (end-of-line)
-        (dotimes (i arg)
+        (dotimes (i n)
           (newline)
           (insert line)))
 
       ;; create the undo information
       (setq buffer-undo-list (cons (cons eol (point)) buffer-undo-list))))
 
-  (next-line arg))
+  (next-line n))
+
+(defun duplicate-region-or-line (n)
+  "Duplicate region, otherwise duplicate line if no region is active."
+  (interactive "*p")
+  (if (use-region-p)
+      (duplicate-region n)
+    (duplicate-line n)))
+
+(global-set-key (kbd "C-c d") 'duplicate-region-or-line)
 
 (if (string-equal system-type "darwin")
     (exec-path-from-shell-initialize))
