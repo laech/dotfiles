@@ -162,8 +162,8 @@
 ;; same C-y, M-y keys and see history in tmux's paste buffer.
 ;; https://emacs.stackexchange.com/a/10963
 (unless window-system
-
   (setq
+
    interprogram-cut-function
    (lambda  (text &optional push)
      (let ((process-connection-type nil))
@@ -171,9 +171,8 @@
                         (start-process "phcopy" "*Messages*" "pbcopy")
                       (start-process "xsel" "*Messages*" "xsel" "-ib"))))
          (process-send-string proc text)
-         (process-send-eof proc)))))
+         (process-send-eof proc))))
 
-  (setq
    interprogram-paste-function
    (lambda ()
      (shell-command-to-string
