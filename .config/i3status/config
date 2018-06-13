@@ -13,23 +13,24 @@ order += "volume master"
 order += "time"
 
 wireless _first_ {
-  format_up = "W: (%essid) %ip"
-  format_down = "W: down"
+  format_up = " (%essid) %ip"
+  format_down = " down"
 }
 
 ethernet _first_ {
-  format_up = "E: %ip"
-  format_down = "E: down"
+  format_up = " %ip"
+  format_down = " down"
 }
 
 volume master {
-  format = "V: %volume"
-  format_muted = "V: muted"
+
+  format = " %volume"
+  format_muted = " muted"
   device = "default"
   mixer = "Master"
   mixer_idx = 0
 }
 
 time {
-  format = "%A %F %I:%M %p"
+  format = " %a %d %b %I:%M %p"
 }
