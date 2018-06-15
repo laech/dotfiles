@@ -1,13 +1,28 @@
+# http://zshwiki.org/home/zle/bindkeys
+# Create a zkbd compatible hash.
+# To add other keys to this hash, see: man 5 terminfo
+typeset -g -A key
 
-# To find out key sequence, type Ctrl-v on terminal then the key
-bindkey "^[[1~" beginning-of-line # Home
-bindkey "^[[4~" end-of-line       # End
-bindkey "^[[3~" delete-char       # Delete
-bindkey "^[[2~" overwrite-mode    # Insert
+key[Home]="$terminfo[khome]"
+key[End]="$terminfo[kend]"
+key[Insert]="$terminfo[kich1]"
+key[Backspace]="$terminfo[kbs]"
+key[Delete]="$terminfo[kdch1]"
 
-# For xfce4-terminal/terminator etc
-bindkey "^[[H" beginning-of-line
-bindkey "^[[F" end-of-line
+[[ -n "$key[Home]"      ]] && bindkey -- "$key[Home]"      beginning-of-line
+[[ -n "$key[End]"       ]] && bindkey -- "$key[End]"       end-of-line
+[[ -n "$key[Insert]"    ]] && bindkey -- "$key[Insert]"    overwrite-mode
+[[ -n "$key[Backspace]" ]] && bindkey -- "$key[Backspace]" backward-delete-char
+[[ -n "$key[Delete]"    ]] && bindkey -- "$key[Delete]"    delete-char
+
+# Finally, make sure the terminal is in application mode, when zle is
+# active. Only then are the values from $terminfo valid.
+if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
+    function zle-line-init   () { echoti smkx }
+    function zle-line-finish () { echoti rmkx }
+    zle -N zle-line-init
+    zle -N zle-line-finish
+fi
 
 # Turn off XOFF/XON to allow C-s to forward search history
 [[ $- == *i* ]] && stty -ixon
