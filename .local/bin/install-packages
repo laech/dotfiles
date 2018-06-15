@@ -34,7 +34,7 @@ readonly packages=(
   ttf-dejavu
   ttf-inconsolata
   ttf-liberation
-  ttf-font-awesome
+  otf-font-awesome
   noto-fonts-cjk
 
   jdk8-openjdk
@@ -43,10 +43,8 @@ readonly packages=(
   compton
   numlockx
 
-  fcitx
-  fcitx-gtk3
-  fcitx-libpinyin
-  fcitx-configtool
+  ibus
+  ibus-libpinyin
 
   wpa_supplicant
 
