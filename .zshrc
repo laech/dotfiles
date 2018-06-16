@@ -1,8 +1,4 @@
 
-# Bar cursor
-# https://stackoverflow.com/a/17100535
-echo -e -n "\x1b[\x36 q"
-
 # http://zshwiki.org/home/zle/bindkeys
 # Create a zkbd compatible hash.
 # To add other keys to this hash, see: man 5 terminfo
