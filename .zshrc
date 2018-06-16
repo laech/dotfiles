@@ -69,6 +69,16 @@ bindkey -e '^[w' x-copy-region # M-w
 bindkey -e '^W'  x-kill-region # C-w
 bindkey -e '^Y'  x-yank        # C-y
 
+x-cancel() {
+    if [[ $REGION_ACTIVE == 0 ]]; then
+        zle send-break
+    else
+        zle deactivate-region
+    fi
+}
+zle -N x-cancel
+bindkey -e '^G' x-cancel # C-g
+
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
 if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
