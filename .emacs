@@ -92,12 +92,13 @@
   (add-hook 'haskell-mode-hook #'intero-mode)
   (add-hook 'haskell-mode-hook #'hindent-mode)
 
-  (define-key haskell-mode-map (kbd "C-M-\\")
-    (lambda ()
-      (interactive)
-      (if (region-active-p)
-          (hindent-reformat-region (region-beginning) (region-end))
-        (hindent-reformat-buffer))))
+  (defadvice hindent-reformat-region
+      (before reformat-region-or-buffer activate compile)
+    "Reformat region, or whole buffer if no region is active."
+    (interactive
+     (if (region-active-p)
+         (list (region-beginning) (region-end))
+       (list (point-min) (point-max)))))
 
   (with-eval-after-load 'speedbar (speedbar-add-supported-extension ".hs"))
   (with-eval-after-load 'intero
@@ -180,7 +181,7 @@
 
 ;; M-w copy whole line when no region
 ;; https://emacs-fu.blogspot.com/2009/11/copying-lines-without-selecting-them.html
-(defadvice kill-ring-save (before slick-copy activate compile)
+(defadvice kill-ring-save (before copy-region-or-line activate compile)
   "When called interactively with no active region, copy the whole line."
   (interactive
    (if (use-region-p)
@@ -192,7 +193,7 @@
 ;; C-w cut whole line when no region
 ;; same as C-S-backspace (kill-whole-line) when no region
 ;; https://emacs-fu.blogspot.com/2009/11/copying-lines-without-selecting-them.html
-(defadvice kill-region (before slick-cut activate compile)
+(defadvice kill-region (before kill-region-or-line activate compile)
   "When called interactively with no active region, kill the whole line."
   (interactive
    (if (use-region-p)
