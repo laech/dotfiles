@@ -18,6 +18,7 @@ readonly packages=(
 
   tmux
   xterm
+  rxvt-unicode
   xsel
   zsh
   zsh-completions
