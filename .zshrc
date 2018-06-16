@@ -50,10 +50,16 @@ if [[ "${OSTYPE}" == darwin* ]]; then
     cmd_paste=pbpaste
 fi
 
+x-yank() { CUTBUFFER="$($cmd_paste)"; zle yank }
 x-copy() { zle $1; echo -n "$CUTBUFFER" | "$cmd_copy" }
 x-copy-region() x-copy copy-region-as-kill
-x-kill-region() x-copy kill-region
-x-yank() { CUTBUFFER="$($cmd_paste)"; zle yank }
+x-kill-region() {
+    if [[ $REGION_ACTIVE == 0 ]]; then
+        zle kill-whole-line
+    else
+        x-copy kill-region
+    fi
+}
 
 zle -N x-copy-region
 zle -N x-kill-region
