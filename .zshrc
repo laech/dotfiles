@@ -13,9 +13,6 @@ typeset -g -A key
 [[ -n "$terminfo[kich1]" ]] && bindkey "$terminfo[kich1]" overwrite-mode # insert
 [[ -n "$terminfo[kdch1]" ]] && bindkey "$terminfo[kdch1]" delete-char
 
-bindkey "^W"      kill-region         # C-w
-bindkey "^[w"     copy-region-as-kill # M-w
-
 shift-arrow () { ((REGION_ACTIVE)) || zle set-mark-command; zle $1 }
 shift-left  () shift-arrow backward-char
 shift-right () shift-arrow forward-char
@@ -43,6 +40,28 @@ bindkey "^[Od"   backward-word  # C-Left
 bindkey "^[^[[D" backward-word  # M-Left
 bindkey "^[Oc"   forward-word   # C-Right
 bindkey "^[^[[C" forward-word   # M-Right
+
+# Copy/paste integration with clipboard
+
+cmd_copy="xsel -ib"
+cmd_paste="xsel -ob"
+if [[ "${OSTYPE}" == darwin* ]]; then
+    cmd_copy=pbcopy
+    cmd_paste=pbpaste
+fi
+
+x-copy() { zle $1; echo -n "$CUTBUFFER" | "$cmd_copy" }
+x-copy-region() x-copy copy-region-as-kill
+x-kill-region() x-copy kill-region
+x-yank() { CUTBUFFER="$($cmd_paste)"; zle yank }
+
+zle -N x-copy-region
+zle -N x-kill-region
+zle -N x-yank
+
+bindkey -e '^[w' x-copy-region # M-w
+bindkey -e '^W'  x-kill-region # C-w
+bindkey -e '^Y'  x-yank        # C-y
 
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
