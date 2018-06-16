@@ -1,25 +1,54 @@
+
+# Bar cursor
+# https://stackoverflow.com/a/17100535
+echo -e -n "\x1b[\x36 q"
+
 # http://zshwiki.org/home/zle/bindkeys
 # Create a zkbd compatible hash.
 # To add other keys to this hash, see: man 5 terminfo
 typeset -g -A key
 
-key[Home]="$terminfo[khome]"
-key[End]="$terminfo[kend]"
-key[Insert]="$terminfo[kich1]"
-key[Backspace]="$terminfo[kbs]"
-key[Delete]="$terminfo[kdch1]"
+[[ -n "$terminfo[khome]" ]] && bindkey "$terminfo[khome]" beginning-of-line
+[[ -n "$terminfo[kend]"  ]] && bindkey "$terminfo[kend]"  end-of-line
+[[ -n "$terminfo[kich1]" ]] && bindkey "$terminfo[kich1]" overwrite-mode # insert
+[[ -n "$terminfo[kdch1]" ]] && bindkey "$terminfo[kdch1]" delete-char
 
-[[ -n "$key[Home]"      ]] && bindkey -- "$key[Home]"      beginning-of-line
-[[ -n "$key[End]"       ]] && bindkey -- "$key[End]"       end-of-line
-[[ -n "$key[Insert]"    ]] && bindkey -- "$key[Insert]"    overwrite-mode
-[[ -n "$key[Backspace]" ]] && bindkey -- "$key[Backspace]" backward-delete-char
-[[ -n "$key[Delete]"    ]] && bindkey -- "$key[Delete]"    delete-char
+bindkey "^W"      kill-region         # C-w
+bindkey "^[w"     copy-region-as-kill # M-w
+
+shift-arrow() { ((REGION_ACTIVE)) || zle set-mark-command; zle $1 }
+shift-left  () shift-arrow backward-char
+shift-right () shift-arrow forward-char
+shift-up    () shift-arrow up-line-or-history
+shift-down  () shift-arrow down-line-or-history
+# zle -N shift-left
+# zle -N shift-right
+# zle -N shift-up
+# zle -N shift-down
+
+bindkey "$terminfo[kLFT]" shift-left
+bindkey "$terminfo[kRIT]" shift-right
+bindkey "$terminfo[kri]"  shift-up
+bindkey "$terminfo[kind]" shift-down
+
+# xterm etc
+bindkey "^[[1;5D" backward-word       # C-Left
+bindkey "^[[1;3D" backward-word       # M-Left
+bindkey "^[[1;5C" forward-word        # C-Right
+bindkey "^[[1;3C" forward-word        # M-Right
+#bindkey "^?"      redo           # C-S-/
+
+# urxvt etc
+bindkey "^[Od"   backward-word  # C-Left
+bindkey "^[^[[D" backward-word  # M-Left
+bindkey "^[Oc"   forward-word   # C-Right
+bindkey "^[^[[C" forward-word   # M-Right
 
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
 if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
-    function zle-line-init   () { echoti smkx }
-    function zle-line-finish () { echoti rmkx }
+    zle-line-init   () { echoti smkx }
+    zle-line-finish () { echoti rmkx }
     zle -N zle-line-init
     zle -N zle-line-finish
 fi
