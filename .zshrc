@@ -29,10 +29,10 @@ zle -N shift-down
 [[ -n "$terminfo[kind]" ]] && bindkey "$terminfo[kind]" shift-down
 
 # xterm etc
-bindkey "^[[1;5D" backward-word       # C-Left
-bindkey "^[[1;3D" backward-word       # M-Left
-bindkey "^[[1;5C" forward-word        # C-Right
-bindkey "^[[1;3C" forward-word        # M-Right
+bindkey "^[[1;5D" backward-word  # C-Left
+bindkey "^[[1;3D" backward-word  # M-Left
+bindkey "^[[1;5C" forward-word   # C-Right
+bindkey "^[[1;3C" forward-word   # M-Right
 #bindkey "^?"      redo           # C-S-/
 
 # urxvt etc
