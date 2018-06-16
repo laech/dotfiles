@@ -50,7 +50,6 @@ if [[ "${OSTYPE}" == darwin* ]]; then
     cmd_paste=pbpaste
 fi
 
-x-yank() { CUTBUFFER="$($cmd_paste)"; zle yank }
 x-copy() { zle $1; echo -n "$CUTBUFFER" | "$cmd_copy" }
 x-copy-region() x-copy copy-region-as-kill
 x-kill-region() {
@@ -61,13 +60,10 @@ x-kill-region() {
     fi
 }
 
-zle -N x-copy-region
-zle -N x-kill-region
-zle -N x-yank
-
-bindkey -e '^[w' x-copy-region # M-w
-bindkey -e '^W'  x-kill-region # C-w
-bindkey -e '^Y'  x-yank        # C-y
+x-yank() {
+    CUTBUFFER="$($cmd_paste)"
+    zle yank
+}
 
 x-cancel() {
     if [[ $REGION_ACTIVE == 0 ]]; then
@@ -76,8 +72,16 @@ x-cancel() {
         zle deactivate-region
     fi
 }
+
+zle -N x-copy-region
+zle -N x-kill-region
+zle -N x-yank
 zle -N x-cancel
-bindkey -e '^G' x-cancel # C-g
+
+bindkey -e '^[w' x-copy-region # M-w
+bindkey -e '^W'  x-kill-region # C-w
+bindkey -e '^Y'  x-yank        # C-y
+bindkey -e '^G'  x-cancel      # C-g
 
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
