@@ -16,20 +16,20 @@ typeset -g -A key
 bindkey "^W"      kill-region         # C-w
 bindkey "^[w"     copy-region-as-kill # M-w
 
-shift-arrow() { ((REGION_ACTIVE)) || zle set-mark-command; zle $1 }
+shift-arrow () { ((REGION_ACTIVE)) || zle set-mark-command; zle $1 }
 shift-left  () shift-arrow backward-char
 shift-right () shift-arrow forward-char
 shift-up    () shift-arrow up-line-or-history
 shift-down  () shift-arrow down-line-or-history
-# zle -N shift-left
-# zle -N shift-right
-# zle -N shift-up
-# zle -N shift-down
+zle -N shift-left
+zle -N shift-right
+zle -N shift-up
+zle -N shift-down
 
-bindkey "$terminfo[kLFT]" shift-left
-bindkey "$terminfo[kRIT]" shift-right
-bindkey "$terminfo[kri]"  shift-up
-bindkey "$terminfo[kind]" shift-down
+[[ -n "$terminfo[kLFT]" ]] && bindkey "$terminfo[kLFT]" shift-left
+[[ -n "$terminfo[kRIT]" ]] && bindkey "$terminfo[kRIT]" shift-right
+[[ -n "$terminfo[kri]"  ]] && bindkey "$terminfo[kri]"  shift-up
+[[ -n "$terminfo[kind]" ]] && bindkey "$terminfo[kind]" shift-down
 
 # xterm etc
 bindkey "^[[1;5D" backward-word       # C-Left
