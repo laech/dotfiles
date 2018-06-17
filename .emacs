@@ -67,67 +67,6 @@
   (package-refresh-contents))
 (package-install-selected-packages)
 
-(add-hook 'after-init-hook #'global-undo-tree-mode)
-(add-hook 'after-init-hook #'ido-everywhere)
-(add-hook 'after-init-hook #'ido-ubiquitous-mode)
-(add-hook 'after-init-hook #'ido-mode)
-(add-hook 'after-init-hook #'projectile-global-mode)
-(add-hook 'after-init-hook #'which-key-mode)
-
-(add-hook 'after-init-hook #'global-diff-hl-mode)
-(add-hook 'after-init-hook #'diff-hl-flydiff-mode)
-(add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
-
-(add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
-(add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
-(add-hook 'ielm-mode-hook #'enable-paredit-mode)
-(add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
-(add-hook 'lisp-mode-hook #'enable-paredit-mode)
-(add-hook 'scheme-mode-hook #'enable-paredit-mode)
-
-(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
-(add-hook 'prog-mode-hook #'yas-minor-mode)
-
-(with-eval-after-load 'haskell-mode
-  (add-hook 'haskell-mode-hook #'intero-mode)
-  (add-hook 'haskell-mode-hook #'hindent-mode)
-
-  (define-key haskell-mode-map (kbd "C-M-\\")
-    (lambda ()
-      (interactive)
-      (if (region-active-p)
-          (hindent-reformat-region (region-beginning) (region-end))
-        (hindent-reformat-buffer))))
-
-  (with-eval-after-load 'speedbar (speedbar-add-supported-extension ".hs"))
-  (with-eval-after-load 'intero
-    (with-eval-after-load 'flycheck
-      (flycheck-add-next-checker 'intero '(warning . haskell-hlint)))))
-
-(with-eval-after-load 'speedbar
-  (setq speedbar-use-images nil)
-  (defun speedbar-set-mode-line-format ()
-    (setq mode-line-format nil)))
-
-(with-eval-after-load 'flyspell
-  (setq flyspell-issue-message-flag nil)
-  (define-key flyspell-mode-map (kbd "C-c $") nil)
-  (define-key flyspell-mode-map (kbd "C-;") nil)
-  (define-key flyspell-mode-map (kbd "C-,") nil)
-  (define-key flyspell-mode-map (kbd "C-.") nil)
-  (define-key flyspell-mode-map (kbd "C-M-i") nil))
-
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C-c C-.") 'mc/mark-all-like-this)
-(global-set-key (kbd "C-.") 'mc/mark-next-like-this-word)
-(global-set-key (kbd "C->") 'mc/unmark-next-like-this)
-(global-set-key (kbd "C-,") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-<") 'mc/unmark-previous-like-this)
-
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "C-=") 'er/expand-region)
-(global-set-key (kbd "C-+") 'er/contract-region)
-
 (defmacro save-column (&rest body)
   `(let ((column (current-column)))
      (unwind-protect
@@ -148,57 +87,24 @@
     (transpose-lines 1)
     (forward-line -1)))
 
-(global-set-key (kbd "M-N") 'move-line-down)
-(global-set-key (kbd "M-P") 'move-line-up)
+(defun copy-region-or-line ()
+  "Copy region, or line if no region."
+  (interactive)
+  (if (use-region-p)
+      (copy-region-as-kill (region-beginning) (region-end))
+    (message "Copied line")
+    (copy-region-as-kill
+     (line-beginning-position)
+     (line-beginning-position 2))))
 
-(with-eval-after-load 'writeroom-mode
-  (define-key writeroom-mode-map (kbd "C-M-<") 'writeroom-decrease-width)
-  (define-key writeroom-mode-map (kbd "C-M->") 'writeroom-increase-width)
-  (define-key writeroom-mode-map (kbd "C-M-=") 'writeroom-adjust-width)
-  (define-key writeroom-mode-map (kbd "C-M-?") 'writeroom-toggle-mode-line))
-
-;; Copy/paste to/from clipboard when running in terminal mode.
-;; This also allows integration with configured tmux using the
-;; same C-y, M-y keys and see history in tmux's paste buffer.
-;; https://emacs.stackexchange.com/a/10963
-(unless window-system
-  (setq
-
-   interprogram-cut-function
-   (lambda  (text &optional push)
-     (let ((process-connection-type nil))
-       (let  ((proc (if (eq system-type 'darwin)
-                        (start-process "phcopy" "*Messages*" "pbcopy")
-                      (start-process "xsel" "*Messages*" "xsel" "-ib"))))
-         (process-send-string proc text)
-         (process-send-eof proc))))
-
-   interprogram-paste-function
-   (lambda ()
-     (shell-command-to-string
-      (if (string-equal system-type "darwin") "pbpaste" "xsel -ob")))))
-
-;; M-w copy whole line when no region
-;; https://emacs-fu.blogspot.com/2009/11/copying-lines-without-selecting-them.html
-(defadvice kill-ring-save (before slick-copy activate compile)
-  "When called interactively with no active region, copy the whole line."
-  (interactive
-   (if (use-region-p)
-       (list (region-beginning) (region-end))
-     (message "Copied line")
-     (list (line-beginning-position)
-           (line-beginning-position 2)))))
-
-;; C-w cut whole line when no region
-;; same as C-S-backspace (kill-whole-line) when no region
-;; https://emacs-fu.blogspot.com/2009/11/copying-lines-without-selecting-them.html
-(defadvice kill-region (before slick-cut activate compile)
-  "When called interactively with no active region, kill the whole line."
-  (interactive
-   (if (use-region-p)
-       (list (region-beginning) (region-end))
-     (list (line-beginning-position)
-           (line-beginning-position 2)))))
+(defun kill-region-or-line ()
+  "Kill region, or line if no region."
+  (interactive)
+  (if (use-region-p)
+      (kill-region (region-beginning) (region-end))
+    (kill-region
+     (line-beginning-position)
+     (line-beginning-position 2))))
 
 (defun duplicate-region (n)
   "Duplicate region and activate new region with point."
@@ -240,7 +146,114 @@
       (duplicate-region n)
     (duplicate-line n)))
 
+(defun indent-region-or-buffer ()
+  "Indent region, or buffer if no region."
+  (interactive)
+  (if (use-region-p)
+      (indent-region (region-beginning) (region-end))
+    (indent-region (point-min) (point-max))))
+
+(global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
 (global-set-key (kbd "C-c d") 'duplicate-region-or-line)
+(global-set-key (kbd "M-w") 'copy-region-or-line)
+(global-set-key (kbd "C-w") 'kill-region-or-line)
+(global-set-key (kbd "M-N") 'move-line-down)
+(global-set-key (kbd "M-P") 'move-line-up)
+
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C-c C-.") 'mc/mark-all-like-this)
+(global-set-key (kbd "C-.") 'mc/mark-next-like-this-word)
+(global-set-key (kbd "C->") 'mc/unmark-next-like-this)
+(global-set-key (kbd "C-,") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-<") 'mc/unmark-previous-like-this)
+
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "C-=") 'er/expand-region)
+(global-set-key (kbd "C-+") 'er/contract-region)
+
+(add-hook 'after-init-hook #'global-undo-tree-mode)
+(add-hook 'after-init-hook #'ido-everywhere)
+(add-hook 'after-init-hook #'ido-ubiquitous-mode)
+(add-hook 'after-init-hook #'ido-mode)
+(add-hook 'after-init-hook #'projectile-global-mode)
+(add-hook 'after-init-hook #'which-key-mode)
+
+(add-hook 'after-init-hook #'global-diff-hl-mode)
+(add-hook 'after-init-hook #'diff-hl-flydiff-mode)
+(add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
+
+(add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
+(add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
+(add-hook 'ielm-mode-hook #'enable-paredit-mode)
+(add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
+(add-hook 'lisp-mode-hook #'enable-paredit-mode)
+(add-hook 'scheme-mode-hook #'enable-paredit-mode)
+
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'prog-mode-hook #'yas-minor-mode)
+
+(with-eval-after-load 'haskell-mode
+  (add-hook 'haskell-mode-hook #'intero-mode)
+  (add-hook 'haskell-mode-hook #'hindent-mode)
+
+  (defun hindent-reformat-region-or-buffer ()
+    "Reformat region, or buffer if no region."
+    (interactive)
+    (if (region-active-p)
+        (hindent-reformat-region (region-beginning) (region-end))
+      (hindent-reformat-buffer)))
+
+  (define-key haskell-mode-map (kbd "C-M-\\")
+    'hindent-reformat-region-or-buffer)
+
+  (with-eval-after-load 'hindent-mode
+    (define-key hindent-mode-map (kbd "C-M-\\")
+      'hindent-reformat-region-or-buffer))
+
+  (with-eval-after-load 'speedbar (speedbar-add-supported-extension ".hs"))
+  (with-eval-after-load 'intero
+    (with-eval-after-load 'flycheck
+      (flycheck-add-next-checker 'intero '(warning . haskell-hlint)))))
+
+(with-eval-after-load 'speedbar
+  (setq speedbar-use-images nil)
+  (defun speedbar-set-mode-line-format ()
+    (setq mode-line-format nil)))
+
+(with-eval-after-load 'flyspell
+  (setq flyspell-issue-message-flag nil)
+  (define-key flyspell-mode-map (kbd "C-c $") nil)
+  (define-key flyspell-mode-map (kbd "C-;") nil)
+  (define-key flyspell-mode-map (kbd "C-,") nil)
+  (define-key flyspell-mode-map (kbd "C-.") nil)
+  (define-key flyspell-mode-map (kbd "C-M-i") nil))
+
+(with-eval-after-load 'writeroom-mode
+  (define-key writeroom-mode-map (kbd "C-M-<") 'writeroom-decrease-width)
+  (define-key writeroom-mode-map (kbd "C-M->") 'writeroom-increase-width)
+  (define-key writeroom-mode-map (kbd "C-M-=") 'writeroom-adjust-width)
+  (define-key writeroom-mode-map (kbd "C-M-?") 'writeroom-toggle-mode-line))
+
+;; Copy/paste to/from clipboard when running in terminal mode.
+;; This also allows integration with configured tmux using the
+;; same C-y, M-y keys and see history in tmux's paste buffer.
+;; https://emacs.stackexchange.com/a/10963
+(unless window-system
+  (setq
+
+   interprogram-cut-function
+   (lambda  (text &optional push)
+     (let ((process-connection-type nil))
+       (let  ((proc (if (eq system-type 'darwin)
+                        (start-process "phcopy" "*Messages*" "pbcopy")
+                      (start-process "xsel" "*Messages*" "xsel" "-ib"))))
+         (process-send-string proc text)
+         (process-send-eof proc))))
+
+   interprogram-paste-function
+   (lambda ()
+     (shell-command-to-string
+      (if (string-equal system-type "darwin") "pbpaste" "xsel -ob")))))
 
 (if (string-equal system-type "darwin")
     (exec-path-from-shell-initialize))

@@ -1,13 +1,92 @@
 
-# To find out key sequence, type Ctrl-v on terminal then the key
-bindkey "^[[1~" beginning-of-line # Home
-bindkey "^[[4~" end-of-line       # End
-bindkey "^[[3~" delete-char       # Delete
-bindkey "^[[2~" overwrite-mode    # Insert
+# http://zshwiki.org/home/zle/bindkeys
+# Create a zkbd compatible hash.
+# To add other keys to this hash, see: man 5 terminfo
+typeset -g -A key
 
-# For xfce4-terminal/terminator etc
-bindkey "^[[H" beginning-of-line
-bindkey "^[[F" end-of-line
+[[ -n "$terminfo[khome]" ]] && bindkey "$terminfo[khome]" beginning-of-line
+[[ -n "$terminfo[kend]"  ]] && bindkey "$terminfo[kend]"  end-of-line
+[[ -n "$terminfo[kich1]" ]] && bindkey "$terminfo[kich1]" overwrite-mode # insert
+[[ -n "$terminfo[kdch1]" ]] && bindkey "$terminfo[kdch1]" delete-char
+
+shift-arrow () { ((REGION_ACTIVE)) || zle set-mark-command; zle $1 }
+shift-left  () shift-arrow backward-char
+shift-right () shift-arrow forward-char
+shift-up    () shift-arrow up-line-or-history
+shift-down  () shift-arrow down-line-or-history
+zle -N shift-left
+zle -N shift-right
+zle -N shift-up
+zle -N shift-down
+
+[[ -n "$terminfo[kLFT]" ]] && bindkey "$terminfo[kLFT]" shift-left
+[[ -n "$terminfo[kRIT]" ]] && bindkey "$terminfo[kRIT]" shift-right
+[[ -n "$terminfo[kri]"  ]] && bindkey "$terminfo[kri]"  shift-up
+[[ -n "$terminfo[kind]" ]] && bindkey "$terminfo[kind]" shift-down
+
+# xterm etc
+bindkey "^[[1;5D" backward-word  # C-Left
+bindkey "^[[1;3D" backward-word  # M-Left
+bindkey "^[[1;5C" forward-word   # C-Right
+bindkey "^[[1;3C" forward-word   # M-Right
+bindkey "^X^_"    redo           # C-x C--
+
+# urxvt etc
+bindkey "^[Od"   backward-word  # C-Left
+bindkey "^[^[[D" backward-word  # M-Left
+bindkey "^[Oc"   forward-word   # C-Right
+bindkey "^[^[[C" forward-word   # M-Right
+
+# Copy/paste integration with clipboard
+
+cmd_copy="xsel -ib"
+cmd_paste="xsel -ob"
+if [[ "${OSTYPE}" == darwin* ]]; then
+    cmd_copy=pbcopy
+    cmd_paste=pbpaste
+fi
+
+x-copy() { zle $1; echo -n "$CUTBUFFER" | "$cmd_copy" }
+x-copy-region() x-copy copy-region-as-kill
+x-kill-region() {
+    if [[ $REGION_ACTIVE == 0 ]]; then
+        zle kill-whole-line
+    else
+        x-copy kill-region
+    fi
+}
+
+x-yank() {
+    CUTBUFFER="$($cmd_paste)"
+    zle yank
+}
+
+x-cancel() {
+    if [[ $REGION_ACTIVE == 0 ]]; then
+        zle send-break
+    else
+        zle deactivate-region
+    fi
+}
+
+zle -N x-copy-region
+zle -N x-kill-region
+zle -N x-yank
+zle -N x-cancel
+
+bindkey -e '^[w' x-copy-region # M-w
+bindkey -e '^W'  x-kill-region # C-w
+bindkey -e '^Y'  x-yank        # C-y
+bindkey -e '^G'  x-cancel      # C-g
+
+# Finally, make sure the terminal is in application mode, when zle is
+# active. Only then are the values from $terminfo valid.
+if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
+    zle-line-init   () { echoti smkx }
+    zle-line-finish () { echoti rmkx }
+    zle -N zle-line-init
+    zle -N zle-line-finish
+fi
 
 # Turn off XOFF/XON to allow C-s to forward search history
 [[ $- == *i* ]] && stty -ixon

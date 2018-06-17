@@ -9,6 +9,9 @@ Xft.rgba:       rgb
 XTerm.termName: xterm-256color
 XTerm.ttyModes: erase ^?
 XTerm.borderWidth: 0
+XTerm.vt100.highlightColorMode: true
+XTerm.vt100.highlightColor: #c0defc
+XTerm.vt100.highlightTextColor: #000000
 XTerm.vt100.scrollBar: false
 XTerm.vt100.backarrowKey: false
 XTerm.vt100.saveLines: 10000
@@ -27,6 +30,14 @@ XTerm.vt100.translations: #override \n\
     <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0) \n\
     Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
     Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
+
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+URxvt.font: xft:monospace
+URxvt.letterSpace: -1
+URxvt.scrollTtyOutput: false
+URxvt.scrollWithBuffer: true
+URxvt.scrollBar: false
 
 #define Ansi_0_Color #cbccd5
 #define Ansi_1_Color #c90e42
@@ -55,25 +66,25 @@ XTerm.vt100.translations: #override \n\
 #define Selected_Text_Color #2a2c33
 #define Selection_Color #d2ecff
 
-XTerm*color0:      Ansi_0_Color
-XTerm*color1:      Ansi_1_Color
-XTerm*color2:      Ansi_2_Color
-XTerm*color3:      Ansi_3_Color
-XTerm*color4:      Ansi_4_Color
-XTerm*color5:      Ansi_5_Color
-XTerm*color6:      Ansi_6_Color
-XTerm*color7:      Ansi_7_Color
-XTerm*color8:      Ansi_8_Color
-XTerm*color9:      Ansi_9_Color
-XTerm*color10:     Ansi_10_Color
-XTerm*color11:     Ansi_11_Color
-XTerm*color12:     Ansi_12_Color
-XTerm*color13:     Ansi_13_Color
-XTerm*color14:     Ansi_14_Color
-XTerm*color15:     Ansi_15_Color
-XTerm*colorBD:     Bold_Color
-XTerm*colorIT:     Italic_Color
-XTerm*colorUL:     Underline_Color
-XTerm*foreground:  Foreground_Color
-XTerm*background:  Background_Color
-XTerm*cursorColor: Cursor_Color
+*color0:      Ansi_0_Color
+*color1:      Ansi_1_Color
+*color2:      Ansi_2_Color
+*color3:      Ansi_3_Color
+*color4:      Ansi_4_Color
+*color5:      Ansi_5_Color
+*color6:      Ansi_6_Color
+*color7:      Ansi_7_Color
+*color8:      Ansi_8_Color
+*color9:      Ansi_9_Color
+*color10:     Ansi_10_Color
+*color11:     Ansi_11_Color
+*color12:     Ansi_12_Color
+*color13:     Ansi_13_Color
+*color14:     Ansi_14_Color
+*color15:     Ansi_15_Color
+*colorBD:     Bold_Color
+*colorIT:     Italic_Color
+*colorUL:     Underline_Color
+*foreground:  Foreground_Color
+*background:  Background_Color
+*cursorColor: Cursor_Color
