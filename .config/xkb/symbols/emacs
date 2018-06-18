@@ -40,9 +40,11 @@ xkb_symbols "basic" {
 
     // Emacs like editing keys when holding down <CAPS>
     // Redo/Undo only work with applications that understand them.
+    key <UNDO> {[NoSymbol, Redo]}; // Shift + / -> Redo
     key <AB10> {overlay1=<UNDO>}; // /
-    key <UNDO> {[Undo, Redo]   }; // Shift + / -> Redo
     key <AC03> {overlay1=<DELE>}; // d
+    key <AD06> {overlay1=<PAST>}; // y
+    key <AD02> {overlay1=<COPY>}; // w
 
     // VIM like navigation keys when holding down <CAPS>
     key <AC06> {overlay1=<LEFT>}; // h
