@@ -13,9 +13,10 @@
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
 (if (eq system-type 'darwin)
     (add-to-list 'default-frame-alist '(font . "Inconsolata-16"))
-  (progn
-    (add-to-list 'default-frame-alist '(font . "Inconsolata-12"))
-    (custom-set-variables '(menu-bar-mode nil))))
+  (add-to-list 'default-frame-alist '(font . "Inconsolata-12")))
+
+(unless (and (eq system-type 'darwin) window-system)
+  (custom-set-variables '(menu-bar-mode nil)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
