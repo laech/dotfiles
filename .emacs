@@ -75,13 +75,13 @@
 (put 'save-column 'lisp-indent-function 0)
 
 (defun move-line-up ()
-  (interactive)
+  (interactive "*")
   (save-column
     (transpose-lines 1)
     (forward-line -2)))
 
 (defun move-line-down ()
-  (interactive)
+  (interactive "*")
   (save-column
     (forward-line 1)
     (transpose-lines 1)
@@ -99,7 +99,7 @@
 
 (defun kill-region-or-line ()
   "Kill region, or line if no region."
-  (interactive)
+  (interactive "*")
   (if (use-region-p)
       (kill-region (region-beginning) (region-end))
     (kill-region
@@ -148,7 +148,7 @@
 
 (defun indent-region-or-buffer ()
   "Indent region, or buffer if no region."
-  (interactive)
+  (interactive "*")
   (if (use-region-p)
       (indent-region (region-beginning) (region-end))
     (indent-region (point-min) (point-max))))
