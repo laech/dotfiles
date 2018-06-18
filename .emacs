@@ -166,6 +166,7 @@
 (global-set-key (kbd "C-,") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-<") 'mc/unmark-previous-like-this)
 
+(global-set-key (kbd "C-x C-b") 'buffer-menu)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "C-=") 'er/expand-region)
 (global-set-key (kbd "C-+") 'er/contract-region)
