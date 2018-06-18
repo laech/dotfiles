@@ -120,23 +120,21 @@
 (defun duplicate-line (n)
   "Duplicate current line, leaving point in lower line."
   (interactive "*p")
-
   ;; save the point for undo
   (setq buffer-undo-list (cons (point) buffer-undo-list))
-  (let ((bol (line-beginning-position))
-        (eol (line-end-position)))
-
+  (let* ((bol (line-beginning-position))
+         (eol (line-end-position))
+         (line (buffer-substring bol eol))
+         (buffer-undo-list t))
     (save-excursion
-      (let ((line (buffer-substring bol eol))
-            (buffer-undo-list t))
-        (end-of-line)
-        (dotimes (i n)
-          (newline)
-          (insert line)))
-
+      (end-of-line)
+      (dotimes (i n)
+        (newline)
+        (insert line))
       ;; create the undo information
-      (setq buffer-undo-list (cons (cons eol (point)) buffer-undo-list))))
-
+      (setq buffer-undo-list
+            (cons (cons eol (point))
+                  buffer-undo-list))))
   (next-line n))
 
 (defun duplicate-region-or-line (n)
@@ -243,12 +241,12 @@
 
    interprogram-cut-function
    (lambda  (text &optional push)
-     (let ((process-connection-type nil))
-       (let  ((proc (if (eq system-type 'darwin)
-                        (start-process "phcopy" "*Messages*" "pbcopy")
-                      (start-process "xsel" "*Messages*" "xsel" "-ib"))))
-         (process-send-string proc text)
-         (process-send-eof proc))))
+     (let* ((process-connection-type nil)
+            (proc (if (eq system-type 'darwin)
+                      (start-process "phcopy" "*Messages*" "pbcopy")
+                    (start-process "xsel" "*Messages*" "xsel" "-ib"))))
+       (process-send-string proc text)
+       (process-send-eof proc)))
 
    interprogram-paste-function
    (lambda ()
