@@ -1,6 +1,3 @@
-#!/usr/bin/env bash
-
-set -o errexit
-set -o nounset
-
-i3lock --color=333333 && sleep 1 && xset dpms force off
+# 'xset dpms force off' will also lock screen (xss-lock with i3lock)
+# Using xss-lock also works with loginctl
+xset dpms force off
