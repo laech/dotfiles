@@ -15,7 +15,8 @@
  ;; If there is more than one, they won't work right.
  '(fringe ((t nil)))
  '(mode-line ((t (:background "gray90" :foreground "black" :box nil))))
- '(mode-line-inactive ((t (:inherit mode-line :background "grey90" :foreground "grey20" :box nil :weight light)))))
+ '(mode-line-inactive ((t (:inherit mode-line :background "grey90" :foreground "grey20" :box nil :weight light))))
+ '(window-divider ((t (:foreground "gray75")))))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -151,6 +152,16 @@
       (indent-region (region-beginning) (region-end))
     (indent-region (point-min) (point-max))))
 
+(setq mode-line-format-spec mode-line-format)
+(defun toggle-mode-line ()
+  (interactive)
+  (if mode-line-format
+      (progn
+        (setq-default mode-line-format nil)
+        (set-frame-parameter nil 'bottom-divider-width 1))
+    (setq-default mode-line-format mode-line-format-spec)
+    (set-frame-parameter nil 'bottom-divider-width 0)))
+
 (global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
 (global-set-key (kbd "C-c d") 'duplicate-region-or-line)
 (global-set-key (kbd "M-w") 'copy-region-or-line)
@@ -256,3 +267,5 @@
 
 (if (string-equal system-type "darwin")
     (exec-path-from-shell-initialize))
+
+(toggle-mode-line)
