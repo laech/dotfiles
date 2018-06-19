@@ -12,6 +12,7 @@ readonly packages=(
   xorg-server
   xorg-xinit
   xautolock
+  xss-lock
   feh
 
   firefox
