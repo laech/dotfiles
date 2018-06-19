@@ -1,4 +1,13 @@
 
+(setq
+ default-frame-alist
+ `((internal-border-width . 0)
+   (menu-bar-lines . ,(if (and (eq system-type 'darwin) window-system) 1 0))
+   (ns-appearance . light)
+   (ns-transparent-titlebar . t)
+   (font . ,(concat "Inconsolata-"
+                    (if (eq system-type 'darwin) "16" "14")))))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -7,16 +16,6 @@
  '(fringe ((t nil)))
  '(mode-line ((t (:background "gray90" :foreground "black" :box nil))))
  '(mode-line-inactive ((t (:inherit mode-line :background "grey90" :foreground "grey20" :box nil :weight light)))))
-
-(add-to-list 'default-frame-alist '(internal-border-width . 0))
-(add-to-list 'default-frame-alist '(ns-appearance . light))
-(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
-(if (eq system-type 'darwin)
-    (add-to-list 'default-frame-alist '(font . "Inconsolata-16"))
-  (add-to-list 'default-frame-alist '(font . "Inconsolata-12")))
-
-(unless (and (eq system-type 'darwin) window-system)
-  (custom-set-variables '(menu-bar-mode nil)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
