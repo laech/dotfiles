@@ -2,11 +2,11 @@
 (setq
  default-frame-alist
  `((internal-border-width . 0)
-   (menu-bar-lines . ,(if (and (eq system-type 'darwin) window-system) 1 0))
+   (menu-bar-lines . ,(if (and (equal system-type 'darwin) window-system) 1 0))
    (ns-appearance . light)
    (ns-transparent-titlebar . t)
    (font . ,(concat "Inconsolata-"
-                    (if (eq system-type 'darwin) "16" "14")))))
+                    (if (equal system-type 'darwin) "16" "12")))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -254,7 +254,7 @@
    interprogram-cut-function
    (lambda  (text &optional push)
      (let* ((process-connection-type nil)
-            (proc (if (eq system-type 'darwin)
+            (proc (if (equal system-type 'darwin)
                       (start-process "phcopy" "*Messages*" "pbcopy")
                     (start-process "xsel" "*Messages*" "xsel" "-ib"))))
        (process-send-string proc text)
