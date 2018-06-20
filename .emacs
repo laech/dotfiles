@@ -265,6 +265,11 @@
      (shell-command-to-string
       (if (string-equal system-type "darwin") "pbpaste" "xsel -ob")))))
 
+(unless window-system
+  (xterm-mouse-mode)
+  (global-set-key [mouse-4] (lambda () (interactive) (scroll-down 3)))
+  (global-set-key [mouse-5] (lambda () (interactive) (scroll-up 3))))
+
 (if (string-equal system-type "darwin")
     (exec-path-from-shell-initialize))
 
