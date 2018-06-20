@@ -5,8 +5,9 @@
    (menu-bar-lines . ,(if (and (equal system-type 'darwin) window-system) 1 0))
    (ns-appearance . light)
    (ns-transparent-titlebar . t)
-   (font . ,(concat "Inconsolata-"
-                    (if (equal system-type 'darwin) "16" "12")))))
+   (font . ,(if (equal system-type 'darwin)
+                "Inconsolata-16"
+              "Inconsolata-12"))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
