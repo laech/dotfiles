@@ -125,7 +125,7 @@ zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:
 autoload -U bashcompinit
 bashcompinit
 
-if ! hash __git_ps1 &> /dev/null; then
+if ! type __git_ps1 &> /dev/null; then
 
     # Arch
     if [[ -f   /usr/share/git/completion/git-prompt.sh ]]; then
@@ -137,11 +137,13 @@ if ! hash __git_ps1 &> /dev/null; then
     fi
 fi
 
-precmd() {
-    GIT_PS1_DESCRIBE_STYLE="branch"
-    GIT_PS1_SHOWUPSTREAM="verbose"
-    __git_ps1 "%B%F{blue}%~%f%F{magenta}" " %f%b%(?.%%.%F{red}%#%f) "
-}
+if type __git_ps1 &> /dev/null; then
+    precmd() {
+        GIT_PS1_DESCRIBE_STYLE="branch"
+        GIT_PS1_SHOWUPSTREAM="verbose"
+        __git_ps1 "%B%F{blue}%~%f%F{magenta}" " %f%b%(?.%%.%F{red}%#%f) "
+    }
+fi
 
 alias l='ls -1'
 alias ll='ls -lh'
