@@ -240,7 +240,7 @@ default_border normal 1
 
 for_window [title="Volume Control"] floating enable border normal
 
-exec --no-startup-id hash numlockx  && numlockx on
-exec --no-startup-id hash feh       && feh --bg-fill --randomize ~/wallpapers
-exec --no-startup-id hash xss-lock  && xss-lock -- i3lock --color=333333
-exec --no-startup-id hash xautolock && xautolock -time 10 -locker ~/.local/bin/lock &
+exec --no-startup-id numlockx on
+exec --no-startup-id feh --bg-fill --randomize ~/wallpapers
+exec --no-startup-id xss-lock -- i3lock --color=333333
+exec --no-startup-id xautolock -time 10 -locker ~/.local/bin/lock &
