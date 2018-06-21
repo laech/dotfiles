@@ -153,14 +153,14 @@
       (indent-region (region-beginning) (region-end))
     (indent-region (point-min) (point-max))))
 
-(setq mode-line-format-spec mode-line-format)
+(defconst initial-mode-line-format mode-line-format)
 (defun toggle-mode-line ()
   (interactive)
   (if mode-line-format
       (progn
         (setq-default mode-line-format nil)
         (set-frame-parameter nil 'bottom-divider-width 1))
-    (setq-default mode-line-format mode-line-format-spec)
+    (setq-default mode-line-format initial-mode-line-format)
     (set-frame-parameter nil 'bottom-divider-width 0)))
 
 (global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
