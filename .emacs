@@ -2,7 +2,7 @@
 (setq
  default-frame-alist
  `((internal-border-width . 0)
-   (menu-bar-lines . ,(if (and (equal system-type 'darwin) window-system) 1 0))
+   (menu-bar-lines . ,(if (and (equal system-type 'darwin) (display-graphic-p)) 1 0))
    (ns-appearance . light)
    (ns-transparent-titlebar . t)
    (font . ,(if (equal system-type 'darwin)
@@ -249,7 +249,8 @@
 ;; This also allows integration with configured tmux using the
 ;; same C-y, M-y keys and see history in tmux's paste buffer.
 ;; https://emacs.stackexchange.com/a/10963
-(unless window-system
+(when (and (not (display-graphic-p))
+           (getenv "DISPLAY"))
   (setq
 
    interprogram-cut-function
@@ -266,7 +267,7 @@
      (shell-command-to-string
       (if (string-equal system-type "darwin") "pbpaste" "xsel -ob")))))
 
-(unless window-system
+(unless (display-graphic-p)
   (xterm-mouse-mode)
   (global-set-key [mouse-4] (lambda () (interactive) (scroll-down 3)))
   (global-set-key [mouse-5] (lambda () (interactive) (scroll-up 3))))
