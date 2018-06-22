@@ -39,14 +39,10 @@ bindkey "^[^[[C" forward-word   # M-Right
 
 # Copy/paste integration with clipboard
 
-cmd_copy="xsel -ib"
-cmd_paste="xsel -ob"
-if [[ "${OSTYPE}" == darwin* ]]; then
-    cmd_copy=pbcopy
-    cmd_paste=pbpaste
-fi
+run-copy () { [[ "${OSTYPE}" == darwin* ]] && pbcopy  || xsel -ib }
+run-paste() { [[ "${OSTYPE}" == darwin* ]] && pbpaste || xsel -ob }
 
-x-copy() { zle $1; echo -n "$CUTBUFFER" | "$cmd_copy" }
+x-copy() { zle $1; echo -n "$CUTBUFFER" | run-copy }
 x-copy-region() x-copy copy-region-as-kill
 x-kill-region() {
     if [[ $REGION_ACTIVE == 0 ]]; then
@@ -57,7 +53,7 @@ x-kill-region() {
 }
 
 x-yank() {
-    CUTBUFFER="$($cmd_paste)"
+    CUTBUFFER="$(run-paste)"
     zle yank
 }
 
