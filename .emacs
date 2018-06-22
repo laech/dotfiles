@@ -59,6 +59,7 @@
  '(scroll-margin 1)
  '(show-paren-mode t)
  '(tool-bar-mode nil)
+ '(visible-cursor nil)
  '(writeroom-fringes-outside-margins nil)
  '(writeroom-global-effects
    (quote
