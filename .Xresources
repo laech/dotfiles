@@ -16,6 +16,8 @@ XTerm.vt100.scrollBar: false
 XTerm.vt100.backarrowKey: false
 XTerm.vt100.saveLines: 10000
 XTerm.vt100.metaSendsEscape: true
+XTerm.vt100.modifyOtherKeys: 1
+XTerm.vt100.formatOtherKeys: 1
 XTerm.vt100.faceName: monospace
 XTerm.vt100.faceNameDoublesize: Noto Sans CJK SC
 XTerm.vt100.faceSize:  12
