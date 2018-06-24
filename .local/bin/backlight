@@ -1,0 +1,111 @@
+#!/usr/bin/env bash
+#
+# Sets brightness via ACPI, may not work on some machines.
+#
+# This works on the console without X server running.
+#
+# This script picks a backlight folder from /sys/class/backlight that
+# is currently active, by checking `systemctl is-active
+# systemd-backlight@backlight:<folder>.service`, the systemd backlight
+# service should be enabled by default.
+#
+# By default only root can change
+# /sys/class/backlight/<folder>/brightness, therefore a udev rule will
+# need to be used to change the permission on startup to allow this
+# script to write to it.
+#
+# The following allows any user in the 'video' group to write to the
+# brightness file, change <folder> to one of the folders under
+# /sys/class/backlight, but it should be the one that systemd uses,
+# save the file as /etc/udev/rules.d/backlight.rules (or another
+# name):
+# 
+# ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="<folder>", RUN+="/bin/chgrp video /sys/class/backlight/%k/brightness"
+# ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="<folder>", RUN+="/bin/chmod g+w   /sys/class/backlight/%k/brightness"
+#
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+exit_usage() {
+    cat <<EOF
+
+Usage: $0 [arg]
+
+Where arg can be:
+      +percent  Increase brightness.
+      -percent  Decrease brightness.
+       percent  Set brightness.
+
+If no arg is given, prints the current brightness percentage.
+
+EOF
+    >& 2
+    exit 1
+}
+
+[[ "$#" -gt 1 ]] && exit_usage
+[[ "$#" -eq 1 ]] && [[ ! "$1" =~ ^[+-]?[0-9]+$ ]] && exit_usage
+
+
+#
+# Find currently active backlight folder
+#
+
+readonly backlights_dir=/sys/class/backlight
+
+backlight_dir=""
+for i in $(ls "$backlights_dir"); do
+    if systemctl is-active -q systemd-backlight@backlight:$i.service; then
+        backlight_dir="$backlights_dir/$i"
+        break
+    fi
+done
+
+[[ "$backlight_dir" == "" ]] && echo "No active backlight found." >& 2 && exit 1
+
+
+#
+# Read current brightness values
+#
+
+readonly brightness_cur="$(cat ""$backlight_dir/brightness"")"
+readonly brightness_max="$(cat ""$backlight_dir/max_brightness"")"
+readonly brightness_min=1
+
+[[ ! "$brightness_cur" =~ ^[0-9]+$ ]] && echo "$brightness_cur" && exit 1
+[[ ! "$brightness_max" =~ ^[0-9]+$ ]] && echo "$brightness_max" && exit 1
+
+
+#
+# No arg provided, print current brightness percentage and exit.
+#
+
+if [[ "$#" -eq 0 ]]; then
+    echo "$brightness_cur $brightness_max" | awk '{print int($1 / $2 * 100)}'
+    exit
+fi
+
+
+#
+# Caculate and set brightness
+#
+
+brightness_want="$1"
+
+add_brightness() {
+    echo $(( $(echo $1 $2 | awk '{print int($1 * $2 / 100)}') + $brightness_cur ))
+}
+
+[[ "${1:0:1}" =~ ^[+-]$ ]] && brightness_want="${1:1:${#1}}"
+[[ "${1:0:1}" == '-'    ]] && brightness_want=$(( $brightness_want * -1 ))
+[[ "${1:0:1}" =~ ^[+-]$ ]] && brightness_want=$(add_brightness $brightness_max $brightness_want)
+
+[[ ! "$brightness_want" =~ ^-?[0-9]+$ ]] && echo "$brightness_want" && exit 1
+
+[[ $brightness_want -gt $brightness_max ]] && brightness_want=$brightness_max
+[[ $brightness_want -lt $brightness_min ]] && brightness_want=$brightness_min
+
+echo -n "$brightness_want" > "$backlight_dir/brightness"
+
