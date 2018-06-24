@@ -85,7 +85,7 @@ bindsym $mod+backslash split h
 bindsym $mod+minus     split v
 
 # enter fullscreen mode for the focused container
-# bindsym $mod+f fullscreen toggle
+bindsym $mod+z fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -222,10 +222,10 @@ focus_follows_mouse no
 bindsym button4 nop
 bindsym button5 nop
 
-bindsym XF86MonBrightnessDown exec --no-startup-id ~/.local/bin/backlight -10
-bindsym XF86MonBrightnessUp   exec --no-startup-id ~/.local/bin/backlight +10
-bindsym $mod+Mod1+Down        exec --no-startup-id ~/.local/bin/backlight -10
-bindsym $mod+Mod1+Up          exec --no-startup-id ~/.local/bin/backlight +10
+bindsym XF86MonBrightnessDown exec --no-startup-id ~/.local/bin/backlight -5
+bindsym XF86MonBrightnessUp   exec --no-startup-id ~/.local/bin/backlight +5
+bindsym $mod+Mod1+Down        exec --no-startup-id ~/.local/bin/backlight -5
+bindsym $mod+Mod1+Up          exec --no-startup-id ~/.local/bin/backlight +5
 
 bindsym XF86AudioRaiseVolume   exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% \
                                                  && pactl set-sink-mute   @DEFAULT_SINK@ 0
