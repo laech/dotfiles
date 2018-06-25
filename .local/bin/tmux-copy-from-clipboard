@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-buf="$(pbpaste 2> /dev/null || xsel -ob)"
+buf="$(clipboard paste)"
 
 if [[ -z "$buf" ]]; then
     exit 0

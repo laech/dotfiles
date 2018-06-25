@@ -246,27 +246,20 @@
   (define-key writeroom-mode-map (kbd "C-M-=") 'writeroom-adjust-width)
   (define-key writeroom-mode-map (kbd "C-M-?") 'writeroom-toggle-mode-line))
 
-;; Copy/paste to/from clipboard when running in terminal mode.
-;; This also allows integration with configured tmux using the
-;; same C-y, M-y keys and see history in tmux's paste buffer.
-;; https://emacs.stackexchange.com/a/10963
-(when (and (not (display-graphic-p))
-           (getenv "DISPLAY"))
-  (setq
+;; Copy/paste integration with other programs, regardless whether running
+;; in GUI mode or terminal mode.
+(setq
 
-   interprogram-cut-function
-   (lambda  (text &optional push)
-     (let* ((process-connection-type nil)
-            (proc (if (equal system-type 'darwin)
-                      (start-process "phcopy" "*Messages*" "pbcopy")
-                    (start-process "xsel" "*Messages*" "xsel" "-ib"))))
-       (process-send-string proc text)
-       (process-send-eof proc)))
+ interprogram-cut-function
+ (lambda  (text &optional push)
+   (let* ((process-connection-type nil)
+          (proc (start-process "copy" "*Messages*" "clipboard" "copy")))
+     (process-send-string proc text)
+     (process-send-eof proc)))
 
-   interprogram-paste-function
-   (lambda ()
-     (shell-command-to-string
-      (if (string-equal system-type "darwin") "pbpaste" "xsel -ob")))))
+ interprogram-paste-function
+ (lambda ()
+   (shell-command-to-string "clipboard paste")))
 
 (unless (display-graphic-p)
   (xterm-mouse-mode)

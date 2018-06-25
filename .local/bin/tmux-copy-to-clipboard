@@ -12,6 +12,4 @@ if [[ -z "$(tmux lsb)" || "$buf" != "$(tmux saveb -)" ]]; then
     echo -n "$buf" | tmux loadb -
 fi
 
-if [[ -n "$DISPLAY" ]]; then
-    echo -n "$buf" | (pbcopy 2> /dev/null || xsel -ib)
-fi
+echo -n "$buf" | clipboard copy
