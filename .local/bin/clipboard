@@ -40,5 +40,6 @@ Where action could be:
       copy   copy text from stdin
       paste  paste text to stdout
 EOF
+    >& 2
     exit 1
 fi
