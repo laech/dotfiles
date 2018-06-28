@@ -35,7 +35,14 @@ bindsym $mod+Return exec ~/.local/bin/term
 # kill focused window
 bindsym $mod+Shift+q kill
 
-bindsym $mod+d exec --no-startup-id rofi -show run -sort -matching fuzzy -show-icons -theme Arc-Dark -width -80
+bindsym $mod+d exec --no-startup-id \
+    rofi \
+    -show run \
+    -sort \
+    -matching fuzzy \
+    -show-icons \
+    -theme android_notification \
+    -width -80
 
 set $up1 k
 set $down1 j
