@@ -259,7 +259,11 @@
 
  interprogram-paste-function
  (lambda ()
-   (shell-command-to-string "clipboard paste")))
+   (let ((from-clipboard (shell-command-to-string "clipboard paste"))
+         (from-emacs (if kill-ring (substring-no-properties (car kill-ring)) "")))
+     ;; Only return clipboard text if it's different from head of kill-ring,
+     ;; otherwise emacs adds duplciates to the head of the kill-ring breaking M-y
+     (unless (string= from-clipboard from-emacs) from-clipboard))))
 
 (unless (display-graphic-p)
   (xterm-mouse-mode)
