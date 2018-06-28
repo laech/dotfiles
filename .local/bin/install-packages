@@ -5,7 +5,6 @@ set -o nounset
 
 readonly packages=(
 
-  dmenu
   i3-wm
   i3lock
   i3status
@@ -13,6 +12,7 @@ readonly packages=(
   xorg-xinit
   xautolock
   xss-lock
+  rofi
   feh
 
   firefox
