@@ -9,6 +9,13 @@
                 "Inconsolata-16"
               "Inconsolata-12"))))
 
+;; By default Emacs automatically detects background color and sets
+;; background mode automaticall, but when running inside tmux this
+;; detection fails (no support for TERM set to screen, screen-256color
+;; etc), so force it to be light (or black to match terminal theme).
+(if (getenv "TMUX")
+    (setq frame-background-mode 'light))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -34,7 +41,6 @@
      ("https://rachelbythebay.com/w/atom.xml"))))
  '(elfeed-search-title-max-width 120)
  '(elfeed-search-title-min-width 80)
- '(frame-background-mode (quote light))
  '(global-auto-revert-mode t)
  '(ido-enable-flex-matching t)
  '(ido-use-virtual-buffers t)
