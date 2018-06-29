@@ -2,7 +2,6 @@ LogLevel ERROR
 PubkeyAcceptedKeyTypes +ssh-dss
 ServerAliveInterval 60
 StrictHostKeyChecking no
-UserKnownHostsFile /dev/null
 
 Match user gbrain
   IdentityFile ~/.sli/ssh/gbrain_id_dsa
