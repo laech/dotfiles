@@ -1,45 +1,32 @@
 #!/usr/bin/env bash
 
-readonly clipboard_file="$HOME/.clipboard"
+readonly fallback="$HOME/.clipboard"
 
 copy() {
-    if [[ -z "$DISPLAY" ]]; then
-	cat > "$clipboard_file"
-    elif type xsel &> /dev/null; then
-	xsel -ib
-    elif type phcopy &> /dev/null; then
-	pbcopy
-    else
-	echo "No copy program found." >& 2 && exit 1
+    if [[ -z "$DISPLAY" ]];        then cat > "$fallback"
+    elif type xsel   &> /dev/null; then xsel -ib
+    elif type phcopy &> /dev/null; then	pbcopy
+    else echo "No copy program found." >& 2 && exit 1
     fi
 }
 
 paste() {
-    if [[ -z "$DISPLAY" ]]; then
-	cat "$clipboard_file" 2> /dev/null || true
-    elif type xsel &> /dev/null; then
-	xsel -ob
-    elif type pbpaste &> /dev/null; then
-	pbpaste
-    else
-	echo "No paste program found." >& 2 && exit 1
+    if [[ -z "$DISPLAY" ]];         then cat "$fallback" 2> /dev/null || true
+    elif type xsel    &> /dev/null; then xsel -ob
+    elif type pbpaste &> /dev/null; then pbpaste
+    else echo "No paste program found." >& 2 && exit 1
     fi
 }
 
+[[ -n "$DISPLAY" ]] && rm -f -- "$fallback"
 
-if [[ -n "$DISPLAY" ]]; then
-    rm -f -- "$clipboard_file"
-fi
+[[ $# -eq 1 ]] && "$1" && exit
 
-if   [[ "$1" == "copy"  ]]; then copy
-elif [[ "$1" == "paste" ]]; then paste
-else
-    cat <<EOF
+cat <<EOF
 Usage: $0 <action>
 Where action could be:
       copy   copy text from stdin
       paste  paste text to stdout
 EOF
-    >& 2
-    exit 1
-fi
+>& 2
+exit 1
