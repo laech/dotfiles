@@ -204,7 +204,7 @@ bar {
                 binding_mode       #E65100 #E65100    #ffffff
         }
 
-        # mode hide
+        mode hide
         # Disable switching workspace on scroll
         bindsym button4 nop
         bindsym button5 nop
@@ -212,7 +212,7 @@ bar {
 bindsym $mod+m bar mode toggle
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #626270 #626270 #ffffff #626270   #626270
+client.focused          #626270 #626270 #ffffff #626270   #33333d
 client.focused_inactive #33333d #33333d #888888 #33333d   #33333d
 client.unfocused        #33333d #33333d #888888 #33333d   #33333d
 client.urgent           #2f343a #900000 #ffffff #2f343a   #2f343a
@@ -242,7 +242,7 @@ bindsym $mod+Control+Mod1+Up   exec --no-startup-id pactl set-sink-mute   @DEFAU
 bindsym $mod+Control+Mod1+Down exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@ 1
 
 hide_edge_borders both
-default_border normal 1
+default_border pixel
 
 for_window [title="Volume Control"] floating enable border normal
 
