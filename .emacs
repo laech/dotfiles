@@ -13,7 +13,7 @@
 ;; background mode automaticall, but when running inside tmux this
 ;; detection fails (no support for TERM set to screen, screen-256color
 ;; etc), so force it to be light (or black to match terminal theme).
-(if (getenv "TMUX")
+(if (string-prefix-p "screen-" (getenv "TERM"))
     (setq frame-background-mode 'light))
 
 (custom-set-faces
