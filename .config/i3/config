@@ -41,7 +41,6 @@ bindsym $mod+d exec --no-startup-id \
     -sort \
     -matching fuzzy \
     -show-icons \
-    -theme android_notification \
     -width -80
 
 set $up1 k
