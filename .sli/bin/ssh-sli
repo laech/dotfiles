@@ -29,8 +29,6 @@ for host in "$@"; do
     win=$(tmux "$cmd" -P ssh "$user@$host")
     tmux select-layout -t "$win" "$layout"
     tmux select-pane -t "$win" -T "$host"
-    tmux set-window-option -t "$win" pane-border-status bottom
-    tmux set-window-option -t "$win" pane-border-format " ^ #{pane_title} "
 done
 
 tmux rename-window -t "$win" "$name"
