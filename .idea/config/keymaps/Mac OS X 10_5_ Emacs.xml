@@ -109,7 +109,7 @@
     <keyboard-shortcut first-keystroke="shift ctrl n" />
   </action>
   <action id="EditorDuplicate">
-    <keyboard-shortcut first-keystroke="ctrl alt d" />
+    <keyboard-shortcut first-keystroke="ctrl c" second-keystroke="d" />
   </action>
   <action id="EditorEscape">
     <keyboard-shortcut first-keystroke="escape" />
