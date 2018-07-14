@@ -1,0 +1,16 @@
+<application>
+  <component name="ActionMacroManager">
+    <macro name="transpose-chars">
+      <action id="EditorLeftWithSelection" />
+      <action id="EditorCut" />
+      <action id="EditorRight" />
+      <action id="EditorPaste" />
+    </macro>
+    <macro name="transpose-words">
+      <action id="EditorPreviousWordWithSelection" />
+      <action id="EditorCut" />
+      <action id="EditorNextWord" />
+      <action id="EditorPaste" />
+    </macro>
+  </component>
+</application>
