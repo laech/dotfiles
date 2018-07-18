@@ -5,7 +5,7 @@ readonly fallback="$HOME/.clipboard"
 copy() {
     if [[ -z "$DISPLAY" ]];        then cat > "$fallback"
     elif type xsel   &> /dev/null; then xsel -ib
-    elif type phcopy &> /dev/null; then	pbcopy
+    elif type pbcopy &> /dev/null; then	pbcopy
     else echo "No copy program found." >& 2 && exit 1
     fi
 }
