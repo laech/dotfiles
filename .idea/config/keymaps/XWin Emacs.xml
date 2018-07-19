@@ -153,6 +153,7 @@
     <keyboard-shortcut first-keystroke="page_up" />
     <keyboard-shortcut first-keystroke="alt v" />
   </action>
+  <action id="EditorPasteFromX11" />
   <action id="EditorPasteSimple">
     <keyboard-shortcut first-keystroke="shift ctrl alt y" />
   </action>
@@ -286,10 +287,7 @@
   <action id="NextSplitter">
     <keyboard-shortcut first-keystroke="ctrl x" second-keystroke="o" />
   </action>
-  <action id="NextTab">
-    <keyboard-shortcut first-keystroke="alt right" />
-    <keyboard-shortcut first-keystroke="alt f" />
-  </action>
+  <action id="NextTab" />
   <action id="OptimizeImports">
     <keyboard-shortcut first-keystroke="ctrl back_slash" />
   </action>
@@ -307,10 +305,7 @@
   <action id="PreviousDiff">
     <keyboard-shortcut first-keystroke="alt p" />
   </action>
-  <action id="PreviousTab">
-    <keyboard-shortcut first-keystroke="alt left" />
-    <keyboard-shortcut first-keystroke="alt b" />
-  </action>
+  <action id="PreviousTab" />
   <action id="QuickJavaDoc">
     <mouse-shortcut keystroke="alt button2" />
     <keyboard-shortcut first-keystroke="ctrl h" second-keystroke="i" />
