@@ -42,6 +42,7 @@ readonly packages=(
   jdk8-openjdk
   openjdk8-src
 
+  argyllcms
   compton
   numlockx
 
