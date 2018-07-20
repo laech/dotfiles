@@ -10,6 +10,7 @@ general {
 order += "wireless _first_"
 order += "ethernet _first_"
 order += "volume master"
+order += "battery all"
 order += "time"
 
 wireless _first_ {
@@ -29,6 +30,16 @@ volume master {
   device = "default"
   mixer = "Master"
   mixer_idx = 0
+}
+
+battery all {
+  format = "%status %percentage"
+  status_chr = ""
+  status_bat = ""
+  status_full = ""
+  low_threshold = 5
+  threshold_type = percentage
+  integer_battery_capacity = true
 }
 
 time {
