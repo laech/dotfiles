@@ -4,6 +4,7 @@
 Description=Disable enp3s0 to save power
 
 [Service]
+Type=oneshot
 ExecStart=/usr/bin/ip link set enp3s0 down
 RemainAfterExit=true
 

@@ -43,6 +43,11 @@ readonly packages=(
   openjdk8-src
 
   argyllcms
+  tlp
+  x86_energy_perf_policy
+  ethtool
+  smartmontools
+
   compton
   numlockx
 
