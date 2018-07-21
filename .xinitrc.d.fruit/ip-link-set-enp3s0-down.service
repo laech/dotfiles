@@ -1,0 +1,11 @@
+# /usr/lib/systemd/system/ip-link-set-enp3s0-down.service
+
+[Unit]
+Description=Disable enp3s0 to save power
+
+[Service]
+ExecStart=/usr/bin/ip link set enp3s0 down
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
