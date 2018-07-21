@@ -37,26 +37,18 @@ bindkey "^[^[[D" backward-word  # M-Left
 bindkey "^[Oc"   forward-word   # C-Right
 bindkey "^[^[[C" forward-word   # M-Right
 
-# Copy/paste integration with clipboard
 
-x-copy() { zle $1; echo -n "$CUTBUFFER" | clipboard copy }
-
-x-copy-region        () x-copy copy-region-as-kill
-x-backward-kill-word () x-copy backward-kill-word
-x-kill-whole-line    () x-copy kill-whole-line
-x-kill-word          () x-copy kill-word
-x-kill-line          () x-copy kill-line
+x-copy-region-as-kill() {
+    zle copy-region-as-kill
+    REGION_ACTIVE=0
+}
 
 x-kill-region() {
     if [[ $REGION_ACTIVE == 0 ]]; then
-        x-kill-whole-line
+        zle kill-whole-line
     else
-        x-copy kill-region
+        zle kill-region
     fi
-}
-x-yank() {
-    CUTBUFFER="$(clipboard paste)"
-    zle yank
 }
 
 x-cancel() {
@@ -67,22 +59,13 @@ x-cancel() {
     fi
 }
 
-zle -N x-copy-region
+zle -N x-copy-region-as-kill
 zle -N x-kill-region
-zle -N x-kill-word
-zle -N x-kill-whole-line
-zle -N x-kill-line
-zle -N x-backward-kill-word
-zle -N x-yank
 zle -N x-cancel
 
-bindkey -e '^[w'  x-copy-region        # M-w
-bindkey -e '^[d'  x-kill-word          # M-d
-bindkey -e '^k'   x-kill-line          # C-k
-bindkey -e '^w'   x-kill-region        # C-w
-bindkey -e '^y'   x-yank               # C-y
-bindkey -e '^g'   x-cancel             # C-g
-bindkey -e '^[^?' x-backward-kill-word # M-<backspace>
+bindkey -e '^[w'  x-copy-region-as-kill # M-w
+bindkey -e '^w'   x-kill-region         # C-w
+bindkey -e '^g'   x-cancel              # C-g
 
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
