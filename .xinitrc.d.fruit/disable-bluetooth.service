@@ -1,0 +1,11 @@
+# /usr/lib/systemd/system/disable-bluetooth.service
+
+[Unit]
+Description=Disable Bluetooth
+
+[Service]
+ExecStart=/usr/bin/rfkill block bluetooth
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
