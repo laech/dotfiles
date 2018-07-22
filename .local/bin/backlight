@@ -94,13 +94,20 @@ fi
 
 brightness_want="$1"
 
-add_brightness() {
-    echo $(( $(echo $1 $2 | awk '{print int($1 * $2 / 100)}') + $brightness_cur ))
+cal_brightness() {
+    local max=$1
+    local percentage=$2
+    local new_val=$(( $(echo $max $percentage | awk '{print int($1 * $2 / 100)}') + $brightness_cur ))
+    if [[ $new_val -eq $brightness_cur ]]; then
+        [[ $percentage -gt 0 ]] && new_val=$(( new_val + 1 ))
+        [[ $percentage -lt 0 ]] && new_val=$(( new_val - 1 ))
+    fi
+    echo $new_val
 }
 
 [[ "${1:0:1}" =~ ^[+-]$ ]] && brightness_want="${1:1:${#1}}"
 [[ "${1:0:1}" == '-'    ]] && brightness_want=$(( $brightness_want * -1 ))
-[[ "${1:0:1}" =~ ^[+-]$ ]] && brightness_want=$(add_brightness $brightness_max $brightness_want)
+[[ "${1:0:1}" =~ ^[+-]$ ]] && brightness_want=$(cal_brightness $brightness_max $brightness_want)
 
 [[ ! "$brightness_want" =~ ^-?[0-9]+$ ]] && echo "$brightness_want" && exit 1
 
