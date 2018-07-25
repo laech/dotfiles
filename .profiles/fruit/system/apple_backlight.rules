@@ -1,0 +1,6 @@
+# /etc/udev/rules.d/apple_backlights.rules
+# Allow non root user to change screen brightness
+
+ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="apple_backlight", RUN+="/bin/chgrp wheel /sys/class/backlight/%k/brightness"
+ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="apple_backlight", RUN+="/bin/chmod g+w   /sys/class/backlight/%k/brightness"
+ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="apple_backlight", RUN+="/usr/bin/systemctl start systemd-backlight@backlight:%k.service"
