@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-cat "$HOME/.config/i3/base-config" > "$HOME/.config/i3/config"
-if [[ -f "$HOME/.profiles/default/config/i3/config" ]]; then
-    cat  "$HOME/.profiles/default/config/i3/config" > "$HOME/.config/i3/config"
-fi
