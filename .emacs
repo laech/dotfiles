@@ -160,6 +160,12 @@
       (indent-region (region-beginning) (region-end))
     (indent-region (point-min) (point-max))))
 
+;; Like join-line (M-^) but goes the other direction.
+(defun join-line-next ()
+  "Joins the next line to this line and fix up whitespace at join."
+  (interactive "*")
+  (join-line -1))
+
 (defconst initial-mode-line-format mode-line-format)
 (defun toggle-mode-line ()
   (interactive)
@@ -176,6 +182,7 @@
 (global-set-key (kbd "C-w") 'kill-region-or-line)
 (global-set-key (kbd "M-N") 'move-line-down)
 (global-set-key (kbd "M-P") 'move-line-up)
+(global-set-key (kbd "M-J") 'join-line-next)
 
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C-c C-.") 'mc/mark-all-like-this)
