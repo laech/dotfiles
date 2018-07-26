@@ -118,6 +118,9 @@
     <keyboard-shortcut first-keystroke="escape" />
     <keyboard-shortcut first-keystroke="ctrl g" />
   </action>
+  <action id="EditorJoinLines">
+    <keyboard-shortcut first-keystroke="shift alt j" />
+  </action>
   <action id="EditorLeft">
     <keyboard-shortcut first-keystroke="left" />
     <keyboard-shortcut first-keystroke="ctrl b" />
