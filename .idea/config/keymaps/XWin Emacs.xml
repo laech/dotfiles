@@ -39,6 +39,9 @@
   <action id="ChangeTypeSignature">
     <keyboard-shortcut first-keystroke="ctrl c" second-keystroke="shift s" />
   </action>
+  <action id="ChangesView.Revert">
+    <keyboard-shortcut first-keystroke="ctrl alt slash" />
+  </action>
   <action id="CloseContent">
     <keyboard-shortcut first-keystroke="ctrl x" second-keystroke="k" />
     <keyboard-shortcut first-keystroke="ctrl x" second-keystroke="0" />
@@ -374,6 +377,9 @@
   </action>
   <action id="Unwrap">
     <keyboard-shortcut first-keystroke="alt r" />
+  </action>
+  <action id="Vcs.RollbackChangedLines">
+    <keyboard-shortcut first-keystroke="ctrl alt slash" />
   </action>
   <action id="Vcs.ShowMessageHistory">
     <keyboard-shortcut first-keystroke="ctrl m" />
