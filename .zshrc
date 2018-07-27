@@ -171,19 +171,8 @@ alias la='ll -a'
 
 alias config='git --git-dir="${HOME}/.cfg" --work-tree="${HOME}"'
 
-# This needs to be at the end for it to work.
-# Arch
-[[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && \
-    . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]
-# Fedora
-[[ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && \
-    . /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 if [[ "${OSTYPE}" == darwin* ]]; then
     alias ls='ls -G'
-    . /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-    . /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-    # zsh-syntax-highlighting needs to be at the end for it to work.
 else
     alias ls='ls --color=auto'
 fi

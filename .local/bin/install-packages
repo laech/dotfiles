@@ -23,7 +23,6 @@ readonly packages=(
   xsel
   zsh
   zsh-completions
-  zsh-syntax-highlighting
 
   git
 
