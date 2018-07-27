@@ -4,6 +4,7 @@ set -o errexit
 set -o nounset
 
 readonly packages=(
+    base-devel
     dkms
     linux-headers
     broadcom-wl-dkms
