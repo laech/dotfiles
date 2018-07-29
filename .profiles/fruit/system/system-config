@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+set -o nounset
+set -o errexit
+
+readonly dirs=(
+    'etc/modprobe.d'
+    'etc/systemd/system/dhcpcd@wlp2s0.service.d'
+    'etc/udev/rules.d'
+    'etc/X11/xorg.conf.d'
+    'usr/lib/systemd/system'
+)
+
+cd "$(dirname ""${BASH_SOURCE[0]}"")"
+
+for dir in "${dirs[@]}"; do
+    mkdir -p "/$dir"
+    cp -v "$dir"/* "/$dir"
+done
+
+systemctl daemon-reload
+
+for action in start enable; do
+    systemctl $action dhcpcd@wlp2s0.service
+    systemctl $action disable-bluetooth.service
+    systemctl $action disable-ir.service
+done
+
+mkinitcpio -p linux
