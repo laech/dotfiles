@@ -7,7 +7,7 @@
    (ns-transparent-titlebar . t)
    (font . ,(if (equal system-type 'darwin)
                 "Inconsolata-16"
-              "Inconsolata-12"))))
+              "Monospace-12"))))
 
 ;; By default Emacs automatically detects background color and sets
 ;; background mode automaticall, but when running inside tmux this
