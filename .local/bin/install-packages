@@ -33,9 +33,7 @@ readonly packages=(
   pavucontrol
 
   ttf-dejavu
-  ttf-inconsolata
   ttf-ubuntu-font-family
-  ttf-liberation
   otf-font-awesome
   noto-fonts-cjk
 
