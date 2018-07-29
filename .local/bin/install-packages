@@ -43,6 +43,7 @@ readonly packages=(
 
   argyllcms
   tlp
+  powertop
   x86_energy_perf_policy
   ethtool
   smartmontools

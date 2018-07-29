@@ -11,6 +11,13 @@ readonly dirs=(
     'usr/lib/systemd/system'
 )
 
+readonly services=(
+    'tlp'
+    'dhcpcd@wlp2s0.service'
+    'disable-bluetooth.service'
+    'disable-ir.service'
+)
+
 cd "$(dirname ""${BASH_SOURCE[0]}"")"
 
 for dir in "${dirs[@]}"; do
@@ -21,9 +28,9 @@ done
 systemctl daemon-reload
 
 for action in start enable; do
-    systemctl $action dhcpcd@wlp2s0.service
-    systemctl $action disable-bluetooth.service
-    systemctl $action disable-ir.service
+    for service in "${services[@]}"; do
+        systemctl $action $service
+    done
 done
 
 mkinitcpio -p linux
