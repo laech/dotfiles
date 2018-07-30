@@ -39,7 +39,21 @@ bindkey "^[^[[C" forward-word   # M-Right
 
 # Copy/paste integration with clipboard
 
+update-zsh-killring() {
+    local pasted="$(clipboard paste)"
+
+    [[ "$pasted" == "" ]] && return
+    [[ "$pasted" == "$CUTBUFFER" ]] && return
+
+    for i in "${killring[@]}"; do
+        [[ "$pasted" == "$i" ]] && return
+    done
+
+    zle copy-region-as-kill "$pasted"
+}
+
 x-copy() {
+    update-zsh-killring
     zle $1
     echo -n "$CUTBUFFER" | clipboard copy
     REGION_ACTIVE=0
