@@ -184,7 +184,6 @@
 (global-set-key (kbd "M-P") 'move-line-up)
 (global-set-key (kbd "M-J") 'join-line-next)
 
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C-c C-.") 'mc/mark-all-like-this)
 (global-set-key (kbd "C-.") 'mc/mark-next-like-this-word)
 (global-set-key (kbd "C->") 'mc/unmark-next-like-this)
