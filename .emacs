@@ -6,7 +6,7 @@
    (ns-appearance . light)
    (ns-transparent-titlebar . t)
    (font . ,(if (equal system-type 'darwin)
-                "Inconsolata-16"
+                "Ubuntu Mono-16"
               "Monospace-12"))))
 
 ;; By default Emacs automatically detects background color and sets
@@ -177,7 +177,7 @@
     (set-frame-parameter nil 'bottom-divider-width 0)))
 
 (global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
-(global-set-key (kbd "C-c d") 'duplicate-region-or-line)
+(global-set-key (kbd "C-M-d") 'duplicate-region-or-line)
 (global-set-key (kbd "M-w") 'copy-region-or-line)
 (global-set-key (kbd "C-w") 'kill-region-or-line)
 (global-set-key (kbd "M-N") 'move-line-down)
