@@ -34,9 +34,13 @@
     <keyboard-shortcut first-keystroke="ctrl slash" />
     <keyboard-shortcut first-keystroke="shift ctrl minus" />
     <keyboard-shortcut first-keystroke="undo" />
+    <keyboard-shortcut first-keystroke="ctrl z" />
+    <keyboard-shortcut first-keystroke="meta z" />
   </action>
   <action id="ChangesView.Revert">
     <keyboard-shortcut first-keystroke="ctrl alt slash" />
+    <keyboard-shortcut first-keystroke="shift meta z" />
+    <keyboard-shortcut first-keystroke="ctrl alt z" />
   </action>
   <action id="CloseContent">
     <keyboard-shortcut first-keystroke="ctrl x" second-keystroke="k" />
@@ -91,6 +95,8 @@
     <keyboard-shortcut first-keystroke="ctrl slash" />
     <keyboard-shortcut first-keystroke="shift ctrl minus" />
     <keyboard-shortcut first-keystroke="undo" />
+    <keyboard-shortcut first-keystroke="ctrl z" />
+    <keyboard-shortcut first-keystroke="meta z" />
   </action>
   <action id="EditorCutLineEnd">
     <keyboard-shortcut first-keystroke="ctrl k" />
@@ -115,6 +121,7 @@
   </action>
   <action id="EditorDuplicate">
     <keyboard-shortcut first-keystroke="ctrl alt d" />
+    <keyboard-shortcut first-keystroke="meta d" />
   </action>
   <action id="EditorEscape">
     <keyboard-shortcut first-keystroke="escape" />
