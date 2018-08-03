@@ -37,6 +37,7 @@
     <keyboard-shortcut first-keystroke="ctrl z" />
     <keyboard-shortcut first-keystroke="meta z" />
   </action>
+  <action id="ChangesView.GroupBy.Directory" />
   <action id="ChangesView.Revert">
     <keyboard-shortcut first-keystroke="ctrl alt slash" />
     <keyboard-shortcut first-keystroke="shift meta z" />
@@ -214,6 +215,7 @@
   <action id="FileChooser.NewFolder">
     <keyboard-shortcut first-keystroke="alt insert" />
   </action>
+  <action id="FileChooser.TogglePathShowing" />
   <action id="Find">
     <keyboard-shortcut first-keystroke="ctrl s" />
     <keyboard-shortcut first-keystroke="ctrl r" />
