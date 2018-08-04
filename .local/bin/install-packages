@@ -32,7 +32,6 @@ readonly packages=(
   pulseaudio
   pavucontrol
 
-  ttf-croscore
   ttf-dejavu
   ttf-ubuntu-font-family
   otf-font-awesome
