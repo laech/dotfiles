@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -o nounset
+set -o errexit
+
+readonly dirs=(
+    'usr/share/X11/xkb/symbols'
+)
+
+cd "$(dirname ""${BASH_SOURCE[0]}"")"
+
+for dir in "${dirs[@]}"; do
+    mkdir -p "/$dir"
+    cp -v "$dir"/* "/$dir"
+done
