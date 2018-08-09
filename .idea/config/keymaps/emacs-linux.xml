@@ -185,6 +185,9 @@
   <action id="EditorSelectWord">
     <keyboard-shortcut first-keystroke="ctrl equals" />
   </action>
+  <action id="EditorSplitLine">
+    <keyboard-shortcut first-keystroke="ctrl o" />
+  </action>
   <action id="EditorTextEnd">
     <keyboard-shortcut first-keystroke="meta end" />
     <keyboard-shortcut first-keystroke="ctrl end" />
@@ -238,7 +241,6 @@
   </action>
   <action id="GotoChangedFile" />
   <action id="GotoClass">
-    <keyboard-shortcut first-keystroke="ctrl o" />
     <keyboard-shortcut first-keystroke="meta o" />
     <keyboard-shortcut first-keystroke="alt o" />
   </action>
@@ -250,7 +252,6 @@
   </action>
   <action id="GotoFile">
     <keyboard-shortcut first-keystroke="ctrl x" second-keystroke="ctrl f" />
-    <keyboard-shortcut first-keystroke="shift ctrl o" />
     <keyboard-shortcut first-keystroke="shift meta o" />
     <keyboard-shortcut first-keystroke="shift alt o" />
   </action>
