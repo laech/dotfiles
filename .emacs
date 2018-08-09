@@ -97,6 +97,10 @@
     (transpose-lines 1)
     (forward-line -1)))
 
+(defun transpose-words-backward ()
+  (interactive "*")
+  (transpose-words -1))
+
 (defun copy-region-or-line ()
   "Copy region, or line if no region."
   (interactive)
@@ -183,6 +187,7 @@
 (global-set-key (kbd "M-N") 'move-line-down)
 (global-set-key (kbd "M-P") 'move-line-up)
 (global-set-key (kbd "M-J") 'join-line-next)
+(global-set-key (kbd "M-T") 'transpose-words-backward)
 
 (global-set-key (kbd "C-c C-.") 'mc/mark-all-like-this)
 (global-set-key (kbd "C-.") 'mc/mark-next-like-this-word)
