@@ -1,4 +1,4 @@
-<keymap version="1" name="Mac OS X 10.5+ Emacs" parent="Mac OS X 10.5+">
+<keymap version="1" name="emacs-linux" parent="$default">
   <action id="$Copy">
     <keyboard-shortcut first-keystroke="ctrl insert" />
     <keyboard-shortcut first-keystroke="alt w" />
@@ -37,6 +37,7 @@
     <keyboard-shortcut first-keystroke="ctrl z" />
     <keyboard-shortcut first-keystroke="meta z" />
   </action>
+  <action id="ChangesView.GroupBy.Directory" />
   <action id="ChangesView.Revert">
     <keyboard-shortcut first-keystroke="ctrl alt slash" />
     <keyboard-shortcut first-keystroke="shift meta z" />
@@ -97,6 +98,9 @@
     <keyboard-shortcut first-keystroke="undo" />
     <keyboard-shortcut first-keystroke="ctrl z" />
     <keyboard-shortcut first-keystroke="meta z" />
+  </action>
+  <action id="EditorCutLineEnd">
+    <keyboard-shortcut first-keystroke="ctrl k" />
   </action>
   <action id="EditorDeleteLine" />
   <action id="EditorDeleteToWordEnd">
@@ -211,6 +215,7 @@
   <action id="FileChooser.NewFolder">
     <keyboard-shortcut first-keystroke="alt insert" />
   </action>
+  <action id="FileChooser.TogglePathShowing" />
   <action id="Find">
     <keyboard-shortcut first-keystroke="ctrl s" />
     <keyboard-shortcut first-keystroke="ctrl r" />
