@@ -112,9 +112,8 @@
   (interactive "*")
   (if (use-region-p)
       (kill-region (region-beginning) (region-end))
-    (kill-region
-     (line-beginning-position)
-     (line-beginning-position 2))))
+    ;; C-S-backspace
+    (kill-whole-line)))
 
 (defun duplicate-region (n)
   "Duplicate region and activate new region with point."
