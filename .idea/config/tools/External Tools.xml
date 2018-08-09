@@ -6,18 +6,11 @@
       <option name="WORKING_DIRECTORY" value="$ModuleFileDir$" />
     </exec>
   </tool>
-  <tool name="Terminal" showInMainMenu="true" showInEditor="true" showInProject="true" showInSearchPopup="true" disabled="false" useConsole="false" showConsoleOnStdOut="false" showConsoleOnStdErr="false" synchronizeAfterRun="false">
+  <tool name="Terminal" showInMainMenu="false" showInEditor="false" showInProject="false" showInSearchPopup="false" disabled="false" useConsole="false" showConsoleOnStdOut="false" showConsoleOnStdErr="false" synchronizeAfterRun="false">
     <exec>
       <option name="COMMAND" value="$USER_HOME$/.local/bin/term" />
       <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$ProjectFileDir$" />
-    </exec>
-  </tool>
-  <tool name="Open in Terminal" showInMainMenu="true" showInEditor="true" showInProject="true" showInSearchPopup="true" disabled="false" useConsole="false" showConsoleOnStdOut="false" showConsoleOnStdErr="false" synchronizeAfterRun="false">
-    <exec>
-      <option name="COMMAND" value="$USER_HOME$/.local/bin/term" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$FileDir$" />
+      <option name="WORKING_DIRECTORY" value="$ModuleFileDir$" />
     </exec>
   </tool>
 </toolSet>
