@@ -37,11 +37,13 @@
     <keyboard-shortcut first-keystroke="ctrl z" />
     <keyboard-shortcut first-keystroke="meta z" />
   </action>
+  <action id="ChangesView.GroupBy.Directory" />
   <action id="ChangesView.Revert">
     <keyboard-shortcut first-keystroke="ctrl alt slash" />
     <keyboard-shortcut first-keystroke="shift meta z" />
     <keyboard-shortcut first-keystroke="ctrl alt z" />
   </action>
+  <action id="ChoosePrevSubsequentPropertyValueEditorAction" />
   <action id="CloseContent">
     <keyboard-shortcut first-keystroke="ctrl x" second-keystroke="k" />
     <keyboard-shortcut first-keystroke="ctrl x" second-keystroke="0" />
@@ -50,6 +52,10 @@
     <keyboard-shortcut first-keystroke="alt slash" />
     <keyboard-shortcut first-keystroke="ctrl alt i" />
   </action>
+  <action id="CollapseAll" />
+  <action id="CollapseExpandableComponent" />
+  <action id="CollapseRegion" />
+  <action id="CollapseSelection" />
   <action id="CommentByBlockComment" />
   <action id="CommentByLineComment">
     <keyboard-shortcut first-keystroke="alt semicolon" />
@@ -60,6 +66,8 @@
   <action id="Diff.ApplyRightSide">
     <keyboard-shortcut first-keystroke="ctrl alt comma" />
   </action>
+  <action id="Diff.NextChange" />
+  <action id="Diff.PrevChange" />
   <action id="EditSource">
     <keyboard-shortcut first-keystroke="alt period" />
   </action>
@@ -98,15 +106,26 @@
     <keyboard-shortcut first-keystroke="ctrl z" />
     <keyboard-shortcut first-keystroke="meta z" />
   </action>
-  <action id="EditorDeleteLine" />
-  <action id="EditorDeleteToWordEnd">
-    <keyboard-shortcut first-keystroke="ctrl delete" />
-    <keyboard-shortcut first-keystroke="alt delete" />
-    <keyboard-shortcut first-keystroke="alt d" />
+  <action id="EditorBackwardParagraph">
+    <keyboard-shortcut first-keystroke="ctrl up" />
+    <keyboard-shortcut first-keystroke="shift alt open_bracket" />
   </action>
-  <action id="EditorDeleteToWordStart">
-    <keyboard-shortcut first-keystroke="ctrl back_space" />
-    <keyboard-shortcut first-keystroke="alt back_space" />
+  <action id="EditorChooseLookupItemDot" />
+  <action id="EditorContextInfo" />
+  <action id="EditorCutLineEnd">
+    <keyboard-shortcut first-keystroke="ctrl k" />
+  </action>
+  <action id="EditorDeleteLine" />
+  <action id="EditorDeleteToLineStart">
+    <keyboard-shortcut first-keystroke="ctrl minus" second-keystroke="ctrl k" />
+  </action>
+  <action id="EditorDeleteToWordEnd" />
+  <action id="EditorDeleteToWordEndInDifferentHumpsMode">
+    <keyboard-shortcut first-keystroke="shift alt d" />
+  </action>
+  <action id="EditorDeleteToWordStart" />
+  <action id="EditorDeleteToWordStartInDifferentHumpsMode">
+    <keyboard-shortcut first-keystroke="shift alt back_space" />
   </action>
   <action id="EditorDown">
     <keyboard-shortcut first-keystroke="down" />
@@ -120,12 +139,29 @@
     <keyboard-shortcut first-keystroke="ctrl alt d" />
     <keyboard-shortcut first-keystroke="meta d" />
   </action>
+  <action id="EditorEnter">
+    <keyboard-shortcut first-keystroke="enter" />
+    <keyboard-shortcut first-keystroke="ctrl m" />
+  </action>
   <action id="EditorEscape">
     <keyboard-shortcut first-keystroke="escape" />
     <keyboard-shortcut first-keystroke="ctrl g" />
   </action>
+  <action id="EditorForwardParagraph">
+    <keyboard-shortcut first-keystroke="ctrl down" />
+    <keyboard-shortcut first-keystroke="shift alt close_bracket" />
+  </action>
   <action id="EditorJoinLines">
     <keyboard-shortcut first-keystroke="shift alt j" />
+  </action>
+  <action id="EditorKillToWordEnd">
+    <keyboard-shortcut first-keystroke="alt d" />
+    <keyboard-shortcut first-keystroke="alt delete" />
+    <keyboard-shortcut first-keystroke="ctrl delete" />
+  </action>
+  <action id="EditorKillToWordStart">
+    <keyboard-shortcut first-keystroke="alt back_space" />
+    <keyboard-shortcut first-keystroke="ctrl back_space" />
   </action>
   <action id="EditorLeft">
     <keyboard-shortcut first-keystroke="left" />
@@ -139,10 +175,20 @@
     <keyboard-shortcut first-keystroke="end" />
     <keyboard-shortcut first-keystroke="ctrl e" />
   </action>
+  <action id="EditorLineEndWithSelection">
+    <keyboard-shortcut first-keystroke="shift end" />
+    <keyboard-shortcut first-keystroke="shift ctrl e" />
+  </action>
   <action id="EditorLineStart">
     <keyboard-shortcut first-keystroke="home" />
     <keyboard-shortcut first-keystroke="ctrl a" />
   </action>
+  <action id="EditorLineStartWithSelection">
+    <keyboard-shortcut first-keystroke="shift home" />
+    <keyboard-shortcut first-keystroke="shift ctrl a" />
+  </action>
+  <action id="EditorLookupDown" />
+  <action id="EditorLookupUp" />
   <action id="EditorNextWord">
     <keyboard-shortcut first-keystroke="ctrl right" />
     <keyboard-shortcut first-keystroke="alt right" />
@@ -175,9 +221,11 @@
     <keyboard-shortcut first-keystroke="shift right" />
     <keyboard-shortcut first-keystroke="shift ctrl f" />
   </action>
+  <action id="EditorScrollDown" />
   <action id="EditorScrollToCenter">
     <keyboard-shortcut first-keystroke="ctrl l" />
   </action>
+  <action id="EditorScrollUp" />
   <action id="EditorSelectWord">
     <keyboard-shortcut first-keystroke="ctrl equals" />
   </action>
@@ -208,12 +256,18 @@
     <keyboard-shortcut first-keystroke="shift up" />
     <keyboard-shortcut first-keystroke="shift ctrl p" />
   </action>
+  <action id="EmmetNextEditPoint" />
+  <action id="EmmetPreviousEditPoint" />
   <action id="Exit">
     <keyboard-shortcut first-keystroke="ctrl x" second-keystroke="ctrl c" />
   </action>
   <action id="ExportToTextFile" />
   <action id="FileChooser.NewFolder">
     <keyboard-shortcut first-keystroke="alt insert" />
+  </action>
+  <action id="FileChooser.TogglePathShowing" />
+  <action id="FillParagraph">
+    <keyboard-shortcut first-keystroke="alt q" />
   </action>
   <action id="Find">
     <keyboard-shortcut first-keystroke="ctrl s" />
@@ -267,13 +321,23 @@
     <keyboard-shortcut first-keystroke="meta alt o" />
   </action>
   <action id="HighlightUsagesInFile" />
+  <action id="JumpToLastChange">
+    <keyboard-shortcut first-keystroke="shift ctrl alt left" />
+  </action>
+  <action id="JumpToNextChange">
+    <keyboard-shortcut first-keystroke="shift ctrl alt right" />
+  </action>
   <action id="Macro.transpose-chars">
     <keyboard-shortcut first-keystroke="ctrl t" />
   </action>
+  <action id="MethodDown" />
   <action id="MethodHierarchy">
     <keyboard-shortcut first-keystroke="ctrl h" second-keystroke="shift h" />
   </action>
   <action id="MethodHierarchy.OverrideMethodAction" />
+  <action id="MethodOverloadSwitchDown" />
+  <action id="MethodOverloadSwitchUp" />
+  <action id="MethodUp" />
   <action id="MoveElementLeft">
     <keyboard-shortcut first-keystroke="shift alt t" />
   </action>
@@ -292,9 +356,7 @@
   <action id="NextSplitter">
     <keyboard-shortcut first-keystroke="ctrl x" second-keystroke="o" />
   </action>
-  <action id="NextTab">
-    <keyboard-shortcut first-keystroke="shift alt close_bracket" />
-  </action>
+  <action id="NextTab" />
   <action id="OptimizeImports">
     <keyboard-shortcut first-keystroke="ctrl back_slash" />
   </action>
@@ -312,9 +374,7 @@
   <action id="PreviousDiff">
     <keyboard-shortcut first-keystroke="alt p" />
   </action>
-  <action id="PreviousTab">
-    <keyboard-shortcut first-keystroke="shift alt open_bracket" />
-  </action>
+  <action id="PreviousTab" />
   <action id="QuickJavaDoc">
     <mouse-shortcut keystroke="alt button2" />
     <keyboard-shortcut first-keystroke="ctrl h" second-keystroke="i" />
@@ -336,10 +396,12 @@
     <keyboard-shortcut first-keystroke="shift alt 5" />
   </action>
   <action id="ReplaceInPath" />
+  <action id="SafeDelete" />
   <action id="SaveAll" />
   <action id="SelectNextOccurrence">
     <keyboard-shortcut first-keystroke="ctrl period" />
   </action>
+  <action id="ShowContent" />
   <action id="ShowReformatFileDialog">
     <keyboard-shortcut first-keystroke="shift ctrl alt back_slash" />
   </action>
@@ -384,4 +446,5 @@
   <action id="VcsShowPrevChangeMarker">
     <keyboard-shortcut first-keystroke="alt p" />
   </action>
+  <action id="hg4idea.QFold" />
 </keymap>
