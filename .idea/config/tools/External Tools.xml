@@ -1,16 +1,16 @@
 <toolSet name="External Tools">
-  <tool name="Emacs" description="emacs" showInMainMenu="true" showInEditor="true" showInProject="true" showInSearchPopup="true" disabled="false" useConsole="false" showConsoleOnStdOut="false" showConsoleOnStdErr="false" synchronizeAfterRun="false">
+  <tool name="Emacs" description="emacs" showInMainMenu="false" showInEditor="false" showInProject="false" showInSearchPopup="false" disabled="false" useConsole="false" showConsoleOnStdOut="false" showConsoleOnStdErr="false" synchronizeAfterRun="false">
     <exec>
       <option name="COMMAND" value="emacs" />
       <option name="PARAMETERS" value="+$LineNumber$:$ColumnNumber$ &quot;$FilePath$&quot;" />
-      <option name="WORKING_DIRECTORY" value="$ModuleFileDir$" />
+      <option name="WORKING_DIRECTORY" value="$ProjectFileDir$" />
     </exec>
   </tool>
   <tool name="Terminal" showInMainMenu="false" showInEditor="false" showInProject="false" showInSearchPopup="false" disabled="false" useConsole="false" showConsoleOnStdOut="false" showConsoleOnStdErr="false" synchronizeAfterRun="false">
     <exec>
       <option name="COMMAND" value="$USER_HOME$/.local/bin/term" />
       <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$ModuleFileDir$" />
+      <option name="WORKING_DIRECTORY" value="$ProjectFileDir$" />
     </exec>
   </tool>
 </toolSet>
