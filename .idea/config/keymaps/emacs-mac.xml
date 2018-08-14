@@ -446,5 +446,17 @@
   <action id="VcsShowPrevChangeMarker">
     <keyboard-shortcut first-keystroke="alt p" />
   </action>
+  <action id="com.gitlab.lae.intellij.actions.CapitalizeRegionOrToWordEnd">
+    <keyboard-shortcut first-keystroke="alt c" />
+  </action>
+  <action id="com.gitlab.lae.intellij.actions.CreateRectangularSelectionFromMultiLineSelection">
+    <keyboard-shortcut first-keystroke="ctrl x" second-keystroke="r" />
+  </action>
+  <action id="com.gitlab.lae.intellij.actions.DowncaseRegionOrToWordEnd">
+    <keyboard-shortcut first-keystroke="alt l" />
+  </action>
+  <action id="com.gitlab.lae.intellij.actions.UpcaseRegionOrToWordEnd">
+    <keyboard-shortcut first-keystroke="alt u" />
+  </action>
   <action id="hg4idea.QFold" />
 </keymap>
