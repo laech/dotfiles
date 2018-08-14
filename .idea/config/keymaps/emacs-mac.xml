@@ -189,6 +189,7 @@
   </action>
   <action id="EditorLookupDown" />
   <action id="EditorLookupUp" />
+  <action id="EditorMatchBrace" />
   <action id="EditorNextWord">
     <keyboard-shortcut first-keystroke="ctrl right" />
     <keyboard-shortcut first-keystroke="alt right" />
@@ -231,6 +232,9 @@
   </action>
   <action id="EditorSplitLine">
     <keyboard-shortcut first-keystroke="ctrl o" />
+  </action>
+  <action id="EditorSwapSelectionBoundaries">
+    <keyboard-shortcut first-keystroke="ctrl x" second-keystroke="ctrl x" />
   </action>
   <action id="EditorTextEnd">
     <keyboard-shortcut first-keystroke="meta end" />

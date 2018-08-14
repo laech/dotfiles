@@ -232,6 +232,9 @@
   <action id="EditorSplitLine">
     <keyboard-shortcut first-keystroke="ctrl o" />
   </action>
+  <action id="EditorSwapSelectionBoundaries">
+    <keyboard-shortcut first-keystroke="ctrl x" second-keystroke="ctrl x" />
+  </action>
   <action id="EditorTextEnd">
     <keyboard-shortcut first-keystroke="meta end" />
     <keyboard-shortcut first-keystroke="ctrl end" />
