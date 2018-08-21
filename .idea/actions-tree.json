@@ -1,0 +1,43 @@
+{ "items": [
+    { "keys": ["ctrl X"],
+      "items": [
+          {"keys": ["ctrl F"], "id": "GotoFile"},
+          {"keys": ["ctrl B"], "id": "RecentFiles"},
+          {"keys": [     "B"], "id": "RecentChangedFiles"},
+          {"separator": null},
+          {"keys": ["K", "0"], "id": "CloseContent"},
+          {"keys": [     "1"], "id": "UnsplitAll"},
+          {"keys": [     "2"], "id": "SplitHorizontally"},
+          {"keys": [     "3"], "id": "SplitVertically"},
+          {"keys": [     "O"], "id": "NextSplitter"},
+          {"separator": null},
+          {"keys": [     "H"], "id": "$SelectAll"},
+          {"keys": ["ctrl X"], "id": "EditorSwapSelectionBoundaries"},
+          {"separator": null},
+          {"keys": [     "E"], "id": "PlaybackLastMacro"},
+          {"separator": null},
+          {"keys": ["ctrl C"], "id": "Exit"}
+      ]},
+    { "keys": ["ctrl C"],
+      "items": [
+          {"keys": ["P"],
+           "items": [
+               {"keys": ["C"], "id": "CompileDirty"},
+               {"separator": null},
+               {"keys": ["K"], "id": "CloseProject"},
+               {"keys": ["P"], "id": "$LRU"},
+               {"keys": ["P"],
+                "items": [
+                    {"keys": ["C"], "id": "CompileDirty"},
+                    {"keys": ["K"], "id": "CloseProject"},
+                    {"keys": ["P"], "id": "$LRU"}
+                ]}
+           ]},
+          {"keys": ["P"],
+           "items": [
+               {"keys": ["C"], "id": "CompileDirty"},
+               {"keys": ["K"], "id": "CloseProject"},
+               {"keys": ["released P"], "id": "RecentProjectListGroup"}
+           ]}
+      ]}
+]}
