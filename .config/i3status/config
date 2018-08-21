@@ -1,10 +1,10 @@
 general {
   output_format = "i3bar"
   interval = 10
-  colors = false
-#  color_good = "#37efba"
-#  color_degraded = "#ffac12"
-#  color_bad = "#ff4181"
+  colors = true
+  color_good = "#ffffff"
+  color_degraded = "#ffffff"
+  color_bad = "#ff4181"
 }
 
 order += "wireless _first_"
@@ -15,16 +15,15 @@ order += "time"
 
 wireless _first_ {
   format_up = " (%essid) %ip"
-  format_down = " down"
+  format_down = ""
 }
 
 ethernet _first_ {
   format_up = " %ip"
-  format_down = " down"
+  format_down = ""
 }
 
 volume master {
-
   format = " %volume"
   format_muted = " muted"
   device = "default"
@@ -37,7 +36,7 @@ battery all {
   status_chr = ""
   status_bat = ""
   status_full = ""
-  low_threshold = 5
+  low_threshold = 10
   threshold_type = percentage
   integer_battery_capacity = true
 }
