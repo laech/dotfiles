@@ -34,21 +34,7 @@
     <keyboard-shortcut first-keystroke="ctrl z" />
     <keyboard-shortcut first-keystroke="meta z" />
   </action>
-  <action id="Actions Tree Generated #0 ctrl pressed X">
-    <keyboard-shortcut first-keystroke="ctrl x" />
-  </action>
-  <action id="Actions Tree Generated #1 ctrl pressed C">
-    <keyboard-shortcut first-keystroke="ctrl c" />
-  </action>
-  <action id="Actions Tree Generated #2 ctrl pressed H">
-    <keyboard-shortcut first-keystroke="ctrl h" />
-  </action>
-  <action id="Actions Tree Generated #3 alt pressed G">
-    <keyboard-shortcut first-keystroke="alt g" />
-  </action>
-  <action id="Actions Tree Generated #4 alt pressed S">
-    <keyboard-shortcut first-keystroke="alt s" />
-  </action>
+  <action id="CallHierarchy" />
   <action id="ChangesView.GroupBy.Directory" />
   <action id="ChangesView.Revert">
     <keyboard-shortcut first-keystroke="ctrl alt slash" />
@@ -194,6 +180,7 @@
   </action>
   <action id="EditorLookupDown" />
   <action id="EditorLookupUp" />
+  <action id="EditorMatchBrace" />
   <action id="EditorNextWord">
     <keyboard-shortcut first-keystroke="ctrl right" />
     <keyboard-shortcut first-keystroke="alt right" />
@@ -263,7 +250,9 @@
   </action>
   <action id="EmmetNextEditPoint" />
   <action id="EmmetPreviousEditPoint" />
+  <action id="Exit" />
   <action id="ExportToTextFile" />
+  <action id="ExpressionTypeInfo" />
   <action id="FileChooser.NewFolder">
     <keyboard-shortcut first-keystroke="alt insert" />
   </action>
@@ -304,7 +293,9 @@
     <keyboard-shortcut first-keystroke="shift alt o" />
   </action>
   <action id="GotoLine" />
+  <action id="GotoNextElementUnderCaretUsage" />
   <action id="GotoNextError" />
+  <action id="GotoPrevElementUnderCaretUsage" />
   <action id="GotoPreviousError" />
   <action id="GotoSymbol">
     <keyboard-shortcut first-keystroke="shift ctrl alt o" />
@@ -341,6 +332,7 @@
   <action id="NextDiff">
     <keyboard-shortcut first-keystroke="alt n" />
   </action>
+  <action id="NextSplitter" />
   <action id="NextTab" />
   <action id="OptimizeImports">
     <keyboard-shortcut first-keystroke="ctrl back_slash" />
@@ -355,6 +347,7 @@
     <keyboard-shortcut first-keystroke="alt p" />
   </action>
   <action id="PreviousTab" />
+  <action id="QuickImplementations" />
   <action id="QuickJavaDoc">
     <mouse-shortcut keystroke="alt button2" />
   </action>
