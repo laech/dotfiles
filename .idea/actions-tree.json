@@ -1,31 +1,67 @@
-{ "items": [
-    { "keys": ["ctrl X"],
-      "items": [
-          {"keys": ["ctrl F"], "id": "GotoFile"},
-          {"keys": ["ctrl B"], "id": "RecentFiles"},
-          {"keys": [     "B"], "id": "RecentChangedFiles"},
-          {"separator": null},
-          {"keys": ["0", "K"], "id": "CloseContent"},
-          {"keys": [     "1"], "id": "UnsplitAll"},
-          {"keys": [     "2"], "id": "SplitHorizontally"},
-          {"keys": [     "3"], "id": "SplitVertically"},
-          {"keys": [     "O"], "id": "NextSplitter"},
-          {"separator": null},
-          {"keys": [     "H"], "id": "$SelectAll"},
-          {"keys": ["ctrl X"], "id": "EditorSwapSelectionBoundaries"},
-          {"separator": null},
-          {"keys": [     "E"], "id": "PlaybackLastMacro"},
-          {"separator": null},
-          {"keys": ["ctrl C"], "id": "Exit"}
-      ]},
-    { "keys": ["ctrl C"],
-      "items": [
-          {"keys": ["released P"],
-           "items": [
-               {"keys": ["C"], "id": "CompileDirty"},
-               {"separator": null},
-               {"keys": ["K"], "id": "CloseProject"},
-               {"keys": ["released P"], "id": "RecentProjectListGroup"}
-           ]}
-      ]}
+{"items": [
+    {"keys": ["ctrl X"],
+     "items": [
+         {"keys": ["ctrl F"], "id": "GotoFile"},
+         {"keys": ["ctrl B"], "id": "RecentFiles"},
+         {"keys": [     "B"], "id": "RecentChangedFiles"},
+         {"separator": null},
+         {"keys": ["0", "K"], "id": "CloseContent"},
+         {"keys": [     "1"], "id": "UnsplitAll"},
+         {"keys": [     "2"], "id": "SplitHorizontally"},
+         {"keys": [     "3"], "id": "SplitVertically"},
+         {"keys": [     "O"], "id": "NextSplitter"},
+         {"separator": null},
+         {"keys": [     "H"], "id": "$SelectAll"},
+         {"keys": ["ctrl X"], "id": "EditorSwapSelectionBoundaries"},
+         {"separator": null},
+         {"keys": [     "E"], "id": "PlaybackLastMacro"},
+         {"separator": null},
+         {"keys": ["ctrl C"], "id": "Exit"}
+     ]},
+    {"keys": ["ctrl C"],
+     "items": [
+         {"keys": ["released P"],
+          "name": "Project",
+          "items": [
+              {"keys": [         "C"], "id": "CompileDirty"},
+              {"separator": null},
+              {"keys": [         "K"], "id": "CloseProject"},
+              {"keys": ["released P"], "id": "RecentProjectListGroup"}
+          ]}
+     ]},
+    {"keys": ["ctrl H"],
+     "items": [
+         {"keys": [      "P"], "id": "ParameterInfo"},
+         {"keys": [      "E"], "id": "ExpressionTypeInfo"},
+         {"separator": null},
+         {"keys": [      "I"], "id": "QuickJavaDoc"},
+         {"keys": ["shift I"], "id": "QuickImplementations"},
+         {"separator": null},
+         {"keys": [      "H"], "id": "TypeHierarchy"},
+         {"keys": [      "M"], "id": "MethodHierarchy"},
+         {"keys": [      "C"], "id": "CallHierarchy"}
+     ]},
+    {"keys": ["alt G"],
+     "items": [
+         {"keys": ["N", "alt N"], "id": "GotoNextError"},
+         {"keys": ["P", "alt P"], "id": "GotoPreviousError"},
+         {"separator": null},
+         {"keys": ["released G"], "id": "GotoLine"}
+     ]},
+    {"keys": ["alt S"],
+     "items": [
+         {"keys": [     "PERIOD"], "id": "Find"},
+         {"keys": ["shift alt 5"], "id": "Replace"},
+         {"separator": null},
+         {                         "id": "FindInPath"},
+         {                         "id": "ReplaceInPath"},
+         {"separator": null},
+         {"keys": [          "H"],
+          "name": "Highlight",
+          "items": [
+              {"keys": ["PERIOD"], "id": "HighlightUsagesInFile"},
+              {"keys": [     "N"], "id": "GotoNextElementUnderCaretUsage"},
+              {"keys": [     "P"], "id": "GotoPrevElementUnderCaretUsage"}
+          ]}
+     ]}
 ]}
