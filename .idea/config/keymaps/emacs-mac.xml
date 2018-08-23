@@ -311,6 +311,9 @@
   <action id="Macro.transpose-chars">
     <keyboard-shortcut first-keystroke="ctrl t" />
   </action>
+  <action id="MainMenu">
+    <keyboard-shortcut first-keystroke="f10" />
+  </action>
   <action id="MethodDown" />
   <action id="MethodHierarchy" />
   <action id="MethodHierarchy.OverrideMethodAction" />
