@@ -201,6 +201,8 @@
 (global-set-key (kbd "C-=") 'er/expand-region)
 (global-set-key (kbd "C-+") 'er/contract-region)
 
+(global-set-key (kbd "C-x g") 'magit-status)
+
 (add-hook 'after-init-hook #'global-undo-tree-mode)
 (add-hook 'after-init-hook #'ido-everywhere)
 (add-hook 'after-init-hook #'ido-ubiquitous-mode)

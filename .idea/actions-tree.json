@@ -14,6 +14,19 @@
           "keys": [     "H"], "id": "$SelectAll"},
          {"keys": ["ctrl X"], "id": "EditorSwapSelectionBoundaries"},
          {"separator-above": true,
+          "name": "Version Control",
+          "keys": [     "G"],
+          "items": [
+              {"keys": [         "C"], "id": "CheckinProject"},
+              {"keys": [   "shift V"], "id": "ChangesView.Revert"},
+              {"keys": [   "      L"], "id": "Vcs.ShowTabbedFileHistory"},
+              {"keys": [         "F"], "id": "Git.Fetch"},
+              {"keys": [   "shift F"], "id": "Git.Pull"},
+              {"keys": [   "shift P"], "id": "Vcs.Push"},
+              {"keys": ["released B"], "id": "Git.Branches"},
+              {"keys": [   "shift M"], "id": "Git.Configure.Remotes"}
+          ]},
+         {"separator-above": true,
           "keys": [     "E"], "id": "PlaybackLastMacro"},
          {"separator-above": true,
           "keys": ["ctrl C"], "id": "Exit"}
