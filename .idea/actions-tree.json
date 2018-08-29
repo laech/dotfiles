@@ -4,6 +4,7 @@
          {"keys": ["ctrl F"], "id": "GotoFile"},
          {"keys": ["ctrl B"], "id": "RecentFiles"},
          {"keys": [     "B"], "id": "RecentChangedFiles"},
+         {"keys": ["BACK_QUOTE"], "id": "GotoNextError"},
          {"separator-above": "",
           "keys": [     "U"], "id": "$Undo"},
          {"keys": ["ctrl S"], "id": "SaveDocument"},
