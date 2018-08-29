@@ -18,7 +18,6 @@
   <action id="$Paste">
     <keyboard-shortcut first-keystroke="shift insert" />
     <keyboard-shortcut first-keystroke="ctrl y" />
-    <keyboard-shortcut first-keystroke="ctrl v" />
     <keyboard-shortcut first-keystroke="meta v" />
   </action>
   <action id="$Redo">
@@ -82,7 +81,6 @@
   </action>
   <action id="Editor Paste">
     <keyboard-shortcut first-keystroke="ctrl y" />
-    <keyboard-shortcut first-keystroke="ctrl v" />
     <keyboard-shortcut first-keystroke="meta v" />
   </action>
   <action id="Editor Redo">
@@ -102,6 +100,18 @@
     <keyboard-shortcut first-keystroke="shift alt open_bracket" />
   </action>
   <action id="EditorChooseLookupItemDot" />
+  <action id="EditorCodeBlockEnd">
+    <keyboard-shortcut first-keystroke="ctrl alt f" />
+  </action>
+  <action id="EditorCodeBlockEndWithSelection">
+    <keyboard-shortcut first-keystroke="shift ctrl alt f" />
+  </action>
+  <action id="EditorCodeBlockStart">
+    <keyboard-shortcut first-keystroke="ctrl alt b" />
+  </action>
+  <action id="EditorCodeBlockStartWithSelection">
+    <keyboard-shortcut first-keystroke="shift ctrl alt b" />
+  </action>
   <action id="EditorContextInfo" />
   <action id="EditorCutLineEnd">
     <keyboard-shortcut first-keystroke="ctrl k" />
@@ -173,6 +183,7 @@
   <action id="EditorLineStart">
     <keyboard-shortcut first-keystroke="home" />
     <keyboard-shortcut first-keystroke="ctrl a" />
+    <keyboard-shortcut first-keystroke="alt m" />
   </action>
   <action id="EditorLineStartWithSelection">
     <keyboard-shortcut first-keystroke="shift home" />
@@ -236,6 +247,7 @@
   </action>
   <action id="EditorToggleStickySelection">
     <keyboard-shortcut first-keystroke="ctrl space" />
+    <keyboard-shortcut first-keystroke="shift ctrl 2" />
   </action>
   <action id="EditorUnSelectWord">
     <keyboard-shortcut first-keystroke="shift ctrl equals" />
@@ -314,12 +326,16 @@
   <action id="MainMenu">
     <keyboard-shortcut first-keystroke="f10" />
   </action>
-  <action id="MethodDown" />
+  <action id="MethodDown">
+    <keyboard-shortcut first-keystroke="ctrl alt n" />
+  </action>
   <action id="MethodHierarchy" />
   <action id="MethodHierarchy.OverrideMethodAction" />
   <action id="MethodOverloadSwitchDown" />
   <action id="MethodOverloadSwitchUp" />
-  <action id="MethodUp" />
+  <action id="MethodUp">
+    <keyboard-shortcut first-keystroke="ctrl alt p" />
+  </action>
   <action id="MoveElementLeft">
     <keyboard-shortcut first-keystroke="shift alt t" />
   </action>
@@ -332,6 +348,7 @@
   <action id="MoveLineUp">
     <keyboard-shortcut first-keystroke="shift alt p" />
   </action>
+  <action id="NewElementSamePlace" />
   <action id="NextDiff">
     <keyboard-shortcut first-keystroke="alt n" />
   </action>
@@ -371,6 +388,12 @@
   <action id="ReplaceInPath" />
   <action id="SafeDelete" />
   <action id="SaveAll" />
+  <action id="ScrollPane-scrollDown">
+    <keyboard-shortcut first-keystroke="ctrl v" />
+  </action>
+  <action id="ScrollPane-scrollUp">
+    <keyboard-shortcut first-keystroke="alt v" />
+  </action>
   <action id="SelectNextOccurrence">
     <keyboard-shortcut first-keystroke="ctrl period" />
   </action>
@@ -386,6 +409,7 @@
     <keyboard-shortcut first-keystroke="f3" />
     <keyboard-shortcut first-keystroke="f4" />
   </action>
+  <action id="ToggleBookmark2" />
   <action id="Tool_External Tools_Terminal">
     <keyboard-shortcut first-keystroke="alt f12" />
   </action>
@@ -396,6 +420,7 @@
   <action id="Unwrap">
     <keyboard-shortcut first-keystroke="alt r" />
   </action>
+  <action id="Vcs.QuickListPopupAction" />
   <action id="Vcs.RollbackChangedLines">
     <keyboard-shortcut first-keystroke="ctrl alt slash" />
   </action>
