@@ -397,6 +397,7 @@
   <action id="SelectNextOccurrence">
     <keyboard-shortcut first-keystroke="ctrl period" />
   </action>
+  <action id="ShowBookmarks" />
   <action id="ShowContent" />
   <action id="ShowReformatFileDialog">
     <keyboard-shortcut first-keystroke="shift ctrl alt back_slash" />
@@ -409,7 +410,9 @@
     <keyboard-shortcut first-keystroke="f3" />
     <keyboard-shortcut first-keystroke="f4" />
   </action>
+  <action id="ToggleBookmark" />
   <action id="ToggleBookmark2" />
+  <action id="ToggleBookmarkWithMnemonic" />
   <action id="Tool_External Tools_Terminal">
     <keyboard-shortcut first-keystroke="alt f12" />
   </action>

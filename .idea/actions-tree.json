@@ -30,14 +30,26 @@
          {"keys": [     "2"], "id": "SplitHorizontally"},
          {"keys": [     "3"], "id": "SplitVertically"},
          {"keys": [     "O"], "id": "NextSplitter"},
-         {"keys": [   "shift LESS"], "id": "ScrollPane-scrollLeft"},
-         {"keys": ["shift GREATER"], "id": "ScrollPane-scrollRight"},
          {"separator-above": "",
           "keys": [     "H"], "id": "$SelectAll"},
          {"keys": ["ctrl X"], "id": "EditorSwapSelectionBoundaries"},
-         {"keys": ["shift LEFT_PARENTHESIS",
-                   "shift RIGHT_PARENTHESIS"], "id": "StartStopMacroRecording"},
          {"keys": [     "E"], "id": "PlaybackLastMacro"},
+         {"separator-above": "",
+          "keys": [     "R"],
+          "name": "+prefix",
+          "items": [
+              {"keys": ["T"], "id": "com.gitlab.lae.intellij.actions.CreateRectangularSelectionFromMultiLineSelection"},
+              {"keys": ["L"], "id": "ShowBookmarks"},
+              {"keys": ["M"], "id": "ToggleBookmark"}
+          ]},
+         {"keys": [     "V"],
+          "name": "+prefix",
+          "items": [
+              {"keys": ["shift PLUS"], "id": "Vcs.UpdateProject"},
+              {"keys": [   "shift P"], "id": "Vcs.Push"},
+              {"keys": [         "U"], "id": "ChangesView.Revert"},
+              {"keys": [         "G"], "id": "Annotate"}
+          ]},
          {"separator-above": "",
           "keys": ["ctrl C"], "id": "Exit"}
      ]},
