@@ -45,10 +45,21 @@
          {"keys": [     "V"],
           "name": "+prefix",
           "items": [
-              {"keys": ["shift PLUS"], "id": "Vcs.UpdateProject"},
-              {"keys": [   "shift P"], "id": "Vcs.Push"},
-              {"keys": [         "U"], "id": "ChangesView.Revert"},
-              {"keys": [         "G"], "id": "Annotate"}
+              {"keys": [            "G"], "id": "Annotate"},
+              {"keys": [       "EQUALS"], "id": "Compare.SameVersion"},
+              {"keys": [            "L"], "id": "Vcs.ShowTabbedFileHistory"},
+              {"keys": [            "U"], "id": "ChangesView.Revert"},
+              {"separator-above": "",
+               "keys": [       "PERIOD"], "id": "VcsShowCurrentChangeMarker"},
+              {"keys": [ "OPEN_BRACKET"], "id": "VcsShowPrevChangeMarker"},
+              {"keys": ["CLOSE_BRACKET"], "id": "VcsShowNextChangeMarker"},
+              {"keys": [            "H"], "id": "Vcs.ShowHistoryForBlock"},
+              {"keys": [            "N"], "id": "Vcs.RollbackChangedLines"},
+              {"separator-above": "",
+               "keys": [   "shift PLUS"], "id": "Vcs.UpdateProject"},
+              {"keys": [      "shift P"], "id": "Vcs.Push"},
+              {"keys": [            "D"], "id": "Vcs.Show.Local.Changes"},
+              {"keys": [      "shift L"], "id": "Vcs.Show.Log"}
           ]},
          {"separator-above": "",
           "keys": ["ctrl C"], "id": "Exit"}
