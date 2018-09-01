@@ -8,6 +8,7 @@
     <keyboard-shortcut first-keystroke="shift delete" />
     <keyboard-shortcut first-keystroke="ctrl w" />
     <keyboard-shortcut first-keystroke="meta x" />
+    <keyboard-shortcut first-keystroke="shift ctrl back_space" />
   </action>
   <action id="$Delete">
     <keyboard-shortcut first-keystroke="delete" />
@@ -40,6 +41,7 @@
     <keyboard-shortcut first-keystroke="shift meta z" />
     <keyboard-shortcut first-keystroke="ctrl alt z" />
   </action>
+  <action id="ChooseDebugConfiguration" />
   <action id="ChoosePrevSubsequentPropertyValueEditorAction" />
   <action id="CloseContent" />
   <action id="CodeCompletion">
@@ -54,6 +56,7 @@
   <action id="CommentByLineComment">
     <keyboard-shortcut first-keystroke="alt semicolon" />
   </action>
+  <action id="Debug" />
   <action id="Diff.ApplyLeftSide">
     <keyboard-shortcut first-keystroke="ctrl alt period" />
   </action>
@@ -72,6 +75,7 @@
   <action id="Editor Cut">
     <keyboard-shortcut first-keystroke="ctrl w" />
     <keyboard-shortcut first-keystroke="meta x" />
+    <keyboard-shortcut first-keystroke="shift ctrl back_space" />
   </action>
   <action id="Editor Delete">
     <keyboard-shortcut first-keystroke="ctrl d" />
@@ -138,7 +142,6 @@
   </action>
   <action id="EditorDuplicate">
     <keyboard-shortcut first-keystroke="ctrl alt d" />
-    <keyboard-shortcut first-keystroke="meta d" />
   </action>
   <action id="EditorEnter">
     <keyboard-shortcut first-keystroke="enter" />
@@ -386,6 +389,7 @@
     <keyboard-shortcut first-keystroke="shift alt 5" />
   </action>
   <action id="ReplaceInPath" />
+  <action id="Run" />
   <action id="SafeDelete" />
   <action id="SaveAll" />
   <action id="ScrollPane-scrollDown">
@@ -397,6 +401,7 @@
   <action id="SelectNextOccurrence">
     <keyboard-shortcut first-keystroke="ctrl period" />
   </action>
+  <action id="ShowBookmarks" />
   <action id="ShowContent" />
   <action id="ShowReformatFileDialog">
     <keyboard-shortcut first-keystroke="shift ctrl alt back_slash" />
@@ -409,7 +414,9 @@
     <keyboard-shortcut first-keystroke="f3" />
     <keyboard-shortcut first-keystroke="f4" />
   </action>
+  <action id="ToggleBookmark" />
   <action id="ToggleBookmark2" />
+  <action id="ToggleBookmarkWithMnemonic" />
   <action id="Tool_External Tools_Terminal">
     <keyboard-shortcut first-keystroke="alt f12" />
   </action>
