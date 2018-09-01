@@ -12,7 +12,7 @@
          {"keys": ["ctrl W"], "id": "CopyElement"},
          {"keys": ["ctrl Q"], "id": "ToggleReadOnlyAttribute"},
          {"separator-above": "",
-          "name": "Version Control",
+          "name": "Git",
           "keys": ["G"],
           "items": [
               {"keys": [         "C"], "id": "CheckinProject"},
@@ -43,7 +43,7 @@
               {"keys": ["M"], "id": "ToggleBookmark"}
           ]},
          {"keys": [     "V"],
-          "name": "+prefix",
+          "name": "Version Control",
           "items": [
               {"keys": [            "G"], "id": "Annotate"},
               {"keys": [       "EQUALS"], "id": "Compare.SameVersion"},
