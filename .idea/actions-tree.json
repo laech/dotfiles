@@ -25,7 +25,6 @@
          {"keys": ["V"],
           "name": "Version Control",
           "items": [
-              {                           "id": "Git.Commit.And.Push.Executor"},
               {"keys": [            "C"], "id": "CheckinProject"},
               {"keys": [      "shift P"], "id": "Vcs.Push"},
               {"keys": [   "shift PLUS"], "id": "Vcs.UpdateProject"},
