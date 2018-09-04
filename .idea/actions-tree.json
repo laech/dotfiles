@@ -83,6 +83,21 @@
               {"separator-above": "",
                "keys": [         "K"], "id": "CloseProject"},
               {"keys": ["released P"], "id": "RecentProjectListGroup"}
+          ]},
+         {"keys": ["shift AT"],
+          "name": "Folding",
+          "items": [
+              {"keys": ["ctrl C",
+                        "ctrl E"], "id": "CollapseSelection"},
+              {"separator-above": "",
+               "keys": ["ctrl H",
+                        "ctrl D"], "id": "CollapseRegion"},
+              {"keys": ["ctrl S"], "id": "ExpandRegion"},
+              {"separator-above": "",
+               "keys": ["ctrl alt H",
+                        "ctrl T"], "id": "CollapseAllRegions"},
+              {"keys": ["ctrl alt S",
+                        "ctrl A"], "id": "ExpandAllRegions"}
           ]}
      ]},
     {"keys": ["ctrl H"],

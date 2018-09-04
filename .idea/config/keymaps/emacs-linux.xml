@@ -45,13 +45,17 @@
   <action id="ChoosePrevSubsequentPropertyValueEditorAction" />
   <action id="CloseContent" />
   <action id="CodeCompletion">
-    <keyboard-shortcut first-keystroke="alt slash" />
     <keyboard-shortcut first-keystroke="ctrl alt i" />
+    <keyboard-shortcut first-keystroke="alt tab" />
+    <keyboard-shortcut first-keystroke="alt slash" />
   </action>
   <action id="CollapseAll" />
+  <action id="CollapseBlock" />
   <action id="CollapseExpandableComponent" />
   <action id="CollapseRegion" />
-  <action id="CollapseSelection" />
+  <action id="CollapseSelection">
+    <mouse-shortcut keystroke="shift button3" />
+  </action>
   <action id="CommentByBlockComment" />
   <action id="CommentByLineComment">
     <keyboard-shortcut first-keystroke="alt semicolon" />
@@ -317,6 +321,8 @@
     <keyboard-shortcut first-keystroke="meta alt o" />
   </action>
   <action id="HighlightUsagesInFile" />
+  <action id="HippieBackwardCompletion" />
+  <action id="HippieCompletion" />
   <action id="JumpToLastChange">
     <keyboard-shortcut first-keystroke="shift ctrl alt left" />
   </action>
