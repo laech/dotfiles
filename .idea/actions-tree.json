@@ -27,7 +27,8 @@
           "items": [
               {"keys": [            "C"], "id": "CheckinProject"},
               {"keys": [      "shift P"], "id": "Vcs.Push"},
-              {"keys": [ "shift EQUALS"], "id": "Vcs.UpdateProject"},
+              {"keys": [ "shift EQUALS",
+                           "shift PLUS"], "id": "Vcs.UpdateProject"},
               {"separator-above": "",
                "keys": [            "G"], "id": "Annotate"},
               {"keys": [       "EQUALS"], "id": "Compare.SameVersion"},
@@ -78,7 +79,7 @@
                "keys": [         "K"], "id": "CloseProject"},
               {"keys": ["released P"], "id": "RecentProjectListGroup"}
           ]},
-         {"keys": ["shift 2"],
+         {"keys": ["shift 2", "shift AT"],
           "name": "Folding",
           "items": [
               {"keys": ["ctrl C",
