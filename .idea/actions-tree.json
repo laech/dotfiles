@@ -152,7 +152,7 @@
           "keys": ["alt N", "N"], "id": "GotoNextError"},
          {"keys": ["alt P", "P"], "id": "GotoPreviousError"},
          {"separator-above": "",
-          "keys": [         "M"], "id": "GotoImplementation"},
+          "keys": [         "I"], "id": "GotoImplementation"},
          {"keys": [         "U"], "id": "GotoSuperMethod"}
      ]},
     {"keys": ["alt S"],
