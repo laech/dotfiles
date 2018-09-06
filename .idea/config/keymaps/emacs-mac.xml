@@ -248,6 +248,7 @@
   <action id="EditorSplitLine">
     <keyboard-shortcut first-keystroke="ctrl o" />
   </action>
+  <action id="EditorTab" />
   <action id="EditorTextEnd">
     <keyboard-shortcut first-keystroke="meta end" />
     <keyboard-shortcut first-keystroke="ctrl end" />
@@ -272,6 +273,10 @@
   <action id="EditorUpWithSelection">
     <keyboard-shortcut first-keystroke="shift up" />
     <keyboard-shortcut first-keystroke="shift ctrl p" />
+  </action>
+  <action id="EmacsStyleIndent">
+    <keyboard-shortcut first-keystroke="tab" />
+    <keyboard-shortcut first-keystroke="ctrl i" />
   </action>
   <action id="EmmetNextEditPoint" />
   <action id="EmmetPreviousEditPoint" />
@@ -339,6 +344,7 @@
   <action id="HighlightUsagesInFile" />
   <action id="HippieBackwardCompletion" />
   <action id="HippieCompletion" />
+  <action id="ImplementMethods" />
   <action id="JumpToLastChange">
     <keyboard-shortcut first-keystroke="shift ctrl alt left" />
   </action>
