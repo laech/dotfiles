@@ -42,6 +42,7 @@
                "keys": [       "PERIOD"], "id": "VcsShowCurrentChangeMarker"},
               {"keys": [ "OPEN_BRACKET"], "id": "VcsShowPrevChangeMarker"},
               {"keys": ["CLOSE_BRACKET"], "id": "VcsShowNextChangeMarker"},
+              {"keys": [            "I"], "id": "ChangesView.AddUnversioned"},
               {"keys": [            "N"], "id": "Vcs.RollbackChangedLines"},
               {"keys": [            "U"], "id": "ChangesView.Revert"},
               {"separator-above": "",
@@ -93,6 +94,22 @@
                         "ctrl T"], "id": "CollapseAllRegions"},
               {"keys": ["ctrl alt S",
                         "ctrl A"], "id": "ExpandAllRegions"}
+          ]},
+         {"keys": [ "COMMA"],
+          "name": "Semantic",
+          "items": [
+              {"keys": [      "J"], "id": "FileStructurePopup"},
+              {"keys": ["shift J"], "id": "GotoSymbol"},
+              {"separator-above": "",
+               "keys": [      "G"], "id": "ShowUsages"},
+              {"keys": ["shift G"], "id": "FindUsages"},
+              {"separator-above": "",
+               "keys": [      "P"], "id": "MethodUp"},
+              {"keys": [      "N"], "id": "MethodDown"},
+              {"separator-above": "",
+               "keys": [  "SPACE",
+                          "L"], "id": "CodeCompletion"},
+              {"keys": [ "ctrl W"], "id": "SafeDelete"}
           ]}
      ]},
     {"keys": ["ctrl H"],

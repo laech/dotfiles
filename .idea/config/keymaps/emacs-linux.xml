@@ -34,6 +34,12 @@
     <keyboard-shortcut first-keystroke="ctrl z" />
     <keyboard-shortcut first-keystroke="meta z" />
   </action>
+  <action id="Back">
+    <keyboard-shortcut first-keystroke="meta alt left" />
+    <mouse-shortcut keystroke="button4" />
+    <keyboard-shortcut first-keystroke="alt comma" />
+    <keyboard-shortcut first-keystroke="ctrl alt left" />
+  </action>
   <action id="CallHierarchy" />
   <action id="ChangesView.GroupBy.Directory" />
   <action id="ChangesView.Revert">
@@ -292,7 +298,16 @@
   <action id="FindPrevious">
     <keyboard-shortcut first-keystroke="ctrl r" />
   </action>
+  <action id="FindUsages">
+    <keyboard-shortcut first-keystroke="alt f7" />
+    <keyboard-shortcut first-keystroke="shift alt slash" />
+  </action>
   <action id="FindWordAtCaret" />
+  <action id="Forward">
+    <keyboard-shortcut first-keystroke="meta alt right" />
+    <mouse-shortcut keystroke="button5" />
+    <keyboard-shortcut first-keystroke="ctrl alt right" />
+  </action>
   <action id="GotoAction">
     <keyboard-shortcut first-keystroke="alt x" />
   </action>
@@ -319,6 +334,7 @@
   <action id="GotoSymbol">
     <keyboard-shortcut first-keystroke="shift ctrl alt o" />
     <keyboard-shortcut first-keystroke="meta alt o" />
+    <keyboard-shortcut first-keystroke="ctrl alt period" />
   </action>
   <action id="HighlightUsagesInFile" />
   <action id="HippieBackwardCompletion" />
@@ -411,10 +427,6 @@
   <action id="ShowContent" />
   <action id="ShowReformatFileDialog">
     <keyboard-shortcut first-keystroke="shift ctrl alt back_slash" />
-  </action>
-  <action id="SmartTypeCompletion">
-    <keyboard-shortcut first-keystroke="shift ctrl space" />
-    <keyboard-shortcut first-keystroke="shift alt slash" />
   </action>
   <action id="StartStopMacroRecording">
     <keyboard-shortcut first-keystroke="f3" />
