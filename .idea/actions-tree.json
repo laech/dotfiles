@@ -146,11 +146,14 @@
      ]},
     {"keys": ["alt G"],
      "items": [
-         {"keys": ["alt N", "N"], "id": "GotoNextError"},
+         {"keys": ["alt G",
+                   "released G"], "id": "GotoLine"},
+         {"separator-above": "",
+          "keys": ["alt N", "N"], "id": "GotoNextError"},
          {"keys": ["alt P", "P"], "id": "GotoPreviousError"},
          {"separator-above": "",
-          "keys": ["alt G",
-                   "released G"], "id": "GotoLine"}
+          "keys": [         "M"], "id": "GotoImplementation"},
+         {"keys": [         "U"], "id": "GotoSuperMethod"}
      ]},
     {"keys": ["alt S"],
      "items": [
