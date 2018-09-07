@@ -115,6 +115,7 @@
               {"separator-above": "",
                "keys": [          "O"], "id": "OverrideMethods"},
               {"keys": [          "I"], "id": "ImplementMethods"},
+              {"keys": [          "C"], "id": "Generate"},
               {"separator-above": "",
                "keys": [     "ctrl W"], "id": "SafeDelete"}
           ]},
@@ -149,11 +150,19 @@
          {"keys": ["alt G",
                    "released G"], "id": "GotoLine"},
          {"separator-above": "",
-          "keys": ["alt N", "N"], "id": "GotoNextError"},
-         {"keys": ["alt P", "P"], "id": "GotoPreviousError"},
+          "keys": ["alt P", "P"], "id": "GotoPreviousError"},
+         {"keys": ["alt N", "N"], "id": "GotoNextError"},
+         {"separator-above": "",
+          "keys": [   "shift P"], "id": "PreviousOccurence"},
+         {"keys": [   "shift N"], "id": "NextOccurence"},
          {"separator-above": "",
           "keys": [         "I"], "id": "GotoImplementation"},
-         {"keys": [         "U"], "id": "GotoSuperMethod"}
+         {"keys": [         "U"], "id": "GotoSuperMethod"},
+         {"keys": [         "T"], "id": "GotoTest"},
+         {"separator-above": "",
+          "keys": [         "S"], "id": "SelectIn"},
+         {"keys": [         "J"], "id": "ShowNavBar"},
+         {                        "id": "ShowFilePath"}
      ]},
     {"keys": ["alt S"],
      "items": [
