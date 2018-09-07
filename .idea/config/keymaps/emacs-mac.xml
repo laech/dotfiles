@@ -358,14 +358,14 @@
     <keyboard-shortcut first-keystroke="f10" />
   </action>
   <action id="MethodDown">
-    <keyboard-shortcut first-keystroke="ctrl alt n" />
+    <keyboard-shortcut first-keystroke="ctrl alt e" />
   </action>
   <action id="MethodHierarchy" />
   <action id="MethodHierarchy.OverrideMethodAction" />
   <action id="MethodOverloadSwitchDown" />
   <action id="MethodOverloadSwitchUp" />
   <action id="MethodUp">
-    <keyboard-shortcut first-keystroke="ctrl alt p" />
+    <keyboard-shortcut first-keystroke="ctrl alt a" />
   </action>
   <action id="MoveElementLeft">
     <keyboard-shortcut first-keystroke="shift alt t" />
