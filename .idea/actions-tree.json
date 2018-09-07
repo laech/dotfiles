@@ -15,6 +15,7 @@
          {"keys": [     "E"], "id": "PlaybackLastMacro"},
          {"keys": [     "H"], "id": "$SelectAll"},
          {"keys": ["ctrl X"], "id": "EditorSwapSelectionBoundaries"},
+         {"keys": [ "SPACE"], "id": "EditorToggleColumnMode"},
          {"keys": [     "R"],
           "name": "...",
           "items": [
