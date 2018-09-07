@@ -120,6 +120,20 @@
               {"separator-above": "",
                "keys": [     "ctrl W"], "id": "SafeDelete"}
           ]},
+         {"keys": ["PERIOD"],
+          "name": "Build",
+          "items": [
+              {"keys": [         "shift C"], "id": "CompileDirty"},
+              {"keys": [               "C"], "id": "Compile"},
+              {                              "id": "CompileProject"},
+              {"separator-above": "",
+               "keys": [               "R"], "id": "Run"},
+              {"keys": [               "D"], "id": "Debug"},
+              {                              "id": "Coverage"},
+              {"keys": ["shift released R"], "id": "ChooseRunConfiguration"},
+              {"keys": ["shift released D"], "id": "ChooseDebugConfiguration"},
+              {"keys": ["shift          S"], "id": "Stop"}
+          ]},
          {"keys": ["R"],
           "name": "Refactor",
           "items": [
