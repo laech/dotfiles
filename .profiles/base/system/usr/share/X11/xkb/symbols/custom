@@ -1,14 +1,7 @@
 
-// Emacs like keys with CAPS as overlay switch.
-
-// Using ISO_Level3_Shift or ISO_Level5_Shift would also make
-// most applications work and would have been more flexible,
-// however they don't work in Java Swing apps (e.g. IntelliJ IDEA)
-// but using overlay works
-
-// To enable, save this file as /usr/share/X11/xkb/symbols/emacs and run:
+// To enable, save this file as /usr/share/X11/xkb/symbols/custom and run:
 //
-//   setxkbmap -option '' "emacs"
+//   setxkbmap -option '' "custom"
 //
 // If fcitx/ibus is in use, they need to be configured not to override the system setting.
 // For ibus enable: Preference | Advanced | Use system keyboard layout
@@ -25,6 +18,11 @@ xkb_symbols "basic" {
 
     // Press Shift_L + Shift_R together as an alternative way to toggle Caps_Lock,
     // then turn CAPS key to enable overlay1 mode when and only when holding down.
+    // Using ISO_Level3_Shift or ISO_Level5_Shift would also make
+    // most applications work and would have been more flexible,
+    // however they don't work in Java Swing apps (e.g. IntelliJ IDEA)
+    // ^ Seems to work when I tried again, need verification
+    // but using overlay works
     include "shift(both_capslock)"
     key <CAPS> {actions[Group1]=[SetControls(controls=overlay1)]};
 
@@ -52,4 +50,10 @@ xkb_symbols "basic" {
     key <AC08> {overlay1=<UP>  }; // k
     key <AC07> {overlay1=<DOWN>}; // j
 
+    // Win+X/C/V to cut/copy/paste
+    // These shortcuts seems to work better, <CUT>/<COPY>/<PAST> doesn't work in Java (IntelliJ).
+    include "level3(win_switch)"
+    key <AB02> {actions[Group1]=[NoAction(), NoAction(), RedirectKey(key=<DELE>, clearmods=All, mods=Shift  )]};
+    key <AB03> {actions[Group1]=[NoAction(), NoAction(), RedirectKey(key=<INS> , clearmods=All, mods=Control)]};
+    key <AB04> {actions[Group1]=[NoAction(), NoAction(), RedirectKey(key=<INS> , clearmods=All, mods=Shift  )]};
 };
