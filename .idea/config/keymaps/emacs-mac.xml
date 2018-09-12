@@ -25,6 +25,7 @@
     <keyboard-shortcut first-keystroke="shift ctrl slash" />
     <keyboard-shortcut first-keystroke="shift alt minus" />
     <keyboard-shortcut first-keystroke="shift undo" />
+    <keyboard-shortcut first-keystroke="again" />
   </action>
   <action id="$SelectAll" />
   <action id="$Undo">
@@ -101,6 +102,7 @@
     <keyboard-shortcut first-keystroke="shift ctrl slash" />
     <keyboard-shortcut first-keystroke="shift alt minus" />
     <keyboard-shortcut first-keystroke="shift undo" />
+    <keyboard-shortcut first-keystroke="again" />
   </action>
   <action id="Editor Undo">
     <keyboard-shortcut first-keystroke="ctrl slash" />

@@ -203,6 +203,9 @@
 
 (global-set-key (kbd "C-x g") 'magit-status)
 
+(global-set-key (kbd "<redo>") 'undo-tree-redo)
+(global-set-key (kbd "<again>") 'undo-tree-redo)
+
 (add-hook 'after-init-hook #'global-undo-tree-mode)
 (add-hook 'after-init-hook #'ido-everywhere)
 (add-hook 'after-init-hook #'ido-ubiquitous-mode)
