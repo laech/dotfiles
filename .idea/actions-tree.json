@@ -51,7 +51,7 @@
               {"keys": [   "shift F"], "id": "Git.Pull"},
               {"keys": [         "M"], "id": "Git.Merge"},
               {"keys": [         "R"], "id": "Git.Rebase"},
-              {"keys": ["released B"], "id": "Git.Branches"},
+              {"keys": [         "B"], "id": "Git.Branches"},
               {"keys": [         "T"], "id": "Git.Tag"},
               {"keys": [   "shift M"], "id": "Git.Configure.Remotes"},
               {"separator-above": "",
@@ -73,13 +73,13 @@
      ]},
     {"keys": ["ctrl C"],
      "items": [
-         {"keys": ["released P"],
+         {"keys": ["P"],
           "name": "Project",
           "items": [
               {"keys": [         "C"], "id": "CompileDirty"},
               {"separator-above": "",
                "keys": [         "K"], "id": "CloseProject"},
-              {"keys": ["released P"], "id": "RecentProjectListGroup"}
+              {"keys": ["P"], "id": "RecentProjectListGroup"}
           ]},
          {"keys": ["shift 2", "shift AT"],
           "name": "Folding",
@@ -123,16 +123,16 @@
          {"keys": ["PERIOD"],
           "name": "Build",
           "items": [
-              {"keys": [         "shift C"], "id": "CompileDirty"},
-              {"keys": [               "C"], "id": "Compile"},
-              {                              "id": "CompileProject"},
+              {"keys": ["shift C"], "id": "CompileDirty"},
+              {"keys": [      "C"], "id": "Compile"},
+              {                     "id": "CompileProject"},
               {"separator-above": "",
-               "keys": [               "R"], "id": "Run"},
-              {"keys": [               "D"], "id": "Debug"},
-              {                              "id": "Coverage"},
-              {"keys": ["shift released R"], "id": "ChooseRunConfiguration"},
-              {"keys": ["shift released D"], "id": "ChooseDebugConfiguration"},
-              {"keys": ["shift          S"], "id": "Stop"}
+               "keys": [      "R"], "id": "Run"},
+              {"keys": [      "D"], "id": "Debug"},
+              {                     "id": "Coverage"},
+              {"keys": ["shift R"], "id": "ChooseRunConfiguration"},
+              {"keys": ["shift D"], "id": "ChooseDebugConfiguration"},
+              {"keys": ["shift S"], "id": "Stop"}
           ]},
          {"keys": ["R"],
           "name": "Refactor",
@@ -162,8 +162,7 @@
      ]},
     {"keys": ["alt G"],
      "items": [
-         {"keys": ["alt G",
-                   "released G"], "id": "GotoLine"},
+         {"keys": ["alt G", "G"], "id": "GotoLine"},
          {"separator-above": "",
           "keys": ["alt P", "P"], "id": "GotoPreviousError"},
          {"keys": ["alt N", "N"], "id": "GotoNextError"},
