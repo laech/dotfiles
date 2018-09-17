@@ -146,7 +146,8 @@
               {"keys": [      "C"], "id": "IntroduceConstant"},
               {"keys": [      "F"], "id": "IntroduceField"},
               {"keys": [      "M"], "id": "ExtractMethod"}
-          ]}
+          ]},
+         {"keys": ["ctrl W"], "id": "com.gitlab.lae.intellij.actions.CamelHumpsInCurrentEditor"}
      ]},
     {"keys": ["ctrl H"],
      "items": [
