@@ -130,26 +130,14 @@
       (push-mark (funcall (if backward '+ '-) (point) (* n (length text))))
       (setq deactivate-mark nil))))
 
-;; https://stackoverflow.com/a/998472
 (defun duplicate-line (n)
   "Duplicate current line, leaving point in lower line."
   (interactive "*p")
-  ;; save the point for undo
-  (setq buffer-undo-list (cons (point) buffer-undo-list))
-  (let* ((bol (line-beginning-position))
-         (eol (line-end-position))
-         (line (buffer-substring bol eol))
-         (buffer-undo-list t))
-    (save-excursion
-      (end-of-line)
-      (dotimes (i n)
-        (newline)
-        (insert line))
-      ;; create the undo information
-      (setq buffer-undo-list
-            (cons (cons eol (point))
-                  buffer-undo-list))))
-  (next-line n))
+  (save-column
+    (kill-whole-line)
+    (yank)
+    (dotimes (i n) (yank))
+    (previous-line)))
 
 (defun duplicate-region-or-line (n)
   "Duplicate region, otherwise duplicate line if no region is active."
@@ -268,25 +256,6 @@
   (define-key writeroom-mode-map (kbd "C-M->") 'writeroom-increase-width)
   (define-key writeroom-mode-map (kbd "C-M-=") 'writeroom-adjust-width)
   (define-key writeroom-mode-map (kbd "C-M-?") 'writeroom-toggle-mode-line))
-
-;; Copy/paste integration with other programs, regardless whether running
-;; in GUI mode or terminal mode.
-(setq
-
- interprogram-cut-function
- (lambda  (text &optional push)
-   (let* ((process-connection-type nil)
-          (proc (start-process "copy" "*Messages*" "clipboard" "copy")))
-     (process-send-string proc text)
-     (process-send-eof proc)))
-
- interprogram-paste-function
- (lambda ()
-   (let ((from-clipboard (shell-command-to-string "clipboard paste"))
-         (from-emacs (if kill-ring (substring-no-properties (car kill-ring)) "")))
-     ;; Only return clipboard text if it's different from head of kill-ring,
-     ;; otherwise emacs adds duplciates to the head of the kill-ring breaking M-y
-     (unless (string= from-clipboard from-emacs) from-clipboard))))
 
 (unless (display-graphic-p)
   (xterm-mouse-mode)
