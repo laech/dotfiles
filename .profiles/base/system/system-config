@@ -11,7 +11,7 @@ cd "$(dirname ""${BASH_SOURCE[0]}"")"
 
 for dir in "${dirs[@]}"; do
     mkdir -p "/$dir"
-    for file in "$(ls -I '*~' -I '#*#' ""$dir"")"; do
+    for file in $(ls -I '*~' -I '#*#' "$dir"); do
         cp -v "$dir/$file" "/$dir/"
     done
 done
