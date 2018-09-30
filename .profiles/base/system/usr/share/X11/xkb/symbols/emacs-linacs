@@ -1,0 +1,114 @@
+
+// To enable, save this file as /usr/share/X11/xkb/symbols/custom2 and run:
+//
+//   setxkbmap -option '' "custom2"
+//
+// If fcitx/ibus is in use, they need to be configured not to override
+// the system setting.
+// For ibus enable: Preference | Advanced | Use system keyboard layout
+// For fcitx disable: Configure | Addon | Advanced | X Keyboard Integration
+// | Configure | Allow to Override System XKB Settings
+
+default partial alphanumeric_keys
+xkb_symbols "basic" {
+
+  include "us"
+  include "ctrl(swap_lwin_lctl)"
+  include "ctrl(swap_rwin_rctl)"
+  #include "ctrl(swap_lalt_lctl_lwin)"
+
+  key <LCTL> {
+    type[Group1]="ONE_LEVEL",
+    symbols[Group1] = [ ISO_Level3_Shift ]
+  };
+  include "level3(modifier_mapping)"
+
+  key <AB05> { // b
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<LEFT>, clearmods=All),
+      Redirect(key=<LEFT>, clearmods=All, mods=Shift)
+    ]
+  };
+  key <AC04> { // f
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<RGHT>, clearmods=All),
+      Redirect(key=<RGHT>, clearmods=All, mods=Shift)
+    ]
+  };
+  key <AD10> { // p
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<UP>, clearmods=All),
+      Redirect(key=<UP>, clearmods=All, mods=Shift)
+    ]
+  };
+  key <AB06> { // n
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<DOWN>, clearmods=All),
+      Redirect(key=<DOWN>, clearmods=All, mods=Shift)
+    ]
+  };
+  key <AC01> { // a
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<HOME>, clearmods=All),
+      Redirect(key=<HOME>, clearmods=All, mods=Shift)
+    ]
+  };
+  key <AD03> { // e
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<END>, clearmods=All),
+      Redirect(key=<END>, clearmods=All, mods=Shift)
+    ]
+  };
+  key <AC05> { // g
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<ESC>, clearmods=All),
+      Redirect(key=<ESC>, clearmods=All, mods=Shift)
+    ]
+  };
+
+  key <AB10> { // /
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<UNDO>, clearmods=All),
+      Redirect(key=<AGAI>, clearmods=All)
+    ]
+  };
+  key <AC03> { // d
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<DELE>, clearmods=All),
+      Redirect(key=<DELE>, clearmods=All, mods=Shift)
+    ]
+  };
+
+  key <AD06> { // y
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<INS>, clearmods=All, mods=Shift)
+    ]
+  };
+  key <AD02> { // w
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<INS>, clearmods=All, mods=Control)
+    ]
+  };
+};
