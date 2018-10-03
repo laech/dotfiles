@@ -169,6 +169,24 @@
     (setq-default mode-line-format initial-mode-line-format)
     (set-frame-parameter nil 'bottom-divider-width 0)))
 
+;; (defun fmt-kbd (prefix key)
+;;   (let ((suffix (if (stringp key) key (prin1-to-string key))))
+;;     (kbd (if (> (length suffix) 1)
+;;              (concat "<" prefix suffix ">")
+;;            (concat prefix suffix)))))
+
+;; (defun define-super-key-bindings (keymap)
+;;   (dolist (key '("`" "~" "!" "@" "#" "$" "%" "^" "&" "*" "(" ")" "-" "_" "=" "+" "{" "}" "[" "]" "\\" "|"
+;;                  0 1 2 3 4 5 6 7 8 9
+;;                  a b c d e f g h i j k l m n o p q r s t u v w x y z
+;;                  A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+;;                  "backspace" "tab" "return"))
+;;     (dolist (replacement '(("C-" . "s-") ("C-M-" . "s-M-")))
+;;       (let* ((old-kbd (fmt-kbd (car replacement) key))
+;;              (new-kbd (fmt-kbd (cdr replacement) key))
+;;              (cmd (lookup-key keymap old-kbd)))
+;;         (if cmd (define-key keymap new-kbd cmd))))))
+
 (global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
 (global-set-key (kbd "C-M-d") 'duplicate-region-or-line)
 (global-set-key (kbd "M-w") 'copy-region-or-line)
