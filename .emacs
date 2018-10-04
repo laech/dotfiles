@@ -268,38 +268,59 @@
 (if (string-equal system-type "darwin")
     (exec-path-from-shell-initialize))
 
-(setq
- keyboard
- '(
-   "f1" "f2" "f3" "f4" "f5" "f6" "f7" "f8" "f9" "f10" "f11" "f12"
-   "~" "!" "@" "#" "$" "%" "^" "&" "*" "(" ")" "_" "+" "backspace"
-   "`" "1" "2" "3" "4" "5" "6" "7" "8" "9" "0" "-" "="
-   "tab"
-   "Q" "W" "E" "R" "T" "Y" "U" "I" "O" "P" "{" "}" "|"
-   "q" "w" "e" "r" "t" "y" "u" "i" "o" "p" "[" "]" "\\"
-   "A" "S" "D" "F" "G" "H" "J" "K" "L" ":" "\"" "return"
-   "a" "s" "d" "f" "g" "h" "j" "k" "l" ";" "'"
-   "Z" "X" "C" "V" "B" "N" "M" "<" ">" "?"
-   "z" "x" "c" "v" "b" "n" "m" "," "." "/"
-   "space"
-   "insert" "home" "pageup"
-   "delete" "end" "pagedown"
-   "up"
-   "left" "down" "right"
-   ))
-
-(defun fmt-kbd (prefix key)
-  (kbd (if (> (length key) 1)
-           (concat "<" prefix key ">")
-         (concat prefix key))))
-
 (defun translate-super-keys ()
   (interactive)
-  (dolist (key keyboard)
-    (dolist (replacement '(("s-" . "C-")
-                           ("s-S-" . "C-S-")
-                           ("s-M-" . "C-M-")
-                           ("s-M-S-" . "s-M-S-")))
-      (let ((new-kbd (fmt-kbd (car replacement) key))
-            (old-kbd (fmt-kbd (cdr replacement) key)))
-        (define-key key-translation-map new-kbd old-kbd)))))
+
+  (defun fmt-kbd (prefix key)
+    (kbd (if (> (length key) 1)
+             (concat "<" prefix key ">")
+           (concat prefix key))))
+
+  (let ((keyboard
+         '(
+           "f1" "f2" "f3" "f4" "f5" "f6" "f7" "f8" "f9" "f10" "f11" "f12"
+           "~" "!" "@" "#" "$" "%" "^" "&" "*" "(" ")" "_" "+" "backspace"
+           "`" "1" "2" "3" "4" "5" "6" "7" "8" "9" "0" "-" "="
+           "tab"
+           "Q" "W" "E" "R" "T" "Y" "U" "I" "O" "P" "{" "}" "|"
+           "q" "w" "e" "r" "t" "y" "u" "i" "o" "p" "[" "]" "\\"
+           "A" "S" "D" "F" "G" "H" "J" "K" "L" ":" "\"" "return"
+           "a" "s" "d" "f" "g" "h" "j" "k" "l" ";" "'"
+           "Z" "X" "C" "V" "B" "N" "M" "<" ">" "?"
+           "z" "x" "c" "v" "b" "n" "m" "," "." "/"
+           "space"
+           "insert" "home" "pageup"
+           "delete" "end" "pagedown"
+           "up" "left" "down" "right"))
+
+        (translations
+         '(("s-" . "C-")
+           ("s-S-" . "C-S-")
+           ("s-M-" . "C-M-")
+           ("s-M-S-" . "s-M-S-"))))
+
+    (dolist (translation translations)
+      (dolist (key keyboard)
+        (let ((new-kbd (fmt-kbd (car translation) key))
+              (old-kbd (fmt-kbd (cdr translation) key)))
+          (define-key input-decode-map new-kbd old-kbd)))))
+
+  ;; Select all
+  (define-key input-decode-map (kbd "s-a") (kbd "C-a"))
+  (define-key input-decode-map (kbd "C-a") (kbd "C-x h"))
+
+  ;; Undo
+  (define-key input-decode-map (kbd "s-z") (kbd "C-z"))
+  (define-key input-decode-map (kbd "C-z") (kbd "C-_"))
+
+  ;; Cut
+  (define-key input-decode-map (kbd "s-x") (kbd "C-x"))
+  (define-key input-decode-map (kbd "C-x") (kbd "C-w"))
+
+  ;; Copy
+  (define-key input-decode-map (kbd "s-c") (kbd "C-c"))
+  (define-key input-decode-map (kbd "C-c") (kbd "M-w"))
+
+  ;; Paste
+  (define-key input-decode-map (kbd "s-v") (kbd "C-v"))
+  (define-key input-decode-map (kbd "C-v") (kbd "C-y")))
