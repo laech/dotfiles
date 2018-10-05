@@ -34,6 +34,7 @@ XTerm.vt100.reverseVideo: false
 
 ! 'showkey -a' to see key codes
 ! 'xev' to see key names
+! Super key behaves like Control
 XTerm.vt100.translations: #override \n\
     Super <Key>grave: string(0x00) \n\
     Super <Key>1: string(0x1b) string("[49;5u") \n\
