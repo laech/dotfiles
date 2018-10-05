@@ -31,10 +31,73 @@ XTerm.vt100.faceSize4: 12  ! Medium
 XTerm.vt100.faceSize5: 14  ! Large
 XTerm.vt100.faceSize6: 16  ! Huge
 XTerm.vt100.reverseVideo: false
+
+! 'showkey -a' to see key codes
+! 'xev' to see key names
+! Super key behaves like Control
 XTerm.vt100.translations: #override \n\
+    Super <Key>grave: string(0x00) \n\
+    Super <Key>1: string(0x1b) string("[49;5u") \n\
+    Super <Key>2: string(0x00) \n\
+    Super <Key>3: string(0x1b) \n\
+    Super <Key>4: string(0x1c) \n\
+    Super <Key>5: string(0x1d) \n\
+    Super <Key>6: string(0x1e) \n\
+    Super <Key>7: string(0x1f) \n\
+    Super <Key>8: string(0x7f) \n\
+    Super <Key>9: string(0x1b) string("[57;5u") \n\
+    Super <Key>0: string(0x1b) string("[48;5u") \n\
+    Super <Key>minus: string(0x1b) string("[45;5u") \n\
+    Super <Key>equal: string(0x1b) string("[61;5u") \n\
+    Super <Key>BackSpace: string(0x08) \n\
+    Super <Key>Tab: string(0x1b) string("[9;5u") \n\
+    Super <Key>bracketleft: string(0x1b) \n\
+    Super <Key>bracketright: string(0x1d) \n\
+    Super <Key>backslash: string(0x1c) \n\
+    Super <Key>semicolon: string(0x1b) string("[59;5u") \n\
+    Super <Key>apostrophe: string(0x1b) string("[39;5u") \n\
+    Super <Key>comma: string(0x1b) string("[44;5u") \n\
+    Super <Key>period: string(0x1b) string("[46;5u") \n\
+    Super <Key>slash: string(0x1f) \n\
+    Super <Key>a: string(0x01) \n\
+    Super <Key>b: string(0x02) \n\
+    Super <Key>c: string(0x03) \n\
+    Super <Key>d: string(0x04) \n\
+    Super <Key>e: string(0x05) \n\
+    Super <Key>f: string(0x06) \n\
+    Super <Key>g: string(0x07) \n\
+    Super <Key>h: string(0x08) \n\
+    Super <Key>i: string(0x09) \n\
+    Super <Key>j: string(0x0a) \n\
+    Super <Key>k: string(0x0b) \n\
+    Super <Key>l: string(0x0c) \n\
+    Super <Key>m: string(0x0d) \n\
+    Super <Key>n: string(0x0e) \n\
+    Super <Key>o: string(0x0f) \n\
+    Super <Key>p: string(0x10) \n\
+    Super <Key>q: string(0x11) \n\
+    Super <Key>r: string(0x12) \n\
+    Super <Key>s: string(0x13) \n\
+    Super <Key>t: string(0x14) \n\
+    Super <Key>u: string(0x15) \n\
+    Super <Key>v: string(0x16) \n\
+    Super <Key>w: string(0x17) \n\
+    Super <Key>x: string(0x18) \n\
+    Super <Key>y: string(0x19) \n\
+    Super <Key>z: string(0x1a) \n\
+    Super <Key>Left: string(0x1b) string("[1;5D") \n\
+    Super <Key>Right: string(0x1b) string("[1;5C") \n\
+    Super <Key>Up: string(0x1b) string("[1;5A") \n\
+    Super <Key>Down: string(0x1b) string("[1;5B") \n\
+    Super <Btn1Down>: popup-menu(mainMenu) \n\
+    Super <Btn2Down>: popup-menu(vtMenu) \n\
+    Super <Btn3Down>:popup-menu(fontMenu) \n\
+    <Key>F1: popup-menu(mainMenu) \n\
+    <Key>F2: popup-menu(vtMenu) \n\
+    <Key>F3: popup-menu(fontMenu) \n\
     <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0) \n\
-    Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
-    Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
+    Ctrl Shift <Key>c: copy-selection(CLIPBOARD) \n\
+    Ctrl Shift <Key>v: insert-selection(CLIPBOARD) \n\
 
 URxvt.iso14755: false
 URxvt.iso14755_52: false
