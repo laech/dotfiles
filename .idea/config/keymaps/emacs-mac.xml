@@ -472,6 +472,9 @@
   <action id="com.gitlab.lae.intellij.actions.DowncaseRegionOrToWordEnd">
     <keyboard-shortcut first-keystroke="alt l" />
   </action>
+  <action id="com.gitlab.lae.intellij.actions.PsiKill">
+    <keyboard-shortcut first-keystroke="ctrl alt k" />
+  </action>
   <action id="com.gitlab.lae.intellij.actions.UpcaseRegionOrToWordEnd">
     <keyboard-shortcut first-keystroke="alt u" />
   </action>
