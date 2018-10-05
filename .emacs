@@ -288,7 +288,7 @@
            "a" "s" "d" "f" "g" "h" "j" "k" "l" ";" "'"
            "Z" "X" "C" "V" "B" "N" "M" "<" ">" "?"
            "z" "x" "c" "v" "b" "n" "m" "," "." "/"
-           "space"
+           "SPC"
            "insert" "home" "pageup"
            "delete" "end" "pagedown"
            "up" "left" "down" "right"))
