@@ -269,12 +269,16 @@
     (exec-path-from-shell-initialize))
 
 (defun translate-super-keys ()
+  "Use Super as Control, use Control for standard shortcuts, e.g C-x for cut."
   (interactive)
 
   (defun fmt-kbd (prefix key)
-    (kbd (if (> (length key) 1)
-             (concat "<" prefix key ">")
-           (concat prefix key))))
+    (if (> (length key) 1)
+        (concat "<" prefix key ">")
+      (concat prefix key)))
+
+  (defun map-key (from-key to-key)
+    (define-key input-decode-map (kbd from-key) (kbd to-key)))
 
   (let ((keyboard
          '(
@@ -301,26 +305,16 @@
 
     (dolist (translation translations)
       (dolist (key keyboard)
-        (let ((new-kbd (fmt-kbd (car translation) key))
-              (old-kbd (fmt-kbd (cdr translation) key)))
-          (define-key input-decode-map new-kbd old-kbd)))))
+        (let ((from-key (fmt-kbd (car translation) key))
+              (to-key (fmt-kbd (cdr translation) key)))
+          (map-key from-key to-key)))))
 
-  ;; Select all
-  (define-key input-decode-map (kbd "s-a") (kbd "C-a"))
-  (define-key input-decode-map (kbd "C-a") (kbd "C-x h"))
-
-  ;; Undo
-  (define-key input-decode-map (kbd "s-z") (kbd "C-z"))
-  (define-key input-decode-map (kbd "C-z") (kbd "C-_"))
-
-  ;; Cut
-  (define-key input-decode-map (kbd "s-x") (kbd "C-x"))
-  (define-key input-decode-map (kbd "C-x") (kbd "C-w"))
-
-  ;; Copy
-  (define-key input-decode-map (kbd "s-c") (kbd "C-c"))
-  (define-key input-decode-map (kbd "C-c") (kbd "M-w"))
-
-  ;; Paste
-  (define-key input-decode-map (kbd "s-v") (kbd "C-v"))
-  (define-key input-decode-map (kbd "C-v") (kbd "C-y")))
+  (map-key "C-z" "C-_")
+  (map-key "C-x" "C-w")
+  (map-key "C-c" "M-w")
+  (map-key "C-v" "C-y")
+  (map-key "C-f" "C-s")
+  (map-key "C-o" "C-x C-f")
+  (map-key "C-q" "C-x C-c")
+  (map-key "C-s" "C-x C-s")
+  (map-key "C-w" "C-x 5 0"))
