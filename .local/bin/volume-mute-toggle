@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+set -o errexit
+
+pactl set-sink-mute @DEFAULT_SINK@ toggle
