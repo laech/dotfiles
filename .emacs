@@ -319,5 +319,5 @@
   (map-key "C-s" "C-x C-s")
   (map-key "C-w" "C-x 5 0"))
 
-(if (display-graphic-p)
+(if (and (eq system-type 'gnu/linux) (display-graphic-p))
     (translate-super-keys))
