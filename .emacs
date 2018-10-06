@@ -318,3 +318,5 @@
   (map-key "C-q" "C-x C-c")
   (map-key "C-s" "C-x C-s")
   (map-key "C-w" "C-x 5 0"))
+
+(translate-super-keys)
