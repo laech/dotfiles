@@ -319,4 +319,5 @@
   (map-key "C-s" "C-x C-s")
   (map-key "C-w" "C-x 5 0"))
 
-(translate-super-keys)
+(if (display-graphic-p)
+    (translate-super-keys))

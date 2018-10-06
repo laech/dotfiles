@@ -1,6 +1,6 @@
 xrdb -merge -I"${HOME}" ~/.Xresources
 
-[[ -f /usr/share/X11/xkb/symbols/custom ]] && setxkbmap -option '' emacs-linacs
+setxkbmap -option '' 'emacs-linacs(pc)'
 
 if [[ -d /etc/X11/xinit/xinitrc.d ]]; then
     for file in /etc/X11/xinit/xinitrc.d/*.sh; do

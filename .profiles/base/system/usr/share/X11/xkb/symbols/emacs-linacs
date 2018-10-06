@@ -1,7 +1,11 @@
 
 // To enable, save this file as /usr/share/X11/xkb/symbols/emacs-linacs and run:
 //
-//   setxkbmap -option '' "emacs-linacs"
+//   setxkbmap -option '' "emacs-linacs(pc)"
+//
+// or
+//
+//   setxkbmap -option '' "emacs-linacs(mac)"
 //
 // If fcitx/ibus is in use, they need to be configured not to override
 // the system setting.
@@ -9,16 +13,42 @@
 // For fcitx disable: Configure | Addon | Advanced | X Keyboard Integration
 // | Configure | Allow to Override System XKB Settings
 
-default partial alphanumeric_keys
-xkb_symbols "basic" {
+partial modifier_keys alphanumeric_keys
+xkb_symbols "base" {
 
   include "us"
-  include "ctrl(swap_lwin_lctl)"
-  include "ctrl(swap_rwin_rctl)"
   include "shift(both_capslock)"
 
-  key <LCTL> {[ ISO_Level3_Shift ]};
+  replace key <CAPS> {[ Super_L ]};
 
-  key <CAPS> {[ Super_L ]};
+};
 
+partial modifier_keys alphanumeric_keys
+xkb_symbols "pc" {
+  include "emacs-linacs(base)"
+
+  replace key <LALT> {[ Control_L, Control_L ]};
+  replace key <LWIN> {[ Alt_L, Meta_L ]};
+  replace key <LCTL> {[ ISO_Level3_Shift, Super_L ]};
+  modifier_map Mod1 { <LWIN> };
+  modifier_map Control { <LALT> };
+
+  replace key <RALT> {[ Control_R, Control_R ]};
+  replace key <RWIN> {[ Alt_R, Meta_R ]};
+  replace key <RCTL> {[ ISO_Level3_Shift, Super_R ]};
+  modifier_map Mod1 { <RWIN> };
+  modifier_map Control { <RALT> };
+};
+
+partial modifier_keys alphanumeric_keys
+xkb_symbols "mac" {
+  include "emacs-linacs(base)"
+
+  replace key <LWIN> {[ Control_L ]};
+  replace key <LCTL> {[ ISO_Level3_Shift, Super_L ]};
+  modifier_map Control { <LWIN> };
+
+  replace key <RWIN> {[ Control_R ]};
+  replace key <RCTL> {[ ISO_Level3_Shift, Super_R ]};
+  modifier_map Control { <RWIN> };
 };
