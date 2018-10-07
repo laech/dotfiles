@@ -331,13 +331,13 @@
     <keyboard-shortcut first-keystroke="meta o" />
     <keyboard-shortcut first-keystroke="alt o" />
   </action>
+  <action id="GotoDeclaration" />
   <action id="GotoFile">
     <keyboard-shortcut first-keystroke="shift meta o" />
     <keyboard-shortcut first-keystroke="shift alt o" />
   </action>
   <action id="GotoImplementation">
-    <keyboard-shortcut first-keystroke="shift meta b" />
-    <mouse-shortcut keystroke="shift meta button1" />
+    <keyboard-shortcut first-keystroke="meta i" />
   </action>
   <action id="GotoLine" />
   <action id="GotoNextElementUnderCaretUsage" />
