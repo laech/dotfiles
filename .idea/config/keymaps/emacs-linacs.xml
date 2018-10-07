@@ -54,6 +54,9 @@
   <action id="Android.HotswapChanges" />
   <action id="AutoIndentLines" />
   <action id="CallHierarchy" />
+  <action id="ChangeSignature">
+    <keyboard-shortcut first-keystroke="ctrl alt s" />
+  </action>
   <action id="ChangeTypeSignature" />
   <action id="ChangesView.GroupBy.Directory" />
   <action id="ChangesView.Move" />
@@ -80,7 +83,9 @@
   <action id="CommentByLineComment">
     <keyboard-shortcut first-keystroke="alt semicolon" />
   </action>
+  <action id="Console.History.Browse" />
   <action id="ConvertJavaToKotlin" />
+  <action id="CopyElement" />
   <action id="CopyPaths" />
   <action id="Diff.ApplyLeftSide">
     <keyboard-shortcut first-keystroke="alt altGraph period" />
@@ -333,6 +338,7 @@
   <action id="Generate">
     <keyboard-shortcut first-keystroke="ctrl n" />
   </action>
+  <action id="Git.Commit.And.Push.Executor" />
   <action id="GotoAction">
     <keyboard-shortcut first-keystroke="alt x" />
   </action>
@@ -354,6 +360,10 @@
   <action id="GotoFile">
     <keyboard-shortcut first-keystroke="shift ctrl o" />
   </action>
+  <action id="GotoImplementation">
+    <keyboard-shortcut first-keystroke="shift ctrl b" />
+    <mouse-shortcut keystroke="shift control button1" />
+  </action>
   <action id="GotoLine" />
   <action id="GotoNextElementUnderCaretUsage" />
   <action id="GotoPrevElementUnderCaretUsage" />
@@ -361,11 +371,15 @@
   <action id="GotoSymbol">
     <keyboard-shortcut first-keystroke="ctrl alt o" />
   </action>
+  <action id="GotoTypeDeclaration" />
   <action id="HideActiveWindow" />
   <action id="HighlightUsagesInFile" />
   <action id="HippieBackwardCompletion" />
   <action id="HippieCompletion" />
   <action id="ImplementMethods" />
+  <action id="Inline">
+    <keyboard-shortcut first-keystroke="ctrl alt i" />
+  </action>
   <action id="InsertLiveTemplate" />
   <action id="IntroduceFunctionalParameter" />
   <action id="IntroduceTypeAlias" />
@@ -379,6 +393,9 @@
   <action id="MethodHierarchy.OverrideMethodAction" />
   <action id="MethodOverloadSwitchDown" />
   <action id="MethodOverloadSwitchUp" />
+  <action id="Move">
+    <keyboard-shortcut first-keystroke="ctrl alt n" />
+  </action>
   <action id="MoveElementLeft">
     <keyboard-shortcut first-keystroke="shift alt t" />
   </action>
@@ -426,6 +443,9 @@
   <action id="Refactorings.QuickListPopupAction" />
   <action id="ReformatCode">
     <keyboard-shortcut first-keystroke="alt altGraph back_slash" />
+  </action>
+  <action id="RenameElement">
+    <keyboard-shortcut first-keystroke="ctrl alt r" />
   </action>
   <action id="Replace">
     <keyboard-shortcut first-keystroke="shift alt 5" />
@@ -476,6 +496,7 @@
   </action>
   <action id="Stop" />
   <action id="StopBackgroundProcesses" />
+  <action id="SurroundWith" />
   <action id="SurroundWithLiveTemplate" />
   <action id="SwitchCoverage" />
   <action id="Synchronize" />
