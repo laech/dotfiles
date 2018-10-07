@@ -37,6 +37,7 @@
     <keyboard-shortcut first-keystroke="ctrl 5" />
   </action>
   <action id="ActivateFavoritesToolWindow" />
+  <action id="ActivateHierarchyToolWindow" />
   <action id="ActivateMessagesToolWindow">
     <keyboard-shortcut first-keystroke="ctrl 0" />
   </action>

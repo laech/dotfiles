@@ -170,7 +170,7 @@
     (set-frame-parameter nil 'bottom-divider-width 0)))
 
 (global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
-(global-set-key (kbd "C-M-d") 'duplicate-region-or-line)
+(global-set-key (kbd "s-d") 'duplicate-region-or-line)
 (global-set-key (kbd "M-w") 'copy-region-or-line)
 (global-set-key (kbd "C-w") 'kill-region-or-line)
 (global-set-key (kbd "M-N") 'move-line-down)
@@ -309,6 +309,7 @@
               (to-key (fmt-kbd (cdr translation) key)))
           (map-key from-key to-key)))))
 
+  (map-key "C-d" "s-d")
   (map-key "C-z" "C-_")
   (map-key "C-x" "C-w")
   (map-key "C-c" "M-w")
