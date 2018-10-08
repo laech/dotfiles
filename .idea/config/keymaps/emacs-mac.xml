@@ -344,7 +344,10 @@
   <action id="GotoBookmark8" />
   <action id="GotoBookmark9" />
   <action id="GotoChangedFile" />
-  <action id="GotoDeclaration" />
+  <action id="GotoDeclaration">
+    <keyboard-shortcut first-keystroke="meta b" />
+    <mouse-shortcut keystroke="meta button1" />
+  </action>
   <action id="GotoImplementation">
     <keyboard-shortcut first-keystroke="meta i" />
   </action>
