@@ -87,7 +87,7 @@
   <action id="Console.History.Browse" />
   <action id="ConvertJavaToKotlin" />
   <action id="CopyElement" />
-  <action id="CopyPaths" />
+  <action id="CopyReference" />
   <action id="Diff.ApplyLeftSide">
     <keyboard-shortcut first-keystroke="alt altGraph period" />
   </action>

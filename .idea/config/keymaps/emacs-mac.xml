@@ -78,7 +78,6 @@
   <action id="Console.History.Browse" />
   <action id="ConvertJavaToKotlin" />
   <action id="CopyElement" />
-  <action id="CopyPaths" />
   <action id="CopyReference" />
   <action id="Debug" />
   <action id="Diff.ApplyLeftSide">
