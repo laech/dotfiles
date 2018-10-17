@@ -1,4 +1,4 @@
 # Requires turning on cgroup2 in kernel boot parameters
 # systemd.unified_cgroup_hierarchy=true in /etc/default/grub
 # and regenerate config
-exec systemd-run --user --scope -p MemoryMax=8G xterm -e tmux
+exec systemd-run --user --scope -p MemoryMax=8G xterm $@ -e tmux
