@@ -15,3 +15,6 @@ for dir in "${dirs[@]}"; do
         cp -v "$dir/$file" "/$dir/"
     done
 done
+
+systemctl enable tlp
+systemctl start tlp
