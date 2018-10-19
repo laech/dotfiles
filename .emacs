@@ -36,12 +36,6 @@
  '(company-minimum-prefix-length 1)
  '(company-tooltip-idle-delay 0)
  '(delete-selection-mode t)
- '(elfeed-feeds
-   (quote
-    (("https://news.ycombinator.com/rss")
-     ("https://rachelbythebay.com/w/atom.xml"))))
- '(elfeed-search-title-max-width 120)
- '(elfeed-search-title-min-width 80)
  '(global-auto-revert-mode t)
  '(ido-enable-flex-matching t)
  '(ido-use-virtual-buffers t)
@@ -60,7 +54,7 @@
      ("marmalade" . "https://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (writeroom-mode which-key undo-tree smex rainbow-delimiters projectile paredit multiple-cursors magit intero ido-ubiquitous hindent haskell-snippets expand-region exec-path-from-shell elfeed diff-hl)))
+    (writeroom-mode which-key undo-tree smex rainbow-delimiters projectile paredit multiple-cursors magit intero ido-ubiquitous hindent haskell-snippets expand-region exec-path-from-shell diff-hl)))
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
  '(scroll-margin 1)
