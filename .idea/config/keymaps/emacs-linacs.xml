@@ -37,6 +37,9 @@
     <keyboard-shortcut first-keystroke="ctrl 5" />
   </action>
   <action id="ActivateFavoritesToolWindow" />
+  <action id="ActivateFindToolWindow">
+    <keyboard-shortcut first-keystroke="ctrl 3" />
+  </action>
   <action id="ActivateHierarchyToolWindow" />
   <action id="ActivateMessagesToolWindow">
     <keyboard-shortcut first-keystroke="ctrl 0" />
@@ -73,6 +76,9 @@
     <keyboard-shortcut first-keystroke="alt altGraph r" />
   </action>
   <action id="CloseActiveTab" />
+  <action id="CloseContent">
+    <keyboard-shortcut first-keystroke="ctrl w" />
+  </action>
   <action id="CodeCompletion">
     <keyboard-shortcut first-keystroke="alt altGraph i" />
     <keyboard-shortcut first-keystroke="alt tab" />
@@ -188,10 +194,12 @@
     <keyboard-shortcut first-keystroke="alt d" />
     <keyboard-shortcut first-keystroke="alt delete" />
     <keyboard-shortcut first-keystroke="altGraph delete" />
+    <keyboard-shortcut first-keystroke="ctrl delete" />
   </action>
   <action id="EditorKillToWordStart">
     <keyboard-shortcut first-keystroke="alt back_space" />
     <keyboard-shortcut first-keystroke="altGraph back_space" />
+    <keyboard-shortcut first-keystroke="ctrl back_space" />
   </action>
   <action id="EditorLeft">
     <keyboard-shortcut first-keystroke="left" />
@@ -339,7 +347,9 @@
   <action id="Generate">
     <keyboard-shortcut first-keystroke="ctrl n" />
   </action>
-  <action id="Git.Commit.And.Push.Executor" />
+  <action id="Git.Commit.And.Push.Executor">
+    <keyboard-shortcut first-keystroke="shift ctrl k" />
+  </action>
   <action id="GotoAction">
     <keyboard-shortcut first-keystroke="alt x" />
   </action>
@@ -358,12 +368,12 @@
     <keyboard-shortcut first-keystroke="ctrl o" />
   </action>
   <action id="GotoCustomRegion" />
-  <action id="GotoDeclaration" />
   <action id="GotoFile">
     <keyboard-shortcut first-keystroke="shift ctrl o" />
   </action>
   <action id="GotoImplementation">
-    <keyboard-shortcut first-keystroke="ctrl i" />
+    <keyboard-shortcut first-keystroke="shift ctrl b" />
+    <mouse-shortcut keystroke="shift control button1" />
   </action>
   <action id="GotoLine" />
   <action id="GotoNextElementUnderCaretUsage" />
@@ -373,6 +383,9 @@
     <keyboard-shortcut first-keystroke="ctrl alt o" />
   </action>
   <action id="GotoTypeDeclaration" />
+  <action id="Hg.Commit.And.Push.Executor">
+    <keyboard-shortcut first-keystroke="shift ctrl k" />
+  </action>
   <action id="HideActiveWindow" />
   <action id="HighlightUsagesInFile" />
   <action id="HippieBackwardCompletion" />
@@ -481,7 +494,9 @@
   <action id="ShowNavBar">
     <keyboard-shortcut first-keystroke="ctrl up" />
   </action>
-  <action id="ShowProjectStructureSettings" />
+  <action id="ShowProjectStructureSettings">
+    <keyboard-shortcut first-keystroke="ctrl semicolon" />
+  </action>
   <action id="ShowReformatFileDialog">
     <keyboard-shortcut first-keystroke="shift alt altGraph back_slash" />
   </action>
@@ -547,6 +562,9 @@
   </action>
   <action id="com.gitlab.lae.intellij.actions.DowncaseRegionOrToWordEnd">
     <keyboard-shortcut first-keystroke="alt l" />
+  </action>
+  <action id="com.gitlab.lae.intellij.actions.PsiKill">
+    <keyboard-shortcut first-keystroke="alt altGraph k" />
   </action>
   <action id="com.gitlab.lae.intellij.actions.UpcaseRegionOrToWordEnd">
     <keyboard-shortcut first-keystroke="alt u" />
