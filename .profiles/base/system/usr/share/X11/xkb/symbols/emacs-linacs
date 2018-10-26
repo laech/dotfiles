@@ -18,9 +18,106 @@ xkb_symbols "base" {
 
   include "us"
   include "shift(both_capslock)"
+  include "level3(modifier_mapping)"
+  include "level5(modifier_mapping)"
 
-  replace key <CAPS> {[ Super_L ]};
+  replace key <CAPS> {[ ISO_Level5_Shift ]};
 
+  key <AC01> { // a
+    type="EIGHT_LEVEL",
+    actions=[
+      NoAction(),
+      NoAction(),
+      NoAction(),
+      NoAction(),
+      Redirect(key=<HOME>, clearmods=All),
+      Redirect(key=<HOME>, clearmods=All, mods=Shift)
+    ]
+  };
+
+  key <AD03> { // e
+    type="EIGHT_LEVEL",
+    actions=[
+      NoAction(),
+      NoAction(),
+      NoAction(),
+      NoAction(),
+      Redirect(key=<END>, clearmods=All),
+      Redirect(key=<END>, clearmods=All, mods=Shift)
+    ]
+  };
+
+  key <AD10> { // p
+    type="EIGHT_LEVEL",
+    actions=[
+      NoAction(),
+      NoAction(),
+      NoAction(),
+      NoAction(),
+      Redirect(key=<UP>, clearmods=All),
+      Redirect(key=<UP>, clearmods=All, mods=Shift)
+    ]
+  };
+
+  key <AB06> { // n
+    type="EIGHT_LEVEL",
+    actions=[
+      NoAction(),
+      NoAction(),
+      NoAction(),
+      NoAction(),
+      Redirect(key=<DOWN>, clearmods=All),
+      Redirect(key=<DOWN>, clearmods=All, mods=Shift)
+    ]
+  };
+
+  key <AB05> { // b
+    type="EIGHT_LEVEL",
+    actions=[
+      NoAction(),
+      NoAction(),
+      NoAction(),
+      NoAction(),
+      Redirect(key=<LEFT>, clearmods=All),
+      Redirect(key=<LEFT>, clearmods=All, mods=Shift)
+    ]
+  };
+
+  key <AC04> { // f
+    type="EIGHT_LEVEL",
+    actions=[
+      NoAction(),
+      NoAction(),
+      NoAction(),
+      NoAction(),
+      Redirect(key=<RGHT>, clearmods=All),
+      Redirect(key=<RGHT>, clearmods=All, mods=Shift)
+    ]
+  };
+
+  key <AC03> { // d
+    type="EIGHT_LEVEL",
+    actions=[
+      NoAction(),
+      NoAction(),
+      NoAction(),
+      NoAction(),
+      Redirect(key=<DELE>, clearmods=All),
+      Redirect(key=<DELE>, clearmods=All, mods=Shift)
+    ]
+  };
+
+  key <AC05> { // g
+    type="EIGHT_LEVEL",
+    actions=[
+      NoAction(),
+      NoAction(),
+      NoAction(),
+      NoAction(),
+      Redirect(key=<ESC>, clearmods=All),
+      Redirect(key=<ESC>, clearmods=All, mods=Shift)
+    ]
+  };
 };
 
 partial modifier_keys alphanumeric_keys
