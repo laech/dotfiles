@@ -309,6 +309,7 @@
   (map-key "C-c" "M-w")
   (map-key "C-v" "C-y")
   (map-key "C-f" "C-s")
+  (map-key "C-a" "C-x h")
   (map-key "C-o" "C-x C-f")
   (map-key "C-q" "C-x C-c")
   (map-key "C-s" "C-x C-s")
