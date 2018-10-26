@@ -10,7 +10,6 @@ readonly packages=(
   i3status
   xorg-server
   xorg-xinit
-  xautolock
   xss-lock
   rofi
   feh
