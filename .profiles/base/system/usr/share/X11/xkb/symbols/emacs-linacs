@@ -25,6 +25,7 @@ xkb_symbols "base" {
 
   key <AC01> { // a
     type="EIGHT_LEVEL",
+    symbols=[a, A, a, A],
     actions=[
       NoAction(),
       NoAction(),
@@ -37,6 +38,7 @@ xkb_symbols "base" {
 
   key <AD03> { // e
     type="EIGHT_LEVEL",
+    symbols=[e, E, e, E],
     actions=[
       NoAction(),
       NoAction(),
@@ -49,6 +51,7 @@ xkb_symbols "base" {
 
   key <AD10> { // p
     type="EIGHT_LEVEL",
+    symbols=[p, P, p, P],
     actions=[
       NoAction(),
       NoAction(),
@@ -61,6 +64,7 @@ xkb_symbols "base" {
 
   key <AB06> { // n
     type="EIGHT_LEVEL",
+    symbols=[n, N, n, N],
     actions=[
       NoAction(),
       NoAction(),
@@ -73,6 +77,7 @@ xkb_symbols "base" {
 
   key <AB05> { // b
     type="EIGHT_LEVEL",
+    symbols=[b, B, b, B],
     actions=[
       NoAction(),
       NoAction(),
@@ -85,6 +90,7 @@ xkb_symbols "base" {
 
   key <AC04> { // f
     type="EIGHT_LEVEL",
+    symbols=[f, F, f, F],
     actions=[
       NoAction(),
       NoAction(),
@@ -97,6 +103,7 @@ xkb_symbols "base" {
 
   key <AC03> { // d
     type="EIGHT_LEVEL",
+    symbols=[d, D, d, D],
     actions=[
       NoAction(),
       NoAction(),
@@ -109,6 +116,7 @@ xkb_symbols "base" {
 
   key <AC05> { // g
     type="EIGHT_LEVEL",
+    symbols=[g, G, g, G],
     actions=[
       NoAction(),
       NoAction(),
@@ -142,10 +150,10 @@ xkb_symbols "mac" {
   include "emacs-linacs(base)"
 
   replace key <LWIN> {[ Control_L ]};
-  replace key <LCTL> {[ ISO_Level3_Shift, Super_L ]};
+  replace key <LCTL> {[ ISO_Level3_Shift ]};
   modifier_map Control { <LWIN> };
 
   replace key <RWIN> {[ Control_R ]};
-  replace key <RCTL> {[ ISO_Level3_Shift, Super_R ]};
+  replace key <RCTL> {[ ISO_Level3_Shift ]};
   modifier_map Control { <RWIN> };
 };
