@@ -18,10 +18,9 @@ xkb_symbols "base" {
 
   include "us"
   include "shift(both_capslock)"
-  include "level3(modifier_mapping)"
-  include "level5(modifier_mapping)"
 
-  replace key <CAPS> {[ ISO_Level5_Shift ]};
+  key <CAPS> {[ ISO_Level5_Shift ]};
+  modifier_map Mod3 { <CAPS> };
 
   key <AC01> { // a
     type="EIGHT_LEVEL",
@@ -132,16 +131,18 @@ partial modifier_keys alphanumeric_keys
 xkb_symbols "pc" {
   include "emacs-linacs(base)"
 
-  replace key <LALT> {[ Control_L, Control_L ]};
-  replace key <LWIN> {[ Alt_L, Meta_L ]};
-  replace key <LCTL> {[ ISO_Level3_Shift, Super_L ]};
+  key <LALT> {[ Control_L, Control_L ]};
+  key <LWIN> {[ Alt_L, Meta_L ]};
+  key <LCTL> {[ ISO_Level3_Shift ]};
   modifier_map Mod1 { <LWIN> };
+  modifier_map Mod4 { <LCTL> };
   modifier_map Control { <LALT> };
 
-  replace key <RALT> {[ Control_R, Control_R ]};
-  replace key <RWIN> {[ Alt_R, Meta_R ]};
-  replace key <RCTL> {[ ISO_Level3_Shift, Super_R ]};
+  key <RALT> {[ Control_R, Control_R ]};
+  key <RWIN> {[ Alt_R, Meta_R ]};
+  key <RCTL> {[ ISO_Level3_Shift ]};
   modifier_map Mod1 { <RWIN> };
+  modifier_map Mod4 { <RCTL> };
   modifier_map Control { <RALT> };
 };
 
@@ -149,11 +150,13 @@ partial modifier_keys alphanumeric_keys
 xkb_symbols "mac" {
   include "emacs-linacs(base)"
 
-  replace key <LWIN> {[ Control_L ]};
-  replace key <LCTL> {[ ISO_Level3_Shift ]};
+  key <LWIN> {[ Control_L ]};
+  key <LCTL> {[ ISO_Level3_Shift ]};
+  modifier_map Mod4 { <LCTL> };
   modifier_map Control { <LWIN> };
 
-  replace key <RWIN> {[ Control_R ]};
-  replace key <RCTL> {[ ISO_Level3_Shift ]};
+  key <RWIN> {[ Control_R ]};
+  key <RCTL> {[ ISO_Level3_Shift ]};
+  modifier_map Mod4 { <RCTL> };
   modifier_map Control { <RWIN> };
 };
