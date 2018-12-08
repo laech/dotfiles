@@ -126,7 +126,8 @@ if type __git_ps1 &> /dev/null; then
     precmd() {
         GIT_PS1_DESCRIBE_STYLE="branch"
         GIT_PS1_SHOWUPSTREAM="verbose"
-        __git_ps1 "%B%F{blue}%~%f%F{magenta}" " %f%b%(?.%%.%F{red}%#%f) "
+        __git_ps1 "%B%F{blue}%n@%m %~%f%F{magenta}" " %f%b%(?.%%.%F{red}%#%f) "
+        # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
     }
 fi
 
