@@ -3,6 +3,69 @@
 set -o nounset
 set -o errexit
 
+readonly packages=(
+
+  i3-wm
+  i3lock
+  i3status
+  xorg-server
+  xorg-xinit
+  xss-lock
+  rofi
+  feh
+
+  firefox
+
+  tmux
+  xterm
+  rxvt-unicode
+  xsel
+  zsh
+  zsh-completions
+
+  git
+
+  vim
+  emacs
+
+  pulseaudio
+  pavucontrol
+
+  ttf-dejavu
+  ttf-liberation
+  ttf-ubuntu-font-family
+  otf-font-awesome
+  noto-fonts
+  noto-fonts-cjk
+  noto-fonts-emoji
+
+  jdk8-openjdk
+  openjdk8-src
+
+  argyllcms
+  tlp
+  powertop
+  x86_energy_perf_policy
+  ethtool
+  smartmontools
+
+  compton
+  numlockx
+
+  ibus
+  ibus-libpinyin
+
+  wpa_supplicant
+
+  openssh
+)
+
+pacman -S --needed "${packages[@]}"
+
+ln -vsfn ../conf.avail/30-ttf-liberation-sans.conf  /etc/fonts/conf.d/
+ln -vsfn ../conf.avail/30-ttf-liberation-serif.conf /etc/fonts/conf.d/
+ln -vsfn ../conf.avail/30-ttf-liberation-mono.conf  /etc/fonts/conf.d/
+
 readonly dirs=(
     'usr/share/X11/xkb/symbols'
 )

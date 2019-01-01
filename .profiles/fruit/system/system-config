@@ -3,6 +3,16 @@
 set -o nounset
 set -o errexit
 
+readonly packages=(
+    base-devel
+    dkms
+    linux-headers
+    broadcom-wl-dkms
+    nvidia-340xx
+)
+
+pacman -S --needed "${packages[@]}"
+
 readonly dirs=(
     'etc/modprobe.d'
     'etc/systemd/system/dhcpcd@wlp2s0.service.d'
