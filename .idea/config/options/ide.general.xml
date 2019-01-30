@@ -13,5 +13,6 @@
     <entry key="search.everywhere.configurations" value="false" />
     <entry key="search.everywhere.actions" value="false" />
     <entry key="editor.distraction.free.mode" value="true" />
+    <entry key="git.explicit.commit.renames.prohibit.multiple.calls" value="false" />
   </component>
 </application>

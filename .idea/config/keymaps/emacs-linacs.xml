@@ -107,6 +107,7 @@
   <action id="DuplicatesForm.SendToLeft" />
   <action id="EditSource">
     <keyboard-shortcut first-keystroke="alt period" />
+    <mouse-shortcut keystroke="button2" />
   </action>
   <action id="Editor Copy">
     <keyboard-shortcut first-keystroke="alt w" />
