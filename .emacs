@@ -79,6 +79,11 @@
        (move-to-column column))))
 (put 'save-column 'lisp-indent-function 0)
 
+(defun start-new-line ()
+  (interactive "*")
+  (end-of-line)
+  (newline-and-indent))
+
 (defun move-line-up ()
   (interactive "*")
   (save-column
@@ -163,6 +168,7 @@
     (setq-default mode-line-format initial-mode-line-format)
     (set-frame-parameter nil 'bottom-divider-width 0)))
 
+(global-set-key (kbd "<S-return>") 'start-new-line)
 (global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
 (global-set-key (kbd "s-d") 'duplicate-region-or-line)
 (global-set-key (kbd "M-w") 'copy-region-or-line)
