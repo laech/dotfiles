@@ -259,20 +259,15 @@
 (if (display-graphic-p)
     (toggle-mode-line))
 
-(if (string-equal system-type "darwin")
+(if (eq system-type 'darwin)
     (exec-path-from-shell-initialize))
 
-(defun fmt-kbd (prefix key)
-  (if (> (length key) 1)
-      (concat "<" prefix key ">")
-    (concat prefix key)))
+(when (and (eq system-type 'gnu/linux) (display-graphic-p))
 
-(defun map-key (from-key to-key)
-  (define-key input-decode-map (kbd from-key) (kbd to-key)))
-
-(defun translate-super-keys ()
-  "Use Super as Control, use Control for standard shortcuts, e.g C-x for cut."
-  (interactive)
+  (defun fmt-kbd (prefix key)
+    (kbd (if (> (length key) 1)
+             (concat "<" prefix key ">")
+           (concat prefix key))))
 
   (let ((keyboard
          '(
@@ -301,27 +296,46 @@
       (dolist (key keyboard)
         (let ((from-key (fmt-kbd (car translation) key))
               (to-key (fmt-kbd (cdr translation) key)))
-          (map-key from-key to-key)))))
+          (define-key input-decode-map from-key to-key))))
 
-  (map-key "C-d" "s-d")
-  (map-key "C-z" "C-_")
-  (map-key "C-Z" "C-?")
-  (map-key "C-x" "C-w")
-  (map-key "C-c" "M-w")
-  (map-key "C-v" "C-y")
-  (map-key "C-f" "C-s")
-  (map-key "C-a" "C-x h")
-  (map-key "C-o" "C-x C-f")
-  (map-key "C-q" "C-x C-c")
-  (map-key "C-s" "C-x C-s")
-  (map-key "C-w" "C-x 0")
-  (map-key "C-W" "C-x 1")
-  (map-key "C-e" "C-x C-b"))
-
-(if (and (eq system-type 'gnu/linux) (display-graphic-p))
-    (translate-super-keys))
+    (dolist
+        (mapping
+         '(("C-q" . "C-x C-c")
+           ("C-w" . "C-x 0")
+           ("C-W" . "C-x 1")
+           ("C-e" . "C-x C-b")
+           ("C-o" . "C-x C-f")
+           ("C-a" . "C-x h")
+           ("C-s" . "C-x C-s")
+           ("C-d" . "s-d")
+           ("C-f" . "C-s")
+           ("C-z" . "C-_")
+           ("C-Z" . "C-?")
+           ("C-x" . "C-w")
+           ("C-c" . "M-w")
+           ("C-v" . "C-y")))
+      (define-key input-decode-map
+        (kbd (car mapping))
+        (kbd (cdr mapping))))))
 
 (when (eq system-type 'darwin)
-  (map-key "s-w" "C-x 0")
-  (map-key "s-W" "C-x 1")
-  (map-key "s-e" "C-x C-b"))
+  (dolist
+      (mapping
+       '(("s-q" . "C-x C-c")
+         ("s-w" . "C-x 0")
+         ("s-W" . "C-x 1")
+         ("s-e" . "C-x C-b")
+         ("s-r" . "C-r")
+         ("s-o" . "C-x C-f")
+         ("s-a" . "C-x h")
+         ("s-s" . "C-x C-s")
+         ("s-f" . "C-s")
+         ("s-z" . "C-/")
+         ("s-Z" . "C-?")
+         ("s-x" . "C-w")
+         ("s-c" . "M-w")
+         ("s-v" . "C-y")))
+    (define-key input-decode-map
+      (kbd (car mapping))
+      (kbd (cdr mapping))))
+  (global-set-key (kbd "s-d") 'duplicate-region-or-line))
