@@ -262,17 +262,17 @@
 (if (string-equal system-type "darwin")
     (exec-path-from-shell-initialize))
 
+(defun fmt-kbd (prefix key)
+  (if (> (length key) 1)
+      (concat "<" prefix key ">")
+    (concat prefix key)))
+
+(defun map-key (from-key to-key)
+  (define-key input-decode-map (kbd from-key) (kbd to-key)))
+
 (defun translate-super-keys ()
   "Use Super as Control, use Control for standard shortcuts, e.g C-x for cut."
   (interactive)
-
-  (defun fmt-kbd (prefix key)
-    (if (> (length key) 1)
-        (concat "<" prefix key ">")
-      (concat prefix key)))
-
-  (defun map-key (from-key to-key)
-    (define-key input-decode-map (kbd from-key) (kbd to-key)))
 
   (let ((keyboard
          '(
@@ -305,6 +305,7 @@
 
   (map-key "C-d" "s-d")
   (map-key "C-z" "C-_")
+  (map-key "C-Z" "C-?")
   (map-key "C-x" "C-w")
   (map-key "C-c" "M-w")
   (map-key "C-v" "C-y")
@@ -313,7 +314,14 @@
   (map-key "C-o" "C-x C-f")
   (map-key "C-q" "C-x C-c")
   (map-key "C-s" "C-x C-s")
-  (map-key "C-w" "C-x 5 0"))
+  (map-key "C-w" "C-x 0")
+  (map-key "C-W" "C-x 1")
+  (map-key "C-e" "C-x C-b"))
 
 (if (and (eq system-type 'gnu/linux) (display-graphic-p))
     (translate-super-keys))
+
+(when (eq system-type 'darwin)
+  (map-key "s-w" "C-x 0")
+  (map-key "s-W" "C-x 1")
+  (map-key "s-e" "C-x C-b"))
