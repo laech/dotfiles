@@ -329,9 +329,6 @@
   <action id="JumpToNextChange">
     <keyboard-shortcut first-keystroke="shift ctrl alt right" />
   </action>
-  <action id="Macro.transpose-chars">
-    <keyboard-shortcut first-keystroke="ctrl t" />
-  </action>
   <action id="MainMenu">
     <keyboard-shortcut first-keystroke="f10" />
   </action>
