@@ -191,9 +191,6 @@
 
 (global-set-key (kbd "C-x g") 'magit-status)
 
-(global-set-key (kbd "<redo>") 'undo-tree-redo)
-(global-set-key (kbd "<again>") 'undo-tree-redo)
-
 (add-hook 'after-init-hook #'global-undo-tree-mode)
 (add-hook 'after-init-hook #'ido-everywhere)
 (add-hook 'after-init-hook #'ido-ubiquitous-mode)
@@ -214,6 +211,12 @@
 
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 (add-hook 'prog-mode-hook #'yas-minor-mode)
+
+(with-eval-after-load 'paredit
+  (defun transpose-sexps-reverse (arg)
+    (interactive "*p")
+    (transpose-sexps (- arg)))
+  (define-key paredit-mode-map (kbd "C-M-S-t") 'transpose-sexps-reverse))
 
 (with-eval-after-load 'haskell-mode
   (add-hook 'haskell-mode-hook #'intero-mode)
@@ -308,7 +311,10 @@
 
     (dolist
         (mapping
-         '(("C-q" . "C-x C-c")
+         '(("C-0" . "C-x C-0")
+           ("C--" . "C-x C--")
+           ("C-=" . "C-x C-=")
+           ("C-q" . "C-x C-c")
            ("C-w" . "C-x 0")
            ("C-S-w" . "C-x 1")
            ("C-e" . "C-x C-b")
