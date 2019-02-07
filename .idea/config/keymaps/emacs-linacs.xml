@@ -22,15 +22,11 @@
   </action>
   <action id="$Redo">
     <keyboard-shortcut first-keystroke="shift altGraph slash" />
-    <keyboard-shortcut first-keystroke="shift alt minus" />
-    <keyboard-shortcut first-keystroke="shift undo" />
-    <keyboard-shortcut first-keystroke="again" />
     <keyboard-shortcut first-keystroke="shift ctrl z" />
   </action>
   <action id="$Undo">
     <keyboard-shortcut first-keystroke="altGraph slash" />
     <keyboard-shortcut first-keystroke="shift altGraph minus" />
-    <keyboard-shortcut first-keystroke="undo" />
     <keyboard-shortcut first-keystroke="ctrl z" />
   </action>
   <action id="ActivateDebugToolWindow">
@@ -58,9 +54,6 @@
   <action id="Android.HotswapChanges" />
   <action id="AutoIndentLines" />
   <action id="CallHierarchy" />
-  <action id="ChangeSignature">
-    <keyboard-shortcut first-keystroke="ctrl alt s" />
-  </action>
   <action id="ChangeTypeSignature" />
   <action id="ChangesView.GroupBy.Directory" />
   <action id="ChangesView.Move" />
@@ -68,12 +61,12 @@
   <action id="ChangesView.ShelveSilently" />
   <action id="ChangesView.UnshelveSilently" />
   <action id="ChooseDebugConfiguration">
-    <keyboard-shortcut first-keystroke="shift alt f9" />
     <keyboard-shortcut first-keystroke="alt altGraph d" />
+    <keyboard-shortcut first-keystroke="shift ctrl f9" />
   </action>
   <action id="ChooseRunConfiguration">
-    <keyboard-shortcut first-keystroke="shift alt f10" />
     <keyboard-shortcut first-keystroke="alt altGraph r" />
+    <keyboard-shortcut first-keystroke="shift ctrl f10" />
   </action>
   <action id="CloseActiveTab" />
   <action id="CloseContent">
@@ -90,15 +83,15 @@
   <action id="CommentByLineComment">
     <keyboard-shortcut first-keystroke="alt semicolon" />
   </action>
+  <action id="Compile" />
   <action id="Console.History.Browse" />
   <action id="ConvertJavaToKotlin" />
-  <action id="CopyElement" />
   <action id="CopyReference" />
   <action id="Diff.ApplyLeftSide">
-    <keyboard-shortcut first-keystroke="alt altGraph period" />
+    <keyboard-shortcut first-keystroke="ctrl alt period" />
   </action>
   <action id="Diff.ApplyRightSide">
-    <keyboard-shortcut first-keystroke="alt altGraph comma" />
+    <keyboard-shortcut first-keystroke="ctrl alt comma" />
   </action>
   <action id="Diff.FocusOppositePane" />
   <action id="Diff.FocusOppositePaneAndScroll" />
@@ -130,15 +123,11 @@
   </action>
   <action id="Editor Redo">
     <keyboard-shortcut first-keystroke="shift altGraph slash" />
-    <keyboard-shortcut first-keystroke="shift alt minus" />
-    <keyboard-shortcut first-keystroke="shift undo" />
-    <keyboard-shortcut first-keystroke="again" />
     <keyboard-shortcut first-keystroke="shift ctrl z" />
   </action>
   <action id="Editor Undo">
     <keyboard-shortcut first-keystroke="altGraph slash" />
     <keyboard-shortcut first-keystroke="shift altGraph minus" />
-    <keyboard-shortcut first-keystroke="undo" />
     <keyboard-shortcut first-keystroke="ctrl z" />
   </action>
   <action id="EditorBackwardParagraph">
@@ -146,18 +135,10 @@
     <keyboard-shortcut first-keystroke="shift altGraph open_bracket" />
   </action>
   <action id="EditorChooseLookupItemDot" />
-  <action id="EditorCodeBlockEnd">
-    <keyboard-shortcut first-keystroke="ctrl alt close_bracket" />
-  </action>
-  <action id="EditorCodeBlockEndWithSelection">
-    <keyboard-shortcut first-keystroke="shift ctrl alt close_bracket" />
-  </action>
-  <action id="EditorCodeBlockStart">
-    <keyboard-shortcut first-keystroke="ctrl alt open_bracket" />
-  </action>
-  <action id="EditorCodeBlockStartWithSelection">
-    <keyboard-shortcut first-keystroke="shift ctrl alt open_bracket" />
-  </action>
+  <action id="EditorCodeBlockEnd" />
+  <action id="EditorCodeBlockEndWithSelection" />
+  <action id="EditorCodeBlockStart" />
+  <action id="EditorCodeBlockStartWithSelection" />
   <action id="EditorContextInfo" />
   <action id="EditorCutLineEnd">
     <keyboard-shortcut first-keystroke="altGraph k" />
@@ -184,10 +165,7 @@
     <keyboard-shortcut first-keystroke="escape" />
     <keyboard-shortcut first-keystroke="altGraph g" />
   </action>
-  <action id="EditorForwardParagraph">
-    <keyboard-shortcut first-keystroke="altGraph down" />
-    <keyboard-shortcut first-keystroke="shift altGraph close_bracket" />
-  </action>
+  <action id="EditorFocusGutter" />
   <action id="EditorJoinLines">
     <keyboard-shortcut first-keystroke="shift alt j" />
   </action>
@@ -230,6 +208,10 @@
   <action id="EditorLookupDown" />
   <action id="EditorLookupUp" />
   <action id="EditorMatchBrace" />
+  <action id="EditorMoveToPageBottom" />
+  <action id="EditorMoveToPageBottomWithSelection" />
+  <action id="EditorMoveToPageTop" />
+  <action id="EditorMoveToPageTopWithSelection" />
   <action id="EditorNextWord">
     <keyboard-shortcut first-keystroke="altGraph right" />
     <keyboard-shortcut first-keystroke="alt right" />
@@ -241,6 +223,7 @@
     <keyboard-shortcut first-keystroke="shift alt f" />
   </action>
   <action id="EditorPasteFromX11" />
+  <action id="EditorPasteSimple" />
   <action id="EditorPreviousWord">
     <keyboard-shortcut first-keystroke="altGraph left" />
     <keyboard-shortcut first-keystroke="alt left" />
@@ -262,11 +245,13 @@
   <action id="EditorScrollDown" />
   <action id="EditorScrollToCenter">
     <keyboard-shortcut first-keystroke="altGraph l" />
+    <keyboard-shortcut first-keystroke="ctrl l" />
   </action>
   <action id="EditorScrollUp" />
   <action id="EditorSelectWord">
     <keyboard-shortcut first-keystroke="altGraph equals" />
   </action>
+  <action id="EditorShowGutterIconTooltip" />
   <action id="EditorSplitLine">
     <keyboard-shortcut first-keystroke="altGraph o" />
   </action>
@@ -301,6 +286,7 @@
   </action>
   <action id="EmmetNextEditPoint" />
   <action id="EmmetPreviousEditPoint" />
+  <action id="EvaluateExpression" />
   <action id="Exit">
     <keyboard-shortcut first-keystroke="ctrl q" />
   </action>
@@ -322,13 +308,14 @@
     <keyboard-shortcut first-keystroke="alt insert" />
   </action>
   <action id="FileChooser.TogglePathShowing" />
-  <action id="FillParagraph">
-    <keyboard-shortcut first-keystroke="alt q" />
+  <action id="FileStructurePopup">
+    <keyboard-shortcut first-keystroke="alt o" />
   </action>
   <action id="Find">
     <keyboard-shortcut first-keystroke="altGraph s" />
     <keyboard-shortcut first-keystroke="altGraph r" />
     <keyboard-shortcut first-keystroke="ctrl f" />
+    <keyboard-shortcut first-keystroke="ctrl r" />
   </action>
   <action id="FindInPath">
     <keyboard-shortcut first-keystroke="shift altGraph s" />
@@ -336,15 +323,18 @@
   </action>
   <action id="FindNext">
     <keyboard-shortcut first-keystroke="altGraph s" />
+    <keyboard-shortcut first-keystroke="ctrl f" />
   </action>
   <action id="FindPrevious">
     <keyboard-shortcut first-keystroke="altGraph r" />
+    <keyboard-shortcut first-keystroke="ctrl r" />
   </action>
-  <action id="FindUsages">
-    <keyboard-shortcut first-keystroke="shift alt slash" />
-  </action>
+  <action id="FindUsages" />
   <action id="FindUsagesInFile" />
   <action id="FindWordAtCaret" />
+  <action id="ForceRunToCursor" />
+  <action id="ForceStepInto" />
+  <action id="ForceStepOver" />
   <action id="Generate">
     <keyboard-shortcut first-keystroke="ctrl n" />
   </action>
@@ -384,13 +374,13 @@
     <keyboard-shortcut first-keystroke="shift ctrl k" />
   </action>
   <action id="HideActiveWindow" />
+  <action id="HideAllWindows">
+    <keyboard-shortcut first-keystroke="shift ctrl w" />
+  </action>
   <action id="HighlightUsagesInFile" />
   <action id="HippieBackwardCompletion" />
   <action id="HippieCompletion" />
   <action id="ImplementMethods" />
-  <action id="Inline">
-    <keyboard-shortcut first-keystroke="ctrl alt i" />
-  </action>
   <action id="InsertLiveTemplate" />
   <action id="IntroduceFunctionalParameter" />
   <action id="IntroduceTypeAlias" />
@@ -404,14 +394,11 @@
   <action id="MethodHierarchy.OverrideMethodAction" />
   <action id="MethodOverloadSwitchDown" />
   <action id="MethodOverloadSwitchUp" />
-  <action id="Move">
-    <keyboard-shortcut first-keystroke="ctrl alt n" />
-  </action>
   <action id="MoveElementLeft">
-    <keyboard-shortcut first-keystroke="shift alt t" />
+    <keyboard-shortcut first-keystroke="shift ctrl alt t" />
   </action>
   <action id="MoveElementRight">
-    <keyboard-shortcut first-keystroke="alt t" />
+    <keyboard-shortcut first-keystroke="ctrl alt t" />
   </action>
   <action id="MoveLineDown">
     <keyboard-shortcut first-keystroke="shift alt n" />
@@ -419,6 +406,7 @@
   <action id="MoveLineUp">
     <keyboard-shortcut first-keystroke="shift alt p" />
   </action>
+  <action id="NewScratchFile" />
   <action id="NextDiff">
     <keyboard-shortcut first-keystroke="alt n" />
   </action>
@@ -448,6 +436,10 @@
     <keyboard-shortcut first-keystroke="ctrl page_up" />
     <keyboard-shortcut first-keystroke="shift ctrl open_bracket" />
   </action>
+  <action id="QuickChangeScheme">
+    <keyboard-shortcut first-keystroke="altGraph back_quote" />
+  </action>
+  <action id="QuickEvaluateExpression" />
   <action id="QuickImplementations" />
   <action id="QuickJavaDoc" />
   <action id="RecentChanges" />
@@ -455,16 +447,8 @@
   <action id="ReformatCode">
     <keyboard-shortcut first-keystroke="alt altGraph back_slash" />
   </action>
-  <action id="RenameElement">
-    <keyboard-shortcut first-keystroke="ctrl alt r" />
-  </action>
   <action id="Replace">
     <keyboard-shortcut first-keystroke="shift alt 5" />
-    <keyboard-shortcut first-keystroke="ctrl r" />
-  </action>
-  <action id="ReplaceInPath">
-    <keyboard-shortcut first-keystroke="shift ctrl r" />
-    <keyboard-shortcut first-keystroke="shift altGraph r" />
   </action>
   <action id="ResizeToolWindowDown" />
   <action id="ResizeToolWindowLeft" />
@@ -473,8 +457,7 @@
   <action id="RestoreDefaultLayout" />
   <action id="RunInspection" />
   <action id="RunTargetAction" />
-  <action id="SafeDelete" />
-  <action id="SaveAll" />
+  <action id="RunToCursor" />
   <action id="ScrollPane-scrollDown">
     <keyboard-shortcut first-keystroke="altGraph v" />
   </action>
@@ -487,7 +470,9 @@
   </action>
   <action id="ShelveChanges.UnshelveWithDialog" />
   <action id="ShowBookmarks" />
+  <action id="ShowContent" />
   <action id="ShowExecutionPoint" />
+  <action id="ShowFilePath" />
   <action id="ShowNavBar">
     <keyboard-shortcut first-keystroke="ctrl up" />
   </action>
@@ -502,11 +487,8 @@
   </action>
   <action id="ShowSettingsAndFindUsages" />
   <action id="ShowUsages" />
+  <action id="SmartStepInto" />
   <action id="SmartTypeCompletion" />
-  <action id="StartStopMacroRecording">
-    <keyboard-shortcut first-keystroke="f3" />
-    <keyboard-shortcut first-keystroke="f4" />
-  </action>
   <action id="Stop" />
   <action id="StopBackgroundProcesses" />
   <action id="SurroundWith" />
@@ -525,6 +507,9 @@
   <action id="ToggleBookmark8" />
   <action id="ToggleBookmark9" />
   <action id="ToggleBookmarkWithMnemonic" />
+  <action id="ToggleFullScreen">
+    <keyboard-shortcut first-keystroke="f11" />
+  </action>
   <action id="ToggleTemporaryLineBreakpoint" />
   <action id="Tool_External Tools_Terminal">
     <keyboard-shortcut first-keystroke="alt f12" />
@@ -539,9 +524,6 @@
   <action id="UpdateRunningApplication" />
   <action id="Vcs.MoveChangedLinesToChangelist" />
   <action id="Vcs.QuickListPopupAction" />
-  <action id="Vcs.RollbackChangedLines">
-    <keyboard-shortcut first-keystroke="alt altGraph slash" />
-  </action>
   <action id="Vcs.ShowMessageHistory">
     <keyboard-shortcut first-keystroke="ctrl e" />
   </action>
@@ -552,6 +534,7 @@
   <action id="VcsShowPrevChangeMarker">
     <keyboard-shortcut first-keystroke="alt p" />
   </action>
+  <action id="ViewBreakpoints" />
   <action id="ViewSource" />
   <action id="XDebugger.AttachToProcess" />
   <action id="com.gitlab.lae.intellij.actions.CapitalizeRegionOrToWordEnd">
