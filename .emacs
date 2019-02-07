@@ -265,10 +265,12 @@
 (if (display-graphic-p)
     (toggle-mode-line))
 
-(if (eq system-type 'darwin)
-    (exec-path-from-shell-initialize))
+(when (eq system-type 'darwin)
+  (setq mac-command-modifier 'control)
+  (setq mac-control-modifier 'super)
+  (exec-path-from-shell-initialize))
 
-(when (and (eq system-type 'gnu/linux) (display-graphic-p))
+(when (display-graphic-p)
 
   (defun fmt-kbd (prefix key)
     (kbd (if (> (length key) 1)
@@ -308,7 +310,7 @@
         (mapping
          '(("C-q" . "C-x C-c")
            ("C-w" . "C-x 0")
-           ("C-W" . "C-x 1")
+           ("C-S-w" . "C-x 1")
            ("C-e" . "C-x C-b")
            ("C-o" . "C-x C-f")
            ("C-a" . "C-x h")
@@ -316,32 +318,11 @@
            ("C-d" . "s-d")
            ("C-f" . "C-s")
            ("C-z" . "C-_")
-           ("C-Z" . "C-?")
+           ("C-S-z" . "C-?")
            ("C-x" . "C-w")
            ("C-c" . "M-w")
-           ("C-v" . "C-y")))
+           ("C-v" . "C-y")
+           ("C-S-v" . "M-y")))
       (define-key input-decode-map
         (kbd (car mapping))
         (kbd (cdr mapping))))))
-
-(when (eq system-type 'darwin)
-  (dolist
-      (mapping
-       '(("s-q" . "C-x C-c")
-         ("s-w" . "C-x 0")
-         ("s-W" . "C-x 1")
-         ("s-e" . "C-x C-b")
-         ("s-r" . "C-r")
-         ("s-o" . "C-x C-f")
-         ("s-a" . "C-x h")
-         ("s-s" . "C-x C-s")
-         ("s-f" . "C-s")
-         ("s-z" . "C-/")
-         ("s-Z" . "C-?")
-         ("s-x" . "C-w")
-         ("s-c" . "M-w")
-         ("s-v" . "C-y")))
-    (define-key input-decode-map
-      (kbd (car mapping))
-      (kbd (cdr mapping))))
-  (global-set-key (kbd "s-d") 'duplicate-region-or-line))
