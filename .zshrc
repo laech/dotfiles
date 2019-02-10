@@ -122,13 +122,18 @@ if ! type __git_ps1 &> /dev/null; then
 
 fi
 
+readonly my_ps1=$'\n\033[38;5;248m${(r:$COLUMNS::-:)}\033[0m\n'
+readonly my_ps2="%B%F{green}%n@%m%f %F{blue}%~%f"
+readonly my_ps3=$'\n'"%(?.%%.%F{red}%#%f)%b "
 if type __git_ps1 &> /dev/null; then
     precmd() {
         GIT_PS1_DESCRIBE_STYLE="branch"
         GIT_PS1_SHOWUPSTREAM="verbose"
-        __git_ps1 "%B%F{blue}%n@%m %~%f%F{magenta}" " %f%b%(?.%%.%F{red}%#%f) "
+        __git_ps1 "$my_ps1$my_ps2%F{magenta}" "%f$my_ps3"
         # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
     }
+else
+    PS1="$my_ps1$my_ps2$my_ps3"
 fi
 
 alias l='ls -1'
