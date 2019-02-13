@@ -60,7 +60,6 @@
  '(scroll-margin 1)
  '(show-paren-mode t)
  '(tool-bar-mode nil)
- '(truncate-lines t)
  '(visible-cursor nil)
  '(writeroom-fringes-outside-margins nil)
  '(writeroom-global-effects
