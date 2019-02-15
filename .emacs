@@ -64,15 +64,6 @@
    (quote
     (writeroom-set-alpha writeroom-set-menu-bar-lines writeroom-set-tool-bar-lines writeroom-set-vertical-scroll-bars writeroom-set-bottom-divider-width))))
 
-(setq ivy-use-virtual-buffers t)
-(setq ivy-initial-inputs-alist nil)
-(setq ivy-re-builders-alist
-      '((swiper . ivy--regex-plus)
-        (t . ivy--regex-fuzzy)))
-
-(setq projectile-completion-system 'ivy)
-(setq magit-completing-read-function 'ivy-completing-read)
-
 (package-initialize)
 (unless package-archive-contents
   (package-refresh-contents))
@@ -217,6 +208,19 @@
 
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 (add-hook 'prog-mode-hook #'yas-minor-mode)
+
+(setq ivy-extra-directories nil)
+(setq ivy-use-virtual-buffers t)
+(setq ivy-initial-inputs-alist nil)
+(setq ivy-re-builders-alist
+      '((swiper . ivy--regex-plus)
+        (t . ivy--regex-fuzzy)))
+
+(setq projectile-completion-system 'ivy)
+(setq magit-completing-read-function 'ivy-completing-read)
+
+(with-eval-after-load 'ivy
+  (define-key ivy-minibuffer-map (kbd "<return>") 'ivy-alt-done))
 
 (with-eval-after-load 'paredit
   (defun transpose-sexps-reverse (arg)
