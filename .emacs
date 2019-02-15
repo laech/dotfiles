@@ -37,8 +37,6 @@
  '(company-tooltip-idle-delay 0)
  '(delete-selection-mode t)
  '(global-auto-revert-mode t)
- '(ido-enable-flex-matching t)
- '(ido-use-virtual-buffers t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(line-spacing 0.2)
@@ -54,7 +52,7 @@
      ("marmalade" . "https://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (writeroom-mode which-key undo-tree smex rainbow-delimiters projectile paredit multiple-cursors magit intero ido-ubiquitous hindent haskell-snippets expand-region exec-path-from-shell diff-hl)))
+    (flx counsel ivy swiper writeroom-mode which-key undo-tree rainbow-delimiters projectile paredit multiple-cursors magit intero hindent haskell-snippets expand-region exec-path-from-shell diff-hl)))
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
  '(scroll-margin 1)
@@ -65,6 +63,15 @@
  '(writeroom-global-effects
    (quote
     (writeroom-set-alpha writeroom-set-menu-bar-lines writeroom-set-tool-bar-lines writeroom-set-vertical-scroll-bars writeroom-set-bottom-divider-width))))
+
+(setq ivy-use-virtual-buffers t)
+(setq ivy-initial-inputs-alist nil)
+(setq ivy-re-builders-alist
+      '((swiper . ivy--regex-plus)
+        (t . ivy--regex-fuzzy)))
+
+(setq projectile-completion-system 'ivy)
+(setq magit-completing-read-function 'ivy-completing-read)
 
 (package-initialize)
 (unless package-archive-contents
@@ -167,6 +174,15 @@
     (setq-default mode-line-format initial-mode-line-format)
     (set-frame-parameter nil 'bottom-divider-width 0)))
 
+(global-set-key (kbd "C-s") 'swiper)
+(global-set-key (kbd "M-x") 'counsel-M-x)
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+(global-set-key (kbd "<f1> f") 'counsel-describe-function)
+(global-set-key (kbd "<f1> v") 'counsel-describe-variable)
+(global-set-key (kbd "<f1> l") 'counsel-find-library)
+(global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
+(global-set-key (kbd "<f2> u") 'counsel-unicode-char)
+
 (global-set-key (kbd "<S-return>") 'start-new-line)
 (global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
 (global-set-key (kbd "s-d") 'duplicate-region-or-line)
@@ -184,16 +200,13 @@
 (global-set-key (kbd "C-<") 'mc/unmark-previous-like-this)
 
 (global-set-key (kbd "C-x C-b") 'buffer-menu)
-(global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "C-=") 'er/expand-region)
 (global-set-key (kbd "C-+") 'er/contract-region)
 
 (global-set-key (kbd "C-x g") 'magit-status)
 
 (add-hook 'after-init-hook #'global-undo-tree-mode)
-(add-hook 'after-init-hook #'ido-everywhere)
-(add-hook 'after-init-hook #'ido-ubiquitous-mode)
-(add-hook 'after-init-hook #'ido-mode)
+(add-hook 'after-init-hook #'ivy-mode)
 (add-hook 'after-init-hook #'projectile-global-mode)
 (add-hook 'after-init-hook #'which-key-mode)
 
@@ -316,7 +329,7 @@
            ("C-q" . "C-x C-c")
            ("C-w" . "C-x 4 0")
            ("C-S-w" . "C-x 1")
-           ("C-e" . "C-x C-b")
+           ("C-e" . "C-x b")
            ("C-o" . "C-x C-f")
            ("C-a" . "C-x h")
            ("C-s" . "C-x C-s")
@@ -330,4 +343,6 @@
            ("C-S-v" . "M-y")))
       (define-key input-decode-map
         (kbd (car mapping))
-        (kbd (cdr mapping))))))
+        (kbd (cdr mapping)))
+
+      (global-set-key (kbd "C-S-o") 'counsel-git))))
