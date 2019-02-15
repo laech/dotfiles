@@ -175,13 +175,6 @@
     (set-frame-parameter nil 'bottom-divider-width 0)))
 
 (global-set-key (kbd "C-s") 'swiper)
-(global-set-key (kbd "M-x") 'counsel-M-x)
-(global-set-key (kbd "C-x C-f") 'counsel-find-file)
-(global-set-key (kbd "<f1> f") 'counsel-describe-function)
-(global-set-key (kbd "<f1> v") 'counsel-describe-variable)
-(global-set-key (kbd "<f1> l") 'counsel-find-library)
-(global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
-(global-set-key (kbd "<f2> u") 'counsel-unicode-char)
 
 (global-set-key (kbd "<S-return>") 'start-new-line)
 (global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
@@ -207,6 +200,7 @@
 
 (add-hook 'after-init-hook #'global-undo-tree-mode)
 (add-hook 'after-init-hook #'ivy-mode)
+(add-hook 'after-init-hook #'counsel-mode)
 (add-hook 'after-init-hook #'projectile-global-mode)
 (add-hook 'after-init-hook #'which-key-mode)
 
