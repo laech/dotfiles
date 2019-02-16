@@ -52,7 +52,7 @@
      ("marmalade" . "https://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (flx counsel ivy swiper writeroom-mode which-key undo-tree rainbow-delimiters projectile paredit multiple-cursors magit intero hindent haskell-snippets expand-region exec-path-from-shell diff-hl)))
+    (flx counsel ivy writeroom-mode which-key undo-tree rainbow-delimiters projectile paredit multiple-cursors magit intero hindent haskell-snippets expand-region exec-path-from-shell diff-hl)))
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
  '(scroll-margin 1)
@@ -165,19 +165,14 @@
     (setq-default mode-line-format initial-mode-line-format)
     (set-frame-parameter nil 'bottom-divider-width 0)))
 
-(global-set-key (kbd "C-s") 'swiper)
-
 (global-set-key (kbd "<S-return>") 'start-new-line)
 (global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
-(global-set-key (kbd "s-d") 'duplicate-region-or-line)
 (global-set-key (kbd "M-w") 'copy-region-or-line)
-(global-set-key (kbd "C-w") 'kill-region-or-line)
 (global-set-key (kbd "M-N") 'move-line-down)
 (global-set-key (kbd "M-P") 'move-line-up)
 (global-set-key (kbd "M-J") 'join-line-next)
 (global-set-key (kbd "M-T") 'transpose-words-backward)
 
-(global-set-key (kbd "C-c C-.") 'mc/mark-all-like-this)
 (global-set-key (kbd "C-.") 'mc/mark-next-like-this-word)
 (global-set-key (kbd "C->") 'mc/unmark-next-like-this)
 (global-set-key (kbd "C-,") 'mc/mark-previous-like-this)
@@ -219,9 +214,6 @@
 (setq projectile-completion-system 'ivy)
 (setq magit-completing-read-function 'ivy-completing-read)
 
-(with-eval-after-load 'ivy
-  (define-key ivy-minibuffer-map (kbd "<return>") 'ivy-alt-done))
-
 (with-eval-after-load 'projectile
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 
@@ -229,6 +221,9 @@
   (defun transpose-sexps-reverse (arg)
     (interactive "*p")
     (transpose-sexps (- arg)))
+  (define-key paredit-mode-map (kbd "C-k") nil) ;; TODO
+  (define-key paredit-mode-map (kbd "C-j") nil) ;; TODO
+  (define-key paredit-mode-map (kbd "C-c C-M-l") nil)
   (define-key paredit-mode-map (kbd "C-M-S-t") 'transpose-sexps-reverse))
 
 (with-eval-after-load 'haskell-mode
@@ -286,64 +281,66 @@
   (setq mac-control-modifier 'super)
   (exec-path-from-shell-initialize))
 
-(when (display-graphic-p)
+(dolist
+    (mapping
+     '(("C-k" . previous-line)
+       ("C-j" . next-line)
+       ("C-h" . backward-char)
+       ("C-l" . forward-char)
+       ("C-S-j" . move-beginning-of-line)
+       ("C-S-k" . move-end-of-line)
+       ("C-S-h" . backward-word)
+       ("C-S-l" . forward-word)
+       ("C-q" . save-buffers-kill-terminal)
+       ("C-w" . kill-buffer-and-window)
+       ("C-S-w" . delete-other-windows)
+       ("C-e" . ivy-switch-buffer)
+       ("C-o" . counsel-find-file)
+       ("C-S-o" . counsel-git)
+       ("C-a" . mark-whole-buffer)
+       ("C-s" . save-buffer)
+       ("C-S-d" . duplicate-region-or-line)
+       ("C-f" . isearch-forward)
+       ("C-z" . undo-tree-undo)
+       ("C-S-z" . undo-tree-redo)
+       ("C-S-p" . counsel-M-x)
+       ("<cut>" . kill-region-or-line)
+       ("<copy>" . copy-region-or-line)
+       ("C-v" . yank)
+       ("C-S-v" . counsel-yank-pop)))
+  (global-set-key (kbd (car mapping)) (cdr mapping)))
 
-  (defun fmt-kbd (prefix key)
-    (kbd (if (> (length key) 1)
-             (concat "<" prefix key ">")
-           (concat prefix key))))
+(dolist
+    (mapping
+     '(("C-p" . "C-x")
+       ("C-x" . "<cut>")
+       ("C-c" . "<copy>")))
+  (define-key input-decode-map
+    (kbd (car mapping))
+    (kbd (cdr mapping))))
 
-  (let ((keyboard
-         '(
-           "f1" "f2" "f3" "f4" "f5" "f6" "f7" "f8" "f9" "f10" "f11" "f12"
-           "~" "!" "@" "#" "$" "%" "^" "&" "*" "(" ")" "_" "+" "DEL"
-           "`" "1" "2" "3" "4" "5" "6" "7" "8" "9" "0" "-" "="
-           "tab"
-           "Q" "W" "E" "R" "T" "Y" "U" "I" "O" "P" "{" "}" "|"
-           "q" "w" "e" "r" "t" "y" "u" "i" "o" "p" "[" "]" "\\"
-           "A" "S" "D" "F" "G" "H" "J" "K" "L" ":" "\"" "RET"
-           "a" "s" "d" "f" "g" "h" "j" "k" "l" ";" "'"
-           "Z" "X" "C" "V" "B" "N" "M" "<" ">" "?"
-           "z" "x" "c" "v" "b" "n" "m" "," "." "/"
-           "SPC"
-           "insert" "home" "prior"
-           "delete" "end" "next"
-           "up" "left" "down" "right"))
+(with-eval-after-load 'isearch
+  (dolist
+      (mapping
+       '(("C-f" . isearch-repeat-forward)
+         ("C-v" . isearch-yank-kill)
+         ("C-S-v" . isearch-yank-pop)
+         ("C-j" . isearch-ring-advance)
+         ("C-k" . isearch-ring-retreat)))
+    (define-key isearch-mode-map (kbd (car mapping)) (cdr mapping))))
 
-        (translations
-         '(("s-" . "C-")
-           ("s-S-" . "C-S-")
-           ("s-M-" . "C-M-")
-           ("s-M-S-" . "s-M-S-"))))
+(with-eval-after-load 'ivy
+  (dolist
+      (mapping
+       '(("<tab>" . ivy-insert-current)
+         ("C-j" . ivy-next-line)
+         ("C-k" . ivy-previous-line)
+         ("M-j" . ivy-next-history-element)
+         ("M-k" . ivy-previous-history-element)
+         ("C-v" . nil)
+         ("M-n" . nil)
+         ("M-p" . nil)))
+    (define-key ivy-minibuffer-map (kbd (car mapping)) (cdr mapping))))
 
-    (dolist (translation translations)
-      (dolist (key keyboard)
-        (let ((from-key (fmt-kbd (car translation) key))
-              (to-key (fmt-kbd (cdr translation) key)))
-          (define-key input-decode-map from-key to-key))))
-
-    (dolist
-        (mapping
-         '(("C-0" . "C-x C-0")
-           ("C--" . "C-x C--")
-           ("C-=" . "C-x C-=")
-           ("C-q" . "C-x C-c")
-           ("C-w" . "C-x 4 0")
-           ("C-S-w" . "C-x 1")
-           ("C-e" . "C-x b")
-           ("C-o" . "C-x C-f")
-           ("C-a" . "C-x h")
-           ("C-s" . "C-x C-s")
-           ("C-d" . "s-d")
-           ("C-f" . "C-s")
-           ("C-z" . "C-_")
-           ("C-S-z" . "C-?")
-           ("C-x" . "C-w")
-           ("C-c" . "M-w")
-           ("C-v" . "C-y")
-           ("C-S-v" . "M-y")))
-      (define-key input-decode-map
-        (kbd (car mapping))
-        (kbd (cdr mapping)))
-
-      (global-set-key (kbd "C-S-o") 'counsel-git))))
+(with-eval-after-load 'elisp-mode
+  (define-key lisp-interaction-mode-map (kbd "C-j") nil))
