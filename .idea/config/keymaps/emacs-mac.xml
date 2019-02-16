@@ -334,9 +334,6 @@
     <keyboard-shortcut first-keystroke="meta b" />
     <mouse-shortcut keystroke="meta button1" />
   </action>
-  <action id="GotoImplementation">
-    <keyboard-shortcut first-keystroke="meta i" />
-  </action>
   <action id="GotoLine" />
   <action id="GotoNextElementUnderCaretUsage" />
   <action id="GotoNextError" />
