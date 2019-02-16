@@ -222,6 +222,9 @@
 (with-eval-after-load 'ivy
   (define-key ivy-minibuffer-map (kbd "<return>") 'ivy-alt-done))
 
+(with-eval-after-load 'projectile
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
+
 (with-eval-after-load 'paredit
   (defun transpose-sexps-reverse (arg)
     (interactive "*p")
