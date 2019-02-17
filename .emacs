@@ -280,6 +280,7 @@
   (dolist
       (mapping
        '(("<tab>" . ivy-insert-current)
+         ("<return>" . ivy-alt-done)
          ("C-k" . ivy-next-line)
          ("C-i" . ivy-previous-line)
          ("M-k" . ivy-next-history-element)
