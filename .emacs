@@ -2,7 +2,9 @@
 (setq
  default-frame-alist
  `((internal-border-width . 0)
-   (menu-bar-lines . ,(if (and (equal system-type 'darwin) (display-graphic-p)) 1 0))
+   (menu-bar-lines . ,(if (and (equal system-type 'darwin)
+                               (display-graphic-p))
+                          1 0))
    (ns-appearance . light)
    (ns-transparent-titlebar . t)
    (font . ,(if (equal system-type 'darwin)
@@ -74,6 +76,7 @@
      (unwind-protect
          (progn ,@body)
        (move-to-column column))))
+
 (put 'save-column 'lisp-indent-function 0)
 
 (defun start-new-line ()
@@ -165,25 +168,6 @@
     (setq-default mode-line-format initial-mode-line-format)
     (set-frame-parameter nil 'bottom-divider-width 0)))
 
-(global-set-key (kbd "<S-return>") 'start-new-line)
-(global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
-(global-set-key (kbd "M-w") 'copy-region-or-line)
-(global-set-key (kbd "M-N") 'move-line-down)
-(global-set-key (kbd "M-P") 'move-line-up)
-(global-set-key (kbd "M-J") 'join-line-next)
-(global-set-key (kbd "M-T") 'transpose-words-backward)
-
-(global-set-key (kbd "C-.") 'mc/mark-next-like-this-word)
-(global-set-key (kbd "C->") 'mc/unmark-next-like-this)
-(global-set-key (kbd "C-,") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-<") 'mc/unmark-previous-like-this)
-
-(global-set-key (kbd "C-x C-b") 'buffer-menu)
-(global-set-key (kbd "C-=") 'er/expand-region)
-(global-set-key (kbd "C-+") 'er/contract-region)
-
-(global-set-key (kbd "C-x g") 'magit-status)
-
 (add-hook 'after-init-hook #'global-undo-tree-mode)
 (add-hook 'after-init-hook #'ivy-mode)
 (add-hook 'after-init-hook #'counsel-mode)
@@ -204,6 +188,94 @@
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 (add-hook 'prog-mode-hook #'yas-minor-mode)
 
+(dolist
+    (mapping
+     '(("<tab>" . indent-for-tab-command)
+       ("C-i" . previous-line)
+       ("C-k" . next-line)
+       ("C-j" . backward-char)
+       ("C-l" . forward-char)
+       ("C-h" . move-beginning-of-line)
+       ("C-;" . move-end-of-line)
+       ("C-S-j" . backward-word)
+       ("C-S-l" . forward-word)
+       ("C-S-i" . scroll-down-command)
+       ("C-S-k" . scroll-up-command)
+       ("C-S-h" . beginning-of-buffer)
+       ("C-:" . end-of-buffer)
+       ("C-q" . save-buffers-kill-terminal)
+       ("C-w" . kill-buffer-and-window)
+       ("C-S-w" . delete-other-windows)
+       ("C-e" . ivy-switch-buffer)
+       ("C-o" . counsel-find-file)
+       ("C-S-o" . counsel-git)
+       ("C-a" . mark-whole-buffer)
+       ("C-s" . save-buffer)
+       ("C-S-d" . duplicate-region-or-line)
+       ("C-f" . isearch-forward)
+       ("C-z" . undo-tree-undo)
+       ("C-S-z" . undo-tree-redo)
+       ("C-S-p" . counsel-M-x)
+       ("C-S-x" . kill-line)
+       ("<cut>" . kill-region-or-line)
+       ("<copy>" . copy-region-or-line)
+       ("C-v" . yank)
+       ("C-S-v" . counsel-yank-pop)))
+  (global-set-key (kbd (car mapping)) (cdr mapping)))
+
+(dolist
+    (mapping
+     '(("C-p" . "C-x")
+       ("M-p" . "C-c")
+       ("C-x" . "<cut>")
+       ("C-c" . "<copy>")))
+  (define-key input-decode-map
+    (kbd (car mapping))
+    (kbd (cdr mapping))))
+
+(dolist
+    (mapping
+     '(("<S-return>" . start-new-line)
+       ("C-M-\\" . indent-region-or-buffer)
+       ("M-S-k" . move-line-down)
+       ("M-S-i" . move-line-up)
+       ("M-S-j" . join-line-next)
+       ("M-S-t" . transpose-words-backward)
+       ("C-." . mc/mark-next-like-this-word)
+       ("C->" . mc/unmark-next-like-this)
+       ("C-," . mc/mark-previous-like-this)
+       ("C-<" . mc/unmark-previous-like-this)
+       ("C-=" . er/expand-region)
+       ("C-+" . er/contract-region)
+       ("C-x g" . magit-status)))
+  (global-set-key (kbd (car mapping)) (cdr mapping)))
+
+(with-eval-after-load 'isearch
+  (dolist
+      (mapping
+       '(("C-f" . isearch-repeat-forward)
+         ("C-v" . isearch-yank-kill)
+         ("C-S-v" . isearch-yank-pop)
+         ("C-k" . isearch-ring-advance)
+         ("C-i" . isearch-ring-retreat)))
+    (define-key isearch-mode-map (kbd (car mapping)) (cdr mapping))))
+
+(with-eval-after-load 'ivy
+  (dolist
+      (mapping
+       '(("<tab>" . ivy-insert-current)
+         ("C-k" . ivy-next-line)
+         ("C-i" . ivy-previous-line)
+         ("M-k" . ivy-next-history-element)
+         ("M-i" . ivy-previous-history-element)
+         ("C-v" . nil)
+         ("M-n" . nil)
+         ("M-p" . nil)))
+    (define-key ivy-minibuffer-map (kbd (car mapping)) (cdr mapping))))
+
+(with-eval-after-load 'elisp-mode
+  (define-key lisp-interaction-mode-map (kbd "C-j") nil))
+
 (setq ivy-extra-directories nil)
 (setq ivy-use-virtual-buffers t)
 (setq ivy-initial-inputs-alist nil)
@@ -221,10 +293,14 @@
   (defun transpose-sexps-reverse (arg)
     (interactive "*p")
     (transpose-sexps (- arg)))
-  (define-key paredit-mode-map (kbd "C-k") nil) ;; TODO
-  (define-key paredit-mode-map (kbd "C-j") nil) ;; TODO
-  (define-key paredit-mode-map (kbd "C-c C-M-l") nil)
-  (define-key paredit-mode-map (kbd "C-M-S-t") 'transpose-sexps-reverse))
+  (dolist
+      (mapping
+       '(("C-k" . nil)
+         ("C-j" . nil)
+         ("C-c C-M-l" . nil)
+         ("C-S-x" . paredit-kill)
+         ("C-M-S-t" . transpose-sexps-reverse)))
+    (define-key paredit-mode-map (kbd (car mapping)) (cdr mapping))))
 
 (with-eval-after-load 'haskell-mode
   (add-hook 'haskell-mode-hook #'intero-mode)
@@ -280,67 +356,3 @@
   (setq mac-command-modifier 'control)
   (setq mac-control-modifier 'super)
   (exec-path-from-shell-initialize))
-
-(dolist
-    (mapping
-     '(("C-k" . previous-line)
-       ("C-j" . next-line)
-       ("C-h" . backward-char)
-       ("C-l" . forward-char)
-       ("C-S-j" . move-beginning-of-line)
-       ("C-S-k" . move-end-of-line)
-       ("C-S-h" . backward-word)
-       ("C-S-l" . forward-word)
-       ("C-q" . save-buffers-kill-terminal)
-       ("C-w" . kill-buffer-and-window)
-       ("C-S-w" . delete-other-windows)
-       ("C-e" . ivy-switch-buffer)
-       ("C-o" . counsel-find-file)
-       ("C-S-o" . counsel-git)
-       ("C-a" . mark-whole-buffer)
-       ("C-s" . save-buffer)
-       ("C-S-d" . duplicate-region-or-line)
-       ("C-f" . isearch-forward)
-       ("C-z" . undo-tree-undo)
-       ("C-S-z" . undo-tree-redo)
-       ("C-S-p" . counsel-M-x)
-       ("<cut>" . kill-region-or-line)
-       ("<copy>" . copy-region-or-line)
-       ("C-v" . yank)
-       ("C-S-v" . counsel-yank-pop)))
-  (global-set-key (kbd (car mapping)) (cdr mapping)))
-
-(dolist
-    (mapping
-     '(("C-p" . "C-x")
-       ("C-x" . "<cut>")
-       ("C-c" . "<copy>")))
-  (define-key input-decode-map
-    (kbd (car mapping))
-    (kbd (cdr mapping))))
-
-(with-eval-after-load 'isearch
-  (dolist
-      (mapping
-       '(("C-f" . isearch-repeat-forward)
-         ("C-v" . isearch-yank-kill)
-         ("C-S-v" . isearch-yank-pop)
-         ("C-j" . isearch-ring-advance)
-         ("C-k" . isearch-ring-retreat)))
-    (define-key isearch-mode-map (kbd (car mapping)) (cdr mapping))))
-
-(with-eval-after-load 'ivy
-  (dolist
-      (mapping
-       '(("<tab>" . ivy-insert-current)
-         ("C-j" . ivy-next-line)
-         ("C-k" . ivy-previous-line)
-         ("M-j" . ivy-next-history-element)
-         ("M-k" . ivy-previous-history-element)
-         ("C-v" . nil)
-         ("M-n" . nil)
-         ("M-p" . nil)))
-    (define-key ivy-minibuffer-map (kbd (car mapping)) (cdr mapping))))
-
-(with-eval-after-load 'elisp-mode
-  (define-key lisp-interaction-mode-map (kbd "C-j") nil))
