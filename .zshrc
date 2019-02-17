@@ -122,7 +122,7 @@ if ! type __git_ps1 &> /dev/null; then
 
 fi
 
-readonly my_ps1=$'\n\033[38;5;248m${(r:$COLUMNS::-:)}\033[0m\n'
+readonly my_ps1=$'\n${(r:$COLUMNS::-:)}\n'
 readonly my_ps2="%B%F{green}%n@%m%f %F{blue}%~%f"
 readonly my_ps3=$'\n'"%(?.%%.%F{red}%#%f)%b "
 if type __git_ps1 &> /dev/null; then
