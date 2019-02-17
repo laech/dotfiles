@@ -5,9 +5,10 @@
    (menu-bar-lines . ,(if (and (equal system-type 'darwin) (display-graphic-p)) 1 0))
    (ns-appearance . light)
    (ns-transparent-titlebar . t)
-   (font . ,(if (equal system-type 'darwin)
-                "Ubuntu Mono-16"
-              "Monospace-12"))))
+   ;; (font . ,(if (equal system-type 'darwin)
+   ;;              "Ubuntu Mono-16"
+   ;;            "Monospace-12"))
+   ))
 
 ;; By default Emacs automatically detects background color and sets
 ;; background mode automaticall, but when running inside tmux this
@@ -344,3 +345,18 @@
 
 (with-eval-after-load 'elisp-mode
   (define-key lisp-interaction-mode-map (kbd "C-j") nil))
+
+(with-eval-after-load 'xterm
+  (dolist (key (number-sequence 97 122))
+    (dolist (mod '((6 . "C-S") (8 . "C-M-S")))
+      (let* ((mod-code (car mod))
+             (mod-str (cdr mod))
+             (full (kbd (format "%s-%c" mod-str key))))
+
+        (define-key xterm-function-map
+          (format "\e[27;%d;%d~" mod-code key)
+          full)
+
+        (define-key xterm-function-map
+          (format "\e[%d;%du" key mod-code)
+          full)))))

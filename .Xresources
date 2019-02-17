@@ -35,68 +35,60 @@ XTerm.vt100.reverseVideo: false
 ! 'showkey -a' to see key codes
 ! 'xev' to see key names
 ! Super key behaves like Control
-XTerm.vt100.translations: #override \n\
-    Super <Key>grave: string(0x00) \n\
-    Super <Key>space: string(0x00) \n\
-    Super <Key>1: string(0x1b) string("[49;5u") \n\
-    Super <Key>2: string(0x00) \n\
-    Super <Key>3: string(0x1b) \n\
-    Super <Key>4: string(0x1c) \n\
-    Super <Key>5: string(0x1d) \n\
-    Super <Key>6: string(0x1e) \n\
-    Super <Key>7: string(0x1f) \n\
-    Super <Key>8: string(0x7f) \n\
-    Super <Key>9: string(0x1b) string("[57;5u") \n\
-    Super <Key>0: string(0x1b) string("[48;5u") \n\
-    Super <Key>minus: string(0x1b) string("[45;5u") \n\
-    Super <Key>equal: string(0x1b) string("[61;5u") \n\
-    Super <Key>BackSpace: string(0x08) \n\
-    Super <Key>Tab: string(0x1b) string("[9;5u") \n\
-    Super <Key>bracketleft: string(0x1b) \n\
-    Super <Key>bracketright: string(0x1d) \n\
-    Super <Key>backslash: string(0x1c) \n\
-    Super <Key>semicolon: string(0x1b) string("[59;5u") \n\
-    Super <Key>apostrophe: string(0x1b) string("[39;5u") \n\
-    Super <Key>comma: string(0x1b) string("[44;5u") \n\
-    Super <Key>period: string(0x1b) string("[46;5u") \n\
-    Super <Key>slash: string(0x1f) \n\
-    Super <Key>a: string(0x01) \n\
-    Super <Key>b: string(0x02) \n\
-    Super <Key>c: string(0x03) \n\
-    Super <Key>d: string(0x04) \n\
-    Super <Key>e: string(0x05) \n\
-    Super <Key>f: string(0x06) \n\
-    Super <Key>g: string(0x07) \n\
-    Super <Key>h: string(0x08) \n\
-    Super <Key>i: string(0x09) \n\
-    Super <Key>j: string(0x0a) \n\
-    Super <Key>k: string(0x0b) \n\
-    Super <Key>l: string(0x0c) \n\
-    Super <Key>m: string(0x0d) \n\
-    Super <Key>n: string(0x0e) \n\
-    Super <Key>o: string(0x0f) \n\
-    Super <Key>p: string(0x10) \n\
-    Super <Key>q: string(0x11) \n\
-    Super <Key>r: string(0x12) \n\
-    Super <Key>s: string(0x13) \n\
-    Super <Key>t: string(0x14) \n\
-    Super <Key>u: string(0x15) \n\
-    Super <Key>v: string(0x16) \n\
-    Super <Key>w: string(0x17) \n\
-    Super <Key>x: string(0x18) \n\
-    Super <Key>y: string(0x19) \n\
-    Super <Key>z: string(0x1a) \n\
-    Super <Key>Left: string(0x1b) string("[1;5D") \n\
-    Super <Key>Right: string(0x1b) string("[1;5C") \n\
-    Super <Key>Up: string(0x1b) string("[1;5A") \n\
-    Super <Key>Down: string(0x1b) string("[1;5B") \n\
-    Super <Btn1Down>: popup-menu(mainMenu) \n\
-    Super <Btn2Down>: popup-menu(vtMenu) \n\
-    Super <Btn3Down>:popup-menu(fontMenu) \n\
-    <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0) \n\
-    Ctrl <Key>x: copy-selection(CLIPBOARD) \n\
-    Ctrl <Key>c: copy-selection(CLIPBOARD) \n\
-    Ctrl <Key>v: insert-selection(CLIPBOARD) \n\
+!XTerm.vt100.translations: #override \n\
+!    Ctrl ~Meta Shift <Key>a: string(0x1b) string("[97;6u") \n\
+!    Ctrl ~Meta Shift <Key>b: string(0x1b) string("[98;6u") \n\
+!    Ctrl ~Meta Shift <Key>c: string(0x1b) string("[99;6u") \n\
+!    Ctrl ~Meta Shift <Key>d: string(0x1b) string("[100;6u") \n\
+!    Ctrl ~Meta Shift <Key>e: string(0x1b) string("[101;6u") \n\
+!    Ctrl ~Meta Shift <Key>f: string(0x1b) string("[102;6u") \n\
+!    Ctrl ~Meta Shift <Key>g: string(0x1b) string("[103;6u") \n\
+!    Ctrl ~Meta Shift <Key>h: string(0x1b) string("[104;6u") \n\
+!    Ctrl ~Meta Shift <Key>i: string(0x1b) string("[105;6u") \n\
+!    Ctrl ~Meta Shift <Key>j: string(0x1b) string("[106;6u") \n\
+!    Ctrl ~Meta Shift <Key>k: string(0x1b) string("[107;6u") \n\
+!    Ctrl ~Meta Shift <Key>l: string(0x1b) string("[108;6u") \n\
+!    Ctrl ~Meta Shift <Key>m: string(0x1b) string("[109;6u") \n\
+!    Ctrl ~Meta Shift <Key>n: string(0x1b) string("[110;6u") \n\
+!    Ctrl ~Meta Shift <Key>o: string(0x1b) string("[111;6u") \n\
+!    Ctrl ~Meta Shift <Key>p: string(0x1b) string("[112;6u") \n\
+!    Ctrl ~Meta Shift <Key>q: string(0x1b) string("[113;6u") \n\
+!    Ctrl ~Meta Shift <Key>r: string(0x1b) string("[114;6u") \n\
+!    Ctrl ~Meta Shift <Key>s: string(0x1b) string("[115;6u") \n\
+!    Ctrl ~Meta Shift <Key>t: string(0x1b) string("[116;6u") \n\
+!    Ctrl ~Meta Shift <Key>u: string(0x1b) string("[117;6u") \n\
+!    Ctrl ~Meta Shift <Key>v: string(0x1b) string("[118;6u") \n\
+!    Ctrl ~Meta Shift <Key>w: string(0x1b) string("[119;6u") \n\
+!    Ctrl ~Meta Shift <Key>x: string(0x1b) string("[120;6u") \n\
+!    Ctrl ~Meta Shift <Key>y: string(0x1b) string("[121;6u") \n\
+!    Ctrl ~Meta Shift <Key>z: string(0x1b) string("[122;6u") \n\
+    
+!    Ctrl Meta Shift <Key>a: string(0x1b) string("[97;8u") \n\
+!    Ctrl Meta Shift <Key>b: string(0x1b) string("[98;8u") \n\
+!    Ctrl Meta Shift <Key>c: string(0x1b) string("[99;8u") \n\
+!    Ctrl Meta Shift <Key>d: string(0x1b) string("[100;8u") \n\
+!    Ctrl Meta Shift <Key>e: string(0x1b) string("[101;8u") \n\
+!    Ctrl Meta Shift <Key>f: string(0x1b) string("[102;8u") \n\
+!    Ctrl Meta Shift <Key>g: string(0x1b) string("[103;8u") \n\
+!    Ctrl Meta Shift <Key>h: string(0x1b) string("[104;8u") \n\
+!    Ctrl Meta Shift <Key>i: string(0x1b) string("[105;8u") \n\
+!    Ctrl Meta Shift <Key>j: string(0x1b) string("[106;8u") \n\
+!    Ctrl Meta Shift <Key>k: string(0x1b) string("[107;8u") \n\
+!    Ctrl Meta Shift <Key>l: string(0x1b) string("[108;8u") \n\
+!    Ctrl Meta Shift <Key>m: string(0x1b) string("[109;8u") \n\
+!    Ctrl Meta Shift <Key>n: string(0x1b) string("[110;8u") \n\
+!    Ctrl Meta Shift <Key>o: string(0x1b) string("[111;8u") \n\
+!    Ctrl Meta Shift <Key>p: string(0x1b) string("[112;8u") \n\
+!    Ctrl Meta Shift <Key>q: string(0x1b) string("[113;8u") \n\
+!    Ctrl Meta Shift <Key>r: string(0x1b) string("[114;8u") \n\
+!    Ctrl Meta Shift <Key>s: string(0x1b) string("[115;8u") \n\
+!    Ctrl Meta Shift <Key>t: string(0x1b) string("[116;8u") \n\
+!    Ctrl Meta Shift <Key>u: string(0x1b) string("[117;8u") \n\
+!    Ctrl Meta Shift <Key>v: string(0x1b) string("[118;8u") \n\
+!    Ctrl Meta Shift <Key>w: string(0x1b) string("[119;8u") \n\
+!    Ctrl Meta Shift <Key>x: string(0x1b) string("[120;8u") \n\
+!    Ctrl Meta Shift <Key>y: string(0x1b) string("[121;8u") \n\
+!    Ctrl Meta Shift <Key>z: string(0x1b) string("[122;8u") \n\
 
 URxvt.iso14755: false
 URxvt.iso14755_52: false
@@ -106,52 +98,53 @@ URxvt.scrollTtyOutput: false
 URxvt.scrollWithBuffer: true
 URxvt.scrollBar: false
 
-#define Ansi_0_Color #cbccd5
-#define Ansi_1_Color #c90e42
-#define Ansi_10_Color #34b354
-#define Ansi_11_Color #b89427
-#define Ansi_12_Color #1085d9
-#define Ansi_13_Color #c00db3
-#define Ansi_14_Color #5b80ad
-#define Ansi_15_Color #1d1d22
-#define Ansi_2_Color #21883a
-#define Ansi_3_Color #d54d17
-#define Ansi_4_Color #1e44dd
-#define Ansi_5_Color #6d1bed
-#define Ansi_6_Color #1f4d7a
-#define Ansi_7_Color #000000
-#define Ansi_8_Color #dedfe8
-#define Ansi_9_Color #fc4a6d
-#define Background_Color #f7f7f7
-#define Badge_Color #ff0000
-#define Bold_Color #2a2c33
-#define Cursor_Color #555555
-#define Cursor_Guide_Color #a6e8ff
-#define Cursor_Text_Color #ffffff
-#define Foreground_Color #2a2c33
-#define Link_Color #2063d6
-#define Selected_Text_Color #2a2c33
-#define Selection_Color #d2ecff
-
-*color0:      Ansi_0_Color
-*color1:      Ansi_1_Color
-*color2:      Ansi_2_Color
-*color3:      Ansi_3_Color
-*color4:      Ansi_4_Color
-*color5:      Ansi_5_Color
-*color6:      Ansi_6_Color
-*color7:      Ansi_7_Color
-*color8:      Ansi_8_Color
-*color9:      Ansi_9_Color
-*color10:     Ansi_10_Color
-*color11:     Ansi_11_Color
-*color12:     Ansi_12_Color
-*color13:     Ansi_13_Color
-*color14:     Ansi_14_Color
-*color15:     Ansi_15_Color
-*colorBD:     Bold_Color
-*colorIT:     Italic_Color
-*colorUL:     Underline_Color
-*foreground:  Foreground_Color
-*background:  Background_Color
-*cursorColor: Cursor_Color
+!#define Ansi_0_Color #cbccd5
+!#define Ansi_1_Color #c90e42
+!#define Ansi_10_Color #34b354
+!#define Ansi_11_Color #b89427
+!#define Ansi_12_Color #1085d9
+!#define Ansi_13_Color #c00db3
+!#define Ansi_14_Color #5b80ad
+!#define Ansi_15_Color #1d1d22
+!#define Ansi_2_Color #21883a
+!#define Ansi_3_Color #d54d17
+!#define Ansi_4_Color #1e44dd
+!#define Ansi_5_Color #6d1bed
+!#define Ansi_6_Color #1f4d7a
+!#define Ansi_7_Color #000000
+!#define Ansi_8_Color #dedfe8
+!#define Ansi_9_Color #fc4a6d
+!#define Background_Color #f7f7f7
+!#define Badge_Color #ff0000
+!#define Bold_Color #2a2c33
+!#define Cursor_Color #555555
+!#define Cursor_Guide_Color #a6e8ff
+!#define Cursor_Text_Color #ffffff
+!#define Foreground_Color #2a2c33
+!#define Link_Color #2063d6
+!#define Selected_Text_Color #2a2c33
+!#define Selection_Color #d2ecff
+!
+!*color0:      Ansi_0_Color
+!*color1:      Ansi_1_Color
+!*color2:      Ansi_2_Color
+!*color3:      Ansi_3_Color
+!*color4:      Ansi_4_Color
+!*color5:      Ansi_5_Color
+!*color6:      Ansi_6_Color
+!*color7:      Ansi_7_Color
+!*color8:      Ansi_8_Color
+!*color9:      Ansi_9_Color
+!*color10:     Ansi_10_Color
+!*color11:     Ansi_11_Color
+!*color12:     Ansi_12_Color
+!*color13:     Ansi_13_Color
+!*color14:     Ansi_14_Color
+!*color15:     Ansi_15_Color
+!*colorBD:     Bold_Color
+!*colorIT:     Italic_Color
+!*colorUL:     Underline_Color
+!*foreground:  Foreground_Color
+!*background:  Background_Color
+!*cursorColor: Cursor_Color
+!
