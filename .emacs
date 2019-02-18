@@ -218,13 +218,16 @@
 
 (dolist
     (mapping
-     '(("C-p" . "C-x")
-       ("M-p" . "C-c")
-       ("C-x" . "<cut>")
-       ("C-c" . "<copy>")))
+     '(("C-x" . "<cut>")
+       ("C-c" . "<copy>")
+       ("s-x" . "C-x")
+       ("s-c" . "C-c")
+       ("s-g" . "C-g")))
   (define-key input-decode-map
     (kbd (car mapping))
     (kbd (cdr mapping))))
+
+(global-set-key (kbd "C-x s-s") 'save-buffer)
 
 (dolist
     (mapping
