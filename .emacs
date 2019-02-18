@@ -62,7 +62,8 @@
  '(writeroom-fringes-outside-margins nil)
  '(writeroom-global-effects
    (quote
-    (writeroom-set-alpha writeroom-set-menu-bar-lines writeroom-set-tool-bar-lines writeroom-set-vertical-scroll-bars writeroom-set-bottom-divider-width))))
+    (writeroom-set-alpha writeroom-set-menu-bar-lines writeroom-set-tool-bar-lines writeroom-set-vertical-scroll-bars writeroom-set-bottom-divider-width)))
+ '(writeroom-width 100))
 
 (package-initialize)
 (unless package-archive-contents
