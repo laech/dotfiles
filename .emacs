@@ -6,11 +6,7 @@
                                (display-graphic-p))
                           1 0))
    (ns-appearance . light)
-   (ns-transparent-titlebar . t)
-   ;; (font . ,(if (equal system-type 'darwin)
-   ;;              "Ubuntu Mono-16"
-   ;;            "Monospace-12"))
-   ))
+   (ns-transparent-titlebar . t)))
 
 ;; By default Emacs automatically detects background color and sets
 ;; background mode automaticall, but when running inside tmux this
@@ -52,7 +48,7 @@
      ("marmalade" . "https://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (flx counsel ivy writeroom-mode which-key undo-tree rainbow-delimiters projectile paredit multiple-cursors magit intero hindent haskell-snippets expand-region exec-path-from-shell diff-hl)))
+    (flx counsel ivy writeroom-mode which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent haskell-snippets expand-region exec-path-from-shell diff-hl)))
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
  '(scroll-margin 1)
@@ -170,7 +166,6 @@
 (add-hook 'after-init-hook #'global-undo-tree-mode)
 (add-hook 'after-init-hook #'ivy-mode)
 (add-hook 'after-init-hook #'counsel-mode)
-(add-hook 'after-init-hook #'projectile-global-mode)
 (add-hook 'after-init-hook #'which-key-mode)
 
 (add-hook 'after-init-hook #'global-diff-hl-mode)
@@ -224,13 +219,16 @@
 
 (dolist
     (mapping
-     '(("C-p" . "C-x")
-       ("M-p" . "C-c")
-       ("C-x" . "<cut>")
-       ("C-c" . "<copy>")))
+     '(("C-x" . "<cut>")
+       ("C-c" . "<copy>")
+       ("s-x" . "C-x")
+       ("s-c" . "C-c")
+       ("s-g" . "C-g")))
   (define-key input-decode-map
     (kbd (car mapping))
     (kbd (cdr mapping))))
+
+(global-set-key (kbd "C-x s-s") 'save-buffer)
 
 (dolist
     (mapping
@@ -298,11 +296,7 @@
       '((swiper . ivy--regex-plus)
         (t . ivy--regex-fuzzy)))
 
-(setq projectile-completion-system 'ivy)
 (setq magit-completing-read-function 'ivy-completing-read)
-
-(with-eval-after-load 'projectile
-  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 
 (with-eval-after-load 'paredit
   (defun transpose-sexps-reverse (arg)
@@ -370,4 +364,5 @@
 (when (eq system-type 'darwin)
   (setq mac-command-modifier 'control)
   (setq mac-control-modifier 'super)
+  (set-default-font "Menlo 14")
   (exec-path-from-shell-initialize))
