@@ -79,5 +79,10 @@ for dir in "${dirs[@]}"; do
     done
 done
 
+# Fedora
+if [[ -d '/lib/kbd/keymaps/legacy/i386/qwerty/' ]]; then
+    cp -v 'kbd/custom.map' '/lib/kbd/keymaps/legacy/i386/qwerty/'
+fi
+
 systemctl enable tlp
 systemctl start tlp

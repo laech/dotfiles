@@ -147,3 +147,6 @@ if [[ "${OSTYPE}" == darwin* ]]; then
 else
     alias ls='ls --color=auto'
 fi
+
+# See ~/.profiles/base/kbd/custom.map
+localectl set-keymap custom
