@@ -48,7 +48,7 @@
      ("marmalade" . "https://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (flx counsel ivy writeroom-mode which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent haskell-snippets expand-region exec-path-from-shell diff-hl)))
+    (use-package flx counsel ivy writeroom-mode which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent haskell-snippets expand-region exec-path-from-shell diff-hl)))
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
  '(scroll-margin 1)
@@ -211,24 +211,15 @@
        ("C-S-z" . undo-tree-redo)
        ("C-S-p" . counsel-M-x)
        ("C-S-x" . kill-line)
-       ("<cut>" . kill-region-or-line)
-       ("<copy>" . copy-region-or-line)
        ("C-v" . yank)
        ("C-S-v" . counsel-yank-pop)))
   (global-set-key (kbd (car mapping)) (cdr mapping)))
 
-(dolist
-    (mapping
-     '(("C-x" . "<cut>")
-       ("C-c" . "<copy>")
-       ("s-x" . "C-x")
-       ("s-c" . "C-c")
-       ("s-g" . "C-g")))
-  (define-key input-decode-map
-    (kbd (car mapping))
-    (kbd (cdr mapping))))
-
-(global-set-key (kbd "C-x s-s") 'save-buffer)
+(require 'iso-transl)
+(bind-key* (kbd "C-x") 'kill-region-or-line)
+(bind-key* (kbd "C-c") 'copy-region-or-line)
+(global-set-key (kbd "C-p") 'Control-X-prefix)
+(define-key key-translation-map (kbd "C-p 8") 'iso-transl-ctl-x-8-map)
 
 (dolist
     (mapping
@@ -243,9 +234,10 @@
        ("C-," . mc/mark-previous-like-this)
        ("C-<" . mc/unmark-previous-like-this)
        ("C-=" . er/expand-region)
-       ("C-+" . er/contract-region)
-       ("C-x g" . magit-status)))
+       ("C-+" . er/contract-region)))
   (global-set-key (kbd (car mapping)) (cdr mapping)))
+
+(define-key ctl-x-map (kbd "g") 'magit-status)
 
 (with-eval-after-load 'xterm
   (dolist (key (number-sequence 97 122))
@@ -306,7 +298,6 @@
       (mapping
        '(("C-k" . nil)
          ("C-j" . nil)
-         ("C-c C-M-l" . nil)
          ("C-S-x" . paredit-kill)
          ("C-M-S-t" . transpose-sexps-reverse)))
     (define-key paredit-mode-map (kbd (car mapping)) (cdr mapping))))
