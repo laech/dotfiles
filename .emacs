@@ -48,7 +48,7 @@
      ("marmalade" . "https://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (dracula-theme use-package flx counsel ivy writeroom-mode which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent haskell-snippets expand-region exec-path-from-shell diff-hl)))
+    (projectile dracula-theme use-package flx counsel ivy writeroom-mode which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent haskell-snippets expand-region exec-path-from-shell diff-hl)))
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
  '(scroll-margin 1)
@@ -166,6 +166,7 @@
 (add-hook 'after-init-hook #'global-undo-tree-mode)
 (add-hook 'after-init-hook #'ivy-mode)
 (add-hook 'after-init-hook #'counsel-mode)
+(add-hook 'after-init-hook #'projectile-mode)
 (add-hook 'after-init-hook #'which-key-mode)
 
 (add-hook 'after-init-hook #'global-diff-hl-mode)
@@ -185,6 +186,7 @@
 (dolist
     (mapping
      '(("<S-return>" . start-new-line)
+       ("C-S-d" . duplicate-region-or-line)
        ("C-M-\\" . indent-region-or-buffer)
        ("M-S-n" . move-line-down)
        ("M-S-p" . move-line-up)
@@ -229,7 +231,11 @@
       '((swiper . ivy--regex-plus)
         (t . ivy--regex-fuzzy)))
 
+(setq projectile-completion-system 'ivy)
 (setq magit-completing-read-function 'ivy-completing-read)
+
+(with-eval-after-load 'projectile
+  (define-key mode-specific-map (kbd "p") 'projectile-command-map))
 
 (with-eval-after-load 'paredit
   (defun transpose-sexps-reverse (arg)
