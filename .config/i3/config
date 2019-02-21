@@ -17,7 +17,15 @@ bindsym $mod+Shift+Return exec ~/.local/bin/term -rv
 # kill focused window
 bindsym $mod+Shift+q kill
 
-bindsym $mod+space exec --no-startup-id \
+bindsym $mod+semicolon exec --no-startup-id \
+    rofi \
+    -show combi \
+    -sort \
+    -matching fuzzy \
+    -show-icons \
+    -width -80
+
+bindsym $mod+F12 exec --no-startup-id \
     rofi \
     -show combi \
     -sort \
@@ -30,12 +38,20 @@ bindsym $mod+Left    focus left
 bindsym $mod+Down    focus down
 bindsym $mod+Up      focus up
 bindsym $mod+Right   focus right
+bindsym $mod+h       focus left
+bindsym $mod+j       focus down
+bindsym $mod+k       focus up
+bindsym $mod+l       focus right
 
 # move focused window
 bindsym $mod+Shift+Left    move left
 bindsym $mod+Shift+Down    move down
 bindsym $mod+Shift+Up      move up
 bindsym $mod+Shift+Right   move right
+bindsym $mod+Shift+h       move left
+bindsym $mod+Shift+j       move down
+bindsym $mod+Shift+k       move up
+bindsym $mod+Shift+l       move right
 
 # split via '-' and '|'
 bindsym $mod+backslash split h
@@ -43,7 +59,7 @@ bindsym $mod+minus     split v
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+w layout tabbed
-bindsym $mod+l layout toggle split
+bindsym $mod+space layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
