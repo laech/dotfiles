@@ -58,6 +58,7 @@ readonly packages=(
   wpa_supplicant
 
   openssh
+  keepassxc
 )
 
 pacman -S --needed "${packages[@]}"
