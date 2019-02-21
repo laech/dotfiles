@@ -48,7 +48,7 @@
      ("marmalade" . "https://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (use-package flx counsel ivy writeroom-mode which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent haskell-snippets expand-region exec-path-from-shell diff-hl)))
+    (dracula-theme use-package flx counsel ivy writeroom-mode which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent haskell-snippets expand-region exec-path-from-shell diff-hl)))
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
  '(scroll-margin 1)
@@ -184,49 +184,10 @@
 
 (dolist
     (mapping
-     '(("<tab>" . indent-for-tab-command)
-       ("C-i" . previous-line)
-       ("C-k" . next-line)
-       ("C-j" . backward-char)
-       ("C-l" . forward-char)
-       ("C-h" . move-beginning-of-line)
-       ("C-;" . move-end-of-line)
-       ("C-S-j" . backward-word)
-       ("C-S-l" . forward-word)
-       ("C-S-i" . scroll-down-command)
-       ("C-S-k" . scroll-up-command)
-       ("C-S-h" . beginning-of-buffer)
-       ("C-:" . end-of-buffer)
-       ("C-q" . save-buffers-kill-terminal)
-       ("C-w" . kill-buffer-and-window)
-       ("C-S-w" . delete-other-windows)
-       ("C-e" . ivy-switch-buffer)
-       ("C-o" . counsel-find-file)
-       ("C-S-o" . counsel-git)
-       ("C-a" . mark-whole-buffer)
-       ("C-s" . save-buffer)
-       ("C-S-d" . duplicate-region-or-line)
-       ("C-f" . isearch-forward)
-       ("C-z" . undo-tree-undo)
-       ("C-S-z" . undo-tree-redo)
-       ("C-S-p" . counsel-M-x)
-       ("C-S-x" . kill-line)
-       ("C-v" . yank)
-       ("C-S-v" . counsel-yank-pop)))
-  (global-set-key (kbd (car mapping)) (cdr mapping)))
-
-(require 'iso-transl)
-(bind-key* (kbd "C-x") 'kill-region-or-line)
-(bind-key* (kbd "C-c") 'copy-region-or-line)
-(global-set-key (kbd "C-p") 'Control-X-prefix)
-(define-key key-translation-map (kbd "C-p 8") 'iso-transl-ctl-x-8-map)
-
-(dolist
-    (mapping
      '(("<S-return>" . start-new-line)
        ("C-M-\\" . indent-region-or-buffer)
-       ("M-S-k" . move-line-down)
-       ("M-S-i" . move-line-up)
+       ("M-S-n" . move-line-down)
+       ("M-S-p" . move-line-up)
        ("M-S-j" . join-line-next)
        ("M-S-t" . transpose-words-backward)
        ("C-." . mc/mark-next-like-this-word)
@@ -254,32 +215,12 @@
           (format "\e[%d;%du" key mod-code)
           full)))))
 
-(with-eval-after-load 'isearch
-  (dolist
-      (mapping
-       '(("C-f" . isearch-repeat-forward)
-         ("C-v" . isearch-yank-kill)
-         ("C-S-v" . isearch-yank-pop)
-         ("C-k" . isearch-ring-advance)
-         ("C-i" . isearch-ring-retreat)))
-    (define-key isearch-mode-map (kbd (car mapping)) (cdr mapping))))
-
 (with-eval-after-load 'ivy
   (dolist
       (mapping
        '(("<tab>" . ivy-insert-current)
-         ("<return>" . ivy-alt-done)
-         ("C-k" . ivy-next-line)
-         ("C-i" . ivy-previous-line)
-         ("M-k" . ivy-next-history-element)
-         ("M-i" . ivy-previous-history-element)
-         ("C-v" . nil)
-         ("M-n" . nil)
-         ("M-p" . nil)))
+         ("<return>" . ivy-alt-done)))
     (define-key ivy-minibuffer-map (kbd (car mapping)) (cdr mapping))))
-
-(with-eval-after-load 'elisp-mode
-  (define-key lisp-interaction-mode-map (kbd "C-j") nil))
 
 (setq ivy-extra-directories nil)
 (setq ivy-use-virtual-buffers t)
@@ -296,10 +237,7 @@
     (transpose-sexps (- arg)))
   (dolist
       (mapping
-       '(("C-k" . nil)
-         ("C-j" . nil)
-         ("C-S-x" . paredit-kill)
-         ("C-M-S-t" . transpose-sexps-reverse)))
+       '(("C-M-S-t" . transpose-sexps-reverse)))
     (define-key paredit-mode-map (kbd (car mapping)) (cdr mapping))))
 
 (with-eval-after-load 'haskell-mode
@@ -357,3 +295,6 @@
   (setq mac-control-modifier 'super)
   (set-default-font "Menlo 14")
   (exec-path-from-shell-initialize))
+
+(when (eq system-type 'gnu/linux)
+  (set-default-font "Ubuntu Mono 12"))
