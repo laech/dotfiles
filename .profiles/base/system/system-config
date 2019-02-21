@@ -10,6 +10,7 @@ readonly packages=(
   i3status
   xorg-server
   xorg-xinit
+  xorg-xev
   xss-lock
   rofi
   feh
@@ -80,6 +81,11 @@ for dir in "${dirs[@]}"; do
     done
 done
 
+# Arch
+if [[ -d '/usr/share/kbd/keymaps/i386/qwerty/' ]]; then
+    cp -v 'kbd/custom.map' '/usr/share/kbd/keymaps/i386/qwerty/'
+fi
+
 # Fedora
 if [[ -d '/lib/kbd/keymaps/legacy/i386/qwerty/' ]]; then
     cp -v 'kbd/custom.map' '/lib/kbd/keymaps/legacy/i386/qwerty/'
@@ -87,3 +93,5 @@ fi
 
 systemctl enable tlp
 systemctl start tlp
+localectl set-keymap custom
+

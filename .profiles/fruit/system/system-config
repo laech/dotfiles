@@ -44,3 +44,16 @@ for action in start enable; do
 done
 
 mkinitcpio -p linux
+
+
+# Arch
+if [[ -d '/usr/share/kbd/keymaps/i386/qwerty/' ]]; then
+    cp -v 'kbd/custom-fruit.map' '/usr/share/kbd/keymaps/i386/qwerty/'
+fi
+
+# Fedora
+if [[ -d '/lib/kbd/keymaps/legacy/i386/qwerty/' ]]; then
+    cp -v 'kbd/custom-fruit.map' '/lib/kbd/keymaps/legacy/i386/qwerty/'
+fi
+
+localectl set-keymap custom-fruit
