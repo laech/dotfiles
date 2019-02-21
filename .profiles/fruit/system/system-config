@@ -22,7 +22,6 @@ readonly dirs=(
 )
 
 readonly services=(
-    'dhcpcd@wlp2s0.service'
     'disable-bluetooth.service'
     'disable-ir.service'
 )
