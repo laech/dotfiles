@@ -16,6 +16,7 @@ XTerm.vt100.scrollBar: false
 XTerm.vt100.backarrowKey: false
 XTerm.vt100.saveLines: 10000
 XTerm.vt100.metaSendsEscape: true
+XTerm.vt100.eightBitInput: false
 
 ! Make keys like C-. work in terminal
 XTerm.vt100.modifyOtherKeys: 1
