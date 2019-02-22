@@ -12,8 +12,8 @@
          {"separator-above": "",
           "keys": [     "U"], "id": "$Undo"},
          {"keys": ["ctrl W"], "id": "CopyElement"},
-         {"keys": ["LEFT_PARENTHESIS",
-                   "RIGHT_PARENTHESIS"], "id": "StartStopMacroRecording"},
+         {"keys": ["typed (",
+                   "typed )"], "id": "StartStopMacroRecording"},
          {"keys": [     "E"], "id": "PlaybackLastMacro"},
          {"keys": [     "H"], "id": "$SelectAll"},
          {"keys": ["ctrl X"], "id": "EditorSwapSelectionBoundaries"},
@@ -34,8 +34,7 @@
           "items": [
               {"keys": [            "C"], "id": "CheckinProject"},
               {"keys": [      "shift P"], "id": "Vcs.Push"},
-              {"keys": [ "shift EQUALS",
-                         "shift PLUS"  ], "id": "Vcs.UpdateProject"},
+              {"keys": ["typed +"], "id": "Vcs.UpdateProject"},
               {"separator-above": "",
                "keys": [            "G"], "id": "Annotate"},
               {"keys": [       "EQUALS"], "id": "Compare.SameVersion"},
@@ -93,7 +92,7 @@
                "keys": [         "K"], "id": "CloseProject"},
               {"keys": ["P"], "id": "RecentProjectListGroup"}
           ]},
-         {"keys": ["shift 2", "shift AT"],
+         {"keys": ["typed @"],
           "name": "Folding",
           "items": [
               {"keys": ["ctrl C",
@@ -191,7 +190,7 @@
     {"keys": ["alt S"],
      "items": [
          {"keys": [     "PERIOD"], "id": "Find"},
-         {"keys": ["shift alt 5"], "id": "Replace"},
+         {"keys": ["alt typed %"], "id": "Replace"},
          {"separator-above": "",   "id": "FindInPath"},
          {                         "id": "ReplaceInPath"},
          {"separator-above": "",

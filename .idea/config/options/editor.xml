@@ -2,7 +2,6 @@
   <component name="DefaultFont">
     <option name="FONT_SIZE" value="20" />
     <option name="FONT_FAMILY" value="Ubuntu Mono" />
-    <option name="LINE_SPACING" value="1.2" />
   </component>
   <component name="EditorSettings">
     <option name="IS_CARET_BLINKING" value="false" />
@@ -11,6 +10,7 @@
     <option name="ARE_GUTTER_ICONS_SHOWN" value="false" />
     <option name="IS_FOLDING_OUTLINE_SHOWN" value="false" />
     <option name="SHOW_BREADCRUMBS" value="false" />
+    <option name="IS_BLOCK_CURSOR" value="true" />
     <option name="IS_INDENT_GUIDES_SHOWN" value="false" />
     <option name="SHOW_PARAMETER_NAME_HINTS" value="false" />
   </component>
