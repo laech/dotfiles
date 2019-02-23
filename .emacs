@@ -35,7 +35,6 @@
  '(global-auto-revert-mode t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
- '(line-spacing 0.2)
  '(mode-require-final-newline nil)
  '(mouse-wheel-flip-direction t)
  '(mouse-wheel-progressive-speed nil)
@@ -48,7 +47,7 @@
      ("marmalade" . "https://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (projectile dracula-theme use-package flx counsel ivy writeroom-mode which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent haskell-snippets expand-region exec-path-from-shell diff-hl)))
+    (bind-key projectile flx counsel ivy writeroom-mode which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent haskell-snippets expand-region exec-path-from-shell diff-hl)))
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
  '(scroll-margin 1)
@@ -185,9 +184,19 @@
 
 (dolist
     (mapping
+     '(("C-M-\\" . indent-region-or-buffer)))
+  (global-set-key (kbd (car mapping)) (cdr mapping)))
+
+(require 'bind-key)
+(dolist
+    (mapping
      '(("<S-return>" . start-new-line)
+       ("C-o" . counsel-find-file)
+       ("C-S-o" . projectile-find-file)
+       ("C-j" . ivy-switch-buffer)
+       ("C-w" . kill-region-or-line)
+       ("M-w" . copy-region-or-line)
        ("C-S-d" . duplicate-region-or-line)
-       ("C-M-\\" . indent-region-or-buffer)
        ("M-S-n" . move-line-down)
        ("M-S-p" . move-line-up)
        ("M-S-j" . join-line-next)
@@ -198,12 +207,12 @@
        ("C-<" . mc/unmark-previous-like-this)
        ("C-=" . er/expand-region)
        ("C-+" . er/contract-region)))
-  (global-set-key (kbd (car mapping)) (cdr mapping)))
+  (bind-key* (kbd (car mapping)) (cdr mapping)))
 
 (define-key ctl-x-map (kbd "g") 'magit-status)
 
 (with-eval-after-load 'xterm
-  (dolist (key (number-sequence 97 122))
+  (dolist (key (number-sequence 32 127))
     (dolist (mod '((6 . "C-S") (8 . "C-M-S")))
       (let* ((mod-code (car mod))
              (mod-str (cdr mod))
@@ -275,12 +284,7 @@
     (setq mode-line-format nil)))
 
 (with-eval-after-load 'flyspell
-  (setq flyspell-issue-message-flag nil)
-  (define-key flyspell-mode-map (kbd "C-c $") nil)
-  (define-key flyspell-mode-map (kbd "C-;") nil)
-  (define-key flyspell-mode-map (kbd "C-,") nil)
-  (define-key flyspell-mode-map (kbd "C-.") nil)
-  (define-key flyspell-mode-map (kbd "C-M-i") nil))
+  (setq flyspell-issue-message-flag nil))
 
 (with-eval-after-load 'writeroom-mode
   (define-key writeroom-mode-map (kbd "C-M-<") 'writeroom-decrease-width)
