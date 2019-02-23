@@ -369,6 +369,9 @@
   <action id="GotoTest" />
   <action id="GotoTypeDeclaration" />
   <action id="HideActiveWindow" />
+  <action id="HideAllWindows">
+    <keyboard-shortcut first-keystroke="shift ctrl w" />
+  </action>
   <action id="HighlightUsagesInFile" />
   <action id="HippieBackwardCompletion" />
   <action id="HippieCompletion" />
@@ -448,9 +451,13 @@
   <action id="QuickEvaluateExpression" />
   <action id="QuickImplementations" />
   <action id="QuickJavaDoc" />
-  <action id="RecentChangedFiles" />
+  <action id="RecentChangedFiles">
+    <keyboard-shortcut first-keystroke="shift ctrl j" />
+  </action>
   <action id="RecentChanges" />
-  <action id="RecentFiles" />
+  <action id="RecentFiles">
+    <keyboard-shortcut first-keystroke="ctrl j" />
+  </action>
   <action id="Refactorings.QuickListPopupAction" />
   <action id="ReformatCode">
     <keyboard-shortcut first-keystroke="ctrl alt back_slash" />
