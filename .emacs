@@ -47,7 +47,7 @@
      ("marmalade" . "https://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (bind-key projectile flx counsel ivy writeroom-mode which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent haskell-snippets expand-region exec-path-from-shell diff-hl)))
+    (projectile flx counsel ivy writeroom-mode which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent haskell-snippets expand-region exec-path-from-shell diff-hl)))
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
  '(scroll-margin 1)
@@ -187,7 +187,9 @@
      '(("C-M-\\" . indent-region-or-buffer)))
   (global-set-key (kbd (car mapping)) (cdr mapping)))
 
-(require 'bind-key)
+(define-key ctl-x-map (kbd "g") 'magit-status)
+
+(defvar my-keys-mode-map (make-sparse-keymap))
 (dolist
     (mapping
      '(("<S-return>" . start-new-line)
@@ -196,6 +198,8 @@
        ("C-j" . ivy-switch-buffer)
        ("C-w" . kill-region-or-line)
        ("M-w" . copy-region-or-line)
+       ("C-S-s" . save-buffer)
+       ("C-S-w" . delete-other-windows)
        ("C-S-d" . duplicate-region-or-line)
        ("M-S-n" . move-line-down)
        ("M-S-p" . move-line-up)
@@ -207,9 +211,23 @@
        ("C-<" . mc/unmark-previous-like-this)
        ("C-=" . er/expand-region)
        ("C-+" . er/contract-region)))
-  (bind-key* (kbd (car mapping)) (cdr mapping)))
+  (define-key my-keys-mode-map (kbd (car mapping)) (cdr mapping)))
 
-(define-key ctl-x-map (kbd "g") 'magit-status)
+(define-minor-mode my-keys-mode :init-value t)
+
+(defun my-keys-mode-disable ()
+  (my-keys-mode 0))
+
+(defun my-keys-have-priority (_)
+  "Ensures my keys retain priority over other minor modes."
+  (unless (eq (caar minor-mode-map-alist) 'my-keys-mode)
+    (let ((my-keys (assq 'my-keys-mode minor-mode-map-alist)))
+      (assq-delete-all 'my-keys-mode minor-mode-map-alist)
+      (add-to-list 'minor-mode-map-alist my-keys))))
+
+(add-hook 'minibuffer-setup-hook 'my-keys-mode-disable)
+(add-hook 'after-load-functions 'my-keys-have-priority)
+(my-keys-mode 1)
 
 (with-eval-after-load 'xterm
   (dolist (key (number-sequence 32 127))
