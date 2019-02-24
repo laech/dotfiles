@@ -210,8 +210,13 @@
        ("C-," . mc/mark-previous-like-this)
        ("C-<" . mc/unmark-previous-like-this)
        ("C-=" . er/expand-region)
-       ("C-+" . er/contract-region)))
+       ("C-+" . er/contract-region)
+       ("C-:" . counsel-M-x)))
   (define-key my-keys-mode-map (kbd (car mapping)) (cdr mapping)))
+
+(require 'iso-transl)
+(define-key my-keys-mode-map (kbd "C-;") ctl-x-map)
+(define-key key-translation-map (kbd "C-; 8") 'iso-transl-ctl-x-8-map)
 
 (define-minor-mode my-keys-mode :init-value t)
 
