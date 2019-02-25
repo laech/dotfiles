@@ -1,5 +1,5 @@
 {"items": [
-    {"keys": ["ctrl X"],
+    {"keys": ["ctrl X", "ctrl SEMICOLON"],
      "items": [
          {"keys": ["ctrl F"], "id": "GotoFile"},
          {"keys": ["ctrl B"], "id": "RecentFiles"},
