@@ -49,7 +49,7 @@
      ("marmalade" . "https://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (olivetti projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent haskell-snippets expand-region exec-path-from-shell diff-hl)))
+    (olivetti projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent expand-region exec-path-from-shell diff-hl)))
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
  '(scroll-margin 1)
@@ -177,7 +177,6 @@
 (add-hook 'scheme-mode-hook #'enable-paredit-mode)
 
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
-(add-hook 'prog-mode-hook #'yas-minor-mode)
 
 (dolist
     (mapping
