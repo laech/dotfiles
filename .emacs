@@ -40,6 +40,8 @@
  '(mouse-wheel-progressive-speed nil)
  '(mouse-wheel-scroll-amount (quote (3 ((shift) . 1) ((control)))))
  '(mouse-wheel-tilt-scroll t)
+ '(olivetti-body-width 100)
+ '(olivetti-minimum-body-width 100)
  '(package-archives
    (quote
     (("gnu" . "https://elpa.gnu.org/packages/")
@@ -47,18 +49,13 @@
      ("marmalade" . "https://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (projectile flx counsel ivy writeroom-mode which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent haskell-snippets expand-region exec-path-from-shell diff-hl)))
+    (olivetti projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent haskell-snippets expand-region exec-path-from-shell diff-hl)))
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
  '(scroll-margin 1)
  '(show-paren-mode t)
  '(tool-bar-mode nil)
- '(visible-cursor nil)
- '(writeroom-fringes-outside-margins nil)
- '(writeroom-global-effects
-   (quote
-    (writeroom-set-alpha writeroom-set-menu-bar-lines writeroom-set-tool-bar-lines writeroom-set-vertical-scroll-bars writeroom-set-bottom-divider-width)))
- '(writeroom-width 100))
+ '(visible-cursor nil))
 
 (package-initialize)
 (unless package-archive-contents
@@ -234,6 +231,9 @@
 (add-hook 'after-load-functions 'my-keys-have-priority)
 (my-keys-mode 1)
 
+(define-globalized-minor-mode global-olivetti-mode olivetti-mode turn-on-olivetti-mode)
+(global-olivetti-mode 1)
+
 (with-eval-after-load 'xterm
   (dolist (key (number-sequence 32 127))
     (dolist (mod '((6 . "C-S") (8 . "C-M-S")))
@@ -308,12 +308,6 @@
 
 (with-eval-after-load 'flyspell
   (setq flyspell-issue-message-flag nil))
-
-(with-eval-after-load 'writeroom-mode
-  (define-key writeroom-mode-map (kbd "C-M-<") 'writeroom-decrease-width)
-  (define-key writeroom-mode-map (kbd "C-M->") 'writeroom-increase-width)
-  (define-key writeroom-mode-map (kbd "C-M-=") 'writeroom-adjust-width)
-  (define-key writeroom-mode-map (kbd "C-M-?") 'writeroom-toggle-mode-line))
 
 (unless (display-graphic-p)
   (xterm-mouse-mode)
