@@ -1,12 +1,13 @@
 <keymap version="1" name="emacs-linux" parent="$default">
   <action id="$Copy">
+    <keyboard-shortcut first-keystroke="ctrl c" />
     <keyboard-shortcut first-keystroke="ctrl insert" />
     <keyboard-shortcut first-keystroke="alt w" />
   </action>
   <action id="$Cut">
     <keyboard-shortcut first-keystroke="shift delete" />
     <keyboard-shortcut first-keystroke="shift ctrl back_space" />
-    <keyboard-shortcut first-keystroke="ctrl w" />
+    <keyboard-shortcut first-keystroke="ctrl x" />
   </action>
   <action id="$Delete">
     <keyboard-shortcut first-keystroke="delete" />
@@ -16,13 +17,16 @@
   <action id="$Paste">
     <keyboard-shortcut first-keystroke="shift insert" />
     <keyboard-shortcut first-keystroke="ctrl y" />
+    <keyboard-shortcut first-keystroke="ctrl v" />
   </action>
   <action id="$Redo">
     <keyboard-shortcut first-keystroke="shift ctrl slash" />
+    <keyboard-shortcut first-keystroke="shift ctrl z" />
   </action>
   <action id="$SelectAll" />
   <action id="$Undo">
     <keyboard-shortcut first-keystroke="ctrl slash" />
+    <keyboard-shortcut first-keystroke="ctrl z" />
   </action>
   <action id="ActivateDebugToolWindow">
     <keyboard-shortcut first-keystroke="ctrl 5" />
@@ -62,8 +66,12 @@
   <action id="ChangesView.ShelveSilently" />
   <action id="ChangesView.UnshelveSilently" />
   <action id="ClassNameCompletion" />
-  <action id="CloseActiveTab" />
-  <action id="CloseContent" />
+  <action id="CloseActiveTab">
+    <keyboard-shortcut first-keystroke="ctrl w" />
+  </action>
+  <action id="CloseContent">
+    <keyboard-shortcut first-keystroke="ctrl w" />
+  </action>
   <action id="CodeCompletion">
     <keyboard-shortcut first-keystroke="ctrl alt i" />
     <keyboard-shortcut first-keystroke="alt slash" />
@@ -109,11 +117,12 @@
     <keyboard-shortcut first-keystroke="alt period" />
   </action>
   <action id="Editor Copy">
+    <keyboard-shortcut first-keystroke="ctrl c" />
     <keyboard-shortcut first-keystroke="alt w" />
   </action>
   <action id="Editor Cut">
     <keyboard-shortcut first-keystroke="shift ctrl back_space" />
-    <keyboard-shortcut first-keystroke="ctrl w" />
+    <keyboard-shortcut first-keystroke="ctrl x" />
   </action>
   <action id="Editor Delete">
     <keyboard-shortcut first-keystroke="ctrl d" />
@@ -123,12 +132,15 @@
   </action>
   <action id="Editor Paste">
     <keyboard-shortcut first-keystroke="ctrl y" />
+    <keyboard-shortcut first-keystroke="ctrl v" />
   </action>
   <action id="Editor Redo">
     <keyboard-shortcut first-keystroke="shift ctrl slash" />
+    <keyboard-shortcut first-keystroke="shift ctrl z" />
   </action>
   <action id="Editor Undo">
     <keyboard-shortcut first-keystroke="ctrl slash" />
+    <keyboard-shortcut first-keystroke="ctrl z" />
   </action>
   <action id="EditorAddOrRemoveCaret" />
   <action id="EditorAddRectangularSelectionOnMouseDrag" />
@@ -233,7 +245,7 @@
     <keyboard-shortcut first-keystroke="shift ctrl f" />
   </action>
   <action id="EditorScrollDown">
-    <keyboard-shortcut first-keystroke="ctrl v" />
+    <keyboard-shortcut first-keystroke="shift alt v" />
   </action>
   <action id="EditorScrollToCenter">
     <keyboard-shortcut first-keystroke="ctrl l" />
@@ -435,6 +447,7 @@
   <action id="PasteMultiple">
     <keyboard-shortcut first-keystroke="shift ctrl insert" />
     <keyboard-shortcut first-keystroke="alt y" />
+    <keyboard-shortcut first-keystroke="shift ctrl v" />
   </action>
   <action id="PopupHector" />
   <action id="PreviousDiff">

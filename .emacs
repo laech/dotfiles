@@ -200,6 +200,7 @@
        ("C-v" . yank)
        ("C-S-v" . counsel-yank-pop)
        ("M-S-v" . scroll-up-command)
+       ("M-V" . scroll-up-command)
        ("C-S-s" . save-buffer)
        ("C-w" . kill-buffer-and-window)
        ("C-S-w" . delete-other-windows)
