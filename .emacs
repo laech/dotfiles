@@ -190,6 +190,8 @@
 (dolist
     (mapping
      '(("<S-return>" . start-new-line)
+       ("C-q" . save-buffers-kill-terminal)
+       ("C-S-q" . quoted-insert)
        ("C-o" . counsel-find-file)
        ("C-S-o" . projectile-find-file)
        ("C-j" . ivy-switch-buffer)
@@ -214,11 +216,11 @@
        ("C-," . mc/mark-previous-like-this)
        ("C-<" . mc/unmark-previous-like-this)
        ("C-=" . er/expand-region)
-       ("C-+" . er/contract-region)
-       ("C-:" . counsel-M-x)))
+       ("C-+" . er/contract-region)))
   (define-key my-keys-mode-map (kbd (car mapping)) (cdr mapping)))
 
 (require 'iso-transl)
+(define-key my-keys-mode-map (kbd "C-:") mode-specific-map)
 (define-key my-keys-mode-map (kbd "C-;") ctl-x-map)
 (define-key key-translation-map (kbd "C-; 8") 'iso-transl-ctl-x-8-map)
 
@@ -242,7 +244,7 @@
 (global-olivetti-mode 1)
 
 (with-eval-after-load 'xterm
-  (dolist (key (number-sequence 32 127))
+  (dolist (key (number-sequence 33 127))
     (dolist (mod '((6 . "C-S") (8 . "C-M-S")))
       (let* ((mod-code (car mod))
              (mod-str (cdr mod))

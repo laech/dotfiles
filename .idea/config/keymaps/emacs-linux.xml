@@ -290,7 +290,9 @@
   <action id="EmmetNextEditPoint" />
   <action id="EmmetPreviousEditPoint" />
   <action id="EvaluateExpression" />
-  <action id="Exit" />
+  <action id="Exit">
+    <keyboard-shortcut first-keystroke="ctrl q" />
+  </action>
   <action id="ExpandAll">
     <keyboard-shortcut first-keystroke="ctrl equals" />
   </action>
@@ -347,7 +349,6 @@
   <action id="Git.Reword.Commit" />
   <action id="GotoAction">
     <keyboard-shortcut first-keystroke="alt x" />
-    <keyboard-shortcut first-keystroke="shift ctrl semicolon" />
   </action>
   <action id="GotoBookmark0" />
   <action id="GotoBookmark1" />
