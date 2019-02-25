@@ -2,9 +2,7 @@
 (setq
  default-frame-alist
  `((internal-border-width . 0)
-   (menu-bar-lines . ,(if (and (equal system-type 'darwin)
-                               (display-graphic-p))
-                          1 0))
+   (menu-bar-lines . 0)
    (ns-appearance . light)
    (ns-transparent-titlebar . t)))
 
@@ -49,7 +47,7 @@
      ("marmalade" . "https://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (olivetti projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent expand-region exec-path-from-shell diff-hl)))
+    (olivetti projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent expand-region diff-hl)))
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
  '(scroll-margin 1)
@@ -324,12 +322,6 @@
 
 (if (display-graphic-p)
     (toggle-mode-line))
-
-(when (eq system-type 'darwin)
-  (setq mac-command-modifier 'control)
-  (setq mac-control-modifier 'super)
-  (set-default-font "Menlo 14")
-  (exec-path-from-shell-initialize))
 
 (when (eq system-type 'gnu/linux)
   (set-default-font "Ubuntu Mono 16"))
