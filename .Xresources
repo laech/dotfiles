@@ -35,6 +35,8 @@ XTerm.vt100.reverseVideo: false
 
 ! 'showkey -a' to see key codes
 ! 'xev' to see key names
+! See https://www.in-ulm.de/~mascheck/X11/xterm/XTerm
+! Send extra key codes for C-S-<key> and C-M-S-<key>
 XTerm.vt100.translations: #override \n\
     Ctrl ~Meta ~Alt Shift <Key>a: string(0x1b) string("[97;6u") \n\
     Ctrl ~Meta ~Alt Shift <Key>b: string(0x1b) string("[98;6u") \n\

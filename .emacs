@@ -53,7 +53,9 @@
  '(scroll-margin 1)
  '(show-paren-mode t)
  '(tool-bar-mode nil)
- '(visible-cursor nil))
+ '(visible-cursor nil)
+ '(visual-line-fringe-indicators (quote (left-curly-arrow right-curly-arrow)))
+ '(word-wrap t))
 
 (package-initialize)
 (unless package-archive-contents
@@ -239,21 +241,18 @@
 
 (define-globalized-minor-mode global-olivetti-mode olivetti-mode turn-on-olivetti-mode)
 (global-olivetti-mode 1)
-
+;; Make C-S-<key>, C-M-S-<key> work under xterm.
+;; See ~/.Xresources for sending these escape codes.
+;; See https://github.com/jwiegley/emacs-release/blob/master/lisp/term/xterm.el
 (with-eval-after-load 'xterm
-  (dolist (key (number-sequence 33 127))
+  (dolist (key (number-sequence 33 127)) ;; See ascii
     (dolist (mod '((6 . "C-S") (8 . "C-M-S")))
       (let* ((mod-code (car mod))
              (mod-str (cdr mod))
              (full (kbd (format "%s-%c" mod-str key))))
-
-        (define-key xterm-function-map
-          (format "\e[27;%d;%d~" mod-code key)
-          full)
-
-        (define-key xterm-function-map
-          (format "\e[%d;%du" key mod-code)
-          full)))))
+        ;; For both XTerm.vt100.formatOtherKeys set to 0 or 1
+        (define-key xterm-function-map (format "\e[27;%d;%d~" mod-code key) full)
+        (define-key xterm-function-map (format "\e[%d;%du" key mod-code) full)))))
 
 (with-eval-after-load 'ivy
   (dolist
@@ -324,4 +323,4 @@
     (toggle-mode-line))
 
 (when (eq system-type 'gnu/linux)
-  (set-default-font "Ubuntu Mono 16"))
+  (set-default-font "Ubuntu Mono 14"))
