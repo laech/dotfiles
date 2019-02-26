@@ -140,8 +140,9 @@ xkb_symbols "pc" {
 
   key <RALT> {[ Control_R, Control_R ]};
   key <RWIN> {[ Alt_R, Meta_R ]};
+  key <MENU> {[ Alt_R, Meta_R ]};
   key <RCTL> {[ ISO_Level3_Shift ]};
-  modifier_map Mod1 { <RWIN> };
+  modifier_map Mod1 { <RWIN>, <MENU> };
   modifier_map Mod4 { <RCTL> };
   modifier_map Control { <RALT> };
 };
