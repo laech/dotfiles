@@ -320,6 +320,6 @@
     (toggle-mode-line))
 
 (let ((hour (nth 2 (decode-time))))
-  (when (or (< hour 8) (> hour 20))
+  (when (or (<= hour 8) (>= hour 20))
     (load-theme 'tango-dark)
     (set-face-attribute 'fringe nil :background nil)))
