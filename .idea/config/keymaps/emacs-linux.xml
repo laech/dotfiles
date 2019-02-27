@@ -432,7 +432,7 @@
   <action id="NewElementSamePlace" />
   <action id="NewScratchFile" />
   <action id="NextDiff">
-    <keyboard-shortcut first-keystroke="alt k" />
+    <keyboard-shortcut first-keystroke="alt n" />
   </action>
   <action id="NextEditorTab" />
   <action id="NextProjectWindow" />
@@ -453,7 +453,7 @@
   </action>
   <action id="PopupHector" />
   <action id="PreviousDiff">
-    <keyboard-shortcut first-keystroke="alt i" />
+    <keyboard-shortcut first-keystroke="alt p" />
   </action>
   <action id="PreviousEditorTab" />
   <action id="PreviousProjectWindow" />
