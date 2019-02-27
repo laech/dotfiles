@@ -39,6 +39,8 @@ readonly packages=(
   noto-fonts
   noto-fonts-cjk
   noto-fonts-emoji
+  adobe-source-sans-pro-fonts
+  adobe-source-serif-pro-fonts
 
   jdk8-openjdk
   openjdk8-src
