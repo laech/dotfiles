@@ -46,11 +46,13 @@
      ("marmalade" . "https://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (olivetti projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent expand-region diff-hl)))
+    (helm sr-speedbar olivetti projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent expand-region diff-hl)))
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
  '(scroll-margin 1)
  '(show-paren-mode t)
+ '(speedbar-show-unknown-files t)
+ '(sr-speedbar-right-side nil)
  '(tool-bar-mode nil)
  '(visible-cursor nil)
  '(visual-line-fringe-indicators (quote (left-curly-arrow right-curly-arrow)))
@@ -188,6 +190,7 @@
 (dolist
     (mapping
      '(("<S-return>" . start-new-line)
+       ("C-1" . sr-speedbar-toggle)
        ("C-q" . save-buffers-kill-terminal)
        ("C-S-q" . quoted-insert)
        ("C-o" . counsel-find-file)
