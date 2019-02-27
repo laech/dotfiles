@@ -1,10 +1,9 @@
 
 (setq
  default-frame-alist
- `((internal-border-width . 0)
+ '((internal-border-width . 0)
    (menu-bar-lines . 0)
-   (ns-appearance . light)
-   (ns-transparent-titlebar . t)))
+   (font . "Monospace-14")))
 
 ;; By default Emacs automatically detects background color and sets
 ;; background mode automaticall, but when running inside tmux this
@@ -320,5 +319,7 @@
 (if (display-graphic-p)
     (toggle-mode-line))
 
-(when (eq system-type 'gnu/linux)
-  (set-default-font "Ubuntu Mono 14"))
+(let ((hour (nth 2 (decode-time))))
+  (when (or (< hour 8) (> hour 20))
+    (load-theme 'tango-dark)
+    (set-face-attribute 'fringe nil :background nil)))
