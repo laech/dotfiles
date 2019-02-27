@@ -194,7 +194,6 @@
        ("C-o" . counsel-find-file)
        ("C-S-o" . projectile-find-file)
        ("C-j" . ivy-switch-buffer)
-       ("C-l" . forward-char)
        ("C-z" . undo-tree-undo)
        ("C-S-z" . undo-tree-redo)
        ("C-x" . kill-region-or-line)
