@@ -46,7 +46,7 @@
      ("marmalade" . "https://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (helm sr-speedbar olivetti projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent expand-region diff-hl)))
+    (treemacs lsp-ui lsp-java helm sr-speedbar olivetti projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent expand-region diff-hl)))
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
  '(scroll-margin 1)
@@ -177,6 +177,8 @@
 (add-hook 'lisp-mode-hook #'enable-paredit-mode)
 (add-hook 'scheme-mode-hook #'enable-paredit-mode)
 
+(require 'lsp-java)
+(add-hook 'prog-mode-hook #'lsp)
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 (dolist
@@ -241,6 +243,7 @@
 
 (define-globalized-minor-mode global-olivetti-mode olivetti-mode turn-on-olivetti-mode)
 (global-olivetti-mode 1)
+
 ;; Make C-S-<key>, C-M-S-<key> work under xterm.
 ;; See ~/.Xresources for sending these escape codes.
 ;; See https://github.com/jwiegley/emacs-release/blob/master/lisp/term/xterm.el
@@ -253,6 +256,10 @@
         ;; For both XTerm.vt100.formatOtherKeys set to 0 or 1
         (define-key xterm-function-map (format "\e[27;%d;%d~" mod-code key) full)
         (define-key xterm-function-map (format "\e[%d;%du" key mod-code) full)))))
+
+(with-eval-after-load 'lsp-ui
+  (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
+  (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references))
 
 (with-eval-after-load 'ivy
   (dolist
