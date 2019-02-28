@@ -188,25 +188,11 @@
 
 (define-key ctl-x-map (kbd "g") 'magit-status)
 
-(defvar my-keys-mode-map (make-sparse-keymap))
 (dolist
     (mapping
      '(("<S-return>" . start-new-line)
-       ("C-1" . sr-speedbar-toggle)
-       ("C-q" . save-buffers-kill-terminal)
-       ("C-S-q" . quoted-insert)
-       ("C-o" . counsel-find-file)
-       ("C-S-o" . projectile-find-file)
-       ("C-j" . ivy-switch-buffer)
-       ("C-z" . undo-tree-undo)
-       ("C-S-z" . undo-tree-redo)
-       ("C-x" . kill-region-or-line)
-       ("C-c" . copy-region-or-line)
-       ("C-v" . yank)
-       ("C-S-v" . counsel-yank-pop)
-       ("M-V" . scroll-up-command)
-       ("C-w" . kill-buffer-and-window)
-       ("C-S-w" . delete-other-windows)
+       ("C-w" . kill-region-or-line)
+       ("M-w" . copy-region-or-line)
        ("C-S-d" . duplicate-region-or-line)
        ("M-N" . move-line-down)
        ("M-P" . move-line-up)
@@ -218,28 +204,7 @@
        ("C-<" . mc/unmark-previous-like-this)
        ("C-=" . er/expand-region)
        ("C-+" . er/contract-region)))
-  (define-key my-keys-mode-map (kbd (car mapping)) (cdr mapping)))
-
-(require 'iso-transl)
-(define-key my-keys-mode-map (kbd "C-:") mode-specific-map)
-(define-key my-keys-mode-map (kbd "C-;") ctl-x-map)
-(define-key key-translation-map (kbd "C-; 8") 'iso-transl-ctl-x-8-map)
-
-(define-minor-mode my-keys-mode :init-value t)
-
-(defun my-keys-mode-disable ()
-  (my-keys-mode 0))
-
-(defun my-keys-have-priority (_)
-  "Ensures my keys retain priority over other minor modes."
-  (unless (eq (caar minor-mode-map-alist) 'my-keys-mode)
-    (let ((my-keys (assq 'my-keys-mode minor-mode-map-alist)))
-      (assq-delete-all 'my-keys-mode minor-mode-map-alist)
-      (add-to-list 'minor-mode-map-alist my-keys))))
-
-(add-hook 'minibuffer-setup-hook 'my-keys-mode-disable)
-(add-hook 'after-load-functions 'my-keys-have-priority)
-(my-keys-mode 1)
+  (global-set-key (kbd (car mapping)) (cdr mapping)))
 
 (define-globalized-minor-mode global-olivetti-mode olivetti-mode turn-on-olivetti-mode)
 (global-olivetti-mode 1)
