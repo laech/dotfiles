@@ -181,18 +181,15 @@
 (add-hook 'prog-mode-hook #'lsp)
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
-(dolist
-    (mapping
-     '(("C-M-\\" . indent-region-or-buffer)))
-  (global-set-key (kbd (car mapping)) (cdr mapping)))
-
 (define-key ctl-x-map (kbd "g") 'magit-status)
+
+(global-set-key [remap kill-region] 'kill-region-or-line)
+(global-set-key [remap kill-ring-save] 'copy-region-or-line)
+(global-set-key [remap indent-region] 'indent-region-or-buffer)
 
 (dolist
     (mapping
      '(("<S-return>" . start-new-line)
-       ("C-w" . kill-region-or-line)
-       ("M-w" . copy-region-or-line)
        ("C-S-d" . duplicate-region-or-line)
        ("M-N" . move-line-down)
        ("M-P" . move-line-up)
@@ -293,8 +290,3 @@
 
 (if (display-graphic-p)
     (toggle-mode-line))
-
-(let ((hour (nth 2 (decode-time))))
-  (when (or (<= hour 8) (>= hour 20))
-    (load-theme 'tango-dark)
-    (set-face-attribute 'fringe nil :background nil)))
