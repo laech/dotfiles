@@ -177,8 +177,7 @@
 (add-hook 'lisp-mode-hook #'enable-paredit-mode)
 (add-hook 'scheme-mode-hook #'enable-paredit-mode)
 
-(require 'lsp-java)
-(add-hook 'prog-mode-hook #'lsp)
+(add-hook 'java-mode-hook (lambda () (require 'lsp-java) (lsp)))
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 (define-key ctl-x-map (kbd "g") 'magit-status)
