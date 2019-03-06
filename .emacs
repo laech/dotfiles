@@ -180,6 +180,47 @@
 (add-hook 'java-mode-hook (lambda () (require 'lsp-java) (lsp)))
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
+(defun relocate-prefix-keys (keymap)
+  "Use C-; for C-x map, C-: for C-c map. Use C-x/C-c as standard cut/copy."
+  (dolist
+      (mapping
+       '(("C-x" "C-;" kill-region-or-line)
+         ("C-c" "C-:" copy-region-or-line)))
+
+    (let* ((old-key (kbd (nth 0 mapping)))
+           (new-key (kbd (nth 1 mapping)))
+           (old-keymap (lookup-key keymap old-key))
+           (new-keymap (lookup-key keymap new-key)))
+
+      (when (keymapp old-keymap)
+        (define-key keymap new-key
+          (if new-keymap
+              (append old-keymap new-keymap)
+            old-keymap)))
+
+      (define-key keymap old-key nil)
+      (when (eq global-map keymap)
+        (define-key keymap old-key (nth 2 mapping))))))
+
+(add-hook
+ 'after-load-functions
+ (lambda (_) (mapc 'relocate-prefix-keys (current-active-maps))))
+
+;; Seems to need this once for the inital relocation to be clean.
+;; Otherwise some old keys are still left in C-x/C-c.
+(defun relocate-prefix-keys-once ()
+  (mapc 'relocate-prefix-keys (current-active-maps))
+  (remove-hook 'after-change-major-mode-hook 'relocate-prefix-keys-once))
+(add-hook 'after-change-major-mode-hook 'relocate-prefix-keys-once)
+
+;; For C-x 5 which isn't caught in above relocation.
+(relocate-prefix-keys function-key-map)
+
+;; For C-x 8 which is a key translation, not caught in above relocation.
+(define-key key-translation-map (kbd "C-; 8")
+  (lookup-key key-translation-map (kbd "C-x 8")))
+(define-key key-translation-map (kbd "C-x 8") nil)
+
 (define-key ctl-x-map (kbd "g") 'magit-status)
 
 (global-set-key [remap kill-region] 'kill-region-or-line)
