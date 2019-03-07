@@ -35,7 +35,6 @@ readonly packages=(
   ttf-dejavu
   ttf-liberation
   ttf-ubuntu-font-family
-  otf-font-awesome
   noto-fonts
   noto-fonts-cjk
   noto-fonts-emoji
