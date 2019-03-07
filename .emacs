@@ -230,6 +230,12 @@
 (dolist
     (mapping
      '(("<S-return>" . start-new-line)
+       ("C-q" . save-buffers-kill-terminal)
+       ("C-: q" . quoted-insert)
+       ("C-w" . kill-buffer-and-window)
+       ("M-w" . nil)
+       ("C-z" . undo-tree-undo)
+       ("C-S-z" . undo-tree-redo)
        ("C-S-d" . duplicate-region-or-line)
        ("M-N" . move-line-down)
        ("M-P" . move-line-up)
