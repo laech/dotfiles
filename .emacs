@@ -204,17 +204,12 @@
 
 (add-hook
  'after-load-functions
- (lambda (_) (mapc 'relocate-prefix-keys (current-active-maps))))
-
-;; Seems to need this once for the inital relocation to be clean.
-;; Otherwise some old keys are still left in C-x/C-c.
-(defun relocate-prefix-keys-once ()
-  (mapc 'relocate-prefix-keys (current-active-maps))
-  (remove-hook 'after-change-major-mode-hook 'relocate-prefix-keys-once))
-(add-hook 'after-change-major-mode-hook 'relocate-prefix-keys-once)
-
-;; For C-x 5 which isn't caught in above relocation.
-(relocate-prefix-keys function-key-map)
+ (lambda (_)
+   (mapc
+    'relocate-prefix-keys
+    (append
+     (current-active-maps)
+     (mapcar 'cdr minor-mode-map-alist)))))
 
 ;; For C-x 8 which is a key translation, not caught in above relocation.
 (define-key key-translation-map (kbd "C-; 8")
@@ -233,7 +228,9 @@
        ("C-q" . save-buffers-kill-terminal)
        ("C-: q" . quoted-insert)
        ("C-w" . kill-buffer-and-window)
+       ("C-S-w" . delete-other-windows)
        ("M-w" . nil)
+       ("C-o" . counsel-find-file)
        ("C-z" . undo-tree-undo)
        ("C-S-z" . undo-tree-redo)
        ("C-S-d" . duplicate-region-or-line)
