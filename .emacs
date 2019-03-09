@@ -55,6 +55,7 @@
  '(speedbar-show-unknown-files t)
  '(sr-speedbar-right-side nil)
  '(tool-bar-mode nil)
+ '(truncate-lines t)
  '(visible-cursor nil)
  '(visual-line-fringe-indicators (quote (left-curly-arrow right-curly-arrow)))
  '(word-wrap t))
@@ -251,8 +252,14 @@
        ("C-+" . er/contract-region)))
   (global-set-key (kbd (car mapping)) (cdr mapping)))
 
-(define-globalized-minor-mode global-olivetti-mode olivetti-mode turn-on-olivetti-mode)
-(global-olivetti-mode 1)
+(define-globalized-minor-mode
+  global-olivetti-mode
+  olivetti-mode
+  (lambda ()
+    (turn-on-olivetti-mode)
+    (toggle-truncate-lines)))
+
+;;(global-olivetti-mode 1)
 
 ;; Make C-S-<key>, C-M-S-<key> work under xterm.
 ;; See ~/.Xresources for sending these escape codes.
