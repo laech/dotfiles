@@ -195,12 +195,12 @@
            (new-keymap (lookup-key keymap new-key)))
 
       (when (keymapp old-keymap)
+        (define-key keymap old-key nil)
         (define-key keymap new-key
           (if new-keymap
               (append old-keymap new-keymap)
             old-keymap)))
 
-      (define-key keymap old-key nil)
       (when (eq global-map keymap)
         (define-key keymap old-key (nth 2 mapping))))))
 
@@ -213,14 +213,16 @@
      (current-active-maps)
      (mapcar 'cdr minor-mode-map-alist)))))
 
-;; For C-x 8 which is a key translation, not caught in above relocation.
+;; (define-key function-key-map (kbd "C-; @")
+;;   (lookup-key function-key-map (kbd "C-x @")))
+;; (define-key function-key-map (kbd "C-x @") nil)
+
 (define-key key-translation-map (kbd "C-; 8")
   (lookup-key key-translation-map (kbd "C-x 8")))
 (define-key key-translation-map (kbd "C-x 8") nil)
 
 (define-key ctl-x-map (kbd "g") 'magit-status)
 
-(global-set-key [remap kill-region] 'kill-region-or-line)
 (global-set-key [remap kill-ring-save] 'copy-region-or-line)
 (global-set-key [remap indent-region] 'indent-region-or-buffer)
 
@@ -250,6 +252,7 @@
        ("C-z" . undo-tree-undo)
        ("C-S-z" . undo-tree-redo)
        ("C-v" . yank)
+       ("C-S-x" . kill-region-or-line)
        ("C-S-v" . counsel-yank-pop)
        ("C-b" . nil)
        ("C-n" . nil)
@@ -336,14 +339,33 @@
    '(("C-j" . nil))))
 
 (with-eval-after-load 'paredit
+
   (defun transpose-sexps-reverse (arg)
     (interactive "*p")
     (transpose-sexps (- arg)))
+
+  (defun paredit-kill-region-or-sexp ()
+    (interactive "*")
+    (if (use-region-p)
+        (paredit-kill-region (region-beginning) (region-end))
+      (beginning-of-line)
+      (paredit-kill)
+      (paredit-forward-delete)))
+
+  (defun paredit-copy-region-or-sexp ()
+    (interactive)
+    (if (use-region-p)
+        (copy-region-as-kill (region-beginning) (region-end))
+      (message "Copied sexp")
+      (paredit-copy-sexps-as-kill)))
+
   (mapc
    (lambda (mapping)
      (define-key paredit-mode-map (kbd (car mapping)) (cdr mapping)))
    '(("C-M-S-t" . transpose-sexps-reverse)
+     ("C-x" . paredit-kill-region-or-sexp)
      ("C-S-x" . paredit-kill)
+     ("C-c" . paredit-copy-region-or-sexp)
      ("C-j" . nil)
      ("C-k" . nil))))
 
