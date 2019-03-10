@@ -231,15 +231,28 @@
        ("C-: q" . quoted-insert)
        ("C-w" . kill-buffer-and-window)
        ("C-S-w" . delete-other-windows)
+       ("C-e" . ivy-switch-buffer)
+       ("C-y" . nil)
        ("C-o" . counsel-find-file)
+       ("C-p" . nil)
        ("C-a" . mark-whole-buffer)
        ("C-s" . save-buffer)
+       ("C-S-d" . duplicate-region-or-line)
        ("C-f" . isearch-forward)
+       ("C-h" . backward-char)
+       ("M-h" . backward-word)
+       ("C-j" . next-line)
+       ("M-j" . scroll-up-command)
+       ("C-k" . previous-line)
+       ("M-k" . scroll-down-command)
+       ("C-l" . forward-char)
+       ("M-l" . forward-word)
        ("C-z" . undo-tree-undo)
        ("C-S-z" . undo-tree-redo)
        ("C-v" . yank)
        ("C-S-v" . counsel-yank-pop)
-       ("C-S-d" . duplicate-region-or-line)
+       ("C-b" . nil)
+       ("C-n" . nil)
        ("M-N" . move-line-down)
        ("M-P" . move-line-up)
        ("M-J" . join-line-next)
@@ -274,6 +287,17 @@
         (define-key xterm-function-map (format "\e[27;%d;%d~" mod-code key) full)
         (define-key xterm-function-map (format "\e[%d;%du" key mod-code) full)))))
 
+(with-eval-after-load 'isearch
+  (mapc
+   (lambda (mapping)
+     (define-key isearch-mode-map (kbd (car mapping)) (cdr mapping)))
+   '(("C-f" . isearch-repeat-forward) ("C-s" . nil)
+     ("C-v" . isearch-yank-kill) ("C-v" . nil)
+     ("C-S-l" . isearch-yank-word-or-char) ("C-w" . nil)
+     ("M-j" . isearch-ring-advance) ("M-n" . nil)
+     ("M-k" . isearch-ring-retreat) ("M-p" . nil)
+     ("C-: q" . isearch-quote-char) ("C-q" . nil))))
+
 (with-eval-after-load 'lsp-ui
   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
   (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references))
@@ -282,7 +306,14 @@
   (dolist
       (mapping
        '(("<tab>" . ivy-insert-current)
-         ("<return>" . ivy-alt-done)))
+         ("<return>" . ivy-alt-done)
+         ("C-S-l" . ivy-yank-word)
+         ("C-j" . ivy-next-line)
+         ("C-k" . ivy-previous-line)
+         ("M-j" . ivy-scroll-up-command)
+         ("M-k" . ivy-scroll-down-command)
+         ("C-M-j" . ivy-next-history-element)
+         ("C-M-k" . ivy-previous-history-element)))
     (define-key ivy-minibuffer-map (kbd (car mapping)) (cdr mapping))))
 
 (setq ivy-extra-directories nil)
@@ -298,14 +329,23 @@
 (with-eval-after-load 'projectile
   (define-key mode-specific-map (kbd "p") 'projectile-command-map))
 
+(with-eval-after-load 'elisp-mode
+  (mapc
+   (lambda (mapping)
+     (define-key lisp-interaction-mode-map (kbd (car mapping)) (cdr mapping)))
+   '(("C-j" . nil))))
+
 (with-eval-after-load 'paredit
   (defun transpose-sexps-reverse (arg)
     (interactive "*p")
     (transpose-sexps (- arg)))
-  (dolist
-      (mapping
-       '(("C-M-S-t" . transpose-sexps-reverse)))
-    (define-key paredit-mode-map (kbd (car mapping)) (cdr mapping))))
+  (mapc
+   (lambda (mapping)
+     (define-key paredit-mode-map (kbd (car mapping)) (cdr mapping)))
+   '(("C-M-S-t" . transpose-sexps-reverse)
+     ("C-S-x" . paredit-kill)
+     ("C-j" . nil)
+     ("C-k" . nil))))
 
 (with-eval-after-load 'haskell-mode
   (add-hook 'haskell-mode-hook #'intero-mode)
