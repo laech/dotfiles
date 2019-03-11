@@ -182,80 +182,16 @@
 (add-hook 'java-mode-hook (lambda () (require 'lsp-java) (lsp)))
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
-(defun relocate-prefix-keys (keymap)
-  "Use C-; for C-x map, C-: for C-c map. Use C-x/C-c as standard cut/copy."
-  (dolist
-      (mapping
-       '(("C-x" "C-;" kill-region-or-line)
-         ("C-c" "C-:" copy-region-or-line)))
-
-    (let* ((old-key (kbd (nth 0 mapping)))
-           (new-key (kbd (nth 1 mapping)))
-           (old-keymap (lookup-key keymap old-key))
-           (new-keymap (lookup-key keymap new-key)))
-
-      (when (keymapp old-keymap)
-        (define-key keymap old-key nil)
-        (define-key keymap new-key
-          (if new-keymap
-              (append old-keymap new-keymap)
-            old-keymap)))
-
-      (when (eq global-map keymap)
-        (define-key keymap old-key (nth 2 mapping))))))
-
-(add-hook
- 'after-load-functions
- (lambda (_)
-   (mapc
-    'relocate-prefix-keys
-    (append
-     (current-active-maps)
-     (mapcar 'cdr minor-mode-map-alist)))))
-
-;; (define-key function-key-map (kbd "C-; @")
-;;   (lookup-key function-key-map (kbd "C-x @")))
-;; (define-key function-key-map (kbd "C-x @") nil)
-
-(define-key key-translation-map (kbd "C-; 8")
-  (lookup-key key-translation-map (kbd "C-x 8")))
-(define-key key-translation-map (kbd "C-x 8") nil)
-
 (define-key ctl-x-map (kbd "g") 'magit-status)
 
+(global-set-key [remap kill-region] 'kill-region-or-line)
 (global-set-key [remap kill-ring-save] 'copy-region-or-line)
 (global-set-key [remap indent-region] 'indent-region-or-buffer)
 
 (dolist
     (mapping
      '(("<S-return>" . start-new-line)
-       ("C-q" . save-buffers-kill-terminal)
-       ("C-: q" . quoted-insert)
-       ("C-w" . kill-buffer-and-window)
-       ("C-S-w" . delete-other-windows)
-       ("C-e" . ivy-switch-buffer)
-       ("C-y" . nil)
-       ("C-o" . counsel-find-file)
-       ("C-p" . nil)
-       ("C-a" . mark-whole-buffer)
-       ("C-s" . save-buffer)
        ("C-S-d" . duplicate-region-or-line)
-       ("C-f" . isearch-forward)
-       ("C-h" . backward-char)
-       ("M-h" . backward-word)
-       ("C-j" . next-line)
-       ("M-j" . scroll-up-command)
-       ("C-k" . previous-line)
-       ("M-k" . scroll-down-command)
-       ("C-l" . forward-char)
-       ("M-l" . forward-word)
-       ("C-z" . undo-tree-undo)
-       ("C-S-z" . undo-tree-redo)
-       ("C-v" . yank)
-       ("C-S-x" . kill-region-or-line)
-       ("C-S-v" . counsel-yank-pop)
-       ("C-b" . nil)
-       ("C-n" . nil)
        ("M-N" . move-line-down)
        ("M-P" . move-line-up)
        ("M-J" . join-line-next)
@@ -290,17 +226,6 @@
         (define-key xterm-function-map (format "\e[27;%d;%d~" mod-code key) full)
         (define-key xterm-function-map (format "\e[%d;%du" key mod-code) full)))))
 
-(with-eval-after-load 'isearch
-  (mapc
-   (lambda (mapping)
-     (define-key isearch-mode-map (kbd (car mapping)) (cdr mapping)))
-   '(("C-f" . isearch-repeat-forward) ("C-s" . nil)
-     ("C-v" . isearch-yank-kill) ("C-v" . nil)
-     ("C-S-l" . isearch-yank-word-or-char) ("C-w" . nil)
-     ("M-j" . isearch-ring-advance) ("M-n" . nil)
-     ("M-k" . isearch-ring-retreat) ("M-p" . nil)
-     ("C-: q" . isearch-quote-char) ("C-q" . nil))))
-
 (with-eval-after-load 'lsp-ui
   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
   (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references))
@@ -309,14 +234,7 @@
   (dolist
       (mapping
        '(("<tab>" . ivy-insert-current)
-         ("<return>" . ivy-alt-done)
-         ("C-S-l" . ivy-yank-word)
-         ("C-j" . ivy-next-line)
-         ("C-k" . ivy-previous-line)
-         ("M-j" . ivy-scroll-up-command)
-         ("M-k" . ivy-scroll-down-command)
-         ("C-M-j" . ivy-next-history-element)
-         ("C-M-k" . ivy-previous-history-element)))
+         ("<return>" . ivy-alt-done)))
     (define-key ivy-minibuffer-map (kbd (car mapping)) (cdr mapping))))
 
 (setq ivy-extra-directories nil)
@@ -331,12 +249,6 @@
 
 (with-eval-after-load 'projectile
   (define-key mode-specific-map (kbd "p") 'projectile-command-map))
-
-(with-eval-after-load 'elisp-mode
-  (mapc
-   (lambda (mapping)
-     (define-key lisp-interaction-mode-map (kbd (car mapping)) (cdr mapping)))
-   '(("C-j" . nil))))
 
 (with-eval-after-load 'paredit
 
@@ -363,11 +275,8 @@
    (lambda (mapping)
      (define-key paredit-mode-map (kbd (car mapping)) (cdr mapping)))
    '(("C-M-S-t" . transpose-sexps-reverse)
-     ("C-x" . paredit-kill-region-or-sexp)
-     ("C-S-x" . paredit-kill)
-     ("C-c" . paredit-copy-region-or-sexp)
-     ("C-j" . nil)
-     ("C-k" . nil))))
+     ("C-w" . paredit-kill-region-or-sexp)
+     ("M-w" . paredit-copy-region-or-sexp))))
 
 (with-eval-after-load 'haskell-mode
   (add-hook 'haskell-mode-hook #'intero-mode)
