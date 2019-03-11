@@ -40,6 +40,7 @@
   </action>
   <action id="ActivateStructureToolWindow" />
   <action id="ActivateTODOToolWindow" />
+  <action id="ActivateTerminalToolWindow" />
   <action id="ActivateVersionControlToolWindow">
     <keyboard-shortcut first-keystroke="ctrl 9" />
   </action>
@@ -56,26 +57,18 @@
   </action>
   <action id="ChangesView.Revert">
     <keyboard-shortcut first-keystroke="ctrl alt slash" />
-    <keyboard-shortcut first-keystroke="ctrl alt z" />
   </action>
   <action id="ChangesView.SetDefault" />
   <action id="ChangesView.ShelveSilently" />
   <action id="ChangesView.UnshelveSilently" />
   <action id="ClassNameCompletion" />
-  <action id="CloseActiveTab">
-    <keyboard-shortcut first-keystroke="ctrl w" />
-  </action>
-  <action id="CloseContent">
-    <keyboard-shortcut first-keystroke="ctrl w" />
-  </action>
+  <action id="CloseActiveTab" />
+  <action id="CloseContent" />
   <action id="CodeCompletion">
     <keyboard-shortcut first-keystroke="ctrl alt i" />
     <keyboard-shortcut first-keystroke="alt slash" />
   </action>
   <action id="CodeInspection.OnEditor" />
-  <action id="CollapseAll">
-    <keyboard-shortcut first-keystroke="ctrl minus" />
-  </action>
   <action id="CollapseAllRegions" />
   <action id="CollapseBlock" />
   <action id="CollapseExpandableComponent" />
@@ -143,9 +136,6 @@
   <action id="EditorCodeBlockStartWithSelection" />
   <action id="EditorContextInfo" />
   <action id="EditorCreateRectangularSelection" />
-  <action id="EditorCutLineEnd">
-    <keyboard-shortcut first-keystroke="ctrl k" />
-  </action>
   <action id="EditorDeleteLine" />
   <action id="EditorDeleteToWordEnd">
     <keyboard-shortcut first-keystroke="ctrl delete" />
@@ -279,9 +269,6 @@
   <action id="EmmetNextEditPoint" />
   <action id="EmmetPreviousEditPoint" />
   <action id="EvaluateExpression" />
-  <action id="ExpandAll">
-    <keyboard-shortcut first-keystroke="ctrl equals" />
-  </action>
   <action id="ExpandAllRegions" />
   <action id="ExpandAllToLevel1" />
   <action id="ExpandAllToLevel2" />
@@ -371,9 +358,7 @@
   <action id="GotoTest" />
   <action id="GotoTypeDeclaration" />
   <action id="HideActiveWindow" />
-  <action id="HideAllWindows">
-    <keyboard-shortcut first-keystroke="shift ctrl w" />
-  </action>
+  <action id="HideAllWindows" />
   <action id="HighlightUsagesInFile" />
   <action id="HippieBackwardCompletion" />
   <action id="HippieCompletion" />
@@ -450,6 +435,7 @@
     <keyboard-shortcut first-keystroke="ctrl page_up" />
   </action>
   <action id="ProjectViewChangeView" />
+  <action id="QuickChangeScheme" />
   <action id="QuickEvaluateExpression" />
   <action id="QuickImplementations" />
   <action id="QuickJavaDoc" />
@@ -480,7 +466,7 @@
   <action id="SafeDelete" />
   <action id="SaveAll" />
   <action id="ScrollPane-scrollDown">
-    <keyboard-shortcut first-keystroke="shift alt v" />
+    <keyboard-shortcut first-keystroke="ctrl v" />
   </action>
   <action id="ScrollPane-scrollUp">
     <keyboard-shortcut first-keystroke="alt v" />
@@ -537,7 +523,7 @@
   <action id="ToggleBookmarkWithMnemonic" />
   <action id="ToggleTemporaryLineBreakpoint" />
   <action id="Tool_External Tools_Terminal">
-    <keyboard-shortcut first-keystroke="alt f12" />
+    <keyboard-shortcut first-keystroke="ctrl back_quote" />
   </action>
   <action id="TypeHierarchy" />
   <action id="UnselectPreviousOccurrence">
@@ -553,7 +539,6 @@
   <action id="Vcs.QuickListPopupAction" />
   <action id="Vcs.RollbackChangedLines">
     <keyboard-shortcut first-keystroke="ctrl alt slash" />
-    <keyboard-shortcut first-keystroke="ctrl alt z" />
   </action>
   <action id="Vcs.ShowMessageHistory">
     <keyboard-shortcut first-keystroke="ctrl m" />
@@ -579,6 +564,7 @@
   </action>
   <action id="com.gitlab.lae.intellij.actions.PsiKill">
     <keyboard-shortcut first-keystroke="ctrl alt k" />
+    <keyboard-shortcut first-keystroke="ctrl k" />
   </action>
   <action id="com.gitlab.lae.intellij.actions.UpcaseRegionOrToWordEnd">
     <keyboard-shortcut first-keystroke="alt u" />

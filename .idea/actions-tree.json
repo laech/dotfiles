@@ -1,5 +1,5 @@
 {"items": [
-    {"keys": ["ctrl SEMICOLON"],
+    {"keys": ["ctrl X"],
      "items": [
          {"keys": ["ctrl F"], "id": "GotoFile"},
          {"keys": ["ctrl B"], "id": "RecentFiles"},
@@ -82,7 +82,7 @@
          {"separator-above": "",
           "keys": ["ctrl C"], "id": "Exit"}
      ]},
-    {"keys": ["ctrl shift SEMICOLON"],
+    {"keys": ["ctrl C"],
      "items": [
          {"keys": ["P"],
           "name": "Project",
