@@ -19,7 +19,6 @@ readonly packages=(
 
   tmux
   xterm
-  rxvt-unicode
   xsel
   zsh
   zsh-completions
@@ -52,7 +51,6 @@ readonly packages=(
   smartmontools
 
   compton
-  numlockx
 
   ibus
   ibus-libpinyin
