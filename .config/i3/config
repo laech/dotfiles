@@ -14,9 +14,6 @@ floating_modifier $mod
 bindsym $mod+Return exec ~/.local/bin/term
 bindsym $mod+Shift+Return exec ~/.local/bin/term -rv
 
-# kill focused window
-bindsym $mod+Shift+q kill
-
 bindsym $mod+semicolon exec --no-startup-id \
     rofi \
     -show combi \
@@ -108,7 +105,7 @@ workspace_auto_back_and_forth yes
 bindsym $mod+q       exec --no-startup-id ~/.local/bin/lock
 bindsym $mod+Shift+c exec --no-startup-id i3 reload
 bindsym $mod+Shift+r exec --no-startup-id i3 restart
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 bar {
         status_command i3status
