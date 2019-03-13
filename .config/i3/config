@@ -58,7 +58,7 @@ bindsym $mod+backslash split h
 bindsym $mod+minus     split v
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+w layout tabbed
+bindsym $mod+w layout toggle tabbed split
 bindsym $mod+space layout toggle split
 
 # toggle tiling / floating
@@ -113,14 +113,14 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bar {
         status_command i3status
         font pango:sans 8
-#        colors {
-#                #class             border  background text
-#                focused_workspace  #626270 #626270    #ffffff
-#                active_workspace   #000000 #000000    #ffffff
-#                inactive_workspace #000000 #000000    #888888
-#                urgent_workspace   #900000 #900000    #ffffff
-#                binding_mode       #E65100 #E65100    #ffffff
-#        }
+        colors {
+                #class             border  background text
+                focused_workspace  #285577 #285577 #ffffff
+                active_workspace   #5f676a #5f676a #ffffff
+                inactive_workspace #222222 #222222 #888888
+                urgent_workspace   #900000 #900000 #ffffff
+                binding_mode       #2f343a #900000 #ffffff
+        }
 
         modifier none
         # mode hide
@@ -131,12 +131,12 @@ bar {
 bindsym $mod+m bar mode toggle
 
 # class                 border  backgr. text    indicator child_border
-#client.focused          #626270 #626270 #ffffff #626270   #33333d
-#client.focused_inactive #33333d #33333d #888888 #33333d   #33333d
-#client.unfocused        #33333d #33333d #888888 #33333d   #33333d
-#client.urgent           #2f343a #900000 #ffffff #2f343a   #2f343a
-#client.placeholder      #0c0c0c #0c0c0c #ffffff #0c0c0c   #0c0c0c
-#client.background       #ffffff
+client.focused          #285577 #285577 #ffffff #2e9ef4   #285577
+client.focused_inactive #5f676a #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #222222 #222222 #888888 #292d2e   #222222
+client.urgent           #900000 #900000 #ffffff #900000   #900000
+client.placeholder      #0c0c0c #0c0c0c #ffffff #000000   #0c0c0c
+client.background       #ffffff
 
 # Disable mouse focus and switch window on scroll
 focus_follows_mouse no
@@ -150,12 +150,8 @@ bindsym XF86AudioRaiseVolume   exec --no-startup-id ~/.local/bin/volume +5
 bindsym XF86AudioLowerVolume   exec --no-startup-id ~/.local/bin/volume -5
 bindsym XF86AudioMute          exec --no-startup-id ~/.local/bin/volume-mute-toggle
 
-#hide_edge_borders both
-hide_edge_borders smart
-#default_border pixel
+hide_edge_borders both
 
 for_window [title="Volume Control"] floating enable border normal
 
-exec --no-startup-id numlockx on
-exec --no-startup-id feh --bg-fill --randomize ~/wallpapers
 exec --no-startup-id xss-lock -- i3lock --color=333333
