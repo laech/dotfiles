@@ -256,7 +256,7 @@
     (interactive "*p")
     (transpose-sexps (- arg)))
 
-  (defun paredit-kill-region-or-sexp ()
+  (defun paredit-cut-region-or-sexp ()
     (interactive "*")
     (if (use-region-p)
         (paredit-kill-region (region-beginning) (region-end))
@@ -272,15 +272,12 @@
       (paredit-copy-sexps-as-kill)))
 
   (mapc
-   (lambda (mapping)
-     (define-key paredit-mode-map (kbd (car mapping)) (cdr mapping)))
-   '(("C-M-S-t" . transpose-sexps-reverse)
-     ("C-w" . paredit-kill-region-or-sexp)
-     ("M-w" . paredit-copy-region-or-sexp))))
+   (lambda (arg) (apply 'define-key paredit-mode-map arg))
+   `(([remap kill-region] paredit-cut-region-or-sexp)
+     ([remap kill-ring-save] paredit-copy-region-or-sexp)
+     (,(kbd "C-M-S-t") transpose-sexps-reverse))))
 
-(with-eval-after-load 'haskell-mode
-  (add-hook 'haskell-mode-hook #'intero-mode)
-  (add-hook 'haskell-mode-hook #'hindent-mode)
+(with-eval-after-load 'hindent-mode
 
   (defun hindent-reformat-region-or-buffer ()
     "Reformat region, or buffer if no region."
@@ -289,12 +286,12 @@
         (hindent-reformat-region (region-beginning) (region-end))
       (hindent-reformat-buffer)))
 
-  (define-key haskell-mode-map (kbd "C-M-\\")
-    'hindent-reformat-region-or-buffer)
+  (define-key hindent-mode-map [remap indent-region]
+    #'hindent-reformat-region-or-buffer))
 
-  (with-eval-after-load 'hindent-mode
-    (define-key hindent-mode-map (kbd "C-M-\\")
-      'hindent-reformat-region-or-buffer))
+(with-eval-after-load 'haskell-mode
+  (add-hook 'haskell-mode-hook #'intero-mode)
+  (add-hook 'haskell-mode-hook #'hindent-mode)
 
   (with-eval-after-load 'speedbar (speedbar-add-supported-extension ".hs"))
   (with-eval-after-load 'intero
