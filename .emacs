@@ -264,7 +264,7 @@
     (turn-on-olivetti-mode)
     (toggle-truncate-lines)))
 
-;;(global-olivetti-mode 1)
+(global-olivetti-mode 1)
 
 ;; Make C-S-<key>, C-M-S-<key> work under xterm.
 ;; See ~/.Xresources for sending these escape codes.
