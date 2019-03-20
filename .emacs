@@ -207,26 +207,18 @@
 (defun modern-keymap ()
 
   (defun relocate-prefix-keys (keymap)
-    "Use C-; for C-x map, C-: for C-c map. Use C-x/C-c as standard cut/copy."
-    (dolist
-        (mapping
-         '(("C-x" "C-;" kill-region)
-           ("C-c" "C-:" kill-ring-save)))
-
-      (let* ((old-key (kbd (nth 0 mapping)))
-             (new-key (kbd (nth 1 mapping)))
-             (old-keymap (lookup-key keymap old-key))
-             (new-keymap (lookup-key keymap new-key)))
-
-        (when (keymapp old-keymap)
-          (define-key keymap old-key nil)
-          (define-key keymap new-key
-            (if new-keymap
-                (append old-keymap new-keymap)
-              old-keymap)))
-
-        (when (eq global-map keymap)
-          (define-key keymap old-key (nth 2 mapping))))))
+    "Use C-; for C-x map, C-: for C-c map."
+    (mapc
+     (lambda (mapping)
+       (let* ((old-key (kbd (car mapping)))
+              (new-key (kbd (cdr mapping)))
+              (old-keymap (lookup-key keymap old-key))
+              (new-keymap (lookup-key keymap new-key)))
+         (when (and old-keymap (not new-keymap))
+           (define-key keymap old-key nil)
+           (define-key keymap new-key new-keymap))))
+     '(("C-x" . "C-;")
+       ("C-c" . "C-:"))))
 
   (defun relocate-all-prefix-keys ()
     (mapc
@@ -239,10 +231,6 @@
    'after-change-major-mode-hook
    #'relocate-all-prefix-keys)
 
-  (define-key function-key-map (kbd "C-; @")
-    (lookup-key function-key-map (kbd "C-x @")))
-  (define-key function-key-map (kbd "C-x @") nil)
-
   (define-key key-translation-map (kbd "C-; 8")
     (lookup-key key-translation-map (kbd "C-x 8")))
   (define-key key-translation-map (kbd "C-x 8") nil)
@@ -250,31 +238,23 @@
   (mapc
    (lambda (mapping) (global-set-key (kbd (car mapping)) (cdr mapping)))
    '(("C-q" . save-buffers-kill-terminal)
-     ("C-: q" . quoted-insert)
      ("C-w" . kill-buffer-and-window)
      ("C-S-w" . delete-other-windows)
-     ;; ("C-e" . ivy-switch-buffer)
      ("C-o" . find-file)
-     ;; ("C-a" . mark-whole-buffer)
-     ;; ("C-s" . save-buffer)
-     ;; ("C-f" . isearch-forward)
-     ;; ("C-h" . backward-char)
-     ;; ("M-h" . backward-word)
-     ;; ("C-j" . next-line)
-     ;; ("M-j" . scroll-up-command)
-     ;; ("C-k" . previous-line)
-     ;; ("M-k" . scroll-down-command)
-     ;; ("C-l" . forward-char)
-     ;; ("M-l" . forward-word)
+     ("C-;" . Control-X-prefix)
+     ("C-:" . mode-specific-command-prefix)
      ("C-z" . undo-tree-undo)
      ("C-S-z" . undo-tree-redo)
-     ;; ("C-S-x" . kill-region-or-line)
-     ;; ("C-v" . yank)
+     ("C-x" . kill-region)
+     ("C-c" . kill-ring-save)
+     ("C-v" . yank)
      ("C-S-v" . yank-pop)
-     ;; ("C-b" . nil)
-     ;; ("C-n" . nil)
-     ))
+     ("M-n" . scroll-up-command)
+     ("M-p" . scroll-down-command)))
 
+  (define-key mode-specific-map "q" 'quoted-insert)
+
+  (relocate-prefix-keys function-key-map) ;; "C-x @"
   (relocate-all-prefix-keys))
 
 (define-globalized-minor-mode
@@ -387,4 +367,4 @@
 (if (display-graphic-p)
     (toggle-mode-line))
 
-;; (modern-keymap)
+(modern-keymap)
