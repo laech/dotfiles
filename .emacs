@@ -232,6 +232,9 @@
                    (relocate-prefix-keys ,map-sym)))))))
        '("-map" "-mode-map"))))
 
+  (with-eval-after-load 'intero
+    (relocate-prefix-keys intero-multiswitch-keymap))
+
   (add-hook 'after-load-functions #'relocate-prefix-keys-on-load)
 
   (define-key key-translation-map (kbd "C-; 8")
