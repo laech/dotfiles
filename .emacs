@@ -216,20 +216,23 @@
               (new-keymap (lookup-key keymap new-key)))
          (when (and old-keymap (not new-keymap))
            (define-key keymap old-key nil)
-           (define-key keymap new-key new-keymap))))
+           (define-key keymap new-key old-keymap))))
      '(("C-x" . "C-;")
        ("C-c" . "C-:"))))
 
-  (defun relocate-all-prefix-keys ()
-    (mapc
-     'relocate-prefix-keys
-     (append
-      (current-active-maps)
-      (mapcar 'cdr minor-mode-map-alist))))
+  (defun relocate-prefix-keys-on-load (path)
+    (let ((base-name (file-name-base path)))
+      (mapc
+       (lambda (suffix)
+         (let ((map-sym (intern-soft (concat base-name suffix))))
+           (when map-sym
+             (eval
+              `(with-eval-after-load ',base-name
+                 (when (and (boundp ',map-sym) (keymapp ,map-sym))
+                   (relocate-prefix-keys ,map-sym)))))))
+       '("-map" "-mode-map"))))
 
-  (add-hook
-   'after-change-major-mode-hook
-   #'relocate-all-prefix-keys)
+  (add-hook 'after-load-functions #'relocate-prefix-keys-on-load)
 
   (define-key key-translation-map (kbd "C-; 8")
     (lookup-key key-translation-map (kbd "C-x 8")))
@@ -254,8 +257,8 @@
 
   (define-key mode-specific-map "q" 'quoted-insert)
 
-  (relocate-prefix-keys function-key-map) ;; "C-x @"
-  (relocate-all-prefix-keys))
+  ;; "C-x @"
+  (relocate-prefix-keys function-key-map))
 
 (define-globalized-minor-mode
   global-olivetti-mode
@@ -279,6 +282,13 @@
         (define-key xterm-function-map (format "\e[27;%d;%d~" mod-code key) full)
         (define-key xterm-function-map (format "\e[%d;%du" key mod-code) full)))))
 
+(with-eval-after-load 'isearch
+  (mapc
+   (lambda (mapping)
+     (define-key isearch-mode-map (kbd (car mapping)) (cdr mapping)))
+   '(("C-v" . isearch-yank-kill)
+     ("C-: q" . isearch-quote-char))))
+
 (with-eval-after-load 'lsp-ui
   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
   (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references))
@@ -287,7 +297,10 @@
   (dolist
       (mapping
        '(("<tab>" . ivy-insert-current)
-         ("<return>" . ivy-alt-done)))
+         ("<return>" . ivy-alt-done)
+         ("C-v" . nil)
+         ("M-n" . ivy-scroll-up-command)
+         ("M-p" . ivy-scroll-down-command)))
     (define-key ivy-minibuffer-map (kbd (car mapping)) (cdr mapping))))
 
 (setq ivy-extra-directories nil)
