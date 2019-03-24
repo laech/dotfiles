@@ -346,7 +346,7 @@
      ([remap kill-ring-save] paredit-copy-region-or-sexp)
      (,(kbd "C-M-S-t") transpose-sexps-reverse))))
 
-(with-eval-after-load 'hindent-mode
+(with-eval-after-load 'hindent
 
   (defun hindent-reformat-region-or-buffer ()
     "Reformat region, or buffer if no region."
