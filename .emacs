@@ -220,22 +220,16 @@
      '(("C-x" . "C-;")
        ("C-c" . "C-:"))))
 
-  (defun relocate-prefix-keys-on-load (path)
-    (let ((base-name (file-name-base path)))
-      (mapc
-       (lambda (suffix)
-         (let ((map-sym (intern-soft (concat base-name suffix))))
-           (when map-sym
-             (eval
-              `(with-eval-after-load ',base-name
-                 (when (and (boundp ',map-sym) (keymapp ,map-sym))
-                   (relocate-prefix-keys ,map-sym)))))))
-       '("-map" "-mode-map"))))
+  (defun relocate-all-prefix-keys ()
+    (mapc
+     'relocate-prefix-keys
+     (append
+      (current-active-maps)
+      (mapcar 'cdr minor-mode-map-alist))))
 
-  (with-eval-after-load 'intero
-    (relocate-prefix-keys intero-multiswitch-keymap))
-
-  (add-hook 'after-load-functions #'relocate-prefix-keys-on-load)
+  (add-hook
+   'after-change-major-mode-hook
+   #'relocate-all-prefix-keys)
 
   (define-key key-translation-map (kbd "C-; 8")
     (lookup-key key-translation-map (kbd "C-x 8")))
@@ -261,7 +255,8 @@
   (define-key mode-specific-map "q" 'quoted-insert)
 
   ;; "C-x @"
-  (relocate-prefix-keys function-key-map))
+  (relocate-prefix-keys function-key-map)
+  (relocate-all-prefix-keys))
 
 (define-globalized-minor-mode
   global-olivetti-mode
