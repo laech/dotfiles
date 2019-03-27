@@ -1,27 +1,16 @@
 <keymap version="1" name="emacs-linux" parent="$default">
-  <action id="$Copy">
-    <keyboard-shortcut first-keystroke="ctrl insert" />
-    <keyboard-shortcut first-keystroke="alt w" />
-  </action>
-  <action id="$Cut">
-    <keyboard-shortcut first-keystroke="shift delete" />
-    <keyboard-shortcut first-keystroke="shift ctrl back_space" />
-    <keyboard-shortcut first-keystroke="ctrl w" />
-  </action>
   <action id="$Delete">
     <keyboard-shortcut first-keystroke="delete" />
     <keyboard-shortcut first-keystroke="back_space" />
     <keyboard-shortcut first-keystroke="ctrl d" />
   </action>
-  <action id="$Paste">
-    <keyboard-shortcut first-keystroke="shift insert" />
-    <keyboard-shortcut first-keystroke="ctrl y" />
-  </action>
   <action id="$Redo">
+    <keyboard-shortcut first-keystroke="shift ctrl z" />
     <keyboard-shortcut first-keystroke="shift ctrl slash" />
   </action>
   <action id="$SelectAll" />
   <action id="$Undo">
+    <keyboard-shortcut first-keystroke="ctrl z" />
     <keyboard-shortcut first-keystroke="ctrl slash" />
   </action>
   <action id="ActivateDebugToolWindow">
@@ -61,9 +50,12 @@
   <action id="ChangesView.SetDefault" />
   <action id="ChangesView.ShelveSilently" />
   <action id="ChangesView.UnshelveSilently" />
+  <action id="CheckinProject" />
   <action id="ClassNameCompletion" />
   <action id="CloseActiveTab" />
-  <action id="CloseContent" />
+  <action id="CloseContent">
+    <keyboard-shortcut first-keystroke="ctrl w" />
+  </action>
   <action id="CodeCompletion">
     <keyboard-shortcut first-keystroke="ctrl alt i" />
     <keyboard-shortcut first-keystroke="alt slash" />
@@ -87,8 +79,6 @@
   <action id="ContextHelp" />
   <action id="ConvertJavaToKotlin" />
   <action id="CopyElement" />
-  <action id="CopyPaths" />
-  <action id="CopyReference" />
   <action id="Debugger.EditTypeSource" />
   <action id="Diff.ApplyLeftSide">
     <keyboard-shortcut first-keystroke="ctrl alt period" />
@@ -207,7 +197,6 @@
     <keyboard-shortcut first-keystroke="shift alt f" />
   </action>
   <action id="EditorPasteFromX11" />
-  <action id="EditorPasteSimple" />
   <action id="EditorPreviousWord">
     <keyboard-shortcut first-keystroke="ctrl left" />
     <keyboard-shortcut first-keystroke="alt left" />
@@ -357,7 +346,9 @@
   </action>
   <action id="GotoTest" />
   <action id="GotoTypeDeclaration" />
-  <action id="HideActiveWindow" />
+  <action id="HideActiveWindow">
+    <keyboard-shortcut first-keystroke="shift ctrl w" />
+  </action>
   <action id="HideAllWindows" />
   <action id="HighlightUsagesInFile" />
   <action id="HippieBackwardCompletion" />
@@ -405,9 +396,7 @@
   <action id="NewElement" />
   <action id="NewElementSamePlace" />
   <action id="NewScratchFile" />
-  <action id="NextDiff">
-    <keyboard-shortcut first-keystroke="alt n" />
-  </action>
+  <action id="NextDiff" />
   <action id="NextEditorTab" />
   <action id="NextProjectWindow" />
   <action id="NextSplitter" />
@@ -420,14 +409,8 @@
   </action>
   <action id="OverrideMethods" />
   <action id="ParameterInfo" />
-  <action id="PasteMultiple">
-    <keyboard-shortcut first-keystroke="shift ctrl insert" />
-    <keyboard-shortcut first-keystroke="alt y" />
-  </action>
   <action id="PopupHector" />
-  <action id="PreviousDiff">
-    <keyboard-shortcut first-keystroke="alt p" />
-  </action>
+  <action id="PreviousDiff" />
   <action id="PreviousEditorTab" />
   <action id="PreviousProjectWindow" />
   <action id="PreviousTab">
@@ -466,10 +449,10 @@
   <action id="SafeDelete" />
   <action id="SaveAll" />
   <action id="ScrollPane-scrollDown">
-    <keyboard-shortcut first-keystroke="ctrl v" />
+    <keyboard-shortcut first-keystroke="alt n" />
   </action>
   <action id="ScrollPane-scrollUp">
-    <keyboard-shortcut first-keystroke="alt v" />
+    <keyboard-shortcut first-keystroke="alt p" />
   </action>
   <action id="SelectAllOccurrences" />
   <action id="SelectIn">
@@ -545,12 +528,8 @@
   </action>
   <action id="Vcs.UpdateProject" />
   <action id="VcsHistory.ShowAllAffected" />
-  <action id="VcsShowNextChangeMarker">
-    <keyboard-shortcut first-keystroke="alt n" />
-  </action>
-  <action id="VcsShowPrevChangeMarker">
-    <keyboard-shortcut first-keystroke="alt p" />
-  </action>
+  <action id="VcsShowNextChangeMarker" />
+  <action id="VcsShowPrevChangeMarker" />
   <action id="ViewBreakpoints" />
   <action id="ViewSource" />
   <action id="XDebugger.AttachToProcess" />
