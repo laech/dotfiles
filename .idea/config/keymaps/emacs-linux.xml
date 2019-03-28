@@ -258,6 +258,9 @@
   <action id="EmmetNextEditPoint" />
   <action id="EmmetPreviousEditPoint" />
   <action id="EvaluateExpression" />
+  <action id="Exit">
+    <keyboard-shortcut first-keystroke="ctrl q" />
+  </action>
   <action id="ExpandAllRegions" />
   <action id="ExpandAllToLevel1" />
   <action id="ExpandAllToLevel2" />
@@ -422,9 +425,9 @@
   <action id="QuickEvaluateExpression" />
   <action id="QuickImplementations" />
   <action id="QuickJavaDoc" />
-  <action id="RecentChangedFiles" />
   <action id="RecentChanges" />
   <action id="RecentFiles" />
+  <action id="RecentLocations" />
   <action id="Refactorings.QuickListPopupAction" />
   <action id="ReformatCode">
     <keyboard-shortcut first-keystroke="ctrl alt back_slash" />
