@@ -296,9 +296,7 @@
       (mapping
        '(("<tab>" . ivy-insert-current)
          ("<return>" . ivy-alt-done)
-         ("C-v" . nil)
-         ("M-n" . ivy-scroll-up-command)
-         ("M-p" . ivy-scroll-down-command)))
+         ("C-v" . nil)))
     (define-key ivy-minibuffer-map (kbd (car mapping)) (cdr mapping))))
 
 (setq ivy-extra-directories nil)
