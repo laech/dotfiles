@@ -256,7 +256,22 @@
 
   ;; "C-x @"
   (relocate-prefix-keys function-key-map)
-  (relocate-all-prefix-keys))
+  (relocate-all-prefix-keys)
+
+  (with-eval-after-load 'isearch
+    (mapc
+     (lambda (mapping)
+       (define-key isearch-mode-map (kbd (car mapping)) (cdr mapping)))
+     '(("C-v" . isearch-yank-kill)
+       ("C-: q" . isearch-quote-char))))
+
+  (with-eval-after-load 'ivy
+    (dolist
+        (mapping
+         '(("C-v" . nil)
+           ("M-n" . ivy-scroll-up-command)
+           ("M-p" . ivy-scroll-down-command)))
+      (define-key ivy-minibuffer-map (kbd (car mapping)) (cdr mapping)))))
 
 (define-globalized-minor-mode
   global-olivetti-mode
@@ -280,13 +295,6 @@
         (define-key xterm-function-map (format "\e[27;%d;%d~" mod-code key) full)
         (define-key xterm-function-map (format "\e[%d;%du" key mod-code) full)))))
 
-(with-eval-after-load 'isearch
-  (mapc
-   (lambda (mapping)
-     (define-key isearch-mode-map (kbd (car mapping)) (cdr mapping)))
-   '(("C-v" . isearch-yank-kill)
-     ("C-: q" . isearch-quote-char))))
-
 (with-eval-after-load 'lsp-ui
   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
   (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references))
@@ -295,8 +303,7 @@
   (dolist
       (mapping
        '(("<tab>" . ivy-insert-current)
-         ("<return>" . ivy-alt-done)
-         ("C-v" . nil)))
+         ("<return>" . ivy-alt-done)))
     (define-key ivy-minibuffer-map (kbd (car mapping)) (cdr mapping))))
 
 (setq ivy-extra-directories nil)
@@ -376,4 +383,5 @@
 (if (display-graphic-p)
     (toggle-mode-line))
 
-(modern-keymap)
+;; (modern-keymap)
+
