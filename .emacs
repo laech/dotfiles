@@ -28,7 +28,6 @@
  '(company-idle-delay 0)
  '(company-minimum-prefix-length 1)
  '(company-tooltip-idle-delay 0)
- '(cursor-type (quote bar))
  '(delete-selection-mode t)
  '(global-auto-revert-mode t)
  '(indent-tabs-mode nil)
@@ -47,7 +46,7 @@
      ("marmalade" . "https://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (treemacs lsp-ui lsp-java helm sr-speedbar olivetti projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent expand-region diff-hl)))
+    (yaml-mode treemacs lsp-ui lsp-java helm sr-speedbar olivetti projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent expand-region diff-hl)))
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
  '(scroll-margin 1)
@@ -192,6 +191,7 @@
     (mapping
      '(("<S-return>" . start-new-line)
        ("C-S-d" . duplicate-region-or-line)
+       ("M-o" . imenu)
        ("M-N" . move-line-down)
        ("M-P" . move-line-up)
        ("M-J" . join-line-next)
