@@ -37,8 +37,6 @@
  '(mouse-wheel-progressive-speed nil)
  '(mouse-wheel-scroll-amount (quote (3 ((shift) . 1) ((control)))))
  '(mouse-wheel-tilt-scroll t)
- '(olivetti-body-width 100)
- '(olivetti-minimum-body-width 100)
  '(package-archives
    (quote
     (("gnu" . "https://elpa.gnu.org/packages/")
@@ -46,7 +44,7 @@
      ("marmalade" . "https://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (yaml-mode treemacs lsp-ui lsp-java helm sr-speedbar olivetti projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent expand-region diff-hl)))
+    (yaml-mode treemacs lsp-ui lsp-java helm sr-speedbar projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent expand-region diff-hl)))
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
  '(scroll-margin 1)
@@ -273,15 +271,6 @@
            ("M-p" . ivy-scroll-down-command)))
       (define-key ivy-minibuffer-map (kbd (car mapping)) (cdr mapping)))))
 
-(define-globalized-minor-mode
-  global-olivetti-mode
-  olivetti-mode
-  (lambda ()
-    (turn-on-olivetti-mode)
-    (toggle-truncate-lines)))
-
-(global-olivetti-mode 1)
-
 ;; Make C-S-<key>, C-M-S-<key> work under xterm.
 ;; See ~/.Xresources for sending these escape codes.
 ;; See https://github.com/jwiegley/emacs-release/blob/master/lisp/term/xterm.el
@@ -383,5 +372,38 @@
 (if (display-graphic-p)
     (toggle-mode-line))
 
-;; (modern-keymap)
+(defun auto-center-windows ()
 
+  (defun center-window (window triggered-by-size-change)
+    (when (not (eq (window-buffer window) which-key--buffer))
+
+      (when (or (not triggered-by-size-change)
+                (/= (window-pixel-width-before-size-change window)
+                    (window-pixel-width window)))
+
+        (let* ((width (+ (window-width window)
+                         (or (car (window-margins window)) 0)
+                         (or (cdr (window-margins window)) 0)))
+               (margin (max 0 (/ (- width 100) 2))))
+          (set-window-margins window margin)))))
+
+  (defun center-windows (triggered-by-size-change &optional frame)
+    (walk-windows
+     (lambda (window)
+       (center-window window triggered-by-size-change))
+     t
+     frame))
+
+  (add-hook
+   'window-size-change-functions
+   (lambda (frame)
+     (center-windows t frame)))
+
+  (add-hook
+   'window-configuration-change-hook
+   (lambda ()
+     (center-windows nil))))
+
+(auto-center-windows)
+
+;; (modern-keymap)
