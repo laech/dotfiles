@@ -305,6 +305,15 @@
 (setq projectile-completion-system 'ivy)
 (setq magit-completing-read-function 'ivy-completing-read)
 
+(with-eval-after-load 'company
+  (mapc
+   (lambda (mapping)
+     (define-key company-active-map (kbd (car mapping)) (cdr mapping)))
+   '(("M-n" . nil)
+     ("M-p" . nil)
+     ("C-n" . company-select-next)
+     ("C-p" . company-select-previous))))
+
 (with-eval-after-load 'projectile
   (define-key mode-specific-map (kbd "p") 'projectile-command-map))
 
