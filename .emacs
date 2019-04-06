@@ -26,7 +26,6 @@
  ;; If there is more than one, they won't work right.
  '(blink-cursor-mode nil)
  '(company-idle-delay 0)
- '(company-minimum-prefix-length 1)
  '(company-tooltip-idle-delay 0)
  '(delete-selection-mode t)
  '(global-auto-revert-mode t)
@@ -178,6 +177,7 @@
 
 (add-hook 'java-mode-hook (lambda () (require 'lsp-java) (lsp)))
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'prog-mode-hook #'company-mode)
 
 (define-key ctl-x-map (kbd "g") 'magit-status)
 
@@ -306,6 +306,7 @@
 (setq magit-completing-read-function 'ivy-completing-read)
 
 (with-eval-after-load 'company
+  (define-key company-mode-map [remap completion-at-point] #'company-complete)
   (mapc
    (lambda (mapping)
      (define-key company-active-map (kbd (car mapping)) (cdr mapping)))
