@@ -36,14 +36,21 @@
  '(mouse-wheel-progressive-speed nil)
  '(mouse-wheel-scroll-amount (quote (3 ((shift) . 1) ((control)))))
  '(mouse-wheel-tilt-scroll t)
+ '(package-archive-priorities
+   (quote
+    (("gnu" . 1)
+     ("marmalade" . 1)
+     ("melpa-stable" . 1)
+     ("melpa-unstable" . 0))))
  '(package-archives
    (quote
     (("gnu" . "https://elpa.gnu.org/packages/")
      ("melpa-stable" . "https://stable.melpa.org/packages/")
+     ("melpa-unstable" . "https://melpa.org/packages/")
      ("marmalade" . "https://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (yaml-mode treemacs lsp-ui lsp-java helm sr-speedbar projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent expand-region diff-hl)))
+    (company-flx yaml-mode treemacs lsp-ui lsp-java helm sr-speedbar projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent expand-region diff-hl)))
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
  '(scroll-margin 1)
@@ -306,6 +313,7 @@
 (setq magit-completing-read-function 'ivy-completing-read)
 
 (with-eval-after-load 'company
+  (company-flx-mode)
   (define-key company-mode-map [remap completion-at-point] #'company-complete)
   (mapc
    (lambda (mapping)
