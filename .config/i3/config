@@ -5,7 +5,7 @@ set $mod Mod3
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:sans bold 9
+font pango:sans bold 8
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -110,7 +110,7 @@ bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bar {
         separator_symbol " | "
         status_command i3status
-        font pango:sans semibold 9
+        font pango:sans 8
         colors {
                 #class             border  background text
                 focused_workspace  #285577 #285577 #ffffff
