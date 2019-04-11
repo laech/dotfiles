@@ -439,8 +439,13 @@
   <action id="QuickEvaluateExpression" />
   <action id="QuickImplementations" />
   <action id="QuickJavaDoc" />
+  <action id="RecentChangedFiles">
+    <keyboard-shortcut first-keystroke="shift ctrl j" />
+  </action>
   <action id="RecentChanges" />
-  <action id="RecentFiles" />
+  <action id="RecentFiles">
+    <keyboard-shortcut first-keystroke="ctrl j" />
+  </action>
   <action id="RecentLocations" />
   <action id="Refactorings.QuickListPopupAction" />
   <action id="ReformatCode">

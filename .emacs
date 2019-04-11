@@ -196,6 +196,9 @@
     (mapping
      '(("<S-return>" . start-new-line)
        ("C-S-d" . duplicate-region-or-line)
+       ("C-o" . find-file)
+       ("C-S-o" . projectile-find-file)
+       ("C-j" . switch-to-buffer)
        ("M-o" . imenu)
        ("M-N" . move-line-down)
        ("M-P" . move-line-up)
@@ -326,6 +329,9 @@
 (with-eval-after-load 'projectile
   (define-key mode-specific-map (kbd "p") 'projectile-command-map))
 
+(with-eval-after-load 'elisp-mode
+  (define-key lisp-interaction-mode-map (kbd "C-j") nil))
+
 (with-eval-after-load 'paredit
 
   (defun transpose-sexps-reverse (arg)
@@ -351,7 +357,8 @@
    (lambda (arg) (apply 'define-key paredit-mode-map arg))
    `(([remap kill-region] paredit-cut-region-or-sexp)
      ([remap kill-ring-save] paredit-copy-region-or-sexp)
-     (,(kbd "C-M-S-t") transpose-sexps-reverse))))
+     (,(kbd "C-M-S-t") transpose-sexps-reverse)
+     (,(kbd "C-j") nil))))
 
 (with-eval-after-load 'hindent
 
