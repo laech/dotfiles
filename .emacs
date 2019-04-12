@@ -186,6 +186,9 @@
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 (add-hook 'prog-mode-hook #'company-mode)
 
+(add-hook 'window-configuration-change-hook (lambda () (save-some-buffers t)))
+(add-hook 'focus-out-hook (lambda () (save-some-buffers t)))
+
 (define-key ctl-x-map (kbd "g") 'magit-status)
 
 (global-set-key [remap kill-region] 'kill-region-or-line)
