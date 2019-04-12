@@ -198,9 +198,10 @@
 (dolist
     (mapping
      '(("<S-return>" . start-new-line)
-       ("C-S-d" . duplicate-region-or-line)
        ("C-o" . find-file)
        ("C-S-o" . projectile-find-file)
+       ("C-S-d" . duplicate-region-or-line)
+       ("C-S-s" . projectile-grep)
        ("C-j" . switch-to-buffer)
        ("M-o" . imenu)
        ("M-N" . move-line-down)
@@ -251,7 +252,6 @@
    '(("C-q" . save-buffers-kill-terminal)
      ("C-w" . kill-buffer-and-window)
      ("C-S-w" . delete-other-windows)
-     ("C-o" . find-file)
      ("C-;" . Control-X-prefix)
      ("C-:" . mode-specific-command-prefix)
      ("C-z" . undo-tree-undo)
@@ -259,9 +259,7 @@
      ("C-x" . kill-region)
      ("C-c" . kill-ring-save)
      ("C-v" . yank)
-     ("C-S-v" . yank-pop)
-     ("M-n" . scroll-up-command)
-     ("M-p" . scroll-down-command)))
+     ("C-S-v" . yank-pop)))
 
   (define-key mode-specific-map "q" 'quoted-insert)
 
@@ -279,9 +277,7 @@
   (with-eval-after-load 'ivy
     (dolist
         (mapping
-         '(("C-v" . nil)
-           ("M-n" . ivy-scroll-up-command)
-           ("M-p" . ivy-scroll-down-command)))
+         '(("C-v" . nil)))
       (define-key ivy-minibuffer-map (kbd (car mapping)) (cdr mapping)))))
 
 ;; Make C-S-<key>, C-M-S-<key> work under xterm.
