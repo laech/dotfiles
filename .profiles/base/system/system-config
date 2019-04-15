@@ -27,6 +27,7 @@ readonly packages=(
 
   vim
   emacs
+  xcape
 
   pulseaudio
   pavucontrol
@@ -90,6 +91,8 @@ if [[ -d '/lib/kbd/keymaps/legacy/i386/qwerty/' ]]; then
     cp -v 'kbd/custom.map' '/lib/kbd/keymaps/legacy/i386/qwerty/'
 fi
 
+systemctl enable systemd-timesyncd
+systemctl start systemd-timesyncd
 systemctl enable tlp
 systemctl start tlp
 localectl set-keymap custom
