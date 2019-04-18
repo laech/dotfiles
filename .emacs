@@ -219,7 +219,7 @@
 (defun modern-keymap ()
 
   (defun relocate-prefix-keys (keymap)
-    "Use C-; for C-x map, C-: for C-c map."
+    "Use C-; for C-x map, C-' for C-c map."
     (mapc
      (lambda (mapping)
        (let* ((old-key (kbd (car mapping)))
@@ -230,7 +230,7 @@
            (define-key keymap old-key nil)
            (define-key keymap new-key old-keymap))))
      '(("C-x" . "C-;")
-       ("C-c" . "C-:"))))
+       ("C-c" . "C-'"))))
 
   (defun relocate-all-prefix-keys ()
     (mapc
@@ -254,7 +254,7 @@
      ("C-S-w" . delete-other-windows)
      ("C-S-p" . scroll-down-command)
      ("C-;" . Control-X-prefix)
-     ("C-:" . mode-specific-command-prefix)
+     ("C-'" . mode-specific-command-prefix)
      ("C-S-n" . scroll-up-command)
      ("C-z" . undo-tree-undo)
      ("C-S-z" . undo-tree-redo)
@@ -263,7 +263,7 @@
      ("C-v" . yank)
      ("C-S-v" . yank-pop)))
 
-  (global-set-key (kbd "C-: q") 'quoted-insert)
+  (global-set-key (kbd "C-' q") 'quoted-insert)
 
   ;; "C-x @"
   (relocate-prefix-keys function-key-map)
@@ -275,7 +275,7 @@
        (define-key isearch-mode-map (kbd (car mapping)) (cdr mapping)))
      '(("C-v" . isearch-yank-kill)
        ("C-q" . nil)
-       ("C-: q" . isearch-quote-char))))
+       ("C-' q" . isearch-quote-char))))
 
   (with-eval-after-load 'ivy
     (dolist
