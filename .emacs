@@ -252,8 +252,10 @@
    '(("C-q" . save-buffers-kill-terminal)
      ("C-w" . kill-buffer-and-window)
      ("C-S-w" . delete-other-windows)
+     ("C-S-p" . scroll-down-command)
      ("C-;" . Control-X-prefix)
      ("C-:" . mode-specific-command-prefix)
+     ("C-S-n" . scroll-up-command)
      ("C-z" . undo-tree-undo)
      ("C-S-z" . undo-tree-redo)
      ("C-x" . kill-region)
@@ -261,7 +263,7 @@
      ("C-v" . yank)
      ("C-S-v" . yank-pop)))
 
-  (define-key mode-specific-map "q" 'quoted-insert)
+  (global-set-key (kbd "C-: q") 'quoted-insert)
 
   ;; "C-x @"
   (relocate-prefix-keys function-key-map)
@@ -272,6 +274,7 @@
      (lambda (mapping)
        (define-key isearch-mode-map (kbd (car mapping)) (cdr mapping)))
      '(("C-v" . isearch-yank-kill)
+       ("C-q" . nil)
        ("C-: q" . isearch-quote-char))))
 
   (with-eval-after-load 'ivy
@@ -430,4 +433,4 @@
 
 (auto-center-windows)
 
-;; (modern-keymap)
+(modern-keymap)
