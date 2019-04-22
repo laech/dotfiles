@@ -11,6 +11,7 @@ readonly packages=(
   xorg-server
   xorg-xinit
   xorg-xev
+  xorg-xbacklight
   xss-lock
   rofi
   feh

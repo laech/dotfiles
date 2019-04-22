@@ -102,7 +102,8 @@ bindsym $mod+Tab workspace next_on_output
 
 workspace_auto_back_and_forth yes
 
-bindsym $mod+q       exec --no-startup-id ~/.local/bin/lock
+bindsym $mod+q exec --no-startup-id xset dpms force off
+
 bindsym $mod+Shift+c exec --no-startup-id i3 reload
 bindsym $mod+Shift+r exec --no-startup-id i3 restart
 bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
@@ -141,8 +142,8 @@ focus_follows_mouse no
 bindsym button4 nop
 bindsym button5 nop
 
-bindsym XF86MonBrightnessDown exec --no-startup-id ~/.local/bin/backlight -3
-bindsym XF86MonBrightnessUp   exec --no-startup-id ~/.local/bin/backlight +3
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
 
 bindsym XF86AudioRaiseVolume   exec --no-startup-id ~/.local/bin/volume +5
 bindsym XF86AudioLowerVolume   exec --no-startup-id ~/.local/bin/volume -5
@@ -152,4 +153,11 @@ hide_edge_borders both
 
 for_window [title="Volume Control"] floating enable border normal
 
-exec --no-startup-id xss-lock -- i3lock --color=333333
+# Idle 5 minutes will dim display, then 5 seconds later lock
+# it. Locking will wake up screen, so 5 seconds later (total dpms 310)
+# again to turn it off.
+exec_always --no-startup-id xset s 300 5
+exec_always --no-startup-id xset dpms 310 310 310
+exec --no-startup-id xss-lock \
+     --notifier='bash /usr/share/doc/xss-lock/dim-screen.sh' \
+     -- i3lock --nofork --color=333333
