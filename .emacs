@@ -1,8 +1,10 @@
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
 (setq
  default-frame-alist
  '((internal-border-width . 0)
-   (menu-bar-lines . 0)
    (font . "Monospace-14")))
 
 ;; By default Emacs automatically detects background color and sets
@@ -51,13 +53,11 @@
  '(package-selected-packages
    (quote
     (company-flx yaml-mode treemacs lsp-ui lsp-java helm sr-speedbar projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent expand-region diff-hl)))
- '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
  '(scroll-margin 1)
  '(show-paren-mode t)
  '(speedbar-show-unknown-files t)
  '(sr-speedbar-right-side nil)
- '(tool-bar-mode nil)
  '(truncate-lines t)
  '(visible-cursor nil)
  '(visual-line-fringe-indicators (quote (left-curly-arrow right-curly-arrow)))
