@@ -53,11 +53,14 @@
  '(package-selected-packages
    (quote
     (company-flx yaml-mode treemacs lsp-ui lsp-java helm sr-speedbar projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent expand-region diff-hl)))
+ '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
  '(scroll-margin 1)
+ '(shift-select-mode nil)
  '(show-paren-mode t)
  '(speedbar-show-unknown-files t)
  '(sr-speedbar-right-side nil)
+ '(tool-bar-mode nil)
  '(truncate-lines t)
  '(visible-cursor nil)
  '(visual-line-fringe-indicators (quote (left-curly-arrow right-curly-arrow)))
