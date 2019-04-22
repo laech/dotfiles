@@ -162,6 +162,11 @@ exec --no-startup-id xss-lock \
      --notifier='bash /usr/share/doc/xss-lock/dim-screen.sh' \
      -- i3lock --nofork --color=333333
 
+exec systemd-run --user \
+     --timer-property=OnCalendar=minutely \
+     --unit=i3-notify-battery-low \
+     ~/.local/bin/i3-notify-battery-low
+
 exec_always --no-startup-id xrdb -merge -I"${HOME}" ~/.Xresources
 exec_always --no-startup-id setxkbmap -option '' 'emacs-linacs(pc)'
 exec_always --no-startup-id find ~/.profiles/default/init/ -name '*.sh' -exec {} \;
