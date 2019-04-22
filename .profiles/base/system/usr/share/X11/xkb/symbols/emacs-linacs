@@ -133,7 +133,7 @@ xkb_symbols "pc" {
 
   key <LALT> {[ Control_L, Control_L ]};
   key <LWIN> {[ Alt_L, Meta_L ]};
-  key <LCTL> {[ ISO_Level3_Shift ]};
+  key <LCTL> {[ Super_L, Super_L ]};
   modifier_map Mod1 { <LWIN> };
   modifier_map Mod4 { <LCTL> };
   modifier_map Control { <LALT> };
@@ -141,7 +141,7 @@ xkb_symbols "pc" {
   key <RALT> {[ Control_R, Control_R ]};
   key <RWIN> {[ Alt_R, Meta_R ]};
   key <MENU> {[ Alt_R, Meta_R ]};
-  key <RCTL> {[ ISO_Level3_Shift ]};
+  key <RCTL> {[ Super_R, Super_R ]};
   modifier_map Mod1 { <RWIN>, <MENU> };
   modifier_map Mod4 { <RCTL> };
   modifier_map Control { <RALT> };
@@ -152,12 +152,12 @@ xkb_symbols "mac" {
   include "emacs-linacs(base)"
 
   key <LWIN> {[ Control_L ]};
-  key <LCTL> {[ ISO_Level3_Shift ]};
+  key <LCTL> {[ Super_L, Super_L ]};
   modifier_map Mod4 { <LCTL> };
   modifier_map Control { <LWIN> };
 
   key <RWIN> {[ Control_R ]};
-  key <RCTL> {[ ISO_Level3_Shift ]};
+  key <RCTL> {[ Super_R, Super_R ]};
   modifier_map Mod4 { <RCTL> };
   modifier_map Control { <RWIN> };
 };

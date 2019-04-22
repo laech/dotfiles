@@ -22,7 +22,7 @@ bindsym $mod+semicolon exec --no-startup-id \
     -show-icons \
     -width -80
 
-bindsym $mod+F12 exec --no-startup-id \
+bindsym Mod4+F12 exec --no-startup-id \
     rofi \
     -show combi \
     -sort \
