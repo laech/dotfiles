@@ -29,6 +29,7 @@
  '(blink-cursor-mode nil)
  '(company-idle-delay 0)
  '(company-tooltip-idle-delay 0)
+ '(delete-by-moving-to-trash t)
  '(delete-selection-mode t)
  '(global-auto-revert-mode t)
  '(indent-tabs-mode nil)

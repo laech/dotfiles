@@ -23,6 +23,7 @@ readonly packages=(
   xsel
   zsh
   zsh-completions
+  trash-cli
 
   git
 
