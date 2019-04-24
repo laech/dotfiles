@@ -53,7 +53,7 @@
      ("marmalade" . "https://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (smartparens company-flx yaml-mode treemacs lsp-ui lsp-java helm sr-speedbar projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent expand-region diff-hl)))
+    (key-chord ace-jump-mode smartparens company-flx yaml-mode treemacs lsp-ui lsp-java helm sr-speedbar projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent expand-region diff-hl)))
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
  '(scroll-margin 1)
@@ -175,6 +175,7 @@
 (add-hook 'after-init-hook #'counsel-mode)
 (add-hook 'after-init-hook #'projectile-mode)
 (add-hook 'after-init-hook #'which-key-mode)
+(add-hook 'after-init-hook #'key-chord-mode)
 
 (add-hook 'after-init-hook #'global-diff-hl-mode)
 (add-hook 'after-init-hook #'diff-hl-flydiff-mode)
@@ -197,6 +198,7 @@
 (add-hook 'focus-out-hook (lambda () (save-some-buffers t)))
 
 (define-key ctl-x-map (kbd "g") 'magit-status)
+(define-key mode-specific-map (kbd "SPC") 'ace-jump-mode)
 
 (global-set-key [remap kill-region] 'kill-region-or-line)
 (global-set-key [remap kill-ring-save] 'copy-region-or-line)
@@ -222,6 +224,8 @@
        ("C-=" . er/expand-region)
        ("C-+" . er/contract-region)))
   (global-set-key (kbd (car mapping)) (cdr mapping)))
+
+(key-chord-define-global "jj" 'ace-jump-mode)
 
 (defun modern-keymap ()
 
