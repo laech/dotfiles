@@ -175,7 +175,7 @@
 (add-hook 'after-init-hook #'counsel-mode)
 (add-hook 'after-init-hook #'projectile-mode)
 (add-hook 'after-init-hook #'which-key-mode)
-(add-hook 'after-init-hook #'key-chord-mode)
+(add-hook 'after-init-hook (lambda () (key-chord-mode 1)))
 
 (add-hook 'after-init-hook #'global-diff-hl-mode)
 (add-hook 'after-init-hook #'diff-hl-flydiff-mode)
@@ -225,7 +225,6 @@
        ("C-+" . er/contract-region)))
   (global-set-key (kbd (car mapping)) (cdr mapping)))
 
-(key-chord-define-global "jj" 'ace-jump-mode)
 
 (defun modern-keymap ()
 
@@ -306,6 +305,9 @@
         ;; For both XTerm.vt100.formatOtherKeys set to 0 or 1
         (define-key xterm-function-map (format "\e[27;%d;%d~" mod-code key) full)
         (define-key xterm-function-map (format "\e[%d;%du" key mod-code) full)))))
+
+(with-eval-after-load 'key-chord
+  (key-chord-define-global "jj" 'ace-jump-mode))
 
 (with-eval-after-load 'lsp-ui
   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
