@@ -63,8 +63,10 @@ readonly packages=(
   openssh
   keepassxc
 
-  cups
-  hplip # HP PSC 1315 Series
+  cups # Printing
+  sane  # Scaning
+  hplip # HP PSC 1315 Series, hp-setup, hp-scan
+  python-pyqt5 # Needed by hp-setup
 )
 
 pacman -S --needed "${packages[@]}"
