@@ -1,10 +1,28 @@
 <keymap version="1" name="emacs-linux" parent="$default">
+  <action id="$Copy">
+    <keyboard-shortcut first-keystroke="ctrl insert" />
+    <keyboard-shortcut first-keystroke="alt w" />
+  </action>
+  <action id="$Cut">
+    <keyboard-shortcut first-keystroke="shift delete" />
+    <keyboard-shortcut first-keystroke="ctrl w" />
+  </action>
   <action id="$Delete">
     <keyboard-shortcut first-keystroke="delete" />
     <keyboard-shortcut first-keystroke="back_space" />
     <keyboard-shortcut first-keystroke="ctrl d" />
   </action>
+  <action id="$Paste">
+    <keyboard-shortcut first-keystroke="shift insert" />
+    <keyboard-shortcut first-keystroke="ctrl y" />
+  </action>
+  <action id="$Redo">
+    <keyboard-shortcut first-keystroke="shift ctrl slash" />
+  </action>
   <action id="$SelectAll" />
+  <action id="$Undo">
+    <keyboard-shortcut first-keystroke="ctrl slash" />
+  </action>
   <action id="ActivateDebugToolWindow">
     <keyboard-shortcut first-keystroke="ctrl 5" />
   </action>
@@ -36,15 +54,16 @@
   <action id="ChangesView.Rename">
     <keyboard-shortcut first-keystroke="f2" />
   </action>
+  <action id="ChangesView.Revert">
+    <keyboard-shortcut first-keystroke="ctrl alt slash" />
+  </action>
   <action id="ChangesView.SetDefault" />
   <action id="ChangesView.ShelveSilently" />
   <action id="ChangesView.UnshelveSilently" />
   <action id="CheckinProject" />
   <action id="ClassNameCompletion" />
   <action id="CloseActiveTab" />
-  <action id="CloseContent">
-    <keyboard-shortcut first-keystroke="ctrl w" />
-  </action>
+  <action id="CloseContent" />
   <action id="CodeCompletion">
     <keyboard-shortcut first-keystroke="ctrl alt i" />
     <keyboard-shortcut first-keystroke="alt slash" />
@@ -68,6 +87,8 @@
   <action id="ContextHelp" />
   <action id="ConvertJavaToKotlin" />
   <action id="CopyElement" />
+  <action id="CopyPaths" />
+  <action id="CopyReference" />
   <action id="Debugger.EditTypeSource" />
   <action id="Diff.ApplyLeftSide">
     <keyboard-shortcut first-keystroke="ctrl alt period" />
@@ -90,7 +111,6 @@
   <action id="Editor Cut">
     <keyboard-shortcut first-keystroke="shift ctrl back_space" />
     <keyboard-shortcut first-keystroke="ctrl w" />
-    <keyboard-shortcut first-keystroke="ctrl x" />
   </action>
   <action id="Editor Delete">
     <keyboard-shortcut first-keystroke="ctrl d" />
@@ -102,11 +122,10 @@
     <keyboard-shortcut first-keystroke="ctrl y" />
   </action>
   <action id="Editor Redo">
-    <keyboard-shortcut first-keystroke="shift ctrl z" />
+    <keyboard-shortcut first-keystroke="shift ctrl slash" />
   </action>
   <action id="Editor Undo">
     <keyboard-shortcut first-keystroke="ctrl slash" />
-    <keyboard-shortcut first-keystroke="ctrl z" />
   </action>
   <action id="EditorAddOrRemoveCaret" />
   <action id="EditorAddRectangularSelectionOnMouseDrag" />
@@ -130,6 +149,10 @@
   <action id="EditorDown">
     <keyboard-shortcut first-keystroke="down" />
     <keyboard-shortcut first-keystroke="ctrl n" />
+  </action>
+  <action id="EditorDownWithSelection">
+    <keyboard-shortcut first-keystroke="shift down" />
+    <keyboard-shortcut first-keystroke="shift ctrl n" />
   </action>
   <action id="EditorDuplicate">
     <keyboard-shortcut first-keystroke="shift ctrl d" />
@@ -184,6 +207,7 @@
     <keyboard-shortcut first-keystroke="shift alt f" />
   </action>
   <action id="EditorPasteFromX11" />
+  <action id="EditorPasteSimple" />
   <action id="EditorPreviousWord">
     <keyboard-shortcut first-keystroke="ctrl left" />
     <keyboard-shortcut first-keystroke="alt left" />
@@ -235,15 +259,16 @@
     <keyboard-shortcut first-keystroke="up" />
     <keyboard-shortcut first-keystroke="ctrl p" />
   </action>
+  <action id="EditorUpWithSelection">
+    <keyboard-shortcut first-keystroke="shift up" />
+    <keyboard-shortcut first-keystroke="shift ctrl p" />
+  </action>
   <action id="EmacsStyleIndent">
     <keyboard-shortcut first-keystroke="tab" />
   </action>
   <action id="EmmetNextEditPoint" />
   <action id="EmmetPreviousEditPoint" />
   <action id="EvaluateExpression" />
-  <action id="Exit">
-    <keyboard-shortcut first-keystroke="ctrl q" />
-  </action>
   <action id="ExpandAllRegions" />
   <action id="ExpandAllToLevel1" />
   <action id="ExpandAllToLevel2" />
@@ -333,9 +358,7 @@
   <action id="GotoTest" />
   <action id="GotoTypeDeclaration" />
   <action id="HideActiveWindow" />
-  <action id="HideAllWindows">
-    <keyboard-shortcut first-keystroke="shift ctrl w" />
-  </action>
+  <action id="HideAllWindows" />
   <action id="HighlightUsagesInFile" />
   <action id="HippieBackwardCompletion" />
   <action id="HippieCompletion" />
@@ -397,6 +420,10 @@
   </action>
   <action id="OverrideMethods" />
   <action id="ParameterInfo" />
+  <action id="PasteMultiple">
+    <keyboard-shortcut first-keystroke="shift ctrl insert" />
+    <keyboard-shortcut first-keystroke="alt y" />
+  </action>
   <action id="PopupHector" />
   <action id="PreviousDiff">
     <keyboard-shortcut first-keystroke="alt p" />
@@ -444,10 +471,10 @@
   <action id="SafeDelete" />
   <action id="SaveAll" />
   <action id="ScrollPane-scrollDown">
-    <keyboard-shortcut first-keystroke="shift ctrl n" />
+    <keyboard-shortcut first-keystroke="ctrl v" />
   </action>
   <action id="ScrollPane-scrollUp">
-    <keyboard-shortcut first-keystroke="shift ctrl p" />
+    <keyboard-shortcut first-keystroke="alt v" />
   </action>
   <action id="SelectAllOccurrences" />
   <action id="SelectIn">
@@ -502,9 +529,6 @@
   <action id="ToggleTemporaryLineBreakpoint" />
   <action id="Tool_External Tools_Terminal">
     <keyboard-shortcut first-keystroke="ctrl back_quote" />
-  </action>
-  <action id="Tree-selectPreviousExtendSelection">
-    <keyboard-shortcut first-keystroke="shift up" />
   </action>
   <action id="TypeHierarchy" />
   <action id="UnselectPreviousOccurrence">
