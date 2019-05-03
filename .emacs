@@ -57,13 +57,12 @@
      ("marmalade" . "https://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (key-chord ace-jump-mode smartparens company-flx yaml-mode treemacs lsp-ui lsp-java helm sr-speedbar projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent expand-region diff-hl)))
+    (zenburn-theme key-chord avy smartparens company-flx yaml-mode treemacs lsp-ui lsp-java helm sr-speedbar projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent expand-region diff-hl)))
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
  '(scroll-margin 1)
  '(shift-select-mode nil)
  '(show-paren-mode t)
- '(sp-base-key-bindings (quote paredit))
  '(speedbar-show-unknown-files t)
  '(sr-speedbar-right-side nil)
  '(tool-bar-mode nil)
@@ -192,8 +191,8 @@
 (add-hook 'lisp-mode-hook #'enable-paredit-mode)
 (add-hook 'scheme-mode-hook #'enable-paredit-mode)
 
-(add-hook 'haskell-mode-hook 'smartparens-strict-mode)
-(add-hook 'java-mode-hook 'smartparens-strict-mode)
+(add-hook 'haskell-mode-hook 'smartparens-mode)
+(add-hook 'java-mode-hook 'smartparens-mode)
 (add-hook 'java-mode-hook (lambda () (require 'lsp-java) (lsp)))
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 (add-hook 'prog-mode-hook #'company-mode)
