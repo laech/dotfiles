@@ -26,6 +26,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(avy-keys
+   (quote
+    (97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122)))
  '(blink-cursor-mode nil)
  '(company-idle-delay 0)
  '(company-tooltip-idle-delay 0)
@@ -198,7 +201,6 @@
 (add-hook 'focus-out-hook (lambda () (save-some-buffers t)))
 
 (define-key ctl-x-map (kbd "g") 'magit-status)
-(define-key mode-specific-map (kbd "SPC") 'ace-jump-mode)
 
 (global-set-key [remap kill-region] 'kill-region-or-line)
 (global-set-key [remap kill-ring-save] 'copy-region-or-line)
@@ -307,7 +309,7 @@
         (define-key xterm-function-map (format "\e[%d;%du" key mod-code) full)))))
 
 (with-eval-after-load 'key-chord
-  (key-chord-define-global "jj" 'ace-jump-mode))
+  (key-chord-define-global "jj" 'avy-goto-word-or-subword-1))
 
 (with-eval-after-load 'lsp-ui
   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
