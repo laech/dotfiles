@@ -1,4 +1,0 @@
-# Lock screen when a YubiKey 4 is unplugged.
-# To check values, run: 'udevadm monitor --environment --udev --subsystem-match usb' and plug/unplug.
-# To enable, copy this file to /etc/udev/rules.d/ and run udevadm control --reload
-ACTION=="remove", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ENV{PRODUCT}=="1050/407/437", RUN+="/usr/bin/bash -c 'XAUTHORITY=/home/laec/.Xauthority DISPLAY=:0 /usr/bin/xset dpms force off'"
