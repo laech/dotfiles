@@ -106,20 +106,7 @@ autoload -U bashcompinit
 bashcompinit
 
 if ! type __git_ps1 &> /dev/null; then
-
-    # Arch
-    if [[ -f   /usr/share/git/completion/git-prompt.sh ]]; then
-	source /usr/share/git/completion/git-prompt.sh
-
-    # Fedora
-    elif [[ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]]; then
-	source /usr/share/git-core/contrib/completion/git-prompt.sh
-
-    # Mac
-    elif [[ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]]; then
-        source /usr/local/etc/bash_completion.d/git-prompt.sh
-    fi
-
+    source /usr/share/git/completion/git-prompt.sh
 fi
 
 readonly my_ps1=$'\n${(r:$COLUMNS::-:)}\n'
