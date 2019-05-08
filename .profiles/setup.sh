@@ -9,8 +9,9 @@ set -o pipefail
     && exit 1
 
 readonly profile_base=base
+readonly profile_nokbd=nokbd
 readonly profile_fruit=fruit
-readonly profile=${profile:?"'$profile_base' or '$profile_fruit'?"}
+readonly profile=${profile:?"'$profile_base' or '$profile_fruit' or '$profile_nokbd'?"}
 
 [[ "$profile" != "$profile_base" ]] \
     && [[ "$profile" != "$profile_fruit" ]] \
@@ -159,10 +160,11 @@ done
     && echo "running mkinitcpio..." \
     && sudo mkinitcpio -p linux
 
-echo ""
-echo "setting virtual console keymap..."
-sudo cp -v "$console_map" '/usr/share/kbd/keymaps/i386/qwerty/custom.map'
-sudo localectl set-keymap custom
+[[ "$profile" != "$profile_nokbd" ]] \
+    && echo "" \
+    && echo "setting virtual console keymap..." \
+    && sudo cp -v "$console_map" '/usr/share/kbd/keymaps/i386/qwerty/custom.map' \
+    && sudo localectl set-keymap custom
 
 echo ""
 echo "linking default user profile..."
