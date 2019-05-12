@@ -26,13 +26,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(avy-keys
-   (quote
-    (97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122)))
  '(blink-cursor-mode nil)
- '(company-idle-delay 0)
- '(company-minimum-prefix-length 2)
- '(company-tooltip-idle-delay 0)
  '(delete-by-moving-to-trash t)
  '(delete-selection-mode t)
  '(global-auto-revert-mode t)
@@ -63,8 +57,6 @@
  '(scroll-margin 1)
  '(shift-select-mode nil)
  '(show-paren-mode t)
- '(speedbar-show-unknown-files t)
- '(sr-speedbar-right-side nil)
  '(tool-bar-mode nil)
  '(truncate-lines t)
  '(visible-cursor nil)
@@ -174,28 +166,13 @@
     (set-frame-parameter nil 'bottom-divider-width 0)))
 
 (add-hook 'after-init-hook #'global-undo-tree-mode)
-(add-hook 'after-init-hook #'ivy-mode)
-(add-hook 'after-init-hook #'counsel-mode)
-(add-hook 'after-init-hook #'projectile-mode)
 (add-hook 'after-init-hook #'which-key-mode)
-(add-hook 'after-init-hook (lambda () (key-chord-mode 1)))
 
 (add-hook 'after-init-hook #'global-diff-hl-mode)
 (add-hook 'after-init-hook #'diff-hl-flydiff-mode)
 (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
 
-(add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
-(add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
-(add-hook 'ielm-mode-hook #'enable-paredit-mode)
-(add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
-(add-hook 'lisp-mode-hook #'enable-paredit-mode)
-(add-hook 'scheme-mode-hook #'enable-paredit-mode)
-
-(add-hook 'haskell-mode-hook 'smartparens-mode)
-(add-hook 'java-mode-hook 'smartparens-mode)
-(add-hook 'java-mode-hook (lambda () (require 'lsp-java) (lsp)))
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
-(add-hook 'prog-mode-hook #'company-mode)
 
 (add-hook 'window-configuration-change-hook (lambda () (save-some-buffers t)))
 (add-hook 'focus-out-hook (lambda () (save-some-buffers t)))
@@ -266,31 +243,41 @@
     ("'" mc-hide-unmatched-lines-mode "unmatched lines"))
   (define-key mode-specific-map (kbd "m") 'hydra-mark/body))
 
+(with-eval-after-load 'avy
+  (setq avy-keys (number-sequence 97 122)))
+
+(add-hook 'after-init-hook (lambda () (key-chord-mode 1)))
 (with-eval-after-load 'key-chord
   (key-chord-define-global "jj" 'avy-goto-word-or-subword-1))
 
+(add-hook 'java-mode-hook (lambda () (require 'lsp-java) (lsp)))
 (with-eval-after-load 'lsp-ui
   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
   (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references))
 
+(add-hook 'after-init-hook #'ivy-mode)
+(add-hook 'after-init-hook #'counsel-mode)
 (with-eval-after-load 'ivy
+  (setq
+   ivy-extra-directories nil
+   ivy-use-virtual-buffers t
+   ivy-initial-inputs-alist nil
+   ivy-re-builders-alist '((swiper . ivy--regex-plus) (t . ivy--regex-fuzzy))
+   projectile-completion-system 'ivy
+   magit-completing-read-function 'ivy-completing-read)
+
   (dolist
       (mapping
        '(("<tab>" . ivy-insert-current)
          ("<return>" . ivy-alt-done)))
     (define-key ivy-minibuffer-map (kbd (car mapping)) (cdr mapping))))
 
-(setq ivy-extra-directories nil)
-(setq ivy-use-virtual-buffers t)
-(setq ivy-initial-inputs-alist nil)
-(setq ivy-re-builders-alist
-      '((swiper . ivy--regex-plus)
-        (t . ivy--regex-fuzzy)))
-
-(setq projectile-completion-system 'ivy)
-(setq magit-completing-read-function 'ivy-completing-read)
-
+(add-hook 'prog-mode-hook #'company-mode)
 (with-eval-after-load 'company
+  (setq
+   company-idle-delay 0
+   company-minimum-prefix-length 2
+   company-tooltip-idle-delay 0)
   (company-flx-mode)
   (define-key company-mode-map [remap completion-at-point] #'company-complete)
   (mapc
@@ -301,15 +288,24 @@
      ("C-n" . company-select-next)
      ("C-p" . company-select-previous))))
 
+(add-hook 'after-init-hook #'projectile-mode)
 (with-eval-after-load 'projectile
   (define-key mode-specific-map (kbd "p") 'projectile-command-map))
 
 (with-eval-after-load 'elisp-mode
   (define-key lisp-interaction-mode-map (kbd "C-j") nil))
 
+(add-hook 'haskell-mode-hook 'smartparens-mode)
+(add-hook 'java-mode-hook 'smartparens-mode)
 (with-eval-after-load 'smartparens
   (require 'smartparens-config))
 
+(add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
+(add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
+(add-hook 'ielm-mode-hook #'enable-paredit-mode)
+(add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
+(add-hook 'lisp-mode-hook #'enable-paredit-mode)
+(add-hook 'scheme-mode-hook #'enable-paredit-mode)
 (with-eval-after-load 'paredit
 
   (defun transpose-sexps-reverse (arg)
@@ -360,9 +356,14 @@
       (flycheck-add-next-checker 'intero '(warning . haskell-hlint)))))
 
 (with-eval-after-load 'speedbar
-  (setq speedbar-use-images nil)
+  (setq
+   speedbar-use-images nil
+   speedbar-show-unknown-files t)
   (defun speedbar-set-mode-line-format ()
     (setq mode-line-format nil)))
+
+(with-eval-after-load 'sr-speedbar
+  (setq sr-speedbar-right-side nil))
 
 (with-eval-after-load 'flyspell
   (setq flyspell-issue-message-flag nil))
