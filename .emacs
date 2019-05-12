@@ -35,6 +35,7 @@
  '(company-tooltip-idle-delay 0)
  '(delete-by-moving-to-trash t)
  '(delete-selection-mode t)
+ '(expand-region-fast-keys-enabled nil)
  '(global-auto-revert-mode t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
@@ -57,7 +58,7 @@
      ("marmalade" . "https://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (zenburn-theme key-chord avy smartparens company-flx yaml-mode treemacs lsp-ui lsp-java helm sr-speedbar projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent expand-region diff-hl)))
+    (hydra key-chord avy smartparens company-flx yaml-mode treemacs lsp-ui lsp-java helm sr-speedbar projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent expand-region diff-hl)))
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
  '(scroll-margin 1)
@@ -307,6 +308,31 @@
         ;; For both XTerm.vt100.formatOtherKeys set to 0 or 1
         (define-key xterm-function-map (format "\e[27;%d;%d~" mod-code key) full)
         (define-key xterm-function-map (format "\e[%d;%du" key mod-code) full)))))
+
+(with-eval-after-load 'hydra
+  (require 'expand-region)
+  (require 'multiple-cursors)
+  (defhydra hydra-mark
+    (:columns 3 :pre (when (and (not (region-active-p)) (= 1 (mc/num-cursors)))
+                       (er/expand-region 1)))
+    "mark"
+    ("n" mc/mark-next-like-this "mark next")
+    ("N" mc/unmark-next-like-this "unmark next")
+    ("M-n" mc/skip-to-next-like-this "skip next")
+    ("p" mc/mark-previous-like-this "mark prev")
+    ("P" mc/unmark-previous-like-this "unmark prev")
+    ("M-p" mc/skip-to-previous-like-this "skip prev")
+    ("t" mc/edit-lines "edit lines" :exit t)
+    ("a" mc/edit-beginnings-of-lines "edit line starts" :exit t)
+    ("e" mc/edit-ends-of-lines "edit line ends" :exit t)
+    ("h" mc/mark-all-like-this "mark all" :exit t)
+    ("1" mc/insert-numbers "insert numbers" :exit t)
+    ("l" mc/insert-letters "insert letters" :exit t)
+    ("m" er/expand-region "expand region")
+    ("M" er/contract-region "contract region")
+    ("'" mc-hide-unmatched-lines-mode "unmatched lines")
+    ("q" mc/keyboard-quit "quit" :exit t))
+  (define-key mode-specific-map (kbd "m") 'hydra-mark/body))
 
 (with-eval-after-load 'key-chord
   (key-chord-define-global "jj" 'avy-goto-word-or-subword-1))
