@@ -330,8 +330,7 @@
     ("l" mc/insert-letters "insert letters" :exit t)
     ("m" er/expand-region "expand region")
     ("M" er/contract-region "contract region")
-    ("'" mc-hide-unmatched-lines-mode "unmatched lines")
-    ("q" mc/keyboard-quit "quit" :exit t))
+    ("'" mc-hide-unmatched-lines-mode "unmatched lines"))
   (define-key mode-specific-map (kbd "m") 'hydra-mark/body))
 
 (with-eval-after-load 'key-chord
