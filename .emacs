@@ -35,7 +35,6 @@
  '(company-tooltip-idle-delay 0)
  '(delete-by-moving-to-trash t)
  '(delete-selection-mode t)
- '(expand-region-fast-keys-enabled nil)
  '(global-auto-revert-mode t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
@@ -58,7 +57,7 @@
      ("marmalade" . "https://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (hydra key-chord avy smartparens company-flx yaml-mode treemacs lsp-ui lsp-java helm sr-speedbar projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent expand-region diff-hl)))
+    (expand-region hydra key-chord avy smartparens company-flx yaml-mode treemacs lsp-ui lsp-java helm sr-speedbar projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent diff-hl)))
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
  '(scroll-margin 1)
@@ -219,82 +218,8 @@
        ("M-N" . move-line-down)
        ("M-P" . move-line-up)
        ("M-J" . join-line-next)
-       ("M-T" . transpose-words-backward)
-       ("C-." . mc/mark-next-like-this-word)
-       ("C->" . mc/unmark-next-like-this)
-       ("C-," . mc/mark-previous-like-this)
-       ("C-<" . mc/unmark-previous-like-this)
-       ("C-=" . er/expand-region)
-       ("C-+" . er/contract-region)))
+       ("M-T" . transpose-words-backward)))
   (global-set-key (kbd (car mapping)) (cdr mapping)))
-
-
-(defun modern-keymap ()
-
-  (defun relocate-prefix-keys (keymap)
-    "Use C-; for C-x map, C-' for C-c map."
-    (mapc
-     (lambda (mapping)
-       (let* ((old-key (kbd (car mapping)))
-              (new-key (kbd (cdr mapping)))
-              (old-keymap (lookup-key keymap old-key))
-              (new-keymap (lookup-key keymap new-key)))
-         (when (and old-keymap (not new-keymap))
-           (define-key keymap old-key nil)
-           (define-key keymap new-key old-keymap))))
-     '(("C-x" . "C-;")
-       ("C-c" . "C-'"))))
-
-  (defun relocate-all-prefix-keys ()
-    (mapc
-     'relocate-prefix-keys
-     (append
-      (current-active-maps)
-      (mapcar 'cdr minor-mode-map-alist))))
-
-  (add-hook
-   'after-change-major-mode-hook
-   #'relocate-all-prefix-keys)
-
-  (define-key key-translation-map (kbd "C-; 8")
-    (lookup-key key-translation-map (kbd "C-x 8")))
-  (define-key key-translation-map (kbd "C-x 8") nil)
-
-  (mapc
-   (lambda (mapping) (global-set-key (kbd (car mapping)) (cdr mapping)))
-   '(("C-q" . save-buffers-kill-terminal)
-     ("C-w" . kill-buffer-and-window)
-     ("C-S-w" . delete-other-windows)
-     ("C-S-p" . scroll-down-command)
-     ("C-;" . Control-X-prefix)
-     ("C-'" . mode-specific-command-prefix)
-     ("C-S-n" . scroll-up-command)
-     ("C-z" . undo-tree-undo)
-     ("C-S-z" . undo-tree-redo)
-     ("C-x" . kill-region)
-     ("C-c" . kill-ring-save)
-     ("C-v" . yank)
-     ("C-S-v" . yank-pop)))
-
-  (global-set-key (kbd "C-' q") 'quoted-insert)
-
-  ;; "C-x @"
-  (relocate-prefix-keys function-key-map)
-  (relocate-all-prefix-keys)
-
-  (with-eval-after-load 'isearch
-    (mapc
-     (lambda (mapping)
-       (define-key isearch-mode-map (kbd (car mapping)) (cdr mapping)))
-     '(("C-v" . isearch-yank-kill)
-       ("C-q" . nil)
-       ("C-' q" . isearch-quote-char))))
-
-  (with-eval-after-load 'ivy
-    (dolist
-        (mapping
-         '(("C-v" . nil)))
-      (define-key ivy-minibuffer-map (kbd (car mapping)) (cdr mapping)))))
 
 ;; Make C-S-<key>, C-M-S-<key> work under xterm.
 ;; See ~/.Xresources for sending these escape codes.
@@ -309,12 +234,20 @@
         (define-key xterm-function-map (format "\e[27;%d;%d~" mod-code key) full)
         (define-key xterm-function-map (format "\e[%d;%du" key mod-code) full)))))
 
+(with-eval-after-load 'expand-region
+  (setq expand-region-fast-keys-enabled nil)
+  (setq expand-region-smart-cursor t))
+
 (with-eval-after-load 'hydra
-  (require 'expand-region)
-  (require 'multiple-cursors)
   (defhydra hydra-mark
-    (:columns 3 :pre (when (and (not (region-active-p)) (= 1 (mc/num-cursors)))
-                       (er/expand-region 1)))
+    (:columns
+     3
+     :pre
+     (progn
+       (require 'expand-region)
+       (require 'multiple-cursors)
+       (unless (or (region-active-p) (> 1 (mc/num-cursors)))
+         (er/expand-region 1))))
     "mark"
     ("n" mc/mark-next-like-this "mark next")
     ("N" mc/unmark-next-like-this "unmark next")
@@ -475,5 +408,3 @@
      (center-windows nil))))
 
 (auto-center-windows)
-
-;; (modern-keymap)
