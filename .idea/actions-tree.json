@@ -69,7 +69,8 @@
           ]},
          {"separator-above": "",
           "keys": ["K", "0"], "id": "CloseContent"},
-         {"keys": [     "1"], "id": "UnsplitAll"},
+         {"keys": ["ctrl 1"], "id": "UnsplitAll"},
+         {"keys": [     "1"], "id": "HideAllWindows"},
          {"keys": [     "2"], "id": "SplitHorizontally"},
          {"keys": [     "3"], "id": "SplitVertically"},
          {"keys": [     "O"], "id": "NextSplitter"},
@@ -158,7 +159,15 @@
               {"keys": [      "F"], "id": "IntroduceField"},
               {"keys": [      "M"], "id": "ExtractMethod"}
           ]},
-         {"keys": ["ctrl W"], "id": "com.gitlab.lae.intellij.actions.CamelHumpsInCurrentEditor"}
+         {"keys": ["ctrl W"], "id": "com.gitlab.lae.intellij.actions.CamelHumpsInCurrentEditor"},
+         {"keys": ["M"],
+          "name": "Mark",
+          "items": [
+              {"keys": [      "M"], "id": "EditorSelectWord", "sticky": true},
+              {"keys": ["shift M"], "id": "EditorUnSelectWord", "sticky": true},
+              {"keys": [      "N"], "id": "SelectNextOccurrence", "sticky": true},
+              {"keys": ["shift N"], "id": "UnselectPreviousOccurrence", "sticky": true}
+          ]}
      ]},
     {"keys": ["ctrl H"],
      "items": [
@@ -176,8 +185,8 @@
      "items": [
          {"keys": ["alt G", "G"], "id": "GotoLine"},
          {"separator-above": "",
-          "keys": ["alt P", "P"], "id": "GotoPreviousError"},
-         {"keys": ["alt N", "N"], "id": "GotoNextError"},
+          "keys": ["alt P", "P"], "id": "GotoPreviousError", "sticky": true},
+         {"keys": ["alt N", "N"], "id": "GotoNextError", "sticky": true},
          {"separator-above": "",
           "keys": [         "I"], "id": "GotoImplementation"},
          {"keys": [         "U"], "id": "GotoSuperMethod"},
@@ -202,8 +211,8 @@
           "name": "Highlight...",
           "items": [
               {"keys": ["PERIOD"], "id": "HighlightUsagesInFile"},
-              {"keys": [     "N"], "id": "GotoNextElementUnderCaretUsage"},
-              {"keys": [     "P"], "id": "GotoPrevElementUnderCaretUsage"}
+              {"keys": [     "N"], "id": "GotoNextElementUnderCaretUsage", "sticky": true},
+              {"keys": [     "P"], "id": "GotoPrevElementUnderCaretUsage", "sticky": true}
           ]}
      ]}
 ]}
