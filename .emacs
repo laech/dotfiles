@@ -173,6 +173,7 @@
 (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
 
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'sh-mode-hook #'flycheck-mode) ;; Needs shellcheck to be installed
 
 (add-hook 'window-configuration-change-hook (lambda () (save-some-buffers t)))
 (add-hook 'focus-out-hook (lambda () (save-some-buffers t)))
