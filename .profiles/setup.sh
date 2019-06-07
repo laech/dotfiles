@@ -20,68 +20,68 @@ readonly profile=${profile:?"'$profile_base' or '$profile_fruit' or '$profile_no
 
 packages=(
 
-  i3-wm
-  i3lock
-  i3status
-  xorg-server
-  xorg-xinit
-  xorg-xev
-  xorg-xbacklight
-  xss-lock
-  rofi
-  feh
+    i3-wm
+    i3lock
+    i3status
+    xorg-server
+    xorg-xinit
+    xorg-xev
+    xorg-xbacklight
+    xss-lock
+    rofi
+    feh
 
-  firefox
+    firefox
 
-  tmux
-  xterm
-  xsel
-  zsh
-  zsh-completions
-  trash-cli
+    tmux
+    xterm
+    xsel
+    zsh
+    zsh-completions
+    trash-cli
 
-  git
+    git
 
-  vim
-  emacs
-  xcape
+    vim
+    emacs
+    xcape
 
-  pulseaudio
-  pavucontrol
+    pulseaudio
+    pavucontrol
 
-  ttf-dejavu
-  ttf-liberation
-  ttf-ubuntu-font-family
-  noto-fonts
-  noto-fonts-cjk
-  noto-fonts-emoji
-  adobe-source-sans-pro-fonts
-  adobe-source-serif-pro-fonts
+    ttf-dejavu
+    ttf-liberation
+    ttf-ubuntu-font-family
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    adobe-source-sans-pro-fonts
+    adobe-source-serif-pro-fonts
 
-  jdk8-openjdk
-  openjdk8-src
+    jdk8-openjdk
+    openjdk8-src
 
-  argyllcms
-  tlp
-  powertop
-  x86_energy_perf_policy
-  ethtool
-  smartmontools
+    argyllcms
+    tlp
+    powertop
+    x86_energy_perf_policy
+    ethtool
+    smartmontools
 
-  compton
+    compton
 
-  ibus
-  ibus-libpinyin
+    ibus
+    ibus-libpinyin
 
-  wpa_supplicant
+    wpa_supplicant
 
-  openssh
-  keepassxc
+    openssh
+    keepassxc
 
-  cups # Printing
-  sane  # Scaning
-  hplip # HP PSC 1315 Series, hp-setup, hp-scan
-  python-pyqt5 # Needed by hp-setup
+    cups # Printing
+    sane  # Scaning
+    hplip # HP PSC 1315 Series, hp-setup, hp-scan
+    python-pyqt5 # Needed by hp-setup
 )
 
 dirs_prefix='base/system/'
@@ -105,11 +105,14 @@ if [[ "$profile" == "$profile_fruit" ]]; then
         linux-headers
         broadcom-wl-dkms
         nvidia-340xx
+        refind-efi
     )
 
     dirs_prefix='fruit/system/'
 
     dirs+=(
+        'boot/EFI/refind'
+        'boot/EFI/tools'
         'etc/modprobe.d'
         'etc/systemd/system/dhcpcd@wlp2s0.service.d'
         'etc/udev/rules.d'
@@ -135,7 +138,7 @@ sudo ln -vsfn ../conf.avail/30-ttf-liberation-sans.conf  /etc/fonts/conf.d/
 sudo ln -vsfn ../conf.avail/30-ttf-liberation-serif.conf /etc/fonts/conf.d/
 sudo ln -vsfn ../conf.avail/30-ttf-liberation-mono.conf  /etc/fonts/conf.d/
 
-cd "$(dirname ""${BASH_SOURCE[0]}"")"
+cd "$(dirname "${BASH_SOURCE[0]}")"
 
 echo ""
 echo "copying system files..."
@@ -158,6 +161,8 @@ done
 [[ "$profile" == "$profile_fruit" ]] \
     && echo "" \
     && echo "running mkinitcpio..." \
+    && (grep -F 'include fruit.conf' /boot/EFI/refind/refind.conf || \
+            echo 'include fruit.conf' >> /boot/EFI/refind/refind.conf) \
     && sudo mkinitcpio -p linux
 
 [[ "$profile" != "$profile_nokbd" ]] \
