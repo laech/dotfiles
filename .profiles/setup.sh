@@ -101,10 +101,7 @@ if [[ "$profile" == "$profile_fruit" ]]; then
 
     packages+=(
         base-devel
-        dkms
-        linux-headers
-        broadcom-wl-dkms
-        nvidia-340xx
+        broadcom-wl
         refind-efi
     )
 
@@ -112,7 +109,7 @@ if [[ "$profile" == "$profile_fruit" ]]; then
 
     dirs+=(
         'boot/EFI/refind'
-        'boot/EFI/tools'
+        'boot/EFI/arch'
         'etc/modprobe.d'
         'etc/systemd/system/dhcpcd@wlp2s0.service.d'
         'etc/udev/rules.d'
@@ -160,9 +157,17 @@ done
 
 [[ "$profile" == "$profile_fruit" ]] \
     && echo "" \
-    && echo "running mkinitcpio..." \
+    && echo "setting refind..." \
+    && sudo refind-install \
     && (grep -F 'include fruit.conf' /boot/EFI/refind/refind.conf || \
             echo 'include fruit.conf' >> /boot/EFI/refind/refind.conf) \
+    && echo "" \
+    && echo "setting nvidia..." \
+    && sudo pacman -U --noconfirm \
+            fruit/nvidia/nvidia-340xx-340.107-90-x86_64.pkg.tar.xz \
+            fruit/nvidia/nvidia-340xx-utils-340.107-3-x86_64.pkg.tar.xz \
+    && echo "" \
+    && echo "setting mkinitcpio..." \
     && sudo mkinitcpio -p linux
 
 [[ "$profile" != "$profile_nokbd" ]] \
