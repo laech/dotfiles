@@ -112,14 +112,6 @@ bar {
         separator_symbol " | "
         status_command i3status
         font pango:sans 8
-        colors {
-                #class             border  background text
-                focused_workspace  #285577 #285577 #ffffff
-                active_workspace   #5f676a #5f676a #ffffff
-                inactive_workspace #222222 #222222 #888888
-                urgent_workspace   #900000 #900000 #ffffff
-                binding_mode       #2f343a #900000 #ffffff
-        }
 
         modifier none
         # mode hide
@@ -129,21 +121,13 @@ bar {
 }
 bindsym $mod+m bar mode toggle
 
-# class                 border  backgr. text    indicator child_border
-client.focused          #285577 #285577 #ffffff #2e9ef4   #285577
-client.focused_inactive #5f676a #5f676a #ffffff #484e50   #5f676a
-client.unfocused        #000000 #000000 #888888 #292d2e   #000000
-client.urgent           #900000 #900000 #ffffff #900000   #900000
-client.placeholder      #0c0c0c #0c0c0c #ffffff #000000   #0c0c0c
-client.background       #ffffff
-
 # Disable mouse focus and switch window on scroll
 focus_follows_mouse no
 bindsym button4 nop
 bindsym button5 nop
 
-bindsym XF86MonBrightnessDown exec --no-startup-id ~/.local/bin/backlight -10
-bindsym XF86MonBrightnessUp   exec --no-startup-id ~/.local/bin/backlight +10
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 && xbacklight > ~/.brightness
+bindsym XF86MonBrightnessUp   exec --no-startup-id xbacklight -inc 5 && xbacklight > ~/.brightness
 
 bindsym XF86AudioRaiseVolume   exec --no-startup-id ~/.local/bin/volume +5
 bindsym XF86AudioLowerVolume   exec --no-startup-id ~/.local/bin/volume -5
@@ -161,6 +145,8 @@ exec_always --no-startup-id xset dpms 310 310 310
 exec --no-startup-id xss-lock \
      --notifier='bash /usr/share/doc/xss-lock/dim-screen.sh' \
      -- i3lock --nofork --color=333333
+
+exec xbacklight -set $(cat ~/.brightness 2> /dev/null || 10)
 
 exec systemd-run --user \
      --timer-property=OnCalendar=minutely \
