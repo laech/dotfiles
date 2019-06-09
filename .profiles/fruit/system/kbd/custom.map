@@ -1,0 +1,9 @@
+include "us.map"
+
+# Use showkey under virtual console to see keycode
+
+# Left Win is Control
+keycode 125 = Control
+
+# Right Win is Control
+keycode 126 = Control

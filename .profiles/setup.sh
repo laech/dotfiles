@@ -84,7 +84,8 @@ packages=(
     python-pyqt5 # Needed by hp-setup
 )
 
-dirs_prefix='base/system/'
+readonly base_dirs_prefix=base/system/
+dirs_prefix="$base_dirs_prefix"
 
 dirs=(
     'usr/share/X11/xkb/symbols'
@@ -108,8 +109,8 @@ if [[ "$profile" == "$profile_fruit" ]]; then
     dirs_prefix='fruit/system/'
 
     dirs+=(
-        'boot/EFI/refind'
-        'boot/EFI/arch'
+        'boot/efi/EFI/refind'
+        'boot/efi/EFI/arch'
         'etc/modprobe.d'
         'etc/systemd/system/dhcpcd@wlp2s0.service.d'
         'etc/udev/rules.d'
@@ -120,14 +121,16 @@ if [[ "$profile" == "$profile_fruit" ]]; then
     services+=(
         disable-bluetooth.service
         disable-ir.service
+        wpa_supplicant@wlp2s0.service
+        dhcpcd@wlp2s0.service
     )
 
-    console_map='fruit/system/kbd/custom-fruit.map'
+    console_map='fruit/system/kbd/custom.map'
 fi
 
 echo ""
 echo "installing packages..."
-sudo pacman -S --needed "${packages[@]}"
+sudo pacman -S --needed --noconfirm "${packages[@]}"
 
 echo ""
 echo "linking font config..."
@@ -141,9 +144,21 @@ echo ""
 echo "copying system files..."
 for dir in "${dirs[@]}"; do
     sudo mkdir -p "/$dir"
-    for file in $(ls -I '*~' -I '#*#' "$dirs_prefix$dir"); do
-        sudo cp -v "$dirs_prefix$dir/$file" "/$dir/"
-    done
+
+    [[ -e "$base_dirs_prefix$dir" ]] \
+        && find "$base_dirs_prefix$dir" \
+                -type f \
+                -not -name '*~' \
+                -not -name '#*#' \
+                -exec sudo cp -v {} "/$dir/" \;
+
+    [[ "$dirs_prefix" != "$base_dirs_prefix" ]] \
+        && [[ -e "$dirs_prefix$dir" ]] \
+        && find "$dirs_prefix$dir" \
+                -type f \
+                -not -name '*~' \
+                -not -name '#*#' \
+                -exec sudo cp -v {} "/$dir/" \;
 done
 
 echo ""
@@ -155,26 +170,31 @@ for service in "${services[@]}"; do
     sudo systemctl start "$service"
 done
 
-[[ "$profile" == "$profile_fruit" ]] \
-    && echo "" \
-    && echo "setting refind..." \
-    && sudo refind-install \
-    && (grep -F 'include fruit.conf' /boot/EFI/refind/refind.conf || \
-            echo 'include fruit.conf' >> /boot/EFI/refind/refind.conf) \
-    && echo "" \
-    && echo "setting nvidia..." \
-    && sudo pacman -U --noconfirm \
-            fruit/nvidia/nvidia-340xx-340.107-90-x86_64.pkg.tar.xz \
-            fruit/nvidia/nvidia-340xx-utils-340.107-3-x86_64.pkg.tar.xz \
-    && echo "" \
-    && echo "setting mkinitcpio..." \
-    && sudo mkinitcpio -p linux
+if [[ "$profile" == "$profile_fruit" ]]; then
+    echo ""
+    echo "setting refind..."
+    sudo refind-install
+    if ! grep -F 'include fruit.conf' /boot/efi/EFI/refind/refind.conf; then
+        sudo bash -c 'echo "include fruit.conf" >> /boot/efi/EFI/refind/refind.conf'
+    fi
 
-[[ "$profile" != "$profile_nokbd" ]] \
-    && echo "" \
-    && echo "setting virtual console keymap..." \
-    && sudo cp -v "$console_map" '/usr/share/kbd/keymaps/i386/qwerty/custom.map' \
-    && sudo localectl set-keymap custom
+    echo ""
+    echo "setting nvidia..."
+    sudo pacman -U --needed --noconfirm \
+         fruit/nvidia/nvidia-340xx-340.107-90-x86_64.pkg.tar.xz \
+         fruit/nvidia/nvidia-340xx-utils-340.107-3-x86_64.pkg.tar.xz
+
+    echo ""
+    echo "setting mkinitcpio..."
+    sudo mkinitcpio -p linux
+fi
+
+if [[ "$profile" != "$profile_nokbd" ]]; then
+    echo ""
+    echo "setting virtual console keymap..."
+    sudo cp -v "$console_map" '/usr/share/kbd/keymaps/i386/qwerty/custom.map'
+    sudo localectl set-keymap custom
+fi
 
 echo ""
 echo "linking default user profile..."
