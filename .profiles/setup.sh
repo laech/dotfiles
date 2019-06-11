@@ -98,7 +98,12 @@ services=(
 
 console_map='base/system/kbd/custom.map'
 
-if [[ "$profile" == "$profile_fruit" ]]; then
+if [[ "$profile" == "$profile_base" ]]; then
+    services+=(
+        dhcpcd@enp5s0.service
+    )
+
+elif [[ "$profile" == "$profile_fruit" ]]; then
 
     packages+=(
         base-devel
@@ -193,7 +198,7 @@ if [[ "$profile" != "$profile_nokbd" ]]; then
     echo ""
     echo "setting virtual console keymap..."
     sudo cp -v "$console_map" '/usr/share/kbd/keymaps/i386/qwerty/custom.map'
-    sudo localectl set-keymap custom
+    sudo localectl set-keymap custom || true # Fails in chroot
 fi
 
 echo ""
