@@ -88,6 +88,7 @@ readonly base_dirs_prefix=base/system/
 dirs_prefix="$base_dirs_prefix"
 
 dirs=(
+    'etc/systemd/system/dhcpcd@enp5s0.service.d'
     'usr/share/X11/xkb/symbols'
 )
 
