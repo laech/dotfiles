@@ -108,10 +108,10 @@ elif [[ "$profile" == "$profile_fruit" ]]; then
 
     packages+=(
         base-devel
-        broadcom-wl
-        refind-efi
-        dkms
         linux-headers
+        dkms
+        broadcom-wl-dkms
+        refind-efi
     )
 
     dirs_prefix='fruit/system/'
