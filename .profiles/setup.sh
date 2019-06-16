@@ -127,8 +127,6 @@ elif [[ "$profile" == "$profile_fruit" ]]; then
     services+=(
         disable-bluetooth.service
         disable-ir.service
-        wpa_supplicant@wlp2s0.service
-        dhcpcd@wlp2s0.service
     )
 
     console_map='fruit/system/kbd/custom.map'
