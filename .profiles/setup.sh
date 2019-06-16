@@ -110,6 +110,8 @@ elif [[ "$profile" == "$profile_fruit" ]]; then
         base-devel
         broadcom-wl
         refind-efi
+        dkms
+        linux-headers
     )
 
     dirs_prefix='fruit/system/'
@@ -185,7 +187,7 @@ if [[ "$profile" == "$profile_fruit" ]]; then
     echo ""
     echo "setting nvidia..."
     sudo pacman -U --needed --noconfirm \
-         fruit/nvidia/nvidia-340xx-340.107-90-x86_64.pkg.tar.xz \
+         fruit/nvidia/nvidia-340xx-dkms-340.107-90-x86_64.pkg.tar.xz \
          fruit/nvidia/nvidia-340xx-utils-340.107-3-x86_64.pkg.tar.xz
 
     echo ""
