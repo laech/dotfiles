@@ -136,7 +136,7 @@ fi
 
 echo ""
 echo "installing packages..."
-sudo pacman -S --needed --noconfirm "${packages[@]}"
+sudo pacman --sync --needed --noconfirm "${packages[@]}"
 
 echo ""
 echo "linking font config..."
@@ -186,9 +186,15 @@ if [[ "$profile" == "$profile_fruit" ]]; then
 
     echo ""
     echo "setting nvidia..."
-    sudo pacman -U --needed --noconfirm \
-         fruit/nvidia/nvidia-340xx-dkms-340.107-90-x86_64.pkg.tar.xz \
-         fruit/nvidia/nvidia-340xx-utils-340.107-3-x86_64.pkg.tar.xz
+    (cd "$(dirname $0)"/fruit/nvidia-340xx-utils \
+         && git clean --force -d \
+         && makepkg --cleanbuild --needed --noconfirm --syncdeps)
+    sudo pacman --upgrade --needed --noconfirm "$(dirname $0)"/fruit/nvidia-340xx-utils/nvidia-340xx-util*.pkg.tar.xz
+
+    (cd "$(dirname $0)"/fruit/nvidia-340xx \
+         && git clean --force -d \
+         && makepkg --cleanbuild --needed --noconfirm --syncdeps)
+    sudo pacman --upgrade --needed --noconfirm "$(dirname $0)"/fruit/nvidia-340xx/nvidia-340xx-dkms*.pkg.tar.xz
 
     echo ""
     echo "setting mkinitcpio..."

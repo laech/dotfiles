@@ -1,0 +1,6 @@
+[submodule ".profiles/fruit/nvidia-340xx"]
+	path = .profiles/fruit/nvidia-340xx
+	url = https://aur.archlinux.org/nvidia-340xx.git
+[submodule ".profiles/fruit/nvidia-340xx-utils"]
+	path = .profiles/fruit/nvidia-340xx-utils
+	url = https://aur.archlinux.org/nvidia-340xx-utils.git
