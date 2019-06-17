@@ -415,4 +415,5 @@
    (lambda ()
      (center-windows nil))))
 
-(auto-center-windows)
+(when (boundp 'window-pixel-width-before-size-change)
+  (auto-center-windows))
