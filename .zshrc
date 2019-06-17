@@ -135,3 +135,6 @@ else
     alias ls='ls --color=auto'
 fi
 
+alias hgst='hg st -S'
+alias hgdiff='hg diff -S'
+hgbr() { find . -name .hg -type d -execdir bash -c 'echo "$(hg branch): $(pwd)"' \; }
