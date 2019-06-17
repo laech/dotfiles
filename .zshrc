@@ -106,7 +106,8 @@ autoload -U bashcompinit
 bashcompinit
 
 if ! type __git_ps1 &> /dev/null; then
-    source /usr/share/git/completion/git-prompt.sh
+    . /usr/share/git/completion/git-prompt.sh &> /dev/null \
+        || . /usr/lib/git-core/git-sh-prompt &> /dev/null
 fi
 
 readonly my_ps1=$'\n${(r:$COLUMNS::-:)}\n'
