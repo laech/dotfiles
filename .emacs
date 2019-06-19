@@ -386,7 +386,8 @@
 (defun auto-center-windows ()
 
   (defun center-window (window triggered-by-size-change)
-    (when (not (eq (window-buffer window) which-key--buffer))
+    (when (and (not (eq (window-buffer window) which-key--buffer))
+               (fboundp 'window-pixel-width-before-size-change))
 
       (when (or (not triggered-by-size-change)
                 (/= (window-pixel-width-before-size-change window)
@@ -415,5 +416,4 @@
    (lambda ()
      (center-windows nil))))
 
-(when (boundp 'window-pixel-width-before-size-change)
-  (auto-center-windows))
+(auto-center-windows)
