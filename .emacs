@@ -195,15 +195,54 @@
      '(("<S-return>" . start-new-line)
        ("C-o" . find-file)
        ("C-S-o" . projectile-find-file)
+       ("C-M-o" . xref-find-definitions)
+       ("M-o" . imenu)
+       ("C-z" . undo-tree-undo)
+       ("C-S-z" . undo-tree-redo)
+       ("C-x" . kill-region)
+       ("C-c" . kill-ring-save)
+       ("C-v" . yank)
+       ("C-S-v" . yank-pop)
+       ("C-;" . Control-X-prefix)
+       ("C-'" . mode-specific-command-prefix)
        ("C-S-d" . duplicate-region-or-line)
        ("C-S-s" . projectile-grep)
        ("C-j" . switch-to-buffer)
-       ("M-o" . imenu)
+       ("M-n" . scroll-up-command)
+       ("M-p" . scroll-down-command)
        ("M-N" . move-line-down)
        ("M-P" . move-line-up)
        ("M-J" . join-line-next)
        ("M-T" . transpose-words-backward)))
   (global-set-key (kbd (car mapping)) (cdr mapping)))
+
+(defun relocate-prefix-keys (keymap)
+  "Use C-; for C-x map, C-' for C-c map."
+  (mapc
+   (lambda (mapping)
+     (let* ((old-key (kbd (car mapping)))
+            (new-key (kbd (cdr mapping)))
+            (old-keymap (lookup-key keymap old-key))
+            (new-keymap (lookup-key keymap new-key)))
+       (when (and old-keymap (not new-keymap))
+         (define-key keymap old-key nil)
+         (define-key keymap new-key old-keymap))))
+   '(("C-x" . "C-;")
+     ("C-c" . "C-'"))))
+
+(defun relocate-all-prefix-keys ()
+  (mapc
+   'relocate-prefix-keys
+   (append
+    (current-active-maps)
+    (mapcar 'cdr minor-mode-map-alist))))
+(add-hook
+ 'after-change-major-mode-hook
+ #'relocate-all-prefix-keys)
+
+(define-key key-translation-map (kbd "C-; 8")
+  (lookup-key key-translation-map (kbd "C-x 8")))
+(define-key key-translation-map (kbd "C-x 8") nil)
 
 ;; Make C-S-<key>, C-M-S-<key> work under xterm.
 ;; See ~/.Xresources for sending these escape codes.
@@ -218,20 +257,25 @@
         (define-key xterm-function-map (format "\e[27;%d;%d~" mod-code key) full)
         (define-key xterm-function-map (format "\e[%d;%du" key mod-code) full)))))
 
+(with-eval-after-load 'isearch
+  (mapc
+   (lambda (mapping)
+     (define-key isearch-mode-map (kbd (car mapping)) (cdr mapping)))
+   '(("C-v" . isearch-yank-kill))))
+
+(with-eval-after-load 'ivy
+  (dolist
+      (mapping
+       '(("C-v" . nil)))
+    (define-key ivy-minibuffer-map (kbd (car mapping)) (cdr mapping))))
+
 (with-eval-after-load 'expand-region
   (setq expand-region-fast-keys-enabled nil)
   (setq expand-region-smart-cursor t))
 
 (with-eval-after-load 'hydra
   (defhydra hydra-mark
-    (:columns
-     3
-     :pre
-     (progn
-       (require 'expand-region)
-       (require 'multiple-cursors)
-       (unless (or (region-active-p) (> 1 (mc/num-cursors)))
-         (er/expand-region 1))))
+    (:columns 3)
     "mark"
     ("n" mc/mark-next-like-this "mark next")
     ("N" mc/unmark-next-like-this "unmark next")
@@ -248,7 +292,7 @@
     ("m" er/expand-region "expand region")
     ("M" er/contract-region "contract region")
     ("'" mc-hide-unmatched-lines-mode "unmatched lines"))
-  (define-key mode-specific-map (kbd "m") 'hydra-mark/body))
+  (define-key ctl-x-map (kbd "m") 'hydra-mark/body))
 
 (with-eval-after-load 'avy
   (setq avy-keys (number-sequence 97 122)))
@@ -297,7 +341,7 @@
 
 (add-hook 'after-init-hook #'projectile-mode)
 (with-eval-after-load 'projectile
-  (define-key mode-specific-map (kbd "p") 'projectile-command-map))
+  (define-key ctl-x-map (kbd "p") 'projectile-command-map))
 
 (with-eval-after-load 'elisp-mode
   (define-key lisp-interaction-mode-map (kbd "C-j") nil))
