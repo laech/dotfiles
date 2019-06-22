@@ -190,32 +190,6 @@
 (global-set-key [remap kill-ring-save] 'copy-region-or-line)
 (global-set-key [remap indent-region] 'indent-region-or-buffer)
 
-(dolist
-    (mapping
-     '(("<S-return>" . start-new-line)
-       ("C-o" . find-file)
-       ("C-S-o" . projectile-find-file)
-       ("C-M-o" . xref-find-definitions)
-       ("M-o" . imenu)
-       ("C-z" . undo-tree-undo)
-       ("C-S-z" . undo-tree-redo)
-       ("C-x" . kill-region)
-       ("C-c" . kill-ring-save)
-       ("C-v" . yank)
-       ("C-S-v" . yank-pop)
-       ("C-;" . Control-X-prefix)
-       ("C-'" . mode-specific-command-prefix)
-       ("C-S-d" . duplicate-region-or-line)
-       ("C-S-s" . projectile-grep)
-       ("C-j" . switch-to-buffer)
-       ("M-n" . scroll-up-command)
-       ("M-p" . scroll-down-command)
-       ("M-N" . move-line-down)
-       ("M-P" . move-line-up)
-       ("M-J" . join-line-next)
-       ("M-T" . transpose-words-backward)))
-  (global-set-key (kbd (car mapping)) (cdr mapping)))
-
 (defun relocate-prefix-keys (keymap)
   "Use C-; for C-x map, C-' for C-c map."
   (mapc
@@ -243,6 +217,35 @@
 (define-key key-translation-map (kbd "C-; 8")
   (lookup-key key-translation-map (kbd "C-x 8")))
 (define-key key-translation-map (kbd "C-x 8") nil)
+
+;; "C-x @"
+(relocate-prefix-keys function-key-map)
+(relocate-all-prefix-keys)
+
+(dolist
+    (mapping
+     '(("<S-return>" . start-new-line)
+       ("C-o" . find-file)
+       ("C-S-o" . projectile-find-file)
+       ("C-M-o" . xref-find-definitions)
+       ("M-o" . imenu)
+       ("C-z" . undo-tree-undo)
+       ("C-S-z" . undo-tree-redo)
+       ("C-x" . kill-region)
+       ("C-c" . kill-ring-save)
+       ("C-v" . yank)
+       ("C-S-v" . yank-pop)
+       ("C-S-d" . duplicate-region-or-line)
+       ("C-S-s" . projectile-grep)
+       ("C-j" . Control-X-prefix)
+       ("C-S-j" . mode-specific-command-prefix)
+       ("M-n" . scroll-up-command)
+       ("M-p" . scroll-down-command)
+       ("M-N" . move-line-down)
+       ("M-P" . move-line-up)
+       ("M-J" . join-line-next)
+       ("M-T" . transpose-words-backward)))
+  (global-set-key (kbd (car mapping)) (cdr mapping)))
 
 ;; Make C-S-<key>, C-M-S-<key> work under xterm.
 ;; See ~/.Xresources for sending these escape codes.
