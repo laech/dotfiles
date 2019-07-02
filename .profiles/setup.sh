@@ -58,6 +58,10 @@ packages=(
     adobe-source-sans-pro-fonts
     adobe-source-serif-pro-fonts
 
+    # More unicode coverage, test
+    # https://unicode-table.com/en/
+    ttf-hanazono
+
     jdk8-openjdk
     openjdk8-src
 
