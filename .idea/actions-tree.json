@@ -149,8 +149,11 @@
      "items": [
          {"keys": ["alt G", "G"], "id": "GotoLine"},
          {"separator-above": "",
-          "keys": ["alt P", "P"], "id": "GotoPreviousError", "sticky": true},
-         {"keys": ["alt N", "N"], "id": "GotoNextError", "sticky": true},
+          "keys": ["P"], "id": "GotoPreviousError"},
+         {"keys": ["N"], "id": "GotoNextError"},
+         {"separator-above": "",
+          "keys": ["alt P"], "id": "GotoPreviousError", "sticky": true},
+         {"keys": ["alt N"], "id": "GotoNextError", "sticky": true},
          {"keys": ["E"], "id": "ShowErrorDescription"},
          {"separator-above": "",
           "keys": ["T"], "id": "GotoTest"},
@@ -158,7 +161,7 @@
           "name": "Symbol at Point...",
           "items": [
             {"keys": ["D"], "id": "GotoDeclaration"},
-            {"keys": ["M"], "id": "GotoImplementation"},
+            {"keys": ["I"], "id": "GotoImplementation"},
             {"keys": ["T"], "id": "GotoTypeDeclaration"},
             {"keys": ["U"], "id": "GotoSuperMethod"}
           ]},

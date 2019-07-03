@@ -152,6 +152,9 @@
   <action id="EditorCodeBlockStartWithSelection" />
   <action id="EditorContextInfo" />
   <action id="EditorCreateRectangularSelection" />
+  <action id="EditorCutLineEnd">
+    <keyboard-shortcut first-keystroke="ctrl k" />
+  </action>
   <action id="EditorDeleteLine" />
   <action id="EditorDeleteToWordEnd">
     <keyboard-shortcut first-keystroke="ctrl delete" />
@@ -599,7 +602,6 @@
   </action>
   <action id="com.gitlab.lae.intellij.actions.PsiKill">
     <keyboard-shortcut first-keystroke="ctrl alt k" />
-    <keyboard-shortcut first-keystroke="ctrl k" />
   </action>
   <action id="com.gitlab.lae.intellij.actions.UpcaseRegionOrToWordEnd">
     <keyboard-shortcut first-keystroke="alt u" />
