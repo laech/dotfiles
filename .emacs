@@ -26,6 +26,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(avy-keys-alist (quote ((avy-goto-char 97 115 100 102 106 107 108))))
  '(blink-cursor-mode nil)
  '(delete-by-moving-to-trash t)
  '(delete-selection-mode t)
@@ -296,9 +297,6 @@
     ("M" er/contract-region "contract region")
     ("'" mc-hide-unmatched-lines-mode "unmatched lines"))
   (define-key ctl-x-map (kbd "m") 'hydra-mark/body))
-
-(with-eval-after-load 'avy
-  (setq avy-keys (number-sequence 97 122)))
 
 (add-hook 'after-init-hook (lambda () (key-chord-mode 1)))
 (with-eval-after-load 'key-chord
