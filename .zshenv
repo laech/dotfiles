@@ -11,5 +11,7 @@ if [[ -z "$done_env_config" ]]; then
     export GTK_IM_MODULE=ibus
     export XMODIFIERS=@im=ibus
 
+    export DOTNET_CLI_TELEMETRY_OPTOUT=1 
+
     export done_env_config=true
 fi

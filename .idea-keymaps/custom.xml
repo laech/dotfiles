@@ -1,4 +1,4 @@
-<keymap version="1" name="emacs-linux" parent="$default">
+<keymap version="1" name="custom" parent="$default">
   <action id="$Copy">
     <keyboard-shortcut first-keystroke="ctrl insert" />
     <keyboard-shortcut first-keystroke="alt w" />
