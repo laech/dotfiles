@@ -110,7 +110,7 @@ if ! type __git_ps1 &> /dev/null; then
         || . /usr/lib/git-core/git-sh-prompt &> /dev/null
 fi
 
-readonly my_ps1=$'\n${(r:$COLUMNS::-:)}\n'
+readonly my_ps1=$'\n'
 readonly my_ps2="%B%F{green}%n@%m%f %F{blue}%~%f"
 readonly my_ps3=$'\n'"%(?.%%.%F{red}%#%f)%b "
 if type __git_ps1 &> /dev/null; then
