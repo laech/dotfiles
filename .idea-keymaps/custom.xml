@@ -473,9 +473,6 @@
   <action id="QuickEvaluateExpression" />
   <action id="QuickImplementations" />
   <action id="QuickJavaDoc" />
-  <action id="RecentChanges" />
-  <action id="RecentFiles" />
-  <action id="RecentLocations" />
   <action id="Refactorings.QuickListPopupAction" />
   <action id="ReformatCode">
     <keyboard-shortcut first-keystroke="ctrl alt back_slash" />
@@ -546,9 +543,6 @@
   </action>
   <action id="SurroundWithLiveTemplate" />
   <action id="SwitchCoverage" />
-  <action id="SwitcherRecentEditedChangedToggleCheckBox">
-    <keyboard-shortcut first-keystroke="space" />
-  </action>
   <action id="Synchronize" />
   <action id="TodoViewGroupByFlattenPackage" />
   <action id="TodoViewGroupByShowModules" />
