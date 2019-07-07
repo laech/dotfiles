@@ -1,24 +1,20 @@
 {"items": [
-    {"keys": ["ctrl J"],
+    {"keys": ["ctrl shift SPACE"],
      "items": [
-         {"keys": ["ctrl F"], "id": "GotoFile"},
-         {"keys": ["ctrl B", "B"], "id": "RecentFiles"},
          {"keys": ["P"],
           "name": "Project...",
           "items": [
               {"keys": ["K"], "id": "CloseProject"},
               {"keys": ["P"], "id": "RecentProjectListGroup"}
           ]},
-         {"separator-above": "",
-          "keys": ["ctrl S"], "id": "SaveDocument"},
-         {"keys": ["S"], "id": "SaveAll"},
          {"keys": ["ctrl Q"], "id": "ToggleReadOnlyAttribute"},
          {"keys": ["W"], "id": "com.gitlab.lae.intellij.actions.CamelHumpsInCurrentEditor"},
          {"keys": ["ctrl W"], "id": "CopyElement"},
          {"keys": ["typed (",
                    "typed )"], "id": "StartStopMacroRecording"},
          {"keys": ["E"], "id": "PlaybackLastMacro"},
-         {"keys": ["H"], "id": "$SelectAll"},
+         {"keys": ["ctrl U"], "id": "com.gitlab.lae.intellij.actions.UpcaseRegionOrToWordEnd"},
+         {"keys": ["ctrl L"], "id": "com.gitlab.lae.intellij.actions.DowncaseRegionOrToWordEnd"},
          {"keys": ["ctrl X"], "id": "EditorSwapSelectionBoundaries"},
          {"keys": ["SPACE"], "id": "EditorToggleColumnMode"},
          {"keys": ["M"],
@@ -102,9 +98,7 @@
          {"separator-above": "",
           "keys": ["ctrl EQUALS"], "id": "EditorIncreaseFontSize", "sticky": true},
          {"keys": ["ctrl MINUS"], "id": "EditorDecreaseFontSize", "sticky": true},
-         {"keys": ["ctrl 0"], "id": "EditorResetFontSize"},
-         {"separator-above": "",
-          "keys": ["ctrl C"], "id": "Exit"}
+         {"keys": ["ctrl 0"], "id": "EditorResetFontSize"}
      ]},
     {"keys": ["alt M"],
      "items": [
