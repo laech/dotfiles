@@ -192,7 +192,7 @@
 (global-set-key [remap indent-region] 'indent-region-or-buffer)
 
 (defun relocate-prefix-keys (keymap)
-  "Use C-; for C-x map, C-' for C-c map."
+  "Use C-u for C-x map, C-M-u for C-c map."
   (mapc
    (lambda (mapping)
      (let* ((old-key (kbd (car mapping)))
@@ -202,8 +202,8 @@
        (when (and old-keymap (not new-keymap))
          (define-key keymap old-key nil)
          (define-key keymap new-key old-keymap))))
-   '(("C-x" . "C-;")
-     ("C-c" . "C-'"))))
+   '(("C-x" . "C-u")
+     ("C-c" . "C-M-u"))))
 
 (defun relocate-all-prefix-keys ()
   (mapc
@@ -215,7 +215,7 @@
  'after-change-major-mode-hook
  #'relocate-all-prefix-keys)
 
-(define-key key-translation-map (kbd "C-; 8")
+(define-key key-translation-map (kbd "C-u 8")
   (lookup-key key-translation-map (kbd "C-x 8")))
 (define-key key-translation-map (kbd "C-x 8") nil)
 
@@ -228,42 +228,41 @@
      '(("<S-return>" . start-new-line)
        ("C-q" . save-buffers-kill-terminal)
        ("C-w" . delete-window)
-       ("C-S-w" . delete-other-windows)
+       ("M-w" . delete-other-windows)
        ("C-e" . switch-to-buffer)
        ("C-r" . avy-goto-char)
-       ("C-i" . previous-line)
-       ("M-i" . scroll-down-command)
-       ("C-M-i" . beginning-of-buffer)
-       ("C-k" . next-line)
-       ("M-k" . scroll-up-command)
-       ("C-M-k" . end-of-buffer)
-       ("C-j" . backward-char)
-       ("M-j" . backward-word)
-       ("C-M-j" . move-beginning-of-line)
+       ("C-k" . previous-line)
+       ("M-k" . scroll-down-command)
+       ("C-M-k" . beginning-of-buffer)
+       ("C-j" . next-line)
+       ("M-j" . scroll-up-command)
+       ("C-M-j" . end-of-buffer)
+       ("C-h" . backward-char)
+       ("M-h" . backward-word)
+       ("C-M-h" . move-beginning-of-line)
        ("C-l" . forward-char)
        ("M-l" . forward-word)
        ("C-M-l" . move-end-of-line)
-       ("C-o" . projectile-find-file)
-       ("C-S-o" . find-file)
+       ("C-o" . find-file)
+       ("C-S-o" . projectile-find-file)
        ("C-M-o" . xref-find-definitions)
        ("M-o" . imenu)
        ("C-a" . mark-whole-buffer)
        ("C-s" . save-buffer)
        ("C-f" . isearch-forward)
        ("M-f" . isearch-backward)
-       ("C-S-f" . projectile-grep)
+       ("C-M-f" . projectile-grep)
        ("C-z" . undo-tree-undo)
-       ("C-S-z" . undo-tree-redo)
+       ("C-y" . undo-tree-redo)
        ("C-x" . kill-region)
        ("C-c" . kill-ring-save)
        ("C-v" . yank)
-       ("C-S-v" . yank-pop)
-       ("C-S-d" . duplicate-region-or-line)
+       ("M-v" . yank-pop)
+       ("M-D" . duplicate-region-or-line)
        ("C-M-d" . kill-line)
-       ("C-S-SPC" . Control-X-prefix)
-       ("C-:" . mode-specific-command-prefix)
-       ("C-m" . recenter-top-bottom)
-       ("M-/" . completion-at-point)
+       ("C-u" . Control-X-prefix)
+       ("C-M-u" . mode-specific-command-prefix)
+       ("M-m" . recenter-top-bottom)
        ("M-N" . move-line-down)
        ("M-P" . move-line-up)
        ("M-V" . join-line-next)
@@ -273,21 +272,26 @@
 ;; Make C-S-<key>, C-M-S-<key> work under xterm.
 ;; See ~/.Xresources for sending these escape codes.
 ;; See https://github.com/jwiegley/emacs-release/blob/master/lisp/term/xterm.el
-(with-eval-after-load 'xterm
-  (dolist (key (number-sequence 33 127)) ;; See ascii
-    (dolist (mod '((6 . "C-S") (8 . "C-M-S")))
-      (let* ((mod-code (car mod))
-             (mod-str (cdr mod))
-             (full (kbd (format "%s-%c" mod-str key))))
-        ;; For both XTerm.vt100.formatOtherKeys set to 0 or 1
-        (define-key xterm-function-map (format "\e[27;%d;%d~" mod-code key) full)
-        (define-key xterm-function-map (format "\e[%d;%du" key mod-code) full)))))
+;; (with-eval-after-load 'xterm
+;;   (dolist (key (number-sequence 33 127)) ;; See ascii
+;;     (dolist (mod '((6 . "C-S") (8 . "C-M-S")))
+;;       (let* ((mod-code (car mod))
+;;              (mod-str (cdr mod))
+;;              (full (kbd (format "%s-%c" mod-str key))))
+;;         ;; For both XTerm.vt100.formatOtherKeys set to 0 or 1
+;;         (define-key xterm-function-map (format "\e[27;%d;%d~" mod-code key) full)
+;;         (define-key xterm-function-map (format "\e[%d;%du" key mod-code) full)))))
 
 (with-eval-after-load 'isearch
   (mapc
    (lambda (mapping)
      (define-key isearch-mode-map (kbd (car mapping)) (cdr mapping)))
-   '(("C-v" . isearch-yank-kill))))
+   '(("C-v" . isearch-yank-kill)
+     ("C-f" . isearch-repeat-forward)
+     ("M-f" . isearch-repeat-backward)
+     ("M-l" . isearch-yank-word-or-char)
+     ("C-v" . isearch-yank-kill)
+     ("M-v" . isearch-yank-pop))))
 
 (with-eval-after-load 'ivy
   (dolist
@@ -364,7 +368,8 @@
 
 (add-hook 'after-init-hook #'projectile-mode)
 (with-eval-after-load 'projectile
-  (define-key ctl-x-map (kbd "p") 'projectile-command-map))
+  (define-key ctl-x-map (kbd "p") 'projectile-command-map)
+  (define-key search-map (kbd "f") 'projectile-grep))
 
 (with-eval-after-load 'elisp-mode
   (define-key lisp-interaction-mode-map (kbd "C-j") nil))
@@ -401,12 +406,21 @@
       (message "Copied sexp")
       (paredit-copy-sexps-as-kill)))
 
+  (define-key mode-specific-map (kbd "M-s") 'paredit-splice-sexp)
+  (define-key mode-specific-map (kbd "M-S") 'paredit-split-sexp)
+
   (mapc
    (lambda (arg) (apply 'define-key paredit-mode-map arg))
    `(([remap kill-region] paredit-cut-region-or-sexp)
      ([remap kill-ring-save] paredit-copy-region-or-sexp)
+     ([remap kill-line] paredit-kill)
      (,(kbd "C-M-S-t") transpose-sexps-reverse)
-     (,(kbd "C-j") nil))))
+     (,(kbd "C-M-d") nil)
+     (,(kbd "C-M-u") nil)
+     (,(kbd "M-s") nil)
+     (,(kbd "M-S") nil)
+     (,(kbd "C-j") nil)
+     (,(kbd "C-k") nil))))
 
 (with-eval-after-load 'hindent
 

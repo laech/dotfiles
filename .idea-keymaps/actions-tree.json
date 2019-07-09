@@ -1,5 +1,5 @@
 {"items": [
-    {"keys": ["ctrl shift SPACE"],
+    {"keys": ["ctrl U"],
      "items": [
          {"keys": ["P"],
           "name": "Project...",
@@ -100,28 +100,7 @@
          {"keys": ["ctrl MINUS"], "id": "EditorDecreaseFontSize", "sticky": true},
          {"keys": ["ctrl 0"], "id": "EditorResetFontSize"}
      ]},
-    {"keys": ["alt M"],
-     "items": [
-       {"keys": ["L"],
-        "name": "Line...",
-        "items": [
-          {"keys": ["P"], "id": "MoveLineUp", "sticky": true},
-          {"keys": ["N"], "id": "MoveLineDown", "sticky": true}
-        ]},
-       {"keys": ["S"],
-        "name": "Statement...",
-        "items": [
-          {"keys": ["P"], "id": "MoveStatementUp", "sticky": true},
-          {"keys": ["N"], "id": "MoveStatementDown", "sticky": true}
-        ]},
-       {"keys": ["E"],
-        "name": "Element...",
-        "items": [
-          {"keys": ["B"], "id": "MoveElementLeft", "sticky": true},
-          {"keys": ["F"], "id": "MoveElementRight", "sticky": true}
-        ]}
-     ]},
-    {"keys": ["ctrl H"],
+    {"keys": ["ctrl I"],
      "items": [
          {"keys": ["I"], "id": "QuickJavaDoc"},
          {"keys": ["shift I"], "id": "QuickImplementations"},
