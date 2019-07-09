@@ -27,6 +27,9 @@
   <action id="ActivateStructureToolWindow" />
   <action id="ActivateTODOToolWindow" />
   <action id="ActivateTerminalToolWindow" />
+  <action id="ActivateUnitTestsToolWindow">
+    <keyboard-shortcut first-keystroke="ctrl 2" />
+  </action>
   <action id="ActivateVersionControlToolWindow">
     <keyboard-shortcut first-keystroke="ctrl 9" />
   </action>
@@ -387,6 +390,7 @@
   <action id="GotoDeclaration">
     <mouse-shortcut keystroke="control button1" />
     <keyboard-shortcut first-keystroke="alt period" />
+    <mouse-shortcut keystroke="button2" />
   </action>
   <action id="GotoFile">
     <keyboard-shortcut first-keystroke="shift ctrl o" />
