@@ -186,6 +186,8 @@
 (add-hook 'focus-out-hook (lambda () (my-save-buffer)))
 
 (define-key ctl-x-map (kbd "g") 'magit-status)
+(define-key ctl-x-map (kbd "C-l") 'downcase-dwim)
+(define-key ctl-x-map (kbd "C-u") 'upcase-dwim)
 
 (global-set-key [remap kill-region] 'kill-region-or-line)
 (global-set-key [remap kill-ring-save] 'copy-region-or-line)
@@ -251,7 +253,6 @@
        ("C-s" . save-buffer)
        ("C-f" . isearch-forward)
        ("M-f" . isearch-backward)
-       ("C-M-f" . projectile-grep)
        ("C-z" . undo-tree-undo)
        ("C-y" . undo-tree-redo)
        ("C-x" . kill-region)
@@ -262,6 +263,8 @@
        ("C-M-d" . kill-line)
        ("C-u" . Control-X-prefix)
        ("C-M-u" . mode-specific-command-prefix)
+       ("M-u" . er/expand-region)
+       ("M-U" . er/contract-region)
        ("M-m" . recenter-top-bottom)
        ("M-N" . move-line-down)
        ("M-P" . move-line-up)
