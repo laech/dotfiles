@@ -16,7 +16,7 @@ bindsym $mod+Shift+Return exec ~/.local/bin/term -rv
 
 bindsym $mod+semicolon exec --no-startup-id \
     rofi \
-    -show combi \
+    -show run \
     -sort \
     -matching fuzzy \
     -show-icons \
@@ -24,7 +24,7 @@ bindsym $mod+semicolon exec --no-startup-id \
 
 bindsym Mod4+F12 exec --no-startup-id \
     rofi \
-    -show combi \
+    -show run \
     -sort \
     -matching fuzzy \
     -show-icons \
@@ -101,6 +101,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 bindsym $mod+Tab workspace next_on_output
 
 workspace_auto_back_and_forth yes
+workspace_layout tabbed
 
 bindsym $mod+q exec --no-startup-id xset dpms force off
 
