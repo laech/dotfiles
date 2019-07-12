@@ -225,6 +225,11 @@
 (relocate-prefix-keys function-key-map)
 (relocate-all-prefix-keys)
 
+;; Distinguish Tab from C-i
+(setq
+ local-function-key-map
+ (delq '(kp-tab . [9]) local-function-key-map))
+
 (dolist
     (mapping
      '(("<S-return>" . start-new-line)
@@ -233,15 +238,15 @@
        ("M-w" . delete-other-windows)
        ("C-e" . switch-to-buffer)
        ("C-r" . avy-goto-char)
-       ("C-k" . previous-line)
-       ("M-k" . scroll-down-command)
-       ("C-M-k" . beginning-of-buffer)
-       ("C-j" . next-line)
-       ("M-j" . scroll-up-command)
-       ("C-M-j" . end-of-buffer)
-       ("C-h" . backward-char)
-       ("M-h" . backward-word)
-       ("C-M-h" . move-beginning-of-line)
+       ("C-i" . previous-line)
+       ("M-i" . scroll-down-command)
+       ("C-M-i" . beginning-of-buffer)
+       ("C-k" . next-line)
+       ("M-k" . scroll-up-command)
+       ("C-M-k" . end-of-buffer)
+       ("C-j" . backward-char)
+       ("M-j" . backward-word)
+       ("C-M-j" . move-beginning-of-line)
        ("C-l" . forward-char)
        ("M-l" . forward-word)
        ("C-M-l" . move-end-of-line)
