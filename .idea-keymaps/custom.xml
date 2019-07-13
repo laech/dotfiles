@@ -462,7 +462,9 @@
     <keyboard-shortcut first-keystroke="ctrl alt t" />
   </action>
   <action id="Mvc.RunTarget" />
-  <action id="NewElement" />
+  <action id="NewElement">
+    <keyboard-shortcut first-keystroke="ctrl n" />
+  </action>
   <action id="NewElementSamePlace" />
   <action id="NewScratchFile" />
   <action id="NextEditorTab" />
@@ -618,6 +620,12 @@
   <action id="XDebugger.SetValue" />
   <action id="com.gitlab.lae.intellij.actions.CapitalizeRegionOrToWordEnd">
     <keyboard-shortcut first-keystroke="alt c" />
+  </action>
+  <action id="com.gitlab.lae.intellij.actions.NoSpace">
+    <keyboard-shortcut first-keystroke="alt back_slash" />
+  </action>
+  <action id="com.gitlab.lae.intellij.actions.OneSpace">
+    <keyboard-shortcut first-keystroke="alt space" />
   </action>
   <action id="com.gitlab.lae.intellij.actions.PsiKill">
     <keyboard-shortcut first-keystroke="ctrl alt d" />
