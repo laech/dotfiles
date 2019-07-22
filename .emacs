@@ -192,6 +192,7 @@
 (global-set-key [remap kill-region] 'kill-region-or-line)
 (global-set-key [remap kill-ring-save] 'copy-region-or-line)
 (global-set-key [remap indent-region] 'indent-region-or-buffer)
+(global-set-key [remap dabbrev-expand] 'completion-at-point)
 
 (defun relocate-prefix-keys (keymap)
   "Use C-u for C-x map, C-M-u for C-c map."
@@ -226,21 +227,19 @@
 (relocate-all-prefix-keys)
 
 ;; Distinguish Tab from C-i
-(setq
- local-function-key-map
- (delq '(kp-tab . [9]) local-function-key-map))
+(keyboard-translate ?\C-i ?\H-i)
 
 (dolist
     (mapping
      '(("<S-return>" . start-new-line)
        ("C-q" . save-buffers-kill-terminal)
-       ("C-w" . delete-window)
+       ("C-w" . kill-buffer-and-window)
        ("M-w" . delete-other-windows)
        ("C-e" . switch-to-buffer)
        ("C-r" . avy-goto-char)
-       ("C-i" . previous-line)
+       ("H-i" . previous-line)
        ("M-i" . scroll-down-command)
-       ("C-M-i" . beginning-of-buffer)
+       ("H-M-i" . beginning-of-buffer)
        ("C-k" . next-line)
        ("M-k" . scroll-up-command)
        ("C-M-k" . end-of-buffer)
@@ -290,6 +289,21 @@
 ;;         (define-key xterm-function-map (format "\e[27;%d;%d~" mod-code key) full)
 ;;         (define-key xterm-function-map (format "\e[%d;%du" key mod-code) full)))))
 
+(with-eval-after-load 'org
+  (mapc
+   (lambda (arg) (apply 'define-key org-mode-map arg))
+   `(([remap beginning-of-line] org-beginning-of-line)
+     ([remap end-of-line] org-end-of-line)
+     ([remap kill-line] org-kill-line)
+     ([remap yank] org-yank)
+     ([remap completion-at-point] pcomplete)
+     (,(kbd "C-a") nil)
+     (,(kbd "C-e") nil)
+     (,(kbd "C-k") nil)
+     (,(kbd "C-y") nil)
+     (,(kbd "C-j") nil)
+     (,(kbd "C-M-i") nil))))
+
 (with-eval-after-load 'isearch
   (mapc
    (lambda (mapping)
@@ -298,13 +312,21 @@
      ("C-f" . isearch-repeat-forward)
      ("M-f" . isearch-repeat-backward)
      ("M-l" . isearch-yank-word-or-char)
-     ("C-v" . isearch-yank-kill)
      ("M-v" . isearch-yank-pop))))
 
 (with-eval-after-load 'ivy
   (dolist
       (mapping
-       '(("C-v" . nil)))
+       '(("C-v" . nil)
+         ("M-v" . nil)
+         ("M-i" . nil)
+         ("C-j" . nil)
+         ("M-j" . nil)
+         ("C-M-j" . nil)
+         ("C-c" . nil)
+         ("C-w" . ivy-yank-word)
+         ("<C-tab>" . ivy-alt-done)
+         ("<C-return>" . ivy-immediate-done)))
     (define-key ivy-minibuffer-map (kbd (car mapping)) (cdr mapping))))
 
 (with-eval-after-load 'expand-region
@@ -371,8 +393,8 @@
      (define-key company-active-map (kbd (car mapping)) (cdr mapping)))
    '(("M-n" . nil)
      ("M-p" . nil)
-     ("C-n" . company-select-next)
-     ("C-p" . company-select-previous))))
+     ("C-k" . company-select-next)
+     ("H-i" . company-select-previous))))
 
 (add-hook 'after-init-hook #'projectile-mode)
 (with-eval-after-load 'projectile
@@ -506,3 +528,30 @@
      (center-windows nil))))
 
 (auto-center-windows)
+
+
+(require 'ox-publish)
+(setq org-publish-project-alist
+      '(("blog"
+         :base-directory "~/src/blog/org"
+         :base-extension "org"
+         :publishing-directory "~/src/blog/html"
+         :recursive t
+         :with-toc nil
+         :section-numbers nil
+         :time-stamp-file nil
+         :html-doctype "html5"
+         :html-validation-link nil
+         :html-head
+         "
+<style type='text/css'>
+body { width: 760px; max-width: 95%; margin: auto; }
+pre.src:hover:before { display: none; }
+pre.src { padding-top: 8pt; }
+pre { box-shadow: none; }
+</style>"
+         :publishing-function org-html-publish-to-html)))
+
+(defun publish-blog ()
+  (interactive)
+  (org-publish-project "blog" t))

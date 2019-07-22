@@ -58,7 +58,7 @@
   <action id="CheckinProject" />
   <action id="ClassNameCompletion" />
   <action id="CloseActiveTab">
-    <keyboard-shortcut first-keystroke="ctrl w" />
+    <keyboard-shortcut first-keystroke="shift ctrl w" />
   </action>
   <action id="CloseContent">
     <keyboard-shortcut first-keystroke="ctrl w" />
@@ -467,12 +467,16 @@
   </action>
   <action id="NewElementSamePlace" />
   <action id="NewScratchFile" />
+  <action id="NextDiff">
+    <keyboard-shortcut first-keystroke="alt n" />
+  </action>
   <action id="NextEditorTab" />
   <action id="NextProjectWindow" />
   <action id="NextSplitter" />
   <action id="NextTab">
     <keyboard-shortcut first-keystroke="alt right" />
     <keyboard-shortcut first-keystroke="ctrl page_down" />
+    <keyboard-shortcut first-keystroke="shift ctrl close_bracket" />
   </action>
   <action id="OptimizeImports">
     <keyboard-shortcut first-keystroke="ctrl back_slash" />
@@ -484,11 +488,15 @@
     <keyboard-shortcut first-keystroke="alt v" />
   </action>
   <action id="PopupHector" />
+  <action id="PreviousDiff">
+    <keyboard-shortcut first-keystroke="alt p" />
+  </action>
   <action id="PreviousEditorTab" />
   <action id="PreviousProjectWindow" />
   <action id="PreviousTab">
     <keyboard-shortcut first-keystroke="alt left" />
     <keyboard-shortcut first-keystroke="ctrl page_up" />
+    <keyboard-shortcut first-keystroke="shift ctrl open_bracket" />
   </action>
   <action id="ProjectViewChangeView" />
   <action id="QuickChangeScheme" />
@@ -613,6 +621,12 @@
   </action>
   <action id="Vcs.UpdateProject" />
   <action id="VcsHistory.ShowAllAffected" />
+  <action id="VcsShowNextChangeMarker">
+    <keyboard-shortcut first-keystroke="alt n" />
+  </action>
+  <action id="VcsShowPrevChangeMarker">
+    <keyboard-shortcut first-keystroke="alt p" />
+  </action>
   <action id="ViewBreakpoints" />
   <action id="ViewSource" />
   <action id="XDebugger.AttachToProcess" />
