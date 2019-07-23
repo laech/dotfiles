@@ -109,6 +109,11 @@
      (line-beginning-position)
      (line-beginning-position 2))))
 
+(defun kill-line-backward ()
+  "kill from point to start of line."
+  (interactive "*")
+  (kill-line 0))
+
 (defun kill-region-or-line ()
   "Kill region, or line if no region."
   (interactive "*")
@@ -265,6 +270,7 @@
        ("M-v" . yank-pop)
        ("M-D" . duplicate-region-or-line)
        ("C-M-d" . kill-line)
+       ("<C-M-backspace>" . kill-line-backward)
        ("C-u" . Control-X-prefix)
        ("C-M-u" . mode-specific-command-prefix)
        ("M-u" . er/expand-region)

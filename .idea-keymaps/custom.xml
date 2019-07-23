@@ -149,6 +149,9 @@
   <action id="EditorCodeBlockStartWithSelection" />
   <action id="EditorContextInfo" />
   <action id="EditorCreateRectangularSelection" />
+  <action id="EditorCutLineBackward">
+    <keyboard-shortcut first-keystroke="ctrl alt back_space" />
+  </action>
   <action id="EditorDeleteLine" />
   <action id="EditorDeleteToWordEnd" />
   <action id="EditorDeleteToWordStart" />
