@@ -86,6 +86,7 @@ packages=(
     sane  # Scaning
     hplip # HP PSC 1315 Series, hp-setup, hp-scan
     python-pyqt5 # Needed by hp-setup
+    python-pillow # Needed by hp-scan
 )
 
 readonly base_dirs_prefix=base/system/
