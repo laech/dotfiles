@@ -551,7 +551,7 @@
          :html-head
          "
 <style type='text/css'>
-body { width: 760px; max-width: 95%; margin: auto; }
+body { width: 760px; max-width: 95%; margin: auto; padding-bottom: 5em; }
 pre.src:hover:before { display: none; }
 pre.src { padding-top: 8pt; }
 pre { box-shadow: none; }
