@@ -52,7 +52,7 @@
      ("marmalade" . "https://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (expand-region hydra key-chord avy smartparens company-flx yaml-mode treemacs lsp-ui lsp-java helm sr-speedbar projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent diff-hl)))
+    (expand-region hydra key-chord avy smartparens company-flx yaml-mode treemacs lsp-ui helm sr-speedbar projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent diff-hl)))
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
  '(scroll-margin 1)
@@ -364,7 +364,6 @@
 (with-eval-after-load 'key-chord
   (key-chord-define-global "jj" 'avy-goto-word-or-subword-1))
 
-(add-hook 'java-mode-hook (lambda () (require 'lsp-java) (lsp)))
 (with-eval-after-load 'lsp-ui
   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
   (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references))
@@ -411,7 +410,6 @@
   (define-key lisp-interaction-mode-map (kbd "C-j") nil))
 
 (add-hook 'haskell-mode-hook 'smartparens-mode)
-(add-hook 'java-mode-hook 'smartparens-mode)
 (with-eval-after-load 'smartparens
   (require 'smartparens-config))
 
