@@ -52,7 +52,7 @@
      ("marmalade" . "https://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (expand-region hydra key-chord avy smartparens company-flx yaml-mode treemacs lsp-ui helm sr-speedbar projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent diff-hl)))
+    (expand-region hydra avy smartparens company-flx yaml-mode treemacs lsp-ui helm sr-speedbar projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent diff-hl)))
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
  '(scroll-margin 1)
@@ -199,83 +199,19 @@
 (global-set-key [remap indent-region] 'indent-region-or-buffer)
 (global-set-key [remap dabbrev-expand] 'completion-at-point)
 
-(defun relocate-prefix-keys (keymap)
-  "Use C-u for C-x map, C-M-u for C-c map."
-  (mapc
-   (lambda (mapping)
-     (let* ((old-key (kbd (car mapping)))
-            (new-key (kbd (cdr mapping)))
-            (old-keymap (lookup-key keymap old-key))
-            (new-keymap (lookup-key keymap new-key)))
-       (when (and old-keymap (not new-keymap))
-         (define-key keymap old-key nil)
-         (define-key keymap new-key old-keymap))))
-   '(("C-x" . "C-u")
-     ("C-c" . "C-M-u"))))
-
-(defun relocate-all-prefix-keys ()
-  (mapc
-   'relocate-prefix-keys
-   (append
-    (current-active-maps)
-    (mapcar 'cdr minor-mode-map-alist))))
-(add-hook
- 'after-change-major-mode-hook
- #'relocate-all-prefix-keys)
-
-(define-key key-translation-map (kbd "C-u 8")
-  (lookup-key key-translation-map (kbd "C-x 8")))
-(define-key key-translation-map (kbd "C-x 8") nil)
-
-;; "C-x @"
-(relocate-prefix-keys function-key-map)
-(relocate-all-prefix-keys)
-
-;; Distinguish Tab from C-i
-(keyboard-translate ?\C-i ?\H-i)
-
 (dolist
     (mapping
      '(("<S-return>" . start-new-line)
-       ("C-q" . save-buffers-kill-terminal)
-       ("C-w" . kill-buffer-and-window)
-       ("M-w" . delete-other-windows)
-       ("C-e" . switch-to-buffer)
        ("C-r" . avy-goto-char)
-       ("H-i" . previous-line)
-       ("M-i" . scroll-down-command)
-       ("H-M-i" . beginning-of-buffer)
-       ("C-k" . next-line)
-       ("M-k" . scroll-up-command)
-       ("C-M-k" . end-of-buffer)
-       ("C-j" . backward-char)
-       ("M-j" . backward-word)
-       ("C-M-j" . move-beginning-of-line)
-       ("C-l" . forward-char)
-       ("M-l" . forward-word)
-       ("C-M-l" . move-end-of-line)
        ("C-o" . find-file)
        ("C-S-o" . projectile-find-file)
        ("C-M-o" . xref-find-definitions)
        ("M-o" . imenu)
-       ("C-a" . mark-whole-buffer)
-       ("C-s" . save-buffer)
-       ("C-f" . isearch-forward)
-       ("M-f" . isearch-backward)
-       ("C-z" . undo-tree-undo)
-       ("C-y" . undo-tree-redo)
-       ("C-x" . kill-region)
-       ("C-c" . kill-ring-save)
-       ("C-v" . yank)
-       ("M-v" . yank-pop)
        ("M-D" . duplicate-region-or-line)
        ("C-M-d" . kill-line)
        ("<C-M-backspace>" . kill-line-backward)
-       ("C-u" . Control-X-prefix)
-       ("C-M-u" . mode-specific-command-prefix)
        ("M-u" . er/expand-region)
        ("M-U" . er/contract-region)
-       ("M-m" . recenter-top-bottom)
        ("M-N" . move-line-down)
        ("M-P" . move-line-up)
        ("M-V" . join-line-next)
@@ -294,46 +230,6 @@
 ;;         ;; For both XTerm.vt100.formatOtherKeys set to 0 or 1
 ;;         (define-key xterm-function-map (format "\e[27;%d;%d~" mod-code key) full)
 ;;         (define-key xterm-function-map (format "\e[%d;%du" key mod-code) full)))))
-
-(with-eval-after-load 'org
-  (mapc
-   (lambda (arg) (apply 'define-key org-mode-map arg))
-   `(([remap beginning-of-line] org-beginning-of-line)
-     ([remap end-of-line] org-end-of-line)
-     ([remap kill-line] org-kill-line)
-     ([remap yank] org-yank)
-     ([remap completion-at-point] pcomplete)
-     (,(kbd "C-a") nil)
-     (,(kbd "C-e") nil)
-     (,(kbd "C-k") nil)
-     (,(kbd "C-y") nil)
-     (,(kbd "C-j") nil)
-     (,(kbd "C-M-i") nil))))
-
-(with-eval-after-load 'isearch
-  (mapc
-   (lambda (mapping)
-     (define-key isearch-mode-map (kbd (car mapping)) (cdr mapping)))
-   '(("C-v" . isearch-yank-kill)
-     ("C-f" . isearch-repeat-forward)
-     ("M-f" . isearch-repeat-backward)
-     ("M-l" . isearch-yank-word-or-char)
-     ("M-v" . isearch-yank-pop))))
-
-(with-eval-after-load 'ivy
-  (dolist
-      (mapping
-       '(("C-v" . nil)
-         ("M-v" . nil)
-         ("M-i" . nil)
-         ("C-j" . nil)
-         ("M-j" . nil)
-         ("C-M-j" . nil)
-         ("C-c" . nil)
-         ("C-w" . ivy-yank-word)
-         ("<C-tab>" . ivy-alt-done)
-         ("<C-return>" . ivy-immediate-done)))
-    (define-key ivy-minibuffer-map (kbd (car mapping)) (cdr mapping))))
 
 (with-eval-after-load 'expand-region
   (setq expand-region-fast-keys-enabled nil)
@@ -360,10 +256,6 @@
     ("'" mc-hide-unmatched-lines-mode "unmatched lines"))
   (define-key ctl-x-map (kbd "m") 'hydra-mark/body))
 
-(add-hook 'after-init-hook (lambda () (key-chord-mode 1)))
-(with-eval-after-load 'key-chord
-  (key-chord-define-global "jj" 'avy-goto-word-or-subword-1))
-
 (with-eval-after-load 'lsp-ui
   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
   (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references))
@@ -378,10 +270,11 @@
    ivy-re-builders-alist '((swiper . ivy--regex-plus) (t . ivy--regex-fuzzy))
    projectile-completion-system 'ivy
    magit-completing-read-function 'ivy-completing-read)
-
   (dolist
       (mapping
        '(("<tab>" . ivy-insert-current)
+         ("C-w" . ivy-yank-word)
+         ("<C-return>" . ivy-immediate-done)
          ("<return>" . ivy-alt-done)))
     (define-key ivy-minibuffer-map (kbd (car mapping)) (cdr mapping))))
 
@@ -397,17 +290,12 @@
    (lambda (mapping)
      (define-key company-active-map (kbd (car mapping)) (cdr mapping)))
    '(("M-n" . nil)
-     ("M-p" . nil)
-     ("C-k" . company-select-next)
-     ("H-i" . company-select-previous))))
+     ("M-p" . nil))))
 
 (add-hook 'after-init-hook #'projectile-mode)
 (with-eval-after-load 'projectile
   (define-key ctl-x-map (kbd "p") 'projectile-command-map)
   (define-key search-map (kbd "f") 'projectile-grep))
-
-(with-eval-after-load 'elisp-mode
-  (define-key lisp-interaction-mode-map (kbd "C-j") nil))
 
 (add-hook 'haskell-mode-hook 'smartparens-mode)
 (with-eval-after-load 'smartparens
@@ -449,12 +337,8 @@
      ([remap kill-ring-save] paredit-copy-region-or-sexp)
      ([remap kill-line] paredit-kill)
      (,(kbd "C-M-S-t") transpose-sexps-reverse)
-     (,(kbd "C-M-d") nil)
-     (,(kbd "C-M-u") nil)
      (,(kbd "M-s") nil)
-     (,(kbd "M-S") nil)
-     (,(kbd "C-j") nil)
-     (,(kbd "C-k") nil))))
+     (,(kbd "M-S") nil))))
 
 (with-eval-after-load 'hindent
 
@@ -533,29 +417,5 @@
 
 (auto-center-windows)
 
-
-(require 'ox-publish)
-(setq org-publish-project-alist
-      '(("blog"
-         :base-directory "~/src/blog/org"
-         :base-extension "org"
-         :publishing-directory "~/src/blog/html"
-         :recursive t
-         :with-toc nil
-         :section-numbers nil
-         :time-stamp-file nil
-         :html-doctype "html5"
-         :html-validation-link nil
-         :html-head
-         "
-<style type='text/css'>
-body { width: 760px; max-width: 95%; margin: auto; padding-bottom: 5em; }
-pre.src:hover:before { display: none; }
-pre.src { padding-top: 8pt; }
-pre { box-shadow: none; }
-</style>"
-         :publishing-function org-html-publish-to-html)))
-
-(defun publish-blog ()
-  (interactive)
-  (org-publish-project "blog" t))
+(load "~/.emacs.d/keymap-cua.el")
+(load "~/.emacs.d/blog.el")
