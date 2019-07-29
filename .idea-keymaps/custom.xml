@@ -270,7 +270,7 @@
   </action>
   <action id="EditorScrollUp" />
   <action id="EditorSelectWord">
-    <keyboard-shortcut first-keystroke="alt u" />
+    <keyboard-shortcut first-keystroke="alt h" />
   </action>
   <action id="EditorShowGutterIconTooltip" />
   <action id="EditorSplitLine" />
@@ -297,7 +297,7 @@
     <keyboard-shortcut first-keystroke="ctrl space" />
   </action>
   <action id="EditorUnSelectWord">
-    <keyboard-shortcut first-keystroke="shift alt u" />
+    <keyboard-shortcut first-keystroke="shift alt h" />
   </action>
   <action id="EditorUp">
     <keyboard-shortcut first-keystroke="up" />
