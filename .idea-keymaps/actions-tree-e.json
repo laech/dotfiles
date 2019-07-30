@@ -23,14 +23,6 @@
          {"keys": ["ctrl L"], "id": "com.gitlab.lae.intellij.actions.DowncaseRegionOrToWordEnd"},
          {"keys": ["ctrl X"], "id": "EditorSwapSelectionBoundaries"},
          {"keys": ["SPACE"], "id": "EditorToggleColumnMode"},
-         {"keys": ["M"],
-          "name": "Mark...",
-          "items": [
-              {"keys": ["M"], "id": "EditorSelectWord", "sticky": true},
-              {"keys": ["shift M"], "id": "EditorUnSelectWord", "sticky": true},
-              {"keys": ["N"], "id": "SelectNextOccurrence", "sticky": true},
-              {"keys": ["shift N"], "id": "UnselectPreviousOccurrence", "sticky": true}
-          ]},
          {"keys": ["C"],
           "name": "Code...",
           "items": [

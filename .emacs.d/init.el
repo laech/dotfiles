@@ -52,7 +52,7 @@
      ("marmalade" . "https://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (swiper expand-region hydra avy smartparens company-flx yaml-mode treemacs lsp-ui helm sr-speedbar projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent diff-hl)))
+    (swiper expand-region avy smartparens company-flx yaml-mode treemacs lsp-ui helm sr-speedbar projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent diff-hl)))
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
  '(scroll-margin 1)
@@ -213,6 +213,10 @@
        ("<C-M-backspace>" . kill-line-backward)
        ("M-h" . er/expand-region)
        ("M-H" . er/contract-region)
+       ("M-j" . mc/mark-next-like-this)
+       ("M-J" . mc/unmark-next-like-this)
+       ("M-i" . mc/mark-previous-like-this)
+       ("M-I" . mc/unmark-previous-like-this)
        ("M-N" . move-line-down)
        ("M-P" . move-line-up)
        ("M-V" . join-line-next)
@@ -235,27 +239,6 @@
 (with-eval-after-load 'expand-region
   (setq expand-region-fast-keys-enabled nil)
   (setq expand-region-smart-cursor t))
-
-(with-eval-after-load 'hydra
-  (defhydra hydra-mark
-    (:columns 3)
-    "mark"
-    ("n" mc/mark-next-like-this "mark next")
-    ("N" mc/unmark-next-like-this "unmark next")
-    ("M-n" mc/skip-to-next-like-this "skip next")
-    ("p" mc/mark-previous-like-this "mark prev")
-    ("P" mc/unmark-previous-like-this "unmark prev")
-    ("M-p" mc/skip-to-previous-like-this "skip prev")
-    ("t" mc/edit-lines "edit lines" :exit t)
-    ("a" mc/edit-beginnings-of-lines "edit line starts" :exit t)
-    ("e" mc/edit-ends-of-lines "edit line ends" :exit t)
-    ("h" mc/mark-all-like-this "mark all" :exit t)
-    ("1" mc/insert-numbers "insert numbers" :exit t)
-    ("l" mc/insert-letters "insert letters" :exit t)
-    ("m" er/expand-region "expand region")
-    ("M" er/contract-region "contract region")
-    ("'" mc-hide-unmatched-lines-mode "unmatched lines"))
-  (define-key ctl-x-map (kbd "m") 'hydra-mark/body))
 
 (with-eval-after-load 'lsp-ui
   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)

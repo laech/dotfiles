@@ -185,7 +185,9 @@
     <keyboard-shortcut first-keystroke="ctrl g" />
   </action>
   <action id="EditorFocusGutter" />
-  <action id="EditorJoinLines" />
+  <action id="EditorJoinLines">
+    <keyboard-shortcut first-keystroke="shift alt v" />
+  </action>
   <action id="EditorLeft">
     <keyboard-shortcut first-keystroke="left" />
     <keyboard-shortcut first-keystroke="ctrl b" />
@@ -231,17 +233,9 @@
     <keyboard-shortcut first-keystroke="page_down" />
     <keyboard-shortcut first-keystroke="ctrl v" />
   </action>
-  <action id="EditorPageDownWithSelection">
-    <keyboard-shortcut first-keystroke="shift page_down" />
-    <keyboard-shortcut first-keystroke="shift ctrl v" />
-  </action>
   <action id="EditorPageUp">
     <keyboard-shortcut first-keystroke="page_up" />
     <keyboard-shortcut first-keystroke="alt v" />
-  </action>
-  <action id="EditorPageUpWithSelection">
-    <keyboard-shortcut first-keystroke="shift page_up" />
-    <keyboard-shortcut first-keystroke="shift alt v" />
   </action>
   <action id="EditorPasteFromX11" />
   <action id="EditorPasteSimple" />
@@ -544,9 +538,6 @@
   <action id="SelectIn">
     <keyboard-shortcut first-keystroke="ctrl f1" />
   </action>
-  <action id="SelectNextOccurrence">
-    <keyboard-shortcut first-keystroke="ctrl period" />
-  </action>
   <action id="ShelveChanges.UnshelveWithDialog" />
   <action id="ShelvedChanges.Rename">
     <keyboard-shortcut first-keystroke="f2" />
@@ -606,9 +597,6 @@
     <keyboard-shortcut first-keystroke="ctrl back_quote" />
   </action>
   <action id="TypeHierarchy" />
-  <action id="UnselectPreviousOccurrence">
-    <keyboard-shortcut first-keystroke="shift ctrl period" />
-  </action>
   <action id="Unwrap">
     <keyboard-shortcut first-keystroke="alt r" />
   </action>
