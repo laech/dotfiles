@@ -1,12 +1,9 @@
 <application>
   <component name="CodeInsightSettings">
-    <option name="SHOW_METHOD_CHAIN_TYPES_INLINE" value="false" />
     <option name="AUTO_POPUP_JAVADOC_INFO" value="true" />
     <option name="COMPLETION_CASE_SENSITIVE" value="2" />
-    <option name="SURROUND_SELECTION_ON_QUOTE_TYPED" value="true" />
     <option name="REFORMAT_ON_PASTE" value="1" />
     <option name="INDENT_TO_CARET_ON_PASTE" value="true" />
     <option name="ADD_UNAMBIGIOUS_IMPORTS_ON_THE_FLY" value="true" />
-    <option name="TAB_EXITS_BRACKETS_AND_QUOTES" value="true" />
   </component>
 </application>

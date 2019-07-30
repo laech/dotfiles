@@ -52,7 +52,7 @@
      ("marmalade" . "https://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (expand-region hydra avy smartparens company-flx yaml-mode treemacs lsp-ui helm sr-speedbar projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent diff-hl)))
+    (swiper expand-region hydra avy smartparens company-flx yaml-mode treemacs lsp-ui helm sr-speedbar projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent diff-hl)))
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
  '(scroll-margin 1)
@@ -198,17 +198,18 @@
 (global-set-key [remap kill-ring-save] 'copy-region-or-line)
 (global-set-key [remap indent-region] 'indent-region-or-buffer)
 (global-set-key [remap dabbrev-expand] 'completion-at-point)
+(global-set-key [remap isearch-forward] 'swiper)
 
 (dolist
     (mapping
      '(("<S-return>" . start-new-line)
        ("C-r" . avy-goto-char)
+       ("C-j" . switch-to-buffer)
        ("C-o" . find-file)
        ("C-S-o" . projectile-find-file)
        ("C-M-o" . xref-find-definitions)
        ("M-o" . imenu)
        ("M-D" . duplicate-region-or-line)
-       ("C-M-d" . kill-line)
        ("<C-M-backspace>" . kill-line-backward)
        ("M-h" . er/expand-region)
        ("M-H" . er/contract-region)
@@ -218,18 +219,18 @@
        ("M-T" . transpose-words-backward)))
   (global-set-key (kbd (car mapping)) (cdr mapping)))
 
-;; Make C-S-<key>, C-M-S-<key> work under xterm.
-;; See ~/.Xresources for sending these escape codes.
-;; See https://github.com/jwiegley/emacs-release/blob/master/lisp/term/xterm.el
-;; (with-eval-after-load 'xterm
-;;   (dolist (key (number-sequence 33 127)) ;; See ascii
-;;     (dolist (mod '((6 . "C-S") (8 . "C-M-S")))
-;;       (let* ((mod-code (car mod))
-;;              (mod-str (cdr mod))
-;;              (full (kbd (format "%s-%c" mod-str key))))
-;;         ;; For both XTerm.vt100.formatOtherKeys set to 0 or 1
-;;         (define-key xterm-function-map (format "\e[27;%d;%d~" mod-code key) full)
-;;         (define-key xterm-function-map (format "\e[%d;%du" key mod-code) full)))))
+(with-eval-after-load 'elisp-mode
+  (define-key lisp-interaction-mode-map (kbd "C-j") nil))
+
+(with-eval-after-load 'org
+  (mapc
+   (lambda (arg) (apply 'define-key org-mode-map arg))
+   `(([remap beginning-of-line] org-beginning-of-line)
+     ([remap end-of-line] org-end-of-line)
+     ([remap kill-line] org-kill-line)
+     ([remap yank] org-yank)
+     ([remap completion-at-point] pcomplete)
+     (,(kbd "C-j") nil))))
 
 (with-eval-after-load 'expand-region
   (setq expand-region-fast-keys-enabled nil)
@@ -338,7 +339,8 @@
      ([remap kill-line] paredit-kill)
      (,(kbd "C-M-S-t") transpose-sexps-reverse)
      (,(kbd "M-s") nil)
-     (,(kbd "M-S") nil))))
+     (,(kbd "M-S") nil)
+     (,(kbd "C-j") nil))))
 
 (with-eval-after-load 'hindent
 
@@ -417,5 +419,4 @@
 
 (auto-center-windows)
 
-(load "~/.emacs.d/keymap-cua.el")
 (load "~/.emacs.d/blog.el")
