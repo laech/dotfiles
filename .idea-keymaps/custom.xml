@@ -49,22 +49,18 @@
   <action id="ChangesView.Rename">
     <keyboard-shortcut first-keystroke="f2" />
   </action>
-  <action id="ChangesView.Revert">
-    <keyboard-shortcut first-keystroke="ctrl alt slash" />
-  </action>
   <action id="ChangesView.SetDefault" />
   <action id="ChangesView.ShelveSilently" />
   <action id="ChangesView.UnshelveSilently" />
   <action id="CheckinProject" />
   <action id="ClassNameCompletion" />
-  <action id="CloseActiveTab">
-    <keyboard-shortcut first-keystroke="shift ctrl w" />
-  </action>
+  <action id="CloseActiveTab" />
   <action id="CloseContent">
     <keyboard-shortcut first-keystroke="ctrl w" />
   </action>
   <action id="CodeCompletion">
     <keyboard-shortcut first-keystroke="alt slash" />
+    <keyboard-shortcut first-keystroke="ctrl alt i" />
   </action>
   <action id="CodeInspection.OnEditor" />
   <action id="CollapseAllRegions" />
@@ -153,15 +149,21 @@
     <keyboard-shortcut first-keystroke="ctrl alt back_space" />
   </action>
   <action id="EditorDeleteLine" />
-  <action id="EditorDeleteToWordEnd" />
-  <action id="EditorDeleteToWordStart" />
+  <action id="EditorDeleteToWordEnd">
+    <keyboard-shortcut first-keystroke="ctrl delete" />
+    <keyboard-shortcut first-keystroke="alt d" />
+  </action>
+  <action id="EditorDeleteToWordStart">
+    <keyboard-shortcut first-keystroke="alt back_space" />
+    <keyboard-shortcut first-keystroke="ctrl back_space" />
+  </action>
   <action id="EditorDown">
     <keyboard-shortcut first-keystroke="down" />
-    <keyboard-shortcut first-keystroke="ctrl k" />
+    <keyboard-shortcut first-keystroke="ctrl j" />
   </action>
   <action id="EditorDownWithSelection">
     <keyboard-shortcut first-keystroke="shift down" />
-    <keyboard-shortcut first-keystroke="shift ctrl k" />
+    <keyboard-shortcut first-keystroke="shift ctrl j" />
   </action>
   <action id="EditorDuplicate">
     <keyboard-shortcut first-keystroke="shift alt d" />
@@ -178,22 +180,13 @@
   <action id="EditorJoinLines">
     <keyboard-shortcut first-keystroke="shift alt v" />
   </action>
-  <action id="EditorKillToWordEnd">
-    <keyboard-shortcut first-keystroke="alt d" />
-    <keyboard-shortcut first-keystroke="alt delete" />
-    <keyboard-shortcut first-keystroke="ctrl delete" />
-  </action>
-  <action id="EditorKillToWordStart">
-    <keyboard-shortcut first-keystroke="ctrl back_space" />
-    <keyboard-shortcut first-keystroke="alt back_space" />
-  </action>
   <action id="EditorLeft">
     <keyboard-shortcut first-keystroke="left" />
-    <keyboard-shortcut first-keystroke="ctrl j" />
+    <keyboard-shortcut first-keystroke="ctrl h" />
   </action>
   <action id="EditorLeftWithSelection">
     <keyboard-shortcut first-keystroke="shift left" />
-    <keyboard-shortcut first-keystroke="shift ctrl j" />
+    <keyboard-shortcut first-keystroke="shift ctrl h" />
   </action>
   <action id="EditorLineEnd">
     <keyboard-shortcut first-keystroke="end" />
@@ -205,11 +198,11 @@
   </action>
   <action id="EditorLineStart">
     <keyboard-shortcut first-keystroke="home" />
-    <keyboard-shortcut first-keystroke="ctrl alt j" />
+    <keyboard-shortcut first-keystroke="ctrl alt h" />
   </action>
   <action id="EditorLineStartWithSelection">
     <keyboard-shortcut first-keystroke="shift home" />
-    <keyboard-shortcut first-keystroke="shift ctrl alt j" />
+    <keyboard-shortcut first-keystroke="shift ctrl alt h" />
   </action>
   <action id="EditorLookupDown" />
   <action id="EditorLookupUp" />
@@ -230,30 +223,30 @@
   </action>
   <action id="EditorPageDown">
     <keyboard-shortcut first-keystroke="page_down" />
-    <keyboard-shortcut first-keystroke="alt k" />
+    <keyboard-shortcut first-keystroke="alt j" />
   </action>
   <action id="EditorPageDownWithSelection">
     <keyboard-shortcut first-keystroke="shift page_down" />
-    <keyboard-shortcut first-keystroke="shift alt k" />
+    <keyboard-shortcut first-keystroke="shift alt j" />
   </action>
   <action id="EditorPageUp">
     <keyboard-shortcut first-keystroke="page_up" />
-    <keyboard-shortcut first-keystroke="alt i" />
+    <keyboard-shortcut first-keystroke="alt k" />
   </action>
   <action id="EditorPageUpWithSelection">
     <keyboard-shortcut first-keystroke="shift page_up" />
-    <keyboard-shortcut first-keystroke="shift alt i" />
+    <keyboard-shortcut first-keystroke="shift alt k" />
   </action>
   <action id="EditorPasteFromX11" />
   <action id="EditorPreviousWord">
     <keyboard-shortcut first-keystroke="ctrl left" />
     <keyboard-shortcut first-keystroke="alt left" />
-    <keyboard-shortcut first-keystroke="alt j" />
+    <keyboard-shortcut first-keystroke="alt h" />
   </action>
   <action id="EditorPreviousWordWithSelection">
     <keyboard-shortcut first-keystroke="shift ctrl left" />
     <keyboard-shortcut first-keystroke="shift alt left" />
-    <keyboard-shortcut first-keystroke="shift alt j" />
+    <keyboard-shortcut first-keystroke="shift alt h" />
   </action>
   <action id="EditorRight">
     <keyboard-shortcut first-keystroke="right" />
@@ -269,26 +262,28 @@
   </action>
   <action id="EditorScrollUp" />
   <action id="EditorSelectWord">
-    <keyboard-shortcut first-keystroke="alt h" />
+    <keyboard-shortcut first-keystroke="alt u" />
   </action>
   <action id="EditorShowGutterIconTooltip" />
   <action id="EditorSplitLine" />
   <action id="EditorTab" />
   <action id="EditorTextEnd">
     <keyboard-shortcut first-keystroke="ctrl end" />
-    <keyboard-shortcut first-keystroke="ctrl alt k" />
+    <keyboard-shortcut first-keystroke="ctrl alt j" />
+    <keyboard-shortcut first-keystroke="shift alt period" />
   </action>
   <action id="EditorTextEndWithSelection">
     <keyboard-shortcut first-keystroke="shift ctrl end" />
-    <keyboard-shortcut first-keystroke="shift ctrl alt k" />
+    <keyboard-shortcut first-keystroke="shift ctrl alt j" />
   </action>
   <action id="EditorTextStart">
     <keyboard-shortcut first-keystroke="ctrl home" />
-    <keyboard-shortcut first-keystroke="ctrl alt i" />
+    <keyboard-shortcut first-keystroke="shift alt comma" />
+    <keyboard-shortcut first-keystroke="ctrl alt k" />
   </action>
   <action id="EditorTextStartWithSelection">
     <keyboard-shortcut first-keystroke="shift ctrl home" />
-    <keyboard-shortcut first-keystroke="shift ctrl alt i" />
+    <keyboard-shortcut first-keystroke="shift ctrl alt k" />
   </action>
   <action id="EditorToggleCase" />
   <action id="EditorToggleColumnMode" />
@@ -296,15 +291,15 @@
     <keyboard-shortcut first-keystroke="ctrl space" />
   </action>
   <action id="EditorUnSelectWord">
-    <keyboard-shortcut first-keystroke="shift alt h" />
+    <keyboard-shortcut first-keystroke="shift alt u" />
   </action>
   <action id="EditorUp">
     <keyboard-shortcut first-keystroke="up" />
-    <keyboard-shortcut first-keystroke="ctrl i" />
+    <keyboard-shortcut first-keystroke="ctrl k" />
   </action>
   <action id="EditorUpWithSelection">
     <keyboard-shortcut first-keystroke="shift up" />
-    <keyboard-shortcut first-keystroke="shift ctrl i" />
+    <keyboard-shortcut first-keystroke="shift ctrl k" />
   </action>
   <action id="EmacsStyleIndent">
     <keyboard-shortcut first-keystroke="tab" />
@@ -348,16 +343,13 @@
   </action>
   <action id="Find">
     <keyboard-shortcut first-keystroke="ctrl f" />
-    <keyboard-shortcut first-keystroke="alt f" />
   </action>
   <action id="FindInPath" />
   <action id="FindNext">
     <keyboard-shortcut first-keystroke="f3" />
-    <keyboard-shortcut first-keystroke="ctrl f" />
   </action>
   <action id="FindPrevious">
     <keyboard-shortcut first-keystroke="shift f3" />
-    <keyboard-shortcut first-keystroke="alt f" />
   </action>
   <action id="FindUsages" />
   <action id="FindUsagesInFile" />
@@ -615,9 +607,6 @@
   <action id="Vcs.MoveChangedLinesToChangelist" />
   <action id="Vcs.Push" />
   <action id="Vcs.QuickListPopupAction" />
-  <action id="Vcs.RollbackChangedLines">
-    <keyboard-shortcut first-keystroke="ctrl alt slash" />
-  </action>
   <action id="Vcs.ShowMessageHistory">
     <keyboard-shortcut first-keystroke="ctrl m" />
   </action>

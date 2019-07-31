@@ -204,37 +204,19 @@
     (mapping
      '(("<S-return>" . start-new-line)
        ("C-r" . avy-goto-char)
-       ("C-j" . switch-to-buffer)
        ("C-o" . find-file)
        ("C-S-o" . projectile-find-file)
        ("C-M-o" . xref-find-definitions)
        ("M-o" . imenu)
        ("M-D" . duplicate-region-or-line)
        ("<C-M-backspace>" . kill-line-backward)
-       ("M-h" . er/expand-region)
-       ("M-H" . er/contract-region)
-       ("M-j" . mc/mark-next-like-this)
-       ("M-J" . mc/unmark-next-like-this)
-       ("M-i" . mc/mark-previous-like-this)
-       ("M-I" . mc/unmark-previous-like-this)
+       ("M-u" . er/expand-region)
+       ("M-U" . er/contract-region)
        ("M-N" . move-line-down)
        ("M-P" . move-line-up)
        ("M-V" . join-line-next)
        ("M-T" . transpose-words-backward)))
   (global-set-key (kbd (car mapping)) (cdr mapping)))
-
-(with-eval-after-load 'elisp-mode
-  (define-key lisp-interaction-mode-map (kbd "C-j") nil))
-
-(with-eval-after-load 'org
-  (mapc
-   (lambda (arg) (apply 'define-key org-mode-map arg))
-   `(([remap beginning-of-line] org-beginning-of-line)
-     ([remap end-of-line] org-end-of-line)
-     ([remap kill-line] org-kill-line)
-     ([remap yank] org-yank)
-     ([remap completion-at-point] pcomplete)
-     (,(kbd "C-j") nil))))
 
 (with-eval-after-load 'expand-region
   (setq expand-region-fast-keys-enabled nil)
@@ -403,3 +385,4 @@
 (auto-center-windows)
 
 (load "~/.emacs.d/blog.el")
+(load "~/.emacs.d/keymap-cua.el")

@@ -24,24 +24,25 @@ zle -N shift-down
 [[ -n "$terminfo[kri]"  ]] && bindkey "$terminfo[kri]"  shift-up
 [[ -n "$terminfo[kind]" ]] && bindkey "$terminfo[kind]" shift-down
 
-# xterm etc
 bindkey "^[[1;5D" backward-word  # C-Left
 bindkey "^[[1;3D" backward-word  # M-Left
-bindkey "^[[1;5C" forward-word   # C-Right
-bindkey "^[[1;3C" forward-word   # M-Right
-bindkey "^X^_"    redo           # C-x C--
-
-# urxvt etc
-bindkey "^[Od"   backward-word  # C-Left
-bindkey "^[^[[D" backward-word  # M-Left
-bindkey "^[Oc"   forward-word   # C-Right
-bindkey "^[^[[C" forward-word   # M-Right
+bindkey "^[[1;5C" forward-word # C-Right
+bindkey "^[[1;3C" forward-word # M-Right
+bindkey "^X^_" redo # C-x C--
+bindkey "^[l" forward-word
+bindkey "^[h" backward-word
+bindkey "^[^H" beginning-of-line
+bindkey "^[^L" end-of-line
+bindkey "^J" down-line-or-history
+bindkey "^K" up-line-or-history
+bindkey "^[^D" kill-line
+bindkey "^X^[^D" kill-buffer
 
 x-kill-region() {
     if [[ $REGION_ACTIVE == 0 ]]; then
-        kill-whole-line
+        zle kill-whole-line
     else
-        kill-region
+        zle kill-region
     fi
 }
 

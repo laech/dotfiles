@@ -97,7 +97,7 @@
          {"keys": ["ctrl MINUS"], "id": "EditorDecreaseFontSize", "sticky": true},
          {"keys": ["ctrl 0"], "id": "EditorResetFontSize"}
      ]},
-    {"keys": ["ctrl H"],
+    {"keys": ["ctrl I"],
      "items": [
          {"keys": ["I"], "id": "QuickJavaDoc"},
          {"keys": ["shift I"], "id": "QuickImplementations"},

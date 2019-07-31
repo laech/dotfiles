@@ -18,10 +18,6 @@ XTerm.vt100.saveLines: 10000
 XTerm.vt100.metaSendsEscape: true
 XTerm.vt100.eightBitInput: false
 
-! Make keys like C-. work in terminal
-XTerm.vt100.modifyOtherKeys: 1
-XTerm.vt100.formatOtherKeys: 1
-
 XTerm.vt100.faceName: monospace
 XTerm.vt100.faceNameDoublesize: Noto Sans CJK SC
 XTerm.vt100.faceSize:  14
@@ -38,58 +34,7 @@ XTerm.vt100.reverseVideo: false
 ! See https://www.in-ulm.de/~mascheck/X11/xterm/XTerm
 ! Send extra key codes for C-S-<key> and C-M-S-<key>
 XTerm.vt100.translations: #override \n\
-    Ctrl ~Meta ~Alt Shift <Key>a: string(0x1b) string("[97;6u") \n\
-    Ctrl ~Meta ~Alt Shift <Key>b: string(0x1b) string("[98;6u") \n\
-    Ctrl ~Meta ~Alt Shift <Key>c: string(0x1b) string("[99;6u") \n\
-    Ctrl ~Meta ~Alt Shift <Key>d: string(0x1b) string("[100;6u") \n\
-    Ctrl ~Meta ~Alt Shift <Key>e: string(0x1b) string("[101;6u") \n\
-    Ctrl ~Meta ~Alt Shift <Key>f: string(0x1b) string("[102;6u") \n\
-    Ctrl ~Meta ~Alt Shift <Key>g: string(0x1b) string("[103;6u") \n\
-    Ctrl ~Meta ~Alt Shift <Key>h: string(0x1b) string("[104;6u") \n\
-    Ctrl ~Meta ~Alt Shift <Key>i: string(0x1b) string("[105;6u") \n\
-    Ctrl ~Meta ~Alt Shift <Key>j: string(0x1b) string("[106;6u") \n\
-    Ctrl ~Meta ~Alt Shift <Key>k: string(0x1b) string("[107;6u") \n\
-    Ctrl ~Meta ~Alt Shift <Key>l: string(0x1b) string("[108;6u") \n\
-    Ctrl ~Meta ~Alt Shift <Key>m: string(0x1b) string("[109;6u") \n\
-    Ctrl ~Meta ~Alt Shift <Key>n: string(0x1b) string("[110;6u") \n\
-    Ctrl ~Meta ~Alt Shift <Key>o: string(0x1b) string("[111;6u") \n\
-    Ctrl ~Meta ~Alt Shift <Key>p: string(0x1b) string("[112;6u") \n\
-    Ctrl ~Meta ~Alt Shift <Key>q: string(0x1b) string("[113;6u") \n\
-    Ctrl ~Meta ~Alt Shift <Key>r: string(0x1b) string("[114;6u") \n\
-    Ctrl ~Meta ~Alt Shift <Key>s: string(0x1b) string("[115;6u") \n\
-    Ctrl ~Meta ~Alt Shift <Key>t: string(0x1b) string("[116;6u") \n\
-    Ctrl ~Meta ~Alt Shift <Key>u: string(0x1b) string("[117;6u") \n\
-    Ctrl ~Meta ~Alt Shift <Key>v: string(0x1b) string("[118;6u") \n\
-    Ctrl ~Meta ~Alt Shift <Key>w: string(0x1b) string("[119;6u") \n\
-    Ctrl ~Meta ~Alt Shift <Key>x: string(0x1b) string("[120;6u") \n\
-    Ctrl ~Meta ~Alt Shift <Key>y: string(0x1b) string("[121;6u") \n\
-    Ctrl ~Meta ~Alt Shift <Key>z: string(0x1b) string("[122;6u") \n\
-    Ctrl  Meta ~Alt Shift <Key>a: string(0x1b) string("[97;8u") \n\
-    Ctrl  Meta ~Alt Shift <Key>b: string(0x1b) string("[98;8u") \n\
-    Ctrl  Meta ~Alt Shift <Key>c: string(0x1b) string("[99;8u") \n\
-    Ctrl  Meta ~Alt Shift <Key>d: string(0x1b) string("[100;8u") \n\
-    Ctrl  Meta ~Alt Shift <Key>e: string(0x1b) string("[101;8u") \n\
-    Ctrl  Meta ~Alt Shift <Key>f: string(0x1b) string("[102;8u") \n\
-    Ctrl  Meta ~Alt Shift <Key>g: string(0x1b) string("[103;8u") \n\
-    Ctrl  Meta ~Alt Shift <Key>h: string(0x1b) string("[104;8u") \n\
-    Ctrl  Meta ~Alt Shift <Key>i: string(0x1b) string("[105;8u") \n\
-    Ctrl  Meta ~Alt Shift <Key>j: string(0x1b) string("[106;8u") \n\
-    Ctrl  Meta ~Alt Shift <Key>k: string(0x1b) string("[107;8u") \n\
-    Ctrl  Meta ~Alt Shift <Key>l: string(0x1b) string("[108;8u") \n\
-    Ctrl  Meta ~Alt Shift <Key>m: string(0x1b) string("[109;8u") \n\
-    Ctrl  Meta ~Alt Shift <Key>n: string(0x1b) string("[110;8u") \n\
-    Ctrl  Meta ~Alt Shift <Key>o: string(0x1b) string("[111;8u") \n\
-    Ctrl  Meta ~Alt Shift <Key>p: string(0x1b) string("[112;8u") \n\
-    Ctrl  Meta ~Alt Shift <Key>q: string(0x1b) string("[113;8u") \n\
-    Ctrl  Meta ~Alt Shift <Key>r: string(0x1b) string("[114;8u") \n\
-    Ctrl  Meta ~Alt Shift <Key>s: string(0x1b) string("[115;8u") \n\
-    Ctrl  Meta ~Alt Shift <Key>t: string(0x1b) string("[116;8u") \n\
-    Ctrl  Meta ~Alt Shift <Key>u: string(0x1b) string("[117;8u") \n\
-    Ctrl  Meta ~Alt Shift <Key>v: string(0x1b) string("[118;8u") \n\
-    Ctrl  Meta ~Alt Shift <Key>w: string(0x1b) string("[119;8u") \n\
-    Ctrl  Meta ~Alt Shift <Key>x: string(0x1b) string("[120;8u") \n\
-    Ctrl  Meta ~Alt Shift <Key>y: string(0x1b) string("[121;8u") \n\
-    Ctrl  Meta ~Alt Shift <Key>z: string(0x1b) string("[122;8u") \n\
+  Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
 
 #define Ansi_1_Color #c90e42
 #define Ansi_10_Color #34b354
