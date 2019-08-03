@@ -52,7 +52,7 @@
      ("marmalade" . "https://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (swiper expand-region avy smartparens company-flx yaml-mode treemacs lsp-ui helm sr-speedbar projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent diff-hl)))
+    (company-restclient restclient swiper expand-region avy smartparens company-flx yaml-mode treemacs lsp-ui helm sr-speedbar projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent diff-hl)))
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
  '(scroll-margin 1)
@@ -340,6 +340,11 @@
 
 (with-eval-after-load 'flyspell
   (setq flyspell-issue-message-flag nil))
+
+(add-hook 'restclient-mode-hook #'company-mode)
+(with-eval-after-load 'restclient
+  (with-eval-after-load 'company
+    (add-to-list 'company-backends 'company-restclient)))
 
 (unless (display-graphic-p)
   (xterm-mouse-mode)
