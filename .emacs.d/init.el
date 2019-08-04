@@ -346,6 +346,14 @@
   (with-eval-after-load 'company
     (add-to-list 'company-backends 'company-restclient)))
 
+(with-eval-after-load 'magit-diff
+  (define-key magit-hunk-section-map (kbd "C-j") nil)
+  (mapc
+   (lambda (mapping)
+     (define-key magit-file-section-map (kbd (car mapping)) (cdr mapping)))
+   '(("C-j" . nil)
+     ("M-w" . nil))))
+
 (unless (display-graphic-p)
   (xterm-mouse-mode)
   (global-set-key [mouse-4] (lambda () (interactive) (scroll-down 3)))

@@ -77,7 +77,8 @@
      (,(kbd "C-k") nil)
      (,(kbd "C-y") nil)
      (,(kbd "C-j") nil)
-     (,(kbd "C-M-i") nil))))
+     (,(kbd "C-M-i") nil)
+     (,(kbd "M-h") nil))))
 
 (with-eval-after-load 'isearch
   (mapc
@@ -98,6 +99,7 @@
          ("C-j" . nil)
          ("M-j" . nil)
          ("C-M-j" . nil)
+         ("C-k" . nil)
          ("C-c" . nil)
          ("<C-tab>" . ivy-alt-done)))
     (define-key ivy-minibuffer-map (kbd (car mapping)) (cdr mapping))))
