@@ -260,7 +260,7 @@
 
 (add-hook 'after-init-hook #'projectile-mode)
 (with-eval-after-load 'projectile
-  (define-key ctl-x-map (kbd "p") 'projectile-command-map)
+  (define-key mode-specific-map (kbd "p") 'projectile-command-map)
   (define-key search-map (kbd "f") 'projectile-grep))
 
 (add-hook 'haskell-mode-hook 'smartparens-mode)
@@ -375,7 +375,7 @@
         (let* ((width (+ (window-width window)
                          (or (car (window-margins window)) 0)
                          (or (cdr (window-margins window)) 0)))
-               (margin (max 0 (/ (- width 100) 2))))
+               (margin (max 0 (/ (- width 80) 2))))
           (set-window-margins window margin)))))
 
   (defun center-windows (triggered-by-size-change &optional frame)
@@ -398,4 +398,4 @@
 (auto-center-windows)
 
 (load "~/.emacs.d/blog.el")
-(load "~/.emacs.d/keymap-cua.el")
+
