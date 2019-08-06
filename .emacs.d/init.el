@@ -38,6 +38,9 @@
  '(mouse-wheel-progressive-speed nil)
  '(mouse-wheel-scroll-amount (quote (3 ((shift) . 1) ((control)))))
  '(mouse-wheel-tilt-scroll t)
+ '(neo-autorefresh nil)
+ '(neo-show-hidden-files t)
+ '(neo-theme (quote ascii))
  '(package-archive-priorities
    (quote
     (("gnu" . 1)
@@ -52,7 +55,7 @@
      ("marmalade" . "https://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (company-restclient restclient swiper expand-region avy smartparens company-flx yaml-mode treemacs lsp-ui helm sr-speedbar projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent diff-hl)))
+    (neotree company-restclient restclient swiper expand-region avy smartparens company-flx yaml-mode treemacs lsp-ui helm sr-speedbar projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent diff-hl)))
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
  '(scroll-margin 1)
@@ -171,6 +174,16 @@
     (setq-default mode-line-format initial-mode-line-format)
     (set-frame-parameter nil 'bottom-divider-width 0)))
 
+(defun neotree-project-dir ()
+  "Open neotree at project root."
+  (interactive)
+  (let ((project-dir (projectile-project-root))
+        (file-name (buffer-file-name)))
+    (neotree-toggle)
+    (when (and project-dir (neo-global--window-exists-p))
+      (neotree-dir project-dir)
+      (neotree-find file-name))))
+
 (add-hook 'after-init-hook #'global-undo-tree-mode)
 (add-hook 'after-init-hook #'which-key-mode)
 
@@ -199,6 +212,8 @@
 (global-set-key [remap indent-region] 'indent-region-or-buffer)
 (global-set-key [remap dabbrev-expand] 'completion-at-point)
 (global-set-key [remap isearch-forward] 'swiper)
+
+(global-set-key (kbd "M-1") 'neotree-project-dir)
 
 (dolist
     (mapping
