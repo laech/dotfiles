@@ -38,9 +38,6 @@
  '(mouse-wheel-progressive-speed nil)
  '(mouse-wheel-scroll-amount (quote (3 ((shift) . 1) ((control)))))
  '(mouse-wheel-tilt-scroll t)
- '(neo-autorefresh nil)
- '(neo-show-hidden-files t)
- '(neo-theme (quote ascii))
  '(package-archive-priorities
    (quote
     (("gnu" . 1)
@@ -174,16 +171,6 @@
     (setq-default mode-line-format initial-mode-line-format)
     (set-frame-parameter nil 'bottom-divider-width 0)))
 
-(defun neotree-project-dir ()
-  "Open neotree at project root."
-  (interactive)
-  (let ((project-dir (projectile-project-root))
-        (file-name (buffer-file-name)))
-    (neotree-toggle)
-    (when (and project-dir (neo-global--window-exists-p))
-      (neotree-dir project-dir)
-      (neotree-find file-name))))
-
 (add-hook 'after-init-hook #'global-undo-tree-mode)
 (add-hook 'after-init-hook #'which-key-mode)
 
@@ -213,8 +200,6 @@
 (global-set-key [remap dabbrev-expand] 'completion-at-point)
 (global-set-key [remap isearch-forward] 'swiper)
 
-(global-set-key (kbd "M-1") 'neotree-project-dir)
-
 (dolist
     (mapping
      '(("<S-return>" . start-new-line)
@@ -225,8 +210,13 @@
        ("M-o" . imenu)
        ("M-D" . duplicate-region-or-line)
        ("<C-M-backspace>" . kill-line-backward)
-       ("M-u" . er/expand-region)
-       ("M-U" . er/contract-region)
+       ("C-j" . switch-to-buffer)
+       ("M-i" . mc/mark-previous-like-this)
+       ("M-I" . mc/unmark-previous-like-this)
+       ("M-j" . mc/mark-next-like-this-word)
+       ("M-J" . mc/unmark-next-like-this)
+       ("M-h" . er/expand-region)
+       ("M-H" . er/contract-region)
        ("M-N" . move-line-down)
        ("M-P" . move-line-up)
        ("M-V" . join-line-next)
@@ -255,6 +245,8 @@
       (mapping
        '(("<tab>" . ivy-insert-current)
          ("C-w" . ivy-yank-word)
+         ("C-r" . ivy-previous-line-or-history)
+         ("C-j" . nil)
          ("<C-return>" . ivy-immediate-done)
          ("<return>" . ivy-alt-done)))
     (define-key ivy-minibuffer-map (kbd (car mapping)) (cdr mapping))))
@@ -268,10 +260,11 @@
   (company-flx-mode)
   (define-key company-mode-map [remap completion-at-point] #'company-complete)
   (mapc
-   (lambda (mapping)
-     (define-key company-active-map (kbd (car mapping)) (cdr mapping)))
-   '(("M-n" . nil)
-     ("M-p" . nil))))
+   (lambda (arg) (apply 'define-key company-active-map arg))
+   `(([remap next-line] company-select-next)
+     ([remap previous-line] company-select-previous)
+     (,(kbd "M-n") nil)
+     (,(kbd "M-p") nil))))
 
 (add-hook 'after-init-hook #'projectile-mode)
 (with-eval-after-load 'projectile
@@ -366,8 +359,32 @@
   (mapc
    (lambda (mapping)
      (define-key magit-file-section-map (kbd (car mapping)) (cdr mapping)))
-   '(("C-j" . nil)
-     ("M-w" . nil))))
+   '(("C-j" . nil))))
+
+(with-eval-after-load 'elisp-mode
+  (define-key lisp-interaction-mode-map (kbd "C-j") nil))
+
+(with-eval-after-load 'org
+  (mapc
+   (lambda (arg) (apply 'define-key org-mode-map arg))
+   `((,(kbd "C-j") nil))))
+
+(defun neotree-project-dir ()
+  "Open neotree at project root."
+  (interactive)
+  (let ((project-dir (projectile-project-root))
+        (file-name (buffer-file-name)))
+    (neotree-toggle)
+    (when (and project-dir (neo-global--window-exists-p))
+      (neotree-dir project-dir)
+      (neotree-find file-name))))
+
+(global-set-key (kbd "M-1") 'neotree-project-dir)
+(with-eval-after-load 'neotree
+  (setq
+   neo-autorefresh nil
+   neo-show-hidden-files t
+   neo-theme 'ascii))
 
 (unless (display-graphic-p)
   (xterm-mouse-mode)
