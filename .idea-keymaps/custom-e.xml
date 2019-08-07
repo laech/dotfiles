@@ -642,6 +642,7 @@
   </action>
   <action id="com.gitlab.lae.intellij.actions.PsiKill">
     <keyboard-shortcut first-keystroke="ctrl alt d" />
+    <keyboard-shortcut first-keystroke="ctrl k" />
   </action>
   <action id="com.gitlab.lae.intellij.actions.UpcaseRegionOrToWordEnd">
     <keyboard-shortcut first-keystroke="alt u" />
