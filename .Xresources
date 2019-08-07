@@ -32,7 +32,6 @@ XTerm.vt100.reverseVideo: false
 ! 'showkey -a' to see key codes
 ! 'xev' to see key names
 ! See https://www.in-ulm.de/~mascheck/X11/xterm/XTerm
-! Send extra key codes for C-S-<key> and C-M-S-<key>
 XTerm.vt100.translations: #override \n\
   Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
 
