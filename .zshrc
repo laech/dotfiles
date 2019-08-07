@@ -29,14 +29,6 @@ bindkey "^[[1;3D" backward-word  # M-Left
 bindkey "^[[1;5C" forward-word # C-Right
 bindkey "^[[1;3C" forward-word # M-Right
 bindkey "^X^_" redo # C-x C--
-bindkey "^[l" forward-word
-bindkey "^[h" backward-word
-bindkey "^[^H" beginning-of-line
-bindkey "^[^L" end-of-line
-bindkey "^J" down-line-or-history
-bindkey "^K" up-line-or-history
-bindkey "^[^D" kill-line
-bindkey "^X^[^D" kill-buffer
 
 x-kill-region() {
     if [[ $REGION_ACTIVE == 0 ]]; then
