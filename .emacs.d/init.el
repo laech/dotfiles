@@ -52,7 +52,7 @@
      ("marmalade" . "https://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (neotree company-restclient restclient swiper expand-region avy smartparens company-flx yaml-mode treemacs lsp-ui helm sr-speedbar projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent diff-hl)))
+    (htmlize neotree company-restclient restclient swiper expand-region avy smartparens company-flx yaml-mode lsp-ui helm projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent diff-hl)))
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
  '(scroll-margin 1)
@@ -331,20 +331,9 @@
   (add-hook 'haskell-mode-hook #'intero-mode)
   (add-hook 'haskell-mode-hook #'hindent-mode)
 
-  (with-eval-after-load 'speedbar (speedbar-add-supported-extension ".hs"))
   (with-eval-after-load 'intero
     (with-eval-after-load 'flycheck
       (flycheck-add-next-checker 'intero '(warning . haskell-hlint)))))
-
-(with-eval-after-load 'speedbar
-  (setq
-   speedbar-use-images nil
-   speedbar-show-unknown-files t)
-  (defun speedbar-set-mode-line-format ()
-    (setq mode-line-format nil)))
-
-(with-eval-after-load 'sr-speedbar
-  (setq sr-speedbar-right-side nil))
 
 (with-eval-after-load 'flyspell
   (setq flyspell-issue-message-flag nil))
@@ -384,7 +373,9 @@
   (setq
    neo-autorefresh nil
    neo-show-hidden-files t
-   neo-theme 'ascii))
+   neo-theme 'ascii)
+  (if (display-graphic-p)
+      (setq neo-mode-line-type 'none)))
 
 (unless (display-graphic-p)
   (xterm-mouse-mode)
