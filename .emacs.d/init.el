@@ -53,6 +53,7 @@
  '(package-selected-packages
    (quote
     (htmlize neotree company-restclient restclient swiper expand-region avy smartparens company-flx yaml-mode lsp-ui helm projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent diff-hl)))
+ '(save-place-mode t)
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
  '(scroll-margin 1)
