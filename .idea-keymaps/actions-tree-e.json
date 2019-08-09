@@ -3,12 +3,7 @@
      "items": [
          {"keys": ["ctrl F"], "id": "GotoFile"},
          {"keys": ["ctrl B", "B"], "id": "RecentFiles"},
-         {"keys": ["P"],
-          "name": "Project...",
-          "items": [
-              {"keys": ["K"], "id": "CloseProject"},
-              {"keys": ["P"], "id": "RecentProjectListGroup"}
-          ]},
+         {"keys": ["D"], "id": "ActivateProjectToolWindow"},
          {"separator-above": "",
           "keys": ["ctrl S"], "id": "SaveDocument"},
          {"keys": ["S"], "id": "SaveAll"},
@@ -100,7 +95,16 @@
          {"separator-above": "",
           "keys": ["ctrl C"], "id": "Exit"}
      ]},
-    {"keys": ["ctrl H"],
+    {"keys": ["ctrl C"],
+     "items": [
+         {"keys": ["released P"],
+          "name": "Project...",
+          "items": [
+              {"keys": ["K"], "id": "CloseProject"},
+              {"keys": ["released P"], "id": "RecentProjectListGroup"}
+          ]}
+     ]},
+    {"keys": ["ctrl I"],
      "items": [
          {"keys": ["I"], "id": "QuickJavaDoc"},
          {"keys": ["shift I"], "id": "QuickImplementations"},
