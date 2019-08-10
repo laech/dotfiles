@@ -199,7 +199,9 @@
 (global-set-key [remap kill-ring-save] 'copy-region-or-line)
 (global-set-key [remap indent-region] 'indent-region-or-buffer)
 (global-set-key [remap dabbrev-expand] 'completion-at-point)
-(global-set-key [remap isearch-forward] 'swiper)
+(global-set-key [remap isearch-forward-regexp] 'swiper)
+
+(define-key isearch-mode-map (kbd "C-M-s") 'swiper-from-isearch)
 
 (dolist
     (mapping

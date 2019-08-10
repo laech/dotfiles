@@ -18,21 +18,6 @@
          {"keys": ["ctrl L"], "id": "com.gitlab.lae.intellij.actions.DowncaseRegionOrToWordEnd"},
          {"keys": ["ctrl X"], "id": "EditorSwapSelectionBoundaries"},
          {"keys": ["SPACE"], "id": "EditorToggleColumnMode"},
-         {"keys": ["C"],
-          "name": "Code...",
-          "items": [
-            {"keys": ["O"], "id": "OverrideMethods"},
-            {"keys": ["G"], "id": "Generate"},
-            {"keys": ["W"], "id": "SurroundWith"},
-            {"separator-above": "",
-             "keys": ["R"], "id": "RenameElement"},
-            {"keys": ["shift R"], "id": "RenameFile"},
-            {"keys": ["S"], "id": "ChangeSignature"},
-            {"keys": ["T"], "id": "ChangeTypeSignature"},
-            {"keys": ["M"], "id": "Move"},
-            {"keys": ["C"], "id": "CopyElement"},
-            {"keys": ["typed !"], "id": "InvertBoolean"}
-          ]},
          {"keys": ["R"],
           "name": "...",
           "items": [
@@ -98,10 +83,30 @@
     {"keys": ["ctrl C"],
      "items": [
          {"keys": ["released P"],
-          "name": "Project...",
+          "name": "Project",
           "items": [
               {"keys": ["K"], "id": "CloseProject"},
               {"keys": ["released P"], "id": "RecentProjectListGroup"}
+          ]},
+         {"keys": ["R"],
+          "name": "Refactor",
+          "items": [
+              {"keys": ["O"], "id": "OverrideMethods"},
+              {"keys": ["G"], "id": "Generate"},
+              {"separator-above": "",
+               "keys": ["R"], "id": "RenameElement"},
+              {"keys": ["ctrl R"], "id": "RenameFile"},
+              {"keys": ["S"], "id": "ChangeSignature"},
+              {"keys": ["T"], "id": "ChangeTypeSignature"},
+              {"keys": ["ctrl M"], "id": "Move"},
+              {"keys": ["N"], "id": "Inline"},
+              {"keys": ["typed !"], "id": "InvertBoolean"},
+              {"separator-above": "Extract",
+               "keys": ["V"], "id": "IntroduceVariable"},
+              {"keys": ["C"], "id": "IntroduceConstant"},
+              {"keys": ["F"], "id": "IntroduceField"},
+              {"keys": ["P"], "id": "IntroduceParameter"},
+              {"keys": ["M"], "id": "ExtractMethod"}
           ]}
      ]},
     {"keys": ["ctrl I"],
@@ -115,9 +120,9 @@
          {"keys": ["H"],
           "name": "Hierarchy...",
           "items": [
-            {"keys": ["T"], "id": "TypeHierarchy"},
-            {"keys": ["M"], "id": "MethodHierarchy"},
-            {"keys": ["C"], "id": "CallHierarchy"}
+              {"keys": ["T"], "id": "TypeHierarchy"},
+              {"keys": ["M"], "id": "MethodHierarchy"},
+              {"keys": ["C"], "id": "CallHierarchy"}
           ]},
          {"separator-above": "",
           "keys": ["E"], "id": "ShowErrorDescription"}
@@ -137,17 +142,17 @@
          {"keys": ["typed ."],
           "name": "Symbol at Point...",
           "items": [
-            {"keys": ["D"], "id": "GotoDeclaration"},
-            {"keys": ["I"], "id": "GotoImplementation"},
-            {"keys": ["T"], "id": "GotoTypeDeclaration"},
-            {"keys": ["U"], "id": "GotoSuperMethod"}
+              {"keys": ["D"], "id": "GotoDeclaration"},
+              {"keys": ["I"], "id": "GotoImplementation"},
+              {"keys": ["T"], "id": "GotoTypeDeclaration"},
+              {"keys": ["U"], "id": "GotoSuperMethod"}
           ]},
          {"keys": ["S"],
           "name": "Show...",
           "items": [
-            {"keys": ["S"], "id": "SelectIn"},
-            {"keys": ["N"], "id": "ShowNavBar"},
-            {"keys": ["P"], "id": "ShowFilePath"}
+              {"keys": ["S"], "id": "SelectIn"},
+              {"keys": ["N"], "id": "ShowNavBar"},
+              {"keys": ["P"], "id": "ShowFilePath"}
           ]}
      ]},
     {"keys": ["alt S"],
