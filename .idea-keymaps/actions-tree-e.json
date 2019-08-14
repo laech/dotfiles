@@ -14,6 +14,7 @@
          {"keys": ["typed (",
                    "typed )"], "id": "StartStopMacroRecording"},
          {"keys": ["E"], "id": "PlaybackLastMacro"},
+         {"keys": ["ctrl E"], "id": "QuickEvaluateExpression"},
          {"keys": ["ctrl U"], "id": "com.gitlab.lae.intellij.actions.UpcaseRegionOrToWordEnd"},
          {"keys": ["ctrl L"], "id": "com.gitlab.lae.intellij.actions.DowncaseRegionOrToWordEnd"},
          {"keys": ["ctrl X"], "id": "EditorSwapSelectionBoundaries"},

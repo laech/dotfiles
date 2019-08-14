@@ -111,7 +111,9 @@
   <action id="DomCollectionControl.Add" />
   <action id="DomElementsTreeView.AddElement" />
   <action id="DumpLookupElementWeights" />
-  <action id="EditSource" />
+  <action id="EditSource">
+    <keyboard-shortcut first-keystroke="alt period" />
+  </action>
   <action id="Editor Copy">
     <keyboard-shortcut first-keystroke="alt w" />
   </action>
