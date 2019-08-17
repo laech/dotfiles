@@ -86,7 +86,11 @@
          {"keys": ["released P"],
           "name": "Project",
           "items": [
-              {"keys": ["K"], "id": "CloseProject"},
+              {"keys": ["C"], "id": "CompileDirty"},
+              {"keys": ["ctrl C"], "id": "CompileProject"},
+              {"keys": ["U"], "id": "ChooseRunConfiguration"},
+              {"separator-above": "",
+               "keys": ["K"], "id": "CloseProject"},
               {"keys": ["released P"], "id": "RecentProjectListGroup"}
           ]},
          {"keys": ["R"],
@@ -110,7 +114,7 @@
               {"keys": ["M"], "id": "ExtractMethod"}
           ]}
      ]},
-    {"keys": ["ctrl I"],
+    {"keys": ["ctrl H"],
      "items": [
          {"keys": ["I"], "id": "QuickJavaDoc"},
          {"keys": ["shift I"], "id": "QuickImplementations"},

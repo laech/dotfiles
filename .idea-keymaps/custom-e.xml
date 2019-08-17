@@ -37,6 +37,12 @@
   </action>
   <action id="AddToFavoritesPopup" />
   <action id="Arrangement.Rule.Edit" />
+  <action id="Arrangement.Rule.Match.Condition.Move.Down">
+    <keyboard-shortcut first-keystroke="shift alt n" />
+  </action>
+  <action id="Arrangement.Rule.Match.Condition.Move.Up">
+    <keyboard-shortcut first-keystroke="shift alt p" />
+  </action>
   <action id="AutoIndentLines" />
   <action id="Back">
     <keyboard-shortcut first-keystroke="ctrl alt left" />
