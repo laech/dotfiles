@@ -139,6 +139,7 @@ bindsym XF86AudioMute          exec --no-startup-id ~/.local/bin/volume-mute-tog
 hide_edge_borders both
 
 for_window [title="Volume Control"] floating enable border normal
+for_window [title="Welcome to IntelliJ IDEA"] floating disable
 
 # Idle 5 minutes will dim display, then 5 seconds later lock
 # it. Locking will wake up screen, so 5 seconds later (total dpms 310)
