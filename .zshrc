@@ -75,20 +75,12 @@ setopt hist_ignore_space
 export HISTSIZE=100000
 export HISTFILE="${HOME}/.zsh_history"
 export SAVEHIST="${HISTSIZE}"
+export WORDCHARS=
 
 # Stop blinking dead links in ls output
-# Need this for Fedora as it blinks by default via /etc/DIR_COLORS
-if [[ "${OSTYPE}" == linux* ]]; then
-    eval $(dircolors)
-fi
+# Need this for some distros such as Fedora which blinks by default via /etc/DIR_COLORS
+eval $(dircolors)
 
-autoload -U select-word-style
-select-word-style bash
-
-
-if [[ "${OSTYPE}" == darwin* ]]; then
-    fpath=(/usr/local/share/zsh-completions $fpath)
-fi
 autoload -U compinit
 compinit
 zstyle ':completion:*' menu select
@@ -117,17 +109,12 @@ else
     PS1="$my_ps1$my_ps2$my_ps3"
 fi
 
+alias ls='ls --color=auto'
 alias l='ls -1'
 alias ll='ls -lh'
 alias la='ll -a'
 
 alias config='git --git-dir="${HOME}/.cfg" --work-tree="${HOME}"'
-
-if [[ "${OSTYPE}" == darwin* ]]; then
-    alias ls='ls -G'
-else
-    alias ls='ls --color=auto'
-fi
 
 alias hg="hg.exe"
 alias hgst='hg st -S'
