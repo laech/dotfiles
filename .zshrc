@@ -75,7 +75,9 @@ setopt hist_ignore_space
 export HISTSIZE=100000
 export HISTFILE="${HOME}/.zsh_history"
 export SAVEHIST="${HISTSIZE}"
-export WORDCHARS=
+
+autoload -U select-word-style
+select-word-style bash
 
 # Stop blinking dead links in ls output
 # Need this for some distros such as Fedora which blinks by default via /etc/DIR_COLORS
