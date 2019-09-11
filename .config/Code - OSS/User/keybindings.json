@@ -242,7 +242,7 @@
         "when": "listFocus && !inputFocus"
     },
     {
-        "key": "ctrl+a",
+        "key": "alt+v",
         "command": "notifications.focusFirstToast",
         "when": "notificationFocus && notificationToastsVisible"
     },
@@ -369,7 +369,7 @@
         "when": "fileMatchOrMatchFocus && searchViewletVisible"
     },
     {
-        "key": "ctrl+f",
+        "key": "alt+f",
         "command": "breadcrumbs.focusNext",
         "when": "breadcrumbsActive && breadcrumbsVisible"
     },
@@ -700,7 +700,7 @@
         "when": "textInputFocus"
     },
     {
-        "key": "ctrl+b",
+        "key": "alt+b",
         "command": "breadcrumbs.focusPrevious",
         "when": "breadcrumbsActive && breadcrumbsVisible"
     },
@@ -841,5 +841,239 @@
         "key": "ctrl+m",
         "command": "workbench.action.terminal.findPrevious",
         "when": "terminalFindWidgetFocused"
+    },
+    {
+        "key": "alt+r",
+        "command": "-toggleFindRegex",
+        "when": "editorFocus"
+    },
+    {
+        "key": "alt+r",
+        "command": "-toggleSearchRegex",
+        "when": "searchViewletFocus && searchViewletVisible"
+    },
+    {
+        "key": "alt+r",
+        "command": "-workbench.action.terminal.toggleFindRegex",
+        "when": "terminalFindWidgetFocused"
+    },
+    {
+        "key": "alt+r",
+        "command": "-workbench.action.terminal.toggleFindRegexTerminalFocus",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+t",
+        "command": "editor.action.transpose"
+    },
+    {
+        "key": "alt+u",
+        "command": "editor.action.transformToUppercase"
+    },
+    {
+        "key": "alt+p",
+        "command": "-keybindings.editor.toggleSortByPrecedence",
+        "when": "inKeybindings"
+    },
+    {
+        "key": "alt+p",
+        "command": "workbench.action.editor.previousChange",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+alt+f5",
+        "command": "-workbench.action.editor.previousChange",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+delete",
+        "command": "deleteWordRight",
+        "when": "textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+f",
+        "command": "cursorWordEndRight",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "alt+f",
+        "command": "cursorWordAccessibilityRight",
+        "when": "accessibilityModeEnabled && textInputFocus"
+    },
+    {
+        "key": "alt+f",
+        "command": "breadcrumbs.focusNextWithPicker",
+        "when": "breadcrumbsActive && breadcrumbsVisible && listFocus && !inputFocus"
+    },
+    {
+        "key": "alt+h",
+        "command": "editor.action.smartSelect.expand",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+alt+right",
+        "command": "-editor.action.smartSelect.expand",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+alt+h",
+        "command": "-editor.showCallHierarchy",
+        "when": "editorHasCallHierarchyProvider && editorTextFocus && !inReferenceSearchEditor"
+    },
+    {
+        "key": "shift+alt+h",
+        "command": "editor.action.smartSelect.shrink",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+alt+left",
+        "command": "-editor.action.smartSelect.shrink",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+j",
+        "command": "editor.action.addSelectionToNextFindMatch",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+d",
+        "command": "-editor.action.addSelectionToNextFindMatch",
+        "when": "editorFocus"
+    },
+    {
+        "key": "shift+alt+j",
+        "command": "editor.action.addSelectionToPreviousFindMatch"
+    },
+    {
+        "key": "alt+x",
+        "command": "workbench.action.showCommands"
+    },
+    {
+        "key": "ctrl+shift+p",
+        "command": "-workbench.action.showCommands"
+    },
+    {
+        "key": "alt+x",
+        "command": "workbench.action.quickOpenNavigatePreviousInFilePicker",
+        "when": "inFilesPicker && inQuickOpen"
+    },
+    {
+        "key": "ctrl+shift+p",
+        "command": "-workbench.action.quickOpenNavigatePreviousInFilePicker",
+        "when": "inFilesPicker && inQuickOpen"
+    },
+    {
+        "key": "alt+l",
+        "command": "-toggleFindInSelection",
+        "when": "editorFocus"
+    },
+    {
+        "key": "alt+l",
+        "command": "editor.action.transformToLowercase"
+    },
+    {
+        "key": "alt+v",
+        "command": "cursorPageUp",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "pageup",
+        "command": "-cursorPageUp",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "shift+alt+v",
+        "command": "cursorPageUpSelect",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "shift+pageup",
+        "command": "-cursorPageUpSelect",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "alt+v",
+        "command": "list.focusPageUp",
+        "when": "listFocus && !inputFocus"
+    },
+    {
+        "key": "pageup",
+        "command": "-list.focusPageUp",
+        "when": "listFocus && !inputFocus"
+    },
+    {
+        "key": "pageup",
+        "command": "-notifications.focusFirstToast",
+        "when": "notificationFocus && notificationToastsVisible"
+    },
+    {
+        "key": "alt+v",
+        "command": "selectPrevPageSuggestion",
+        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+    },
+    {
+        "key": "pageup",
+        "command": "-selectPrevPageSuggestion",
+        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+    },
+    {
+        "key": "alt+v",
+        "command": "workbench.action.interactivePlayground.pageUp",
+        "when": "interactivePlaygroundFocus && !editorTextFocus"
+    },
+    {
+        "key": "pageup",
+        "command": "-workbench.action.interactivePlayground.pageUp",
+        "when": "interactivePlaygroundFocus && !editorTextFocus"
+    },
+    {
+        "key": "alt+b",
+        "command": "cursorWordStartLeft",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "alt+b",
+        "command": "cursorWordAccessibilityLeft",
+        "when": "accessibilityModeEnabled && textInputFocus"
+    },
+    {
+        "key": "alt+b",
+        "command": "list.collapseAll",
+        "when": "listFocus && !inputFocus"
+    },
+    {
+        "key": "alt+b",
+        "command": "breadcrumbs.focusPreviousWithPicker",
+        "when": "breadcrumbsActive && breadcrumbsVisible && listFocus && !inputFocus"
+    },
+    {
+        "key": "alt+n",
+        "command": "workbench.action.editor.nextChange",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+f5",
+        "command": "-workbench.action.editor.nextChange",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+n",
+        "command": "workbench.action.compareEditor.nextChange",
+        "when": "textCompareEditorVisible"
+    },
+    {
+        "key": "alt+f5",
+        "command": "-workbench.action.compareEditor.nextChange",
+        "when": "textCompareEditorVisible"
+    },
+    {
+        "key": "alt+p",
+        "command": "workbench.action.compareEditor.previousChange",
+        "when": "textCompareEditorVisible"
+    },
+    {
+        "key": "shift+alt+f5",
+        "command": "-workbench.action.compareEditor.previousChange",
+        "when": "textCompareEditorVisible"
     }
 ]
