@@ -11,10 +11,14 @@ set -o pipefail
 readonly profile_base=base
 readonly profile_nokbd=nokbd
 readonly profile_fruit=fruit
-readonly profile=${profile:?"'$profile_base' or '$profile_fruit' or '$profile_nokbd'?"}
+readonly profile_build=build
+readonly profile_chain=chain
+readonly profile=${profile:?"'$profile_base' or '$profile_fruit' or '$profile_nokbd' or '$profile_build' or '$profile_chain'?"}
 
 [[ "$profile" != "$profile_base" ]] \
     && [[ "$profile" != "$profile_fruit" ]] \
+    && [[ "$profile" != "$profile_build" ]] \
+    && [[ "$profile" != "$profile_chain" ]] \
     && echo "no such profile: $profile" 1>&2 \
     && exit 1
 
@@ -93,7 +97,6 @@ readonly base_dirs_prefix=base/system/
 dirs_prefix="$base_dirs_prefix"
 
 dirs=(
-    'etc/systemd/system/dhcpcd@enp5s0.service.d'
     'usr/share/X11/xkb/symbols'
 )
 
@@ -104,7 +107,15 @@ services=(
 
 console_map='base/system/kbd/custom.map'
 
-if [[ "$profile" == "$profile_base" ]]; then
+if [[ "$profile" == "$profile_build" ]]; then
+
+    packages+=(
+        intel-ucode
+    )
+    dirs_prefix='build/system/'
+    dirs+=(
+        'etc/systemd/system/dhcpcd@enp5s0.service.d'
+    )
     services+=(
         dhcpcd@enp5s0.service
     )
@@ -112,6 +123,7 @@ if [[ "$profile" == "$profile_base" ]]; then
 elif [[ "$profile" == "$profile_fruit" ]]; then
 
     packages+=(
+        intel-ucode
         base-devel
         linux-headers
         dkms
@@ -137,6 +149,19 @@ elif [[ "$profile" == "$profile_fruit" ]]; then
     )
 
     console_map='fruit/system/kbd/custom.map'
+
+elif [[ "$profile" == "$profile_chain" ]]; then
+
+    packages+=(
+        intel-ucode
+    )
+    dirs_prefix='chain/system/'
+    dirs+=(
+        'etc/udev/rules.d'
+        'etc/systemd/system/dhcpcd@wlo1.service.d'
+        'etc/X11/xorg.conf.d'
+    )
+    console_map='chain/system/kbd/custom.map'
 fi
 
 echo ""

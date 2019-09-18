@@ -127,10 +127,10 @@ focus_follows_mouse no
 bindsym button4 nop
 bindsym button5 nop
 
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 && xbacklight > ~/.brightness
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5 && xbacklight > ~/.brightness
-bindsym Mod1+XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 2 && xbacklight > ~/.brightness
-bindsym Mod1+XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 2 && xbacklight > ~/.brightness
+bindsym XF86MonBrightnessDown      exec --no-startup-id backlight -5 && backlight > ~/.brightness
+bindsym XF86MonBrightnessUp        exec --no-startup-id backlight +5 && backlight > ~/.brightness
+bindsym Mod1+XF86MonBrightnessDown exec --no-startup-id backlight -2 && backlight > ~/.brightness
+bindsym Mod1+XF86MonBrightnessUp   exec --no-startup-id backlight +2 && backlight > ~/.brightness
 
 bindsym XF86AudioRaiseVolume   exec --no-startup-id ~/.local/bin/volume +5
 bindsym XF86AudioLowerVolume   exec --no-startup-id ~/.local/bin/volume -5

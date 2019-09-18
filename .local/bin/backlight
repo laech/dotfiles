@@ -63,7 +63,12 @@ for i in $(ls "$backlights_dir"); do
     fi
 done
 
-[[ "$backlight_dir" == "" ]] && echo "No active backlight found." >& 2 && exit 1
+if [[ "$backlight_dir" == "" ]]; then
+    if   [[ "${1:0:1}" == '-' ]]; then xbacklight -dec "${1:1:${#1}}"
+    elif [[ "${1:0:1}" == '+' ]]; then xbacklight -inc "${1:1:${#1}}"
+    else                               xbacklight -set "$1"
+    fi
+fi
 
 
 #
