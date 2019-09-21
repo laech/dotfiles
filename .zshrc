@@ -118,8 +118,3 @@ alias la='ll -a'
 
 alias config='git --git-dir="${HOME}/.cfg" --work-tree="${HOME}"'
 
-alias hg="hg.exe"
-alias hgst='hg st -S'
-alias hgdiff='hg diff -S'
-hgbr() { find . -name .hg -type d -execdir bash -c 'echo "$(hg.exe branch): $(pwd)"' \; }
-

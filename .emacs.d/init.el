@@ -4,8 +4,8 @@
 
 (setq
  default-frame-alist
- `((internal-border-width . 0)
-   (font . ,(if (eq system-type 'gnu/linux) "Monospace-14" "Hack-10"))))
+ '((internal-border-width . 0)
+   (font . "Monospace-14")))
 
 ;; By default Emacs automatically detects background color and sets
 ;; background mode automaticall, but when running inside tmux this
