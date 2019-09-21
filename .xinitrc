@@ -6,4 +6,11 @@ if [[ -d /etc/X11/xinit/xinitrc.d ]]; then
     unset file
 fi
 
+
+XFT_DPI=${XFT_DPI:-96}
+xrdb -merge <<EOF
+Xft.dpi: $XFT_DPI
+$(cat "$HOME"/.profiles/xresources)
+EOF
+
 exec i3
