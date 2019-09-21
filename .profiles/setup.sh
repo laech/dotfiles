@@ -124,8 +124,6 @@ elif [[ "$profile" == "$profile_fruit" ]]; then
 
     packages+=(
         intel-ucode
-        base-devel
-        linux-headers
         dkms
         broadcom-wl-dkms
         refind-efi
@@ -154,9 +152,13 @@ elif [[ "$profile" == "$profile_chain" ]]; then
 
     packages+=(
         intel-ucode
+        dkms
+        bbswitch-dkms
     )
     dirs_prefix='chain/system/'
     dirs+=(
+        'etc/modprobe.d'
+        'etc/modules-load.d'
         'etc/udev/rules.d'
         'etc/systemd/system/dhcpcd@wlo1.service.d'
         'etc/X11/xorg.conf.d'
