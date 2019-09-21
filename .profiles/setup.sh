@@ -154,6 +154,8 @@ elif [[ "$profile" == "$profile_chain" ]]; then
         intel-ucode
         dkms
         bbswitch-dkms
+        bluez
+        bluez-utils
     )
     dirs_prefix='chain/system/'
     dirs+=(
