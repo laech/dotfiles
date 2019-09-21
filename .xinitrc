@@ -9,6 +9,7 @@ fi
 
 XFT_DPI=${XFT_DPI:-96}
 xrdb -merge <<EOF
+rofi.dpi: $XFT_DPI
 Xft.dpi: $XFT_DPI
 $(cat "$HOME"/.profiles/xresources)
 EOF
