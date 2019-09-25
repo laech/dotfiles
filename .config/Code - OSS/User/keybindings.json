@@ -677,6 +677,11 @@
         "when": "breadcrumbsActive && breadcrumbsVisible"
     },
     {
+        "key": "alt+b",
+        "command": "breadcrumbs.focusPrevious",
+        "when": "breadcrumbsActive && breadcrumbsVisible"
+    },
+    {
         "key": "ctrl+b",
         "command": "list.collapse",
         "when": "listFocus && !inputFocus"
@@ -1024,7 +1029,17 @@
         "when": "textInputFocus"
     },
     {
+        "key": "alt+b",
+        "command": "cursorWordStartLeft",
+        "when": "textInputFocus"
+    },
+    {
         "key": "alt+left",
+        "command": "cursorWordAccessibilityLeft",
+        "when": "accessibilityModeEnabled && textInputFocus"
+    },
+    {
+        "key": "alt+b",
         "command": "cursorWordAccessibilityLeft",
         "when": "accessibilityModeEnabled && textInputFocus"
     },
@@ -1034,7 +1049,17 @@
         "when": "listFocus && !inputFocus"
     },
     {
+        "key": "alt+b",
+        "command": "list.collapseAll",
+        "when": "listFocus && !inputFocus"
+    },
+    {
         "key": "alt+left",
+        "command": "breadcrumbs.focusPreviousWithPicker",
+        "when": "breadcrumbsActive && breadcrumbsVisible && listFocus && !inputFocus"
+    },
+    {
+        "key": "alt+b",
         "command": "breadcrumbs.focusPreviousWithPicker",
         "when": "breadcrumbsActive && breadcrumbsVisible && listFocus && !inputFocus"
     },
@@ -1103,16 +1128,6 @@
     {
         "key": "alt+9",
         "command": "-workbench.action.openEditorAtIndex9"
-    },
-    {
-        "key": "alt+1",
-        "command": "workbench.files.action.focusOpenEditorsView",
-        "when": "workbench.explorer.openEditorsView.active"
-    },
-    {
-        "key": "ctrl+k e",
-        "command": "-workbench.files.action.focusOpenEditorsView",
-        "when": "workbench.explorer.openEditorsView.active"
     },
     {
         "key": "alt+9",
@@ -1641,5 +1656,46 @@
     {
         "key": "alt+g alt+g",
         "command": "workbench.action.gotoLine"
+    },
+    {
+        "key": "ctrl+x ctrl+s",
+        "command": "workbench.action.files.save"
+    },
+    {
+        "key": "alt+1",
+        "command": "workbench.view.explorer"
+    },
+    {
+        "key": "ctrl+shift+e",
+        "command": "-workbench.view.explorer"
+    },
+    {
+        "key": "ctrl+x k",
+        "command": "workbench.action.closeActiveEditor"
+    },
+    {
+        "key": "ctrl+shift+/",
+        "command": "redo",
+        "when": "textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+z",
+        "command": "-redo",
+        "when": "textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "shift+alt+f",
+        "command": "cursorWordAccessibilityRightSelect",
+        "when": "accessibilityModeEnabled && textInputFocus"
+    },
+    {
+        "key": "shift+alt+f",
+        "command": "cursorWordEndRightSelect",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "shift+alt+f",
+        "command": "-filesExplorer.findInFolder",
+        "when": "explorerResourceIsFolder && explorerViewletVisible && filesExplorerFocus && !inputFocus"
     }
 ]

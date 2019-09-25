@@ -163,6 +163,7 @@ hide_edge_borders both
 # Inspect with xprop
 for_window [title="Volume Control"] floating enable border normal
 for_window [class="jetbrains-idea-ce"] floating disable
+for_window [window_role="GtkFileChooserDialog"] floating disable
 
 # Idle 5 minutes will dim display, then 5 seconds later lock
 # it. Locking will wake up screen, so 5 seconds later (total dpms 310)

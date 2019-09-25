@@ -103,6 +103,7 @@ dirs=(
 services=(
     systemd-timesyncd
     tlp
+    tlp-sleep
 )
 
 console_map='base/system/kbd/custom.map'
