@@ -83,6 +83,13 @@ select-word-style bash
 # Need this for some distros such as Fedora which blinks by default via /etc/DIR_COLORS
 eval $(dircolors)
 
+fpath+=~/.zfunc
+if [[ ! -e ~/.zfunc/_rustup ]] && hash rustup &> /dev/null; then
+    mkdir -p ~/.zfunc
+    rustup completions zsh rustup > ~/.zfunc/_rustup
+    rustup completions zsh cargo > ~/.zfunc/_cargo
+fi
+
 autoload -U compinit
 compinit
 zstyle ':completion:*' menu select

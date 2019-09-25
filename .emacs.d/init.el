@@ -52,7 +52,7 @@
      ("marmalade" . "https://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (htmlize neotree company-restclient restclient swiper expand-region avy smartparens company-flx yaml-mode lsp-ui helm projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent diff-hl)))
+    (flycheck flycheck-rust racer rust-mode htmlize neotree company-restclient restclient swiper expand-region avy smartparens company-flx yaml-mode lsp-ui helm projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent diff-hl)))
  '(save-place-mode t)
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
@@ -199,6 +199,7 @@
 (global-set-key [remap kill-ring-save] 'copy-region-or-line)
 (global-set-key [remap indent-region] 'indent-region-or-buffer)
 (global-set-key [remap dabbrev-expand] 'completion-at-point)
+(global-set-key [remap complete-symbol] 'completion-at-point)
 (global-set-key [remap isearch-forward-regexp] 'swiper)
 
 (define-key isearch-mode-map (kbd "C-M-s") 'swiper-from-isearch)
@@ -256,10 +257,7 @@
 
 (add-hook 'prog-mode-hook #'company-mode)
 (with-eval-after-load 'company
-  (setq
-   company-idle-delay 0
-   company-minimum-prefix-length 2
-   company-tooltip-idle-delay 0)
+  (setq company-tooltip-idle-delay 0)
   (company-flx-mode)
   (define-key company-mode-map [remap completion-at-point] #'company-complete)
   (mapc
@@ -337,6 +335,23 @@
   (with-eval-after-load 'intero
     (with-eval-after-load 'flycheck
       (flycheck-add-next-checker 'intero '(warning . haskell-hlint)))))
+
+(with-eval-after-load 'rust-mode
+  (add-hook 'racer-mode-hook #'eldoc-mode)
+  (add-hook 'racer-mode-hook #'company-mode)
+  (add-hook 'rust-mode-hook #'racer-mode)
+  (add-hook 'rust-mode-hook #'flycheck-mode)
+  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+
+  (require 'subr-x)
+  (setenv
+   "RUST_SRC_PATH"
+   (concat
+    (string-trim (shell-command-to-string "rustc --print sysroot"))
+    "/lib/rustlib/src/rust/src"))
+
+  (define-key rust-mode-map [remap indent-region]
+    #'rust-format-buffer))
 
 (with-eval-after-load 'flyspell
   (setq flyspell-issue-message-flag nil))
