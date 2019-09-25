@@ -1,10 +1,6 @@
 // Place your key bindings in this file to override the defaults
 [
     {
-        "key": "ctrl+q",
-        "command": "-workbench.action.quit"
-    },
-    {
         "key": "ctrl+w",
         "command": "editor.action.clipboardCutAction",
         "when": "textInputFocus && !editorReadonly"
@@ -1697,5 +1693,13 @@
         "key": "shift+alt+f",
         "command": "-filesExplorer.findInFolder",
         "when": "explorerResourceIsFolder && explorerViewletVisible && filesExplorerFocus && !inputFocus"
+    },
+    {
+        "key": "ctrl+x ctrl+c",
+        "command": "workbench.action.quit"
+    },
+    {
+        "key": "ctrl+q",
+        "command": "-workbench.action.quit"
     }
 ]
