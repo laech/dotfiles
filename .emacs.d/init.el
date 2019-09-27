@@ -198,8 +198,8 @@
 (global-set-key [remap kill-region] 'kill-region-or-line)
 (global-set-key [remap kill-ring-save] 'copy-region-or-line)
 (global-set-key [remap indent-region] 'indent-region-or-buffer)
-(global-set-key [remap dabbrev-expand] 'completion-at-point)
-(global-set-key [remap complete-symbol] 'completion-at-point)
+;;(global-set-key [remap dabbrev-expand] 'completion-at-point)
+;;(global-set-key [remap complete-symbol] 'completion-at-point)
 (global-set-key [remap isearch-forward-regexp] 'swiper)
 
 (define-key isearch-mode-map (kbd "C-M-s") 'swiper-from-isearch)
@@ -257,9 +257,13 @@
 
 (add-hook 'prog-mode-hook #'company-mode)
 (with-eval-after-load 'company
-  (setq company-tooltip-idle-delay 0)
+  (setq
+   company-idle-delay 0.5
+   company-tooltip-idle-delay 0)
   (company-flx-mode)
+  (add-to-list 'company-backends 'company-dabbrev)
   (define-key company-mode-map [remap completion-at-point] #'company-complete)
+  (define-key company-mode-map [remap complete-symbol] #'company-complete)
   (mapc
    (lambda (arg) (apply 'define-key company-active-map arg))
    `(([remap next-line] company-select-next)
@@ -341,6 +345,7 @@
   (add-hook 'racer-mode-hook #'company-mode)
   (add-hook 'rust-mode-hook #'racer-mode)
   (add-hook 'rust-mode-hook #'flycheck-mode)
+  (add-hook 'rust-mode-hook #'electric-pair-mode)
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
 
   (require 'subr-x)
@@ -349,6 +354,9 @@
    (concat
     (string-trim (shell-command-to-string "rustc --print sysroot"))
     "/lib/rustlib/src/rust/src"))
+
+  (with-eval-after-load 'racer
+    (define-key racer-mode-map (kbd "C-h i") #'racer-describe))
 
   (define-key rust-mode-map [remap indent-region]
     #'rust-format-buffer))
