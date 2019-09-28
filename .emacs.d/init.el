@@ -210,7 +210,7 @@
        ("C-r" . avy-goto-char)
        ("C-o" . find-file)
        ("C-S-o" . projectile-find-file)
-       ("C-M-o" . xref-find-definitions)
+       ("C-M-o" . xref-find-apropos)
        ("M-o" . imenu)
        ("M-D" . duplicate-region-or-line)
        ("<C-M-backspace>" . kill-line-backward)
@@ -347,6 +347,28 @@
   (add-hook 'rust-mode-hook #'flycheck-mode)
   (add-hook 'rust-mode-hook #'electric-pair-mode)
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+
+  (with-eval-after-load 'projectile
+    (add-to-list 'projectile-project-root-files "Cargo.toml"))
+
+  (add-hook
+   'rust-mode-hook
+   (lambda ()
+     (let ((project-root (projectile-project-root)))
+       (when project-root
+         (let ((xs (mapcar
+                    (lambda (dir)
+                      (concat (file-name-as-directory dir)
+                              "rusty-tags.emacs"))
+                    (list project-root (getenv "RUST_SRC_PATH")))))
+           (setq-local tags-table-list xs))))))
+
+  (defun rusty-tags ()
+    (interactive)
+    (let ((project-root (projectile-project-root)))
+      (when project-root
+        (let ((default-directory project-root))
+          (shell-command "rusty-tags emacs &")))))
 
   (require 'subr-x)
   (setenv
