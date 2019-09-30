@@ -199,18 +199,8 @@
     },
     {
         "key": "ctrl+a",
-        "command": "-editor.action.selectAll",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "ctrl+a",
         "command": "-editor.action.webvieweditor.selectAll",
         "when": "!editorFocus && !inputFocus && activeEditor == 'WebviewEditor'"
-    },
-    {
-        "key": "ctrl+a",
-        "command": "-list.selectAll",
-        "when": "listFocus && listSupportsMultiselect && !inputFocus"
     },
     {
         "key": "ctrl+a",
@@ -657,10 +647,6 @@
         "key": "shift+pagedown",
         "command": "-workbench.action.terminal.scrollDownPage",
         "when": "terminalFocus"
-    },
-    {
-        "key": "ctrl+b",
-        "command": "-workbench.action.toggleSidebarVisibility"
     },
     {
         "key": "ctrl+b",
@@ -1127,6 +1113,10 @@
     },
     {
         "key": "alt+9",
+        "command": "workbench.view.scm"
+    },
+    {
+        "key": "ctrl+x g",
         "command": "workbench.view.scm"
     },
     {
@@ -1701,5 +1691,33 @@
     {
         "key": "ctrl+q",
         "command": "-workbench.action.quit"
+    },
+    {
+        "key": "ctrl+x h",
+        "command": "list.selectAll",
+        "when": "listFocus && listSupportsMultiselect && !inputFocus"
+    },
+    {
+        "key": "ctrl+a",
+        "command": "-list.selectAll",
+        "when": "listFocus && listSupportsMultiselect && !inputFocus"
+    },
+    {
+        "key": "ctrl+x h",
+        "command": "editor.action.selectAll",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+a",
+        "command": "-editor.action.selectAll",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "alt+tab",
+        "command": "workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "ctrl+b",
+        "command": "-workbench.action.toggleSidebarVisibility"
     }
 ]
