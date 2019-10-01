@@ -22,5 +22,9 @@
     "terminal.integrated.fontSize": 16,
     "editor.lineNumbers": "off",
     "editor.renderIndentGuides": false,
-    "workbench.colorTheme": "Default Light+"
+    "workbench.colorTheme": "Default Light+",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "files.insertFinalNewline": true,
+    "workbench.statusBar.visible": false,
+    "workbench.editor.showTabs": false
 }
