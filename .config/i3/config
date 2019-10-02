@@ -110,13 +110,27 @@ bindsym $mod+Shift+r exec --no-startup-id i3 restart
 bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #285577 #285577 #ffffff #2e9ef4   #285577
-client.focused_inactive #5f676a #5f676a #ffffff #484e50   #5f676a
-client.unfocused        #222222 #222222 #888888 #292d2e   #222222
-client.urgent           #900000 #900000 #ffffff #900000   #900000
+client.focused          #3f51b5 #3f51b5 #ffffff #2e9ef4   #3f51b5
+client.focused_inactive #000000 #000000 #ffffff #484e50   #000000
+client.unfocused        #000000 #000000 #888888 #292d2e   #000000
+client.urgent           #e53935 #e53935 #ffffff #900000   #e53935
 client.placeholder      #0c0c0c #0c0c0c #ffffff #000000   #0c0c0c
 client.background       #ffffff
 
+set $mode_focus Focus:  <b>f</b>irefox  <b>t</b>erm  <b>e</b>macs  <b>v</b>scode
+bindsym $mod+o mode "$mode_focus"
+mode --pango_markup "$mode_focus" {
+
+    # Use xprop to find these
+    bindsym f [class="(?i)firefox"] focus; mode "default"
+    bindsym t [class="(?i)xterm"] focus; mode "default"
+    bindsym e [class="(?i)emacs"] focus; mode "default"
+    bindsym v [class="(?i)code-oss"] focus; mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+g mode "default"
+}
+
+bindsym $mod+m bar mode toggle
 bar {
     colors {
         background #000000
@@ -124,11 +138,11 @@ bar {
         separator #666666
 
         # class            border  backgr. text
-        focused_workspace  #285577 #285577 #ffffff
+        focused_workspace  #3f51b5 #3f51b5 #ffffff
         active_workspace   #5f676a #5f676a #ffffff
         inactive_workspace #222222 #222222 #888888
-        urgent_workspace   #900000 #900000 #ffffff
-        binding_mode       #900000 #900000 #ffffff
+        urgent_workspace   #e53935 #e53935 #ffffff
+        binding_mode       #00897b #00897b #ffffff
     }
 
     separator_symbol " | "
@@ -141,7 +155,6 @@ bar {
     bindsym button4 nop
     bindsym button5 nop
 }
-bindsym $mod+m bar mode toggle
 
 # Disable mouse focus and switch window on scroll
 focus_follows_mouse no
