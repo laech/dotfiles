@@ -1656,14 +1656,6 @@
         "command": "workbench.action.files.save"
     },
     {
-        "key": "alt+1",
-        "command": "workbench.view.explorer"
-    },
-    {
-        "key": "ctrl+x d",
-        "command": "workbench.view.explorer"
-    },
-    {
         "key": "ctrl+shift+e",
         "command": "-workbench.view.explorer"
     },
@@ -1729,7 +1721,7 @@
         "when": "textInputFocus"
     },
     {
-        "key": "alt+tab",
+        "key": "ctrl+alt+space",
         "command": "workbench.action.toggleSidebarVisibility"
     },
     {
@@ -1910,5 +1902,23 @@
         "key": "ctrl+shift+r",
         "command": "-editor.action.refactor",
         "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+alt+space",
+        "command": "-toggleSuggestionFocus",
+        "when": "suggestWidgetVisible && textInputFocus"
+    },
+    {
+        "key": "ctrl+k e",
+        "command": "-workbench.files.action.focusOpenEditorsView",
+        "when": "workbench.explorer.openEditorsView.active"
+    },
+    {
+        "key": "alt+1",
+        "command": "workbench.files.action.focusFilesExplorer"
+    },
+    {
+        "key": "ctrl+x d",
+        "command": "workbench.files.action.focusFilesExplorer"
     }
 ]
