@@ -198,8 +198,6 @@
 (global-set-key [remap kill-region] 'kill-region-or-line)
 (global-set-key [remap kill-ring-save] 'copy-region-or-line)
 (global-set-key [remap indent-region] 'indent-region-or-buffer)
-;;(global-set-key [remap dabbrev-expand] 'completion-at-point)
-;;(global-set-key [remap complete-symbol] 'completion-at-point)
 (global-set-key [remap isearch-forward-regexp] 'swiper)
 
 (define-key isearch-mode-map (kbd "C-M-s") 'swiper-from-isearch)
@@ -276,7 +274,6 @@
   (define-key mode-specific-map (kbd "p") 'projectile-command-map)
   (define-key search-map (kbd "f") 'projectile-grep))
 
-(add-hook 'haskell-mode-hook 'smartparens-mode)
 (with-eval-after-load 'smartparens
   (require 'smartparens-config))
 
@@ -320,37 +317,36 @@
      (,(kbd "M-S") nil)
      (,(kbd "C-j") nil))))
 
-(with-eval-after-load 'hindent
-
-  (defun hindent-reformat-region-or-buffer ()
-    "Reformat region, or buffer if no region."
-    (interactive)
-    (if (region-active-p)
-        (hindent-reformat-region (region-beginning) (region-end))
-      (hindent-reformat-buffer)))
-
-  (define-key hindent-mode-map [remap indent-region]
-    #'hindent-reformat-region-or-buffer))
-
 (with-eval-after-load 'haskell-mode
   (add-hook 'haskell-mode-hook #'intero-mode)
   (add-hook 'haskell-mode-hook #'hindent-mode)
+  (add-hook 'haskell-mode-hook #'smartparens-mode)
 
   (with-eval-after-load 'intero
     (with-eval-after-load 'flycheck
-      (flycheck-add-next-checker 'intero '(warning . haskell-hlint)))))
+      (flycheck-add-next-checker 'intero '(warning . haskell-hlint))))
+
+  (with-eval-after-load 'hindent
+    (defun hindent-reformat-region-or-buffer ()
+      "Reformat region, or buffer if no region."
+      (interactive)
+      (if (region-active-p)
+          (hindent-reformat-region (region-beginning) (region-end))
+        (hindent-reformat-buffer)))
+
+    (define-key hindent-mode-map [remap indent-region]
+      #'hindent-reformat-region-or-buffer)))
 
 (with-eval-after-load 'rust-mode
+  (with-eval-after-load 'projectile
+    (add-to-list 'projectile-project-root-files "Cargo.toml"))
+
   (add-hook 'racer-mode-hook #'eldoc-mode)
   (add-hook 'racer-mode-hook #'company-mode)
   (add-hook 'rust-mode-hook #'racer-mode)
   (add-hook 'rust-mode-hook #'flycheck-mode)
   (add-hook 'rust-mode-hook #'electric-pair-mode)
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
-
-  (with-eval-after-load 'projectile
-    (add-to-list 'projectile-project-root-files "Cargo.toml"))
-
   (add-hook
    'rust-mode-hook
    (lambda ()
@@ -386,8 +382,8 @@
 (with-eval-after-load 'flyspell
   (setq flyspell-issue-message-flag nil))
 
-(add-hook 'restclient-mode-hook #'company-mode)
 (with-eval-after-load 'restclient
+  (add-hook 'restclient-mode-hook #'company-mode)
   (with-eval-after-load 'company
     (add-to-list 'company-backends 'company-restclient)))
 
