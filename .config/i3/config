@@ -110,7 +110,7 @@ bindsym $mod+Shift+r exec --no-startup-id i3 restart
 bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #607d8b #607d8b #ffffff #2e9ef4   #000000
+client.focused          #6d4c41 #6d4c41 #ffffff #2e9ef4   #000000
 client.focused_inactive #000000 #000000 #ffffff #484e50   #000000
 client.unfocused        #000000 #000000 #888888 #292d2e   #000000
 client.urgent           #e53935 #e53935 #ffffff #900000   #e53935
@@ -138,7 +138,7 @@ bar {
         separator #666666
 
         # class            border  backgr. text
-        focused_workspace  #607d8b #607d8b #ffffff
+        focused_workspace  #6d4c41 #6d4c41 #ffffff
         active_workspace   #5f676a #5f676a #ffffff
         inactive_workspace #222222 #222222 #888888
         urgent_workspace   #e53935 #e53935 #ffffff
