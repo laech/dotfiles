@@ -34,8 +34,8 @@ XTerm.vt100.reverseVideo: false
 XTerm.vt100.translations: #override \n\
   Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
 
-# Compare with gnome-terminal etc to see color differences
-# when setting this to true or false
+! Compare with gnome-terminal etc to see color differences
+! when setting this to true or false
 XTerm.vt100.boldColors: false
 
 #define S_yellow #b58900
