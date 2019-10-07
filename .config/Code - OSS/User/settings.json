@@ -1,7 +1,6 @@
 {
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
-    "editor.fontSize": 16,
     "files.autoSave": "onFocusChange",
     "editor.cursorStyle": "block",
     "editor.cursorBlinking": "solid",
@@ -26,6 +25,7 @@
     "files.insertFinalNewline": true,
     "workbench.statusBar.visible": false,
     "workbench.editor.showTabs": false,
-    "workbench.colorTheme": "Default Light+",
-    "workbench.activityBar.visible": false
+    "workbench.colorTheme": "Solarized Light",
+    "workbench.activityBar.visible": false,
+    "git.confirmSync": false
 }

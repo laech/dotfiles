@@ -20,6 +20,7 @@ bindsym $mod+semicolon exec --no-startup-id \
     -sort \
     -matching fuzzy \
     -show-icons \
+    -font 'monospace 11' \
     -width -80
 
 bindsym Mod4+F12 exec --no-startup-id \
@@ -28,6 +29,7 @@ bindsym Mod4+F12 exec --no-startup-id \
     -sort \
     -matching fuzzy \
     -show-icons \
+    -font 'monospace 11' \
     -width -80
 
 # change focus
