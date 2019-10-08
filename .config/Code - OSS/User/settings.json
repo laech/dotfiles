@@ -18,14 +18,13 @@
     "window.customMenuBarAltFocus": false,
     "window.menuBarVisibility": "toggle",
     "terminal.integrated.copyOnSelection": true,
-    "terminal.integrated.fontSize": 16,
     "editor.lineNumbers": "off",
     "editor.renderIndentGuides": false,
     "diffEditor.ignoreTrimWhitespace": false,
     "files.insertFinalNewline": true,
     "workbench.statusBar.visible": false,
     "workbench.editor.showTabs": false,
-    "workbench.colorTheme": "Solarized Light",
+    "workbench.colorTheme": "Default Light+",
     "workbench.activityBar.visible": false,
     "git.confirmSync": false
 }

@@ -1920,5 +1920,9 @@
     {
         "key": "ctrl+x d",
         "command": "workbench.files.action.focusFilesExplorer"
+    },
+    {
+        "key": "ctrl+alt+m",
+        "command": "workbench.action.toggleCenteredLayout"
     }
 ]

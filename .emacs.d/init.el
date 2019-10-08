@@ -204,7 +204,7 @@
 
 (dolist
     (mapping
-     '(("<S-return>" . start-new-line)
+     '(("<S-RET>" . start-new-line)
        ("C-r" . avy-goto-char)
        ("C-o" . find-file)
        ("C-S-o" . projectile-find-file)
@@ -249,8 +249,8 @@
          ("C-w" . ivy-yank-word)
          ("C-r" . ivy-previous-line-or-history)
          ("C-j" . nil)
-         ("<C-return>" . ivy-immediate-done)
-         ("<return>" . ivy-alt-done)))
+         ("<C-RET>" . ivy-immediate-done)
+         ("<RET>" . ivy-alt-done)))
     (define-key ivy-minibuffer-map (kbd (car mapping)) (cdr mapping))))
 
 (add-hook 'prog-mode-hook #'company-mode)
