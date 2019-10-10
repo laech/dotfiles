@@ -10,7 +10,6 @@
     "files.trimFinalNewlines": true,
     "workbench.enableExperiments": false,
     "workbench.startupEditor": "none",
-    "breadcrumbs.enabled": false,
     "workbench.settings.enableNaturalLanguageSearch": false,
     "zenMode.fullScreen": false,
     "zenMode.restore": true,
@@ -26,5 +25,18 @@
     "workbench.editor.showTabs": false,
     "workbench.colorTheme": "Default Light+",
     "workbench.activityBar.visible": false,
-    "git.confirmSync": false
+    "git.confirmSync": false,
+    "workbench.sideBar.location": "left",
+    "editor.renderControlCharacters": true,
+    "workbench.tree.indent": 16,
+    "workbench.tree.renderIndentGuides": "none",
+    "breadcrumbs.enabled": false,
+    "workbench.editor.centeredLayoutAutoResize": false,
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.editor.mouseBackForwardToNavigate": false,
+    "diffEditor.renderSideBySide": true,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "git.autofetch": true,
+    "git.autofetchPeriod": 300
 }
