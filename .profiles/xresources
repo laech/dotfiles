@@ -27,7 +27,7 @@ XTerm.vt100.faceSize4: 12  ! Medium
 XTerm.vt100.faceSize5: 14  ! Large
 XTerm.vt100.faceSize6: 16  ! Huge
 XTerm.vt100.reverseVideo: false
-XTerm.vt100.allowBoldFonts: false
+XTerm.vt100.allowBoldFonts: true
 
 ! 'showkey -a' to see key codes
 ! 'xev' to see key names
