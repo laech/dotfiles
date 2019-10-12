@@ -192,6 +192,15 @@
 (add-hook 'window-configuration-change-hook (lambda () (my-save-buffer)))
 (add-hook 'focus-out-hook (lambda () (my-save-buffer)))
 
+(setq split-window-preferred-function 'my/split-window-sensibly)
+(defun my/split-window-sensibly (&optional window)
+  "Calls `split-window-sensibly' and switches focus to it.
+This allows the window's key bindings to be used immediate,
+such as typing q to quickly dismiss some documentation windows."
+  (let ((new-window (split-window-sensibly window)))
+    (if (not (active-minibuffer-window))
+        (select-window new-window))))
+
 (define-key ctl-x-map (kbd "g") 'magit-status)
 (define-key ctl-x-map (kbd "C-l") 'downcase-dwim)
 (define-key ctl-x-map (kbd "C-u") 'upcase-dwim)
