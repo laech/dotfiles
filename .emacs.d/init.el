@@ -30,6 +30,7 @@
  '(blink-cursor-mode nil)
  '(delete-by-moving-to-trash t)
  '(delete-selection-mode t)
+ '(eldoc-echo-area-use-multiline-p t)
  '(global-auto-revert-mode t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
@@ -52,15 +53,18 @@
      ("marmalade" . "https://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (flycheck flycheck-rust racer rust-mode htmlize neotree company-restclient restclient swiper expand-region avy smartparens company-flx yaml-mode lsp-ui helm projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent diff-hl)))
+    (tide flycheck flycheck-rust racer rust-mode htmlize neotree company-restclient restclient swiper expand-region avy smartparens company-flx yaml-mode lsp-ui helm projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent diff-hl)))
  '(save-place-mode t)
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
  '(scroll-margin 1)
  '(shift-select-mode nil)
  '(show-paren-mode t)
+ '(tide-completion-ignore-case t)
+ '(tide-format-options (quote (:indentSize 2 :tabSize 2)))
  '(tool-bar-mode nil)
  '(truncate-lines t)
+ '(typescript-indent-level 2)
  '(visible-cursor nil)
  '(visual-line-fringe-indicators (quote (left-curly-arrow right-curly-arrow)))
  '(word-wrap t))
@@ -378,6 +382,28 @@
 
   (define-key rust-mode-map [remap indent-region]
     #'rust-format-buffer))
+
+(with-eval-after-load 'typescript-mode
+  (add-hook
+   'typescript-mode-hook
+   (lambda ()
+     (tide-setup)
+     (flycheck-mode t)
+     (eldoc-mode t)
+     (tide-hl-identifier-mode t)
+     (company-mode t))))
+
+(with-eval-after-load 'tide
+  (define-key search-map "u" #'tide-references)
+  (mapc
+   (lambda (arg) (apply 'define-key tide-mode-map arg))
+   `(([remap indent-region] tide-format)
+     ([remap toggle-input-method] tide-organize-imports)
+     (,(kbd "M-RET RET") tide-fix)
+     (,(kbd "<f2>") tide-rename-symbol)
+     (,(kbd "C-<f2>") tide-rename-file)
+     (,(kbd "C-c r") tide-refactor)
+     (,(kbd "C-h i") tide-documentation-at-point))))
 
 (with-eval-after-load 'flyspell
   (setq flyspell-issue-message-flag nil))
