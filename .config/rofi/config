@@ -1,0 +1,6 @@
+rofi.font: monospace 11
+rofi.width: 30
+rofi.matching: fuzzy
+rofi.show-icons: true
+rofi.sort: true
+rofi.theme: /usr/share/rofi/themes/Pop-Dark.rasi

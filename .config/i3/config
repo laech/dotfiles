@@ -14,23 +14,8 @@ floating_modifier $mod
 bindsym $mod+Return exec ~/.local/bin/term
 bindsym $mod+Shift+Return exec ~/.local/bin/term -rv
 
-bindsym $mod+semicolon exec --no-startup-id \
-    rofi \
-    -show run \
-    -sort \
-    -matching fuzzy \
-    -show-icons \
-    -font 'monospace 11' \
-    -width -80
-
-bindsym Mod4+F12 exec --no-startup-id \
-    rofi \
-    -show run \
-    -sort \
-    -matching fuzzy \
-    -show-icons \
-    -font 'monospace 11' \
-    -width -80
+bindsym $mod+semicolon exec --no-startup-id rofi -show run
+bindsym Mod4+F12 exec --no-startup-id rofi -show run
 
 # change focus
 bindsym $mod+Left    focus left
