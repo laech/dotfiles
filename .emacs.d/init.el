@@ -407,11 +407,11 @@ such as typing q to quickly dismiss some documentation windows."
   (setq
    tide-completion-ignore-case t
    tide-format-options '(:indentSize 2 :tabSize 2))
-  (define-key search-map "u" #'tide-references)
   (mapc
    (lambda (arg) (apply 'define-key tide-mode-map arg))
    `(([remap indent-region] tide-format)
      ([remap toggle-input-method] tide-organize-imports)
+     ([remap xref-find-references] tide-references)
      (,(kbd "M-RET RET") tide-fix)
      (,(kbd "<f2>") tide-rename-symbol)
      (,(kbd "C-<f2>") tide-rename-file)
