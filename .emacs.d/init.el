@@ -61,7 +61,6 @@
  '(shift-select-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil)
- '(truncate-lines t)
  '(visible-cursor nil)
  '(visual-line-fringe-indicators (quote (left-curly-arrow right-curly-arrow)))
  '(word-wrap t))
@@ -180,6 +179,7 @@
 (add-hook 'after-init-hook #'diff-hl-flydiff-mode)
 (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
 
+(add-hook 'prog-mode-hook #'toggle-truncate-lines)
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 (add-hook 'sh-mode-hook #'flycheck-mode) ;; Needs shellcheck to be installed
 
