@@ -57,8 +57,7 @@ bindsym $mod+backslash split h
 bindsym $mod+minus     split v
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+w layout toggle tabbed split
-bindsym $mod+space layout toggle split
+bindsym $mod+space layout toggle tabbed splith splitv stacked
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -112,9 +111,9 @@ bindsym $mod+Shift+r exec --no-startup-id i3 restart
 bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #6d4c41 #6d4c41 #ffffff #2e9ef4   #000000
-client.focused_inactive #000000 #000000 #ffffff #484e50   #000000
-client.unfocused        #000000 #000000 #888888 #292d2e   #000000
+client.focused          #555555 #555555 #ffffff #2e9ef4   #555555
+client.focused_inactive #888888 #888888 #efefef #484e50   #777777
+client.unfocused        #888888 #888888 #cccccc #292d2e   #777777
 client.urgent           #e53935 #e53935 #ffffff #900000   #e53935
 client.placeholder      #0c0c0c #0c0c0c #ffffff #000000   #0c0c0c
 client.background       #ffffff
@@ -135,18 +134,19 @@ mode --pango_markup "$mode_focus" {
 bindsym $mod+m bar mode toggle
 bar {
     colors {
-        background #000000
+        background #555555
         statusline #ffffff
-        separator #666666
+        separator #999999
 
         # class            border  backgr. text
-        focused_workspace  #6d4c41 #6d4c41 #ffffff
-        active_workspace   #5f676a #5f676a #ffffff
-        inactive_workspace #222222 #222222 #888888
+        focused_workspace  #777777 #777777 #ffffff
+        active_workspace   #555555 #555555 #ffffff
+        inactive_workspace #555555 #555555 #888888
         urgent_workspace   #e53935 #e53935 #ffffff
         binding_mode       #00897b #00897b #ffffff
     }
 
+#    position top
     separator_symbol " | "
     status_command i3status
     font pango:sans 8
@@ -173,9 +173,14 @@ bindsym XF86AudioLowerVolume   exec --no-startup-id ~/.local/bin/volume -5
 bindsym XF86AudioMute          exec --no-startup-id ~/.local/bin/volume-mute-toggle
 
 hide_edge_borders both
+default_border pixel 1
+gaps inner 8
+smart_gaps on
+smart_borders on
 
 # See https://i3wm.org/docs/userguide.html#command_criteria
 # Inspect with xprop
+for_window [class=".*"] title_format " %title"
 for_window [title="Volume Control"] floating enable border normal
 for_window [class="jetbrains-idea-ce"] floating disable
 for_window [window_role="GtkFileChooserDialog"] floating disable
@@ -195,6 +200,9 @@ exec systemd-run --user \
      --timer-property=OnCalendar=minutely \
      --unit=i3-notify-battery-low \
      ~/.local/bin/i3-notify-battery-low
+
+exec hsetroot -solid '#aaaaaa'
+exec compton -b
 
 exec_always --no-startup-id xrdb -merge -I"${HOME}" ~/.Xresources
 exec_always --no-startup-id find ~/.profiles/default/init/ -name '*.sh' -exec {} \;

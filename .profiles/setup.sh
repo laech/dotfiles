@@ -24,7 +24,7 @@ readonly profile=${profile:?"'$profile_base' or '$profile_fruit' or '$profile_no
 
 packages=(
 
-    i3-wm
+    i3-gaps
     i3lock
     i3status
     xorg-server
@@ -77,6 +77,7 @@ packages=(
     smartmontools
 
     compton
+    hsetroot
 
     ibus
     ibus-libpinyin
