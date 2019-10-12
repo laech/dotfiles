@@ -60,11 +60,8 @@
  '(scroll-margin 1)
  '(shift-select-mode nil)
  '(show-paren-mode t)
- '(tide-completion-ignore-case t)
- '(tide-format-options (quote (:indentSize 2 :tabSize 2)))
  '(tool-bar-mode nil)
  '(truncate-lines t)
- '(typescript-indent-level 2)
  '(visible-cursor nil)
  '(visual-line-fringe-indicators (quote (left-curly-arrow right-curly-arrow)))
  '(word-wrap t))
@@ -230,12 +227,15 @@
   (global-set-key (kbd (car mapping)) (cdr mapping)))
 
 (with-eval-after-load 'expand-region
-  (setq expand-region-fast-keys-enabled nil)
-  (setq expand-region-smart-cursor t))
+  (setq
+   expand-region-fast-keys-enabled nil
+   expand-region-smart-cursor t))
 
 (with-eval-after-load 'lsp-ui
-  (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
-  (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references))
+  (mapc
+   (lambda (arg) (apply 'define-key lsu-ui-mode-map arg))
+   `(([remap xref-find-definitions] lsp-ui-peek-find-definitions)
+     ([remap xref-find-references] lsp-ui-peek-find-references))))
 
 (add-hook 'after-init-hook #'ivy-mode)
 (add-hook 'after-init-hook #'counsel-mode)
@@ -384,6 +384,7 @@
     #'rust-format-buffer))
 
 (with-eval-after-load 'typescript-mode
+  (setq typescript-indent-level 2)
   (add-hook
    'typescript-mode-hook
    (lambda ()
@@ -394,6 +395,9 @@
      (company-mode t))))
 
 (with-eval-after-load 'tide
+  (setq
+   tide-completion-ignore-case t
+   tide-format-options '(:indentSize 2 :tabSize 2))
   (define-key search-map "u" #'tide-references)
   (mapc
    (lambda (arg) (apply 'define-key tide-mode-map arg))
