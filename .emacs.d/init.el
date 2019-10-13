@@ -1,8 +1,10 @@
+;; -*- flycheck-disabled-checkers: (emacs-lisp-checkdoc); -*-
+
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
-(setq
+(setq-default
  default-frame-alist
  '((internal-border-width . 0)
    (font . "Monospace-11")))
@@ -12,7 +14,7 @@
 ;; detection fails (no support for TERM set to screen, screen-256color
 ;; etc), so force it to be light (or black to match terminal theme).
 (if (string-prefix-p "screen-" (getenv "TERM"))
-    (setq frame-background-mode 'light))
+    (setq-default frame-background-mode 'light))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -30,10 +32,10 @@
  '(blink-cursor-mode nil)
  '(delete-by-moving-to-trash t)
  '(delete-selection-mode t)
- '(eldoc-echo-area-use-multiline-p t)
  '(global-auto-revert-mode t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
+ '(line-number-mode nil)
  '(mode-require-final-newline nil)
  '(mouse-wheel-flip-direction t)
  '(mouse-wheel-progressive-speed nil)
@@ -53,7 +55,11 @@
      ("marmalade" . "https://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (tide flycheck flycheck-rust racer rust-mode htmlize neotree company-restclient restclient swiper expand-region avy smartparens company-flx yaml-mode lsp-ui helm projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent diff-hl)))
+    (diminish tide flycheck flycheck-rust racer rust-mode htmlize neotree company-restclient restclient swiper expand-region avy smartparens company-flx yaml-mode lsp-ui helm projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent diff-hl)))
+ '(safe-local-variable-values
+   (quote
+    ((flycheck-disabled-checkers quote
+                                 (emacs-lisp-checkdoc)))))
  '(save-place-mode t)
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
@@ -64,6 +70,19 @@
  '(visible-cursor nil)
  '(visual-line-fringe-indicators (quote (left-curly-arrow right-curly-arrow)))
  '(word-wrap t))
+
+(setq-default
+ mode-line-percent-position nil
+ mode-line-mule-info nil
+ mode-line-remote nil
+ mode-line-frame-identification nil
+ mode-line-front-space nil
+ mode-line-end-spaces nil
+ mode-line-modified
+ '(:eval
+   (cond ((buffer-modified-p)
+          (propertize " * " 'face 'mode-line-modified-face))
+         (t "   "))))
 
 (package-initialize)
 (unless package-archive-contents
@@ -140,7 +159,7 @@
     (kill-whole-line)
     (yank)
     (dotimes (i n) (yank))
-    (previous-line)))
+    (forward-line -1)))
 
 (defun duplicate-region-or-line (n)
   "Duplicate region, otherwise duplicate line if no region is active."
@@ -172,8 +191,23 @@
     (setq-default mode-line-format initial-mode-line-format)
     (set-frame-parameter nil 'bottom-divider-width 0)))
 
+(add-hook 'after-init-hook (lambda () (require 'diminish)))
+
+(add-hook 'after-init-hook #'global-eldoc-mode)
+(with-eval-after-load 'eldoc
+  (setq-default eldoc-echo-area-use-multiline-p t)
+  (with-eval-after-load 'diminish
+    (diminish 'eldoc-mode)))
+
 (add-hook 'after-init-hook #'global-undo-tree-mode)
+(with-eval-after-load 'undo-tree
+  (with-eval-after-load 'diminish
+    (diminish 'undo-tree-mode)))
+
 (add-hook 'after-init-hook #'which-key-mode)
+(with-eval-after-load 'which-key
+  (with-eval-after-load 'diminish
+    (diminish 'which-key-mode)))
 
 (add-hook 'after-init-hook #'global-diff-hl-mode)
 (add-hook 'after-init-hook #'diff-hl-flydiff-mode)
@@ -181,9 +215,8 @@
 
 (add-hook 'prog-mode-hook #'toggle-truncate-lines)
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
-(add-hook 'sh-mode-hook #'flycheck-mode) ;; Needs shellcheck to be installed
 
-(setq my-save-buffer-in-progress nil)
+(defvar my-save-buffer-in-progress nil)
 (defun my-save-buffer ()
   (unless my-save-buffer-in-progress
     (setq my-save-buffer-in-progress t)
@@ -192,7 +225,7 @@
 (add-hook 'window-configuration-change-hook (lambda () (my-save-buffer)))
 (add-hook 'focus-out-hook (lambda () (my-save-buffer)))
 
-(setq split-window-preferred-function 'my/split-window-sensibly)
+(setq-default split-window-preferred-function 'my/split-window-sensibly)
 (defun my/split-window-sensibly (&optional window)
   "Calls `split-window-sensibly' and switches focus to it.
 This allows the window's key bindings to be used immediate,
@@ -246,10 +279,16 @@ such as typing q to quickly dismiss some documentation windows."
    `(([remap xref-find-definitions] lsp-ui-peek-find-definitions)
      ([remap xref-find-references] lsp-ui-peek-find-references))))
 
-(add-hook 'after-init-hook #'ivy-mode)
 (add-hook 'after-init-hook #'counsel-mode)
+(with-eval-after-load 'counsel
+  (with-eval-after-load 'diminish
+    (diminish 'counsel-mode)))
+
+(add-hook 'after-init-hook #'ivy-mode)
 (with-eval-after-load 'ivy
-  (setq
+  (with-eval-after-load 'diminish
+    (diminish 'ivy-mode))
+  (setq-default
    ivy-extra-directories nil
    ivy-use-virtual-buffers t
    ivy-initial-inputs-alist nil
@@ -266,9 +305,13 @@ such as typing q to quickly dismiss some documentation windows."
          ("<RET>" . ivy-alt-done)))
     (define-key ivy-minibuffer-map (kbd (car mapping)) (cdr mapping))))
 
-(add-hook 'prog-mode-hook #'company-mode)
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+(add-hook 'after-init-hook #'global-company-mode)
 (with-eval-after-load 'company
-  (setq
+  (with-eval-after-load 'diminish
+    (diminish 'company-mode))
+  (setq-default
    company-idle-delay 0.5
    company-tooltip-idle-delay 0)
   (company-flx-mode)
@@ -284,6 +327,8 @@ such as typing q to quickly dismiss some documentation windows."
 
 (add-hook 'after-init-hook #'projectile-mode)
 (with-eval-after-load 'projectile
+  (with-eval-after-load 'diminish
+    (diminish 'projectile-mode))
   (define-key mode-specific-map (kbd "p") 'projectile-command-map)
   (define-key search-map (kbd "f") 'projectile-grep))
 
@@ -297,6 +342,8 @@ such as typing q to quickly dismiss some documentation windows."
 (add-hook 'lisp-mode-hook #'enable-paredit-mode)
 (add-hook 'scheme-mode-hook #'enable-paredit-mode)
 (with-eval-after-load 'paredit
+  (with-eval-after-load 'diminish
+    (diminish 'paredit-mode))
 
   (defun transpose-sexps-reverse (arg)
     (interactive "*p")
@@ -354,10 +401,7 @@ such as typing q to quickly dismiss some documentation windows."
   (with-eval-after-load 'projectile
     (add-to-list 'projectile-project-root-files "Cargo.toml"))
 
-  (add-hook 'racer-mode-hook #'eldoc-mode)
-  (add-hook 'racer-mode-hook #'company-mode)
   (add-hook 'rust-mode-hook #'racer-mode)
-  (add-hook 'rust-mode-hook #'flycheck-mode)
   (add-hook 'rust-mode-hook #'electric-pair-mode)
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
   (add-hook
@@ -393,18 +437,17 @@ such as typing q to quickly dismiss some documentation windows."
     #'rust-format-buffer))
 
 (with-eval-after-load 'typescript-mode
-  (setq typescript-indent-level 2)
+  (setq-default typescript-indent-level 2)
   (add-hook
    'typescript-mode-hook
    (lambda ()
      (tide-setup)
-     (flycheck-mode t)
-     (eldoc-mode t)
-     (tide-hl-identifier-mode t)
-     (company-mode t))))
+     (tide-hl-identifier-mode t))))
 
 (with-eval-after-load 'tide
-  (setq
+  (with-eval-after-load 'diminish
+    (diminish 'tide-mode))
+  (setq-default
    tide-completion-ignore-case t
    tide-format-options '(:indentSize 2 :tabSize 2))
   (mapc
@@ -419,10 +462,9 @@ such as typing q to quickly dismiss some documentation windows."
      (,(kbd "C-h i") tide-documentation-at-point))))
 
 (with-eval-after-load 'flyspell
-  (setq flyspell-issue-message-flag nil))
+  (setq-default flyspell-issue-message-flag nil))
 
 (with-eval-after-load 'restclient
-  (add-hook 'restclient-mode-hook #'company-mode)
   (with-eval-after-load 'company
     (add-to-list 'company-backends 'company-restclient)))
 
@@ -453,12 +495,12 @@ such as typing q to quickly dismiss some documentation windows."
 
 (global-set-key (kbd "M-1") 'neotree-project-dir)
 (with-eval-after-load 'neotree
-  (setq
+  (setq-default
    neo-autorefresh nil
    neo-show-hidden-files t
    neo-theme 'ascii)
   (if (display-graphic-p)
-      (setq neo-mode-line-type 'none)))
+      (setq-default neo-mode-line-type 'none)))
 
 (unless (display-graphic-p)
   (xterm-mouse-mode)
