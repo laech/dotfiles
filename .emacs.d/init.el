@@ -241,9 +241,6 @@ such as typing q to quickly dismiss some documentation windows."
 (global-set-key [remap kill-region] 'kill-region-or-line)
 (global-set-key [remap kill-ring-save] 'copy-region-or-line)
 (global-set-key [remap indent-region] 'indent-region-or-buffer)
-(global-set-key [remap isearch-forward-regexp] 'swiper)
-
-(define-key isearch-mode-map (kbd "C-M-s") 'swiper-from-isearch)
 
 (dolist
     (mapping
@@ -268,6 +265,10 @@ such as typing q to quickly dismiss some documentation windows."
        ("M-T" . transpose-words-backward)))
   (global-set-key (kbd (car mapping)) (cdr mapping)))
 
+(with-eval-after-load 'isearch
+  (with-eval-after-load 'diminish
+    (diminish 'isearch-mode)))
+
 (with-eval-after-load 'expand-region
   (setq
    expand-region-fast-keys-enabled nil
@@ -283,6 +284,11 @@ such as typing q to quickly dismiss some documentation windows."
 (with-eval-after-load 'counsel
   (with-eval-after-load 'diminish
     (diminish 'counsel-mode)))
+
+(with-eval-after-load 'swiper
+  (with-eval-after-load 'isearch
+    (global-set-key [remap isearch-forward-regexp] 'swiper)
+    (define-key isearch-mode-map (kbd "C-M-s") 'swiper-from-isearch)))
 
 (add-hook 'after-init-hook #'ivy-mode)
 (with-eval-after-load 'ivy
