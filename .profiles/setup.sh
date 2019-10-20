@@ -56,6 +56,7 @@ packages=(
     ttf-dejavu
     ttf-liberation
     ttf-ubuntu-font-family
+    ttf-fantasque-sans-mono
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
