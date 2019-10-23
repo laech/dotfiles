@@ -7,7 +7,7 @@
 (setq-default
  default-frame-alist
  '((internal-border-width . 0)
-   (font . "Monospace-11")))
+   (font . "Monospace-12")))
 
 ;; By default Emacs automatically detects background color and sets
 ;; background mode automaticall, but when running inside tmux this
