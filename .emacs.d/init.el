@@ -33,6 +33,7 @@
  '(delete-by-moving-to-trash t)
  '(delete-selection-mode t)
  '(global-auto-revert-mode t)
+ '(help-window-select t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(line-number-mode nil)
@@ -51,14 +52,14 @@
    (quote
     (("gnu" . "https://elpa.gnu.org/packages/")
      ("melpa-stable" . "https://stable.melpa.org/packages/")
-     ("melpa-unstable" . "https://melpa.org/packages/")
-     ("marmalade" . "https://marmalade-repo.org/packages/"))))
+     ("melpa-unstable" . "https://melpa.org/packages/"))))
  '(package-selected-packages
    (quote
     (helm-lsp yasnippet flycheck-rust rust-mode company-lsp diminish tide flycheck htmlize neotree company-restclient restclient swiper expand-region avy smartparens company-flx yaml-mode helm projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent diff-hl)))
  '(safe-local-variable-values
    (quote
-    ((flycheck-disabled-checkers quote
+    ((flycheck-disabled-checkers emacs-lisp-checkdoc)
+     (flycheck-disabled-checkers quote
                                  (emacs-lisp-checkdoc)))))
  '(save-place-mode t)
  '(scroll-bar-mode nil)
@@ -181,6 +182,12 @@
   (interactive "*")
   (join-line -1))
 
+(defun my/find-file ()
+  (interactive)
+  (if (string= nil (projectile-project-root))
+      (counsel-find-file)
+    (projectile-find-file)))
+
 (defconst initial-mode-line-format mode-line-format)
 (defun toggle-mode-line ()
   (interactive)
@@ -209,6 +216,9 @@
   (with-eval-after-load 'diminish
     (diminish 'which-key-mode)))
 
+(with-eval-after-load 'view
+  (define-key view-mode-map (kbd "C-j") nil))
+
 (add-hook 'after-init-hook #'global-diff-hl-mode)
 (add-hook 'after-init-hook #'diff-hl-flydiff-mode)
 (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
@@ -225,15 +235,6 @@
 (add-hook 'window-configuration-change-hook (lambda () (my-save-buffer)))
 (add-hook 'focus-out-hook (lambda () (my-save-buffer)))
 
-(setq-default split-window-preferred-function 'my/split-window-sensibly)
-(defun my/split-window-sensibly (&optional window)
-  "Calls `split-window-sensibly' and switches focus to it.
-This allows the window's key bindings to be used immediate,
-such as typing q to quickly dismiss some documentation windows."
-  (let ((new-window (split-window-sensibly window)))
-    (if (not (active-minibuffer-window))
-        (select-window new-window))))
-
 (define-key ctl-x-map (kbd "g") 'magit-status)
 (define-key ctl-x-map (kbd "C-l") 'downcase-dwim)
 (define-key ctl-x-map (kbd "C-u") 'upcase-dwim)
@@ -246,8 +247,8 @@ such as typing q to quickly dismiss some documentation windows."
     (mapping
      '(("<S-RET>" . start-new-line)
        ("C-r" . avy-goto-char)
-       ("C-o" . find-file)
-       ("C-S-o" . projectile-find-file)
+       ("C-o" . my/find-file)
+       ("C-S-o" . find-file)
        ("C-M-o" . xref-find-apropos)
        ("M-o" . imenu)
        ("M-D" . duplicate-region-or-line)
