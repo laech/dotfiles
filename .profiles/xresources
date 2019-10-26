@@ -33,7 +33,8 @@ XTerm.vt100.allowBoldFonts: true
 ! 'xev' to see key names
 ! See https://www.in-ulm.de/~mascheck/X11/xterm/XTerm
 XTerm.vt100.translations: #override \n\
-Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
+  Ctrl Shift <Key>V: insert-selection(CLIPBOARD) \n\
+  Alt <Key>Return:
 
 ! Compare with gnome-terminal etc to see color differences
 ! when setting this to true or false
