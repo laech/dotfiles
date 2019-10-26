@@ -24,7 +24,7 @@ readonly profile=${profile:?"'$profile_base' or '$profile_fruit' or '$profile_no
 
 packages=(
 
-    i3-gaps
+    i3-wm
     i3lock
     i3status
     xorg-server
