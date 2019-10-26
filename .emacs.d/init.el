@@ -55,7 +55,7 @@
      ("marmalade" . "https://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (diminish tide flycheck flycheck-rust racer rust-mode htmlize neotree company-restclient restclient swiper expand-region avy smartparens company-flx yaml-mode lsp-ui helm projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent diff-hl)))
+    (helm-lsp yasnippet flycheck-rust rust-mode company-lsp diminish tide flycheck htmlize neotree company-restclient restclient swiper expand-region avy smartparens company-flx yaml-mode helm projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent diff-hl)))
  '(safe-local-variable-values
    (quote
     ((flycheck-disabled-checkers quote
@@ -274,11 +274,21 @@ such as typing q to quickly dismiss some documentation windows."
    expand-region-fast-keys-enabled nil
    expand-region-smart-cursor t))
 
-(with-eval-after-load 'lsp-ui
+(with-eval-after-load 'lsp-mode
+  (setq-default lsp-prefer-flymake nil)
+  (require 'company-lsp)
+  (push 'company-lsp company-backends)
   (mapc
-   (lambda (arg) (apply 'define-key lsu-ui-mode-map arg))
-   `(([remap xref-find-definitions] lsp-ui-peek-find-definitions)
-     ([remap xref-find-references] lsp-ui-peek-find-references))))
+   (lambda (arg) (apply 'define-key lsp-mode-map arg))
+   `(([remap xref-find-definitions] lsp-find-definition)
+     ([remap xref-find-references] lsp-find-references)
+     ([remap xref-find-apropos] helm-lsp-workspace-symbol)
+     (,(kbd "M-'") lsp-execute-code-action)
+     (,(kbd "C-\\") lsp-organize-imports)
+     (,(kbd "C-h i") lsp-describe-thing-at-point)
+     (,(kbd "C-c r r") lsp-rename)
+     (,(kbd "M-g . i") lsp-goto-implementation)
+     (,(kbd "M-g . t") lsp-goto-type-definition))))
 
 (add-hook 'after-init-hook #'counsel-mode)
 (with-eval-after-load 'counsel
@@ -403,41 +413,21 @@ such as typing q to quickly dismiss some documentation windows."
     (define-key hindent-mode-map [remap indent-region]
       #'hindent-reformat-region-or-buffer)))
 
+(with-eval-after-load 'yasnippet
+  (with-eval-after-load 'diminish
+    (diminish 'yas-minor-mode)))
+
 (with-eval-after-load 'rust-mode
   (with-eval-after-load 'projectile
     (add-to-list 'projectile-project-root-files "Cargo.toml"))
 
-  (add-hook 'rust-mode-hook #'racer-mode)
-  (add-hook 'rust-mode-hook #'electric-pair-mode)
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
   (add-hook
    'rust-mode-hook
    (lambda ()
-     (let ((project-root (projectile-project-root)))
-       (when project-root
-         (let ((xs (mapcar
-                    (lambda (dir)
-                      (concat (file-name-as-directory dir)
-                              "rusty-tags.emacs"))
-                    (list project-root (getenv "RUST_SRC_PATH")))))
-           (setq-local tags-table-list xs))))))
-
-  (defun rusty-tags ()
-    (interactive)
-    (let ((project-root (projectile-project-root)))
-      (when project-root
-        (let ((default-directory project-root))
-          (shell-command "rusty-tags emacs &")))))
-
-  (require 'subr-x)
-  (setenv
-   "RUST_SRC_PATH"
-   (concat
-    (string-trim (shell-command-to-string "rustc --print sysroot"))
-    "/lib/rustlib/src/rust/src"))
-
-  (with-eval-after-load 'racer
-    (define-key racer-mode-map (kbd "C-h i") #'racer-describe))
+     (yas-minor-mode t)
+     (electric-pair-mode t)
+     (lsp-deferred)))
 
   (define-key rust-mode-map [remap indent-region]
     #'rust-format-buffer))
