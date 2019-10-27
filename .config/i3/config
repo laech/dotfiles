@@ -183,7 +183,6 @@ exec systemd-run --user \
      ~/.local/bin/i3-notify-battery-low
 
 exec hsetroot -solid '#aaaaaa'
-exec compton -b
 
 exec_always --no-startup-id xrdb -merge -I"${HOME}" ~/.Xresources
 exec_always --no-startup-id find ~/.profiles/default/init/ -name '*.sh' -exec {} \;
