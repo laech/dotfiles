@@ -246,6 +246,7 @@
 (dolist
     (mapping
      '(("<S-RET>" . start-new-line)
+       ("<S-return>" . start-new-line)
        ("C-r" . avy-goto-char)
        ("C-o" . my/find-file)
        ("C-S-o" . find-file)

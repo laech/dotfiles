@@ -568,7 +568,9 @@
     <keyboard-shortcut first-keystroke="ctrl comma" />
   </action>
   <action id="ShowSettingsAndFindUsages" />
-  <action id="ShowUsages" />
+  <action id="ShowUsages">
+    <keyboard-shortcut first-keystroke="shift alt slash" />
+  </action>
   <action id="SmartStepInto" />
   <action id="SmartTypeCompletion" />
   <action id="Stop" />
