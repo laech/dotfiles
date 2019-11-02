@@ -509,19 +509,39 @@
 
 (defun auto-center-windows ()
 
+  (defun my/which-key-window-p (window)
+    "Returns t if window is a which-key window."
+    (and (boundp 'which-key--buffer)
+         (eq (window-buffer window) which-key--buffer)))
+
+  (defun my/lv-window-p (window)
+    "Returns t if window is a lv (used by hydra) window."
+    (and (boundp 'lv-wnd)
+         (eq window lv-wnd)))
+
+  (defun my/window-pixels-per-column (window)
+    "Returns number of pixels per column (char)."
+    (/ (window-pixel-width window) (window-total-width window)))
+
+  (defun my/window-preferred-columns (window)
+    ;; For windows like which-key, lv, let them use more than
+    ;; 80 columns but will still center them.
+    (if (or (my/which-key-window-p window)
+            (my/lv-window-p window))
+        (/ (car (window-text-pixel-size
+                 window nil nil (window-pixel-width window)))
+           (my/window-pixels-per-column window))
+      80))
+
   (defun center-window (window triggered-by-size-change)
-    (when (and (not (eq (window-buffer window) which-key--buffer))
-               (fboundp 'window-pixel-width-before-size-change))
-
-      (when (or (not triggered-by-size-change)
-                (/= (window-pixel-width-before-size-change window)
-                    (window-pixel-width window)))
-
-        (let* ((width (+ (window-width window)
-                         (or (car (window-margins window)) 0)
-                         (or (cdr (window-margins window)) 0)))
-               (margin (max 0 (/ (- width 80) 2))))
-          (set-window-margins window margin)))))
+    (when (or (not triggered-by-size-change)
+              (/= (window-pixel-width-before-size-change window)
+                  (window-pixel-width window)))
+      (set-window-margins
+       window
+       (max 0 (/ (- (window-total-width window)
+                    (my/window-preferred-columns window))
+                 2)))))
 
   (defun center-windows (triggered-by-size-change &optional frame)
     (walk-windows
