@@ -38,5 +38,6 @@
     "diffEditor.renderSideBySide": true,
     "typescript.updateImportsOnFileMove.enabled": "always",
     "git.autofetch": true,
-    "git.autofetchPeriod": 300
+    "git.autofetchPeriod": 300,
+    "explorer.confirmDelete": false
 }
