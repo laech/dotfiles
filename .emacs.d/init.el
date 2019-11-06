@@ -520,18 +520,30 @@
     (and (boundp 'lv-wnd)
          (eq window lv-wnd)))
 
-  (defun my/window-pixels-per-column (window)
-    "Returns number of pixels per column (char)."
-    (/ (window-pixel-width window) (window-total-width window)))
+  (defun my/window-char-pixels (window)
+    (frame-char-width (window-frame window)))
 
-  (defun my/window-preferred-columns (window)
+  (defun my/window-fringe-columns (window)
+    (let ((fringes (window-fringes window)))
+      (ceiling (+ (car fringes)
+                  (cadr fringes))
+               (my/window-char-pixels window))))
+
+  (defun my/window-scroll-bar-columns (window)
+    (ceiling (window-scroll-bar-width window)
+             (my/window-char-pixels window)))
+
+  (defun my/window-body-preferred-columns (window)
     ;; For windows like which-key, lv, let them use more than
     ;; 80 columns but will still center them.
     (if (or (my/which-key-window-p window)
             (my/lv-window-p window))
         (/ (car (window-text-pixel-size
-                 window nil nil (window-pixel-width window)))
-           (my/window-pixels-per-column window))
+                 window nil nil (* (- (window-total-width window)
+                                      (my/window-fringe-columns window)
+                                      (my/window-scroll-bar-columns window))
+                                   (frame-char-width (window-frame window)))))
+           (my/window-char-pixels window)) ;; TODO current char width
       80))
 
   (defun center-window (window triggered-by-size-change)
@@ -541,8 +553,13 @@
       (set-window-margins
        window
        (max 0 (/ (- (window-total-width window)
-                    (my/window-preferred-columns window))
-                 2)))))
+                    (fringe-columns 'left)
+                    (fringe-columns 'right)
+                    (scroll-bar-columns 'left)
+                    (scroll-bar-columns 'right)
+                    (my/window-body-preferred-columns window))
+                 2))
+       nil)))
 
   (defun center-windows (triggered-by-size-change &optional frame)
     (walk-windows
