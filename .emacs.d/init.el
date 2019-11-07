@@ -37,6 +37,7 @@
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(line-number-mode nil)
+ '(line-spacing 0.3)
  '(make-backup-files nil)
  '(mode-require-final-newline nil)
  '(mouse-wheel-flip-direction t)
