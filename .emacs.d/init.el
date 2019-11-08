@@ -1,4 +1,4 @@
-;; -*- flycheck-disabled-checkers: (emacs-lisp-checkdoc); -*-
+;; -*- flycheck-disabled-checkers: (emacs-lisp-checkdoc emacs-lisp); -*-
 
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
@@ -58,11 +58,6 @@
  '(package-selected-packages
    (quote
     (helm-lsp yasnippet flycheck-rust rust-mode company-lsp diminish tide flycheck htmlize neotree company-restclient restclient swiper expand-region avy smartparens company-flx yaml-mode helm projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent diff-hl)))
- '(safe-local-variable-values
-   (quote
-    ((flycheck-disabled-checkers emacs-lisp-checkdoc)
-     (flycheck-disabled-checkers quote
-                                 (emacs-lisp-checkdoc)))))
  '(save-place-mode t)
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
@@ -510,77 +505,6 @@
 (if (display-graphic-p)
     (toggle-mode-line))
 
-(defun auto-center-windows ()
-
-  (defun my/which-key-window-p (window)
-    "Returns t if window is a which-key window."
-    (and (boundp 'which-key--buffer)
-         (eq (window-buffer window) which-key--buffer)))
-
-  (defun my/lv-window-p (window)
-    "Returns t if window is a lv (used by hydra) window."
-    (and (boundp 'lv-wnd)
-         (eq window lv-wnd)))
-
-  (defun my/window-char-pixels (window)
-    (frame-char-width (window-frame window)))
-
-  (defun my/window-fringe-columns (window)
-    (let ((fringes (window-fringes window)))
-      (ceiling (+ (car fringes)
-                  (cadr fringes))
-               (my/window-char-pixels window))))
-
-  (defun my/window-scroll-bar-columns (window)
-    (ceiling (window-scroll-bar-width window)
-             (my/window-char-pixels window)))
-
-  (defun my/window-body-preferred-columns (window)
-    ;; For windows like which-key, lv, let them use more than
-    ;; 80 columns but will still center them.
-    (if (or (my/which-key-window-p window)
-            (my/lv-window-p window))
-        (/ (car (window-text-pixel-size
-                 window nil nil (* (- (window-total-width window)
-                                      (my/window-fringe-columns window)
-                                      (my/window-scroll-bar-columns window))
-                                   (frame-char-width (window-frame window)))))
-           (my/window-char-pixels window)) ;; TODO current char width
-      80))
-
-  (defun center-window (window triggered-by-size-change)
-    (when (or (not triggered-by-size-change)
-              (/= (window-pixel-width-before-size-change window)
-                  (window-pixel-width window)))
-      (set-window-margins
-       window
-       (max 0 (/ (- (window-total-width window)
-                    (fringe-columns 'left)
-                    (fringe-columns 'right)
-                    (scroll-bar-columns 'left)
-                    (scroll-bar-columns 'right)
-                    (my/window-body-preferred-columns window))
-                 2))
-       nil)))
-
-  (defun center-windows (triggered-by-size-change &optional frame)
-    (walk-windows
-     (lambda (window)
-       (center-window window triggered-by-size-change))
-     t
-     frame))
-
-  (add-hook
-   'window-size-change-functions
-   (lambda (frame)
-     (center-windows t frame)))
-
-  (add-hook
-   'window-configuration-change-hook
-   (lambda ()
-     (center-windows nil))))
-
-(auto-center-windows)
-
 (load "~/.emacs.d/blog.el")
-
+(load "~/.emacs.d/centered-layout.el")
+(centered-layout-mode t)
