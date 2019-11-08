@@ -42,22 +42,6 @@ Otherwise set right margin to 0, allowing text to flow to far right."
   (and (boundp 'lv-wnd)
        (eq window lv-wnd)))
 
-(defun centered-layout--window-char-pixels (window)
-  "Return number of pixel per character for WINDOW."
-  (frame-char-width (window-frame window)))
-
-(defun centered-layout--window-fringe-columns (window)
-  "Return fringe width in columns for WINDOW."
-  (let ((fringes (window-fringes window)))
-    (ceiling (+ (car fringes)
-                (cadr fringes))
-             (centered-layout--window-char-pixels window))))
-
-(defun centered-layout--window-scroll-bar-columns (window)
-  "Return scroll bar width in columns for WINDOW."
-  (ceiling (window-scroll-bar-width window)
-           (centered-layout--window-char-pixels window)))
-
 (defun centered-layout--window-body-preferred-columns (window)
   "Return preferred body width for WINDOW.
 For special windows like which-key, lv, allow them to use more than
@@ -68,18 +52,11 @@ For special windows like which-key, lv, allow them to use more than
                window
                nil
                nil
-               (* (- (window-total-width window)
-                     (centered-layout--window-fringe-columns window)
-                     (centered-layout--window-scroll-bar-columns window))
-                  (frame-char-width (window-frame window)))))
-         (centered-layout--window-char-pixels window)) ;; TODO current char width
+               (- (window-pixel-width window)
+                  (window-scroll-bar-width window)
+                  (frame-fringe-width (window-frame window)))))
+         (window-font-width window))
     centered-layout-columns))
-
-(defmacro measure-time (&rest body)
-  "Measure the time it takes to evaluate BODY."
-  `(let ((time (current-time)))
-     ,@body
-     (message "%.06f" (float-time (time-since time)))))
 
 (defun centered-layout--update-window (window)
   "Update margins for WINDOW.
@@ -87,12 +64,12 @@ If FORCE, force update, otherwise only update if window size has
 changed."
   (set-window-margins
    window
-   (max 0 (/ (- (window-total-width window)
-                (fringe-columns 'left)
-                (fringe-columns 'right)
-                (scroll-bar-columns 'left)
-                (scroll-bar-columns 'right)
-                (centered-layout--window-body-preferred-columns window))
+   (max 0 (/ (- (window-pixel-width window)
+                (window-scroll-bar-width window)
+                (frame-fringe-width (window-frame window))
+                (* (window-font-width window)
+                   (centered-layout--window-body-preferred-columns window)))
+             (frame-char-width (window-frame window))
              2))
    nil))
 
@@ -117,8 +94,8 @@ changed."
     (centered-layout--update-frame))
    (t
     (remove-hook 'window-size-change-functions 'centered-layout--update-frame)
-    (remove-hook 'window-configuration-change-hook 'centered-layout--update-frame))
-   (walk-windows (lambda (window) (set-window-margins window 0 0)) t)))
+    (remove-hook 'window-configuration-change-hook 'centered-layout--update-frame)
+    (walk-windows (lambda (window) (set-window-margins window 0 0)) t))))
 
 (provide 'centered-layout)
 
