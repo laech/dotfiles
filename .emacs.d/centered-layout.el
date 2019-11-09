@@ -121,10 +121,12 @@ Adds EXTRA-FREE-PIXELS into the calculation."
    (centered-layout-mode
     (add-hook 'window-size-change-functions 'centered-layout--update-frame)
     (add-hook 'window-configuration-change-hook 'centered-layout--update-frame)
+    (add-hook 'text-scale-mode-hook 'centered-layout--update-frame)
     (centered-layout--update-frame))
    (t
     (remove-hook 'window-size-change-functions 'centered-layout--update-frame)
     (remove-hook 'window-configuration-change-hook 'centered-layout--update-frame)
+    (remove-hook 'text-scale-mode-hook 'centered-layout--update-frame)
     (walk-windows (lambda (window) (set-window-margins window 0 0)) t))))
 
 (provide 'centered-layout)
