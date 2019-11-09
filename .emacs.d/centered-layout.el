@@ -116,8 +116,6 @@ Adds EXTRA-FREE-PIXELS into the calculation."
 
 (define-minor-mode centered-layout-mode
   "Toggle centered layout mode."
-  :init-value nil
-  :lighter " Centered-Layout"
   :global t
   (cond
    (centered-layout-mode
