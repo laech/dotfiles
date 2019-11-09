@@ -80,11 +80,11 @@ Adds EXTRA-FREE-PIXELS into the calculation."
 (defun centered-layout--compute-margins (window)
   "Compute (LEFT-MARGIN . RIGHT_MARGIN) for WINDOW."
   (let* (
-         ;; `window-left-column' is needed to ensure `window-left'
+         ;; `window-left-column' is needed to ensure `window-prev-sibling'
          ;; will return a window to the left, otherwise a window above
          ;; can also be returned.
          (dediated-window
-          (if (/= 0 (window-left-column window)) (window-left window) nil))
+          (if (/= 0 (window-left-column window)) (window-prev-sibling window) nil))
 
          (dediated-window-pixels
           (if dediated-window (window-pixel-width dediated-window) 0))
@@ -103,20 +103,16 @@ Adds EXTRA-FREE-PIXELS into the calculation."
       ,(max 0 margin-right))))
 
 (defun centered-layout--update-window (window)
-  "Update margins for WINDOW.
-If FORCE, force update, otherwise only update if window size has
-changed."
+  "Update margins for WINDOW."
   (let ((margins (centered-layout--compute-margins window)))
     (set-window-margins window (car margins) (cdr margins))))
 
 (defun centered-layout--update-frame (&optional frame)
-  "Update margins for FRAME, if nil, update all frames.
-If FORCE, force update, otherwise only update if window size has
-changed."
+  "Update margins for FRAME, if nil, update selected frames."
   (walk-windows
    (lambda (window) (centered-layout--update-window window))
    t
-   frame))
+   (if frame frame (selected-frame))))
 
 (define-minor-mode centered-layout-mode
   "Toggle centered layout mode."
