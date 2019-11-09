@@ -491,6 +491,7 @@
 (global-set-key (kbd "M-1") 'neotree-project-dir)
 (with-eval-after-load 'neotree
   (setq-default
+   neo-window-fixed-size nil
    neo-autorefresh nil
    neo-show-hidden-files t
    neo-theme 'ascii)
