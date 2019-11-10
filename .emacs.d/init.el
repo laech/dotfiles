@@ -473,6 +473,11 @@ be used as a function advice via `advice-add'."
    '(("C-j" . nil))))
 
 (with-eval-after-load 'elisp-mode
+  (add-hook
+   'emacs-lisp-mode-hook
+   (lambda ()
+     (setq-local center-layout-apply-right-margin t)
+     (setq-local truncate-lines nil)))
   (define-key lisp-interaction-mode-map (kbd "C-j") nil))
 
 (with-eval-after-load 'org
