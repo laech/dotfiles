@@ -28,6 +28,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(auto-save-visited-mode t)
  '(avy-keys-alist (quote ((avy-goto-char 97 115 100 102 106 107 108))))
  '(blink-cursor-mode nil)
  '(delete-by-moving-to-trash t)
@@ -223,14 +224,12 @@
 (add-hook 'prog-mode-hook #'toggle-truncate-lines)
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
-(defvar my-save-buffer-in-progress nil)
-(defun my-save-buffer ()
-  (unless my-save-buffer-in-progress
-    (setq my-save-buffer-in-progress t)
-    (save-some-buffers t)
-    (setq my-save-buffer-in-progress nil)))
-(add-hook 'window-configuration-change-hook (lambda () (my-save-buffer)))
-(add-hook 'focus-out-hook (lambda () (my-save-buffer)))
+(defun my-save-all-buffers (&rest ignored)
+  "Saves all buffers.
+This functions ignores any argument passed to it, allowing it to
+be used as a function advice via `advice-add'."
+  (save-some-buffers t))
+(add-hook 'focus-out-hook 'my-save-all-buffers)
 
 (define-key ctl-x-map (kbd "g") 'magit-status)
 (define-key ctl-x-map (kbd "C-l") 'downcase-dwim)
@@ -344,6 +343,9 @@
 (with-eval-after-load 'projectile
   (with-eval-after-load 'diminish
     (diminish 'projectile-mode))
+  (advice-add 'projectile-run-project :before 'my-save-all-buffers)
+  (advice-add 'projectile-test-project :before 'my-save-all-buffers)
+  (advice-add 'projectile-compile-project :before 'my-save-all-buffers)
   (define-key mode-specific-map (kbd "p") 'projectile-command-map)
   (define-key search-map (kbd "f") 'projectile-grep))
 
