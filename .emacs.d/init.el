@@ -65,6 +65,7 @@
  '(scroll-margin 1)
  '(shift-select-mode nil)
  '(show-paren-mode t)
+ '(tab-width 4)
  '(tool-bar-mode nil)
  '(visible-cursor nil)
  '(visual-line-fringe-indicators (quote (left-curly-arrow right-curly-arrow)))
@@ -406,7 +407,7 @@ be used as a function advice via `advice-add'."
   (with-eval-after-load 'hindent
     (defun hindent-reformat-region-or-buffer ()
       "Reformat region, or buffer if no region."
-      (interactive)
+      (interactive "*")
       (if (region-active-p)
           (hindent-reformat-region (region-beginning) (region-end))
         (hindent-reformat-buffer)))
