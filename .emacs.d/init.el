@@ -438,19 +438,27 @@ be used as a function advice via `advice-add'."
   (add-hook
    'typescript-mode-hook
    (lambda ()
+     (electric-pair-mode t)
      (tide-setup)
      (tide-hl-identifier-mode t))))
 
 (with-eval-after-load 'tide
   (with-eval-after-load 'diminish
     (diminish 'tide-mode))
+
   (setq-default
    tide-completion-ignore-case t
    tide-format-options '(:indentSize 2 :tabSize 2))
+
+  (defun my/tide-format ()
+    (interactive "*")
+    (tide-organize-imports)
+    (tide-format))
+
   (mapc
    (lambda (arg) (apply 'define-key tide-mode-map arg))
-   `(([remap indent-region] tide-format)
-     ([remap toggle-input-method] tide-organize-imports)
+   `(([remap indent-region] my/tide-format)
+     (,(kbd "C-\\") tide-organize-imports)
      ([remap xref-find-references] tide-references)
      (,(kbd "M-RET RET") tide-fix)
      (,(kbd "<f2>") tide-rename-symbol)
