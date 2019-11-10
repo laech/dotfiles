@@ -509,5 +509,5 @@ be used as a function advice via `advice-add'."
     (toggle-mode-line))
 
 (load "~/.emacs.d/blog.el")
-(load "~/.emacs.d/centered-layout.el")
-(centered-layout-mode t)
+(load "~/.emacs.d/center-layout.el")
+(center-layout-mode t)
