@@ -84,7 +84,9 @@ Adds EXTRA-FREE-PIXELS into the calculation."
          ;; will return a window to the left, otherwise a window above
          ;; can also be returned.
          (dediated-window
-          (if (/= 0 (window-left-column window)) (window-prev-sibling window) nil))
+          (if (/= 0 (window-left-column window))
+              (window-prev-sibling window)
+            nil))
 
          (dediated-window-pixels
           (if dediated-window (window-pixel-width dediated-window) 0))
@@ -114,6 +116,11 @@ Adds EXTRA-FREE-PIXELS into the calculation."
    t
    (if frame frame (selected-frame))))
 
+(defun centered-layout--advice (&rest ignored)
+  "Advice for `advice-add' to update layout.
+Arguments from the adviced functions are IGNORED."
+  (centered-layout--update-frame))
+
 (define-minor-mode centered-layout-mode
   "Toggle centered layout mode."
   :global t
@@ -122,11 +129,15 @@ Adds EXTRA-FREE-PIXELS into the calculation."
     (add-hook 'window-size-change-functions 'centered-layout--update-frame)
     (add-hook 'window-configuration-change-hook 'centered-layout--update-frame)
     (add-hook 'text-scale-mode-hook 'centered-layout--update-frame)
+    (add-hook 'scroll-bar-mode-hook 'centered-layout--update-frame)
+    (advice-add 'set-fringe-mode :after 'centered-layout--advice)
     (centered-layout--update-frame))
    (t
     (remove-hook 'window-size-change-functions 'centered-layout--update-frame)
     (remove-hook 'window-configuration-change-hook 'centered-layout--update-frame)
     (remove-hook 'text-scale-mode-hook 'centered-layout--update-frame)
+    (remove-hook 'scroll-bar-mode-hook 'centered-layout--update-frame)
+    (advice-remove 'set-fringe-mode 'centered-layout--advice)
     (walk-windows (lambda (window) (set-window-margins window 0 0)) t))))
 
 (provide 'centered-layout)
