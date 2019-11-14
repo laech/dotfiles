@@ -171,9 +171,11 @@
 (defun indent-region-or-buffer ()
   "Indent region, or buffer if no region."
   (interactive "*")
-  (if (use-region-p)
-      (indent-region (region-beginning) (region-end))
-    (indent-region (point-min) (point-max))))
+  (let* ((use-region (use-region-p))
+         (start (if use-region (region-beginning) (point-min)))
+         (end (if use-region (region-end) (point-max))))
+    (indent-region start end)
+    (delete-trailing-whitespace start end)))
 
 ;; Like join-line (M-^) but goes the other direction.
 (defun join-line-next ()
