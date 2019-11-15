@@ -487,9 +487,15 @@ be used as a function advice via `advice-add'."
   (add-hook
    'emacs-lisp-mode-hook
    (lambda ()
-     (setq-local center-layout-apply-right-margin t)
-     (setq-local truncate-lines nil)))
+     (setq center-layout-apply-right-margin t)
+     (setq truncate-lines nil)))
   (define-key lisp-interaction-mode-map (kbd "C-j") nil))
+
+(with-eval-after-load 'markdown-mode
+  (add-hook
+   'markdown-mode-hook
+   (lambda ()
+     (setq center-layout-apply-right-margin t))))
 
 (with-eval-after-load 'org
   (mapc
