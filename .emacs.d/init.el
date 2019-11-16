@@ -329,7 +329,7 @@ be used as a function advice via `advice-add'."
   (with-eval-after-load 'diminish
     (diminish 'company-mode))
   (setq-default
-   company-idle-delay 0.5
+   company-idle-delay 0
    company-tooltip-idle-delay 0)
   (company-flx-mode)
   (add-to-list 'company-backends 'company-dabbrev)
