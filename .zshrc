@@ -93,6 +93,11 @@ fi
 autoload -U compinit
 compinit
 zstyle ':completion:*' menu select
+
+# Enable completion from middle of word
+# https://stackoverflow.com/questions/22600259/zsh-autocomplete-from-the-middle-of-filename
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
+
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==01}:${(s.:.)LS_COLORS}")'
 
