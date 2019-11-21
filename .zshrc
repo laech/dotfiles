@@ -123,10 +123,12 @@ else
     PS1="$my_ps1$my_ps2$my_ps3"
 fi
 
+type aws_zsh_completer.sh > /dev/null && source aws_zsh_completer.sh
+type kubectl > /dev/null && source <(command kubectl completion zsh)
+
 alias ls='ls --color=auto'
 alias l='ls -1'
 alias ll='ls -lh'
 alias la='ll -a'
 
 alias config='git --git-dir="${HOME}/.cfg" --work-tree="${HOME}"'
-
