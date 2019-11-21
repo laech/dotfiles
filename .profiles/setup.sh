@@ -87,6 +87,7 @@ packages=(
 
     openssh
     keepassxc
+    syncthing
 
     cups # Printing
     sane  # Scaning
