@@ -58,7 +58,7 @@
      ("melpa-unstable" . "https://melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (helm-lsp yasnippet flycheck-rust rust-mode company-lsp diminish tide flycheck htmlize neotree company-restclient restclient swiper expand-region avy smartparens company-flx yaml-mode helm projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent diff-hl)))
+    (dockerfile-mode company-terraform terraform-mode helm-lsp yasnippet flycheck-rust rust-mode company-lsp diminish tide flycheck htmlize neotree company-restclient restclient swiper expand-region avy smartparens company-flx yaml-mode helm projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent diff-hl)))
  '(save-place-mode t)
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
@@ -284,7 +284,7 @@ be used as a function advice via `advice-add'."
    `(([remap xref-find-definitions] lsp-find-definition)
      ([remap xref-find-references] lsp-find-references)
      ([remap xref-find-apropos] helm-lsp-workspace-symbol)
-     (,(kbd "M-'") lsp-execute-code-action)
+     (,(kbd "M-RET") lsp-execute-code-action)
      (,(kbd "C-\\") lsp-organize-imports)
      (,(kbd "C-h i") lsp-describe-thing-at-point)
      (,(kbd "C-c r r") lsp-rename)
@@ -521,6 +521,14 @@ be used as a function advice via `advice-add'."
    neo-theme 'ascii)
   (if (display-graphic-p)
       (setq-default neo-mode-line-type 'none)))
+
+(with-eval-after-load 'terraform-mode
+  (electric-pair-mode t)
+  (company-terraform-init)
+  (define-key
+    terraform-mode-map
+    [remap indent-region]
+    'terraform-format-buffer))
 
 (unless (display-graphic-p)
   (xterm-mouse-mode)
