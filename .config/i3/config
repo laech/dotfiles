@@ -158,7 +158,6 @@ bindsym XF86AudioLowerVolume   exec --no-startup-id ~/.local/bin/volume -5
 bindsym XF86AudioMute          exec --no-startup-id ~/.local/bin/volume-mute-toggle
 
 hide_edge_borders both
-default_border pixel 2
 
 # See https://i3wm.org/docs/userguide.html#command_criteria
 # Inspect with xprop
