@@ -222,6 +222,9 @@
 
 (add-hook 'after-init-hook #'global-diff-hl-mode)
 (add-hook 'after-init-hook #'diff-hl-flydiff-mode)
+(with-eval-after-load 'diff-hl
+  (unless (display-graphic-p) (diff-hl-margin-mode)))
+
 (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
 
 (add-hook 'prog-mode-hook #'toggle-truncate-lines)
