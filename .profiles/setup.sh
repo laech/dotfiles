@@ -85,6 +85,7 @@ packages=(
 
     wpa_supplicant
 
+    nftables
     openssh
     keepassxc
     syncthing
@@ -104,6 +105,7 @@ dirs=(
 )
 
 services=(
+    nftables
     systemd-timesyncd
     tlp
     tlp-sleep
@@ -210,8 +212,7 @@ echo "reloading services..."
 sudo systemctl daemon-reload
 for service in "${services[@]}"; do
     echo "starting $service..."
-    sudo systemctl enable "$service"
-    sudo systemctl start "$service"
+    sudo systemctl enable --now "$service"
 done
 
 if [[ "$profile" == "$profile_fruit" ]]; then
