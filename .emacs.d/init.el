@@ -479,6 +479,17 @@ be used as a function advice via `advice-add'."
   (with-eval-after-load 'company
     (add-to-list 'company-backends 'company-restclient)))
 
+(with-eval-after-load 'magit-repos
+  (add-to-list 'magit-repository-directories '("~/src/" . 2))
+  (setq-default
+   magit-repolist-columns
+   '(("" 1 magit-repolist-column-dirty)
+     ("Path" 32 magit-repolist-column-path)
+     ("↓" 2 magit-repolist-column-unpulled-from-upstream ((:right-align t)))
+     ("↑" 2 magit-repolist-column-unpushed-to-upstream ((:right-align t)
+                                                        (:pad-right 2)))
+     ("Branch" 8 magit-repolist-column-branch))))
+
 (with-eval-after-load 'magit-diff
   (define-key magit-hunk-section-map (kbd "C-j") nil)
   (mapc
