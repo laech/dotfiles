@@ -32,9 +32,14 @@ XTerm.vt100.allowBoldFonts: true
 ! 'showkey -a' to see key codes
 ! 'xev' to see key names
 ! See https://www.in-ulm.de/~mascheck/X11/xterm/XTerm
+!
+! 'Alt <Key>Return' is a default keybinding to go fullscreen, here
+! it's set to insert the actual key sequence instead (like other
+! terminals) to allow applications to interpret the keybinding.
+!
 XTerm.vt100.translations: #override \n\
   Ctrl Shift <Key>V: insert-selection(CLIPBOARD) \n\
-  Alt <Key>Return:
+  Alt <Key>Return: insert-eight-bit() \n\
 
 ! Compare with gnome-terminal etc to see color differences
 ! when setting this to true or false
