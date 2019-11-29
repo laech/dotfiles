@@ -4,6 +4,6 @@
 [submodule ".profiles/fruit/nvidia-340xx-utils"]
 	path = .profiles/fruit/nvidia-340xx-utils
 	url = https://aur.archlinux.org/nvidia-340xx-utils.git
-[submodule ".emacs.d/center-layout"]
-	path = .emacs.d/center-layout
+[submodule ".emacs.d/lib/center-layout"]
+	path = .emacs.d/lib/center-layout
 	url = https://gitlab.com/lae/emacs-center-layout.git

@@ -238,6 +238,7 @@ be used as a function advice via `advice-add'."
 (add-hook 'focus-out-hook 'my-save-all-buffers)
 
 (define-key ctl-x-map (kbd "g") 'magit-status)
+(define-key ctl-x-map (kbd "G") 'magit-list-repositories)
 (define-key ctl-x-map (kbd "C-l") 'downcase-dwim)
 (define-key ctl-x-map (kbd "C-u") 'upcase-dwim)
 
@@ -483,11 +484,11 @@ be used as a function advice via `advice-add'."
   (add-to-list 'magit-repository-directories '("~/src/" . 2))
   (setq-default
    magit-repolist-columns
-   '(("" 1 magit-repolist-column-dirty)
-     ("Path" 32 magit-repolist-column-path)
+   '(("Path" 32 magit-repolist-column-path)
      ("↓" 2 magit-repolist-column-unpulled-from-upstream ((:right-align t)))
-     ("↑" 2 magit-repolist-column-unpushed-to-upstream ((:right-align t)
-                                                        (:pad-right 2)))
+     ("↑" 2 magit-repolist-column-unpushed-to-upstream ((:right-align t)))
+     ("*" 2 magit-repolist-column-dirty ((:right-align t)
+                                         (:pad-right 2)))
      ("Branch" 8 magit-repolist-column-branch))))
 
 (with-eval-after-load 'magit-diff
@@ -553,5 +554,7 @@ be used as a function advice via `advice-add'."
     (toggle-mode-line))
 
 (load "~/.emacs.d/blog.el")
-(load "~/.emacs.d/center-layout/center-layout.el")
+
+(add-to-list 'load-path "~/.emacs.d/lib/center-layout")
+(require 'center-layout)
 (center-layout-mode t)
