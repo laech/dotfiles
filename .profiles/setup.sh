@@ -89,7 +89,6 @@ packages=(
 
     wpa_supplicant
 
-    nftables
     firewalld
     openssh
     keepassxc
@@ -110,7 +109,6 @@ dirs=(
 )
 
 services=(
-    nftables
     firewalld
     systemd-timesyncd
     tlp
