@@ -89,6 +89,9 @@ packages=(
 
     wpa_supplicant
 
+    # Authentication agent required by some apps such as
+    # firewall-applet, firewall-cmd
+    polkit-gnome
     firewalld
     openssh
     keepassxc
