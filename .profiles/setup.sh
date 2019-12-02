@@ -86,6 +86,7 @@ packages=(
     wpa_supplicant
 
     nftables
+    firewalld
     openssh
     keepassxc
     syncthing
@@ -106,6 +107,7 @@ dirs=(
 
 services=(
     nftables
+    firewalld
     systemd-timesyncd
     tlp
     tlp-sleep
