@@ -123,6 +123,10 @@ else
     PS1="$my_ps1$my_ps2$my_ps3"
 fi
 
+# Syntax highlighting for 'less'
+export LESSOPEN="| src-hilite-lesspipe.sh %s"
+export LESS=' -R '
+
 type aws_zsh_completer.sh > /dev/null && source aws_zsh_completer.sh
 type kubectl > /dev/null && source <(command kubectl completion zsh)
 

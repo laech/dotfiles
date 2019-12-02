@@ -70,6 +70,10 @@ packages=(
     jdk8-openjdk
     openjdk8-src
 
+    # Command line syntax highlighting file outputs.
+    # Also syntax highlighting for 'less', see ~/.zshrc
+    source-highlight
+
     argyllcms
     tlp
     powertop
