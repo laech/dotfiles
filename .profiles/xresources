@@ -39,6 +39,7 @@ XTerm.vt100.allowBoldFonts: true
 !
 XTerm.vt100.translations: #override \n\
   Ctrl Shift <Key>V: insert-selection(CLIPBOARD) \n\
+  Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
   Alt <Key>Return: insert-eight-bit() \n\
 
 ! Compare with gnome-terminal etc to see color differences
