@@ -128,7 +128,8 @@ export LESSOPEN="| src-hilite-lesspipe.sh %s"
 export LESS=' -R '
 
 type aws_zsh_completer.sh > /dev/null && source aws_zsh_completer.sh
-type kubectl > /dev/null && source <(command kubectl completion zsh)
+type kubectl > /dev/null && source <(kubectl completion zsh)
+type helm > /dev/null && source <(helm completion zsh)
 
 alias ls='ls --color=auto'
 alias l='ls -1'
