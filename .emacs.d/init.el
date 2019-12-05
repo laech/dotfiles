@@ -433,21 +433,25 @@ be used as a function advice via `advice-add'."
   (add-hook
    'rust-mode-hook
    (lambda ()
-     (yas-minor-mode t)
-     (electric-pair-mode t)
+     (yas-minor-mode)
+     (electric-pair-mode)
      (lsp-deferred)))
 
   (define-key rust-mode-map [remap indent-region]
     #'rust-format-buffer))
 
+(with-eval-after-load 'js
+  (setq-default js-indent-level 2))
+
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
 (with-eval-after-load 'typescript-mode
   (setq-default typescript-indent-level 2)
   (add-hook
    'typescript-mode-hook
    (lambda ()
-     (electric-pair-mode t)
+     (electric-pair-mode)
      (tide-setup)
-     (tide-hl-identifier-mode t))))
+     (tide-hl-identifier-mode))))
 
 (with-eval-after-load 'tide
   (with-eval-after-load 'diminish
