@@ -1,5 +1,9 @@
 <code_scheme name="Default" version="173">
   <option name="RIGHT_MARGIN" value="80" />
+  <JSON>
+    <option name="OBJECT_WRAPPING" value="5" />
+    <option name="ARRAY_WRAPPING" value="5" />
+  </JSON>
   <JavaCodeStyleSettings>
     <option name="ANNOTATION_PARAMETER_WRAP" value="5" />
   </JavaCodeStyleSettings>
@@ -32,5 +36,8 @@
     <option name="PARAMETER_ANNOTATION_WRAP" value="5" />
     <option name="VARIABLE_ANNOTATION_WRAP" value="2" />
     <option name="ENUM_CONSTANTS_WRAP" value="2" />
+  </codeStyleSettings>
+  <codeStyleSettings language="JSON">
+    <option name="SPACE_WITHIN_BRACES" value="true" />
   </codeStyleSettings>
 </code_scheme>
