@@ -1,180 +1,241 @@
-{"items": [
-    {"keys": ["ctrl X"],
-     "items": [
-         {"keys": ["ctrl F"], "id": "GotoFile"},
-         {"keys": ["ctrl B", "B"], "id": "RecentFiles"},
-         {"keys": ["D"], "id": "ActivateProjectToolWindow"},
-         {"separator-above": "",
-          "keys": ["ctrl S"], "id": "SaveAll"},
-         {"keys": ["H"], "id": "$SelectAll"},
-         {"keys": ["ctrl Q"], "id": "ToggleReadOnlyAttribute"},
-         {"keys": ["W"], "id": "com.gitlab.lae.intellij.actions.CamelHumpsInCurrentEditor"},
-         {"keys": ["ctrl W"], "id": "CopyElement"},
-         {"keys": ["typed (",
-                   "typed )"], "id": "StartStopMacroRecording"},
-         {"keys": ["E"], "id": "PlaybackLastMacro"},
-         {"keys": ["ctrl E"], "id": "QuickEvaluateExpression"},
-         {"keys": ["ctrl U"], "id": "com.gitlab.lae.intellij.actions.UpcaseRegionOrToWordEnd"},
-         {"keys": ["ctrl L"], "id": "com.gitlab.lae.intellij.actions.DowncaseRegionOrToWordEnd"},
-         {"keys": ["ctrl X"], "id": "EditorSwapSelectionBoundaries"},
-         {"keys": ["SPACE"], "id": "EditorToggleColumnMode"},
-         {"keys": ["R"],
+{
+  "items": [
+    {
+      "keys": ["ctrl X"],
+      "items": [
+        { "keys": ["ctrl F"], "id": "GotoFile" },
+        { "keys": ["ctrl B", "B"], "id": "RecentFiles" },
+        { "keys": ["D"], "id": "ActivateProjectToolWindow" },
+        { "keys": ["ctrl S"], "id": "SaveAll", "separator-above": "" },
+        { "keys": ["H"], "id": "$SelectAll" },
+        { "keys": ["ctrl Q"], "id": "ToggleReadOnlyAttribute" },
+        {
+          "keys": ["W"],
+          "id": "com.gitlab.lae.intellij.actions.CamelHumpsInCurrentEditor"
+        },
+        { "keys": ["ctrl W"], "id": "CopyElement" },
+        { "keys": ["typed (", "typed )"], "id": "StartStopMacroRecording" },
+        { "keys": ["E"], "id": "PlaybackLastMacro" },
+        { "keys": ["ctrl E"], "id": "QuickEvaluateExpression" },
+        {
+          "keys": ["ctrl U"],
+          "id": "com.gitlab.lae.intellij.actions.UpcaseRegionOrToWordEnd"
+        },
+        {
+          "keys": ["ctrl L"],
+          "id": "com.gitlab.lae.intellij.actions.DowncaseRegionOrToWordEnd"
+        },
+        { "keys": ["ctrl X"], "id": "EditorSwapSelectionBoundaries" },
+        { "keys": ["SPACE"], "id": "EditorToggleColumnMode" },
+        {
+          "keys": ["R"],
           "name": "...",
           "items": [
-              {"keys": ["T"], "id": "com.gitlab.lae.intellij.actions.CreateRectangularSelectionFromMultiLineSelection"},
-              {"keys": ["L"], "id": "ShowBookmarks"},
-              {"keys": ["M"], "id": "ToggleBookmark"}
-          ]},
-         {"keys": ["G"], "id": "ActivateVersionControlToolWindow"},
-         {"keys": ["V"],
+            {
+              "keys": ["T"],
+              "id": "com.gitlab.lae.intellij.actions.CreateRectangularSelectionFromMultiLineSelection"
+            },
+            { "keys": ["L"], "id": "ShowBookmarks" },
+            { "keys": ["M"], "id": "ToggleBookmark" }
+          ]
+        },
+        { "keys": ["G"], "id": "ActivateVersionControlToolWindow" },
+        {
+          "keys": ["V"],
           "name": "Version Control...",
           "items": [
-              {"keys": ["C"], "id": "CheckinProject"},
-              {"keys": ["shift P"], "id": "Vcs.Push"},
-              {"keys": ["typed +"], "id": "Vcs.UpdateProject"},
-              {"separator-above": "",
-               "keys": ["G"], "id": "Annotate"},
-              {"keys": ["EQUALS"], "id": "Compare.SameVersion"},
-              {"id": "Compare.Selected"},
-              {"id": "Git.CompareWithBranch"},
-              {"keys": ["H"], "id": "Vcs.ShowHistoryForBlock"},
-              {"keys": ["L"], "id": "Vcs.ShowTabbedFileHistory"},
-              {"keys": ["shift L"], "id": "Vcs.Show.Log"},
-              {"keys": ["D"], "id": "Vcs.Show.Local.Changes"},
-              {"separator-above": "",
-               "keys": ["PERIOD"], "id": "VcsShowCurrentChangeMarker"},
-              {"keys": ["OPEN_BRACKET"], "id": "VcsShowPrevChangeMarker", "sticky": true},
-              {"keys": ["CLOSE_BRACKET"], "id": "VcsShowNextChangeMarker", "sticky": true},
-              {"keys": ["I"], "id": "ChangesView.AddUnversioned"},
-              {"keys": ["N"], "id": "Vcs.RollbackChangedLines"},
-              {"keys": ["U"], "id": "ChangesView.Revert"},
-              {"separator-above": "",
-               "keys": ["F"], "id": "Git.Fetch"},
-              {"keys": ["shift F"], "id": "Git.Pull"},
-              {"keys": ["M"], "id": "Git.Merge"},
-              {"keys": ["R"], "id": "Git.Rebase"},
-              {"keys": ["B"], "id": "Git.Branches"},
-              {"keys": ["T"], "id": "Git.Tag"},
-              {"keys": ["shift M"], "id": "Git.Configure.Remotes"},
-              {"separator-above": "",
-               "keys": ["Z"],
-               "name": "Stashing...",
-               "items": [
-                   {"keys": ["Z"], "id": "Git.Stash"},
-                   {"keys": ["A"], "id": "Git.Unstash"}
-               ]}
-          ]},
-         {"separator-above": "",
-          "keys": ["K", "0"], "id": "CloseContent"},
-         {"keys": ["ctrl 1"], "id": "UnsplitAll"},
-         {"keys": ["1"], "id": "HideAllWindows"},
-         {"keys": ["2"], "id": "SplitHorizontally"},
-         {"keys": ["3"], "id": "SplitVertically"},
-         {"keys": ["O"], "id": "NextSplitter"},
-         {"keys": ["RIGHT", "ctrl RIGHT"], "id": "NextTab"},
-         {"keys": ["LEFT", "ctrl LEFT"], "id": "PreviousTab"},
-         {"separator-above": "",
-          "keys": ["ctrl EQUALS"], "id": "EditorIncreaseFontSize", "sticky": true},
-         {"keys": ["ctrl MINUS"], "id": "EditorDecreaseFontSize", "sticky": true},
-         {"keys": ["ctrl 0"], "id": "EditorResetFontSize"},
-         {"separator-above": "",
-          "keys": ["ctrl C"], "id": "Exit"}
-     ]},
-    {"keys": ["ctrl C"],
-     "items": [
-         {"keys": ["released P"],
+            { "keys": ["C"], "id": "CheckinProject" },
+            { "keys": ["shift P"], "id": "Vcs.Push" },
+            { "keys": ["typed +"], "id": "Vcs.UpdateProject" },
+            { "keys": ["G"], "id": "Annotate", "separator-above": "" },
+            { "keys": ["EQUALS"], "id": "Compare.SameVersion" },
+            { "id": "Compare.Selected" },
+            { "id": "Git.CompareWithBranch" },
+            { "keys": ["H"], "id": "Vcs.ShowHistoryForBlock" },
+            { "keys": ["L"], "id": "Vcs.ShowTabbedFileHistory" },
+            { "keys": ["shift L"], "id": "Vcs.Show.Log" },
+            { "keys": ["D"], "id": "Vcs.Show.Local.Changes" },
+            {
+              "keys": ["PERIOD"],
+              "id": "VcsShowCurrentChangeMarker",
+              "separator-above": ""
+            },
+            {
+              "keys": ["OPEN_BRACKET"],
+              "id": "VcsShowPrevChangeMarker",
+              "sticky": true
+            },
+            {
+              "keys": ["CLOSE_BRACKET"],
+              "id": "VcsShowNextChangeMarker",
+              "sticky": true
+            },
+            { "keys": ["I"], "id": "ChangesView.AddUnversioned" },
+            { "keys": ["N"], "id": "Vcs.RollbackChangedLines" },
+            { "keys": ["U"], "id": "ChangesView.Revert" },
+            { "keys": ["F"], "id": "Git.Fetch", "separator-above": "" },
+            { "keys": ["shift F"], "id": "Git.Pull" },
+            { "keys": ["M"], "id": "Git.Merge" },
+            { "keys": ["R"], "id": "Git.Rebase" },
+            { "keys": ["B"], "id": "Git.Branches" },
+            { "keys": ["T"], "id": "Git.Tag" },
+            { "keys": ["shift M"], "id": "Git.Configure.Remotes" },
+            {
+              "keys": ["Z"],
+              "name": "Stashing...",
+              "separator-above": "",
+              "items": [
+                { "keys": ["Z"], "id": "Git.Stash" },
+                { "keys": ["A"], "id": "Git.Unstash" }
+              ]
+            }
+          ]
+        },
+        { "keys": ["K", "0"], "id": "CloseContent", "separator-above": "" },
+        { "keys": ["ctrl 1"], "id": "UnsplitAll" },
+        { "keys": ["1"], "id": "HideAllWindows" },
+        { "keys": ["2"], "id": "SplitHorizontally" },
+        { "keys": ["3"], "id": "SplitVertically" },
+        { "keys": ["O"], "id": "NextSplitter" },
+        { "keys": ["RIGHT", "ctrl RIGHT"], "id": "NextTab" },
+        { "keys": ["LEFT", "ctrl LEFT"], "id": "PreviousTab" },
+        {
+          "keys": ["ctrl EQUALS"],
+          "id": "EditorIncreaseFontSize",
+          "separator-above": "",
+          "sticky": true
+        },
+        {
+          "keys": ["ctrl MINUS"], "id": "EditorDecreaseFontSize", "sticky": true
+        },
+        { "keys": ["ctrl 0"], "id": "EditorResetFontSize" },
+        { "keys": ["ctrl C"], "id": "Exit", "separator-above": "" }
+      ]
+    },
+    {
+      "keys": ["ctrl C"],
+      "items": [
+        {
+          "keys": ["released P"],
           "name": "Project",
           "items": [
-              {"keys": ["C"], "id": "CompileDirty"},
-              {"keys": ["ctrl C"], "id": "CompileProject"},
-              {"keys": ["U"], "id": "ChooseRunConfiguration"},
-              {"separator-above": "",
-               "keys": ["K"], "id": "CloseProject"},
-              {"keys": ["released P"], "id": "RecentProjectListGroup"}
-          ]},
-         {"keys": ["R"],
+            { "keys": ["C"], "id": "CompileDirty" },
+            { "keys": ["ctrl C"], "id": "CompileProject" },
+            { "keys": ["U"], "id": "ChooseRunConfiguration" },
+            { "keys": ["K"], "id": "CloseProject", "separator-above": "" },
+            { "keys": ["released P"], "id": "RecentProjectListGroup" }
+          ]
+        },
+        {
+          "keys": ["R"],
           "name": "Refactor",
           "items": [
-              {"keys": ["O"], "id": "OverrideMethods"},
-              {"keys": ["G"], "id": "Generate"},
-              {"separator-above": "",
-               "keys": ["R"], "id": "RenameElement"},
-              {"keys": ["ctrl R"], "id": "RenameFile"},
-              {"keys": ["S"], "id": "ChangeSignature"},
-              {"keys": ["T"], "id": "ChangeTypeSignature"},
-              {"keys": ["ctrl M"], "id": "Move"},
-              {"keys": ["N"], "id": "Inline"},
-              {"keys": ["typed !"], "id": "InvertBoolean"},
-              {"separator-above": "Extract",
-               "keys": ["V"], "id": "IntroduceVariable"},
-              {"keys": ["C"], "id": "IntroduceConstant"},
-              {"keys": ["F"], "id": "IntroduceField"},
-              {"keys": ["P"], "id": "IntroduceParameter"},
-              {"keys": ["M"], "id": "ExtractMethod"}
-          ]}
-     ]},
-    {"keys": ["ctrl H"],
-     "items": [
-         {"keys": ["I"], "id": "QuickJavaDoc"},
-         {"keys": ["shift I"], "id": "QuickImplementations"},
-         {"separator-above": "",
-          "keys": ["P"], "id": "ParameterInfo"},
-         {"keys": ["T"], "id": "ExpressionTypeInfo"},
-         {"keys": ["C"], "id": "EditorContextInfo"},
-         {"keys": ["H"],
+            { "keys": ["O"], "id": "OverrideMethods" },
+            { "keys": ["G"], "id": "Generate" },
+            { "keys": ["R"], "id": "RenameElement", "separator-above": "" },
+            { "keys": ["ctrl R"], "id": "RenameFile" },
+            { "keys": ["S"], "id": "ChangeSignature" },
+            { "keys": ["T"], "id": "ChangeTypeSignature" },
+            { "keys": ["ctrl M"], "id": "Move" },
+            { "keys": ["N"], "id": "Inline" },
+            { "keys": ["typed !"], "id": "InvertBoolean" },
+            {
+              "keys": ["V"],
+              "id": "IntroduceVariable",
+              "separator-above": "Extract"
+            },
+            { "keys": ["C"], "id": "IntroduceConstant" },
+            { "keys": ["F"], "id": "IntroduceField" },
+            { "keys": ["P"], "id": "IntroduceParameter" },
+            { "keys": ["M"], "id": "ExtractMethod" }
+          ]
+        }
+      ]
+    },
+    {
+      "keys": ["ctrl H"],
+      "items": [
+        { "keys": ["I"], "id": "QuickJavaDoc" },
+        { "keys": ["shift I"], "id": "QuickImplementations" },
+        { "keys": ["P"], "id": "ParameterInfo", "separator-above": "" },
+        { "keys": ["T"], "id": "ExpressionTypeInfo" },
+        { "keys": ["C"], "id": "EditorContextInfo" },
+        {
+          "keys": ["H"],
           "name": "Hierarchy...",
           "items": [
-              {"keys": ["T"], "id": "TypeHierarchy"},
-              {"keys": ["M"], "id": "MethodHierarchy"},
-              {"keys": ["C"], "id": "CallHierarchy"}
-          ]},
-         {"separator-above": "",
-          "keys": ["E"], "id": "ShowErrorDescription"}
-     ]},
-    {"keys": ["alt G"],
-     "items": [
-         {"keys": ["alt G", "G"], "id": "GotoLine"},
-         {"separator-above": "",
-          "keys": ["P"], "id": "GotoPreviousError"},
-         {"keys": ["N"], "id": "GotoNextError"},
-         {"separator-above": "",
-          "keys": ["alt P"], "id": "GotoPreviousError", "sticky": true},
-         {"keys": ["alt N"], "id": "GotoNextError", "sticky": true},
-         {"keys": ["E"], "id": "ShowErrorDescription"},
-         {"separator-above": "",
-          "keys": ["T"], "id": "GotoTest"},
-         {"keys": ["typed ."],
+            { "keys": ["T"], "id": "TypeHierarchy" },
+            { "keys": ["M"], "id": "MethodHierarchy" },
+            { "keys": ["C"], "id": "CallHierarchy" }
+          ]
+        },
+        { "keys": ["E"], "id": "ShowErrorDescription", "separator-above": "" }
+      ]
+    },
+    {
+      "keys": ["alt G"],
+      "items": [
+        { "keys": ["alt G", "G"], "id": "GotoLine" },
+        { "keys": ["P"], "id": "GotoPreviousError", "separator-above": "" },
+        { "keys": ["N"], "id": "GotoNextError" },
+        {
+          "keys": ["alt P"],
+          "id": "GotoPreviousError",
+          "separator-above": "",
+          "sticky": true
+        },
+        { "keys": ["alt N"], "id": "GotoNextError", "sticky": true },
+        { "keys": ["E"], "id": "ShowErrorDescription" },
+        { "keys": ["T"], "id": "GotoTest", "separator-above": "" },
+        {
+          "keys": ["typed ."],
           "name": "Symbol at Point...",
           "items": [
-              {"keys": ["D"], "id": "GotoDeclaration"},
-              {"keys": ["I"], "id": "GotoImplementation"},
-              {"keys": ["T"], "id": "GotoTypeDeclaration"},
-              {"keys": ["U"], "id": "GotoSuperMethod"}
-          ]},
-         {"keys": ["S"],
+            { "keys": ["D"], "id": "GotoDeclaration" },
+            { "keys": ["I"], "id": "GotoImplementation" },
+            { "keys": ["T"], "id": "GotoTypeDeclaration" },
+            { "keys": ["U"], "id": "GotoSuperMethod" }
+          ]
+        },
+        {
+          "keys": ["S"],
           "name": "Show...",
           "items": [
-              {"keys": ["S"], "id": "SelectIn"},
-              {"keys": ["N"], "id": "ShowNavBar"},
-              {"keys": ["P"], "id": "ShowFilePath"}
-          ]}
-     ]},
-    {"keys": ["alt S"],
-     "items": [
-         {"keys": ["PERIOD"], "id": "FindWordAtCaret", "sticky": true},
-         {"keys": ["F"], "id": "FindInPath"},
-         {"keys": ["R"], "id": "ReplaceInPath"},
-         {"separator-above": "",
-          "keys": ["U"], "id": "ShowUsages"},
-         {"keys": ["shift U"], "id": "FindUsages"},
-         {"keys": ["ctrl shift U"], "id": "ShowRecentFindUsagesGroup"},
-         {"keys": ["H"],
+            { "keys": ["S"], "id": "SelectIn" },
+            { "keys": ["N"], "id": "ShowNavBar" },
+            { "keys": ["P"], "id": "ShowFilePath" }
+          ]
+        }
+      ]
+    },
+    {
+      "keys": ["alt S"],
+      "items": [
+        { "keys": ["PERIOD"], "id": "FindWordAtCaret", "sticky": true },
+        { "keys": ["F"], "id": "FindInPath" },
+        { "keys": ["R"], "id": "ReplaceInPath" },
+        { "keys": ["U"], "id": "ShowUsages", "separator-above": "" },
+        { "keys": ["shift U"], "id": "FindUsages" },
+        { "keys": ["ctrl shift U"], "id": "ShowRecentFindUsagesGroup" },
+        {
+          "keys": ["H"],
           "separator-above": "",
           "name": "Highlight...",
           "items": [
-              {"keys": ["PERIOD"], "id": "HighlightUsagesInFile"},
-              {"keys": ["N"], "id": "GotoNextElementUnderCaretUsage", "sticky": true},
-              {"keys": ["P"], "id": "GotoPrevElementUnderCaretUsage", "sticky": true}
-          ]}
-     ]}
-]}
+            { "keys": ["PERIOD"], "id": "HighlightUsagesInFile" },
+            {
+              "keys": ["N"],
+              "id": "GotoNextElementUnderCaretUsage",
+              "sticky": true
+            },
+            {
+              "keys": ["P"],
+              "id": "GotoPrevElementUnderCaretUsage",
+              "sticky": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
