@@ -1,5 +1,43 @@
 {
   "items": [
+    { "keys": ["ctrl alt BACK_SLASH"], "id": "ReformatCode" },
+    {
+      "keys": ["ctrl alt BACK_SLASH"],
+      "id": "Haskell.ReformatCode",
+      "when": "FileExtension:hs"
+    },
+    {
+      "keys": ["ctrl alt BACK_SLASH"],
+      "id": "Cargo.RustfmtFile",
+      "when": "FileExtension:rs"
+    },
+    {
+      "keys": ["EQUALS"],
+      "id": "CompareTwoFiles",
+      "when": { "all": ["ToolWindowActive:.*", "!InputFocused"] }
+    },
+    {
+      "keys": ["Q"],
+      "id": "HideActiveWindow",
+      "when": { "all": ["ToolWindowActive:.*", "!InputFocused"] }
+    },
+    {
+      "keys": ["N"],
+      "id": "com.gitlab.lae.intellij.actions.Down",
+      "when": { "all": ["ToolWindowActive:.*", "!InputFocused"] }
+    },
+    {
+      "keys": ["P"],
+      "id": "com.gitlab.lae.intellij.actions.Up",
+      "when": { "all": ["ToolWindowActive:.*", "!InputFocused"] }
+    },
+    {
+      "keys": ["C"],
+      "when": "ToolWindowTabActive:Local Changes",
+      "items": [
+        { "keys": ["C"], "id": "CheckinProject" }
+      ]
+    },
     {
       "keys": ["ctrl X"],
       "items": [
