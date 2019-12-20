@@ -52,6 +52,7 @@ packages=(
 
     pulseaudio
     pavucontrol
+    pasystray
 
     ttf-dejavu
     ttf-liberation
@@ -77,6 +78,7 @@ packages=(
     argyllcms
     tlp
     powertop
+    cbatticon
     x86_energy_perf_policy
     ethtool
     smartmontools

@@ -7,37 +7,7 @@ general {
   color_bad = "#ff4181"
 }
 
-order += "wireless _first_"
-order += "ethernet _first_"
-order += "volume master"
-order += "battery all"
 order += "time"
-
-wireless _first_ {
-  format_up = "W: (%essid) %ip"
-  format_down = ""
-}
-
-ethernet _first_ {
-  format_up = "E: %ip"
-  format_down = ""
-}
-
-volume master {
-  format = "V: %volume"
-  format_muted = "V: muted"
-  device = "default"
-  mixer = "Master"
-  mixer_idx = 0
-}
-
-battery all {
-  format = "%status: %percentage"
-  format_down = ""
-  low_threshold = 10
-  threshold_type = percentage
-  integer_battery_capacity = true
-}
 
 time {
   format = "%a %d %b %I:%M %p "
