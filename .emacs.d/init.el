@@ -58,7 +58,7 @@
      ("melpa-unstable" . "https://melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (dockerfile-mode company-terraform terraform-mode helm-lsp yasnippet flycheck-rust rust-mode company-lsp diminish tide flycheck htmlize neotree company-restclient restclient swiper expand-region avy smartparens company-flx yaml-mode helm projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent diff-hl)))
+    (dockerfile-mode company-terraform terraform-mode helm-lsp yasnippet flycheck-rust rust-mode company-lsp diminish tide flycheck neotree company-restclient restclient swiper expand-region avy smartparens company-flx yaml-mode helm projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent diff-hl)))
  '(save-place-mode t)
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
@@ -556,8 +556,6 @@ be used as a function advice via `advice-add'."
 
 (if (display-graphic-p)
     (toggle-mode-line))
-
-(load "~/.emacs.d/blog.el")
 
 (add-to-list 'load-path "~/.emacs.d/lib/center-layout")
 (require 'center-layout)
