@@ -177,6 +177,7 @@ exec --no-startup-id xss-lock \
 # Authentication agent required by some apps such as firewall-applet
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id firewall-applet &
+exec --no-startup-id nm-applet &
 
 exec xbacklight -set $(cat ~/.brightness 2> /dev/null || 10)
 

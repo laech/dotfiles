@@ -87,12 +87,12 @@ packages=(
     ibus
     ibus-libpinyin
 
-    wpa_supplicant
-
     # Authentication agent required by some apps such as
     # firewall-applet, firewall-cmd
     polkit-gnome
     firewalld
+    networkmanager
+    network-manager-applet
     openssh
     keepassxc
     syncthing
@@ -112,6 +112,7 @@ dirs=(
 )
 
 services=(
+    NetworkManager
     firewalld
     systemd-timesyncd
     tlp
@@ -126,12 +127,6 @@ if [[ "$profile" == "$profile_build" ]]; then
         intel-ucode
     )
     dirs_prefix='build/system/'
-    dirs+=(
-        'etc/systemd/system/dhcpcd@enp5s0.service.d'
-    )
-    services+=(
-        dhcpcd@enp5s0.service
-    )
 
 elif [[ "$profile" == "$profile_fruit" ]]; then
 
@@ -148,7 +143,6 @@ elif [[ "$profile" == "$profile_fruit" ]]; then
         'boot/efi/EFI/refind'
         'boot/efi/EFI/arch'
         'etc/modprobe.d'
-        'etc/systemd/system/dhcpcd@wlp2s0.service.d'
         'etc/udev/rules.d'
         'etc/X11/xorg.conf.d'
         'usr/lib/systemd/system'
@@ -175,7 +169,6 @@ elif [[ "$profile" == "$profile_chain" ]]; then
         'etc/modprobe.d'
         'etc/modules-load.d'
         'etc/udev/rules.d'
-        'etc/systemd/system/dhcpcd@wlo1.service.d'
         'etc/X11/xorg.conf.d'
     )
     console_map='chain/system/kbd/custom.map'
