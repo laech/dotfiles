@@ -14,6 +14,8 @@ floating_modifier $mod
 bindsym $mod+Return exec ~/.local/bin/term
 bindsym $mod+Shift+Return exec ~/.local/bin/term -rv
 
+bindsym $mod+Shift+w kill
+
 bindsym $mod+semicolon exec --no-startup-id rofi -show run
 bindsym Mod4+F12 exec --no-startup-id rofi -show run
 
