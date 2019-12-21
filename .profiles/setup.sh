@@ -98,6 +98,9 @@ packages=(
     openssh
     keepassxc
     syncthing
+    gnome-keyring
+    libsecret
+    seahorse
 
     cups # Printing
     sane  # Scaning
