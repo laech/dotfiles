@@ -220,6 +220,19 @@ for service in "${services[@]}"; do
     sudo systemctl enable --now "$service"
 done
 
+echo ""
+echo "updating firewalld..."
+sudo firewall-cmd --zone=public --remove-service=ssh
+sudo firewall-cmd --zone=public --remove-service=ssh --permanent
+
+sudo bash -eux -c "
+grep '^PasswordAuthentication no$' /etc/ssh/sshd_config \
+    || echo -e '\nPasswordAuthentication no\n' >> /etc/ssh/sshd_config
+
+grep '^PermitRootLogin no$' /etc/ssh/sshd_config \
+    || echo -e '\nPermitRootLogin no\n' >> /etc/ssh/sshd_config
+"
+
 if [[ "$profile" == "$profile_fruit" ]]; then
     echo ""
     echo "setting refind..."
