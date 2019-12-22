@@ -34,6 +34,7 @@ packages=(
     xss-lock
     rofi
     feh
+    dex
 
     firefox
 

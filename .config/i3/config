@@ -170,11 +170,11 @@ for_window [window_role="GtkFileChooserDialog"] floating disable
 # Idle 5 minutes will dim display, then 5 seconds later lock
 # it. Locking will wake up screen, so 5 seconds later (total dpms 310)
 # again to turn it off.
-exec_always --no-startup-id xset s 300 5
-exec_always --no-startup-id xset dpms 310 310 310
+exec_always --no-startup-id xset s 300 5 &
+exec_always --no-startup-id xset dpms 310 310 310 &
 exec --no-startup-id xss-lock \
      --notifier='bash /usr/share/doc/xss-lock/dim-screen.sh' \
-     -- i3lock --nofork --color=333333
+     -- i3lock --nofork --color=333333 &
 
 # Authentication agent required by some apps such as firewall-applet
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
@@ -183,14 +183,11 @@ exec --no-startup-id pasystray &
 exec --no-startup-id nm-applet &
 exec --no-startup-id firewall-applet &
 
-exec xbacklight -set $(cat ~/.brightness 2> /dev/null || 10)
+exec xbacklight -set $(cat ~/.brightness 2> /dev/null || 10) &
 
-exec systemd-run --user \
-     --timer-property=OnCalendar=minutely \
-     --unit=i3-notify-battery-low \
-     ~/.local/bin/i3-notify-battery-low
+exec hsetroot -solid '#aaaaaa' &
 
-exec hsetroot -solid '#aaaaaa'
-
-exec_always --no-startup-id xrdb -merge -I"${HOME}" ~/.Xresources
-exec_always --no-startup-id find ~/.profiles/default/init/ -name '*.sh' -exec {} \;
+# Speed up startup by only execute entries in user autostart directory
+# since most entries in the system directory /etc/xdg/autostart/ don't
+# apply to i3.
+exec dex --autostart --environment i3 --search-paths ~/.config/autostart/ &
