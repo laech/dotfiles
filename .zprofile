@@ -10,3 +10,8 @@ Git integration:
 git config --global credential.helper /usr/lib/git-core/git-credential-libsecret
 " 1>&2
 fi
+
+aa-enabled &> /dev/null || echo -n "
+AppArmor status: $(aa-enabled)
+See https://wiki.archlinux.org/index.php/AppArmor
+" 1>&2

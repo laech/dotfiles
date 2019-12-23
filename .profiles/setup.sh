@@ -102,6 +102,9 @@ packages=(
     gnome-keyring
     libsecret
     seahorse
+    apparmor
+    audit
+    firejail
 
     cups # Printing
     sane  # Scaning
@@ -114,10 +117,13 @@ readonly base_dirs_prefix=base/system/
 dirs_prefix="$base_dirs_prefix"
 
 dirs=(
+    'etc/pacman.d/hooks'
     'usr/share/X11/xkb/symbols'
 )
 
 services=(
+    apparmor
+    auditd
     NetworkManager
     firewalld
     systemd-timesyncd
@@ -213,6 +219,45 @@ for dir in "${dirs[@]}"; do
                 -exec sudo cp -v {} "/$dir/" \;
 done
 
+
+echo ""
+echo "updating firewalld..."
+sudo firewall-cmd --zone=public --remove-service=ssh
+sudo firewall-cmd --zone=public --remove-service=ssh --permanent
+
+echo ""
+echo "updating sshd..."
+sudo bash -eux -c "
+
+echo 'disabling password authentication...'
+grep '^PasswordAuthentication no$' /etc/ssh/sshd_config \
+    || echo -e '\nPasswordAuthentication no\n' >> /etc/ssh/sshd_config
+
+echo 'disabling root login...'
+grep '^PermitRootLogin no$' /etc/ssh/sshd_config \
+    || echo -e '\nPermitRootLogin no\n' >> /etc/ssh/sshd_config
+"
+
+echo ""
+echo "updating auditd..."
+sudo bash -eux -c "
+
+echo 'settings log_group to wheel...'
+grep '^log_group = wheel$' /etc/audit/auditd.conf \
+    || sed -i 's/^log_group .*/log_group = wheel/' /etc/audit/auditd.conf \
+    && grep '^log_group = wheel$' /etc/audit/auditd.conf
+"
+
+echo ""
+echo "updating apparmor..."
+sudo bash -eux -c "
+
+echo 'enabling write-cache to speedup boot...'
+grep '^write-cache$' /etc/apparmor/parser.conf \
+    || echo -e '\nwrite-cache\n' >> /etc/apparmor/parser.conf
+"
+
+
 echo ""
 echo "reloading services..."
 sudo systemctl daemon-reload
@@ -221,18 +266,6 @@ for service in "${services[@]}"; do
     sudo systemctl enable --now "$service"
 done
 
-echo ""
-echo "updating firewalld..."
-sudo firewall-cmd --zone=public --remove-service=ssh
-sudo firewall-cmd --zone=public --remove-service=ssh --permanent
-
-sudo bash -eux -c "
-grep '^PasswordAuthentication no$' /etc/ssh/sshd_config \
-    || echo -e '\nPasswordAuthentication no\n' >> /etc/ssh/sshd_config
-
-grep '^PermitRootLogin no$' /etc/ssh/sshd_config \
-    || echo -e '\nPermitRootLogin no\n' >> /etc/ssh/sshd_config
-"
 
 if [[ "$profile" == "$profile_fruit" ]]; then
     echo ""

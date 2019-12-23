@@ -165,6 +165,7 @@ hide_edge_borders both
 # Inspect with xprop
 for_window [class=".*"] title_format " %title"
 for_window [title="Volume Control"] floating enable border normal
+for_window [class="firetools"] floating enable border normal
 for_window [window_role="GtkFileChooserDialog"] floating disable
 
 # Idle 5 minutes will dim display, then 5 seconds later lock
