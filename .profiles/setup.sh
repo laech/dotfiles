@@ -105,6 +105,7 @@ packages=(
     apparmor
     audit
     firejail
+    firetools
 
     cups # Printing
     sane  # Scaning
@@ -117,6 +118,7 @@ readonly base_dirs_prefix=base/system/
 dirs_prefix="$base_dirs_prefix"
 
 dirs=(
+    'etc'
     'etc/pacman.d/hooks'
     'usr/share/X11/xkb/symbols'
 )
@@ -205,6 +207,7 @@ for dir in "${dirs[@]}"; do
 
     [[ -e "$base_dirs_prefix$dir" ]] \
         && find "$base_dirs_prefix$dir" \
+                -maxdepth 1 \
                 -type f \
                 -not -name '*~' \
                 -not -name '#*#' \
@@ -213,6 +216,7 @@ for dir in "${dirs[@]}"; do
     [[ "$dirs_prefix" != "$base_dirs_prefix" ]] \
         && [[ -e "$dirs_prefix$dir" ]] \
         && find "$dirs_prefix$dir" \
+                -maxdepth 1 \
                 -type f \
                 -not -name '*~' \
                 -not -name '#*#' \
