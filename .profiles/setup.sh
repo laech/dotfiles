@@ -71,6 +71,8 @@ packages=(
 
     jdk8-openjdk
     openjdk8-src
+    android-udev
+    android-tools
 
     # Command line syntax highlighting file outputs.
     # Also syntax highlighting for 'less', see ~/.zshrc
