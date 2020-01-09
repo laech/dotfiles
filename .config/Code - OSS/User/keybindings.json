@@ -49,28 +49,13 @@
         "when": "textInputFocus"
     },
     {
-        "key": "end",
-        "command": "-cursorEnd",
-        "when": "textInputFocus"
-    },
-    {
         "key": "ctrl+e",
         "command": "list.focusLast",
         "when": "listFocus && !inputFocus"
     },
     {
-        "key": "end",
-        "command": "-list.focusLast",
-        "when": "listFocus && !inputFocus"
-    },
-    {
         "key": "ctrl+v",
         "command": "notifications.focusLastToast",
-        "when": "notificationFocus && notificationToastsVisible"
-    },
-    {
-        "key": "end",
-        "command": "-notifications.focusLastToast",
         "when": "notificationFocus && notificationToastsVisible"
     },
     {
@@ -549,11 +534,6 @@
     {
         "key": "ctrl+/",
         "command": "undo",
-        "when": "textInputFocus && !editorReadonly"
-    },
-    {
-        "key": "ctrl+z",
-        "command": "-undo",
         "when": "textInputFocus && !editorReadonly"
     },
     {
@@ -1680,11 +1660,6 @@
     {
         "key": "ctrl+shift+/",
         "command": "redo",
-        "when": "textInputFocus && !editorReadonly"
-    },
-    {
-        "key": "ctrl+shift+z",
-        "command": "-redo",
         "when": "textInputFocus && !editorReadonly"
     },
     {
