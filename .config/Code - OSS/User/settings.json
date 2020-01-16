@@ -40,5 +40,6 @@
     "git.autofetch": true,
     "git.autofetchPeriod": 300,
     "explorer.confirmDelete": false,
-    "editor.fontSize": 15
+    "editor.fontSize": 15,
+    "terminal.integrated.fontSize": 15
 }
