@@ -104,10 +104,6 @@ packages=(
     gnome-keyring
     libsecret
     seahorse
-    apparmor
-    audit
-    firejail
-    firetools
 
     cups # Printing
     sane  # Scaning
@@ -126,8 +122,6 @@ dirs=(
 )
 
 services=(
-    apparmor
-    auditd
     NetworkManager
     firewalld
     systemd-timesyncd
@@ -243,26 +237,6 @@ echo 'disabling root login...'
 grep '^PermitRootLogin no$' /etc/ssh/sshd_config \
     || echo -e '\nPermitRootLogin no\n' >> /etc/ssh/sshd_config
 "
-
-echo ""
-echo "updating auditd..."
-sudo bash -eux -c "
-
-echo 'settings log_group to wheel...'
-grep '^log_group = wheel$' /etc/audit/auditd.conf \
-    || sed -i 's/^log_group .*/log_group = wheel/' /etc/audit/auditd.conf \
-    && grep '^log_group = wheel$' /etc/audit/auditd.conf
-"
-
-echo ""
-echo "updating apparmor..."
-sudo bash -eux -c "
-
-echo 'enabling write-cache to speedup boot...'
-grep '^write-cache$' /etc/apparmor/parser.conf \
-    || echo -e '\nwrite-cache\n' >> /etc/apparmor/parser.conf
-"
-
 
 echo ""
 echo "reloading services..."

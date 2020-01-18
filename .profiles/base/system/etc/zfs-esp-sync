@@ -2,4 +2,3 @@
 default=linux
 esp_fs=fs0
 esp_mount=/boot/efi
-extra_kernel_params="apparmor=1 security=apparmor"
