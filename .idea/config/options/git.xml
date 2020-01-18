@@ -1,5 +1,5 @@
 <application>
   <component name="Git.Application.Settings">
-    <option name="SSH_EXECUTABLE" value="NATIVE_SSH" />
+    <option name="USE_CREDENTIAL_HELPER" value="true" />
   </component>
 </application>
