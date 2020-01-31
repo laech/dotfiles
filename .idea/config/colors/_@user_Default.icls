@@ -3,8 +3,13 @@
     <property name="created">2018-07-26T13:33:12</property>
     <property name="ide">Idea</property>
     <property name="ideVersion">2018.2.0.0</property>
-    <property name="modified">2018-07-26T13:34:39</property>
+    <property name="modified">2020-01-31T16:20:39</property>
     <property name="originalScheme">Default</property>
     <property name="rainbow Default language">true</property>
   </metaInfo>
+  <attributes>
+    <option name="DEFAULT_TAG">
+      <value />
+    </option>
+  </attributes>
 </scheme>
