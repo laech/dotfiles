@@ -248,11 +248,7 @@ partial modifier_keys alphanumeric_keys
 xkb_symbols "mac" {
   include "custom(base)"
 
-  key <LWIN> {[ ISO_Level3_Shift ]};
   key <LALT> {[ ISO_Level5_Shift ]};
-
-  key <RWIN> {[ Control_R, Control_R ]};
-  modifier_map Control { <RWIN> };
 };
 
 partial modifier_keys alphanumeric_keys

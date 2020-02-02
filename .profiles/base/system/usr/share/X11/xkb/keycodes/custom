@@ -1,0 +1,5 @@
+xkb_keycodes "mac" {
+  <LVL3> = 133;
+  <LWIN> = 37;
+  <RCTL> = 134;
+};
