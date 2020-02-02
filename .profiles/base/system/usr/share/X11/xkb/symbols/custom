@@ -1,0 +1,272 @@
+
+// To enable, save this file as /usr/share/X11/xkb/symbols/custom and run:
+//
+//   setxkbmap -option '' "custom(pc)"
+//
+// or
+//
+//   setxkbmap -option '' "custom(mac)"
+//
+// If fcitx/ibus is in use, they need to be configured not to override
+// the system setting.
+// For ibus enable: Preference | Advanced | Use system keyboard layout
+// For fcitx disable: Configure | Addon | Advanced | X Keyboard Integration
+// | Configure | Allow to Override System XKB Settings
+
+partial modifier_keys alphanumeric_keys
+xkb_symbols "base" {
+
+  include "us"
+  include "shift(both_capslock)"
+
+  key <TLDE> {[grave, asciitilde]};
+  key <AE01> {[1, exclam]};
+  key <AE02> {[2, at]};
+  key <AE03> {[3, numbersign]};
+  key <AE04> {[4, dollar]};
+  key <AE05> {[5, percent]};
+  key <AE06> {[6, asciicircum]};
+  key <AE07> {[7, ampersand]};
+  key <AE08> {[8, asterisk]};
+  key <AE09> {[9, parenleft]};
+  key <AE10> {[0, parenright]};
+  key <AE11> {[minus, underscore]};
+  key <AE12> {[equal, plus]};
+  key <BKSP> {[BackSpace, BackSpace]};
+
+  key <AD01> {[q, Q]};
+  key <AD02> {
+    type="EIGHT_LEVEL",
+    symbols=[w, W],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<DELE>, clearmods=All, mods=Shift),
+      NoAction(),
+      Redirect(key=<INS>, clearmods=All, mods=Control),
+      NoAction()
+    ]
+  };
+  key <AD03> {
+    type="EIGHT_LEVEL",
+    symbols=[e, E],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<END>, clearmods=All),
+      Redirect(key=<END>, clearmods=All, mods=Shift),
+      NoAction(),
+      NoAction()
+    ]
+  };
+  key <AD04> {[r, R]};
+  key <AD05> {[t, T]};
+  key <AD06> {
+    type="EIGHT_LEVEL",
+    symbols=[y, Y],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<INS>, clearmods=All, mods=Shift),
+      NoAction(),
+      NoAction(),
+      NoAction()
+    ]
+  };
+  key <AD07> {[u, U]};
+  key <AD08> {[i, I]};
+  key <AD09> {[o, O]};
+  key <AD10> {
+    type="EIGHT_LEVEL",
+    symbols=[p, P],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<UP>, clearmods=All),
+      Redirect(key=<UP>, clearmods=All, mods=Shift),
+      NoAction(),
+      NoAction()
+    ]
+  };
+  key <AD11> {[bracketleft, braceleft]};
+  key <AD12> {[bracketright, braceright]};
+  key <BKSL> {[backslash, bar]};
+
+  key <AC01> {
+    type="EIGHT_LEVEL",
+    symbols=[a, A],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<HOME>, clearmods=All),
+      Redirect(key=<HOME>, clearmods=All, mods=Shift),
+      NoAction(),
+      NoAction()
+    ]
+  };
+  key <AC02> {[s, S]};
+  key <AC03> {
+    type="EIGHT_LEVEL",
+    symbols=[d, D],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<DELE>, clearmods=All),
+      Redirect(key=<DELE>, clearmods=All, mods=Shift),
+      Redirect(key=<DELE>, clearmods=All, mods=Control),
+      Redirect(key=<DELE>, clearmods=All, mods=Control+Shift)
+    ]
+  };
+  key <AC04> {
+    type="EIGHT_LEVEL",
+    symbols=[f, F],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<RGHT>, clearmods=All),
+      Redirect(key=<RGHT>, clearmods=All, mods=Shift),
+      Redirect(key=<RGHT>, clearmods=All, mods=Control),
+      Redirect(key=<RGHT>, clearmods=All, mods=Control+Shift)
+    ]
+  };
+  key <AC05> {
+    type="EIGHT_LEVEL",
+    symbols=[g, G],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<ESC>, clearmods=All),
+      Redirect(key=<ESC>, clearmods=All, mods=Shift),
+      NoAction(),
+      NoAction()
+    ]
+  };
+  key <AC06> {[h, H]};
+  key <AC07> {[j, J]};
+  key <AC08> {[k, K]};
+  key <AC09> {[l, L]};
+  key <AC10> {[ semicolon,    colon           ]};
+  key <AC11> {[ apostrophe,   quotedbl        ]};
+
+  key <AB01> {[z, Z]};
+  key <AB02> {[x, X]};
+  key <AB03> {[c, C]};
+  key <AB04> {
+    type="EIGHT_LEVEL",
+    symbols=[v, V],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<PGDN>, clearmods=All),
+      Redirect(key=<PGDN>, clearmods=All, mods=Shift),
+      Redirect(key=<PGUP>, clearmods=All),
+      Redirect(key=<PGUP>, clearmods=All, mods=Shift)
+    ]
+  };
+  key <AB05> {
+    type="EIGHT_LEVEL",
+    symbols=[b, B],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<LEFT>, clearmods=All),
+      Redirect(key=<LEFT>, clearmods=All, mods=Shift),
+      Redirect(key=<LEFT>, clearmods=All, mods=Control),
+      Redirect(key=<LEFT>, clearmods=All, mods=Control+Shift)
+    ]
+  };
+  key <AB06> {
+    type="EIGHT_LEVEL",
+    symbols=[n, N],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<DOWN>, clearmods=All),
+      Redirect(key=<DOWN>, clearmods=All, mods=Shift),
+      NoAction(),
+      NoAction()
+    ]
+  };
+  key <AB07> {[m, M]};
+  key <AB08> {
+    type="EIGHT_LEVEL",
+    symbols=[comma, less],
+    actions=[
+      NoAction(),
+      NoAction(),
+      NoAction(),
+      NoAction(),
+      NoAction(),
+      Redirect(key=<HOME>, clearmods=All, mods=Control)
+    ]
+  };
+  key <AB09> {
+    type="EIGHT_LEVEL",
+    symbols=[period, greater],
+    actions=[
+      NoAction(),
+      NoAction(),
+      NoAction(),
+      NoAction(),
+      NoAction(),
+      Redirect(key=<END>, clearmods=All, mods=Control)
+    ]
+  };
+  key <AB10> {
+    type="EIGHT_LEVEL",
+    symbols=[slash, question],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<UNDO>, clearmods=All),
+      Redirect(key=<AGAI>, clearmods=All),
+      NoAction(),
+      NoAction()
+    ]
+  };
+};
+
+partial modifier_keys alphanumeric_keys
+xkb_symbols "pc" {
+  include "custom(base)"
+
+  key <LALT> {[ ISO_Level3_Shift ]};
+  key <LWIN> {[ ISO_Level5_Shift ]};
+  key <LCTL> {[ Super_L, Super_L ]};
+  modifier_map Mod4 { <LCTL> };
+
+  key <RALT> {[ Control_R, Control_R ]};
+  key <RWIN> {[ Alt_R, Meta_R ]};
+  key <MENU> {[ Alt_R, Meta_R ]};
+  key <RCTL> {[ Super_R, Super_R ]};
+  modifier_map Mod1 { <RWIN>, <MENU> };
+  modifier_map Mod4 { <RCTL> };
+  modifier_map Control { <RALT> };
+};
+
+partial modifier_keys alphanumeric_keys
+xkb_symbols "mac" {
+  include "custom(base)"
+
+  key <LWIN> {[ ISO_Level3_Shift ]};
+  key <LALT> {[ ISO_Level5_Shift ]};
+
+  key <RWIN> {[ Control_R, Control_R ]};
+  modifier_map Control { <RWIN> };
+};
+
+partial modifier_keys alphanumeric_keys
+xkb_symbols "chain" {
+  include "custom(base)"
+
+  key <LALT> {[ Control_L, Control_L ]};
+  key <LWIN> {[ Alt_L, Meta_L ]};
+  key <LCTL> {[ Super_L, Super_L ]};
+  modifier_map Mod1 { <LWIN> };
+  modifier_map Mod4 { <LCTL> };
+  modifier_map Control { <LALT> };
+
+  key <RALT> {[ Control_R, Control_R ]};
+  key <RCTL> {[ Alt_R, Alt_R ]};
+  modifier_map Control { <RALT> };
+};
