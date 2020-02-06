@@ -13,28 +13,224 @@
 // For fcitx disable: Configure | Addon | Advanced | X Keyboard Integration
 // | Configure | Allow to Override System XKB Settings
 
-partial modifier_keys alphanumeric_keys
+partial alphanumeric_keys
 xkb_symbols "base" {
 
   include "us"
   include "shift(both_capslock)"
+  include "level5(modifier_mapping)"
 
-  key <TLDE> {[grave, asciitilde]};
-  key <AE01> {[1, exclam]};
-  key <AE02> {[2, at]};
-  key <AE03> {[3, numbersign]};
-  key <AE04> {[4, dollar]};
-  key <AE05> {[5, percent]};
-  key <AE06> {[6, asciicircum]};
-  key <AE07> {[7, ampersand]};
-  key <AE08> {[8, asterisk]};
-  key <AE09> {[9, parenleft]};
-  key <AE10> {[0, parenright]};
-  key <AE11> {[minus, underscore]};
-  key <AE12> {[equal, plus]};
-  key <BKSP> {[BackSpace, BackSpace]};
+  key <TLDE> {
+    type="EIGHT_LEVEL",
+    symbols=[grave, asciitilde],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<TLDE>, clearmods=All, mods=Control),
+      Redirect(key=<TLDE>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<TLDE>, clearmods=All, mods=Alt),
+      Redirect(key=<TLDE>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<TLDE>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<TLDE>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+  key <AE01> {
+    type="EIGHT_LEVEL",
+    symbols=[1, exclam],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<TLDE>, clearmods=All, mods=Control),
+      Redirect(key=<TLDE>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<TLDE>, clearmods=All, mods=Alt),
+      Redirect(key=<TLDE>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<TLDE>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<TLDE>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+  key <AE02> {
+    type="EIGHT_LEVEL",
+    symbols=[2, at],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AE02>, clearmods=All, mods=Control),
+      Redirect(key=<AE02>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AE02>, clearmods=All, mods=Alt),
+      Redirect(key=<AE02>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AE02>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AE02>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+  key <AE03> {
+    type="EIGHT_LEVEL",
+    symbols=[3, numbersign],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AE03>, clearmods=All, mods=Control),
+      Redirect(key=<AE03>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AE03>, clearmods=All, mods=Alt),
+      Redirect(key=<AE03>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AE03>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AE03>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+  key <AE04> {
+    type="EIGHT_LEVEL",
+    symbols=[4, dollar],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AE04>, clearmods=All, mods=Control),
+      Redirect(key=<AE04>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AE04>, clearmods=All, mods=Alt),
+      Redirect(key=<AE04>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AE04>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AE04>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+  key <AE05> {
+    type="EIGHT_LEVEL",
+    symbols=[5, percent],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AE05>, clearmods=All, mods=Control),
+      Redirect(key=<AE05>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AE05>, clearmods=All, mods=Alt),
+      Redirect(key=<AE05>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AE05>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AE05>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+  key <AE06> {
+    type="EIGHT_LEVEL",
+    symbols=[6, asciicircum],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AE06>, clearmods=All, mods=Control),
+      Redirect(key=<AE06>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AE06>, clearmods=All, mods=Alt),
+      Redirect(key=<AE06>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AE06>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AE06>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+  key <AE07> {
+    type="EIGHT_LEVEL",
+    symbols=[7, ampersand],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AE07>, clearmods=All, mods=Control),
+      Redirect(key=<AE07>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AE07>, clearmods=All, mods=Alt),
+      Redirect(key=<AE07>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AE07>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AE07>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+  key <AE08> {
+    type="EIGHT_LEVEL",
+    symbols=[8, asterisk],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AE08>, clearmods=All, mods=Control),
+      Redirect(key=<AE08>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AE08>, clearmods=All, mods=Alt),
+      Redirect(key=<AE08>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AE08>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AE08>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+  key <AE09> {
+    type="EIGHT_LEVEL",
+    symbols=[9, parenleft],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AE09>, clearmods=All, mods=Control),
+      Redirect(key=<AE09>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AE09>, clearmods=All, mods=Alt),
+      Redirect(key=<AE09>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AE09>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AE09>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+  key <AE10> {
+    type="EIGHT_LEVEL",
+    symbols=[0, parenright],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AE10>, clearmods=All, mods=Control),
+      Redirect(key=<AE10>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AE10>, clearmods=All, mods=Alt),
+      Redirect(key=<AE10>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AE10>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AE10>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+  key <AE11> {
+    type="EIGHT_LEVEL",
+    symbols=[minus, underscore],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AE11>, clearmods=All, mods=Control),
+      Redirect(key=<AE11>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AE11>, clearmods=All, mods=Alt),
+      Redirect(key=<AE11>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AE11>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AE11>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+  key <AE12> {
+    type="EIGHT_LEVEL",
+    symbols=[equal, plus],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AE12>, clearmods=All, mods=Control),
+      Redirect(key=<AE12>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AE12>, clearmods=All, mods=Alt),
+      Redirect(key=<AE12>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AE12>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AE12>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+  key <BKSP> {
+    type="EIGHT_LEVEL",
+    symbols=[BackSpace, BackSpace],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<BKSP>, clearmods=All, mods=Control),
+      Redirect(key=<BKSP>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<BKSP>, clearmods=All, mods=Alt),
+      Redirect(key=<BKSP>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<BKSP>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<BKSP>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
 
-  key <AD01> {[q, Q]};
+  key <AD01> {
+    type="EIGHT_LEVEL",
+    symbols=[q, Q],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AD01>, clearmods=All, mods=Control),
+      Redirect(key=<AD01>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AD01>, clearmods=All, mods=Alt),
+      Redirect(key=<AD01>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AD01>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AD01>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
   key <AD02> {
     type="EIGHT_LEVEL",
     symbols=[w, W],
@@ -42,9 +238,11 @@ xkb_symbols "base" {
       NoAction(),
       NoAction(),
       Redirect(key=<DELE>, clearmods=All, mods=Shift),
-      NoAction(),
+      Redirect(key=<AD02>, clearmods=All, mods=Control+Shift),
       Redirect(key=<INS>, clearmods=All, mods=Control),
-      NoAction()
+      Redirect(key=<AD02>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AD02>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AD02>, clearmods=All, mods=Control+Alt+Shift)
     ]
   };
   key <AD03> {
@@ -55,12 +253,40 @@ xkb_symbols "base" {
       NoAction(),
       Redirect(key=<END>, clearmods=All),
       Redirect(key=<END>, clearmods=All, mods=Shift),
-      NoAction(),
-      NoAction()
+      Redirect(key=<AD03>, clearmods=All, mods=Alt),
+      Redirect(key=<AD03>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AD03>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AD03>, clearmods=All, mods=Control+Alt+Shift)
     ]
   };
-  key <AD04> {[r, R]};
-  key <AD05> {[t, T]};
+  key <AD04> {
+    type="EIGHT_LEVEL",
+    symbols=[r, R],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<FK03>, clearmods=All, mods=Shift),
+      Redirect(key=<AD04>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AD04>, clearmods=All, mods=Alt),
+      Redirect(key=<AD04>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AD04>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AD04>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+  key <AD05> {
+    type="EIGHT_LEVEL",
+    symbols=[t, T],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AD05>, clearmods=All, mods=Control),
+      Redirect(key=<AD05>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AD05>, clearmods=All, mods=Alt),
+      Redirect(key=<AD05>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AD05>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AD05>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
   key <AD06> {
     type="EIGHT_LEVEL",
     symbols=[y, Y],
@@ -68,14 +294,55 @@ xkb_symbols "base" {
       NoAction(),
       NoAction(),
       Redirect(key=<INS>, clearmods=All, mods=Shift),
-      NoAction(),
-      NoAction(),
-      NoAction()
+      Redirect(key=<AD06>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AD06>, clearmods=All, mods=Alt),
+      Redirect(key=<AD06>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AD06>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AD06>, clearmods=All, mods=Control+Alt+Shift)
     ]
   };
-  key <AD07> {[u, U]};
-  key <AD08> {[i, I]};
-  key <AD09> {[o, O]};
+  key <AD07> {
+    type="EIGHT_LEVEL",
+    symbols=[u, U],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AD07>, clearmods=All, mods=Control),
+      Redirect(key=<AD07>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AD07>, clearmods=All, mods=Alt),
+      Redirect(key=<AD07>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AD07>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AD07>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+  key <AD08> {
+    type="EIGHT_LEVEL",
+    symbols=[i, I],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AD08>, clearmods=All, mods=Control),
+      Redirect(key=<AD08>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AD08>, clearmods=All, mods=Alt),
+      Redirect(key=<AD08>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AD08>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AD08>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+  key <AD09> {
+    type="EIGHT_LEVEL",
+    symbols=[o, O],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AD09>, clearmods=All, mods=Control),
+      Redirect(key=<AD09>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AD09>, clearmods=All, mods=Alt),
+      Redirect(key=<AD09>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AD09>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AD09>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
   key <AD10> {
     type="EIGHT_LEVEL",
     symbols=[p, P],
@@ -84,13 +351,54 @@ xkb_symbols "base" {
       NoAction(),
       Redirect(key=<UP>, clearmods=All),
       Redirect(key=<UP>, clearmods=All, mods=Shift),
-      NoAction(),
-      NoAction()
+      Redirect(key=<AD10>, clearmods=All, mods=Alt),
+      Redirect(key=<AD10>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AD10>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AD10>, clearmods=All, mods=Control+Alt+Shift)
     ]
   };
-  key <AD11> {[bracketleft, braceleft]};
-  key <AD12> {[bracketright, braceright]};
-  key <BKSL> {[backslash, bar]};
+  key <AD11> {
+    type="EIGHT_LEVEL",
+    symbols=[bracketleft, braceleft],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AD11>, clearmods=All, mods=Control),
+      Redirect(key=<AD11>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AD11>, clearmods=All, mods=Alt),
+      Redirect(key=<AD11>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AD11>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AD11>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+  key <AD12> {
+    type="EIGHT_LEVEL",
+    symbols=[bracketright, braceright],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AD12>, clearmods=All, mods=Control),
+      Redirect(key=<AD12>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AD12>, clearmods=All, mods=Alt),
+      Redirect(key=<AD12>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AD12>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AD12>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+  key <BKSL> {
+    type="EIGHT_LEVEL",
+    symbols=[backslash, bar],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<BKSL>, clearmods=All, mods=Control),
+      Redirect(key=<BKSL>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<BKSL>, clearmods=All, mods=Alt),
+      Redirect(key=<BKSL>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<BKSL>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<BKSL>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
 
   key <AC01> {
     type="EIGHT_LEVEL",
@@ -100,11 +408,15 @@ xkb_symbols "base" {
       NoAction(),
       Redirect(key=<HOME>, clearmods=All),
       Redirect(key=<HOME>, clearmods=All, mods=Shift),
-      NoAction(),
-      NoAction()
+      Redirect(key=<AD01>, clearmods=All, mods=Alt),
+      Redirect(key=<AD01>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AD01>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AD01>, clearmods=All, mods=Control+Alt+Shift)
     ]
   };
-  key <AC02> {[s, S]};
+  key <AC02> {
+    type="EIGHT_LEVEL",
+    symbols=[s, S]};
   key <AC03> {
     type="EIGHT_LEVEL",
     symbols=[d, D],
@@ -114,7 +426,9 @@ xkb_symbols "base" {
       Redirect(key=<DELE>, clearmods=All),
       Redirect(key=<DELE>, clearmods=All, mods=Shift),
       Redirect(key=<DELE>, clearmods=All, mods=Control),
-      Redirect(key=<DELE>, clearmods=All, mods=Control+Shift)
+      Redirect(key=<DELE>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AD03>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AD03>, clearmods=All, mods=Control+Alt+Shift)
     ]
   };
   key <AC04> {
@@ -126,7 +440,9 @@ xkb_symbols "base" {
       Redirect(key=<RGHT>, clearmods=All),
       Redirect(key=<RGHT>, clearmods=All, mods=Shift),
       Redirect(key=<RGHT>, clearmods=All, mods=Control),
-      Redirect(key=<RGHT>, clearmods=All, mods=Control+Shift)
+      Redirect(key=<RGHT>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AD04>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AD04>, clearmods=All, mods=Control+Alt+Shift)
     ]
   };
   key <AC05> {
@@ -137,20 +453,139 @@ xkb_symbols "base" {
       NoAction(),
       Redirect(key=<ESC>, clearmods=All),
       Redirect(key=<ESC>, clearmods=All, mods=Shift),
-      NoAction(),
-      NoAction()
+      Redirect(key=<AD05>, clearmods=All, mods=Alt),
+      Redirect(key=<AD05>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AD05>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AD05>, clearmods=All, mods=Control+Alt+Shift)
     ]
   };
-  key <AC06> {[h, H]};
-  key <AC07> {[j, J]};
-  key <AC08> {[k, K]};
-  key <AC09> {[l, L]};
-  key <AC10> {[ semicolon,    colon           ]};
-  key <AC11> {[ apostrophe,   quotedbl        ]};
+  key <AC06> {
+    type="EIGHT_LEVEL",
+    symbols=[h, H],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AC06>, clearmods=All, mods=Control),
+      Redirect(key=<AC06>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AC06>, clearmods=All, mods=Alt),
+      Redirect(key=<AC06>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AC06>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AC06>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+  key <AC07> {
+    type="EIGHT_LEVEL",
+    symbols=[j, J],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AC07>, clearmods=All, mods=Control),
+      Redirect(key=<AC07>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AC07>, clearmods=All, mods=Alt),
+      Redirect(key=<AC07>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AC07>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AC07>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+  key <AC08> {
+    type="EIGHT_LEVEL",
+    symbols=[k, K],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AC08>, clearmods=All, mods=Control),
+      Redirect(key=<AC08>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AC08>, clearmods=All, mods=Alt),
+      Redirect(key=<AC08>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AC08>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AC08>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+  key <AC09> {
+    type="EIGHT_LEVEL",
+    symbols=[l, L],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AC09>, clearmods=All, mods=Control),
+      Redirect(key=<AC09>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AC09>, clearmods=All, mods=Alt),
+      Redirect(key=<AC09>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AC09>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AC09>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+  key <AC10> {
+    type="EIGHT_LEVEL",
+    symbols=[semicolon, colon],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AC10>, clearmods=All, mods=Control),
+      Redirect(key=<AC10>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AC10>, clearmods=All, mods=Alt),
+      Redirect(key=<AC10>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AC10>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AC10>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+  key <AC11> {
+    type="EIGHT_LEVEL",
+    symbols=[apostrophe, quotedbl],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AC11>, clearmods=All, mods=Control),
+      Redirect(key=<AC11>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AC11>, clearmods=All, mods=Alt),
+      Redirect(key=<AC11>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AC11>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AC11>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
 
-  key <AB01> {[z, Z]};
-  key <AB02> {[x, X]};
-  key <AB03> {[c, C]};
+  key <AB01> {
+    type="EIGHT_LEVEL",
+    symbols=[z, Z],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AB01>, clearmods=All, mods=Control),
+      Redirect(key=<AB01>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AB01>, clearmods=All, mods=Alt),
+      Redirect(key=<AB01>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AB01>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AB01>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+  key <AB02> {
+    type="EIGHT_LEVEL",
+    symbols=[x, X],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AB02>, clearmods=All, mods=Control),
+      Redirect(key=<AB02>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AB02>, clearmods=All, mods=Alt),
+      Redirect(key=<AB02>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AB02>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AB02>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+  key <AB03> {
+    type="EIGHT_LEVEL",
+    symbols=[c, C],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AB03>, clearmods=All, mods=Control),
+      Redirect(key=<AB03>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AB03>, clearmods=All, mods=Alt),
+      Redirect(key=<AB03>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AB03>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AB03>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
   key <AB04> {
     type="EIGHT_LEVEL",
     symbols=[v, V],
@@ -160,7 +595,9 @@ xkb_symbols "base" {
       Redirect(key=<PGDN>, clearmods=All),
       Redirect(key=<PGDN>, clearmods=All, mods=Shift),
       Redirect(key=<PGUP>, clearmods=All),
-      Redirect(key=<PGUP>, clearmods=All, mods=Shift)
+      Redirect(key=<PGUP>, clearmods=All, mods=Shift),
+      Redirect(key=<AD04>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AD04>, clearmods=All, mods=Control+Alt+Shift)
     ]
   };
   key <AB05> {
@@ -172,7 +609,9 @@ xkb_symbols "base" {
       Redirect(key=<LEFT>, clearmods=All),
       Redirect(key=<LEFT>, clearmods=All, mods=Shift),
       Redirect(key=<LEFT>, clearmods=All, mods=Control),
-      Redirect(key=<LEFT>, clearmods=All, mods=Control+Shift)
+      Redirect(key=<LEFT>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AD05>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AD05>, clearmods=All, mods=Control+Alt+Shift)
     ]
   };
   key <AB06> {
@@ -183,8 +622,10 @@ xkb_symbols "base" {
       NoAction(),
       Redirect(key=<DOWN>, clearmods=All),
       Redirect(key=<DOWN>, clearmods=All, mods=Shift),
-      NoAction(),
-      NoAction()
+      Redirect(key=<AB06>, clearmods=All, mods=Alt),
+      Redirect(key=<AB06>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AB06>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AB06>, clearmods=All, mods=Control+Alt+Shift)
     ]
   };
   key <AB07> {[m, M]};
@@ -194,10 +635,12 @@ xkb_symbols "base" {
     actions=[
       NoAction(),
       NoAction(),
-      NoAction(),
-      NoAction(),
-      NoAction(),
-      Redirect(key=<HOME>, clearmods=All, mods=Control)
+      Redirect(key=<AD08>, clearmods=All, mods=Control),
+      Redirect(key=<AD08>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AD08>, clearmods=All, mods=Alt),
+      Redirect(key=<HOME>, clearmods=All, mods=Control),
+      Redirect(key=<AD08>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AD08>, clearmods=All, mods=Control+Alt+Shift)
     ]
   };
   key <AB09> {
@@ -206,10 +649,12 @@ xkb_symbols "base" {
     actions=[
       NoAction(),
       NoAction(),
-      NoAction(),
-      NoAction(),
-      NoAction(),
-      Redirect(key=<END>, clearmods=All, mods=Control)
+      Redirect(key=<AD09>, clearmods=All, mods=Control),
+      Redirect(key=<AD09>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AD09>, clearmods=All, mods=Alt),
+      Redirect(key=<END>, clearmods=All, mods=Control),
+      Redirect(key=<AD09>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AD09>, clearmods=All, mods=Control+Alt+Shift)
     ]
   };
   key <AB10> {
@@ -220,8 +665,24 @@ xkb_symbols "base" {
       NoAction(),
       Redirect(key=<UNDO>, clearmods=All),
       Redirect(key=<AGAI>, clearmods=All),
+      Redirect(key=<AD10>, clearmods=All, mods=Alt),
+      Redirect(key=<AD10>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AD10>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AD10>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+  key <SPCE> {
+    type="EIGHT_LEVEL",
+    symbols=[space],
+    actions=[
       NoAction(),
-      NoAction()
+      NoAction(),
+      Redirect(key=<SPCE>, clearmods=All, mods=Control),
+      Redirect(key=<SPCE>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<SPCE>, clearmods=All, mods=Alt),
+      Redirect(key=<SPCE>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<SPCE>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<SPCE>, clearmods=All, mods=Control+Alt+Shift)
     ]
   };
 };
@@ -247,8 +708,6 @@ xkb_symbols "pc" {
 partial modifier_keys alphanumeric_keys
 xkb_symbols "mac" {
   include "custom(base)"
-
-  key <LALT> {[ ISO_Level5_Shift ]};
 };
 
 partial modifier_keys alphanumeric_keys
