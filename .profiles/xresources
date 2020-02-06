@@ -41,6 +41,7 @@ XTerm.vt100.translations: #override \n\
   Ctrl Shift <Key>V: insert-selection(CLIPBOARD) \n\
   Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
   Alt <Key>Return: insert-eight-bit() \n\
+  None<Key>Undo: string(0x1f) \n\
 
 ! Compare with gnome-terminal etc to see color differences
 ! when setting this to true or false

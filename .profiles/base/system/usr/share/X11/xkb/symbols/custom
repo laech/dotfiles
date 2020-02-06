@@ -265,7 +265,7 @@ xkb_symbols "base" {
     actions=[
       NoAction(),
       NoAction(),
-      Redirect(key=<FK03>, clearmods=All, mods=Shift),
+      Redirect(key=<AD04>, clearmods=All, mods=Control),
       Redirect(key=<AD04>, clearmods=All, mods=Control+Shift),
       Redirect(key=<AD04>, clearmods=All, mods=Alt),
       Redirect(key=<AD04>, clearmods=All, mods=Alt+Shift),
@@ -416,7 +416,18 @@ xkb_symbols "base" {
   };
   key <AC02> {
     type="EIGHT_LEVEL",
-    symbols=[s, S]};
+    symbols=[s, S],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AC02>, clearmods=All, mods=Control),
+      Redirect(key=<AC02>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AC02>, clearmods=All, mods=Alt),
+      Redirect(key=<AC02>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AC02>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AC02>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
   key <AC03> {
     type="EIGHT_LEVEL",
     symbols=[d, D],
@@ -424,11 +435,11 @@ xkb_symbols "base" {
       NoAction(),
       NoAction(),
       Redirect(key=<DELE>, clearmods=All),
-      Redirect(key=<DELE>, clearmods=All, mods=Shift),
+      Redirect(key=<AC03>, clearmods=All, mods=Control+Shift),
       Redirect(key=<DELE>, clearmods=All, mods=Control),
-      Redirect(key=<DELE>, clearmods=All, mods=Control+Shift),
-      Redirect(key=<AD03>, clearmods=All, mods=Control+Alt),
-      Redirect(key=<AD03>, clearmods=All, mods=Control+Alt+Shift)
+      Redirect(key=<AC03>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AC03>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AC03>, clearmods=All, mods=Control+Alt+Shift)
     ]
   };
   key <AC04> {
@@ -441,8 +452,8 @@ xkb_symbols "base" {
       Redirect(key=<RGHT>, clearmods=All, mods=Shift),
       Redirect(key=<RGHT>, clearmods=All, mods=Control),
       Redirect(key=<RGHT>, clearmods=All, mods=Control+Shift),
-      Redirect(key=<AD04>, clearmods=All, mods=Control+Alt),
-      Redirect(key=<AD04>, clearmods=All, mods=Control+Alt+Shift)
+      Redirect(key=<AC04>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AC04>, clearmods=All, mods=Control+Alt+Shift)
     ]
   };
   key <AC05> {

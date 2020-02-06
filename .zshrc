@@ -24,6 +24,7 @@ zle -N shift-down
 [[ -n "$terminfo[kri]"  ]] && bindkey "$terminfo[kri]"  shift-up
 [[ -n "$terminfo[kind]" ]] && bindkey "$terminfo[kind]" shift-down
 
+bindkey "^[[3;5~" delete-word # C-Delete
 bindkey "^[[1;5D" backward-word  # C-Left
 bindkey "^[[1;3D" backward-word  # M-Left
 bindkey "^[[1;5C" forward-word # C-Right

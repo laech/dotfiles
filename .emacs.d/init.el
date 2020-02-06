@@ -237,10 +237,15 @@ be used as a function advice via `advice-add'."
   (save-some-buffers t))
 (add-hook 'focus-out-hook 'my-save-all-buffers)
 
+(define-key key-translation-map (kbd "ESC") (kbd "C-g"))
+
 (define-key ctl-x-map (kbd "g") 'magit-status)
 (define-key ctl-x-map (kbd "G") 'magit-list-repositories)
 (define-key ctl-x-map (kbd "C-l") 'downcase-dwim)
 (define-key ctl-x-map (kbd "C-u") 'upcase-dwim)
+(define-key ctl-x-map (kbd "<end>") 'eval-last-sexp)
+(define-key ctl-x-map (kbd "<left>") 'list-buffers)
+(define-key ctl-x-map (kbd "<right>") 'find-file)
 
 (global-set-key [remap kill-region] 'kill-region-or-line)
 (global-set-key [remap kill-ring-save] 'copy-region-or-line)
@@ -388,15 +393,20 @@ be used as a function advice via `advice-add'."
       (message "Copied sexp")
       (paredit-copy-sexps-as-kill)))
 
-  (define-key mode-specific-map (kbd "M-s") 'paredit-splice-sexp)
-  (define-key mode-specific-map (kbd "M-S") 'paredit-split-sexp)
-
   (mapc
    (lambda (arg) (apply 'define-key paredit-mode-map arg))
    `(([remap kill-region] paredit-cut-region-or-sexp)
      ([remap kill-ring-save] paredit-copy-region-or-sexp)
      ([remap kill-line] paredit-kill)
+     (,(kbd "C-c M-s") paredit-splice-sexp)
+     (,(kbd "C-c M-S") paredit-split-sexp)
+     (,(kbd "M-[") paredit-backward-slurp-sexp)
+     (,(kbd "M-{") paredit-backward-barf-sexp)
+     (,(kbd "M-]") paredit-forward-slurp-sexp)
+     (,(kbd "M-}") paredit-forward-barf-sexp)
      (,(kbd "C-M-S-t") transpose-sexps-reverse)
+     (,(kbd "<C-left>") nil)
+     (,(kbd "<C-right>") nil)
      (,(kbd "M-s") nil)
      (,(kbd "M-S") nil)
      (,(kbd "C-j") nil))))
