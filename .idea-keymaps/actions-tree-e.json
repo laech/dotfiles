@@ -185,7 +185,12 @@
             { "keys": ["C"], "id": "IntroduceConstant" },
             { "keys": ["F"], "id": "IntroduceField" },
             { "keys": ["P"], "id": "IntroduceParameter" },
-            { "keys": ["M"], "id": "ExtractMethod" }
+            { "keys": ["M"], "id": "ExtractMethod" },
+            {
+              "keys": ["M"],
+              "id": "ExtractFunction",
+              "when": "FileExtension:kt"
+            }
           ]
         }
       ]
