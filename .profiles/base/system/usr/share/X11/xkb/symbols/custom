@@ -701,19 +701,6 @@ xkb_symbols "base" {
 partial modifier_keys alphanumeric_keys
 xkb_symbols "pc" {
   include "custom(base)"
-
-  key <LALT> {[ ISO_Level3_Shift ]};
-  key <LWIN> {[ ISO_Level5_Shift ]};
-  key <LCTL> {[ Super_L, Super_L ]};
-  modifier_map Mod4 { <LCTL> };
-
-  key <RALT> {[ Control_R, Control_R ]};
-  key <RWIN> {[ Alt_R, Meta_R ]};
-  key <MENU> {[ Alt_R, Meta_R ]};
-  key <RCTL> {[ Super_R, Super_R ]};
-  modifier_map Mod1 { <RWIN>, <MENU> };
-  modifier_map Mod4 { <RCTL> };
-  modifier_map Control { <RALT> };
 };
 
 partial modifier_keys alphanumeric_keys
