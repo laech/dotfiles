@@ -20,11 +20,13 @@
     <keyboard-shortcut first-keystroke="shift ctrl slash" />
     <keyboard-shortcut first-keystroke="shift alt minus" />
     <keyboard-shortcut first-keystroke="shift ctrl z" />
+    <keyboard-shortcut first-keystroke="again" />
   </action>
   <action id="$SelectAll" />
   <action id="$Undo">
     <keyboard-shortcut first-keystroke="ctrl slash" />
     <keyboard-shortcut first-keystroke="ctrl z" />
+    <keyboard-shortcut first-keystroke="undo" />
   </action>
   <action id="ActivateFavoritesToolWindow" />
   <action id="ActivateFindToolWindow">
@@ -138,10 +140,12 @@
     <keyboard-shortcut first-keystroke="shift ctrl slash" />
     <keyboard-shortcut first-keystroke="shift alt minus" />
     <keyboard-shortcut first-keystroke="shift ctrl z" />
+    <keyboard-shortcut first-keystroke="again" />
   </action>
   <action id="Editor Undo">
     <keyboard-shortcut first-keystroke="ctrl slash" />
     <keyboard-shortcut first-keystroke="ctrl z" />
+    <keyboard-shortcut first-keystroke="undo" />
   </action>
   <action id="EditorAddOrRemoveCaret" />
   <action id="EditorAddRectangularSelectionOnMouseDrag" />
@@ -328,12 +332,17 @@
   </action>
   <action id="Find">
     <keyboard-shortcut first-keystroke="ctrl s" />
+    <keyboard-shortcut first-keystroke="f3" />
+    <keyboard-shortcut first-keystroke="shift f3" />
   </action>
   <action id="FindInPath" />
   <action id="FindNext">
     <keyboard-shortcut first-keystroke="ctrl s" />
+    <keyboard-shortcut first-keystroke="f3" />
   </action>
-  <action id="FindPrevious" />
+  <action id="FindPrevious">
+    <keyboard-shortcut first-keystroke="shift f3" />
+  </action>
   <action id="FindUsages" />
   <action id="FindUsagesInFile" />
   <action id="FindWordAtCaret" />

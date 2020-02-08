@@ -210,7 +210,8 @@
 (add-hook 'after-init-hook #'global-undo-tree-mode)
 (with-eval-after-load 'undo-tree
   (with-eval-after-load 'diminish
-    (diminish 'undo-tree-mode)))
+    (diminish 'undo-tree-mode))
+  (define-key undo-tree-map (kbd "<redo>") 'undo-tree-redo))
 
 (add-hook 'after-init-hook #'which-key-mode)
 (with-eval-after-load 'which-key
@@ -237,12 +238,17 @@ be used as a function advice via `advice-add'."
   (save-some-buffers t))
 (add-hook 'focus-out-hook 'my-save-all-buffers)
 
+(defun my-buffer-file-name ()
+  (interactive)
+  (message buffer-file-name))
+
 (define-key key-translation-map (kbd "ESC") (kbd "C-g"))
 
 (define-key ctl-x-map (kbd "g") 'magit-status)
 (define-key ctl-x-map (kbd "G") 'magit-list-repositories)
 (define-key ctl-x-map (kbd "C-l") 'downcase-dwim)
 (define-key ctl-x-map (kbd "C-u") 'upcase-dwim)
+(define-key ctl-x-map (kbd "<f3>") 'save-buffer)
 (define-key ctl-x-map (kbd "<end>") 'eval-last-sexp)
 (define-key ctl-x-map (kbd "<left>") 'list-buffers)
 (define-key ctl-x-map (kbd "<right>") 'find-file)
@@ -253,7 +259,10 @@ be used as a function advice via `advice-add'."
 
 (dolist
     (mapping
-     '(("<S-RET>" . start-new-line)
+     '(("<f3>" . isearch-forward)
+       ("<S-f3>" . isearch-backward)
+       ("<f6>" . my-buffer-file-name)
+       ("<S-RET>" . start-new-line)
        ("<S-return>" . start-new-line)
        ("C-r" . avy-goto-char)
        ("C-o" . my/find-file)
@@ -277,7 +286,9 @@ be used as a function advice via `advice-add'."
 
 (with-eval-after-load 'isearch
   (with-eval-after-load 'diminish
-    (diminish 'isearch-mode)))
+    (diminish 'isearch-mode))
+  (define-key isearch-mode-map (kbd "<f3>") 'isearch-repeat-forward)
+  (define-key isearch-mode-map (kbd "<S-f3>") 'isearch-repeat-backward))
 
 (with-eval-after-load 'expand-region
   (setq

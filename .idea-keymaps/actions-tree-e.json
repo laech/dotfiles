@@ -41,10 +41,10 @@
     {
       "keys": ["ctrl X"],
       "items": [
-        { "keys": ["ctrl F"], "id": "GotoFile" },
+        { "keys": ["ctrl F", "RIGHT"], "id": "OpenFile" },
         { "keys": ["ctrl B", "B"], "id": "RecentFiles" },
         { "keys": ["D"], "id": "ActivateProjectToolWindow" },
-        { "keys": ["ctrl S"], "id": "SaveAll", "separator-above": "" },
+        { "keys": ["ctrl S", "F3"], "id": "SaveAll", "separator-above": "" },
         { "keys": ["H"], "id": "$SelectAll" },
         { "keys": ["ctrl Q"], "id": "ToggleReadOnlyAttribute" },
         {
@@ -135,8 +135,8 @@
         { "keys": ["2"], "id": "SplitHorizontally" },
         { "keys": ["3"], "id": "SplitVertically" },
         { "keys": ["O"], "id": "NextSplitter" },
-        { "keys": ["RIGHT", "ctrl RIGHT"], "id": "NextTab" },
-        { "keys": ["LEFT", "ctrl LEFT"], "id": "PreviousTab" },
+        { "keys": ["ctrl RIGHT"], "id": "NextTab" },
+        { "keys": ["ctrl LEFT"], "id": "PreviousTab" },
         {
           "keys": ["ctrl EQUALS"],
           "id": "EditorIncreaseFontSize",
