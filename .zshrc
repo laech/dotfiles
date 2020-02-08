@@ -31,12 +31,40 @@ bindkey "^[[1;5C" forward-word # C-Right
 bindkey "^[[1;3C" forward-word # M-Right
 bindkey "^X^_" redo # C-x C--
 
+update-clipboard() {
+    [[ -n "$DISPLAY" ]] \
+        && type xsel &> /dev/null \
+        && print -rn $CUTBUFFER | xsel -ib
+}
+
+update-killring() {
+    local content=
+
+    if [[ -z "$DISPLAY" ]] || ! type xsel &> /dev/null; then
+        return
+    fi
+
+    content=$(xsel -ob)
+    if [[ "$CUTBUFFER" != "$content" ]]; then
+        return
+    fi
+
+    killring=("$CUTBUFFER" "${killring[@]}")
+    CUTBUFFER="$content"
+}
+
 x-kill-region() {
     if [[ $REGION_ACTIVE == 0 ]]; then
         zle kill-whole-line
     else
         zle kill-region
     fi
+    update-clipboard
+}
+
+x-copy-region-as-kill() {
+    zle copy-region-as-kill
+    update-clipboard
 }
 
 x-cancel() {
@@ -47,11 +75,21 @@ x-cancel() {
     fi
 }
 
-zle -N x-kill-region
-zle -N x-cancel
+x-yank() {
+    update-killring
+    zle yank
+    zle -f yank # Make subsequent yank-pop work
+}
 
-bindkey -e '^w' x-kill-region # C-w
-bindkey -e '^g' x-cancel      # C-g
+zle -N x-kill-region
+zle -N x-copy-region-as-kill
+zle -N x-cancel
+zle -N x-yank
+
+bindkey -e '^w' x-kill-region
+bindkey -e '^[w' x-copy-region-as-kill
+bindkey -e '^g' x-cancel
+bindkey -e '^y' x-yank
 
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
