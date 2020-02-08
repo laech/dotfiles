@@ -242,8 +242,6 @@ be used as a function advice via `advice-add'."
   (interactive)
   (message buffer-file-name))
 
-(define-key key-translation-map (kbd "ESC") (kbd "C-g"))
-
 (define-key ctl-x-map (kbd "g") 'magit-status)
 (define-key ctl-x-map (kbd "G") 'magit-list-repositories)
 (define-key ctl-x-map (kbd "C-l") 'downcase-dwim)
@@ -411,8 +409,8 @@ be used as a function advice via `advice-add'."
      ([remap kill-line] paredit-kill)
      (,(kbd "C-c M-s") paredit-splice-sexp)
      (,(kbd "C-c M-S") paredit-split-sexp)
-     (,(kbd "M-[") paredit-backward-slurp-sexp)
-     (,(kbd "M-{") paredit-backward-barf-sexp)
+;;     (,(kbd "M-[") paredit-backward-slurp-sexp)
+;;     (,(kbd "M-{") paredit-backward-barf-sexp)
      (,(kbd "M-]") paredit-forward-slurp-sexp)
      (,(kbd "M-}") paredit-forward-barf-sexp)
      (,(kbd "C-M-S-t") transpose-sexps-reverse)
