@@ -45,12 +45,32 @@ update-killring() {
     fi
 
     content=$(xsel -ob)
-    if [[ "$CUTBUFFER" != "$content" ]]; then
+    if [[ -z "$content" ]] || [[ "$CUTBUFFER" == "$content" ]]; then
         return
     fi
 
     killring=("$CUTBUFFER" "${killring[@]}")
     CUTBUFFER="$content"
+}
+
+x-backward-kill-word() {
+    zle backward-kill-word
+    update-clipboard
+}
+
+x-kill-word() {
+    zle kill-word
+    update-clipboard
+}
+
+x-kill-line() {
+    zle kill-line
+    update-clipboard
+}
+
+x-kill-whole-line() {
+    zle kill-whole-line
+    update-clipboard
 }
 
 x-kill-region() {
@@ -81,11 +101,20 @@ x-yank() {
     zle -f yank # Make subsequent yank-pop work
 }
 
+zle -N x-kill-word
+zle -N x-backward-kill-word
+zle -N x-kill-line
+zle -N x-kill-whole-line
 zle -N x-kill-region
 zle -N x-copy-region-as-kill
 zle -N x-cancel
 zle -N x-yank
 
+bindkey -e "^[d" x-kill-word
+bindkey -e "^[^?" x-backward-kill-word
+bindkey -e "^[^H" x-backward-kill-word
+bindkey -e '^k' x-kill-line
+bindkey -e '^u' x-kill-whole-line
 bindkey -e '^w' x-kill-region
 bindkey -e '^[w' x-copy-region-as-kill
 bindkey -e '^g' x-cancel
