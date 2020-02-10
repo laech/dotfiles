@@ -11,6 +11,15 @@ xkb_keycodes "pc" {
   <RALT> = 134; // Super_R as Alt_R
 };
 
+xkb_keycodes "5591" {
+  include "custom(base)"
+
+  <LVL3> = 64;  // Alt_L as ISO_Level3_Shift
+  <MDSW> = 133; // Super_L as ISO_Level5_Shift
+  <RCTL> = 108; // Alt_R as Control_R
+  <RALT> = 105; // Control_R as Alt_R
+};
+
 xkb_keycodes "mac" {
   include "custom(base)"
 
