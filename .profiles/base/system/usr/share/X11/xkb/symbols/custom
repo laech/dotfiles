@@ -1,7 +1,12 @@
 
-// To enable, save this file as /usr/share/X11/xkb/symbols/custom and run:
+// To enable, save this file as /usr/share/X11/xkb/symbols/custom
+// and ../keycodes/custom /usr/share/X11/xkb/keycodes/custom and run:
 //
-//   setxkbmap -option '' "custom(pc)"
+//   setxkbmap -v -option '' -keycodes 'evdev+aliases(qwerty)+custom(pc)' -layout 'custom'
+//
+// where 'evdev+aliases(qwerty)' is default and 'custom(pc)' remaps modifier
+// key locations, replace 'custom(pc)' when appropriate for other hardwares,
+// e.g. 'custom(mac)'
 //
 // or
 //
@@ -13,8 +18,8 @@
 // For fcitx disable: Configure | Addon | Advanced | X Keyboard Integration
 // | Configure | Allow to Override System XKB Settings
 
-partial alphanumeric_keys
-xkb_symbols "base" {
+default partial alphanumeric_keys
+xkb_symbols "basic" {
 
   include "us"
   include "shift(both_capslock)"
@@ -684,7 +689,7 @@ xkb_symbols "base" {
   };
   key <SPCE> {
     type="EIGHT_LEVEL",
-    symbols=[space],
+    symbols=[space, space],
     actions=[
       NoAction(),
       NoAction(),
@@ -699,7 +704,7 @@ xkb_symbols "base" {
 
   key <UP> {
     type="EIGHT_LEVEL",
-    symbols=[Up],
+    symbols=[Up, Up],
     actions=[
       NoAction(),
       NoAction(),
@@ -713,7 +718,7 @@ xkb_symbols "base" {
   };
   key <LEFT> {
     type="EIGHT_LEVEL",
-    symbols=[Left],
+    symbols=[Left, Left],
     actions=[
       NoAction(),
       NoAction(),
@@ -727,7 +732,7 @@ xkb_symbols "base" {
   };
   key <DOWN> {
     type="EIGHT_LEVEL",
-    symbols=[Down],
+    symbols=[Down, Down],
     actions=[
       NoAction(),
       NoAction(),
@@ -741,7 +746,7 @@ xkb_symbols "base" {
   };
   key <RGHT> {
     type="EIGHT_LEVEL",
-    symbols=[Right],
+    symbols=[Right, Right],
     actions=[
       NoAction(),
       NoAction(),
@@ -753,30 +758,89 @@ xkb_symbols "base" {
       Redirect(key=<RGHT>, clearmods=All, mods=Control+Alt+Shift)
     ]
   };
-};
 
-partial modifier_keys alphanumeric_keys
-xkb_symbols "pc" {
-  include "custom(base)"
-};
-
-partial modifier_keys alphanumeric_keys
-xkb_symbols "mac" {
-  include "custom(base)"
-};
-
-partial modifier_keys alphanumeric_keys
-xkb_symbols "chain" {
-  include "custom(base)"
-
-  key <LALT> {[ Control_L, Control_L ]};
-  key <LWIN> {[ Alt_L, Meta_L ]};
-  key <LCTL> {[ Super_L, Super_L ]};
-  modifier_map Mod1 { <LWIN> };
-  modifier_map Mod4 { <LCTL> };
-  modifier_map Control { <LALT> };
-
-  key <RALT> {[ Control_R, Control_R ]};
-  key <RCTL> {[ Alt_R, Alt_R ]};
-  modifier_map Control { <RALT> };
+  key <INS> {
+    type="EIGHT_LEVEL",
+    symbols=[Insert, Insert],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<INS>, clearmods=All, mods=Control),
+      Redirect(key=<INS>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<INS>, clearmods=All, mods=Alt),
+      Redirect(key=<INS>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<INS>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<INS>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+  key <HOME> {
+    type="EIGHT_LEVEL",
+    symbols=[Home, Home],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<HOME>, clearmods=All, mods=Control),
+      Redirect(key=<HOME>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<HOME>, clearmods=All, mods=Alt),
+      Redirect(key=<HOME>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<HOME>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<HOME>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+  key <PGUP> {
+    type="EIGHT_LEVEL",
+    symbols=[Prior, Prior],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<PGUP>, clearmods=All, mods=Control),
+      Redirect(key=<PGUP>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<PGUP>, clearmods=All, mods=Alt),
+      Redirect(key=<PGUP>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<PGUP>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<PGUP>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+  key <DELE> {
+    type="EIGHT_LEVEL",
+    symbols=[Delete, Delete],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<DELE>, clearmods=All, mods=Control),
+      Redirect(key=<DELE>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<DELE>, clearmods=All, mods=Alt),
+      Redirect(key=<DELE>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<DELE>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<DELE>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+  key <END> {
+    type="EIGHT_LEVEL",
+    symbols=[End, End],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<END>, clearmods=All, mods=Control),
+      Redirect(key=<END>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<END>, clearmods=All, mods=Alt),
+      Redirect(key=<END>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<END>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<END>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+  key <PGDN> {
+    type="EIGHT_LEVEL",
+    symbols=[Next, Next],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<PGDN>, clearmods=All, mods=Control),
+      Redirect(key=<PGDN>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<PGDN>, clearmods=All, mods=Alt),
+      Redirect(key=<PGDN>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<PGDN>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<PGDN>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
 };
