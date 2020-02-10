@@ -469,10 +469,10 @@ xkb_symbols "basic" {
       NoAction(),
       Redirect(key=<ESC>, clearmods=All),
       Redirect(key=<ESC>, clearmods=All, mods=Shift),
-      Redirect(key=<AD05>, clearmods=All, mods=Alt),
-      Redirect(key=<AD05>, clearmods=All, mods=Alt+Shift),
-      Redirect(key=<AD05>, clearmods=All, mods=Control+Alt),
-      Redirect(key=<AD05>, clearmods=All, mods=Control+Alt+Shift)
+      Redirect(key=<AC05>, clearmods=All, mods=Alt),
+      Redirect(key=<AC05>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AC05>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AC05>, clearmods=All, mods=Control+Alt+Shift)
     ]
   };
   key <AC06> {

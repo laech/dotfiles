@@ -104,6 +104,7 @@ bindkey -e '^u' x-kill-whole-line
 bindkey -e '^w' x-kill-region
 bindkey -e '^[w' x-copy-region-as-kill
 bindkey -e '^g' x-cancel
+bindkey -e '^[' x-cancel
 bindkey -e '^y' x-yank
 
 bindkey "^[[3;5~" x-kill-word # C-Delete
