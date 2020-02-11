@@ -221,6 +221,34 @@ xkb_symbols "basic" {
       Redirect(key=<BKSP>, clearmods=All, mods=Control+Alt+Shift)
     ]
   };
+  key <TAB> {
+    type="EIGHT_LEVEL",
+    symbols=[Tab, ISO_Left_Tab],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<TAB>, clearmods=All, mods=Control),
+      Redirect(key=<TAB>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<TAB>, clearmods=All, mods=Alt),
+      Redirect(key=<TAB>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<TAB>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<TAB>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+  key <RTRN> {
+    type="EIGHT_LEVEL",
+    symbols=[Return, Return],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<RTRN>, clearmods=All, mods=Control),
+      Redirect(key=<RTRN>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<RTRN>, clearmods=All, mods=Alt),
+      Redirect(key=<RTRN>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<RTRN>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<RTRN>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
 
   key <AD01> {
     type="EIGHT_LEVEL",
