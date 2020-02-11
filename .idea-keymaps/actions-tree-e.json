@@ -33,7 +33,7 @@
     },
     {
       "keys": ["C"],
-      "when": "ToolWindowTabActive:Local Changes",
+      "when": { "all": ["ToolWindowTabActive:Local Changes", "!InputFocused"] },
       "items": [
         { "keys": ["C"], "id": "CheckinProject" }
       ]
