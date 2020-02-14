@@ -42,14 +42,12 @@
       <property name="show-frame" type="bool" value="false"/>
       <property name="square-icons" type="bool" value="true"/>
       <property name="names-ordered" type="array">
-        <value type="string" value="blueman"/>
-        <value type="string" value="firetools"/>
-        <value type="string" value="blueman-tray"/>
-        <value type="string" value="pasystray"/>
-        <value type="string" value="xfce4-power-manager"/>
-        <value type="string" value="firewall-applet"/>
         <value type="string" value="networkmanager applet"/>
-        <value type="string" value="thunar"/>
+        <value type="string" value="firewall-applet"/>
+        <value type="string" value="blueman-tray"/>
+      </property>
+      <property name="size-max" type="uint" value="16"/>
+      <property name="names-hidden" type="array">
       </property>
     </property>
     <property name="plugin-8" type="string" value="pulseaudio">
