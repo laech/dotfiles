@@ -27,7 +27,7 @@ xkb_symbols "basic" {
 
   key <TLDE> {
     type="EIGHT_LEVEL",
-    symbols=[grave, asciitilde],
+    symbols=[grave, asciitilde, grave, asciitilde, grave, asciitilde, grave, asciitilde],
     actions=[
       NoAction(),
       NoAction(),
@@ -41,7 +41,7 @@ xkb_symbols "basic" {
   };
   key <AE01> {
     type="EIGHT_LEVEL",
-    symbols=[1, exclam],
+    symbols=[1, exclam, 1, exclam, 1, exclam, 1, exclam],
     actions=[
       NoAction(),
       NoAction(),
@@ -55,7 +55,7 @@ xkb_symbols "basic" {
   };
   key <AE02> {
     type="EIGHT_LEVEL",
-    symbols=[2, at],
+    symbols=[2, at, 2, at, 2, at, 2, at],
     actions=[
       NoAction(),
       NoAction(),
@@ -69,7 +69,7 @@ xkb_symbols "basic" {
   };
   key <AE03> {
     type="EIGHT_LEVEL",
-    symbols=[3, numbersign],
+    symbols=[3, numbersign, 3, numbersign, 3, numbersign, 3, numbersign],
     actions=[
       NoAction(),
       NoAction(),
@@ -83,7 +83,7 @@ xkb_symbols "basic" {
   };
   key <AE04> {
     type="EIGHT_LEVEL",
-    symbols=[4, dollar],
+    symbols=[4, dollar, 4, dollar, 4, dollar, 4, dollar],
     actions=[
       NoAction(),
       NoAction(),
@@ -97,7 +97,7 @@ xkb_symbols "basic" {
   };
   key <AE05> {
     type="EIGHT_LEVEL",
-    symbols=[5, percent],
+    symbols=[5, percent, 5, percent, 5, percent, 5, percent],
     actions=[
       NoAction(),
       NoAction(),
@@ -111,7 +111,7 @@ xkb_symbols "basic" {
   };
   key <AE06> {
     type="EIGHT_LEVEL",
-    symbols=[6, asciicircum],
+    symbols=[6, asciicircum, 6, asciicircum, 6, asciicircum, 6, asciicircum],
     actions=[
       NoAction(),
       NoAction(),
@@ -125,7 +125,7 @@ xkb_symbols "basic" {
   };
   key <AE07> {
     type="EIGHT_LEVEL",
-    symbols=[7, ampersand],
+    symbols=[7, ampersand, 7, ampersand, 7, ampersand, 7, ampersand],
     actions=[
       NoAction(),
       NoAction(),
@@ -139,7 +139,7 @@ xkb_symbols "basic" {
   };
   key <AE08> {
     type="EIGHT_LEVEL",
-    symbols=[8, asterisk],
+    symbols=[8, asterisk, 8, asterisk, 8, asterisk, 8, asterisk],
     actions=[
       NoAction(),
       NoAction(),
@@ -153,7 +153,7 @@ xkb_symbols "basic" {
   };
   key <AE09> {
     type="EIGHT_LEVEL",
-    symbols=[9, parenleft],
+    symbols=[9, parenleft, 9, parenleft, 9, parenleft, 9, parenleft],
     actions=[
       NoAction(),
       NoAction(),
@@ -167,7 +167,7 @@ xkb_symbols "basic" {
   };
   key <AE10> {
     type="EIGHT_LEVEL",
-    symbols=[0, parenright],
+    symbols=[0, parenright, 0, parenright, 0, parenright, 0, parenright],
     actions=[
       NoAction(),
       NoAction(),
@@ -181,7 +181,7 @@ xkb_symbols "basic" {
   };
   key <AE11> {
     type="EIGHT_LEVEL",
-    symbols=[minus, underscore],
+    symbols=[minus, underscore, minus, underscore, minus, underscore, minus, underscore],
     actions=[
       NoAction(),
       NoAction(),
@@ -195,7 +195,7 @@ xkb_symbols "basic" {
   };
   key <AE12> {
     type="EIGHT_LEVEL",
-    symbols=[equal, plus],
+    symbols=[equal, plus, equal, plus, equal, plus, equal, plus],
     actions=[
       NoAction(),
       NoAction(),
@@ -209,7 +209,7 @@ xkb_symbols "basic" {
   };
   key <BKSP> {
     type="EIGHT_LEVEL",
-    symbols=[BackSpace, BackSpace],
+    symbols=[BackSpace, BackSpace, BackSpace, BackSpace, BackSpace, BackSpace, BackSpace, BackSpace],
     actions=[
       NoAction(),
       NoAction(),
@@ -223,7 +223,7 @@ xkb_symbols "basic" {
   };
   key <TAB> {
     type="EIGHT_LEVEL",
-    symbols=[Tab, ISO_Left_Tab],
+    symbols=[Tab, ISO_Left_Tab, Tab, ISO_Left_Tab, Tab, ISO_Left_Tab, Tab, ISO_Left_Tab],
     actions=[
       NoAction(),
       NoAction(),
@@ -237,7 +237,7 @@ xkb_symbols "basic" {
   };
   key <RTRN> {
     type="EIGHT_LEVEL",
-    symbols=[Return, Return],
+    symbols=[Return, Return, Return, Return, Return, Return, Return, Return],
     actions=[
       NoAction(),
       NoAction(),
@@ -252,7 +252,7 @@ xkb_symbols "basic" {
 
   key <AD01> {
     type="EIGHT_LEVEL",
-    symbols=[q, Q],
+    symbols=[q, Q, q, Q, q, Q, q, Q],
     actions=[
       NoAction(),
       NoAction(),
@@ -266,7 +266,7 @@ xkb_symbols "basic" {
   };
   key <AD02> {
     type="EIGHT_LEVEL",
-    symbols=[w, W],
+    symbols=[w, W, w, W, w, W, w, W],
     actions=[
       NoAction(),
       NoAction(),
@@ -280,7 +280,7 @@ xkb_symbols "basic" {
   };
   key <AD03> {
     type="EIGHT_LEVEL",
-    symbols=[e, E],
+    symbols=[e, E, e, E, e, E, e, E],
     actions=[
       NoAction(),
       NoAction(),
@@ -294,7 +294,7 @@ xkb_symbols "basic" {
   };
   key <AD04> {
     type="EIGHT_LEVEL",
-    symbols=[r, R],
+    symbols=[r, R, r, R, r, R, r, R],
     actions=[
       NoAction(),
       NoAction(),
@@ -308,7 +308,7 @@ xkb_symbols "basic" {
   };
   key <AD05> {
     type="EIGHT_LEVEL",
-    symbols=[t, T],
+    symbols=[t, T, t, T, t, T, t, T],
     actions=[
       NoAction(),
       NoAction(),
@@ -322,7 +322,7 @@ xkb_symbols "basic" {
   };
   key <AD06> {
     type="EIGHT_LEVEL",
-    symbols=[y, Y],
+    symbols=[y, Y, y, Y, y, Y, y, Y],
     actions=[
       NoAction(),
       NoAction(),
@@ -336,7 +336,7 @@ xkb_symbols "basic" {
   };
   key <AD07> {
     type="EIGHT_LEVEL",
-    symbols=[u, U],
+    symbols=[u, U, u, U, u, U, u, U],
     actions=[
       NoAction(),
       NoAction(),
@@ -350,7 +350,7 @@ xkb_symbols "basic" {
   };
   key <AD08> {
     type="EIGHT_LEVEL",
-    symbols=[i, I],
+    symbols=[i, I, i, I, i, I, i, I],
     actions=[
       NoAction(),
       NoAction(),
@@ -364,7 +364,7 @@ xkb_symbols "basic" {
   };
   key <AD09> {
     type="EIGHT_LEVEL",
-    symbols=[o, O],
+    symbols=[o, O, o, O, o, O, o, O],
     actions=[
       NoAction(),
       NoAction(),
@@ -378,7 +378,7 @@ xkb_symbols "basic" {
   };
   key <AD10> {
     type="EIGHT_LEVEL",
-    symbols=[p, P],
+    symbols=[p, P, p, P, p, P, p, P],
     actions=[
       NoAction(),
       NoAction(),
@@ -392,7 +392,7 @@ xkb_symbols "basic" {
   };
   key <AD11> {
     type="EIGHT_LEVEL",
-    symbols=[bracketleft, braceleft],
+    symbols=[bracketleft, braceleft, bracketleft, braceleft, bracketleft, braceleft, bracketleft, braceleft],
     actions=[
       NoAction(),
       NoAction(),
@@ -406,7 +406,7 @@ xkb_symbols "basic" {
   };
   key <AD12> {
     type="EIGHT_LEVEL",
-    symbols=[bracketright, braceright],
+    symbols=[bracketright, braceright, bracketright, braceright, bracketright, braceright, bracketright, braceright],
     actions=[
       NoAction(),
       NoAction(),
@@ -420,7 +420,7 @@ xkb_symbols "basic" {
   };
   key <BKSL> {
     type="EIGHT_LEVEL",
-    symbols=[backslash, bar],
+    symbols=[backslash, bar, backslash, bar, backslash, bar, backslash, bar],
     actions=[
       NoAction(),
       NoAction(),
@@ -435,7 +435,7 @@ xkb_symbols "basic" {
 
   key <AC01> {
     type="EIGHT_LEVEL",
-    symbols=[a, A],
+    symbols=[a, A, a, A, a, A, a, A],
     actions=[
       NoAction(),
       NoAction(),
@@ -449,7 +449,7 @@ xkb_symbols "basic" {
   };
   key <AC02> {
     type="EIGHT_LEVEL",
-    symbols=[s, S],
+    symbols=[s, S, s, S, s, S, s, S],
     actions=[
       NoAction(),
       NoAction(),
@@ -463,7 +463,7 @@ xkb_symbols "basic" {
   };
   key <AC03> {
     type="EIGHT_LEVEL",
-    symbols=[d, D],
+    symbols=[d, D, d, D, d, D, d, D],
     actions=[
       NoAction(),
       NoAction(),
@@ -477,7 +477,7 @@ xkb_symbols "basic" {
   };
   key <AC04> {
     type="EIGHT_LEVEL",
-    symbols=[f, F],
+    symbols=[f, F, f, F, f, F, f, F],
     actions=[
       NoAction(),
       NoAction(),
@@ -491,7 +491,7 @@ xkb_symbols "basic" {
   };
   key <AC05> {
     type="EIGHT_LEVEL",
-    symbols=[g, G],
+    symbols=[g, G, g, G, g, G, g, G],
     actions=[
       NoAction(),
       NoAction(),
@@ -505,7 +505,7 @@ xkb_symbols "basic" {
   };
   key <AC06> {
     type="EIGHT_LEVEL",
-    symbols=[h, H],
+    symbols=[h, H, h, H, h, H, h, H],
     actions=[
       NoAction(),
       NoAction(),
@@ -519,7 +519,7 @@ xkb_symbols "basic" {
   };
   key <AC07> {
     type="EIGHT_LEVEL",
-    symbols=[j, J],
+    symbols=[j, J, j, J, j, J, j, J],
     actions=[
       NoAction(),
       NoAction(),
@@ -533,7 +533,7 @@ xkb_symbols "basic" {
   };
   key <AC08> {
     type="EIGHT_LEVEL",
-    symbols=[k, K],
+    symbols=[k, K, k, K, k, K, k, K],
     actions=[
       NoAction(),
       NoAction(),
@@ -547,7 +547,7 @@ xkb_symbols "basic" {
   };
   key <AC09> {
     type="EIGHT_LEVEL",
-    symbols=[l, L],
+    symbols=[l, L, l, L, l, L, l, L],
     actions=[
       NoAction(),
       NoAction(),
@@ -561,7 +561,7 @@ xkb_symbols "basic" {
   };
   key <AC10> {
     type="EIGHT_LEVEL",
-    symbols=[semicolon, colon],
+    symbols=[semicolon, colon, semicolon, colon, semicolon, colon, semicolon, colon],
     actions=[
       NoAction(),
       NoAction(),
@@ -575,7 +575,7 @@ xkb_symbols "basic" {
   };
   key <AC11> {
     type="EIGHT_LEVEL",
-    symbols=[apostrophe, quotedbl],
+    symbols=[apostrophe, quotedbl, apostrophe, quotedbl, apostrophe, quotedbl, apostrophe, quotedbl],
     actions=[
       NoAction(),
       NoAction(),
@@ -590,7 +590,7 @@ xkb_symbols "basic" {
 
   key <AB01> {
     type="EIGHT_LEVEL",
-    symbols=[z, Z],
+    symbols=[z, Z, z, Z, z, Z, z, Z],
     actions=[
       NoAction(),
       NoAction(),
@@ -604,7 +604,7 @@ xkb_symbols "basic" {
   };
   key <AB02> {
     type="EIGHT_LEVEL",
-    symbols=[x, X],
+    symbols=[x, X, x, X, x, X, x, X],
     actions=[
       NoAction(),
       NoAction(),
@@ -618,7 +618,7 @@ xkb_symbols "basic" {
   };
   key <AB03> {
     type="EIGHT_LEVEL",
-    symbols=[c, C],
+    symbols=[c, C, c, C, c, C, c, C],
     actions=[
       NoAction(),
       NoAction(),
@@ -632,7 +632,7 @@ xkb_symbols "basic" {
   };
   key <AB04> {
     type="EIGHT_LEVEL",
-    symbols=[v, V],
+    symbols=[v, V, v, V, v, V, v, V],
     actions=[
       NoAction(),
       NoAction(),
@@ -646,7 +646,7 @@ xkb_symbols "basic" {
   };
   key <AB05> {
     type="EIGHT_LEVEL",
-    symbols=[b, B],
+    symbols=[b, B, b, B, b, B, b, B],
     actions=[
       NoAction(),
       NoAction(),
@@ -660,7 +660,7 @@ xkb_symbols "basic" {
   };
   key <AB06> {
     type="EIGHT_LEVEL",
-    symbols=[n, N],
+    symbols=[n, N, n, N, n, N, n, N],
     actions=[
       NoAction(),
       NoAction(),
@@ -675,7 +675,7 @@ xkb_symbols "basic" {
   key <AB07> {[m, M]};
   key <AB08> {
     type="EIGHT_LEVEL",
-    symbols=[comma, less],
+    symbols=[comma, less, comma, less, comma, less, comma, less],
     actions=[
       NoAction(),
       NoAction(),
@@ -689,7 +689,7 @@ xkb_symbols "basic" {
   };
   key <AB09> {
     type="EIGHT_LEVEL",
-    symbols=[period, greater],
+    symbols=[period, greater, period, greater, period, greater, period, greater],
     actions=[
       NoAction(),
       NoAction(),
@@ -703,7 +703,7 @@ xkb_symbols "basic" {
   };
   key <AB10> {
     type="EIGHT_LEVEL",
-    symbols=[slash, question],
+    symbols=[slash, question, slash, question, slash, question, slash, question],
     actions=[
       NoAction(),
       NoAction(),
@@ -717,7 +717,7 @@ xkb_symbols "basic" {
   };
   key <SPCE> {
     type="EIGHT_LEVEL",
-    symbols=[space, space],
+    symbols=[space, space, space, space, space, space, space, space],
     actions=[
       NoAction(),
       NoAction(),
@@ -732,7 +732,7 @@ xkb_symbols "basic" {
 
   key <UP> {
     type="EIGHT_LEVEL",
-    symbols=[Up, Up],
+    symbols=[Up, Up, Up, Up, Up, Up, Up, Up],
     actions=[
       NoAction(),
       NoAction(),
@@ -746,7 +746,7 @@ xkb_symbols "basic" {
   };
   key <LEFT> {
     type="EIGHT_LEVEL",
-    symbols=[Left, Left],
+    symbols=[Left, Left, Left, Left, Left, Left, Left, Left],
     actions=[
       NoAction(),
       NoAction(),
@@ -760,7 +760,7 @@ xkb_symbols "basic" {
   };
   key <DOWN> {
     type="EIGHT_LEVEL",
-    symbols=[Down, Down],
+    symbols=[Down, Down, Down, Down, Down, Down, Down, Down],
     actions=[
       NoAction(),
       NoAction(),
@@ -774,7 +774,7 @@ xkb_symbols "basic" {
   };
   key <RGHT> {
     type="EIGHT_LEVEL",
-    symbols=[Right, Right],
+    symbols=[Right, Right, Right, Right, Right, Right, Right, Right],
     actions=[
       NoAction(),
       NoAction(),
@@ -789,7 +789,7 @@ xkb_symbols "basic" {
 
   key <INS> {
     type="EIGHT_LEVEL",
-    symbols=[Insert, Insert],
+    symbols=[Insert, Insert, Insert, Insert, Insert, Insert, Insert, Insert],
     actions=[
       NoAction(),
       NoAction(),
@@ -803,7 +803,7 @@ xkb_symbols "basic" {
   };
   key <HOME> {
     type="EIGHT_LEVEL",
-    symbols=[Home, Home],
+    symbols=[Home, Home, Home, Home, Home, Home, Home, Home],
     actions=[
       NoAction(),
       NoAction(),
@@ -817,7 +817,7 @@ xkb_symbols "basic" {
   };
   key <PGUP> {
     type="EIGHT_LEVEL",
-    symbols=[Prior, Prior],
+    symbols=[Prior, Prior, Prior, Prior, Prior, Prior, Prior, Prior],
     actions=[
       NoAction(),
       NoAction(),
@@ -831,7 +831,7 @@ xkb_symbols "basic" {
   };
   key <DELE> {
     type="EIGHT_LEVEL",
-    symbols=[Delete, Delete],
+    symbols=[Delete, Delete, Delete, Delete, Delete, Delete, Delete, Delete],
     actions=[
       NoAction(),
       NoAction(),
@@ -845,7 +845,7 @@ xkb_symbols "basic" {
   };
   key <END> {
     type="EIGHT_LEVEL",
-    symbols=[End, End],
+    symbols=[End, End, End, End, End, End, End, End],
     actions=[
       NoAction(),
       NoAction(),
@@ -859,7 +859,7 @@ xkb_symbols "basic" {
   };
   key <PGDN> {
     type="EIGHT_LEVEL",
-    symbols=[Next, Next],
+    symbols=[Next, Next, Next, Next, Next, Next, Next, Next],
     actions=[
       NoAction(),
       NoAction(),
