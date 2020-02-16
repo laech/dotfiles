@@ -640,8 +640,8 @@ xkb_symbols "basic" {
       Redirect(key=<PGDN>, clearmods=All, mods=Shift),
       Redirect(key=<PGUP>, clearmods=All),
       Redirect(key=<PGUP>, clearmods=All, mods=Shift),
-      Redirect(key=<AD04>, clearmods=All, mods=Control+Alt),
-      Redirect(key=<AD04>, clearmods=All, mods=Control+Alt+Shift)
+      Redirect(key=<AB04>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AB04>, clearmods=All, mods=Control+Alt+Shift)
     ]
   };
   key <AB05> {
@@ -654,8 +654,8 @@ xkb_symbols "basic" {
       Redirect(key=<LEFT>, clearmods=All, mods=Shift),
       Redirect(key=<LEFT>, clearmods=All, mods=Control),
       Redirect(key=<LEFT>, clearmods=All, mods=Control+Shift),
-      Redirect(key=<AD05>, clearmods=All, mods=Control+Alt),
-      Redirect(key=<AD05>, clearmods=All, mods=Control+Alt+Shift)
+      Redirect(key=<AB05>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AB05>, clearmods=All, mods=Control+Alt+Shift)
     ]
   };
   key <AB06> {
