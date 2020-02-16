@@ -45,12 +45,12 @@ xkb_symbols "basic" {
     actions=[
       NoAction(),
       NoAction(),
-      Redirect(key=<TLDE>, clearmods=All, mods=Control),
-      Redirect(key=<TLDE>, clearmods=All, mods=Control+Shift),
-      Redirect(key=<TLDE>, clearmods=All, mods=Alt),
-      Redirect(key=<TLDE>, clearmods=All, mods=Alt+Shift),
-      Redirect(key=<TLDE>, clearmods=All, mods=Control+Alt),
-      Redirect(key=<TLDE>, clearmods=All, mods=Control+Alt+Shift)
+      Redirect(key=<AE01>, clearmods=All, mods=Control),
+      Redirect(key=<AE01>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AE01>, clearmods=All, mods=Alt),
+      Redirect(key=<AE01>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AE01>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AE01>, clearmods=All, mods=Control+Alt+Shift)
     ]
   };
   key <AE02> {
@@ -672,19 +672,32 @@ xkb_symbols "basic" {
       Redirect(key=<AB06>, clearmods=All, mods=Control+Alt+Shift)
     ]
   };
-  key <AB07> {[m, M]};
+  key <AB07> {
+    type="EIGHT_LEVEL",
+    symbols=[m, M, m, M, m, M, m, M],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AB07>, clearmods=All, mods=Control),
+      Redirect(key=<AB07>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AB07>, clearmods=All, mods=Alt),
+      Redirect(key=<AB07>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AB07>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AB07>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
   key <AB08> {
     type="EIGHT_LEVEL",
     symbols=[comma, less, comma, less, comma, less, comma, less],
     actions=[
       NoAction(),
       NoAction(),
-      Redirect(key=<AD08>, clearmods=All, mods=Control),
-      Redirect(key=<AD08>, clearmods=All, mods=Control+Shift),
-      Redirect(key=<AD08>, clearmods=All, mods=Alt),
+      Redirect(key=<AB08>, clearmods=All, mods=Control),
+      Redirect(key=<AB08>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AB08>, clearmods=All, mods=Alt),
       Redirect(key=<HOME>, clearmods=All, mods=Control),
-      Redirect(key=<AD08>, clearmods=All, mods=Control+Alt),
-      Redirect(key=<AD08>, clearmods=All, mods=Control+Alt+Shift)
+      Redirect(key=<AB08>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AB08>, clearmods=All, mods=Control+Alt+Shift)
     ]
   };
   key <AB09> {
@@ -693,12 +706,12 @@ xkb_symbols "basic" {
     actions=[
       NoAction(),
       NoAction(),
-      Redirect(key=<AD09>, clearmods=All, mods=Control),
-      Redirect(key=<AD09>, clearmods=All, mods=Control+Shift),
-      Redirect(key=<AD09>, clearmods=All, mods=Alt),
+      Redirect(key=<AB09>, clearmods=All, mods=Control),
+      Redirect(key=<AB09>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AB09>, clearmods=All, mods=Alt),
       Redirect(key=<END>, clearmods=All, mods=Control),
-      Redirect(key=<AD09>, clearmods=All, mods=Control+Alt),
-      Redirect(key=<AD09>, clearmods=All, mods=Control+Alt+Shift)
+      Redirect(key=<AB09>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AB09>, clearmods=All, mods=Control+Alt+Shift)
     ]
   };
   key <AB10> {
