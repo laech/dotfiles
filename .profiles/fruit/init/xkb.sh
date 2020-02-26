@@ -2,4 +2,4 @@
 
 set -o errexit
 
-setxkbmap -option '' 'emacs-linacs(mac)'
+setxkbmap -option '' 'custom(mac)'
