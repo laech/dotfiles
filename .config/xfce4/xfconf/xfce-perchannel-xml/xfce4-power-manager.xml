@@ -19,10 +19,10 @@
     <property name="critical-power-level" type="uint" value="5"/>
     <property name="critical-power-action" type="uint" value="2"/>
     <property name="inactivity-on-ac" type="uint" value="30"/>
-    <property name="brightness-on-battery" type="uint" value="60"/>
+    <property name="brightness-on-battery" type="uint" value="100"/>
     <property name="blank-on-battery" type="int" value="2"/>
-    <property name="brightness-level-on-battery" type="uint" value="10"/>
-    <property name="brightness-level-on-ac" type="uint" value="10"/>
-    <property name="brightness-on-ac" type="uint" value="120"/>
+    <property name="brightness-level-on-battery" type="uint" value="1"/>
+    <property name="brightness-level-on-ac" type="uint" value="1"/>
+    <property name="brightness-on-ac" type="uint" value="100"/>
   </property>
 </channel>
