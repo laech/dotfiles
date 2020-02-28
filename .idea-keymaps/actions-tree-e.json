@@ -154,14 +154,15 @@
       "keys": ["ctrl C"],
       "items": [
         {
-          "keys": ["released P"],
+          "keys": ["P"],
           "name": "Project",
           "items": [
-            { "keys": ["C"], "id": "CompileDirty" },
+            { "keys": ["typed +"], "id": "NewElement" },
+            { "keys": ["C"], "id": "CompileDirty", "separator-above": "" },
             { "keys": ["ctrl C"], "id": "CompileProject" },
             { "keys": ["U"], "id": "ChooseRunConfiguration" },
             { "keys": ["K"], "id": "CloseProject", "separator-above": "" },
-            { "keys": ["released P"], "id": "RecentProjectListGroup" }
+            { "keys": ["P"], "id": "RecentProjectListGroup" }
           ]
         },
         {
