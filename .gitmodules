@@ -7,9 +7,6 @@
 [submodule ".emacs.d/lib/center-layout"]
 	path = .emacs.d/lib/center-layout
 	url = https://gitlab.com/lae/emacs-center-layout.git
-[submodule ".emacs.d/lib/projectile"]
-	path = .emacs.d/lib/projectile
-	url = https://github.com/bbatsov/projectile.git
-[submodule ".emacs.d/lib/package-lint"]
-	path = .emacs.d/lib/package-lint
-	url = https://github.com/purcell/package-lint.git
+[submodule ".emacs.d/straight/repos/straight.el"]
+	path = .emacs.d/straight/repos/straight.el
+	url = https://github.com/raxod502/straight.el.git

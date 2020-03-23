@@ -37,28 +37,13 @@
  '(help-window-select t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
- '(line-number-mode nil)
- '(line-spacing 0.3)
+ '(line-spacing 0.2)
  '(make-backup-files nil)
  '(mode-require-final-newline nil)
  '(mouse-wheel-flip-direction t)
  '(mouse-wheel-progressive-speed nil)
  '(mouse-wheel-scroll-amount (quote (3 ((shift) . 1) ((control)))))
  '(mouse-wheel-tilt-scroll t)
- '(package-archive-priorities
-   (quote
-    (("gnu" . 1)
-     ("marmalade" . 1)
-     ("melpa-stable" . 1)
-     ("melpa-unstable" . 0))))
- '(package-archives
-   (quote
-    (("gnu" . "https://elpa.gnu.org/packages/")
-     ("melpa-stable" . "https://stable.melpa.org/packages/")
-     ("melpa-unstable" . "https://melpa.org/packages/"))))
- '(package-selected-packages
-   (quote
-    (dockerfile-mode company-terraform terraform-mode helm-lsp yasnippet flycheck-rust rust-mode company-lsp diminish tide flycheck neotree company-restclient restclient swiper expand-region avy smartparens company-flx yaml-mode helm projectile flx counsel ivy which-key undo-tree rainbow-delimiters paredit multiple-cursors magit intero hindent diff-hl)))
  '(save-place-mode t)
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
@@ -71,23 +56,11 @@
  '(visual-line-fringe-indicators (quote (left-curly-arrow right-curly-arrow)))
  '(word-wrap t))
 
-(setq-default
- mode-line-percent-position nil
- mode-line-mule-info nil
- mode-line-remote nil
- mode-line-frame-identification nil
- mode-line-front-space nil
- mode-line-end-spaces nil
- mode-line-modified
- '(:eval
-   (cond ((buffer-modified-p)
-          (propertize " * " 'face 'mode-line-modified-face))
-         (t "   "))))
-
-(package-initialize)
-(unless package-archive-contents
-  (package-refresh-contents))
-(package-install-selected-packages)
+(defmacro my-add-hook-if-defined (hook func)
+  `(add-hook
+    (quote ,hook)
+    (lambda ()
+      (when (functionp (quote ,func)) (,func)))))
 
 (defmacro save-column (&rest body)
   `(let ((column (current-column)))
@@ -199,37 +172,30 @@
     (setq-default mode-line-format initial-mode-line-format)
     (set-frame-parameter nil 'bottom-divider-width 0)))
 
-(add-hook 'after-init-hook (lambda () (require 'diminish)))
+(my-add-hook-if-defined after-init-hook center-layout-mode)
+(my-add-hook-if-defined after-init-hook esc-mode)
 
-(add-hook 'after-init-hook #'global-eldoc-mode)
 (with-eval-after-load 'eldoc
-  (setq-default eldoc-echo-area-use-multiline-p t)
-  (with-eval-after-load 'diminish
-    (diminish 'eldoc-mode)))
+  (setq-default eldoc-echo-area-use-multiline-p t))
 
-(add-hook 'after-init-hook #'global-undo-tree-mode)
+(my-add-hook-if-defined after-init-hook global-undo-tree-mode)
 (with-eval-after-load 'undo-tree
-  (with-eval-after-load 'diminish
-    (diminish 'undo-tree-mode))
   (define-key undo-tree-map (kbd "<redo>") 'undo-tree-redo))
 
-(add-hook 'after-init-hook #'which-key-mode)
-(with-eval-after-load 'which-key
-  (with-eval-after-load 'diminish
-    (diminish 'which-key-mode)))
+(my-add-hook-if-defined after-init-hook which-key-mode)
 
 (with-eval-after-load 'view
   (define-key view-mode-map (kbd "C-j") nil))
 
-(add-hook 'after-init-hook #'global-diff-hl-mode)
-(add-hook 'after-init-hook #'diff-hl-flydiff-mode)
+(my-add-hook-if-defined after-init-hook global-diff-hl-mode)
+(my-add-hook-if-defined after-init-hook diff-hl-flydiff-mode)
 (with-eval-after-load 'diff-hl
   (unless (display-graphic-p) (diff-hl-margin-mode)))
 
 (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
 
-(add-hook 'prog-mode-hook #'toggle-truncate-lines)
-(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+(my-add-hook-if-defined prog-mode-hook toggle-truncate-lines)
+(my-add-hook-if-defined prog-mode-hook rainbow-delimiters-mode)
 
 (defun my-save-all-buffers (&rest ignored)
   "Saves all buffers.
@@ -283,8 +249,6 @@ be used as a function advice via `advice-add'."
   (global-set-key (kbd (car mapping)) (cdr mapping)))
 
 (with-eval-after-load 'isearch
-  (with-eval-after-load 'diminish
-    (diminish 'isearch-mode))
   (define-key isearch-mode-map (kbd "<f3>") 'isearch-repeat-forward)
   (define-key isearch-mode-map (kbd "<S-f3>") 'isearch-repeat-backward))
 
@@ -309,20 +273,15 @@ be used as a function advice via `advice-add'."
      (,(kbd "M-g . i") lsp-goto-implementation)
      (,(kbd "M-g . t") lsp-goto-type-definition))))
 
-(add-hook 'after-init-hook #'counsel-mode)
-(with-eval-after-load 'counsel
-  (with-eval-after-load 'diminish
-    (diminish 'counsel-mode)))
+(my-add-hook-if-defined after-init-hook counsel-mode)
 
 (with-eval-after-load 'swiper
   (with-eval-after-load 'isearch
     (global-set-key [remap isearch-forward-regexp] 'swiper)
     (define-key isearch-mode-map (kbd "C-M-s") 'swiper-from-isearch)))
 
-(add-hook 'after-init-hook #'ivy-mode)
+(my-add-hook-if-defined after-init-hook ivy-mode)
 (with-eval-after-load 'ivy
-  (with-eval-after-load 'diminish
-    (diminish 'ivy-mode))
   (setq-default
    ivy-extra-directories nil
    ivy-use-virtual-buffers t
@@ -340,12 +299,10 @@ be used as a function advice via `advice-add'."
          ("<RET>" . ivy-alt-done)))
     (define-key ivy-minibuffer-map (kbd (car mapping)) (cdr mapping))))
 
-(add-hook 'after-init-hook #'global-flycheck-mode)
+(my-add-hook-if-defined after-init-hook global-flycheck-mode)
 
-(add-hook 'after-init-hook #'global-company-mode)
+(my-add-hook-if-defined after-init-hook global-company-mode)
 (with-eval-after-load 'company
-  (with-eval-after-load 'diminish
-    (diminish 'company-mode))
   (setq-default
    company-idle-delay 0
    company-tooltip-idle-delay 0)
@@ -360,10 +317,8 @@ be used as a function advice via `advice-add'."
      (,(kbd "M-n") nil)
      (,(kbd "M-p") nil))))
 
-(add-hook 'after-init-hook #'projectile-mode)
+(my-add-hook-if-defined after-init-hook projectile-mode)
 (with-eval-after-load 'projectile
-  (with-eval-after-load 'diminish
-    (diminish 'projectile-mode))
   (advice-add 'projectile-run-project :before 'my-save-all-buffers)
   (advice-add 'projectile-test-project :before 'my-save-all-buffers)
   (advice-add 'projectile-compile-project :before 'my-save-all-buffers)
@@ -373,15 +328,14 @@ be used as a function advice via `advice-add'."
 (with-eval-after-load 'smartparens
   (require 'smartparens-config))
 
-(add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
-(add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
-(add-hook 'ielm-mode-hook #'enable-paredit-mode)
-(add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
-(add-hook 'lisp-mode-hook #'enable-paredit-mode)
-(add-hook 'scheme-mode-hook #'enable-paredit-mode)
+
+(my-add-hook-if-defined emacs-lisp-mode-hook enable-paredit-mode)
+(my-add-hook-if-defined eval-expression-minibuffer-setup-hook enable-paredit-mode)
+(my-add-hook-if-defined ielm-mode-hook enable-paredit-mode)
+(my-add-hook-if-defined lisp-interaction-mode-hook enable-paredit-mode)
+(my-add-hook-if-defined lisp-mode-hook enable-paredit-mode)
+(my-add-hook-if-defined scheme-mode-hook enable-paredit-mode)
 (with-eval-after-load 'paredit
-  (with-eval-after-load 'diminish
-    (diminish 'paredit-mode))
 
   (defun transpose-sexps-reverse (arg)
     (interactive "*p")
@@ -409,8 +363,8 @@ be used as a function advice via `advice-add'."
      ([remap kill-line] paredit-kill)
      (,(kbd "C-c M-s") paredit-splice-sexp)
      (,(kbd "C-c M-S") paredit-split-sexp)
-;;     (,(kbd "M-[") paredit-backward-slurp-sexp)
-;;     (,(kbd "M-{") paredit-backward-barf-sexp)
+     ;;     (,(kbd "M-[") paredit-backward-slurp-sexp)
+     ;;     (,(kbd "M-{") paredit-backward-barf-sexp)
      (,(kbd "M-]") paredit-forward-slurp-sexp)
      (,(kbd "M-}") paredit-forward-barf-sexp)
      (,(kbd "C-M-S-t") transpose-sexps-reverse)
@@ -439,10 +393,6 @@ be used as a function advice via `advice-add'."
 
     (define-key hindent-mode-map [remap indent-region]
       #'hindent-reformat-region-or-buffer)))
-
-(with-eval-after-load 'yasnippet
-  (with-eval-after-load 'diminish
-    (diminish 'yas-minor-mode)))
 
 (with-eval-after-load 'rust-mode
   (with-eval-after-load 'projectile
@@ -473,9 +423,6 @@ be used as a function advice via `advice-add'."
      (tide-hl-identifier-mode))))
 
 (with-eval-after-load 'tide
-  (with-eval-after-load 'diminish
-    (diminish 'tide-mode))
-
   (setq-default
    tide-completion-ignore-case t
    tide-format-options '(:indentSize 2 :tabSize 2))
@@ -498,10 +445,6 @@ be used as a function advice via `advice-add'."
 
 (with-eval-after-load 'flyspell
   (setq-default flyspell-issue-message-flag nil))
-
-(with-eval-after-load 'restclient
-  (with-eval-after-load 'company
-    (add-to-list 'company-backends 'company-restclient)))
 
 (with-eval-after-load 'magit-repos
   (add-to-list 'magit-repository-directories '("~/src/" . 2))
@@ -576,6 +519,57 @@ be used as a function advice via `advice-add'."
 (if (display-graphic-p)
     (toggle-mode-line))
 
-(add-to-list 'load-path "~/.emacs.d/lib/center-layout")
-(require 'center-layout)
-(center-layout-mode t)
+(load
+ (expand-file-name
+  "straight/repos/straight.el/bootstrap.el"
+  user-emacs-directory))
+
+(let
+    ((packages
+      '(
+        avy
+        company-flx
+        company-lsp
+        company-terraform
+        counsel
+        diff-hl
+        dockerfile-mode
+        expand-region
+        flx
+        flycheck
+        flycheck-rust
+        helm
+        helm-lsp
+        hindent
+        intero
+        ivy
+        magit
+        multiple-cursors
+        neotree
+        paredit
+        projectile
+        rainbow-delimiters
+        rust-mode
+        smartparens
+        swiper
+        terraform-mode
+        tide
+        undo-tree
+        which-key
+        yaml-mode
+        yasnippet
+        )))
+  (dolist (package packages)
+    (straight-use-package package)))
+
+(straight-use-package
+ '(center-layout
+   :type git
+   :host gitlab
+   :repo "lae/emacs-center-layout"))
+
+(straight-use-package
+ '(esc
+   :type git
+   :host gitlab
+   :repo "lae/emacs-esc"))
