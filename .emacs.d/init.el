@@ -511,6 +511,17 @@ be used as a function advice via `advice-add'."
     [remap indent-region]
     'terraform-format-buffer))
 
+(with-eval-after-load 'sh-script
+  (require 'reformatter)
+  (reformatter-define shfmt
+    :program "shfmt"
+    :args '("-i" "2" "-ci")
+    :lighter " shfmt")
+  (define-key
+    sh-mode-map
+    [remap indent-region]
+    'shfmt-buffer))
+
 (unless (display-graphic-p)
   (xterm-mouse-mode)
   (global-set-key [mouse-4] (lambda () (interactive) (scroll-down 3)))
@@ -573,3 +584,9 @@ be used as a function advice via `advice-add'."
    :type git
    :host gitlab
    :repo "lae/emacs-esc"))
+
+(straight-use-package
+ '(reformatter
+   :type git
+   :host github
+   :repo "purcell/reformatter.el"))
