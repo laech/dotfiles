@@ -86,7 +86,6 @@ packages=(
     ethtool
     smartmontools
 
-    compton
     hsetroot
 
     ibus
