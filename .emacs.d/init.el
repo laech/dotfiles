@@ -517,10 +517,17 @@ be used as a function advice via `advice-add'."
     :program "shfmt"
     :args '("-i" "2" "-ci")
     :lighter " shfmt")
+
+  (defun shfmt-region-or-buffer ()
+    (interactive "*")
+    (if (region-active-p)
+        (shfmt-region (region-beginning) (region-end))
+      (shfmt-buffer)))
+
   (define-key
     sh-mode-map
     [remap indent-region]
-    'shfmt-buffer))
+    'shfmt-region-or-buffer))
 
 (unless (display-graphic-p)
   (xterm-mouse-mode)
