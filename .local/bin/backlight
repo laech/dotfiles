@@ -29,7 +29,7 @@ set -o nounset
 set -o pipefail
 
 exit_usage() {
-    cat <<EOF
+  cat <<EOF
 
 Usage: $0 [arg]
 
@@ -41,13 +41,12 @@ Where arg can be:
 If no arg is given, prints the current brightness percentage.
 
 EOF
-    >& 2
-    exit 1
+  >&2
+  exit 1
 }
 
 [[ "$#" -gt 1 ]] && exit_usage
 [[ "$#" -eq 1 ]] && [[ ! "$1" =~ ^[+-]?[0-9]+$ ]] && exit_usage
-
 
 #
 # Find currently active backlight folder
@@ -57,21 +56,29 @@ readonly backlights_dir=/sys/class/backlight
 
 backlight_dir=""
 for i in $(ls "$backlights_dir"); do
-    if systemctl is-active -q systemd-backlight@backlight:$i.service; then
-        backlight_dir="$backlights_dir/$i"
-        break
-    fi
+  if systemctl is-active -q systemd-backlight@backlight:$i.service; then
+    backlight_dir="$backlights_dir/$i"
+    break
+  fi
 done
 
 if [[ "$backlight_dir" == "" ]]; then
-    if [[ -z "${1:-}" ]]; then xbacklight
-    elif [[ "${1:0:1}" == '-' ]]; then xbacklight -dec "${1:1:${#1}}"
-    elif [[ "${1:0:1}" == '+' ]]; then xbacklight -inc "${1:1:${#1}}"
-    else xbacklight -set "$1"
-    fi
-    exit 0
-fi
 
+  if [[ -z "${1:-}" ]]; then
+    xbacklight
+
+  elif [[ "${1:0:1}" == '-' ]]; then
+    xbacklight -dec "${1:1:${#1}}"
+
+  elif [[ "${1:0:1}" == '+' ]]; then
+    xbacklight -inc "${1:1:${#1}}"
+
+  else
+    xbacklight -set "$1"
+  fi
+
+  exit 0
+fi
 
 #
 # Read current brightness values
@@ -84,16 +91,14 @@ readonly brightness_min=1
 [[ ! "$brightness_cur" =~ ^[0-9]+$ ]] && echo "$brightness_cur" && exit 1
 [[ ! "$brightness_max" =~ ^[0-9]+$ ]] && echo "$brightness_max" && exit 1
 
-
 #
 # No arg provided, print current brightness percentage and exit.
 #
 
 if [[ "$#" -eq 0 ]]; then
-    echo "$brightness_cur $brightness_max" | awk '{print int($1 / $2 * 100)}'
-    exit
+  echo "$brightness_cur $brightness_max" | awk '{print int($1 / $2 * 100)}'
+  exit
 fi
-
 
 #
 # Caculate and set brightness
@@ -101,30 +106,30 @@ fi
 
 brightness_want="$1"
 
-[[ "${1:0:1}" =~ ^[+-]$ ]] \
-    && brightness_want="${1:1:${#1}}"
+[[ "${1:0:1}" =~ ^[+-]$ ]] &&
+  brightness_want="${1:1:${#1}}"
 
-[[ ! "$brightness_want" =~ ^[0-9]+$ ]] \
-    && echo "$brightness_want" && exit 1
+[[ ! "$brightness_want" =~ ^[0-9]+$ ]] &&
+  echo "$brightness_want" && exit 1
 
-[[ "${1:0:1}" == '-' ]] \
-    && brightness_want=$(( $brightness_want * -1 ))
+[[ "${1:0:1}" == '-' ]] &&
+  brightness_want=$(($brightness_want * -1))
 
-brightness_want=$(( $brightness_max * $brightness_want / 100 ))
+brightness_want=$(($brightness_max * $brightness_want / 100))
 
-[[ "${1:0:1}" =~ ^[+-]$ ]] \
-    && brightness_want=$(( $brightness_want + $brightness_cur ))
+[[ "${1:0:1}" =~ ^[+-]$ ]] &&
+  brightness_want=$(($brightness_want + $brightness_cur))
 
 if [[ $brightness_want -eq $brightness_cur ]]; then
-    [[ "${1:0:1}" == '+' ]] \
-        && brightness_want=$(( $brightness_want + 1 )) \
-        || brightness_want=$(( $brightness_want - 1 ))
+  [[ "${1:0:1}" == '+' ]] &&
+    brightness_want=$(($brightness_want + 1)) ||
+    brightness_want=$(($brightness_want - 1))
 fi
 
-[[ $brightness_want -gt $brightness_max ]] \
-    && brightness_want=$brightness_max
+[[ $brightness_want -gt $brightness_max ]] &&
+  brightness_want=$brightness_max
 
-[[ $brightness_want -lt $brightness_min ]] \
-    && brightness_want=$brightness_min
+[[ $brightness_want -lt $brightness_min ]] &&
+  brightness_want=$brightness_min
 
-echo -n "$brightness_want" > "$backlight_dir/brightness"
+echo -n "$brightness_want" >"$backlight_dir/brightness"
