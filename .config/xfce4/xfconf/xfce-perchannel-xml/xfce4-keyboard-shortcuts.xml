@@ -32,6 +32,8 @@
       <property name="&lt;Super&gt;semicolon" type="string" value="rofi -show run"/>
       <property name="&lt;Super&gt;q" type="string" value="xflock4"/>
       <property name="&lt;Super&gt;Return" type="string" value="term"/>
+      <property name="&lt;Primary&gt;&lt;Super&gt;Up" type="string" value="backlight +5"/>
+      <property name="&lt;Primary&gt;&lt;Super&gt;Down" type="string" value="backlight -5"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">

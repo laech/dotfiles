@@ -24,17 +24,16 @@ readonly profile=${profile:?"'$profile_base' or '$profile_fruit' or '$profile_no
 
 packages=(
   \
-  i3-wm
-  i3lock
-  i3status
+  xfce4
+  xfce4-goodies
   xorg-server
   xorg-xinit
   xorg-xev
   xorg-xbacklight
-  xss-lock
   rofi
   feh
   dex
+  gvfs
   \
   firefox
   \
@@ -46,14 +45,11 @@ packages=(
   trash-cli
   \
   git
-  \
   vim
   emacs
-  xcape
   \
   pulseaudio
   pavucontrol
-  pasystray
   \
   ttf-dejavu
   ttf-liberation
@@ -83,19 +79,13 @@ packages=(
   argyllcms
   tlp
   powertop
-  cbatticon
   x86_energy_perf_policy
   ethtool
   smartmontools
   \
-  hsetroot
-  \
   ibus
   ibus-libpinyin
-
-  # Authentication agent required by some apps such as
-  # firewall-applet, firewall-cmd
-  polkit-gnome
+  \
   firewalld
   networkmanager
   network-manager-applet

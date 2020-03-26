@@ -14,4 +14,4 @@ Xft.dpi: $XFT_DPI
 $(cat "$HOME"/.profiles/xresources)
 EOF
 
-exec i3
+exec startxfce4
