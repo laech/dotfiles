@@ -34,6 +34,8 @@ packages=(
   feh
   dex
   gvfs
+  bluez
+  bluez-utils
   \
   firefox
   \
@@ -136,6 +138,7 @@ elif [[ "$profile" == "$profile_fruit" ]]; then
     dkms
     broadcom-wl-dkms
     refind-efi
+    bluetooth
   )
 
   dirs_prefix='fruit/system/'
@@ -150,7 +153,6 @@ elif [[ "$profile" == "$profile_fruit" ]]; then
   )
 
   services+=(
-    disable-bluetooth.service
     disable-ir.service
   )
 
@@ -162,8 +164,6 @@ elif [[ "$profile" == "$profile_chain" ]]; then
     intel-ucode
     dkms
     bbswitch-dkms
-    bluez
-    bluez-utils
   )
   dirs_prefix='chain/system/'
   dirs+=(
