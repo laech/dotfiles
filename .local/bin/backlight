@@ -29,7 +29,7 @@ set -o nounset
 set -o pipefail
 
 exit_usage() {
-  cat <<EOF
+  cat <<EOF >&2
 
 Usage: $0 [arg]
 
@@ -41,7 +41,7 @@ Where arg can be:
 If no arg is given, prints the current brightness percentage.
 
 EOF
-  >&2
+
   exit 1
 }
 
@@ -55,8 +55,8 @@ EOF
 readonly backlights_dir=/sys/class/backlight
 
 backlight_dir=""
-for i in $(ls "$backlights_dir"); do
-  if systemctl is-active -q systemd-backlight@backlight:$i.service; then
+for i in "$backlights_dir"/*; do
+  if systemctl is-active -q systemd-backlight@backlight:"$i".service; then
     backlight_dir="$backlights_dir/$i"
     break
   fi
@@ -84,8 +84,8 @@ fi
 # Read current brightness values
 #
 
-readonly brightness_cur="$(cat ""$backlight_dir/brightness"")"
-readonly brightness_max="$(cat ""$backlight_dir/max_brightness"")"
+readonly brightness_cur=$(cat "$backlight_dir"/brightness)
+readonly brightness_max=$(cat "$backlight_dir"/max_brightness)
 readonly brightness_min=1
 
 [[ ! "$brightness_cur" =~ ^[0-9]+$ ]] && echo "$brightness_cur" && exit 1
@@ -113,17 +113,17 @@ brightness_want="$1"
   echo "$brightness_want" && exit 1
 
 [[ "${1:0:1}" == '-' ]] &&
-  brightness_want=$(($brightness_want * -1))
+  brightness_want=$((brightness_want * -1))
 
-brightness_want=$(($brightness_max * $brightness_want / 100))
+brightness_want=$((brightness_max * brightness_want / 100))
 
 [[ "${1:0:1}" =~ ^[+-]$ ]] &&
-  brightness_want=$(($brightness_want + $brightness_cur))
+  brightness_want=$((brightness_want + brightness_cur))
 
 if [[ $brightness_want -eq $brightness_cur ]]; then
   [[ "${1:0:1}" == '+' ]] &&
-    brightness_want=$(($brightness_want + 1)) ||
-    brightness_want=$(($brightness_want - 1))
+    brightness_want=$((brightness_want + 1)) ||
+    brightness_want=$((brightness_want - 1))
 fi
 
 [[ $brightness_want -gt $brightness_max ]] &&
