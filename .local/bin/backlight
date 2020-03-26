@@ -65,7 +65,7 @@ done
 if [[ "$backlight_dir" == "" ]]; then
 
   if [[ -z "${1:-}" ]]; then
-    xbacklight
+    printf "%.0f\n" "$(xbacklight)"
 
   elif [[ "${1:0:1}" == '-' ]]; then
     xbacklight -dec "${1:1:${#1}}"
