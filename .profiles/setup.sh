@@ -219,10 +219,6 @@ echo ""
 echo "updating sshd..."
 sudo bash -eux -c "
 
-echo 'disabling password authentication...'
-grep '^PasswordAuthentication no$' /etc/ssh/sshd_config \
-    || echo -e '\nPasswordAuthentication no\n' >>/etc/ssh/sshd_config
-
 echo 'disabling root login...'
 grep '^PermitRootLogin no$' /etc/ssh/sshd_config \
     || echo -e '\nPermitRootLogin no\n' >>/etc/ssh/sshd_config
