@@ -1,2 +1,0 @@
-[[ -z $VNCDESKTOP ]] && export XFT_DPI=120
-
