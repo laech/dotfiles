@@ -19,6 +19,8 @@
     <option name="XML_ALIGN_ATTRIBUTES" value="false" />
   </XML>
   <codeStyleSettings language="JAVA">
+    <option name="KEEP_FIRST_COLUMN_COMMENT" value="false" />
+    <option name="KEEP_CONTROL_STATEMENT_IN_ONE_LINE" value="false" />
     <option name="CASE_STATEMENT_ON_NEW_LINE" value="false" />
     <option name="CALL_PARAMETERS_WRAP" value="5" />
     <option name="CALL_PARAMETERS_LPAREN_ON_NEXT_LINE" value="true" />
