@@ -1,6 +1,6 @@
 Install:
 
-git clone --bare git@gitlab.com:lae/dotfiles.git "${HOME}/.cfg"
+git clone --bare https://gitlab.com/lae/dotfiles.git "${HOME}/.cfg"
 alias config='git --git-dir="${HOME}/.cfg" --work-tree="${HOME}"'
 config checkout
 config submodule init
