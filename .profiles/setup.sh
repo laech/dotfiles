@@ -117,7 +117,6 @@ services=(
   firewalld
   systemd-timesyncd
   tlp
-  tlp-sleep
 )
 
 console_map='base/system/kbd/custom.map'
@@ -136,7 +135,6 @@ elif [[ "$profile" == "$profile_fruit" ]]; then
     dkms
     broadcom-wl-dkms
     refind-efi
-    bluetooth
   )
 
   dirs_prefix='fruit/system/'
@@ -152,6 +150,7 @@ elif [[ "$profile" == "$profile_fruit" ]]; then
 
   services+=(
     disable-ir.service
+    bluetooth.service
   )
 
   console_map='fruit/system/kbd/custom.map'
