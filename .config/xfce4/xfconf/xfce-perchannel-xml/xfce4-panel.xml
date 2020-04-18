@@ -47,6 +47,8 @@
       <property name="square-icons" type="bool" value="true"/>
       <property name="names-ordered" type="array">
         <value type="string" value="blueman"/>
+        <value type="string" value="hp-systray"/>
+        <value type="string" value="thunar"/>
         <value type="string" value="xfce4-power-manager"/>
         <value type="string" value="orage"/>
         <value type="string" value="pasystray"/>

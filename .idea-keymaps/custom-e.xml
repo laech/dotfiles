@@ -29,10 +29,8 @@
     <keyboard-shortcut first-keystroke="undo" />
   </action>
   <action id="ActivateFavoritesToolWindow" />
-  <action id="ActivateFindToolWindow">
-    <keyboard-shortcut first-keystroke="ctrl 3" />
-  </action>
   <action id="ActivateMessagesToolWindow" />
+  <action id="ActivateTODOToolWindow" />
   <action id="ActivateTerminalToolWindow" />
   <action id="ActivateUnitTestsToolWindow">
     <keyboard-shortcut first-keystroke="alt 2" />
@@ -505,8 +503,10 @@
   <action id="ProjectViewChangeView" />
   <action id="QuickChangeScheme" />
   <action id="QuickEvaluateExpression" />
-  <action id="QuickImplementations" />
-  <action id="QuickJavaDoc" />
+  <action id="QuickJavaDoc">
+    <mouse-shortcut keystroke="alt button2" />
+    <keyboard-shortcut first-keystroke="ctrl i" />
+  </action>
   <action id="RecentChanges" />
   <action id="RecentFiles">
     <keyboard-shortcut first-keystroke="ctrl j" />

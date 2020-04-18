@@ -375,13 +375,8 @@ be used as a function advice via `advice-add'."
      (,(kbd "C-j") nil))))
 
 (with-eval-after-load 'haskell-mode
-  (add-hook 'haskell-mode-hook #'intero-mode)
   (add-hook 'haskell-mode-hook #'hindent-mode)
   (add-hook 'haskell-mode-hook #'smartparens-mode)
-
-  (with-eval-after-load 'intero
-    (with-eval-after-load 'flycheck
-      (flycheck-add-next-checker 'intero '(warning . haskell-hlint))))
 
   (with-eval-after-load 'hindent
     (defun hindent-reformat-region-or-buffer ()
@@ -556,10 +551,10 @@ be used as a function advice via `advice-add'."
         flx
         flycheck
         flycheck-rust
+        haskell-mode
         helm
         helm-lsp
         hindent
-        intero
         ivy
         magit
         multiple-cursors
