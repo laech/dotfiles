@@ -110,6 +110,7 @@ dirs=(
   'etc'
   'etc/pacman.d/hooks'
   'usr/share/X11/xkb/symbols'
+  'usr/lib/systemd/system'
 )
 
 services=(
@@ -117,6 +118,7 @@ services=(
   firewalld
   systemd-timesyncd
   tlp
+  ssh-sleep
 )
 
 console_map='base/system/kbd/custom.map'
@@ -149,8 +151,8 @@ elif [[ "$profile" == "$profile_fruit" ]]; then
   )
 
   services+=(
-    disable-ir.service
-    bluetooth.service
+    disable-ir
+    bluetooth
   )
 
   console_map='fruit/system/kbd/custom.map'
