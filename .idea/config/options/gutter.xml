@@ -1,0 +1,35 @@
+<application>
+  <component name="LineMarkerSettings">
+    <option name="providers">
+      <map>
+        <entry key="RenderedDoc" value="false" />
+        <entry key="com.intellij.codeInsight.ExternalAnnotationLineMarkerProvider" value="false" />
+        <entry key="com.intellij.codeInsight.InferredContractAnnotationsLineMarkerProvider" value="false" />
+        <entry key="com.intellij.codeInsight.InferredNullabilityAnnotationsLineMarkerProvider" value="false" />
+        <entry key="com.intellij.codeInsight.daemon.impl.IconLineMarkerProvider" value="false" />
+        <entry key="com.intellij.codeInsight.daemon.impl.RecursiveCallLineMarkerProvider" value="false" />
+        <entry key="com.intellij.execution.lineMarker.RunLineMarkerProvider" value="true" />
+        <entry key="com.intellij.ui.ColorLineMarkerProvider" value="true" />
+        <entry key="devkit.beforeAfter" value="false" />
+        <entry key="devkit.description" value="false" />
+        <entry key="java.implemented" value="false" />
+        <entry key="java.implementing" value="false" />
+        <entry key="java.lambda" value="false" />
+        <entry key="java.overridden" value="false" />
+        <entry key="java.overriding" value="false" />
+        <entry key="java.service" value="false" />
+        <entry key="java.sibling.inherited" value="false" />
+        <entry key="kotlin.actual" value="false" />
+        <entry key="kotlin.dsl" value="false" />
+        <entry key="kotlin.expect" value="false" />
+        <entry key="kotlin.implemented" value="false" />
+        <entry key="kotlin.implementing" value="false" />
+        <entry key="kotlin.overridden" value="false" />
+        <entry key="kotlin.overriding" value="false" />
+        <entry key="org.editorconfig.configmanagement.editor.EditorConfigPreviewMarkerProvider" value="false" />
+        <entry key="org.jetbrains.idea.devkit.navigation.ExtensionDeclarationRelatedItemLineMarkerProvider" value="false" />
+        <entry key="org.jetbrains.idea.devkit.references.DevKitRelatedPropertiesProvider" value="false" />
+      </map>
+    </option>
+  </component>
+</application>
