@@ -23,7 +23,6 @@
     "files.insertFinalNewline": true,
     "workbench.statusBar.visible": true,
     "workbench.editor.showTabs": false,
-    "workbench.colorTheme": "Default Light+",
     "workbench.activityBar.visible": true,
     "git.confirmSync": false,
     "workbench.sideBar.location": "left",
@@ -45,4 +44,6 @@
     "timeline.excludeSources": [],
     "rust-analyzer.procMacro.enable": true,
     "rust-analyzer.cargo.loadOutDirsFromCheck": true
+    "editor.fontLigatures": true,
+    "workbench.colorTheme": "Default Light+"
 }
