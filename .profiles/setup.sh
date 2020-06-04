@@ -71,6 +71,7 @@ packages=(
   android-tools
   shellcheck
   shfmt
+  bind-tools
 
   # Command line syntax highlighting file outputs.
   # Also syntax highlighting for 'less', see ~/.zshrc
@@ -92,6 +93,7 @@ packages=(
   openssh
   keepassxc
   syncthing
+  syncthing-gtk
   gnome-keyring
   libsecret
   seahorse
@@ -136,14 +138,12 @@ elif [[ "$profile" == "$profile_fruit" ]]; then
     intel-ucode
     dkms
     broadcom-wl-dkms
-    refind-efi
   )
 
   dirs_prefix='fruit/system/'
 
   dirs+=(
-    'boot/efi/EFI/refind'
-    'boot/efi/EFI/arch'
+    'etc'
     'etc/modprobe.d'
     'etc/udev/rules.d'
     'etc/X11/xorg.conf.d'
@@ -194,8 +194,39 @@ for dir in "${dirs[@]}"; do
       -exec sudo cp -v {} "/$dir/" \;
 done
 
+if [[ "$profile" == "$profile_fruit" ]]; then
+
+  echo ""
+  echo "setting nvidia..."
+  (cd "$(dirname "$0")"/fruit/nvidia-340xx-utils &&
+    git clean --force -d &&
+    makepkg --cleanbuild --needed --noconfirm --syncdeps)
+  sudo pacman --upgrade --needed --noconfirm "$(dirname "$0")"/fruit/nvidia-340xx-utils/nvidia-340xx-util*.pkg.tar.xz
+
+  (cd "$(dirname "$0")"/fruit/nvidia-340xx &&
+    git clean --force -d &&
+    makepkg --cleanbuild --needed --noconfirm --syncdeps)
+  sudo pacman --upgrade --needed --noconfirm "$(dirname "$0")"/fruit/nvidia-340xx/nvidia-340xx-dkms*.pkg.tar.xz
+
+  echo ""
+  echo "setting mkinitcpio..."
+  sudo mkinitcpio -p linux
+  sudo zfs-esp-sync linux
+fi
+
+if [[ "$profile" != "$profile_nokbd" ]]; then
+  echo ""
+  echo "setting virtual console keymap..."
+  sudo cp -v "$console_map" '/usr/share/kbd/keymaps/i386/qwerty/custom.map'
+  sudo localectl set-keymap custom || true # Fails in chroot
+fi
+
+echo ""
+echo "linking default user profile..."
+ln -vsfn "$profile" default
 echo ""
 echo "updating firewalld..."
+sudo systemctl start firewalld.service
 sudo firewall-cmd --zone=public --remove-service=ssh
 sudo firewall-cmd --zone=public --remove-service=ssh --permanent
 
@@ -215,39 +246,3 @@ for service in "${services[@]}"; do
   echo "starting $service..."
   sudo systemctl enable --now "$service"
 done
-
-if [[ "$profile" == "$profile_fruit" ]]; then
-  echo ""
-  echo "setting refind..."
-  sudo refind-install
-  if ! grep -F 'include fruit.conf' /boot/efi/EFI/refind/refind.conf; then
-    sudo bash -c 'echo "include fruit.conf" >>/boot/efi/EFI/refind/refind.conf'
-  fi
-
-  echo ""
-  echo "setting nvidia..."
-  (cd "$(dirname "$0")"/fruit/nvidia-340xx-utils &&
-    git clean --force -d &&
-    makepkg --cleanbuild --needed --noconfirm --syncdeps)
-  sudo pacman --upgrade --needed --noconfirm "$(dirname "$0")"/fruit/nvidia-340xx-utils/nvidia-340xx-util*.pkg.tar.xz
-
-  (cd "$(dirname "$0")"/fruit/nvidia-340xx &&
-    git clean --force -d &&
-    makepkg --cleanbuild --needed --noconfirm --syncdeps)
-  sudo pacman --upgrade --needed --noconfirm "$(dirname "$0")"/fruit/nvidia-340xx/nvidia-340xx-dkms*.pkg.tar.xz
-
-  echo ""
-  echo "setting mkinitcpio..."
-  sudo mkinitcpio -p linux
-fi
-
-if [[ "$profile" != "$profile_nokbd" ]]; then
-  echo ""
-  echo "setting virtual console keymap..."
-  sudo cp -v "$console_map" '/usr/share/kbd/keymaps/i386/qwerty/custom.map'
-  sudo localectl set-keymap custom || true # Fails in chroot
-fi
-
-echo ""
-echo "linking default user profile..."
-ln -vsfn "$profile" default

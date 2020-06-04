@@ -1,4 +1,5 @@
 #
+# https://bbs.archlinux.org/viewtopic.php?pid=1833995#p1833995
 # https://askubuntu.com/questions/264247/proprietary-nvidia-drivers-with-efi-on-mac-to-prevent-overheating
 # https://forums.macrumors.com/threads/win7-x64-booting-natively-via-efi-no-bios-emulation.696523/page-5#post-13898859
 #
@@ -21,17 +22,13 @@
 # Only the first one seems to be necessary as the second register
 # already has the wanted value.
 #
-# Unfortunately while the exact commands work when manually entered in
-# the shell, they error when placed inside an UEFI script then
-# executing the script. So the below is a workaround, the shell
-# executes the mm command and exits, UEFI falling back to calling the
-# default startup.nsh script which boots the kernel defined in there.
-#
 # Alternatively can boot with CSM mode instead, see
 # https://wiki.archlinux.org/index.php/MacBookPro7,1
 #
-menuentry "Arch Linux" {
-    icon \EFI\refind\icons\os_arch.png
-    loader \EFI\arch\shellx64.efi
-    options "mm 0017003E 8 -PCI"
-}
+extra_uefi_cmds="
+mm 04000004 1 ;PCI :7
+mm 0017003E 1 ;PCI :8
+"
+default=linux
+esp_fs=fs0
+esp_mount=/boot/efi
