@@ -21,7 +21,7 @@ readonly profile=${profile:?"'$profile_base' or '$profile_fruit' or '$profile_no
   exit 1
 
 packages=(
-  \
+
   xfce4
   xfce4-goodies
   xorg-server
@@ -34,23 +34,26 @@ packages=(
   gvfs
   bluez
   bluez-utils
-  \
+
   firefox
-  \
+
   tmux
   xterm
   xsel
   zsh
   zsh-completions
   trash-cli
-  \
+
   git
   vim
   emacs
-  \
+  man-pages
+  man-db
+
   pulseaudio
   pavucontrol
-  \
+
+  ttf-roboto
   ttf-dejavu
   ttf-liberation
   ttf-ubuntu-font-family
@@ -64,7 +67,7 @@ packages=(
   # More unicode coverage, test
   # https://unicode-table.com/en/
   ttf-hanazono
-  \
+
   jdk8-openjdk
   openjdk8-src
   android-udev
@@ -76,17 +79,17 @@ packages=(
   # Command line syntax highlighting file outputs.
   # Also syntax highlighting for 'less', see ~/.zshrc
   source-highlight
-  \
+
   argyllcms
   tlp
   powertop
   x86_energy_perf_policy
   ethtool
   smartmontools
-  \
+
   ibus
   ibus-libpinyin
-  \
+
   firewalld
   networkmanager
   network-manager-applet
@@ -97,12 +100,20 @@ packages=(
   gnome-keyring
   libsecret
   seahorse
-  \
+
   cups          # Printing
   sane          # Scaning
   hplip         # HP PSC 1315 Series, hp-setup, hp-scan
   python-pyqt5  # Needed by hp-setup
   python-pillow # Needed by hp-scan
+
+  libreoffice-fresh
+  hunspell
+  hunspell-en_US
+  hyphen
+  hyphen-en
+  libmythes
+  mythes-en
 )
 
 readonly base_dirs_prefix=base/system/
