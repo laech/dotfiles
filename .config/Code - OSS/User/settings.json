@@ -42,8 +42,7 @@
     "editor.fontSize": 15,
     "terminal.integrated.fontSize": 15,
     "timeline.excludeSources": [],
-    "rust-analyzer.procMacro.enable": true,
-    "rust-analyzer.cargo.loadOutDirsFromCheck": true
     "editor.fontLigatures": true,
-    "workbench.colorTheme": "Default Light+"
+    "workbench.colorTheme": "Default Light+",
+    "rust-client.engine": "rust-analyzer"
 }
