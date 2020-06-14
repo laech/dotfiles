@@ -22,23 +22,17 @@ readonly profile=${profile:?"'$profile_base' or '$profile_fruit' or '$profile_no
 
 packages=(
 
-  xfce4
-  xfce4-goodies
+  gnome
+  gnome-tweaks
   xorg-server
   xorg-xinit
   xorg-xev
   xorg-xbacklight
-  rofi
-  feh
-  dex
-  gvfs
-  bluez
-  bluez-utils
 
   firefox
+  chromium
 
   tmux
-  xterm
   xsel
   zsh
   zsh-completions
@@ -49,9 +43,6 @@ packages=(
   emacs
   man-pages
   man-db
-
-  pulseaudio
-  pavucontrol
 
   ttf-roboto
   ttf-dejavu
@@ -80,7 +71,6 @@ packages=(
   # Also syntax highlighting for 'less', see ~/.zshrc
   source-highlight
 
-  argyllcms
   tlp
   powertop
   x86_energy_perf_policy
@@ -92,13 +82,9 @@ packages=(
 
   firewalld
   networkmanager
-  network-manager-applet
-  openssh
   keepassxc
   syncthing
   syncthing-gtk
-  gnome-keyring
-  libsecret
   seahorse
 
   cups          # Printing
@@ -128,8 +114,8 @@ dirs=(
 
 services=(
   NetworkManager
+  gdm
   firewalld
-  systemd-timesyncd
   tlp
   ssh-sleep
 )
@@ -156,13 +142,10 @@ elif [[ "$profile" == "$profile_fruit" ]]; then
   dirs+=(
     'etc'
     'etc/modprobe.d'
-    'etc/udev/rules.d'
     'etc/X11/xorg.conf.d'
-    'usr/lib/systemd/system'
   )
 
   services+=(
-    disable-ir
     bluetooth
   )
 
@@ -173,12 +156,6 @@ fi
 echo ""
 echo "installing packages..."
 sudo pacman --sync --needed --noconfirm "${packages[@]}"
-
-echo ""
-echo "linking font config..."
-sudo ln -vsfn ../conf.avail/30-ttf-liberation-sans.conf /etc/fonts/conf.d/
-sudo ln -vsfn ../conf.avail/30-ttf-liberation-serif.conf /etc/fonts/conf.d/
-sudo ln -vsfn ../conf.avail/30-ttf-liberation-mono.conf /etc/fonts/conf.d/
 
 cd "$(dirname "${BASH_SOURCE[0]}")"
 

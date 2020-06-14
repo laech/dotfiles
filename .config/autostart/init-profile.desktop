@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=InitProfile
-Exec=bash -c "find ~/.profiles/default/init/ -name '*.sh' -exec {} \;"
-StartupNotify=false
-NoDisplay=true
-
-# https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html

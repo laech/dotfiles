@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=RestoreBacklight
-Exec=backlight 10
-StartupNotify=false
-NoDisplay=true
-
-# https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html
