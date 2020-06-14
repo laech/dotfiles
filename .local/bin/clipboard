@@ -1,28 +1,27 @@
 #!/usr/bin/env bash
 
 copy() {
-    if [[ -z "$DISPLAY" ]];        then return
-    elif type xsel   &> /dev/null; then xsel -ib
-    elif type pbcopy &> /dev/null; then	pbcopy
-    else echo "No copy program found." >& 2 && exit 1
-    fi
+  if [[ -z "$DISPLAY" ]]; then
+    return
+  else
+    xsel -ib
+  fi
 }
 
 paste() {
-    if [[ -z "$DISPLAY" ]];         then return
-    elif type xsel    &> /dev/null; then xsel -ob
-    elif type pbpaste &> /dev/null; then pbpaste
-    else echo "No paste program found." >& 2 && exit 1
-    fi
+  if [[ -z "$DISPLAY" ]]; then
+    return
+  else
+    xsel -ob
+  fi
 }
 
 [[ $# -eq 1 ]] && "$1" && exit
 
-cat <<EOF
+cat <<EOF >&2
 Usage: $0 <action>
 Where action could be:
       copy   copy text from stdin
       paste  paste text to stdout
 EOF
->& 2
 exit 1
