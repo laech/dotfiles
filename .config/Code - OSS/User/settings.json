@@ -44,5 +44,6 @@
     "timeline.excludeSources": [],
     "editor.fontLigatures": true,
     "workbench.colorTheme": "Default Light+",
-    "rust-client.engine": "rust-analyzer"
+    "rust-client.engine": "rust-analyzer",
+    "git.enableCommitSigning": true
 }
