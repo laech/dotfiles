@@ -113,6 +113,7 @@ dirs=(
 )
 
 services=(
+  bluetooth
   NetworkManager
   gdm
   firewalld
@@ -143,10 +144,6 @@ elif [[ "$profile" == "$profile_fruit" ]]; then
     'etc'
     'etc/modprobe.d'
     'etc/X11/xorg.conf.d'
-  )
-
-  services+=(
-    bluetooth
   )
 
   console_map='fruit/system/kbd/custom.map'
@@ -232,5 +229,9 @@ echo "reloading services..."
 sudo systemctl daemon-reload
 for service in "${services[@]}"; do
   echo "starting $service..."
-  sudo systemctl enable --now "$service"
+  if [[ "$service" == "gdm" ]]; then
+    sudo systemctl enable "$service"
+  else
+    sudo systemctl enable --now "$service"
+  fi
 done
