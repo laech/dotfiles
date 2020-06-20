@@ -127,8 +127,17 @@ if [[ "$profile" == "$profile_build" ]]; then
 
   packages+=(
     intel-ucode
+    mesa
+    libva-mesa-driver
+    mesa-vdpau
+    vulkan-radeon
   )
+
   dirs_prefix='build/system/'
+
+  dirs+=(
+      'etc/X11/xorg.conf.d'
+  )
 
 elif [[ "$profile" == "$profile_fruit" ]]; then
 
