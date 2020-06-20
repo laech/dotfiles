@@ -1,5 +1,5 @@
 [credential]
-	helper = /usr/lib/git-core/git-credential-libsecret
+	helper = /home/l/.local/bin/git-credential-helper.sh
 [user]
 	signingkey = 086540409FB516EE2B6C835CF9AB582398F03331
 	name = Lae Chen
