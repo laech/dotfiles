@@ -245,9 +245,13 @@ alias ls='ls --color=auto'
 alias l='ls -1'
 alias ll='ls -lh'
 alias la='ll -a'
+
 alias tf='terraform'
+alias tfi='terraform init'
+alias tfp='terraform plan'
 alias tfa='terraform apply'
 alias tfd='terraform destroy'
+
 alias kb='kubectl'
 
 alias config='git --git-dir="${HOME}/.cfg" --work-tree="${HOME}"'
