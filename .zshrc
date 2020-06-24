@@ -255,3 +255,7 @@ alias tfd='terraform destroy'
 alias kb='kubectl'
 
 alias config='git --git-dir="${HOME}/.cfg" --work-tree="${HOME}"'
+
+if [[ ! -z "$WSLENV" ]]; then
+    export GPG_TTY=$(tty)
+fi
