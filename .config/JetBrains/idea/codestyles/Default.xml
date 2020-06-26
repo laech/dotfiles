@@ -1,4 +1,5 @@
 <code_scheme name="Default" version="173">
+  <option name="LINE_SEPARATOR" value="&#10;" />
   <option name="RIGHT_MARGIN" value="80" />
   <JSON>
     <option name="OBJECT_WRAPPING" value="5" />
@@ -10,6 +11,10 @@
   <JetCodeStyleSettings>
     <option name="CODE_STYLE_DEFAULTS" value="KOTLIN_OFFICIAL" />
   </JetCodeStyleSettings>
+  <ScalaCodeStyleSettings>
+    <option name="CALL_PARAMETERS_NEW_LINE_AFTER_LPAREN" value="2" />
+    <option name="MULTILINE_STRING_CLOSING_QUOTES_ON_NEW_LINE" value="true" />
+  </ScalaCodeStyleSettings>
   <Shell_Script>
     <option name="SWITCH_CASES_INDENTED" value="true" />
   </Shell_Script>
@@ -52,6 +57,11 @@
   </codeStyleSettings>
   <codeStyleSettings language="JSON">
     <option name="SPACE_WITHIN_BRACES" value="true" />
+  </codeStyleSettings>
+  <codeStyleSettings language="Scala">
+    <option name="CALL_PARAMETERS_WRAP" value="5" />
+    <option name="CALL_PARAMETERS_RPAREN_ON_NEXT_LINE" value="true" />
+    <option name="METHOD_CALL_CHAIN_WRAP" value="5" />
   </codeStyleSettings>
   <codeStyleSettings language="XML">
     <indentOptions>
