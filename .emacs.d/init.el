@@ -4,11 +4,6 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
-(setq-default
- default-frame-alist
- '((internal-border-width . 0)
-   (font . "Monospace-12")))
-
 ;; By default Emacs automatically detects background color and sets
 ;; background mode automaticall, but when running inside tmux this
 ;; detection fails (no support for TERM set to screen, screen-256color
