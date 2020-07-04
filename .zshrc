@@ -233,7 +233,7 @@ else
 fi
 
 # Syntax highlighting for 'less'
-export LESSOPEN="| src-hilite-lesspipe.sh %s"
+export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 export LESS=' -R '
 
 type aws_zsh_completer.sh > /dev/null && source aws_zsh_completer.sh

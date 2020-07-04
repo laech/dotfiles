@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
-if [[ ! -z "$WSLENV" ]]; then
-  /mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-manager.exe $@
+if [[ -n "$WSLENV" ]]; then
+  /mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-manager.exe "$@"
 else
-  /usr/lib/git-core/git-credential-libsecret $@
+  /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret "$@"
 fi
-
