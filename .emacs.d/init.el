@@ -504,7 +504,7 @@ be used as a function advice via `advice-add'."
 (with-eval-after-load 'sh-script
   (require 'reformatter)
   (reformatter-define shfmt
-    :program "shfmt"
+    :program "~/.local/bin/shfmt"
     :args '("-i" "2" "-ci")
     :lighter " shfmt")
 

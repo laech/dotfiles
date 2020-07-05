@@ -25,16 +25,9 @@ readonly packages=(
   openssh-server
   ibus-libpinyin
   gimp
-  code
 )
 
-readonly code_repo_file=/etc/apt/sources.list.d/vscode.list
-if [[ ! -e $code_repo_file ]]; then
-  echo "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main" | sudo tee "$code_repo_file"
-  sudo apt update
-fi
-
-sudo apt purge snapd
+sudo apt purge -y snapd
 sudo apt-mark hold snapd
 
 sudo apt install -y "${packages[@]}"
@@ -44,6 +37,8 @@ sudo systemctl enable --now tlp
 sudo systemctl enable --now firewalld
 sudo firewall-cmd --zone=public --remove-service=ssh
 sudo firewall-cmd --zone=public --remove-service=ssh --permanent
+sudo firewall-cmd --zone=home --add-service=syncthing
+sudo firewall-cmd --zone=home --add-service=syncthing --permanent
 
 sudo systemctl stop ssh
 sudo systemctl disable ssh
