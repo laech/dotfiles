@@ -20,7 +20,7 @@ readonly packages=(
   tmux
   zsh
   vim
-  emacs
+  emacs-nox
   shellcheck
   source-highlight
   maven
