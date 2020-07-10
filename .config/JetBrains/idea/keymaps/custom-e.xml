@@ -31,7 +31,9 @@
   <action id="ActivateFavoritesToolWindow" />
   <action id="ActivateMessagesToolWindow" />
   <action id="ActivateTODOToolWindow" />
-  <action id="ActivateTerminalToolWindow" />
+  <action id="ActivateTerminalToolWindow">
+    <keyboard-shortcut first-keystroke="ctrl back_quote" />
+  </action>
   <action id="ActivateUnitTestsToolWindow">
     <keyboard-shortcut first-keystroke="alt 2" />
   </action>
@@ -609,9 +611,6 @@
     <keyboard-shortcut first-keystroke="f11" />
   </action>
   <action id="ToggleTemporaryLineBreakpoint" />
-  <action id="Tool_External Tools_Terminal">
-    <keyboard-shortcut first-keystroke="ctrl back_quote" />
-  </action>
   <action id="TypeHierarchy" />
   <action id="Unwrap">
     <keyboard-shortcut first-keystroke="alt r" />

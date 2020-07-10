@@ -77,7 +77,7 @@
             { "keys": ["M"], "id": "ToggleBookmark" }
           ]
         },
-        { "keys": ["G"], "id": "ActivateVersionControlToolWindow" },
+        { "keys": ["G"], "id": "ActivateCommitToolWindow" },
         {
           "keys": ["V"],
           "name": "Version Control...",
