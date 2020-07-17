@@ -10,6 +10,37 @@ if [[ $UID == 0 ]]; then
   exit 1
 fi
 
+setup_packages() {
+  packages=(
+
+    # For building git-credential-libsecret
+    libglib2.0-dev
+    libsecret-1-dev
+
+    build-essential
+    curl
+    tmux
+    zsh
+    vim
+    emacs-nox
+    shellcheck
+    source-highlight
+    maven
+    openjdk-8-jdk
+    openjdk-8-source
+    openjdk-11-jdk
+    openjdk-11-source
+  )
+
+  sudo apt install -y "${packages[@]}"
+}
+
+setup_git() {
+  if [[ ! -f /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret ]]; then
+    sudo make --directory=/usr/share/doc/git/contrib/credential/libsecret
+  fi
+}
+
 setup_shfmt() {
   local tmp=
   local version=3.1.2
@@ -31,5 +62,7 @@ setup_shell() {
   fi
 }
 
+setup_packages
+setup_git
 setup_shfmt
 setup_shell
