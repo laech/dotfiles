@@ -168,7 +168,6 @@
     (set-frame-parameter nil 'bottom-divider-width 0)))
 
 (my-add-hook-if-defined after-init-hook center-layout-mode)
-(my-add-hook-if-defined after-init-hook esc-mode)
 
 (with-eval-after-load 'eldoc
   (setq-default eldoc-echo-area-use-multiline-p t))
@@ -252,22 +251,6 @@ be used as a function advice via `advice-add'."
    expand-region-fast-keys-enabled nil
    expand-region-smart-cursor t))
 
-(with-eval-after-load 'lsp-mode
-  (setq-default lsp-prefer-flymake nil)
-  (require 'company-lsp)
-  (push 'company-lsp company-backends)
-  (mapc
-   (lambda (arg) (apply 'define-key lsp-mode-map arg))
-   `(([remap xref-find-definitions] lsp-find-definition)
-     ([remap xref-find-references] lsp-find-references)
-     ([remap xref-find-apropos] helm-lsp-workspace-symbol)
-     (,(kbd "M-RET") lsp-execute-code-action)
-     (,(kbd "C-\\") lsp-organize-imports)
-     (,(kbd "C-h i") lsp-describe-thing-at-point)
-     (,(kbd "C-c r r") lsp-rename)
-     (,(kbd "M-g . i") lsp-goto-implementation)
-     (,(kbd "M-g . t") lsp-goto-type-definition))))
-
 (my-add-hook-if-defined after-init-hook counsel-mode)
 
 (with-eval-after-load 'swiper
@@ -320,10 +303,6 @@ be used as a function advice via `advice-add'."
   (define-key mode-specific-map (kbd "p") 'projectile-command-map)
   (define-key search-map (kbd "f") 'projectile-grep))
 
-(with-eval-after-load 'smartparens
-  (require 'smartparens-config))
-
-
 (my-add-hook-if-defined emacs-lisp-mode-hook enable-paredit-mode)
 (my-add-hook-if-defined eval-expression-minibuffer-setup-hook enable-paredit-mode)
 (my-add-hook-if-defined ielm-mode-hook enable-paredit-mode)
@@ -369,69 +348,8 @@ be used as a function advice via `advice-add'."
      (,(kbd "M-S") nil)
      (,(kbd "C-j") nil))))
 
-(with-eval-after-load 'haskell-mode
-  (add-hook 'haskell-mode-hook #'hindent-mode)
-  (add-hook 'haskell-mode-hook #'smartparens-mode)
-
-  (with-eval-after-load 'hindent
-    (defun hindent-reformat-region-or-buffer ()
-      "Reformat region, or buffer if no region."
-      (interactive "*")
-      (if (region-active-p)
-          (hindent-reformat-region (region-beginning) (region-end))
-        (hindent-reformat-buffer)))
-
-    (define-key hindent-mode-map [remap indent-region]
-      #'hindent-reformat-region-or-buffer)))
-
-(with-eval-after-load 'rust-mode
-  (with-eval-after-load 'projectile
-    (add-to-list 'projectile-project-root-files "Cargo.toml"))
-
-  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
-  (add-hook
-   'rust-mode-hook
-   (lambda ()
-     (yas-minor-mode)
-     (electric-pair-mode)
-     (lsp-deferred)))
-
-  (define-key rust-mode-map [remap indent-region]
-    #'rust-format-buffer))
-
 (with-eval-after-load 'js
   (setq-default js-indent-level 2))
-
-(add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
-(with-eval-after-load 'typescript-mode
-  (setq-default typescript-indent-level 2)
-  (add-hook
-   'typescript-mode-hook
-   (lambda ()
-     (electric-pair-mode)
-     (tide-setup)
-     (tide-hl-identifier-mode))))
-
-(with-eval-after-load 'tide
-  (setq-default
-   tide-completion-ignore-case t
-   tide-format-options '(:indentSize 2 :tabSize 2))
-
-  (defun my/tide-format ()
-    (interactive "*")
-    (tide-organize-imports)
-    (tide-format))
-
-  (mapc
-   (lambda (arg) (apply 'define-key tide-mode-map arg))
-   `(([remap indent-region] my/tide-format)
-     (,(kbd "C-\\") tide-organize-imports)
-     ([remap xref-find-references] tide-references)
-     (,(kbd "M-RET RET") tide-fix)
-     (,(kbd "<f2>") tide-rename-symbol)
-     (,(kbd "C-<f2>") tide-rename-file)
-     (,(kbd "C-c r") tide-refactor)
-     (,(kbd "C-h i") tide-documentation-at-point))))
 
 (with-eval-after-load 'flyspell
   (setq-default flyspell-issue-message-flag nil))
@@ -493,14 +411,6 @@ be used as a function advice via `advice-add'."
   (if (display-graphic-p)
       (setq-default neo-mode-line-type 'none)))
 
-(with-eval-after-load 'terraform-mode
-  (electric-pair-mode t)
-  (company-terraform-init)
-  (define-key
-    terraform-mode-map
-    [remap indent-region]
-    'terraform-format-buffer))
-
 (with-eval-after-load 'sh-script
   (require 'reformatter)
   (reformatter-define shfmt
@@ -537,19 +447,12 @@ be used as a function advice via `advice-add'."
       '(
         avy
         company-flx
-        company-lsp
-        company-terraform
         counsel
         diff-hl
         dockerfile-mode
         expand-region
         flx
         flycheck
-        flycheck-rust
-        haskell-mode
-        helm
-        helm-lsp
-        hindent
         ivy
         magit
         multiple-cursors
@@ -557,16 +460,10 @@ be used as a function advice via `advice-add'."
         paredit
         projectile
         rainbow-delimiters
-        rust-mode
-        smartparens
         swiper
-        terraform-mode
-        tide
         undo-tree
         which-key
-        yaml-mode
-        yasnippet
-        )))
+        yaml-mode)))
   (dolist (package packages)
     (straight-use-package package)))
 
@@ -575,12 +472,6 @@ be used as a function advice via `advice-add'."
    :type git
    :host gitlab
    :repo "lae/emacs-center-layout"))
-
-(straight-use-package
- '(esc
-   :type git
-   :host gitlab
-   :repo "lae/emacs-esc"))
 
 (straight-use-package
  '(reformatter
