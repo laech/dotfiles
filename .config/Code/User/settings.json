@@ -43,7 +43,8 @@
     "terminal.integrated.fontSize": 15,
     "timeline.excludeSources": [],
     "editor.fontLigatures": true,
-    "workbench.colorTheme": "Default Light+",
     "rust-client.engine": "rust-analyzer",
-    "git.enableCommitSigning": true
+    "git.enableCommitSigning": true,
+    "editor.fontFamily": "'Fantasque Sans Mono', monospace",
+    "workbench.colorTheme": "Default Light+"
 }

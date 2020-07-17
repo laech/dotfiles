@@ -12,8 +12,8 @@
     <entry key="search.everywhere.toolwindows" value="false" />
     <entry key="search.everywhere.configurations" value="false" />
     <entry key="search.everywhere.actions" value="false" />
-    <entry key="editor.distraction.free.mode" value="true" />
     <entry key="BSP.system.in.process" value="true" />
     <entry key="SBT.system.in.process" value="true" />
+    <entry key="editor.distraction.free.mode" value="true" />
   </component>
 </application>
