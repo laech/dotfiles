@@ -179,6 +179,8 @@
 
 (my-add-hook-if-defined after-init-hook global-undo-tree-mode)
 (with-eval-after-load 'undo-tree
+  (define-key undo-tree-map (kbd "C-S-z") 'undo-tree-redo)
+  (define-key undo-tree-map (kbd "M-Z") 'undo-tree-redo)
   (define-key undo-tree-map (kbd "<redo>") 'undo-tree-redo))
 
 (my-add-hook-if-defined after-init-hook which-key-mode)
@@ -211,10 +213,6 @@ be used as a function advice via `advice-add'."
 (define-key ctl-x-map (kbd "G") 'magit-list-repositories)
 (define-key ctl-x-map (kbd "C-l") 'downcase-dwim)
 (define-key ctl-x-map (kbd "C-u") 'upcase-dwim)
-(define-key ctl-x-map (kbd "<f3>") 'save-buffer)
-(define-key ctl-x-map (kbd "<end>") 'eval-last-sexp)
-(define-key ctl-x-map (kbd "<left>") 'list-buffers)
-(define-key ctl-x-map (kbd "<right>") 'find-file)
 
 (global-set-key [remap kill-region] 'kill-region-or-line)
 (global-set-key [remap kill-ring-save] 'copy-region-or-line)
@@ -227,6 +225,11 @@ be used as a function advice via `advice-add'."
        ("<f6>" . my-buffer-file-name)
        ("<S-RET>" . start-new-line)
        ("<S-return>" . start-new-line)
+       ("C-c" . kill-ring-save)
+       ("C-M-c" . mode-specific-command-prefix)
+       ("C-\\" . indent-region)
+       ("C-v" . yank)
+       ("C-S-v" . yank-pop)
        ("C-r" . avy-goto-char)
        ("C-o" . my/find-file)
        ("C-S-o" . find-file)
@@ -241,11 +244,18 @@ be used as a function advice via `advice-add'."
        ("M-J" . mc/unmark-next-like-this)
        ("M-h" . er/expand-region)
        ("M-H" . er/contract-region)
+       ("M-n" . scroll-up-command)
+       ("M-p" . scroll-down-command)
        ("M-N" . move-line-down)
        ("M-P" . move-line-up)
        ("M-V" . join-line-next)
        ("M-T" . transpose-words-backward)))
   (global-set-key (kbd (car mapping)) (cdr mapping)))
+
+(with-eval-after-load 'help-mode
+  (define-key help-mode-map (kbd "C-M-c")
+    (lookup-key help-mode-map (kbd "C-c")))
+  (define-key help-mode-map (kbd "C-c") nil))
 
 (with-eval-after-load 'isearch
   (define-key isearch-mode-map (kbd "<f3>") 'isearch-repeat-forward)
@@ -272,6 +282,11 @@ be used as a function advice via `advice-add'."
    ivy-re-builders-alist '((swiper . ivy--regex-plus) (t . ivy--regex-fuzzy))
    projectile-completion-system 'ivy
    magit-completing-read-function 'ivy-completing-read)
+
+  (define-key ivy-minibuffer-map (kbd "C-M-c")
+    (lookup-key ivy-minibuffer-map (kbd "C-c")))
+  (define-key ivy-minibuffer-map (kbd "C-c") nil)
+
   (dolist
       (mapping
        '(("<tab>" . ivy-insert-current)
@@ -283,6 +298,10 @@ be used as a function advice via `advice-add'."
     (define-key ivy-minibuffer-map (kbd (car mapping)) (cdr mapping))))
 
 (my-add-hook-if-defined after-init-hook global-flycheck-mode)
+(with-eval-after-load 'flycheck
+  (define-key flycheck-mode-map (kbd "C-M-c")
+    (lookup-key flycheck-mode-map (kbd "C-c")))
+  (define-key flycheck-mode-map (kbd "C-c") nil))
 
 (my-add-hook-if-defined after-init-hook global-company-mode)
 (with-eval-after-load 'company
@@ -305,7 +324,7 @@ be used as a function advice via `advice-add'."
   (advice-add 'projectile-run-project :before 'my-save-all-buffers)
   (advice-add 'projectile-test-project :before 'my-save-all-buffers)
   (advice-add 'projectile-compile-project :before 'my-save-all-buffers)
-  (define-key mode-specific-map (kbd "p") 'projectile-command-map)
+  (global-set-key (kbd "C-M-p") 'projectile-command-map)
   (define-key search-map (kbd "f") 'projectile-grep))
 
 (my-add-hook-if-defined emacs-lisp-mode-hook enable-paredit-mode)
@@ -335,22 +354,22 @@ be used as a function advice via `advice-add'."
       (message "Copied sexp")
       (paredit-copy-sexps-as-kill)))
 
+  (define-key paredit-mode-map (kbd "C-M-c")
+    (lookup-key paredit-mode-map (kbd "C-c")))
+  (define-key paredit-mode-map (kbd "C-c") nil)
+
+
   (mapc
    (lambda (arg) (apply 'define-key paredit-mode-map arg))
    `(([remap kill-region] paredit-cut-region-or-sexp)
      ([remap kill-ring-save] paredit-copy-region-or-sexp)
      ([remap kill-line] paredit-kill)
-     (,(kbd "C-c M-s") paredit-splice-sexp)
-     (,(kbd "C-c M-S") paredit-split-sexp)
-     ;;     (,(kbd "M-[") paredit-backward-slurp-sexp)
-     ;;     (,(kbd "M-{") paredit-backward-barf-sexp)
-     (,(kbd "M-]") paredit-forward-slurp-sexp)
-     (,(kbd "M-}") paredit-forward-barf-sexp)
+     (,(kbd "C-M-c M-s") paredit-splice-sexp)
+     (,(kbd "C-M-c M-S") paredit-split-sexp)
      (,(kbd "C-M-S-t") transpose-sexps-reverse)
-     (,(kbd "<C-left>") nil)
-     (,(kbd "<C-right>") nil)
      (,(kbd "M-s") nil)
      (,(kbd "M-S") nil)
+     (,(kbd "C-M-p") nil)
      (,(kbd "C-j") nil))))
 
 (with-eval-after-load 'js
@@ -359,16 +378,15 @@ be used as a function advice via `advice-add'."
 (with-eval-after-load 'flyspell
   (setq-default flyspell-issue-message-flag nil))
 
-(with-eval-after-load 'magit-repos
-  (add-to-list 'magit-repository-directories '("~/src/" . 2))
-  (setq-default
-   magit-repolist-columns
-   '(("Path" 32 magit-repolist-column-path)
-     ("↓" 2 magit-repolist-column-unpulled-from-upstream ((:right-align t)))
-     ("↑" 2 magit-repolist-column-unpushed-to-upstream ((:right-align t)))
-     ("*" 2 magit-repolist-column-dirty ((:right-align t)
-                                         (:pad-right 2)))
-     ("Branch" 8 magit-repolist-column-branch))))
+(with-eval-after-load 'with-editor
+  (define-key with-editor-mode-map (kbd "C-M-c")
+    (lookup-key with-editor-mode-map (kbd "C-c")))
+  (define-key with-editor-mode-map (kbd "C-c") nil))
+
+(with-eval-after-load 'magit
+  (define-key magit-status-mode-map (kbd "C-M-c")
+    (lookup-key magit-status-mode-map (kbd "C-c")))
+  (define-key magit-status-mode-map (kbd "C-c") nil))
 
 (with-eval-after-load 'magit-diff
   (define-key magit-hunk-section-map (kbd "C-j") nil)
@@ -376,6 +394,10 @@ be used as a function advice via `advice-add'."
    (lambda (mapping)
      (define-key magit-file-section-map (kbd (car mapping)) (cdr mapping)))
    '(("C-j" . nil))))
+
+(with-eval-after-load 'diff-hl
+  (define-key diff-hl-mode-map (kbd "M-{") 'diff-hl-previous-hunk)
+  (define-key diff-hl-mode-map (kbd "M-}") 'diff-hl-next-hunk))
 
 (with-eval-after-load 'elisp-mode
   (add-hook
