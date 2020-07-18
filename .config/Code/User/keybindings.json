@@ -54,24 +54,9 @@
         "when": "listFocus && !inputFocus"
     },
     {
-        "key": "ctrl+v",
-        "command": "notifications.focusLastToast",
-        "when": "notificationFocus && notificationToastsVisible"
-    },
-    {
         "key": "ctrl+shift+e",
         "command": "cursorEndSelect",
         "when": "textInputFocus"
-    },
-    {
-        "key": "shift+end",
-        "command": "-cursorEndSelect",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "shift+end",
-        "command": "-workbench.action.terminal.scrollToBottom",
-        "when": "terminalFocus"
     },
     {
         "key": "ctrl+r",
@@ -102,18 +87,8 @@
         "when": "textInputFocus && !editorReadonly"
     },
     {
-        "key": "ctrl+v",
-        "command": "-editor.action.clipboardPasteAction",
-        "when": "textInputFocus && !editorReadonly"
-    },
-    {
         "key": "ctrl+y",
         "command": "filesExplorer.paste",
-        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
-    },
-    {
-        "key": "ctrl+v",
-        "command": "-filesExplorer.paste",
         "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
     },
     {
@@ -209,11 +184,6 @@
         "key": "ctrl+a",
         "command": "list.focusFirst",
         "when": "listFocus && !inputFocus"
-    },
-    {
-        "key": "alt+v",
-        "command": "notifications.focusFirstToast",
-        "when": "notificationFocus && notificationToastsVisible"
     },
     {
         "key": "ctrl+s",
@@ -562,18 +532,8 @@
         "when": "problemFocus"
     },
     {
-        "key": "ctrl+c",
-        "command": "-problems.action.copy",
-        "when": "problemFocus"
-    },
-    {
         "key": "alt+w",
         "command": "editor.action.clipboardCopyAction",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "ctrl+c",
-        "command": "-editor.action.clipboardCopyAction",
         "when": "textInputFocus"
     },
     {
@@ -582,18 +542,8 @@
         "when": "inKeybindings && keybindingFocus"
     },
     {
-        "key": "ctrl+c",
-        "command": "-keybindings.editor.copyKeybindingEntry",
-        "when": "inKeybindings && keybindingFocus"
-    },
-    {
         "key": "alt+w",
         "command": "search.action.copyMatch",
-        "when": "fileMatchOrMatchFocus"
-    },
-    {
-        "key": "ctrl+c",
-        "command": "-search.action.copyMatch",
         "when": "fileMatchOrMatchFocus"
     },
     {
@@ -602,39 +552,29 @@
         "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !inputFocus"
     },
     {
-        "key": "ctrl+c",
-        "command": "-filesExplorer.copy",
-        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !inputFocus"
-    },
-    {
-        "key": "ctrl+v",
+        "key": "alt+n",
         "command": "cursorPageDown",
         "when": "textInputFocus"
     },
     {
-        "key": "ctrl+shift+v",
+        "key": "alt+shift+n",
         "command": "cursorPageDownSelect",
         "when": "textInputFocus"
     },
     {
-        "key": "ctrl+v",
+        "key": "alt+n",
         "command": "selectNextPageSuggestion",
         "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
     },
     {
-        "key": "ctrl+v",
+        "key": "alt+n",
         "command": "list.focusPageDown",
         "when": "listFocus && !inputFocus"
     },
     {
-        "key": "ctrl+v",
+        "key": "alt+n",
         "command": "workbench.action.interactivePlayground.pageDown",
         "when": "interactivePlaygroundFocus && !editorTextFocus"
-    },
-    {
-        "key": "shift+pagedown",
-        "command": "-workbench.action.terminal.scrollDownPage",
-        "when": "terminalFocus"
     },
     {
         "key": "ctrl+b",
@@ -939,58 +879,28 @@
         "command": "editor.action.transformToLowercase"
     },
     {
-        "key": "alt+v",
+        "key": "alt+p",
         "command": "cursorPageUp",
         "when": "textInputFocus"
     },
     {
-        "key": "pageup",
-        "command": "-cursorPageUp",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "shift+alt+v",
+        "key": "shift+alt+p",
         "command": "cursorPageUpSelect",
         "when": "textInputFocus"
     },
     {
-        "key": "shift+pageup",
-        "command": "-cursorPageUpSelect",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "alt+v",
+        "key": "alt+p",
         "command": "list.focusPageUp",
         "when": "listFocus && !inputFocus"
     },
     {
-        "key": "pageup",
-        "command": "-list.focusPageUp",
-        "when": "listFocus && !inputFocus"
-    },
-    {
-        "key": "pageup",
-        "command": "-notifications.focusFirstToast",
-        "when": "notificationFocus && notificationToastsVisible"
-    },
-    {
-        "key": "alt+v",
+        "key": "alt+p",
         "command": "selectPrevPageSuggestion",
         "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
     },
     {
-        "key": "pageup",
-        "command": "-selectPrevPageSuggestion",
-        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
-    },
-    {
-        "key": "alt+v",
+        "key": "alt+p",
         "command": "workbench.action.interactivePlayground.pageUp",
-        "when": "interactivePlaygroundFocus && !editorTextFocus"
-    },
-    {
-        "key": "pageup",
-        "command": "-workbench.action.interactivePlayground.pageUp",
         "when": "interactivePlaygroundFocus && !editorTextFocus"
     },
     {
@@ -1204,7 +1114,7 @@
         "when": "suggestWidgetVisible && textInputFocus"
     },
     {
-        "key": "ctrl+alt+\\",
+        "key": "ctrl+\\",
         "command": "editor.action.formatDocument",
         "when": "editorHasDocumentFormattingProvider && editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly"
     },
@@ -1214,7 +1124,7 @@
         "when": "editorHasDocumentFormattingProvider && editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly"
     },
     {
-        "key": "ctrl+alt+\\",
+        "key": "ctrl+\\",
         "command": "editor.action.formatDocument.none",
         "when": "editorTextFocus && !editorHasDocumentFormattingProvider && !editorHasDocumentFormattingProvider && !editorReadonly"
     },
@@ -1374,18 +1284,8 @@
         "when": "terminalFocus"
     },
     {
-        "key": "shift+home",
-        "command": "-workbench.action.terminal.scrollToTop",
-        "when": "terminalFocus"
-    },
-    {
         "key": "ctrl+shift+up",
         "command": "-workbench.action.terminal.scrollUp",
-        "when": "terminalFocus"
-    },
-    {
-        "key": "shift+pageup",
-        "command": "-workbench.action.terminal.scrollUpPage",
         "when": "terminalFocus"
     },
     {
@@ -1532,7 +1432,7 @@
         "when": "inDebugMode"
     },
     {
-        "key": "alt+n",
+        "key": "shift+alt+]",
         "command": "editor.action.diffReview.next",
         "when": "isInDiffEditor"
     },
@@ -1552,7 +1452,7 @@
         "when": "editorTextFocus && hasWordHighlights"
     },
     {
-        "key": "alt+p",
+        "key": "shift+alt+[",
         "command": "editor.action.diffReview.prev",
         "when": "isInDiffEditor"
     },
@@ -1879,7 +1779,7 @@
         "when": "editorHasReferenceProvider"
     },
     {
-        "key": "ctrl+c r",
+        "key": "ctrl+alt+r",
         "command": "editor.action.refactor",
         "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
     },

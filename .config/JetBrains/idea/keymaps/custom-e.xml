@@ -2,6 +2,7 @@
   <action id="$Copy">
     <keyboard-shortcut first-keystroke="ctrl insert" />
     <keyboard-shortcut first-keystroke="alt w" />
+    <keyboard-shortcut first-keystroke="ctrl c" />
   </action>
   <action id="$Cut">
     <keyboard-shortcut first-keystroke="shift delete" />
@@ -15,6 +16,7 @@
   <action id="$Paste">
     <keyboard-shortcut first-keystroke="shift insert" />
     <keyboard-shortcut first-keystroke="ctrl y" />
+    <keyboard-shortcut first-keystroke="ctrl v" />
   </action>
   <action id="$Redo">
     <keyboard-shortcut first-keystroke="shift ctrl slash" />
@@ -99,8 +101,6 @@
   <action id="ContextHelp" />
   <action id="ConvertJavaToKotlin" />
   <action id="CopyElement" />
-  <action id="CopyPaths" />
-  <action id="CopyReference" />
   <action id="Debugger.EditTypeSource" />
   <action id="Diff.ApplyLeftSide">
     <keyboard-shortcut first-keystroke="ctrl alt period" />
@@ -122,6 +122,7 @@
   </action>
   <action id="Editor Copy">
     <keyboard-shortcut first-keystroke="alt w" />
+    <keyboard-shortcut first-keystroke="ctrl c" />
   </action>
   <action id="Editor Cut">
     <keyboard-shortcut first-keystroke="shift ctrl back_space" />
@@ -135,6 +136,7 @@
   </action>
   <action id="Editor Paste">
     <keyboard-shortcut first-keystroke="ctrl y" />
+    <keyboard-shortcut first-keystroke="ctrl v" />
   </action>
   <action id="Editor Redo">
     <keyboard-shortcut first-keystroke="shift ctrl slash" />
@@ -232,14 +234,13 @@
   </action>
   <action id="EditorPageDown">
     <keyboard-shortcut first-keystroke="page_down" />
-    <keyboard-shortcut first-keystroke="ctrl v" />
+    <keyboard-shortcut first-keystroke="alt n" />
   </action>
   <action id="EditorPageUp">
     <keyboard-shortcut first-keystroke="page_up" />
-    <keyboard-shortcut first-keystroke="alt v" />
+    <keyboard-shortcut first-keystroke="alt p" />
   </action>
   <action id="EditorPasteFromX11" />
-  <action id="EditorPasteSimple" />
   <action id="EditorPreviousWord">
     <keyboard-shortcut first-keystroke="ctrl left" />
     <keyboard-shortcut first-keystroke="alt left" />
@@ -469,7 +470,7 @@
   <action id="NewElementSamePlace" />
   <action id="NewScratchFile" />
   <action id="NextDiff">
-    <keyboard-shortcut first-keystroke="alt n" />
+    <keyboard-shortcut first-keystroke="shift alt close_bracket" />
   </action>
   <action id="NextEditorTab" />
   <action id="NextProjectWindow" />
@@ -480,20 +481,21 @@
     <keyboard-shortcut first-keystroke="shift ctrl close_bracket" />
   </action>
   <action id="OptimizeImports">
-    <keyboard-shortcut first-keystroke="ctrl back_slash" />
+    <keyboard-shortcut first-keystroke="ctrl alt back_slash" />
   </action>
   <action id="OverrideMethods" />
   <action id="ParameterInfo" />
   <action id="PasteMultiple">
     <keyboard-shortcut first-keystroke="shift ctrl insert" />
     <keyboard-shortcut first-keystroke="alt y" />
+    <keyboard-shortcut first-keystroke="shift ctrl v" />
   </action>
   <action id="PopupHector" />
   <action id="PopupMenu-cancel">
     <keyboard-shortcut first-keystroke="escape" />
   </action>
   <action id="PreviousDiff">
-    <keyboard-shortcut first-keystroke="alt p" />
+    <keyboard-shortcut first-keystroke="shift alt open_bracket" />
   </action>
   <action id="PreviousEditorTab" />
   <action id="PreviousProjectWindow" />
@@ -624,14 +626,16 @@
   <action id="Vcs.Push" />
   <action id="Vcs.QuickListPopupAction" />
   <action id="Vcs.RollbackChangedLines" />
-  <action id="Vcs.ShowMessageHistory" />
+  <action id="Vcs.ShowMessageHistory">
+    <keyboard-shortcut first-keystroke="ctrl j" />
+  </action>
   <action id="Vcs.UpdateProject" />
   <action id="VcsHistory.ShowAllAffected" />
   <action id="VcsShowNextChangeMarker">
-    <keyboard-shortcut first-keystroke="alt n" />
+    <keyboard-shortcut first-keystroke="shift alt close_bracket" />
   </action>
   <action id="VcsShowPrevChangeMarker">
-    <keyboard-shortcut first-keystroke="alt p" />
+    <keyboard-shortcut first-keystroke="shift alt open_bracket" />
   </action>
   <action id="ViewBreakpoints" />
   <action id="ViewInplaceComments" />

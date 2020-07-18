@@ -1,13 +1,13 @@
 {
   "items": [
-    { "keys": ["ctrl alt BACK_SLASH"], "id": "ReformatCode" },
+    { "keys": ["ctrl BACK_SLASH"], "id": "ReformatCode" },
     {
-      "keys": ["ctrl alt BACK_SLASH"],
+      "keys": ["ctrl BACK_SLASH"],
       "id": "Haskell.ReformatCode",
       "when": "FileExtension:hs"
     },
     {
-      "keys": ["ctrl alt BACK_SLASH"],
+      "keys": ["ctrl BACK_SLASH"],
       "id": "Cargo.RustfmtFile",
       "when": "FileExtension:rs"
     },
@@ -151,48 +151,43 @@
       ]
     },
     {
-      "keys": ["ctrl C"],
+      "keys": ["ctrl alt P"],
+      "name": "Project",
       "items": [
+        { "keys": ["typed +"], "id": "NewElement" },
+        { "keys": ["C"], "id": "CompileDirty", "separator-above": "" },
+        { "keys": ["ctrl C"], "id": "CompileProject" },
+        { "keys": ["U"], "id": "ChooseRunConfiguration" },
+        { "keys": ["K"], "id": "CloseProject", "separator-above": "" },
+        { "keys": ["P"], "id": "RecentProjectListGroup" }
+      ]
+    },
+    {
+      "keys": ["ctrl alt R"],
+      "name": "Refactor",
+      "items": [
+        { "keys": ["O"], "id": "OverrideMethods" },
+        { "keys": ["G"], "id": "Generate" },
+        { "keys": ["R"], "id": "RenameElement", "separator-above": "" },
+        { "keys": ["ctrl R"], "id": "RenameFile" },
+        { "keys": ["S"], "id": "ChangeSignature" },
+        { "keys": ["T"], "id": "ChangeTypeSignature" },
+        { "keys": ["ctrl M"], "id": "Move" },
+        { "keys": ["N"], "id": "Inline" },
+        { "keys": ["typed !"], "id": "InvertBoolean" },
         {
-          "keys": ["P"],
-          "name": "Project",
-          "items": [
-            { "keys": ["typed +"], "id": "NewElement" },
-            { "keys": ["C"], "id": "CompileDirty", "separator-above": "" },
-            { "keys": ["ctrl C"], "id": "CompileProject" },
-            { "keys": ["U"], "id": "ChooseRunConfiguration" },
-            { "keys": ["K"], "id": "CloseProject", "separator-above": "" },
-            { "keys": ["P"], "id": "RecentProjectListGroup" }
-          ]
+          "keys": ["V"],
+          "id": "IntroduceVariable",
+          "separator-above": "Extract"
         },
+        { "keys": ["C"], "id": "IntroduceConstant" },
+        { "keys": ["F"], "id": "IntroduceField" },
+        { "keys": ["P"], "id": "IntroduceParameter" },
+        { "keys": ["M"], "id": "ExtractMethod" },
         {
-          "keys": ["R"],
-          "name": "Refactor",
-          "items": [
-            { "keys": ["O"], "id": "OverrideMethods" },
-            { "keys": ["G"], "id": "Generate" },
-            { "keys": ["R"], "id": "RenameElement", "separator-above": "" },
-            { "keys": ["ctrl R"], "id": "RenameFile" },
-            { "keys": ["S"], "id": "ChangeSignature" },
-            { "keys": ["T"], "id": "ChangeTypeSignature" },
-            { "keys": ["ctrl M"], "id": "Move" },
-            { "keys": ["N"], "id": "Inline" },
-            { "keys": ["typed !"], "id": "InvertBoolean" },
-            {
-              "keys": ["V"],
-              "id": "IntroduceVariable",
-              "separator-above": "Extract"
-            },
-            { "keys": ["C"], "id": "IntroduceConstant" },
-            { "keys": ["F"], "id": "IntroduceField" },
-            { "keys": ["P"], "id": "IntroduceParameter" },
-            { "keys": ["M"], "id": "ExtractMethod" },
-            {
-              "keys": ["M"],
-              "id": "ExtractFunction",
-              "when": "FileExtension:kt"
-            }
-          ]
+          "keys": ["M"],
+          "id": "ExtractFunction",
+          "when": "FileExtension:kt"
         }
       ]
     },
