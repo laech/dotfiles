@@ -3,7 +3,7 @@
     <property name="created">2020-04-15T09:28:34</property>
     <property name="ide">Idea</property>
     <property name="ideVersion">2020.1.0.0</property>
-    <property name="modified">2020-07-17T08:58:58</property>
+    <property name="modified">2020-07-18T21:37:36</property>
     <property name="originalScheme">IntelliJ Light</property>
     <property name="rainbow Default language">true</property>
   </metaInfo>
@@ -51,19 +51,16 @@
     <option name="DEFAULT_BLOCK_COMMENT">
       <value>
         <option name="FOREGROUND" value="8c8c8c" />
-        <option name="FONT_TYPE" value="2" />
       </value>
     </option>
     <option name="DEFAULT_CONSTANT">
       <value>
         <option name="FOREGROUND" value="871094" />
-        <option name="FONT_TYPE" value="2" />
       </value>
     </option>
     <option name="DEFAULT_DOC_COMMENT">
       <value>
         <option name="FOREGROUND" value="8c8c8c" />
-        <option name="FONT_TYPE" value="2" />
       </value>
     </option>
     <option name="DEFAULT_DOC_COMMENT_TAG">
@@ -75,7 +72,6 @@
     <option name="DEFAULT_DOC_COMMENT_TAG_VALUE">
       <value>
         <option name="FOREGROUND" value="3d3d3d" />
-        <option name="FONT_TYPE" value="2" />
       </value>
     </option>
     <option name="DEFAULT_ENTITY">
@@ -116,7 +112,6 @@
     <option name="DEFAULT_LINE_COMMENT">
       <value>
         <option name="FOREGROUND" value="8c8c8c" />
-        <option name="FONT_TYPE" value="2" />
       </value>
     </option>
     <option name="DEFAULT_METADATA">
@@ -129,16 +124,17 @@
         <option name="FOREGROUND" value="1750eb" />
       </value>
     </option>
+    <option name="DEFAULT_PREDEFINED_SYMBOL">
+      <value />
+    </option>
     <option name="DEFAULT_STATIC_FIELD">
       <value>
         <option name="FOREGROUND" value="871094" />
-        <option name="FONT_TYPE" value="2" />
       </value>
     </option>
     <option name="DEFAULT_STATIC_METHOD">
       <value>
         <option name="FOREGROUND" value="627a" />
-        <option name="FONT_TYPE" value="2" />
       </value>
     </option>
     <option name="DEFAULT_STRING">
@@ -329,7 +325,6 @@
     <option name="TEMPLATE_VARIABLE_ATTRIBUTES">
       <value>
         <option name="FOREGROUND" value="7f0000" />
-        <option name="FONT_TYPE" value="2" />
       </value>
     </option>
     <option name="TEXT">
@@ -348,7 +343,6 @@
     <option name="TODO_DEFAULT_ATTRIBUTES">
       <value>
         <option name="FOREGROUND" value="8dde" />
-        <option name="FONT_TYPE" value="2" />
         <option name="ERROR_STRIPE_COLOR" value="54aae3" />
       </value>
     </option>
