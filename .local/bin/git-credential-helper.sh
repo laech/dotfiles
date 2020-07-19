@@ -4,6 +4,8 @@ set -o nounset
 set -o errexit
 set -o pipefail
 
+readonly WSLENV=${WSLENV:-}
+
 if [[ -n "$WSLENV" ]]; then
   /mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-manager.exe "$@"
 elif [[ -e /usr/libexec/git-core/git-credential-libsecret ]]; then
