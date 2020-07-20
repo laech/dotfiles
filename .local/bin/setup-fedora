@@ -53,6 +53,7 @@ setup_docker() {
   [[ "$(docker-credential-secretservice version 2>&1)" == "$version" ]] && return
 
   if [[ ! -e "$config_file" ]]; then
+    mkdir -p "$(dirname "$config_file")"
     echo "{}" >"$config_file"
   fi
 
