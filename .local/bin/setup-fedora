@@ -19,13 +19,14 @@ setup_packages() {
     vim
     emacs
     util-linux-user
+    grubby
+    jq
     ShellCheck
     source-highlight
     git-credential-libsecret
     seahorse
-    maven
-    java-1.8.0-openjdk-devel
-    java-1.8.0-openjdk-src
+    docker
+    docker-compose
     java-11-openjdk-devel
     java-11-openjdk-src
     cascadia-code-fonts
@@ -35,6 +36,41 @@ setup_packages() {
   sudo dnf install -y "${packages[@]}"
 }
 
+setup_docker() {
+  local tmpdir=
+  local tmpfile=
+  local version=0.6.3
+  local sha256=6aa937e55e00fd38f23ae878014579eb8482db4be87bc10d356dbc3b5a8ab7b0
+  local config_file=~/.docker/config.json
+  local config_content=
+
+  # Use cgroup v1 as Docker doesn't support v2
+  # To undo: sudo grubby --update-kernel=ALL --args="systemd.unified_cgroup_hierarchy"
+  sudo grubby --update-kernel=ALL --args="systemd.unified_cgroup_hierarchy=0"
+  sudo firewall-cmd --zone=trusted --change-interface=docker0
+  sudo firewall-cmd --zone=trusted --change-interface=docker0 --permanent
+
+  [[ "$(docker-credential-secretservice version 2>&1)" == "$version" ]] && return
+
+  if [[ ! -e "$config_file" ]]; then
+    echo "{}" >"$config_file"
+  fi
+
+  config_content=$(jq '.credsStore = "secretservice"' "$config_file")
+  echo "$config_content" >"$config_file"
+
+  tmpdir=$(mktemp -d)
+  tmpfile="$tmpdir"/a.tar.gz
+  trap "{ rm -rf $tmpdir; }" EXIT
+  curl -L -o "$tmpfile" "https://github.com/docker/docker-credential-helpers/releases/download/v${version}/docker-credential-secretservice-v${version}-amd64.tar.gz"
+  sha256sum -c <<<"$sha256 $tmpfile"
+  tar -xvf "$tmpfile" -C "$tmpdir"
+  chmod +x "$tmpdir/docker-credential-secretservice"
+  mv "$tmpdir/docker-credential-secretservice" ~/.local/bin/
+
+}
+
 setup_packages
 setup_shfmt
 setup_shell
+setup_docker

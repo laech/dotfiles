@@ -226,6 +226,7 @@ be used as a function advice via `advice-add'."
        ("<S-RET>" . start-new-line)
        ("<S-return>" . start-new-line)
        ("C-c" . kill-ring-save)
+       ("C-S-c" . kill-ring-save)
        ("C-M-c" . mode-specific-command-prefix)
        ("C-\\" . indent-region)
        ("C-v" . yank)
@@ -439,6 +440,7 @@ be used as a function advice via `advice-add'."
       (setq-default neo-mode-line-type 'none)))
 
 (with-eval-after-load 'sh-script
+  (setq sh-basic-offset 2)
   (require 'reformatter)
   (reformatter-define shfmt
     :program "~/.local/bin/shfmt"
