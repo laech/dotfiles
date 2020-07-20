@@ -66,6 +66,7 @@ bashcompinit
 
 if ! type __git_ps1 &>/dev/null; then
   . /usr/lib/git-core/git-sh-prompt &>/dev/null
+  . /usr/share/git-core/contrib/completion/git-prompt.sh &>/dev/null
 fi
 
 readonly my_ps1=$'\n'
@@ -83,7 +84,11 @@ else
 fi
 
 # Syntax highlighting for 'less'
-export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+if type src-hilite-lesspipe.sh &>/dev/null; then
+  export LESSOPEN="| src-hilite-lesspipe.sh %s"
+else
+  export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+fi
 export LESS=' -R '
 
 type kubectl >/dev/null && source <(kubectl completion zsh)
