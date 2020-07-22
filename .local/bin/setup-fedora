@@ -71,7 +71,17 @@ setup_docker() {
 
 }
 
+setup_keybindings() {
+  local cmd="gsettings set org.gnome.desktop.wm.keybindings"
+  $cmd activate-window-menu '[]' # Remove <'Alt>space'
+  $cmd switch-to-workspace-left '[]' # Remove '<Control><Alt>Left'
+  $cmd switch-to-workspace-right '[]' # Remove '<Control><Alt>Right'
+  $cmd switch-to-workspace-up "['<Super>Page_Up']" # Remove '<Control><Alt>Up'
+  $cmd switch-to-workspace-down "['<Super>Page_Down']" # Remove '<Control><Alt>Down'
+}
+
 setup_packages
 setup_shfmt
 setup_shell
 setup_docker
+setup_keybindings
