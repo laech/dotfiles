@@ -421,6 +421,7 @@
   <action id="InsertLiveTemplate" />
   <action id="IntroduceField" />
   <action id="IntroduceFunctionalParameter" />
+  <action id="IntroduceParameter" />
   <action id="IntroduceTypeAlias" />
   <action id="JumpToLastChange" />
   <action id="JumpToLastWindow" />
@@ -555,6 +556,7 @@
   <action id="SelectIn">
     <keyboard-shortcut first-keystroke="ctrl f1" />
   </action>
+  <action id="ServiceView.GroupByServiceGroups" />
   <action id="ShelveChanges.UnshelveWithDialog" />
   <action id="ShelvedChanges.Rename">
     <keyboard-shortcut first-keystroke="f2" />
