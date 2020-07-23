@@ -227,7 +227,7 @@ be used as a function advice via `advice-add'."
        ("<S-return>" . start-new-line)
        ("C-c" . kill-ring-save)
        ("C-S-c" . kill-ring-save)
-       ("C-M-c" . mode-specific-command-prefix)
+       ("C-u" . mode-specific-command-prefix)
        ("C-\\" . indent-region)
        ("C-v" . yank)
        ("C-S-v" . yank-pop)
@@ -254,7 +254,7 @@ be used as a function advice via `advice-add'."
   (global-set-key (kbd (car mapping)) (cdr mapping)))
 
 (with-eval-after-load 'help-mode
-  (define-key help-mode-map (kbd "C-M-c")
+  (define-key help-mode-map (kbd "C-u")
     (lookup-key help-mode-map (kbd "C-c")))
   (define-key help-mode-map (kbd "C-c") nil))
 
@@ -284,7 +284,7 @@ be used as a function advice via `advice-add'."
    projectile-completion-system 'ivy
    magit-completing-read-function 'ivy-completing-read)
 
-  (define-key ivy-minibuffer-map (kbd "C-M-c")
+  (define-key ivy-minibuffer-map (kbd "C-u")
     (lookup-key ivy-minibuffer-map (kbd "C-c")))
   (define-key ivy-minibuffer-map (kbd "C-c") nil)
 
@@ -300,7 +300,7 @@ be used as a function advice via `advice-add'."
 
 (my-add-hook-if-defined after-init-hook global-flycheck-mode)
 (with-eval-after-load 'flycheck
-  (define-key flycheck-mode-map (kbd "C-M-c")
+  (define-key flycheck-mode-map (kbd "C-u")
     (lookup-key flycheck-mode-map (kbd "C-c")))
   (define-key flycheck-mode-map (kbd "C-c") nil))
 
@@ -325,7 +325,7 @@ be used as a function advice via `advice-add'."
   (advice-add 'projectile-run-project :before 'my-save-all-buffers)
   (advice-add 'projectile-test-project :before 'my-save-all-buffers)
   (advice-add 'projectile-compile-project :before 'my-save-all-buffers)
-  (global-set-key (kbd "C-M-p") 'projectile-command-map)
+  (define-key mode-specific-map (kbd "p") 'projectile-command-map)
   (define-key search-map (kbd "f") 'projectile-grep))
 
 (my-add-hook-if-defined emacs-lisp-mode-hook enable-paredit-mode)
@@ -355,7 +355,7 @@ be used as a function advice via `advice-add'."
       (message "Copied sexp")
       (paredit-copy-sexps-as-kill)))
 
-  (define-key paredit-mode-map (kbd "C-M-c")
+  (define-key paredit-mode-map (kbd "C-u")
     (lookup-key paredit-mode-map (kbd "C-c")))
   (define-key paredit-mode-map (kbd "C-c") nil)
 
@@ -365,8 +365,8 @@ be used as a function advice via `advice-add'."
    `(([remap kill-region] paredit-cut-region-or-sexp)
      ([remap kill-ring-save] paredit-copy-region-or-sexp)
      ([remap kill-line] paredit-kill)
-     (,(kbd "C-M-c M-s") paredit-splice-sexp)
-     (,(kbd "C-M-c M-S") paredit-split-sexp)
+     (,(kbd "C-u M-s") paredit-splice-sexp)
+     (,(kbd "C-u M-S") paredit-split-sexp)
      (,(kbd "C-M-S-t") transpose-sexps-reverse)
      (,(kbd "M-s") nil)
      (,(kbd "M-S") nil)
@@ -380,12 +380,12 @@ be used as a function advice via `advice-add'."
   (setq-default flyspell-issue-message-flag nil))
 
 (with-eval-after-load 'with-editor
-  (define-key with-editor-mode-map (kbd "C-M-c")
+  (define-key with-editor-mode-map (kbd "C-u")
     (lookup-key with-editor-mode-map (kbd "C-c")))
   (define-key with-editor-mode-map (kbd "C-c") nil))
 
 (with-eval-after-load 'magit
-  (define-key magit-status-mode-map (kbd "C-M-c")
+  (define-key magit-status-mode-map (kbd "C-u")
     (lookup-key magit-status-mode-map (kbd "C-c")))
   (define-key magit-status-mode-map (kbd "C-c") nil))
 
