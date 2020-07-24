@@ -73,6 +73,10 @@
               "keys": ["T"],
               "id": "com.gitlab.lae.intellij.actions.CreateRectangularSelectionFromMultiLineSelection"
             },
+            {
+              "keys": ["D"],
+              "id": "com.gitlab.lae.intellij.actions.RectangleDelete"
+            },
             { "keys": ["L"], "id": "ShowBookmarks" },
             { "keys": ["M"], "id": "ToggleBookmark" }
           ]
