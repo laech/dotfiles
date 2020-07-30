@@ -404,10 +404,6 @@
   <action id="HideAllWindows" />
   <action id="HighlightUsagesInFile" />
   <action id="HippieBackwardCompletion" />
-  <action id="HippieCompletion">
-    <keyboard-shortcut first-keystroke="ctrl alt slash" />
-    <keyboard-shortcut first-keystroke="alt slash" />
-  </action>
   <action id="Images.EditExternally" />
   <action id="Images.Editor.ActualSize" />
   <action id="Images.Editor.ToggleGrid" />
@@ -583,7 +579,9 @@
     <keyboard-shortcut first-keystroke="shift alt slash" />
   </action>
   <action id="SmartStepInto" />
-  <action id="SmartTypeCompletion" />
+  <action id="SmartTypeCompletion">
+    <keyboard-shortcut first-keystroke="ctrl alt slash" />
+  </action>
   <action id="Stop" />
   <action id="StopBackgroundProcesses" />
   <action id="SurroundWith">
