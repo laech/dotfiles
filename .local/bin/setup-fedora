@@ -71,7 +71,7 @@ setup_docker() {
 
 }
 
-setup_keybindings() {
+setup_gnome_keybindings() {
   local cmd="gsettings set org.gnome.desktop.wm.keybindings"
   $cmd activate-window-menu '[]' # Remove <'Alt>space'
   $cmd switch-to-workspace-left '[]' # Remove '<Control><Alt>Left'
@@ -80,8 +80,18 @@ setup_keybindings() {
   $cmd switch-to-workspace-down "['<Super>Page_Down']" # Remove '<Control><Alt>Down'
 }
 
+setup_terminal_keybindings() {
+  local cmd="gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/"
+  for i in {1..9}; do
+    $cmd switch-to-tab-$i "<Control>$i"
+  done
+  $cmd switch-to-tab-10 "disabled"
+  $cmd preferences "<Control>comma"
+}
+
 setup_packages
 setup_shfmt
 setup_shell
 setup_docker
-setup_keybindings
+setup_gnome_keybindings
+setup_terminal_keybindings
