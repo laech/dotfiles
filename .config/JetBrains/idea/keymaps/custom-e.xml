@@ -401,7 +401,9 @@
     <mouse-shortcut keystroke="shift control button1" />
   </action>
   <action id="HideActiveWindow" />
-  <action id="HideAllWindows" />
+  <action id="HideAllWindows">
+    <keyboard-shortcut first-keystroke="shift ctrl w" />
+  </action>
   <action id="HighlightUsagesInFile" />
   <action id="HippieBackwardCompletion" />
   <action id="Images.EditExternally" />
