@@ -78,6 +78,7 @@ setup_gnome_keybindings() {
   $cmd switch-to-workspace-right '[]' # Remove '<Control><Alt>Right'
   $cmd switch-to-workspace-up "['<Super>Page_Up']" # Remove '<Control><Alt>Up'
   $cmd switch-to-workspace-down "['<Super>Page_Down']" # Remove '<Control><Alt>Down'
+  gsettings set org.gnome.shell.keybindings toggle-application-view '[]'
 }
 
 setup_terminal_keybindings() {
