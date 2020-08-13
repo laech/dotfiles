@@ -89,9 +89,46 @@ setup_terminal_keybindings() {
   $cmd preferences "<Control>comma"
 }
 
+setup_xkb() {
+  sudo cp ~/.profiles/thinkpad.xkb /usr/share/X11/xkb/symbols/thinkpad
+
+  if ! grep -F prtsc_ralt /usr/share/X11/xkb/rules/evdev; then
+    sudo sed -i '/! option[[:blank:]]*=[[:blank:]]*symbols/a\
+  thinkpad:prtsc_ralt\t=\t+thinkpad(prtsc_ralt)\
+' /usr/share/X11/xkb/rules/evdev
+  fi
+
+  if ! grep -F prtsc_ralt /usr/share/X11/xkb/rules/evdev.lst; then
+    sudo sed -i '/! option/a\
+  thinkpad             ThinkPad customizations\
+  thinkpad:prtsc_ralt  PrtSc as right Alt\
+' /usr/share/X11/xkb/rules/evdev.lst
+  fi
+
+  if ! grep -F prtsc_ralt /usr/share/X11/xkb/rules/evdev.xml; then
+    sudo sed -i '/^ *<optionList>/a\
+    <group allowMultipleSelection="true">\
+      <configItem>\
+        <name>thinkpad</name>\
+        <description>ThinkPad customizations</description>\
+      </configItem>\
+      <option>\
+        <configItem>\
+          <name>thinkpad:prtsc_ralt</name>\
+          <description>PrtSc as right Alt</description>\
+        </configItem>\
+      </option>\
+    </group>\
+' /usr/share/X11/xkb/rules/evdev.xml
+  fi
+
+  gsettings set org.gnome.desktop.input-sources xkb-options "['caps:super', 'shift:both_capslock', 'altwin:ctrl_alt_win', 'thinkpad:prtsc_ralt']"
+}
+
 setup_packages
 setup_shfmt
 setup_shell
 setup_docker
 setup_gnome_keybindings
 setup_terminal_keybindings
+setup_xkb
