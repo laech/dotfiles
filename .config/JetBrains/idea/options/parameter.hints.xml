@@ -2,7 +2,6 @@
   <component name="ParameterNameHintsSettings">
     <option id="SHOW_LOCAL_VARIABLE_HINT" value="true" />
     <disabledLanguages>
-      <language id="JAVA" />
       <language id="kotlin" />
     </disabledLanguages>
   </component>
