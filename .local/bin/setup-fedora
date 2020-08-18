@@ -14,6 +14,7 @@ fi
 
 setup_packages() {
   packages=(
+    autokey
     zsh
     tmux
     vim
@@ -72,13 +73,20 @@ setup_docker() {
 }
 
 setup_gnome_keybindings() {
-  local cmd="gsettings set org.gnome.desktop.wm.keybindings"
-  $cmd activate-window-menu '[]' # Remove <'Alt>space'
-  $cmd switch-to-workspace-left '[]' # Remove '<Control><Alt>Left'
-  $cmd switch-to-workspace-right '[]' # Remove '<Control><Alt>Right'
-  $cmd switch-to-workspace-up "['<Super>Page_Up']" # Remove '<Control><Alt>Up'
-  $cmd switch-to-workspace-down "['<Super>Page_Down']" # Remove '<Control><Alt>Down'
+  local cmd_wm="gsettings set org.gnome.desktop.wm.keybindings"
+  local cmd_terminal="gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+
+  $cmd_wm activate-window-menu '[]'                       # Remove <'Alt>space'
+  $cmd_wm switch-to-workspace-left '[]'                   # Remove '<Control><Alt>Left'
+  $cmd_wm switch-to-workspace-right '[]'                  # Remove '<Control><Alt>Right'
+  $cmd_wm switch-to-workspace-up "['<Super>Page_Up']"     # Remove '<Control><Alt>Up'
+  $cmd_wm switch-to-workspace-down "['<Super>Page_Down']" # Remove '<Control><Alt>Down'
+
   gsettings set org.gnome.shell.keybindings toggle-application-view '[]'
+
+  $cmd_terminal name Terminal
+  $cmd_terminal command gnome-terminal
+  $cmd_terminal binding "<Super>Return"
 }
 
 setup_terminal_keybindings() {

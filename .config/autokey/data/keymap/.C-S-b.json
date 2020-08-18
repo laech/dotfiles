@@ -1,0 +1,31 @@
+{
+    "type": "script",
+    "description": "C-S-b",
+    "store": {},
+    "modes": [
+        3
+    ],
+    "usageCount": 11,
+    "prompt": false,
+    "omitTrigger": false,
+    "showInTrayMenu": false,
+    "abbreviation": {
+        "abbreviations": [],
+        "backspace": true,
+        "ignoreCase": false,
+        "immediate": false,
+        "triggerInside": false,
+        "wordChars": "[\\w]"
+    },
+    "hotkey": {
+        "modifiers": [
+            "<ctrl>",
+            "<shift>"
+        ],
+        "hotKey": "b"
+    },
+    "filter": {
+        "regex": null,
+        "isRecursive": false
+    }
+}
