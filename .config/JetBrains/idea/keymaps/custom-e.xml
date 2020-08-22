@@ -595,6 +595,12 @@
     <keyboard-shortcut first-keystroke="ctrl j" />
   </action>
   <action id="Synchronize" />
+  <action id="Terminal.CopySelectedText">
+    <keyboard-shortcut first-keystroke="shift ctrl c" />
+  </action>
+  <action id="Terminal.Paste">
+    <keyboard-shortcut first-keystroke="shift ctrl v" />
+  </action>
   <action id="TodoViewGroupByFlattenPackage" />
   <action id="TodoViewGroupByShowModules" />
   <action id="TodoViewGroupByShowPackages" />

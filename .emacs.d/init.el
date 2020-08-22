@@ -455,6 +455,10 @@ be used as a function advice via `advice-add'."
         (shfmt-region (region-beginning) (region-end))
       (shfmt-buffer)))
 
+  (define-key sh-mode-map (kbd "C-u")
+    (lookup-key sh-mode-map (kbd "C-c")))
+  (define-key sh-mode-map (kbd "C-c") nil)
+
   (define-key
     sh-mode-map
     [remap indent-region]

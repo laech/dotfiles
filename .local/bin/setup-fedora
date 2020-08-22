@@ -14,7 +14,6 @@ fi
 
 setup_packages() {
   packages=(
-    autokey
     zsh
     tmux
     vim
@@ -74,7 +73,8 @@ setup_docker() {
 
 setup_gnome_keybindings() {
   local cmd_wm="gsettings set org.gnome.desktop.wm.keybindings"
-  local cmd_terminal="gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+  local cmd_terminal_path="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+  local cmd_terminal="gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:$cmd_terminal_path"
 
   $cmd_wm activate-window-menu '[]'                       # Remove <'Alt>space'
   $cmd_wm switch-to-workspace-left '[]'                   # Remove '<Control><Alt>Left'
@@ -84,6 +84,7 @@ setup_gnome_keybindings() {
 
   gsettings set org.gnome.shell.keybindings toggle-application-view '[]'
 
+  gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['$cmd_terminal_path']"
   $cmd_terminal name Terminal
   $cmd_terminal command gnome-terminal
   $cmd_terminal binding "<Super>Return"
@@ -99,31 +100,87 @@ setup_terminal_keybindings() {
 }
 
 setup_xkb() {
-  sudo cp ~/.profiles/thinkpad.xkb /usr/share/X11/xkb/symbols/thinkpad
+  sudo cp ~/.profiles/custom.xkb /usr/share/X11/xkb/symbols/custom
 
-  if ! grep -F prtsc_ralt /usr/share/X11/xkb/rules/evdev; then
+  if ! grep -F "custom:basic" /usr/share/X11/xkb/rules/evdev; then
     sudo sed -i '/! option[[:blank:]]*=[[:blank:]]*symbols/a\
-  thinkpad:prtsc_ralt\t=\t+thinkpad(prtsc_ralt)\
+  custom:basic\t=\t+custom(basic)\
+  custom:lalt_as_lv3\t=\t+custom(lalt_as_lv3)\
+  custom:lwin_as_lv5\t=\t+custom(lwin_as_lv5)\
+  custom:lctrl_as_lwin\t=\t+custom(lctrl_as_lwin)\
+  custom:ralt_as_rctrl\t=\t+custom(ralt_as_rctrl)\
+  custom:rwin_as_ralt\t=\t+custom(rwin_as_ralt)\
+  custom:rctrl_as_rwin\t=\t+custom(rctrl_as_rwin)\
+  custom:prtsc_as_ralt\t=\t+custom(prtsc_as_ralt)\
 ' /usr/share/X11/xkb/rules/evdev
   fi
 
-  if ! grep -F prtsc_ralt /usr/share/X11/xkb/rules/evdev.lst; then
+  if ! grep -F "custom:basic" /usr/share/X11/xkb/rules/evdev.lst; then
     sudo sed -i '/! option/a\
-  thinkpad             ThinkPad customizations\
-  thinkpad:prtsc_ralt  PrtSc as right Alt\
+  custom               Custom\
+  custom:basic         Custom layout\
+  custom:lalt_as_lv3   Left Alt chooses 3rd level\
+  custom:lwin_as_lv5   Left Win chooses 5th level\
+  custom:lctrl_as_lwin Left Ctrl as left Win\
+  custom:ralt_as_rctrl Right Alt as right Ctrl\
+  custom:rwin_as_ralt  Right Win as right Alt\
+  custom:rctrl_as_rwin Right Ctrl as right Win\
+  custom:prtsc_as_ralt PrtSc as right Alt\
 ' /usr/share/X11/xkb/rules/evdev.lst
   fi
 
-  if ! grep -F prtsc_ralt /usr/share/X11/xkb/rules/evdev.xml; then
+  if ! grep -F "custom:basic" /usr/share/X11/xkb/rules/evdev.xml; then
     sudo sed -i '/^ *<optionList>/a\
     <group allowMultipleSelection="true">\
       <configItem>\
-        <name>thinkpad</name>\
-        <description>ThinkPad customizations</description>\
+        <name>custom</name>\
+        <description>Custom</description>\
       </configItem>\
       <option>\
         <configItem>\
-          <name>thinkpad:prtsc_ralt</name>\
+          <name>custom:basic</name>\
+          <description>Custom layout</description>\
+        </configItem>\
+      </option>\
+      <option>\
+        <configItem>\
+          <name>custom:lalt_as_lv3</name>\
+          <description>Left Alt chooses 3rd level</description>\
+        </configItem>\
+      </option>\
+      <option>\
+        <configItem>\
+          <name>custom:lwin_as_lv5</name>\
+          <description>Left Win chooses 5th level</description>\
+        </configItem>\
+      </option>\
+      <option>\
+        <configItem>\
+          <name>custom:lctrl_as_lwin</name>\
+          <description>Left Ctrl as left Win</description>\
+        </configItem>\
+      </option>\
+      <option>\
+        <configItem>\
+          <name>custom:ralt_as_rctrl</name>\
+          <description>Right Alt as right Ctrl</description>\
+        </configItem>\
+      </option>\
+      <option>\
+        <configItem>\
+          <name>custom:rwin_as_ralt</name>\
+          <description>Right Win as right Alt</description>\
+        </configItem>\
+      </option>\
+      <option>\
+        <configItem>\
+          <name>custom:rctrl_as_rwin</name>\
+          <description>Right Ctrl as right Win</description>\
+        </configItem>\
+      </option>\
+      <option>\
+        <configItem>\
+          <name>custom:prtsc_as_ralt</name>\
           <description>PrtSc as right Alt</description>\
         </configItem>\
       </option>\
@@ -131,7 +188,7 @@ setup_xkb() {
 ' /usr/share/X11/xkb/rules/evdev.xml
   fi
 
-  gsettings set org.gnome.desktop.input-sources xkb-options "['caps:super', 'shift:both_capslock', 'altwin:ctrl_alt_win', 'thinkpad:prtsc_ralt']"
+  gsettings set org.gnome.desktop.input-sources xkb-options "['caps:super', 'shift:both_capslock', 'custom:basic', 'custom:lalt_as_lv3', 'custom:lwin_as_lv5', 'custom:lctrl_as_lwin', 'custom:ralt_as_rctrl', 'custom:rwin_as_ralt', 'custom:rctrl_as_rwin', 'custom:prtsc_as_ralt']"
 }
 
 setup_packages
