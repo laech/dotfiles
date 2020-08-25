@@ -300,6 +300,9 @@
   <action id="EmmetNextEditPoint" />
   <action id="EmmetPreviousEditPoint" />
   <action id="EvaluateExpression" />
+  <action id="Exit">
+    <keyboard-shortcut first-keystroke="ctrl q" />
+  </action>
   <action id="ExpandAllRegions" />
   <action id="ExpandAllToLevel1" />
   <action id="ExpandAllToLevel2" />
@@ -517,6 +520,7 @@
     <keyboard-shortcut first-keystroke="shift ctrl j" />
   </action>
   <action id="Refactorings.QuickListPopupAction" />
+  <action id="ReformatCode" />
   <action id="Refresh">
     <keyboard-shortcut first-keystroke="f5" />
   </action>
