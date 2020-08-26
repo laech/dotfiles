@@ -165,6 +165,12 @@
     <keyboard-shortcut first-keystroke="ctrl k" />
   </action>
   <action id="EditorDeleteLine" />
+  <action id="EditorDeleteToLineEnd">
+    <keyboard-shortcut first-keystroke="shift ctrl delete" />
+  </action>
+  <action id="EditorDeleteToLineStart">
+    <keyboard-shortcut first-keystroke="shift ctrl back_space" />
+  </action>
   <action id="EditorDeleteToWordEnd">
     <keyboard-shortcut first-keystroke="ctrl delete" />
     <keyboard-shortcut first-keystroke="alt d" />

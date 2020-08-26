@@ -188,7 +188,7 @@ setup_xkb() {
 ' /usr/share/X11/xkb/rules/evdev.xml
   fi
 
-  gsettings set org.gnome.desktop.input-sources xkb-options "['caps:super', 'shift:both_capslock', 'custom:basic', 'custom:lalt_as_lv3', 'custom:lwin_as_lv5', 'custom:lctrl_as_lwin', 'custom:ralt_as_rctrl', 'custom:rwin_as_ralt', 'custom:rctrl_as_rwin', 'custom:prtsc_as_ralt']"
+  gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:nocaps', 'shift:both_capslock', 'custom:basic', 'custom:lalt_as_lv3', 'custom:lwin_as_lv5', 'custom:lctrl_as_lwin', 'custom:ralt_as_rctrl', 'custom:rwin_as_ralt', 'custom:rctrl_as_rwin', 'custom:prtsc_as_ralt']"
 }
 
 setup_packages

@@ -41,9 +41,9 @@ xkb_symbols "basic" {
     actions=[
       NoAction(),
       NoAction(),
-      Redirect(key=<BKSP>, clearmods=All, mods=Control),
       Redirect(key=<BKSP>, clearmods=All, mods=Control+Shift),
-      Redirect(key=<BKSP>, clearmods=All, mods=Alt),
+      Redirect(key=<BKSP>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<BKSP>, clearmods=All, mods=Control),
       Redirect(key=<BKSP>, clearmods=All, mods=Alt+Shift),
       Redirect(key=<BKSP>, clearmods=All, mods=Control+Alt),
       Redirect(key=<BKSP>, clearmods=All, mods=Control+Alt+Shift)
@@ -101,9 +101,9 @@ xkb_symbols "basic" {
     actions=[
       NoAction(),
       NoAction(),
-      Redirect(key=<DELE>, clearmods=All, mods=Control),
       Redirect(key=<DELE>, clearmods=All, mods=Control+Shift),
-      Redirect(key=<DELE>, clearmods=All, mods=Alt),
+      Redirect(key=<DELE>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<DELE>, clearmods=All, mods=Control),
       Redirect(key=<DELE>, clearmods=All, mods=Alt+Shift),
       Redirect(key=<DELE>, clearmods=All, mods=Control+Alt),
       Redirect(key=<DELE>, clearmods=All, mods=Control+Alt+Shift)
