@@ -238,6 +238,8 @@ be used as a function advice via `advice-add'."
        ("M-o" . imenu)
        ("M-D" . duplicate-region-or-line)
        ("<C-M-backspace>" . kill-line-backward)
+       ("<C-S-backspace>" . kill-line-backward)
+       ("<C-S-delete>" . kill-line)
        ("C-j" . switch-to-buffer)
        ("M-i" . mc/mark-previous-like-this)
        ("M-I" . mc/unmark-previous-like-this)
