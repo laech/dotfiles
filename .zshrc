@@ -45,9 +45,12 @@ zle -N x-delete-char-or-exit
 bindkey -e '^w' x-kill-region
 bindkey -e '^g' x-cancel
 bindkey -e '^[' x-cancel
+bindkey -e '^u' backward-kill-line
+bindkey -e '^h' backward-kill-word
 
 bindkey "^[[3~" x-delete-char-or-exit          # Delete
 bindkey "^[[3;5~" kill-word                    # Ctrl-Delete
+bindkey "^[[3;6~" kill-line                    # Ctrl-Shift-Delete
 bindkey "^[[1;5D" backward-word                # Ctrl-Left
 bindkey "^[[1;3D" backward-word                # Alt-Left
 bindkey "^[[1;5C" forward-word                 # Ctrl-Right
