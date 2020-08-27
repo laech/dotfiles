@@ -522,4 +522,4 @@ be used as a function advice via `advice-add'."
    :host github
    :repo "purcell/reformatter.el"))
 
-(esc-mode)
+(add-hook 'emacs-startup-hook 'esc-mode)
