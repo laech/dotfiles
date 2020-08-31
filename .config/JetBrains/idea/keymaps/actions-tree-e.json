@@ -17,28 +17,6 @@
       "when": { "all": ["ToolWindowActive:.*", "!InputFocused"] }
     },
     {
-      "keys": ["Q"],
-      "id": "HideActiveWindow",
-      "when": { "all": ["ToolWindowActive:.*", "!InputFocused"] }
-    },
-    {
-      "keys": ["N"],
-      "id": "com.gitlab.lae.intellij.actions.Down",
-      "when": { "all": ["ToolWindowActive:.*", "!InputFocused"] }
-    },
-    {
-      "keys": ["P"],
-      "id": "com.gitlab.lae.intellij.actions.Up",
-      "when": { "all": ["ToolWindowActive:.*", "!InputFocused"] }
-    },
-    {
-      "keys": ["C"],
-      "when": { "all": ["ToolWindowTabActive:Local Changes", "!InputFocused"] },
-      "items": [
-        { "keys": ["C"], "id": "CheckinProject" }
-      ]
-    },
-    {
       "keys": ["ctrl X"],
       "items": [
         { "keys": ["ctrl F", "RIGHT"], "id": "OpenFile" },
