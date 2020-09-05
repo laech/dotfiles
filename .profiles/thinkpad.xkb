@@ -1,5 +1,0 @@
-// PrtSc is mapped to Alt
-partial modifier_keys
-xkb_symbols "prtsc_ralt" {
-    replace key <PRSC> { [ Alt_R, Meta_R ] };
-};

@@ -5,7 +5,7 @@
     "editor.cursorBlinking": "solid",
     "editor.cursorStyle": "block",
     "editor.fontFamily": "'Cascadia Code', 'Fantasque Sans Mono', monospace",
-    "editor.fontLigatures": true,
+    "editor.fontLigatures": false,
     "editor.fontSize": 16,
     "editor.formatOnPaste": true,
     "editor.formatOnType": true,
