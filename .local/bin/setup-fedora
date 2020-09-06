@@ -72,31 +72,53 @@ setup_docker() {
 }
 
 setup_gnome_keybindings() {
-  local cmd_wm="gsettings set org.gnome.desktop.wm.keybindings"
-  local cmd_terminal_path="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
-  local cmd_terminal="gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:$cmd_terminal_path"
 
-  $cmd_wm activate-window-menu '[]'                       # Remove <'Alt>space'
-  $cmd_wm switch-to-workspace-left '[]'                   # Remove '<Control><Alt>Left'
-  $cmd_wm switch-to-workspace-right '[]'                  # Remove '<Control><Alt>Right'
-  $cmd_wm switch-to-workspace-up "['<Super>Page_Up']"     # Remove '<Control><Alt>Up'
-  $cmd_wm switch-to-workspace-down "['<Super>Page_Down']" # Remove '<Control><Alt>Down'
+  dconf load /org/gnome/desktop/wm/keybindings/ <<<"
+[/]
+activate-window-menu=@as []
+move-to-workspace-down=['<Shift><Super>n']
+move-to-workspace-up=['<Shift><Super>p']
+switch-to-workspace-down=['<Super>n']
+switch-to-workspace-left=@as []
+switch-to-workspace-right=@as []
+switch-to-workspace-up=['<Super>p']
+"
 
-  gsettings set org.gnome.shell.keybindings toggle-application-view '[]'
+  dconf load /org/gnome/shell/keybindings/ <<<"
+[/]
+focus-active-notification=@as []
+toggle-application-view=@as []
+"
 
-  gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['$cmd_terminal_path']"
-  $cmd_terminal name Terminal
-  $cmd_terminal command gnome-terminal
-  $cmd_terminal binding "<Super>Return"
-}
+  dconf load /org/gnome/mutter/keybindings/ <<<"
+[/]
+switch-monitor=['XF86Display']
+"
 
-setup_terminal_keybindings() {
-  local cmd="gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/"
-  for i in {1..9}; do
-    $cmd switch-to-tab-$i "<Control>$i"
-  done
-  $cmd switch-to-tab-10 "disabled"
-  $cmd preferences "<Control>comma"
+  dconf load /org/gnome/settings-daemon/plugins/media-keys/ <<<"
+[/]
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']
+
+[custom-keybindings/custom0]
+binding='<Super>Return'
+command='gnome-terminal'
+name='Terminal'
+"
+
+  dconf load /org/gnome/terminal/legacy/keybindings/ <<<"
+[/]
+preferences='<Control>comma'
+switch-to-tab-1='<Control>1'
+switch-to-tab-10='disabled'
+switch-to-tab-2='<Control>2'
+switch-to-tab-3='<Control>3'
+switch-to-tab-4='<Control>4'
+switch-to-tab-5='<Control>5'
+switch-to-tab-6='<Control>6'
+switch-to-tab-7='<Control>7'
+switch-to-tab-8='<Control>8'
+switch-to-tab-9='<Control>9'
+"
 }
 
 setup_xkb() {
@@ -196,5 +218,4 @@ setup_shfmt
 setup_shell
 setup_docker
 setup_gnome_keybindings
-setup_terminal_keybindings
 setup_xkb
