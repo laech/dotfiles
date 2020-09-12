@@ -1,8 +1,0 @@
-Windows Registry Editor Version 5.00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts]
-"Microsoft JhengHei & Microsoft JhengHei UI (TrueType)"="msyh.ttc" ; Was msjh.ttc
-"Microsoft JhengHei Bold & Microsoft JhengHei UI Bold (TrueType)"="msyhbd.ttc" ; Was msjhbd.ttc
-"Microsoft JhengHei Light & Microsoft JhengHei UI Light (TrueType)"="msyhl.ttc" ; Was msjhl.ttc
-"SimSun & NSimSun (TrueType)"="msyh.ttc" ; Was simsun.ttc
-"SimSun-ExtB (TrueType)"="msyh.ttc" ; Was simsunb.ttf
