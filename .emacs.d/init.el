@@ -48,7 +48,6 @@
  '(scroll-bar-mode nil)
  '(scroll-conservatively 1)
  '(scroll-margin 1)
- '(shift-select-mode nil)
  '(show-paren-mode t)
  '(tab-width 4)
  '(tool-bar-mode nil)
@@ -179,6 +178,7 @@
 
 (my-add-hook-if-defined after-init-hook global-undo-tree-mode)
 (with-eval-after-load 'undo-tree
+  (define-key undo-tree-map (kbd "C-z") 'undo-tree-undo)
   (define-key undo-tree-map (kbd "C-S-z") 'undo-tree-redo)
   (define-key undo-tree-map (kbd "M-Z") 'undo-tree-redo)
   (define-key undo-tree-map (kbd "<redo>") 'undo-tree-redo))
@@ -238,6 +238,8 @@ be used as a function advice via `advice-add'."
        ("M-o" . imenu)
        ("M-D" . duplicate-region-or-line)
        ("<C-M-backspace>" . kill-line-backward)
+       ("<C-S-backspace>" . kill-line-backward)
+       ("<C-S-delete>" . kill-line)
        ("C-j" . switch-to-buffer)
        ("M-i" . mc/mark-previous-like-this)
        ("M-I" . mc/unmark-previous-like-this)
@@ -370,6 +372,8 @@ be used as a function advice via `advice-add'."
      (,(kbd "C-M-S-t") transpose-sexps-reverse)
      (,(kbd "M-s") nil)
      (,(kbd "M-S") nil)
+     (,(kbd "<C-left>") nil)
+     (,(kbd "<C-right>") nil)
      (,(kbd "C-M-p") nil)
      (,(kbd "C-j") nil))))
 
@@ -453,6 +457,10 @@ be used as a function advice via `advice-add'."
         (shfmt-region (region-beginning) (region-end))
       (shfmt-buffer)))
 
+  (define-key sh-mode-map (kbd "C-u")
+    (lookup-key sh-mode-map (kbd "C-c")))
+  (define-key sh-mode-map (kbd "C-c") nil)
+
   (define-key
     sh-mode-map
     [remap indent-region]
@@ -503,7 +511,15 @@ be used as a function advice via `advice-add'."
    :repo "lae/emacs-center-layout"))
 
 (straight-use-package
+ '(esc
+   :type git
+   :host gitlab
+   :repo "lae/emacs-esc"))
+
+(straight-use-package
  '(reformatter
    :type git
    :host github
    :repo "purcell/reformatter.el"))
+
+(add-hook 'emacs-startup-hook 'esc-mode)

@@ -165,6 +165,12 @@
     <keyboard-shortcut first-keystroke="ctrl k" />
   </action>
   <action id="EditorDeleteLine" />
+  <action id="EditorDeleteToLineEnd">
+    <keyboard-shortcut first-keystroke="shift ctrl delete" />
+  </action>
+  <action id="EditorDeleteToLineStart">
+    <keyboard-shortcut first-keystroke="shift ctrl back_space" />
+  </action>
   <action id="EditorDeleteToWordEnd">
     <keyboard-shortcut first-keystroke="ctrl delete" />
     <keyboard-shortcut first-keystroke="alt d" />
@@ -300,6 +306,9 @@
   <action id="EmmetNextEditPoint" />
   <action id="EmmetPreviousEditPoint" />
   <action id="EvaluateExpression" />
+  <action id="Exit">
+    <keyboard-shortcut first-keystroke="ctrl q" />
+  </action>
   <action id="ExpandAllRegions" />
   <action id="ExpandAllToLevel1" />
   <action id="ExpandAllToLevel2" />
@@ -401,7 +410,9 @@
     <mouse-shortcut keystroke="shift control button1" />
   </action>
   <action id="HideActiveWindow" />
-  <action id="HideAllWindows" />
+  <action id="HideAllWindows">
+    <keyboard-shortcut first-keystroke="shift ctrl w" />
+  </action>
   <action id="HighlightUsagesInFile" />
   <action id="HippieBackwardCompletion" />
   <action id="Images.EditExternally" />
@@ -515,6 +526,7 @@
     <keyboard-shortcut first-keystroke="shift ctrl j" />
   </action>
   <action id="Refactorings.QuickListPopupAction" />
+  <action id="ReformatCode" />
   <action id="Refresh">
     <keyboard-shortcut first-keystroke="f5" />
   </action>
@@ -593,6 +605,12 @@
     <keyboard-shortcut first-keystroke="ctrl j" />
   </action>
   <action id="Synchronize" />
+  <action id="Terminal.CopySelectedText">
+    <keyboard-shortcut first-keystroke="shift ctrl c" />
+  </action>
+  <action id="Terminal.Paste">
+    <keyboard-shortcut first-keystroke="shift ctrl v" />
+  </action>
   <action id="TodoViewGroupByFlattenPackage" />
   <action id="TodoViewGroupByShowModules" />
   <action id="TodoViewGroupByShowPackages" />

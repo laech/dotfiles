@@ -1,3 +1,14 @@
+shift-arrow() {
+  ((REGION_ACTIVE)) || zle set-mark-command
+  zle $1
+}
+shift-left() shift-arrow backward-char
+shift-right() shift-arrow forward-char
+shift-up() shift-arrow up-line-or-history
+shift-down() shift-arrow down-line-or-history
+shift-left-word() shift-arrow backward-word
+shift-right-word() shift-arrow forward-word
+
 x-kill-region() {
   if [[ $REGION_ACTIVE == 0 ]]; then
     zle kill-whole-line
@@ -21,12 +32,40 @@ x-delete-char-or-exit() {
   zle delete-char
 }
 
+zle -N shift-left
+zle -N shift-right
+zle -N shift-up
+zle -N shift-down
+zle -N shift-left-word
+zle -N shift-right-word
 zle -N x-kill-region
 zle -N x-cancel
 zle -N x-delete-char-or-exit
 
 bindkey -e '^w' x-kill-region
 bindkey -e '^g' x-cancel
+bindkey -e '^[' x-cancel
+bindkey -e '^u' backward-kill-line
+bindkey -e '^h' backward-kill-word
+
+bindkey "^[[3~" x-delete-char-or-exit          # Delete
+bindkey "^[[3;5~" kill-word                    # Ctrl-Delete
+bindkey "^[[3;6~" kill-line                    # Ctrl-Shift-Delete
+bindkey "^[[1;5D" backward-word                # Ctrl-Left
+bindkey "^[[1;3D" backward-word                # Alt-Left
+bindkey "^[[1;5C" forward-word                 # Ctrl-Right
+bindkey "^[[1;3C" forward-word                 # Alt-Right
+bindkey "^[[H" beginning-of-line               # Home
+bindkey "^[[F" end-of-line                     # End
+bindkey "^[[6~" end-of-buffer-or-history       # PageDown
+bindkey "^[[5~" beginning-of-buffer-or-history # PageUp
+bindkey "^[[Z" reverse-menu-complete           # Shift-Tab
+bindkey "^[[1;2A" shift-up
+bindkey "^[[1;2B" shift-down
+bindkey "^[[1;2D" shift-left
+bindkey "^[[1;2C" shift-right
+bindkey "^[[1;6D" shift-left-word  # Ctrl-Shift-Left
+bindkey "^[[1;6C" shift-right-word # Ctrl-Shift-Right
 
 # Turn off XOFF/XON to allow C-s to forward search history
 [[ $- == *i* ]] && stty -ixon

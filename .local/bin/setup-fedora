@@ -72,21 +72,145 @@ setup_docker() {
 }
 
 setup_gnome_keybindings() {
-  local cmd="gsettings set org.gnome.desktop.wm.keybindings"
-  $cmd activate-window-menu '[]' # Remove <'Alt>space'
-  $cmd switch-to-workspace-left '[]' # Remove '<Control><Alt>Left'
-  $cmd switch-to-workspace-right '[]' # Remove '<Control><Alt>Right'
-  $cmd switch-to-workspace-up "['<Super>Page_Up']" # Remove '<Control><Alt>Up'
-  $cmd switch-to-workspace-down "['<Super>Page_Down']" # Remove '<Control><Alt>Down'
+
+  dconf load /org/gnome/desktop/wm/keybindings/ <<<"
+[/]
+activate-window-menu=@as []
+move-to-workspace-down=['<Shift><Super>n']
+move-to-workspace-up=['<Shift><Super>p']
+switch-to-workspace-down=['<Super>n']
+switch-to-workspace-left=@as []
+switch-to-workspace-right=@as []
+switch-to-workspace-up=['<Super>p']
+"
+
+  dconf load /org/gnome/shell/keybindings/ <<<"
+[/]
+focus-active-notification=@as []
+toggle-application-view=@as []
+"
+
+  dconf load /org/gnome/mutter/keybindings/ <<<"
+[/]
+switch-monitor=['XF86Display']
+"
+
+  dconf load /org/gnome/settings-daemon/plugins/media-keys/ <<<"
+[/]
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']
+
+[custom-keybindings/custom0]
+binding='<Super>Return'
+command='gnome-terminal'
+name='Terminal'
+"
+
+  dconf load /org/gnome/terminal/legacy/keybindings/ <<<"
+[/]
+preferences='<Control>comma'
+switch-to-tab-1='<Control>1'
+switch-to-tab-10='disabled'
+switch-to-tab-2='<Control>2'
+switch-to-tab-3='<Control>3'
+switch-to-tab-4='<Control>4'
+switch-to-tab-5='<Control>5'
+switch-to-tab-6='<Control>6'
+switch-to-tab-7='<Control>7'
+switch-to-tab-8='<Control>8'
+switch-to-tab-9='<Control>9'
+"
 }
 
-setup_terminal_keybindings() {
-  local cmd="gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/"
-  for i in {1..9}; do
-    $cmd switch-to-tab-$i "<Control>$i"
-  done
-  $cmd switch-to-tab-10 "disabled"
-  $cmd preferences "<Control>comma"
+setup_xkb() {
+  sudo cp ~/.profiles/custom.xkb /usr/share/X11/xkb/symbols/custom
+
+  if ! grep -F "custom:basic" /usr/share/X11/xkb/rules/evdev; then
+    sudo sed -i '/! option[[:blank:]]*=[[:blank:]]*symbols/a\
+  custom:basic\t=\t+custom(basic)\
+  custom:lalt_as_lv3\t=\t+custom(lalt_as_lv3)\
+  custom:lwin_as_lv5\t=\t+custom(lwin_as_lv5)\
+  custom:lctrl_as_lwin\t=\t+custom(lctrl_as_lwin)\
+  custom:ralt_as_rctrl\t=\t+custom(ralt_as_rctrl)\
+  custom:rwin_as_ralt\t=\t+custom(rwin_as_ralt)\
+  custom:rctrl_as_rwin\t=\t+custom(rctrl_as_rwin)\
+  custom:prtsc_as_ralt\t=\t+custom(prtsc_as_ralt)\
+' /usr/share/X11/xkb/rules/evdev
+  fi
+
+  if ! grep -F "custom:basic" /usr/share/X11/xkb/rules/evdev.lst; then
+    sudo sed -i '/! option/a\
+  custom               Custom\
+  custom:basic         Custom layout\
+  custom:lalt_as_lv3   Left Alt chooses 3rd level\
+  custom:lwin_as_lv5   Left Win chooses 5th level\
+  custom:lctrl_as_lwin Left Ctrl as left Win\
+  custom:ralt_as_rctrl Right Alt as right Ctrl\
+  custom:rwin_as_ralt  Right Win as right Alt\
+  custom:rctrl_as_rwin Right Ctrl as right Win\
+  custom:prtsc_as_ralt PrtSc as right Alt\
+' /usr/share/X11/xkb/rules/evdev.lst
+  fi
+
+  if ! grep -F "custom:basic" /usr/share/X11/xkb/rules/evdev.xml; then
+    sudo sed -i '/^ *<optionList>/a\
+    <group allowMultipleSelection="true">\
+      <configItem>\
+        <name>custom</name>\
+        <description>Custom</description>\
+      </configItem>\
+      <option>\
+        <configItem>\
+          <name>custom:basic</name>\
+          <description>Custom layout</description>\
+        </configItem>\
+      </option>\
+      <option>\
+        <configItem>\
+          <name>custom:lalt_as_lv3</name>\
+          <description>Left Alt chooses 3rd level</description>\
+        </configItem>\
+      </option>\
+      <option>\
+        <configItem>\
+          <name>custom:lwin_as_lv5</name>\
+          <description>Left Win chooses 5th level</description>\
+        </configItem>\
+      </option>\
+      <option>\
+        <configItem>\
+          <name>custom:lctrl_as_lwin</name>\
+          <description>Left Ctrl as left Win</description>\
+        </configItem>\
+      </option>\
+      <option>\
+        <configItem>\
+          <name>custom:ralt_as_rctrl</name>\
+          <description>Right Alt as right Ctrl</description>\
+        </configItem>\
+      </option>\
+      <option>\
+        <configItem>\
+          <name>custom:rwin_as_ralt</name>\
+          <description>Right Win as right Alt</description>\
+        </configItem>\
+      </option>\
+      <option>\
+        <configItem>\
+          <name>custom:rctrl_as_rwin</name>\
+          <description>Right Ctrl as right Win</description>\
+        </configItem>\
+      </option>\
+      <option>\
+        <configItem>\
+          <name>custom:prtsc_as_ralt</name>\
+          <description>PrtSc as right Alt</description>\
+        </configItem>\
+      </option>\
+    </group>\
+' /usr/share/X11/xkb/rules/evdev.xml
+  fi
+
+  gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:nocaps', 'shift:both_capslock', 'custom:basic', 'custom:lalt_as_lv3', 'custom:lwin_as_lv5', 'custom:lctrl_as_lwin', 'custom:ralt_as_rctrl', 'custom:rwin_as_ralt', 'custom:rctrl_as_rwin', 'custom:prtsc_as_ralt']"
 }
 
 setup_packages
@@ -94,4 +218,4 @@ setup_shfmt
 setup_shell
 setup_docker
 setup_gnome_keybindings
-setup_terminal_keybindings
+setup_xkb

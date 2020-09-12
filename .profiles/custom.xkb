@@ -1,0 +1,963 @@
+// Generated
+partial alphanumeric_keys modifier_keys
+xkb_symbols "basic" {
+
+  include "us"
+  include "level5(modifier_mapping)"
+
+  key <BKSL> {
+    type="EIGHT_LEVEL",
+    symbols=[backslash, bar],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<BKSL>, clearmods=All, mods=Control),
+      Redirect(key=<BKSL>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<BKSL>, clearmods=All, mods=Alt),
+      Redirect(key=<BKSL>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<BKSL>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<BKSL>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <SPCE> {
+    type="EIGHT_LEVEL",
+    symbols=[space, space],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<SPCE>, clearmods=All, mods=Control),
+      Redirect(key=<SPCE>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<SPCE>, clearmods=All, mods=Alt),
+      Redirect(key=<SPCE>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<SPCE>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<SPCE>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <BKSP> {
+    type="EIGHT_LEVEL",
+    symbols=[BackSpace, BackSpace],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<BKSP>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<BKSP>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<BKSP>, clearmods=All, mods=Control),
+      Redirect(key=<BKSP>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<BKSP>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<BKSP>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <TAB> {
+    type="EIGHT_LEVEL",
+    symbols=[Tab, ISO_Left_Tab],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<TAB>, clearmods=All, mods=Control),
+      Redirect(key=<TAB>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<TAB>, clearmods=All, mods=Alt),
+      Redirect(key=<TAB>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<TAB>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<TAB>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <RTRN> {
+    type="EIGHT_LEVEL",
+    symbols=[Return, Return],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<RTRN>, clearmods=All, mods=Control),
+      Redirect(key=<RTRN>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<RTRN>, clearmods=All, mods=Alt),
+      Redirect(key=<RTRN>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<RTRN>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<RTRN>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <INS> {
+    type="EIGHT_LEVEL",
+    symbols=[Insert, Insert],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<INS>, clearmods=All, mods=Control),
+      Redirect(key=<INS>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<INS>, clearmods=All, mods=Alt),
+      Redirect(key=<INS>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<INS>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<INS>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <DELE> {
+    type="EIGHT_LEVEL",
+    symbols=[Delete, Delete],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<DELE>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<DELE>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<DELE>, clearmods=All, mods=Control),
+      Redirect(key=<DELE>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<DELE>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<DELE>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <HOME> {
+    type="EIGHT_LEVEL",
+    symbols=[Home, Home],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<HOME>, clearmods=All, mods=Control),
+      Redirect(key=<HOME>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<HOME>, clearmods=All, mods=Alt),
+      Redirect(key=<HOME>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<HOME>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<HOME>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <END> {
+    type="EIGHT_LEVEL",
+    symbols=[End, End],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<END>, clearmods=All, mods=Control),
+      Redirect(key=<END>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<END>, clearmods=All, mods=Alt),
+      Redirect(key=<END>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<END>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<END>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <PGUP> {
+    type="EIGHT_LEVEL",
+    symbols=[Prior, Prior],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<PGUP>, clearmods=All, mods=Control),
+      Redirect(key=<PGUP>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<PGUP>, clearmods=All, mods=Alt),
+      Redirect(key=<PGUP>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<PGUP>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<PGUP>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <PGDN> {
+    type="EIGHT_LEVEL",
+    symbols=[Next, Next],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<PGDN>, clearmods=All, mods=Control),
+      Redirect(key=<PGDN>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<PGDN>, clearmods=All, mods=Alt),
+      Redirect(key=<PGDN>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<PGDN>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<PGDN>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <UP> {
+    type="EIGHT_LEVEL",
+    symbols=[Up, Up],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<HOME>, clearmods=All, mods=Control),
+      Redirect(key=<HOME>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<PGUP>, clearmods=All),
+      Redirect(key=<PGUP>, clearmods=All, mods=Shift),
+      Redirect(key=<UP>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<UP>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <LEFT> {
+    type="EIGHT_LEVEL",
+    symbols=[Left, Left],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<HOME>, clearmods=All),
+      Redirect(key=<HOME>, clearmods=All, mods=Shift),
+      Redirect(key=<LEFT>, clearmods=All, mods=Control),
+      Redirect(key=<LEFT>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<LEFT>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<LEFT>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <DOWN> {
+    type="EIGHT_LEVEL",
+    symbols=[Down, Down],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<END>, clearmods=All, mods=Control),
+      Redirect(key=<END>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<PGDN>, clearmods=All),
+      Redirect(key=<PGDN>, clearmods=All, mods=Shift),
+      Redirect(key=<DOWN>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<DOWN>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <RGHT> {
+    type="EIGHT_LEVEL",
+    symbols=[Right, Right],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<END>, clearmods=All),
+      Redirect(key=<END>, clearmods=All, mods=Shift),
+      Redirect(key=<RGHT>, clearmods=All, mods=Control),
+      Redirect(key=<RGHT>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<RGHT>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<RGHT>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <TLDE> {
+    type="EIGHT_LEVEL",
+    symbols=[grave, asciitilde],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<TLDE>, clearmods=All, mods=Control),
+      Redirect(key=<TLDE>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<TLDE>, clearmods=All, mods=Alt),
+      Redirect(key=<TLDE>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<TLDE>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<TLDE>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AE01> {
+    type="EIGHT_LEVEL",
+    symbols=[1, exclam],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AE01>, clearmods=All, mods=Control),
+      Redirect(key=<AE01>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AE01>, clearmods=All, mods=Alt),
+      Redirect(key=<AE01>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AE01>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AE01>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AE02> {
+    type="EIGHT_LEVEL",
+    symbols=[2, at],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AE02>, clearmods=All, mods=Control),
+      Redirect(key=<AE02>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AE02>, clearmods=All, mods=Alt),
+      Redirect(key=<AE02>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AE02>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AE02>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AE03> {
+    type="EIGHT_LEVEL",
+    symbols=[3, numbersign],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AE03>, clearmods=All, mods=Control),
+      Redirect(key=<AE03>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AE03>, clearmods=All, mods=Alt),
+      Redirect(key=<AE03>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AE03>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AE03>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AE04> {
+    type="EIGHT_LEVEL",
+    symbols=[4, dollar],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AE04>, clearmods=All, mods=Control),
+      Redirect(key=<AE04>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AE04>, clearmods=All, mods=Alt),
+      Redirect(key=<AE04>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AE04>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AE04>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AE05> {
+    type="EIGHT_LEVEL",
+    symbols=[5, percent],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AE05>, clearmods=All, mods=Control),
+      Redirect(key=<AE05>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AE05>, clearmods=All, mods=Alt),
+      Redirect(key=<AE05>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AE05>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AE05>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AE06> {
+    type="EIGHT_LEVEL",
+    symbols=[6, asciicircum],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AE06>, clearmods=All, mods=Control),
+      Redirect(key=<AE06>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AE06>, clearmods=All, mods=Alt),
+      Redirect(key=<AE06>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AE06>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AE06>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AE07> {
+    type="EIGHT_LEVEL",
+    symbols=[7, ampersand],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AE07>, clearmods=All, mods=Control),
+      Redirect(key=<AE07>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AE07>, clearmods=All, mods=Alt),
+      Redirect(key=<AE07>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AE07>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AE07>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AE08> {
+    type="EIGHT_LEVEL",
+    symbols=[8, asterisk],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AE08>, clearmods=All, mods=Control),
+      Redirect(key=<AE08>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AE08>, clearmods=All, mods=Alt),
+      Redirect(key=<AE08>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AE08>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AE08>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AE09> {
+    type="EIGHT_LEVEL",
+    symbols=[9, parenleft],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AE09>, clearmods=All, mods=Control),
+      Redirect(key=<AE09>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AE09>, clearmods=All, mods=Alt),
+      Redirect(key=<AE09>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AE09>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AE09>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AE10> {
+    type="EIGHT_LEVEL",
+    symbols=[0, parenright],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AE10>, clearmods=All, mods=Control),
+      Redirect(key=<AE10>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AE10>, clearmods=All, mods=Alt),
+      Redirect(key=<AE10>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AE10>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AE10>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AE11> {
+    type="EIGHT_LEVEL",
+    symbols=[minus, underscore],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AE11>, clearmods=All, mods=Control),
+      Redirect(key=<AE11>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AE11>, clearmods=All, mods=Alt),
+      Redirect(key=<AE11>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AE11>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AE11>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AE12> {
+    type="EIGHT_LEVEL",
+    symbols=[equal, plus],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AE12>, clearmods=All, mods=Control),
+      Redirect(key=<AE12>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AE12>, clearmods=All, mods=Alt),
+      Redirect(key=<AE12>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AE12>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AE12>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AD01> {
+    type="EIGHT_LEVEL",
+    symbols=[q, Q],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AD01>, clearmods=All, mods=Control),
+      Redirect(key=<AD01>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AD01>, clearmods=All, mods=Alt),
+      Redirect(key=<AD01>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AD01>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AD01>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AD02> {
+    type="EIGHT_LEVEL",
+    symbols=[w, W],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AD02>, clearmods=All, mods=Control),
+      Redirect(key=<AD02>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AD02>, clearmods=All, mods=Alt),
+      Redirect(key=<AD02>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AD02>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AD02>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AD03> {
+    type="EIGHT_LEVEL",
+    symbols=[e, E],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<END>, clearmods=All),
+      Redirect(key=<END>, clearmods=All, mods=Shift),
+      Redirect(key=<AD03>, clearmods=All, mods=Alt),
+      Redirect(key=<AD03>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AD03>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AD03>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AD04> {
+    type="EIGHT_LEVEL",
+    symbols=[r, R],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AD04>, clearmods=All, mods=Control),
+      Redirect(key=<AD04>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AD04>, clearmods=All, mods=Alt),
+      Redirect(key=<AD04>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AD04>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AD04>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AD05> {
+    type="EIGHT_LEVEL",
+    symbols=[t, T],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AD05>, clearmods=All, mods=Control),
+      Redirect(key=<AD05>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AD05>, clearmods=All, mods=Alt),
+      Redirect(key=<AD05>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AD05>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AD05>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AD06> {
+    type="EIGHT_LEVEL",
+    symbols=[y, Y],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AD06>, clearmods=All, mods=Control),
+      Redirect(key=<AD06>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AD06>, clearmods=All, mods=Alt),
+      Redirect(key=<AD06>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AD06>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AD06>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AD07> {
+    type="EIGHT_LEVEL",
+    symbols=[u, U],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AD07>, clearmods=All, mods=Control),
+      Redirect(key=<AD07>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AD07>, clearmods=All, mods=Alt),
+      Redirect(key=<AD07>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AD07>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AD07>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AD08> {
+    type="EIGHT_LEVEL",
+    symbols=[i, I],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AD08>, clearmods=All, mods=Control),
+      Redirect(key=<AD08>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AD08>, clearmods=All, mods=Alt),
+      Redirect(key=<AD08>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AD08>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AD08>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AD09> {
+    type="EIGHT_LEVEL",
+    symbols=[o, O],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AD09>, clearmods=All, mods=Control),
+      Redirect(key=<AD09>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AD09>, clearmods=All, mods=Alt),
+      Redirect(key=<AD09>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AD09>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AD09>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AD10> {
+    type="EIGHT_LEVEL",
+    symbols=[p, P],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<UP>, clearmods=All),
+      Redirect(key=<UP>, clearmods=All, mods=Shift),
+      Redirect(key=<PGUP>, clearmods=All),
+      Redirect(key=<PGUP>, clearmods=All, mods=Shift),
+      Redirect(key=<AD10>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AD10>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AD11> {
+    type="EIGHT_LEVEL",
+    symbols=[bracketleft, braceleft],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AD11>, clearmods=All, mods=Control),
+      Redirect(key=<AD11>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AD11>, clearmods=All, mods=Alt),
+      Redirect(key=<AD11>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AD11>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AD11>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AD12> {
+    type="EIGHT_LEVEL",
+    symbols=[bracketright, braceright],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AD12>, clearmods=All, mods=Control),
+      Redirect(key=<AD12>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AD12>, clearmods=All, mods=Alt),
+      Redirect(key=<AD12>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AD12>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AD12>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AC01> {
+    type="EIGHT_LEVEL",
+    symbols=[a, A],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<HOME>, clearmods=All),
+      Redirect(key=<HOME>, clearmods=All, mods=Shift),
+      Redirect(key=<AC01>, clearmods=All, mods=Alt),
+      Redirect(key=<AC01>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AC01>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AC01>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AC02> {
+    type="EIGHT_LEVEL",
+    symbols=[s, S],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AC02>, clearmods=All, mods=Control),
+      Redirect(key=<AC02>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AC02>, clearmods=All, mods=Alt),
+      Redirect(key=<AC02>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AC02>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AC02>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AC03> {
+    type="EIGHT_LEVEL",
+    symbols=[d, D],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<DELE>, clearmods=All),
+      Redirect(key=<AC03>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<DELE>, clearmods=All, mods=Control),
+      Redirect(key=<AC03>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AC03>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AC03>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AC04> {
+    type="EIGHT_LEVEL",
+    symbols=[f, F],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<RGHT>, clearmods=All),
+      Redirect(key=<RGHT>, clearmods=All, mods=Shift),
+      Redirect(key=<RGHT>, clearmods=All, mods=Control),
+      Redirect(key=<RGHT>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AC04>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AC04>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AC05> {
+    type="EIGHT_LEVEL",
+    symbols=[g, G],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<ESC>, clearmods=All),
+      Redirect(key=<AC05>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AC05>, clearmods=All, mods=Alt),
+      Redirect(key=<AC05>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AC05>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AC05>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AC06> {
+    type="EIGHT_LEVEL",
+    symbols=[h, H],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AC06>, clearmods=All, mods=Control),
+      Redirect(key=<AC06>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AC06>, clearmods=All, mods=Alt),
+      Redirect(key=<AC06>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AC06>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AC06>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AC07> {
+    type="EIGHT_LEVEL",
+    symbols=[j, J],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AC07>, clearmods=All, mods=Control),
+      Redirect(key=<AC07>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AC07>, clearmods=All, mods=Alt),
+      Redirect(key=<AC07>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AC07>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AC07>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AC08> {
+    type="EIGHT_LEVEL",
+    symbols=[k, K],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AC08>, clearmods=All, mods=Control),
+      Redirect(key=<AC08>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AC08>, clearmods=All, mods=Alt),
+      Redirect(key=<AC08>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AC08>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AC08>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AC09> {
+    type="EIGHT_LEVEL",
+    symbols=[l, L],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AC09>, clearmods=All, mods=Control),
+      Redirect(key=<AC09>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AC09>, clearmods=All, mods=Alt),
+      Redirect(key=<AC09>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AC09>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AC09>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AC10> {
+    type="EIGHT_LEVEL",
+    symbols=[semicolon, colon],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AC10>, clearmods=All, mods=Control),
+      Redirect(key=<AC10>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AC10>, clearmods=All, mods=Alt),
+      Redirect(key=<AC10>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AC10>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AC10>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AC11> {
+    type="EIGHT_LEVEL",
+    symbols=[apostrophe, quotedbl],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AC11>, clearmods=All, mods=Control),
+      Redirect(key=<AC11>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AC11>, clearmods=All, mods=Alt),
+      Redirect(key=<AC11>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AC11>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AC11>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AB01> {
+    type="EIGHT_LEVEL",
+    symbols=[z, Z],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AB01>, clearmods=All, mods=Control),
+      Redirect(key=<AB01>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AB01>, clearmods=All, mods=Alt),
+      Redirect(key=<AB01>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AB01>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AB01>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AB02> {
+    type="EIGHT_LEVEL",
+    symbols=[x, X],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AB02>, clearmods=All, mods=Control),
+      Redirect(key=<AB02>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AB02>, clearmods=All, mods=Alt),
+      Redirect(key=<AB02>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AB02>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AB02>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AB03> {
+    type="EIGHT_LEVEL",
+    symbols=[c, C],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AB03>, clearmods=All, mods=Control),
+      Redirect(key=<AB03>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AB03>, clearmods=All, mods=Alt),
+      Redirect(key=<AB03>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AB03>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AB03>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AB04> {
+    type="EIGHT_LEVEL",
+    symbols=[v, V],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AB04>, clearmods=All, mods=Control),
+      Redirect(key=<AB04>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AB04>, clearmods=All, mods=Alt),
+      Redirect(key=<AB04>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AB04>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AB04>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AB05> {
+    type="EIGHT_LEVEL",
+    symbols=[b, B],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<LEFT>, clearmods=All),
+      Redirect(key=<LEFT>, clearmods=All, mods=Shift),
+      Redirect(key=<LEFT>, clearmods=All, mods=Control),
+      Redirect(key=<LEFT>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AB05>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AB05>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AB06> {
+    type="EIGHT_LEVEL",
+    symbols=[n, N],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<DOWN>, clearmods=All),
+      Redirect(key=<DOWN>, clearmods=All, mods=Shift),
+      Redirect(key=<PGDN>, clearmods=All),
+      Redirect(key=<PGDN>, clearmods=All, mods=Shift),
+      Redirect(key=<AB06>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AB06>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AB07> {
+    type="EIGHT_LEVEL",
+    symbols=[m, M],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AB07>, clearmods=All, mods=Control),
+      Redirect(key=<AB07>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AB07>, clearmods=All, mods=Alt),
+      Redirect(key=<AB07>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AB07>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AB07>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AB08> {
+    type="EIGHT_LEVEL",
+    symbols=[comma, less],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AB08>, clearmods=All, mods=Control),
+      Redirect(key=<AB08>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AB08>, clearmods=All, mods=Alt),
+      Redirect(key=<HOME>, clearmods=All, mods=Control),
+      Redirect(key=<AB08>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AB08>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AB09> {
+    type="EIGHT_LEVEL",
+    symbols=[period, greater],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AB09>, clearmods=All, mods=Control),
+      Redirect(key=<AB09>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AB09>, clearmods=All, mods=Alt),
+      Redirect(key=<END>, clearmods=All, mods=Control),
+      Redirect(key=<AB09>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AB09>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+
+  key <AB10> {
+    type="EIGHT_LEVEL",
+    symbols=[slash, question],
+    actions=[
+      NoAction(),
+      NoAction(),
+      Redirect(key=<AB10>, clearmods=All, mods=Control),
+      Redirect(key=<AB10>, clearmods=All, mods=Control+Shift),
+      Redirect(key=<AB10>, clearmods=All, mods=Alt),
+      Redirect(key=<AB10>, clearmods=All, mods=Alt+Shift),
+      Redirect(key=<AB10>, clearmods=All, mods=Control+Alt),
+      Redirect(key=<AB10>, clearmods=All, mods=Control+Alt+Shift)
+    ]
+  };
+};
+
+partial modifier_keys
+xkb_symbols "lalt_as_lv3" {
+  key <LALT> {[ISO_Level3_Shift, ISO_Level3_Shift]};
+};
+
+partial modifier_keys
+xkb_symbols "lwin_as_lv5" {
+  key <LWIN> {[ISO_Level5_Shift]};
+};
+
+partial modifier_keys
+xkb_symbols "lctrl_as_lwin" {
+  key <LCTL> {[Super_L]};
+  modifier_map Mod4 {<LCTL>};
+};
+
+partial modifier_keys
+xkb_symbols "ralt_as_rctrl" {
+  key <RALT> {[Control_R, Control_R]};
+  modifier_map Control {<RALT>};
+};
+
+partial modifier_keys
+xkb_symbols "prtsc_as_ralt" {
+  key <PRSC> {[Alt_R, Meta_R]};
+  modifier_map Mod1 {<PRSC>};
+};
+
+partial modifier_keys
+xkb_symbols "rwin_as_ralt" {
+  key <RWIN> {[Alt_R, Meta_R]};
+  modifier_map Mod1 {<RWIN>};
+};
+
+partial modifier_keys
+xkb_symbols "rctrl_as_rwin" {
+  key <RCTL> {[Super_R]};
+  modifier_map Mod4 {<RCTL>};
+};
+
