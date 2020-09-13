@@ -4,7 +4,7 @@
     "diffEditor.renderSideBySide": true,
     "editor.cursorBlinking": "solid",
     "editor.cursorStyle": "block",
-    "editor.fontFamily": "'Cascadia Code', 'Fantasque Sans Mono', monospace",
+    "editor.fontFamily": "'Fantasque Sans Mono', 'Cascadia Code', monospace",
     "editor.fontLigatures": false,
     "editor.fontSize": 16,
     "editor.formatOnPaste": true,
@@ -47,5 +47,6 @@
     "workbench.tree.indent": 16,
     "workbench.tree.renderIndentGuides": "none",
     "zenMode.fullScreen": false,
+    "zenMode.centerLayout": false,
     "zenMode.restore": true,
 }
