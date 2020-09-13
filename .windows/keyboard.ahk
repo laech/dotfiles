@@ -7,54 +7,64 @@
 ; < left key, e.g. <^ is left control
 ; > right key
 
-$<^p:: Send, {up}
-$<^n:: Send, {down}
-$<^b:: Send, {left}
-$<^f:: Send, {right}
-$<^a:: Send, {home}
-$<^e:: Send, {end}
-$<^g:: Send, {esc}
-$<^s:: Send, {f3}
-$<^r:: Send, +{f3}
-$<^d:: Send, {delete}
+$<^p:: send, {up}
+$<!p:: send, {pgup}
+$<^+p:: send, +{up}
+$<!+p:: send, +{pgup}
 
-$<^+p:: Send, +{up}
-$<^+n:: Send, +{down}
-$<^+b:: Send, +{left}
-$<^+f:: Send, +{right}
-$<^+a:: Send, +{home}
-$<^+e:: Send, +{end}
+$<^n:: send, {down}
+$<!n:: send, {pgdn}
+$<^+n:: send, +{down}
+$<!+n:: send, +{pgdn}
 
+$<^b:: send, {left}
+$<!b:: send, ^{left}
+$<^+b:: send, +{left}
+$<!+b:: send, ^+{left}
 
-$<!n:: Send, {pgdn}
-$<!p:: Send, {pgup}
-$<!b:: Send, ^{left}
-$<!f:: Send, ^{right}
-$<!d:: Send, ^{delete}
+$<^f:: send, {right}
+$<!f:: send, ^{right}
+$<^+f:: send, +{right}
+$<!+f:: send, ^+{right}
 
-$<!+n:: Send, +{pgdn}
-$<!+p:: Send, +{pgup}
-$<!+b:: Send, ^+{left}
-$<!+f:: Send, ^+{right}
+$<^a:: send, {home}
+$<^+a:: send, +{home}
 
+$<^e:: send, {end}
+$<^+e:: send, +{end}
 
-$<!up:: Send, {pgup}
-$<!down:: Send, {pgdn}
-$<!left:: Send, ^{left}
-$<!right:: Send, ^{right}
+$<^g:: send, {esc}
 
-$<!+up:: Send, +{pgup}
-$<!+down:: Send, +{pgdn}
-$<!+left:: Send, ^+{left}
-$<!+right:: Send, ^+{right}
+$<^d:: send, {delete}
+$<!d:: send, ^{delete}
 
+$<^backspace:: send, +{home}{backspace}
+$<!backspace:: send, ^{backspace}
 
-$<^up:: Send, ^{home}
-$<^down:: Send, ^{end}
-$<^left:: Send, {home}
-$<^right:: Send, {end}
+$<^delete:: send, +{end}{delete}
+$<!delete:: send, ^{delete}
 
-$<^+up:: Send, ^+{home}
-$<^+down:: Send, ^+{end}
-$<^+left:: Send, +{home}
-$<^+right:: Send, +{end}
+$<^up:: send, ^{home}
+$<!up:: send, {pgup}
+$<^+up:: send, ^+{home}
+$<!+up:: send, +{pgup}
+
+$<!down:: send, {pgdn}
+$<^down:: send, ^{end}
+$<!+down:: send, +{pgdn}
+$<^+down:: send, ^+{end}
+
+$<!left:: send, ^{left}
+$<^left:: send, {home}
+$<!+left:: send, ^+{left}
+$<^+left:: send, +{home}
+
+$<!right:: send, ^{right}
+$<^right:: send, {end}
+$<!+right:: send, ^+{right}
+$<^+right:: send, +{end}
+
+$<!+,:: send, ^{home}
+$<!+.:: send, ^{end}
+
+$<!space:: send, !{space}
