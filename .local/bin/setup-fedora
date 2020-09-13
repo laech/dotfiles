@@ -10,7 +10,7 @@ if [[ $UID == 0 ]]; then
   exit 1
 fi
 
-. setup-common
+. "$(dirname "${BASH_SOURCE[0]}")"/setup-common
 
 setup_packages() {
   packages=(
