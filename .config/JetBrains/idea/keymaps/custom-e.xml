@@ -24,7 +24,6 @@
     <keyboard-shortcut first-keystroke="shift ctrl z" />
     <keyboard-shortcut first-keystroke="again" />
   </action>
-  <action id="$SelectAll" />
   <action id="$Undo">
     <keyboard-shortcut first-keystroke="ctrl slash" />
     <keyboard-shortcut first-keystroke="ctrl z" />
@@ -209,10 +208,6 @@
   <action id="EditorLineEndWithSelection">
     <keyboard-shortcut first-keystroke="shift end" />
     <keyboard-shortcut first-keystroke="shift ctrl e" />
-  </action>
-  <action id="EditorLineStart">
-    <keyboard-shortcut first-keystroke="home" />
-    <keyboard-shortcut first-keystroke="ctrl a" />
   </action>
   <action id="EditorLineStartWithSelection">
     <keyboard-shortcut first-keystroke="shift home" />
