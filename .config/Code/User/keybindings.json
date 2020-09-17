@@ -1809,5 +1809,9 @@
     {
         "key": "ctrl+alt+m",
         "command": "workbench.action.toggleCenteredLayout"
+    },
+    {
+        "key": "ctrl+shift+w",
+        "command": "-workbench.action.closeWindow"
     }
 ]

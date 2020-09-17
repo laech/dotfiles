@@ -21,11 +21,11 @@
     "git.autofetchPeriod": 300,
     "git.confirmSync": false,
     "git.enableCommitSigning": true,
-    "rust-client.engine": "rust-analyzer",
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
     "terminal.integrated.copyOnSelection": true,
     "terminal.integrated.fontSize": 15,
+    "terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
     "timeline.excludeSources": [],
     "typescript.updateImportsOnFileMove.enabled": "always",
     "window.customMenuBarAltFocus": false,
@@ -48,5 +48,5 @@
     "workbench.tree.renderIndentGuides": "none",
     "zenMode.fullScreen": false,
     "zenMode.centerLayout": false,
-    "zenMode.restore": true,
+    "zenMode.restore": true
 }
