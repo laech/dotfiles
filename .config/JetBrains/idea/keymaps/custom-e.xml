@@ -1,9 +1,4 @@
 <keymap version="1" name="custom-e" parent="$default">
-  <action id="$Copy">
-    <keyboard-shortcut first-keystroke="ctrl insert" />
-    <keyboard-shortcut first-keystroke="alt w" />
-    <keyboard-shortcut first-keystroke="ctrl c" />
-  </action>
   <action id="$Cut">
     <keyboard-shortcut first-keystroke="shift delete" />
     <keyboard-shortcut first-keystroke="ctrl w" />
@@ -11,23 +6,12 @@
   <action id="$Delete">
     <keyboard-shortcut first-keystroke="delete" />
     <keyboard-shortcut first-keystroke="back_space" />
-    <keyboard-shortcut first-keystroke="ctrl d" />
-  </action>
-  <action id="$Paste">
-    <keyboard-shortcut first-keystroke="shift insert" />
-    <keyboard-shortcut first-keystroke="ctrl y" />
-    <keyboard-shortcut first-keystroke="ctrl v" />
   </action>
   <action id="$Redo">
-    <keyboard-shortcut first-keystroke="shift ctrl slash" />
-    <keyboard-shortcut first-keystroke="shift alt minus" />
     <keyboard-shortcut first-keystroke="shift ctrl z" />
-    <keyboard-shortcut first-keystroke="again" />
   </action>
   <action id="$Undo">
-    <keyboard-shortcut first-keystroke="ctrl slash" />
     <keyboard-shortcut first-keystroke="ctrl z" />
-    <keyboard-shortcut first-keystroke="undo" />
   </action>
   <action id="ActivateFavoritesToolWindow" />
   <action id="ActivateMessagesToolWindow" />
@@ -120,21 +104,16 @@
     <keyboard-shortcut first-keystroke="alt period" />
   </action>
   <action id="Editor Copy">
-    <keyboard-shortcut first-keystroke="alt w" />
     <keyboard-shortcut first-keystroke="ctrl c" />
   </action>
   <action id="Editor Cut">
     <keyboard-shortcut first-keystroke="shift ctrl back_space" />
     <keyboard-shortcut first-keystroke="ctrl w" />
   </action>
-  <action id="Editor Delete">
-    <keyboard-shortcut first-keystroke="ctrl d" />
-  </action>
   <action id="Editor LRU">
     <keyboard-shortcut first-keystroke="ctrl c" second-keystroke="p" />
   </action>
   <action id="Editor Paste">
-    <keyboard-shortcut first-keystroke="ctrl y" />
     <keyboard-shortcut first-keystroke="ctrl v" />
   </action>
   <action id="Editor Redo">
@@ -169,10 +148,6 @@
   </action>
   <action id="EditorDeleteToLineStart">
     <keyboard-shortcut first-keystroke="shift ctrl back_space" />
-  </action>
-  <action id="EditorDeleteToWordEnd">
-    <keyboard-shortcut first-keystroke="ctrl delete" />
-    <keyboard-shortcut first-keystroke="alt d" />
   </action>
   <action id="EditorDeleteToWordStart">
     <keyboard-shortcut first-keystroke="ctrl back_space" />
@@ -343,6 +318,7 @@
   <action id="InsertLiveTemplate" />
   <action id="IntroduceField" />
   <action id="IntroduceFunctionalParameter" />
+  <action id="IntroduceParameter" />
   <action id="IntroduceTypeAlias" />
   <action id="JumpToLastChange" />
   <action id="JumpToLastWindow" />
@@ -408,11 +384,6 @@
     <keyboard-shortcut first-keystroke="ctrl alt back_slash" />
   </action>
   <action id="OverrideMethods" />
-  <action id="PasteMultiple">
-    <keyboard-shortcut first-keystroke="shift ctrl insert" />
-    <keyboard-shortcut first-keystroke="alt y" />
-    <keyboard-shortcut first-keystroke="shift ctrl v" />
-  </action>
   <action id="PopupHector" />
   <action id="PopupMenu-cancel">
     <keyboard-shortcut first-keystroke="escape" />
@@ -493,6 +464,7 @@
   <action id="ShowFilterPopup" />
   <action id="ShowNavBar">
     <keyboard-shortcut first-keystroke="f6" />
+    <keyboard-shortcut first-keystroke="ctrl alt p" />
   </action>
   <action id="ShowProjectStructureSettings" />
   <action id="ShowRecentTests" />
@@ -551,6 +523,8 @@
     <keyboard-shortcut first-keystroke="alt r" />
   </action>
   <action id="UpdateRunningApplication" />
+  <action id="UsageGrouping.Directory" />
+  <action id="UsageGrouping.Package" />
   <action id="UsageView.Include" />
   <action id="Vcs.Log.GoToRef">
     <keyboard-shortcut first-keystroke="ctrl f" />
@@ -573,6 +547,9 @@
   <action id="ViewBreakpoints" />
   <action id="ViewInplaceComments" />
   <action id="ViewSource" />
+  <action id="ViewStatusBar">
+    <keyboard-shortcut first-keystroke="ctrl slash" />
+  </action>
   <action id="XDebugger.AttachToProcess" />
   <action id="XDebugger.NewWatch" />
   <action id="XDebugger.SetValue" />
@@ -581,12 +558,6 @@
   </action>
   <action id="com.gitlab.lae.intellij.actions.DowncaseRegionOrToWordEnd">
     <keyboard-shortcut first-keystroke="alt l" />
-  </action>
-  <action id="com.gitlab.lae.intellij.actions.Enter">
-    <keyboard-shortcut first-keystroke="ctrl m" />
-  </action>
-  <action id="com.gitlab.lae.intellij.actions.Escape">
-    <keyboard-shortcut first-keystroke="ctrl g" />
   </action>
   <action id="com.gitlab.lae.intellij.actions.NoSpace">
     <keyboard-shortcut first-keystroke="alt back_slash" />
