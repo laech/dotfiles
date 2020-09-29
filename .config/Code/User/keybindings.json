@@ -669,5 +669,9 @@
     {
         "key": "ctrl+alt+p",
         "command": "breadcrumbs.toggle"
+    },
+    {
+        "key": "ctrl+shift+alt+s",
+        "command": "workbench.action.toggleActivityBarVisibility"
     }
 ]

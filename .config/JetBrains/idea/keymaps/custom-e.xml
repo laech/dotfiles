@@ -550,6 +550,9 @@
   <action id="ViewStatusBar">
     <keyboard-shortcut first-keystroke="ctrl slash" />
   </action>
+  <action id="ViewToolButtons">
+    <keyboard-shortcut first-keystroke="shift ctrl slash" />
+  </action>
   <action id="XDebugger.AttachToProcess" />
   <action id="XDebugger.NewWatch" />
   <action id="XDebugger.SetValue" />
