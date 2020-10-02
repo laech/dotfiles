@@ -57,14 +57,6 @@
         "command": "workbench.action.quickOpen"
     },
     {
-        "key": "ctrl+x ctrl+f",
-        "command": "workbench.action.quickOpen"
-    },
-    {
-        "key": "ctrl+x ctrl+b",
-        "command": "workbench.action.quickOpen"
-    },
-    {
         "key": "ctrl+j",
         "command": "workbench.action.quickOpen"
     },
@@ -148,11 +140,6 @@
         "command": "editor.action.transformToUppercase"
     },
     {
-        "key": "shift+alt+f5",
-        "command": "-workbench.action.editor.previousChange",
-        "when": "editorTextFocus"
-    },
-    {
         "key": "alt+h",
         "command": "editor.action.smartSelect.expand",
         "when": "editorTextFocus"
@@ -193,21 +180,6 @@
     {
         "key": "alt+l",
         "command": "editor.action.transformToLowercase"
-    },
-    {
-        "key": "alt+f5",
-        "command": "-workbench.action.editor.nextChange",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "alt+f5",
-        "command": "-workbench.action.compareEditor.nextChange",
-        "when": "textCompareEditorVisible"
-    },
-    {
-        "key": "shift+alt+f5",
-        "command": "-workbench.action.compareEditor.previousChange",
-        "when": "textCompareEditorVisible"
     },
     {
         "key": "alt+1",
@@ -404,24 +376,9 @@
         "when": "inDebugMode"
     },
     {
-        "key": "shift+alt+]",
-        "command": "editor.action.diffReview.next",
-        "when": "isInDiffEditor"
-    },
-    {
-        "key": "f7",
-        "command": "-editor.action.diffReview.next",
-        "when": "isInDiffEditor"
-    },
-    {
         "key": "f7",
         "command": "-editor.action.wordHighlight.next",
         "when": "editorTextFocus && hasWordHighlights"
-    },
-    {
-        "key": "shift+alt+[",
-        "command": "editor.action.diffReview.prev",
-        "when": "isInDiffEditor"
     },
     {
         "key": "f7",
@@ -499,16 +456,6 @@
     {
         "key": "ctrl+x ctrl+c",
         "command": "workbench.action.quit"
-    },
-    {
-        "key": "ctrl+x h",
-        "command": "list.selectAll",
-        "when": "listFocus && listSupportsMultiselect && !inputFocus"
-    },
-    {
-        "key": "ctrl+x h",
-        "command": "editor.action.selectAll",
-        "when": "textInputFocus"
     },
     {
         "key": "ctrl+alt+s",
@@ -673,5 +620,43 @@
     {
         "key": "ctrl+shift+alt+s",
         "command": "workbench.action.toggleActivityBarVisibility"
+    },
+    {
+        "key": "alt+.",
+        "command": "git.openFile"
+    },
+    {
+        "key": "shift+alt+]",
+        "command": "editor.action.dirtydiff.next",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+alt+[",
+        "command": "editor.action.dirtydiff.previous",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+alt+]",
+        "command": "workbench.action.compareEditor.nextChange",
+        "when": "isInDiffEditor"
+    },
+    {
+        "key": "shift+alt+[",
+        "command": "workbench.action.compareEditor.previousChange",
+        "when": "isInDiffEditor"
+    },
+    {
+        "key": "ctrl+alt+z",
+        "command": "git.clean"
+    },
+    {
+        "key": "ctrl+alt+z",
+        "command": "git.revertSelectedRanges",
+        "when": "isInDiffEditor"
+    },
+    {
+        "key": "ctrl+k ctrl+r",
+        "command": "-git.revertSelectedRanges",
+        "when": "isInDiffEditor"
     }
 ]
