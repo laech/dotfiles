@@ -47,6 +47,5 @@
     "workbench.tree.indent": 16,
     "workbench.tree.renderIndentGuides": "none",
     "zenMode.fullScreen": false,
-    "zenMode.centerLayout": false,
-    "zenMode.restore": true
+    "zenMode.centerLayout": false
 }
