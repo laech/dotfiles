@@ -170,6 +170,7 @@
   <action id="EditorMoveToPageBottomWithSelection" />
   <action id="EditorMoveToPageTop" />
   <action id="EditorMoveToPageTopWithSelection" />
+  <action id="EditorPasteFromX11" />
   <action id="EditorScrollDown" />
   <action id="EditorScrollToCenter">
     <keyboard-shortcut first-keystroke="ctrl l" />

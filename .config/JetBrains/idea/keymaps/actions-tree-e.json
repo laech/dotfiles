@@ -172,6 +172,7 @@
           "items": [
             { "keys": ["O"], "id": "OverrideMethods" },
             { "keys": ["G"], "id": "Generate" },
+            { "keys": ["D"], "id": "SafeDelete" },
             { "keys": ["R"], "id": "RenameElement", "separator-above": "" },
             { "keys": ["ctrl R"], "id": "RenameFile" },
             { "keys": ["S"], "id": "ChangeSignature" },
