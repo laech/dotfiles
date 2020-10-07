@@ -154,21 +154,18 @@
         { "keys": ["R"], "id": "RenameElement" },
         { "keys": ["ctrl R"], "id": "RenameFile" },
         { "keys": ["S"], "id": "ChangeSignature" },
-        { "keys": ["ctrl M"], "id": "Move", "separator-above": "" },
-        { "keys": ["D"], "id": "SafeDelete" },
         { "keys": ["T"], "id": "ChangeTypeSignature" },
-        { "keys": ["N"], "id": "Inline" },
-        { "keys": ["typed !"], "id": "InvertBoolean" },
+        { "keys": ["ctrl X"], "id": "Move", "separator-above": "" },
+        { "keys": ["ctrl C"], "id": "CopyElement" },
+        { "keys": ["DELETE"], "id": "SafeDelete" },
         { "keys": ["V"], "id": "IntroduceVariable", "separator-above": "" },
         { "keys": ["C"], "id": "IntroduceConstant" },
         { "keys": ["F"], "id": "IntroduceField" },
         { "keys": ["P"], "id": "IntroduceParameter" },
         { "keys": ["M"], "id": "ExtractMethod" },
-        {
-          "keys": ["M"],
-          "id": "ExtractFunction",
-          "when": "FileExtension:kt"
-        }
+        { "keys": ["M"], "id": "ExtractFunction", "when": "FileExtension:kt" },
+        { "keys": ["N"], "id": "Inline" },
+        { "keys": ["typed !"], "id": "InvertBoolean" }
       ]
     },
     {
