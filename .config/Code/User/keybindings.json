@@ -618,7 +618,7 @@
         "command": "breadcrumbs.toggle"
     },
     {
-        "key": "ctrl+shift+alt+s",
+        "key": "ctrl+shift+/",
         "command": "workbench.action.toggleActivityBarVisibility"
     },
     {

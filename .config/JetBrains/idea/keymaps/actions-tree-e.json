@@ -20,23 +20,9 @@
       "keys": ["ctrl X"],
       "items": [
         { "keys": ["ctrl F", "RIGHT"], "id": "OpenFile" },
-        { "keys": ["ctrl B", "B"], "id": "RecentFiles" },
-        { "keys": ["D"], "id": "ActivateProjectToolWindow" },
         { "keys": ["ctrl S", "F3"], "id": "SaveAll", "separator-above": "" },
-        {
-          "keys": ["W"],
-          "id": "com.gitlab.lae.intellij.actions.CamelHumpsInCurrentEditor"
-        },
         { "keys": ["ctrl W"], "id": "CopyElement" },
         { "keys": ["ctrl E"], "id": "QuickEvaluateExpression" },
-        {
-          "keys": ["ctrl U"],
-          "id": "com.gitlab.lae.intellij.actions.UpcaseRegionOrToWordEnd"
-        },
-        {
-          "keys": ["ctrl L"],
-          "id": "com.gitlab.lae.intellij.actions.DowncaseRegionOrToWordEnd"
-        },
         { "keys": ["SPACE"], "id": "EditorToggleColumnMode" },
         {
           "keys": ["R"],
