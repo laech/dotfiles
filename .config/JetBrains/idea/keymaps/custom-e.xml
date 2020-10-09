@@ -1,8 +1,4 @@
 <keymap version="1" name="custom-e" parent="$default">
-  <action id="$Cut">
-    <keyboard-shortcut first-keystroke="shift delete" />
-    <keyboard-shortcut first-keystroke="ctrl w" />
-  </action>
   <action id="$Delete">
     <keyboard-shortcut first-keystroke="delete" />
     <keyboard-shortcut first-keystroke="back_space" />
@@ -65,6 +61,9 @@
   <action id="CheckinProject" />
   <action id="ClassNameCompletion" />
   <action id="CloseActiveTab" />
+  <action id="CloseAllEditors">
+    <keyboard-shortcut first-keystroke="ctrl w" />
+  </action>
   <action id="CodeCompletion">
     <keyboard-shortcut first-keystroke="ctrl alt i" />
   </action>

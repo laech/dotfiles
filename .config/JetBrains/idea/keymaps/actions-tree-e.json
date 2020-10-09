@@ -17,8 +17,27 @@
       "when": { "all": ["ToolWindowActive:.*", "!InputFocused"] }
     },
     {
-      "keys": ["ctrl X"],
+      "keys": ["ctrl U"],
       "items": [
+        {
+          "keys": ["typed @"],
+          "name": "Folding",
+          "items": [
+            { "keys": ["ctrl H", "ctrl D"], "id": "CollapseRegion" },
+            { "keys": ["ctrl S"], "id": "ExpandRegion" },
+            {
+              "separator-above": "",
+              "keys": ["ctrl alt H", "ctrl T"],
+              "id": "CollapseAllRegions"
+            },
+            { "keys": ["ctrl alt S", "ctrl A"], "id": "ExpandAllRegions" },
+            {
+              "separator-above": "",
+              "keys": ["ctrl C", "ctrl E"],
+              "id": "CollapseSelection"
+            }
+          ]
+        },
         { "keys": ["ctrl F", "RIGHT"], "id": "OpenFile" },
         { "keys": ["ctrl S", "F3"], "id": "SaveAll", "separator-above": "" },
         { "keys": ["ctrl W"], "id": "CopyElement" },
@@ -105,32 +124,7 @@
         {
           "keys": ["ctrl MINUS"], "id": "EditorDecreaseFontSize", "sticky": true
         },
-        { "keys": ["ctrl 0"], "id": "EditorResetFontSize" },
-        { "keys": ["ctrl C"], "id": "Exit", "separator-above": "" }
-      ]
-    },
-    {
-      "keys": ["ctrl U"],
-      "items": [
-        {
-          "keys": ["typed @"],
-          "name": "Folding",
-          "items": [
-            { "keys": ["ctrl H", "ctrl D"], "id": "CollapseRegion" },
-            { "keys": ["ctrl S"], "id": "ExpandRegion" },
-            {
-              "separator-above": "",
-              "keys": ["ctrl alt H", "ctrl T"],
-              "id": "CollapseAllRegions"
-            },
-            { "keys": ["ctrl alt S", "ctrl A"], "id": "ExpandAllRegions" },
-            {
-              "separator-above": "",
-              "keys": ["ctrl C", "ctrl E"],
-              "id": "CollapseSelection"
-            }
-          ]
-        }
+        { "keys": ["ctrl 0"], "id": "EditorResetFontSize" }
       ]
     },
     {
