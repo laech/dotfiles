@@ -5,7 +5,9 @@
   "copyFormatting": false,
   "theme": "dark",
   "profiles": {
-    "defaults": {},
+    "defaults": {
+      "fontSize": 11
+    },
     "list": [
       {
         "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
