@@ -6,4 +6,6 @@ mklink /D C:\Users\Lae\AppData\Roaming\.emacs.d C:\Users\Lae\projects\self\dotfi
 mklink /D C:\Users\Lae\AppData\Roaming\Code\User C:\Users\Lae\projects\self\dotfiles\.config\Code\User
 mklink /J C:\Users\Lae\AppData\Roaming\JetBrains\IdeaIC2020.2 C:\Users\Lae\projects\self\dotfiles\.config\JetBrains\idea
 
+mklink C:\Users\Lae\.gitconfig C:\Users\Lae\projects\self\dotfiles\.windows\.gitconfig
+
 pause
