@@ -109,7 +109,7 @@ if ! type __git_ps1 &>/dev/null; then
 fi
 
 readonly my_ps1=$'\n'
-readonly my_ps2="%B%F{green}%n@%m%f %F{blue}%~%f%b"
+readonly my_ps2="%B%F{blue}%~%f%b"
 readonly my_ps3=$'\n'"%(?.%%.%F{red}%#%f) "
 if type __git_ps1 &>/dev/null; then
   precmd() {
