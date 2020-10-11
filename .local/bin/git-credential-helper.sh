@@ -7,7 +7,7 @@ set -o pipefail
 readonly WSLENV=${WSLENV:-}
 
 if [[ -n "$WSLENV" ]]; then
-  /mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-manager-core.exe "$@"
+  /mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-manager.exe "$@"
 elif [[ -e /usr/libexec/git-core/git-credential-libsecret ]]; then
   /usr/libexec/git-core/git-credential-libsecret "$@"
 elif [[ -e /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret ]]; then
