@@ -14,12 +14,6 @@ fi
 
 setup_packages() {
   packages=(
-
-    # For building git-credential-libsecret
-    libglib2.0-dev
-    libsecret-1-dev
-
-    build-essential
     curl
     tmux
     zsh
@@ -32,13 +26,6 @@ setup_packages() {
   sudo apt install -y "${packages[@]}"
 }
 
-setup_git() {
-  if [[ ! -f /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret ]]; then
-    sudo make --directory=/usr/share/doc/git/contrib/credential/libsecret
-  fi
-}
-
 setup_packages
-setup_git
 setup_shfmt
 setup_shell
