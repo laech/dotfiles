@@ -106,6 +106,12 @@
   </action>
   <action id="Diff.FocusOppositePane" />
   <action id="Diff.FocusOppositePaneAndScroll" />
+  <action id="Diff.NextChange">
+    <keyboard-shortcut first-keystroke="ctrl alt down" />
+  </action>
+  <action id="Diff.PrevChange">
+    <keyboard-shortcut first-keystroke="ctrl alt up" />
+  </action>
   <action id="Diff.ShowDiff">
     <keyboard-shortcut first-keystroke="equals" />
   </action>
@@ -143,10 +149,6 @@
   <action id="EditorAddOrRemoveCaret" />
   <action id="EditorAddRectangularSelectionOnMouseDrag" />
   <action id="EditorChooseLookupItemDot" />
-  <action id="EditorCodeBlockEnd" />
-  <action id="EditorCodeBlockEndWithSelection" />
-  <action id="EditorCodeBlockStart" />
-  <action id="EditorCodeBlockStartWithSelection" />
   <action id="EditorContextInfo" />
   <action id="EditorCreateRectangularSelection" />
   <action id="EditorCutLineEnd">
@@ -178,9 +180,7 @@
   </action>
   <action id="EditorLookupDown" />
   <action id="EditorLookupUp" />
-  <action id="EditorMatchBrace">
-    <keyboard-shortcut first-keystroke="ctrl alt g" />
-  </action>
+  <action id="EditorMatchBrace" />
   <action id="EditorMoveToPageBottom" />
   <action id="EditorMoveToPageBottomWithSelection" />
   <action id="EditorMoveToPageTop" />
@@ -280,7 +280,9 @@
     <keyboard-shortcut first-keystroke="ctrl n" />
   </action>
   <action id="Git.Branches" />
-  <action id="Git.Commit.And.Push.Executor" />
+  <action id="Git.Commit.And.Push.Executor">
+    <keyboard-shortcut first-keystroke="shift ctrl alt enter" />
+  </action>
   <action id="Git.Reword.Commit" />
   <action id="GotoAction">
     <keyboard-shortcut first-keystroke="alt x" />

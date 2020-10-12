@@ -57,59 +57,6 @@
             }
           ]
         },
-        { "keys": ["G"], "id": "ActivateCommitToolWindow" },
-        {
-          "keys": ["V"],
-          "name": "Version Control...",
-          "items": [
-            { "keys": ["C"], "id": "CheckinProject" },
-            { "keys": ["shift P"], "id": "Vcs.Push" },
-            { "keys": ["typed +"], "id": "Vcs.UpdateProject" },
-            { "keys": ["G"], "id": "Annotate", "separator-above": "" },
-            { "keys": ["EQUALS"], "id": "Compare.SameVersion" },
-            { "id": "Compare.Selected" },
-            { "id": "Git.CompareWithBranch" },
-            { "keys": ["H"], "id": "Vcs.ShowHistoryForBlock" },
-            { "keys": ["L"], "id": "Vcs.ShowTabbedFileHistory" },
-            { "keys": ["shift L"], "id": "Vcs.Show.Log" },
-            { "keys": ["D"], "id": "Vcs.Show.Local.Changes" },
-            {
-              "keys": ["PERIOD"],
-              "id": "VcsShowCurrentChangeMarker",
-              "separator-above": ""
-            },
-            {
-              "keys": ["OPEN_BRACKET"],
-              "id": "VcsShowPrevChangeMarker",
-              "sticky": true
-            },
-            {
-              "keys": ["CLOSE_BRACKET"],
-              "id": "VcsShowNextChangeMarker",
-              "sticky": true
-            },
-            { "keys": ["I"], "id": "ChangesView.AddUnversioned" },
-            { "keys": ["N"], "id": "Vcs.RollbackChangedLines" },
-            { "keys": ["U"], "id": "ChangesView.Revert" },
-            { "keys": ["F"], "id": "Git.Fetch", "separator-above": "" },
-            { "keys": ["shift F"], "id": "Git.Pull" },
-            { "keys": ["M"], "id": "Git.Merge" },
-            { "keys": ["R"], "id": "Git.Rebase" },
-            { "keys": ["B"], "id": "Git.Branches" },
-            { "keys": ["T"], "id": "Git.Tag" },
-            { "keys": ["shift M"], "id": "Git.Configure.Remotes" },
-            {
-              "keys": ["Z"],
-              "name": "Stashing...",
-              "separator-above": "",
-              "items": [
-                { "keys": ["Z"], "id": "Git.Stash" },
-                { "keys": ["A"], "id": "Git.Unstash" }
-              ]
-            }
-          ]
-        },
-        { "keys": ["K", "0"], "id": "CloseContent", "separator-above": "" },
         { "keys": ["ctrl 1"], "id": "UnsplitAll" },
         { "keys": ["1"], "id": "HideAllWindows" },
         { "keys": ["2"], "id": "SplitHorizontally" },
@@ -125,6 +72,47 @@
           "keys": ["ctrl MINUS"], "id": "EditorDecreaseFontSize", "sticky": true
         },
         { "keys": ["ctrl 0"], "id": "EditorResetFontSize" }
+      ]
+    },
+    {
+      "keys": ["ctrl alt G"],
+      "name": "Version Control...",
+      "items": [
+        { "keys": ["C"], "id": "CheckinProject" },
+        { "keys": ["shift P"], "id": "Vcs.Push" },
+        { "keys": ["typed +"], "id": "Vcs.UpdateProject" },
+        { "keys": ["G"], "id": "Annotate", "separator-above": "" },
+        { "keys": ["EQUALS"], "id": "Compare.SameVersion" },
+        { "id": "Compare.Selected" },
+        { "id": "Git.CompareWithBranch" },
+        { "keys": ["H"], "id": "Vcs.ShowHistoryForBlock" },
+        { "keys": ["L"], "id": "Vcs.ShowTabbedFileHistory" },
+        { "keys": ["shift L"], "id": "Vcs.Show.Log" },
+        { "keys": ["D"], "id": "Vcs.Show.Local.Changes" },
+        {
+          "keys": ["PERIOD"],
+          "id": "VcsShowCurrentChangeMarker",
+          "separator-above": ""
+        },
+        { "keys": ["I"], "id": "ChangesView.AddUnversioned" },
+        { "keys": ["N"], "id": "Vcs.RollbackChangedLines" },
+        { "keys": ["U"], "id": "ChangesView.Revert" },
+        { "keys": ["F"], "id": "Git.Fetch", "separator-above": "" },
+        { "keys": ["shift F"], "id": "Git.Pull" },
+        { "keys": ["M"], "id": "Git.Merge" },
+        { "keys": ["R"], "id": "Git.Rebase" },
+        { "keys": ["B"], "id": "Git.Branches" },
+        { "keys": ["T"], "id": "Git.Tag" },
+        { "keys": ["shift M"], "id": "Git.Configure.Remotes" },
+        {
+          "keys": ["Z"],
+          "name": "Stashing...",
+          "separator-above": "",
+          "items": [
+            { "keys": ["Z"], "id": "Git.Stash" },
+            { "keys": ["A"], "id": "Git.Unstash" }
+          ]
+        }
       ]
     },
     {
@@ -171,6 +159,7 @@
     {
       "keys": ["alt G"],
       "items": [
+        { "keys": ["F", "B"], "id": "EditorMatchBrace" },
         { "keys": ["alt G", "G"], "id": "GotoLine" },
         { "keys": ["P"], "id": "GotoPreviousError", "separator-above": "" },
         { "keys": ["N"], "id": "GotoNextError" },
