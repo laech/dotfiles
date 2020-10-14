@@ -1,12 +1,12 @@
-*
+/*
 !/.config
 !/.emacs.d
 !/.local/bin
 !/.profiles
 !/.windows
-!/.git*
 !/.profile
 !/.tmux.conf
 !/.zshenv
 !/.zshrc
 !/readme
+!.git*
