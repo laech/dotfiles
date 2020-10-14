@@ -3,3 +3,4 @@ alias config='git --git-dir="${HOME}/.cfg" --work-tree="${HOME}"'
 config checkout
 config submodule init
 config submodule update
+config config status.showUntrackedFiles no
