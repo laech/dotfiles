@@ -1,0 +1,16 @@
+.config/Code/User/globalStorage
+.config/Code/User/workspaceStorage
+.config/JetBrains/idea/disabled_plugins.txt
+.config/JetBrains/idea/options/actionSummary.xml
+.config/JetBrains/idea/options/debugger.xml
+.config/JetBrains/idea/options/other.xml
+.config/JetBrains/idea/options/path.macros.xml
+.config/JetBrains/idea/options/project.default.xml
+.config/JetBrains/idea/options/textmate_os.xml
+.config/JetBrains/idea/options/updates.xml
+.config/JetBrains/idea/options/usage.statistics.xml
+.config/JetBrains/idea/options/window.state.xml
+.config/JetBrains/idea/options/wsl.distributions.xml
+.config/JetBrains/idea/plugins
+.config/JetBrains/idea/port.lock
+.idea
