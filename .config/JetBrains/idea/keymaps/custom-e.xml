@@ -256,14 +256,7 @@
   <action id="FillParagraph">
     <keyboard-shortcut first-keystroke="alt q" />
   </action>
-  <action id="Find">
-    <keyboard-shortcut first-keystroke="ctrl s" />
-    <keyboard-shortcut first-keystroke="f3" />
-    <keyboard-shortcut first-keystroke="shift f3" />
-    <keyboard-shortcut first-keystroke="ctrl f" />
-  </action>
   <action id="FindNext">
-    <keyboard-shortcut first-keystroke="ctrl s" />
     <keyboard-shortcut first-keystroke="f3" />
   </action>
   <action id="FindPrevious">
@@ -453,7 +446,6 @@
   <action id="Replace">
     <keyboard-shortcut first-keystroke="shift alt 5" />
   </action>
-  <action id="ReplaceInPath" />
   <action id="Rerun" />
   <action id="RerunTests" />
   <action id="ResizeToolWindowDown" />
@@ -467,7 +459,6 @@
   <action id="RunTargetAction" />
   <action id="RunToCursor" />
   <action id="SafeDelete" />
-  <action id="SaveAll" />
   <action id="Scala.ShowImplicits">
     <keyboard-shortcut first-keystroke="shift ctrl alt equals" />
     <keyboard-shortcut first-keystroke="shift ctrl alt add" />
