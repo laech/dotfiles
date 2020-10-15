@@ -127,6 +127,7 @@
         { "keys": ["ctrl C"], "id": "CopyElement" },
         { "keys": ["DELETE"], "id": "SafeDelete" },
         { "keys": ["V"], "id": "IntroduceVariable", "separator-above": "" },
+        { "keys": ["ctrl V"], "id": "IntroduceFunctionalVariable" },
         { "keys": ["C"], "id": "IntroduceConstant" },
         { "keys": ["F"], "id": "IntroduceField" },
         { "keys": ["P"], "id": "IntroduceParameter" },
