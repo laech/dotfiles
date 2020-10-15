@@ -30,6 +30,7 @@
 .config/JetBrains/idea/options/updates.xml
 .config/JetBrains/idea/options/usage.statistics.xml
 .config/JetBrains/idea/options/usageView.xml
+.config/JetBrains/idea/options/vcs.xml
 .config/JetBrains/idea/options/window.state.xml
 .config/JetBrains/idea/options/wsl.distributions.xml
 .config/JetBrains/idea/plugins
