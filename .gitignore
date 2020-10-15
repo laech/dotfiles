@@ -9,6 +9,7 @@
 .config/JetBrains/idea/idea64.exe.vmoptions
 .config/JetBrains/idea/options/actionSummary.xml
 .config/JetBrains/idea/options/code.style.schemes.xml
+.config/JetBrains/idea/options/colors.scheme.xml
 .config/JetBrains/idea/options/debugger.xml
 .config/JetBrains/idea/options/docker.xml
 .config/JetBrains/idea/options/extensionsRootType.xml
@@ -16,6 +17,7 @@
 .config/JetBrains/idea/options/find.xml
 .config/JetBrains/idea/options/github.xml
 .config/JetBrains/idea/options/jdk.table.xml
+.config/JetBrains/idea/options/laf.xml
 .config/JetBrains/idea/options/lightEdit.xml
 .config/JetBrains/idea/options/lombok-plugin.xml
 .config/JetBrains/idea/options/other.xml
