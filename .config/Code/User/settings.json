@@ -21,6 +21,7 @@
     "git.autofetchPeriod": 300,
     "git.confirmSync": false,
     "git.enableCommitSigning": true,
+    "http.proxySupport": "off",
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
     "terminal.integrated.copyOnSelection": true,
@@ -38,12 +39,12 @@
     "workbench.colorCustomizations": {
         "[Default Light+]": {
             "window.activeBorder": "#00000066",
-            "window.inactiveBorder": "#00000033"
+            "window.inactiveBorder": "#00000033",
         },
         "[Default Dark+]": {
             "window.activeBorder": "#ffffff33",
-            "window.inactiveBorder": "#ffffff22"
-        }
+            "window.inactiveBorder": "#ffffff22",
+        },
     },
     "workbench.editor.centeredLayoutAutoResize": false,
     "workbench.editor.enablePreview": false,
@@ -58,5 +59,5 @@
     "workbench.tree.indent": 16,
     "workbench.tree.renderIndentGuides": "none",
     "zenMode.centerLayout": false,
-    "zenMode.fullScreen": false
+    "zenMode.fullScreen": false,
 }
