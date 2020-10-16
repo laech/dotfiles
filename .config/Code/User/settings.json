@@ -28,12 +28,23 @@
     "terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
     "timeline.excludeSources": [],
     "typescript.updateImportsOnFileMove.enabled": "always",
+    "window.autoDetectColorScheme": true,
     "window.customMenuBarAltFocus": false,
     "window.enableMenuBarMnemonics": false,
     "window.menuBarVisibility": "toggle",
     "window.titleBarStyle": "native",
     "workbench.activityBar.visible": false,
     "workbench.colorTheme": "Default Light+",
+    "workbench.colorCustomizations": {
+        "[Default Light+]": {
+            "window.activeBorder": "#00000066",
+            "window.inactiveBorder": "#00000033"
+        },
+        "[Default Dark+]": {
+            "window.activeBorder": "#ffffff33",
+            "window.inactiveBorder": "#ffffff22"
+        }
+    },
     "workbench.editor.centeredLayoutAutoResize": false,
     "workbench.editor.enablePreview": false,
     "workbench.editor.enablePreviewFromQuickOpen": false,
@@ -46,6 +57,6 @@
     "workbench.statusBar.visible": false,
     "workbench.tree.indent": 16,
     "workbench.tree.renderIndentGuides": "none",
-    "zenMode.fullScreen": false,
-    "zenMode.centerLayout": false
+    "zenMode.centerLayout": false,
+    "zenMode.fullScreen": false
 }
