@@ -40,5 +40,6 @@
 .config/JetBrains/idea/port.lock
 .config/JetBrains/idea/tasks
 .config/JetBrains/idea/terminal
+.config/JetBrains/idea/user.web.token
 .config/JetBrains/idea/workspace
 .idea
