@@ -3,6 +3,7 @@
 .config/JetBrains/idea/*.kdbx
 .config/JetBrains/idea/*.pwd
 .config/JetBrains/idea/codestyles/GoogleStyle.xml
+.config/JetBrains/idea/consoles/jshell/jshell_console.snippet
 .config/JetBrains/idea/disabled_plugins.txt
 .config/JetBrains/idea/disabled_update.txt
 .config/JetBrains/idea/extensions
@@ -27,6 +28,7 @@
 .config/JetBrains/idea/options/recentProjects.xml
 .config/JetBrains/idea/options/remote-servers.xml
 .config/JetBrains/idea/options/runner.layout.xml
+.config/JetBrains/idea/options/scratches.xml
 .config/JetBrains/idea/options/textmate_os.xml
 .config/JetBrains/idea/options/toStringTemplates.xml
 .config/JetBrains/idea/options/updates.xml
@@ -38,6 +40,7 @@
 .config/JetBrains/idea/plugins
 .config/JetBrains/idea/port
 .config/JetBrains/idea/port.lock
+.config/JetBrains/idea/scratches/
 .config/JetBrains/idea/tasks
 .config/JetBrains/idea/terminal
 .config/JetBrains/idea/user.web.token

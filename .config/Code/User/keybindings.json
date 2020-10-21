@@ -329,5 +329,9 @@
         "key": "ctrl+h c",
         "command": "references-view.showCallHierarchy",
         "when": "editorHasCallHierarchyProvider"
+    },
+    {
+        "key": "ctrl+shift+alt+g",
+        "command": "workbench.view.extension.github-pull-requests"
     }
 ]
