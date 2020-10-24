@@ -7,6 +7,7 @@
 .config/JetBrains/idea/disabled_update.txt
 .config/JetBrains/idea/extensions
 .config/JetBrains/idea/idea64.exe.vmoptions
+.config/JetBrains/idea/mdn/
 .config/JetBrains/idea/options/actionSummary.xml
 .config/JetBrains/idea/options/code.style.schemes.xml
 .config/JetBrains/idea/options/colors.scheme.xml
@@ -16,6 +17,7 @@
 .config/JetBrains/idea/options/filetypes.xml
 .config/JetBrains/idea/options/find.xml
 .config/JetBrains/idea/options/github.xml
+.config/JetBrains/idea/options/IntelliLang.xml
 .config/JetBrains/idea/options/jdk.table.xml
 .config/JetBrains/idea/options/laf.xml
 .config/JetBrains/idea/options/lightEdit.xml
