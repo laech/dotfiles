@@ -6,6 +6,8 @@
   "theme": "dark",
   "profiles": {
     "defaults": {
+      "antialiasingMode": "cleartype",
+      "cursorShape": "filledBox",
       "fontSize": 11
     },
     "list": [
@@ -32,7 +34,7 @@
         "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
         "name": "Command Prompt",
         "commandline": "cmd.exe",
-        "hidden": false
+        "hidden": true
       },
       {
         "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
@@ -44,5 +46,29 @@
   },
   "schemes": [],
   "keybindings": [
+    {
+      "command": "unbound",
+      "keys": [
+        "alt+enter"
+      ]
+    },
+    {
+      "command": {
+        "action": "splitPane",
+        "split": "vertical"
+      },
+      "keys": "ctrl+shift+\\"
+    },
+    {
+      "command": {
+        "action": "splitPane",
+        "split": "horizontal"
+      },
+      "keys": "ctrl+shift+-"
+    },
+    {
+      "command": "commandPalette",
+      "keys": "ctrl+shift+x"
+    }
   ]
 }
