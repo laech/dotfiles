@@ -3,7 +3,7 @@
 .config/JetBrains/idea/*.kdbx
 .config/JetBrains/idea/*.pwd
 .config/JetBrains/idea/codestyles/GoogleStyle.xml
-.config/JetBrains/idea/consoles/jshell/jshell_console.snippet
+.config/JetBrains/idea/consoles/jshell/
 .config/JetBrains/idea/disabled_plugins.txt
 .config/JetBrains/idea/disabled_update.txt
 .config/JetBrains/idea/extensions
