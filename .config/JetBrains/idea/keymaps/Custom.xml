@@ -65,6 +65,9 @@
   <action id="ClassNameCompletion" />
   <action id="CloseActiveTab" />
   <action id="CloseAllEditors">
+    <keyboard-shortcut first-keystroke="ctrl alt w" />
+  </action>
+  <action id="CloseContent">
     <keyboard-shortcut first-keystroke="ctrl w" />
   </action>
   <action id="CodeCompletion">
@@ -127,7 +130,6 @@
   </action>
   <action id="Editor Cut">
     <keyboard-shortcut first-keystroke="shift ctrl back_space" />
-    <keyboard-shortcut first-keystroke="ctrl w" />
   </action>
   <action id="Editor LRU">
     <keyboard-shortcut first-keystroke="ctrl c" second-keystroke="p" />
