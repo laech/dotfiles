@@ -333,5 +333,9 @@
     {
         "key": "ctrl+shift+alt+g",
         "command": "workbench.view.extension.github-pull-requests"
+    },
+    {
+        "key": "ctrl+alt+w",
+        "command": "workbench.action.closeAllEditors"
     }
 ]
