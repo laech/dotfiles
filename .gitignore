@@ -6,12 +6,15 @@
 .config/JetBrains/idea/consoles/jshell/
 .config/JetBrains/idea/disabled_plugins.txt
 .config/JetBrains/idea/disabled_update.txt
+.config/JetBrains/idea/event-log-metadata/
 .config/JetBrains/idea/extensions
 .config/JetBrains/idea/idea64.exe.vmoptions
 .config/JetBrains/idea/mdn/
 .config/JetBrains/idea/options/actionSummary.xml
+.config/JetBrains/idea/options/androidStudioFirstRun.xml
 .config/JetBrains/idea/options/code.style.schemes.xml
 .config/JetBrains/idea/options/colors.scheme.xml
+.config/JetBrains/idea/options/completion.factors.user.xml
 .config/JetBrains/idea/options/debugger.xml
 .config/JetBrains/idea/options/docker.xml
 .config/JetBrains/idea/options/extensionsRootType.xml
@@ -26,6 +29,7 @@
 .config/JetBrains/idea/options/other.xml
 .config/JetBrains/idea/options/path.macros.xml
 .config/JetBrains/idea/options/plugin_ui.xml
+.config/JetBrains/idea/options/pluginAdvertiser.xml
 .config/JetBrains/idea/options/project.default.xml
 .config/JetBrains/idea/options/recentProjects.xml
 .config/JetBrains/idea/options/remote-servers.xml
