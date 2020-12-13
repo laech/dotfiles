@@ -21,6 +21,7 @@
 .config/JetBrains/idea/options/filetypes.xml
 .config/JetBrains/idea/options/find.xml
 .config/JetBrains/idea/options/github.xml
+.config/JetBrains/idea/options/images.support.xml
 .config/JetBrains/idea/options/IntelliLang.xml
 .config/JetBrains/idea/options/jdk.table.xml
 .config/JetBrains/idea/options/laf.xml
