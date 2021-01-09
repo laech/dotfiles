@@ -14,6 +14,7 @@
     <entry key="search.everywhere.actions" value="false" />
     <entry key="BSP.system.in.process" value="true" />
     <entry key="SBT.system.in.process" value="true" />
+    <entry key="external.system.auto.import.disabled" value="true" />
     <entry key="editor.distraction.free.mode" value="true" />
   </component>
 </application>

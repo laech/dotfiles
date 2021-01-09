@@ -18,15 +18,19 @@
 .config/JetBrains/idea/options/debugger.xml
 .config/JetBrains/idea/options/docker.xml
 .config/JetBrains/idea/options/extensionsRootType.xml
+.config/JetBrains/idea/options/features.usage.statistics.xml
 .config/JetBrains/idea/options/filetypes.xml
 .config/JetBrains/idea/options/find.xml
 .config/JetBrains/idea/options/github.xml
+.config/JetBrains/idea/options/ide-features-trainer.xml
+.config/JetBrains/idea/options/ide.general.xml
 .config/JetBrains/idea/options/images.support.xml
 .config/JetBrains/idea/options/IntelliLang.xml
 .config/JetBrains/idea/options/jdk.table.xml
 .config/JetBrains/idea/options/laf.xml
 .config/JetBrains/idea/options/lightEdit.xml
 .config/JetBrains/idea/options/lombok-plugin.xml
+.config/JetBrains/idea/options/notifications.xml
 .config/JetBrains/idea/options/other.xml
 .config/JetBrains/idea/options/path.macros.xml
 .config/JetBrains/idea/options/plugin_ui.xml
@@ -42,6 +46,7 @@
 .config/JetBrains/idea/options/usage.statistics.xml
 .config/JetBrains/idea/options/usageView.xml
 .config/JetBrains/idea/options/vcs.xml
+.config/JetBrains/idea/options/visualizationTool.xml
 .config/JetBrains/idea/options/window.state.xml
 .config/JetBrains/idea/options/wsl.distributions.xml
 .config/JetBrains/idea/plugins
@@ -50,6 +55,7 @@
 .config/JetBrains/idea/scratches/
 .config/JetBrains/idea/tasks
 .config/JetBrains/idea/terminal
+.config/JetBrains/idea/user.token
 .config/JetBrains/idea/user.web.token
 .config/JetBrains/idea/workspace
 .idea
