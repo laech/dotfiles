@@ -33,7 +33,7 @@
     "window.customMenuBarAltFocus": false,
     "window.enableMenuBarMnemonics": false,
     "window.menuBarVisibility": "toggle",
-    "workbench.activityBar.visible": true,
+    "workbench.activityBar.visible": false,
     "workbench.colorCustomizations": {
         "[Default Light+]": {
             "activityBar.background": "#ddd",

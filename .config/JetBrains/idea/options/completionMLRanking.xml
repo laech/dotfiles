@@ -4,7 +4,9 @@
     <option name="language2state">
       <map>
         <entry key="Java" value="true" />
+        <entry key="JavaScript" value="true" />
         <entry key="Kotlin" value="true" />
+        <entry key="TypeScript" value="true" />
       </map>
     </option>
   </component>

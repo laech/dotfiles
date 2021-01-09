@@ -6,6 +6,8 @@ mklink /D C:\Users\Lae\Documents\PowerShell C:\Users\Lae\projects\self\dotfiles\
 mklink /D C:\Users\Lae\AppData\Roaming\.emacs.d C:\Users\Lae\projects\self\dotfiles\.emacs.d
 mklink /D C:\Users\Lae\AppData\Roaming\Code\User C:\Users\Lae\projects\self\dotfiles\.config\Code\User
 mklink /J C:\Users\Lae\AppData\Roaming\JetBrains\IdeaIC2020.3 C:\Users\Lae\projects\self\dotfiles\.config\JetBrains\idea
+mklink /J C:\Users\Lae\AppData\Roaming\JetBrains\IntelliJIdea2020.3 C:\Users\Lae\projects\self\dotfiles\.config\JetBrains\idea
+mklink /J C:\Users\Lae\AppData\Roaming\Google\AndroidStudio4.1 C:\Users\Lae\projects\self\dotfiles\.config\JetBrains\idea
 
 mklink C:\Users\Lae\.gitconfig C:\Users\Lae\projects\self\dotfiles\.windows\.gitconfig
 
