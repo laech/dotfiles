@@ -1,5 +1,6 @@
 <application>
   <component name="CompletionMLRankingSettings">
+    <option name="rankingEnabled" value="false" />
     <option name="showDiff" value="true" />
     <option name="language2state">
       <map>
