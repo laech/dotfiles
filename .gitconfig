@@ -1,5 +1,5 @@
 [credential]
-	helper = /mnt/c/"Program\\ Files"/Git/mingw64/libexec/git-core/git-credential-manager.exe
+	helper = /home/lae/.local/bin/git-credential-helper.sh
 [user]
 	signingkey = 086540409FB516EE2B6C835CF9AB582398F03331
 	name = Lae Chen
@@ -8,3 +8,5 @@
 	gpgsign = true
 [tag]
 	gpgSign = true
+[pull]
+	rebase = false

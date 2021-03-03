@@ -1,0 +1,221 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+set -o pipefail
+set -o xtrace
+
+if [[ $UID == 0 ]]; then
+  echo "don't run as root" 1>&2
+  exit 1
+fi
+
+. "$(dirname "${BASH_SOURCE[0]}")"/setup-common
+
+setup_packages() {
+  packages=(
+    zsh
+    tmux
+    vim
+    emacs
+    util-linux-user
+    grubby
+    jq
+    ShellCheck
+    source-highlight
+    git-credential-libsecret
+    seahorse
+    docker
+    docker-compose
+    java-11-openjdk-devel
+    java-11-openjdk-src
+    cascadia-code-fonts
+    google-roboto-fonts
+  )
+
+  sudo dnf install -y "${packages[@]}"
+}
+
+setup_docker() {
+  local tmpdir=
+  local tmpfile=
+  local version=0.6.3
+  local sha256=6aa937e55e00fd38f23ae878014579eb8482db4be87bc10d356dbc3b5a8ab7b0
+  local config_file=~/.docker/config.json
+  local config_content=
+
+  # Use cgroup v1 as Docker doesn't support v2
+  # To undo: sudo grubby --update-kernel=ALL --args="systemd.unified_cgroup_hierarchy"
+  sudo grubby --update-kernel=ALL --args="systemd.unified_cgroup_hierarchy=0"
+  sudo firewall-cmd --zone=trusted --change-interface=docker0
+  sudo firewall-cmd --zone=trusted --change-interface=docker0 --permanent
+
+  [[ "$(docker-credential-secretservice version 2>&1)" == "$version" ]] && return
+
+  if [[ ! -e "$config_file" ]]; then
+    mkdir -p "$(dirname "$config_file")"
+    echo "{}" >"$config_file"
+  fi
+
+  config_content=$(jq '.credsStore = "secretservice"' "$config_file")
+  echo "$config_content" >"$config_file"
+
+  tmpdir=$(mktemp -d)
+  tmpfile="$tmpdir"/a.tar.gz
+  trap "{ rm -rf $tmpdir; }" EXIT
+  curl -L -o "$tmpfile" "https://github.com/docker/docker-credential-helpers/releases/download/v${version}/docker-credential-secretservice-v${version}-amd64.tar.gz"
+  sha256sum -c <<<"$sha256 $tmpfile"
+  tar -xvf "$tmpfile" -C "$tmpdir"
+  chmod +x "$tmpdir/docker-credential-secretservice"
+  mv "$tmpdir/docker-credential-secretservice" ~/.local/bin/
+
+}
+
+setup_gnome_keybindings() {
+
+  dconf load /org/gnome/desktop/wm/keybindings/ <<<"
+[/]
+activate-window-menu=@as []
+move-to-workspace-down=['<Shift><Super>n']
+move-to-workspace-up=['<Shift><Super>p']
+switch-to-workspace-down=['<Super>n']
+switch-to-workspace-left=@as []
+switch-to-workspace-right=@as []
+switch-to-workspace-up=['<Super>p']
+"
+
+  dconf load /org/gnome/shell/keybindings/ <<<"
+[/]
+focus-active-notification=@as []
+toggle-application-view=@as []
+"
+
+  dconf load /org/gnome/mutter/keybindings/ <<<"
+[/]
+switch-monitor=['XF86Display']
+"
+
+  dconf load /org/gnome/settings-daemon/plugins/media-keys/ <<<"
+[/]
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']
+
+[custom-keybindings/custom0]
+binding='<Super>Return'
+command='gnome-terminal'
+name='Terminal'
+"
+
+  dconf load /org/gnome/terminal/legacy/keybindings/ <<<"
+[/]
+preferences='<Control>comma'
+switch-to-tab-1='<Control>1'
+switch-to-tab-10='disabled'
+switch-to-tab-2='<Control>2'
+switch-to-tab-3='<Control>3'
+switch-to-tab-4='<Control>4'
+switch-to-tab-5='<Control>5'
+switch-to-tab-6='<Control>6'
+switch-to-tab-7='<Control>7'
+switch-to-tab-8='<Control>8'
+switch-to-tab-9='<Control>9'
+"
+}
+
+setup_xkb() {
+  sudo cp ~/.profiles/custom.xkb /usr/share/X11/xkb/symbols/custom
+
+  if ! grep -F "custom:basic" /usr/share/X11/xkb/rules/evdev; then
+    sudo sed -i '/! option[[:blank:]]*=[[:blank:]]*symbols/a\
+  custom:basic\t=\t+custom(basic)\
+  custom:lalt_as_lv3\t=\t+custom(lalt_as_lv3)\
+  custom:lwin_as_lv5\t=\t+custom(lwin_as_lv5)\
+  custom:lctrl_as_lwin\t=\t+custom(lctrl_as_lwin)\
+  custom:ralt_as_rctrl\t=\t+custom(ralt_as_rctrl)\
+  custom:rwin_as_ralt\t=\t+custom(rwin_as_ralt)\
+  custom:rctrl_as_rwin\t=\t+custom(rctrl_as_rwin)\
+  custom:prtsc_as_ralt\t=\t+custom(prtsc_as_ralt)\
+' /usr/share/X11/xkb/rules/evdev
+  fi
+
+  if ! grep -F "custom:basic" /usr/share/X11/xkb/rules/evdev.lst; then
+    sudo sed -i '/! option/a\
+  custom               Custom\
+  custom:basic         Custom layout\
+  custom:lalt_as_lv3   Left Alt chooses 3rd level\
+  custom:lwin_as_lv5   Left Win chooses 5th level\
+  custom:lctrl_as_lwin Left Ctrl as left Win\
+  custom:ralt_as_rctrl Right Alt as right Ctrl\
+  custom:rwin_as_ralt  Right Win as right Alt\
+  custom:rctrl_as_rwin Right Ctrl as right Win\
+  custom:prtsc_as_ralt PrtSc as right Alt\
+' /usr/share/X11/xkb/rules/evdev.lst
+  fi
+
+  if ! grep -F "custom:basic" /usr/share/X11/xkb/rules/evdev.xml; then
+    sudo sed -i '/^ *<optionList>/a\
+    <group allowMultipleSelection="true">\
+      <configItem>\
+        <name>custom</name>\
+        <description>Custom</description>\
+      </configItem>\
+      <option>\
+        <configItem>\
+          <name>custom:basic</name>\
+          <description>Custom layout</description>\
+        </configItem>\
+      </option>\
+      <option>\
+        <configItem>\
+          <name>custom:lalt_as_lv3</name>\
+          <description>Left Alt chooses 3rd level</description>\
+        </configItem>\
+      </option>\
+      <option>\
+        <configItem>\
+          <name>custom:lwin_as_lv5</name>\
+          <description>Left Win chooses 5th level</description>\
+        </configItem>\
+      </option>\
+      <option>\
+        <configItem>\
+          <name>custom:lctrl_as_lwin</name>\
+          <description>Left Ctrl as left Win</description>\
+        </configItem>\
+      </option>\
+      <option>\
+        <configItem>\
+          <name>custom:ralt_as_rctrl</name>\
+          <description>Right Alt as right Ctrl</description>\
+        </configItem>\
+      </option>\
+      <option>\
+        <configItem>\
+          <name>custom:rwin_as_ralt</name>\
+          <description>Right Win as right Alt</description>\
+        </configItem>\
+      </option>\
+      <option>\
+        <configItem>\
+          <name>custom:rctrl_as_rwin</name>\
+          <description>Right Ctrl as right Win</description>\
+        </configItem>\
+      </option>\
+      <option>\
+        <configItem>\
+          <name>custom:prtsc_as_ralt</name>\
+          <description>PrtSc as right Alt</description>\
+        </configItem>\
+      </option>\
+    </group>\
+' /usr/share/X11/xkb/rules/evdev.xml
+  fi
+
+  gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:nocaps', 'shift:both_capslock', 'custom:basic', 'custom:lalt_as_lv3', 'custom:lwin_as_lv5', 'custom:lctrl_as_lwin', 'custom:ralt_as_rctrl', 'custom:rwin_as_ralt', 'custom:rctrl_as_rwin', 'custom:prtsc_as_ralt']"
+}
+
+setup_packages
+setup_shfmt
+setup_shell
+setup_docker
+setup_gnome_keybindings
+setup_xkb
