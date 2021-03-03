@@ -62,6 +62,10 @@
   <action id="ChangesView.ShelveSilently" />
   <action id="ChangesView.UnshelveSilently" />
   <action id="CheckinProject" />
+  <action id="ChooseRunConfiguration">
+    <keyboard-shortcut first-keystroke="shift alt f10" />
+    <keyboard-shortcut first-keystroke="ctrl e" />
+  </action>
   <action id="ClassNameCompletion" />
   <action id="CloseActiveTab" />
   <action id="CloseAllEditors">
@@ -450,7 +454,9 @@
   <action id="Replace">
     <keyboard-shortcut first-keystroke="shift alt 5" />
   </action>
-  <action id="Rerun" />
+  <action id="Rerun">
+    <keyboard-shortcut first-keystroke="shift ctrl e" />
+  </action>
   <action id="RerunTests" />
   <action id="ResizeToolWindowDown" />
   <action id="ResizeToolWindowLeft" />
@@ -511,6 +517,7 @@
   <action id="SurroundWithLiveTemplate" />
   <action id="SwitchCoverage" />
   <action id="Switcher" />
+  <action id="SwitcherIterateItems" />
   <action id="SwitcherRecentEditedChangedToggleCheckBox">
     <keyboard-shortcut first-keystroke="ctrl j" />
   </action>
