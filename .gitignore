@@ -30,6 +30,7 @@
 .config/JetBrains/idea/options/ide.general.xml
 .config/JetBrains/idea/options/images.support.xml
 .config/JetBrains/idea/options/IntelliLang.xml
+.config/JetBrains/idea/options/javaRuleManager.xml
 .config/JetBrains/idea/options/jdk.table.xml
 .config/JetBrains/idea/options/laf.xml
 .config/JetBrains/idea/options/lightEdit.xml
