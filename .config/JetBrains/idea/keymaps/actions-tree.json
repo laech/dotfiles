@@ -165,12 +165,12 @@
         { "keys": ["P"], "id": "GotoPreviousError", "separator-above": "" },
         { "keys": ["N"], "id": "GotoNextError" },
         {
-          "keys": ["alt P"],
+          "keys": ["alt P", "PAGE_UP"],
           "id": "GotoPreviousError",
           "separator-above": "",
           "sticky": true
         },
-        { "keys": ["alt N"], "id": "GotoNextError", "sticky": true },
+        { "keys": ["alt N", "PAGE_DOWN"], "id": "GotoNextError", "sticky": true },
         { "keys": ["E"], "id": "ShowErrorDescription" },
         { "keys": ["T"], "id": "GotoTest", "separator-above": "" },
         {
