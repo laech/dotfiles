@@ -20,7 +20,7 @@ function Write-BranchName () {
   } catch {
     $branch = "(none)"
   }
-  Write-Host " ($branch)" -ForegroundColor "magenta"
+  Write-Host " ($branch)" -NoNewline -ForegroundColor "magenta"
 }
 
 function prompt {
@@ -34,8 +34,9 @@ function prompt {
     Write-Host $path -NoNewline -ForegroundColor "blue"
     Write-BranchName
   } else {
-    Write-Host $path -ForegroundColor "blue"
+    Write-Host $path -NoNewline -ForegroundColor "blue"
   }
+  Write-Host "" -ForegroundColor "black"
 
   return $userPrompt
 }
