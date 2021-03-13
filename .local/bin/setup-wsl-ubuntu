@@ -10,6 +10,9 @@ if [[ $UID == 0 ]]; then
   exit 1
 fi
 
+readonly arch=$(dpkg --print-architecture)
+readonly repo=$(lsb_release -cs)
+
 . "$(dirname "${BASH_SOURCE[0]}")"/setup-common
 
 setup_packages() {
@@ -26,6 +29,50 @@ setup_packages() {
   sudo apt install -y "${packages[@]}"
 }
 
+setup_azure_cli() {
+  hash az &>/dev/null && return
+
+  curl -sL https://packages.microsoft.com/keys/microsoft.asc |
+    gpg --dearmor |
+    sudo tee /etc/apt/trusted.gpg.d/microsoft-archive-keyring.gpg > /dev/null
+
+  echo "deb [arch=$arch] https://packages.microsoft.com/repos/azure-cli/ $repo main" |
+    sudo tee /etc/apt/sources.list.d/azure-cli.list
+
+  sudo apt-get update
+  sudo apt-get install -y azure-cli
+}
+
+setup_kubectl() {
+  hash kubectl &>/dev/null && return
+
+  sudo curl -fsSLo /etc/apt/trusted.gpg.d/kubernetes-archive-keyring.gpg \
+    https://packages.cloud.google.com/apt/doc/apt-key.gpg
+
+  echo "deb [arch=$arch] https://apt.kubernetes.io/ kubernetes-xenial main" |
+    sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+  sudo apt-get update
+  sudo apt-get install -y kubectl
+}
+
+setup_terraform() {
+  hash terraform &>/dev/null && return
+
+  curl -sL https://apt.releases.hashicorp.com/gpg |
+    gpg --dearmor |
+    sudo tee /etc/apt/trusted.gpg.d/hashicorp-archive-keyring.gpg > /dev/null
+
+  echo "deb [arch=$arch] https://apt.releases.hashicorp.com $repo main" |
+    sudo tee /etc/apt/sources.list.d/hashicorp.list
+
+  sudo apt-get update
+  sudo apt install -y terraform
+}
+
 setup_packages
 setup_shfmt
 setup_shell
+setup_azure_cli
+setup_kubectl
+setup_terraform
