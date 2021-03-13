@@ -10,6 +10,7 @@
     <option name="FONT_SIZE" value="15" />
     <option name="FONT_FAMILY" value="Cascadia Code" />
     <option name="FONT_REGULAR_SUB_FAMILY" value="Roman" />
+    <option name="FONT_BOLD_SUB_FAMILY" value="Roman" />
   </component>
   <component name="EditorSettings">
     <option name="languageBreadcrumbsMap">
