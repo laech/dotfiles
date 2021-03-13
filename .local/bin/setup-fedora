@@ -29,8 +29,25 @@ setup_packages() {
     docker-compose
     java-11-openjdk-devel
     java-11-openjdk-src
+    unzip
+
+    # https://wiki.archlinux.org/index.php/Metric-compatible_fonts
+    # https://cgit.freedesktop.org/fontconfig/tree/conf.d/30-metric-aliases.conf
     cascadia-code-fonts
     google-roboto-fonts
+    google-carlito-fonts
+    google-noto-sans-cjk-ttc-fonts
+    liberation-mono-fonts
+    liberation-narrow-fonts
+    liberation-sans-fonts
+    liberation-serif-fonts
+    dejavu-sans-fonts
+    dejavu-sans-mono-fonts
+    dejavu-serif-fonts
+    urw-base35-nimbus-mono-ps-fonts
+    urw-base35-nimbus-roman-fonts
+    urw-base35-nimbus-sans-fonts
+    levien-inconsolata-fonts
   )
 
   sudo dnf install -y "${packages[@]}"
@@ -258,6 +275,16 @@ gpgkey=https://rpm.releases.hashicorp.com/gpg' |
   sudo dnf install -y terraform
 }
 
+setup_gelasio_fonts() {
+  local tmp=/tmp/gelasio.zip
+  local dir=$HOME/.local/share/fonts/gelasio
+  [[ -e "$dir" ]] && return
+
+  curl -fsSLo "$tmp" 'https://fonts.google.com/download?family=Gelasio'
+  mkdir -p "$dir"
+  unzip "$tmp" -d "$dir"
+}
+
 setup_packages
 setup_shfmt
 setup_shell
@@ -267,3 +294,4 @@ setup_xkb
 setup_azure_cli
 setup_kubectl
 setup_terraform
+setup_gelasio_fonts
