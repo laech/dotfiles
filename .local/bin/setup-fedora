@@ -213,9 +213,57 @@ setup_xkb() {
   gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:nocaps', 'shift:both_capslock', 'custom:basic', 'custom:lalt_as_lv3', 'custom:lwin_as_lv5', 'custom:lctrl_as_lwin', 'custom:ralt_as_rctrl', 'custom:rwin_as_ralt', 'custom:rctrl_as_rwin', 'custom:prtsc_as_ralt', 'lv3:menu_switch']"
 }
 
+setup_azure_cli() {
+  hash az &>/dev/null && return
+
+  sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+
+  echo '[azure-cli]
+name=Azure CLI
+baseurl=https://packages.microsoft.com/yumrepos/azure-cli
+enabled=1
+gpgcheck=1
+gpgkey=https://packages.microsoft.com/keys/microsoft.asc' |
+    sudo tee /etc/yum.repos.d/azure-cli.repo
+
+  sudo dnf install -y azure-cli
+}
+
+setup_kubectl() {
+  hash kubectl &>/dev/null && return
+
+  echo '[kubernetes]
+name=Kubernetes
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg' |
+    sudo tee /etc/yum.repos.d/kubernetes.repo
+
+  sudo dnf install -y kubectl
+}
+
+setup_terraform() {
+  hash terraform &>/dev/null && return
+
+  echo '[hashicorp]
+name=Hashicorp Stable - $basearch
+baseurl=https://rpm.releases.hashicorp.com/fedora/$releasever/$basearch/stable
+enabled=1
+gpgcheck=1
+gpgkey=https://rpm.releases.hashicorp.com/gpg' |
+    sudo tee /etc/yum.repos.d/hashicorp.repo
+
+  sudo dnf install -y terraform
+}
+
 setup_packages
 setup_shfmt
 setup_shell
 setup_docker
 setup_gnome_keybindings
 setup_xkb
+setup_azure_cli
+setup_kubectl
+setup_terraform
