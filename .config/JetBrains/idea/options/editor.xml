@@ -9,6 +9,8 @@
   <component name="DefaultFont">
     <option name="FONT_SIZE" value="15" />
     <option name="FONT_FAMILY" value="Cascadia Code" />
+    <option name="FONT_REGULAR_SUB_FAMILY" value="Roman" />
+    <option name="FONT_BOLD_SUB_FAMILY" value="Roman" />
   </component>
   <component name="EditorSettings">
     <option name="languageBreadcrumbsMap">
@@ -16,6 +18,7 @@
         <entry key="CSS" value="true" />
         <entry key="FTL" value="true" />
         <entry key="Groovy" value="true" />
+        <entry key="HCL" value="false" />
         <entry key="HTML" value="true" />
         <entry key="Haml" value="true" />
         <entry key="JAVA" value="false" />
