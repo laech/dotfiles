@@ -29,8 +29,25 @@ setup_packages() {
     docker-compose
     java-11-openjdk-devel
     java-11-openjdk-src
+    unzip
+
+    # https://wiki.archlinux.org/index.php/Metric-compatible_fonts
+    # https://cgit.freedesktop.org/fontconfig/tree/conf.d/30-metric-aliases.conf
     cascadia-code-fonts
     google-roboto-fonts
+    google-carlito-fonts
+    google-noto-sans-cjk-ttc-fonts
+    liberation-mono-fonts
+    liberation-narrow-fonts
+    liberation-sans-fonts
+    liberation-serif-fonts
+    dejavu-sans-fonts
+    dejavu-sans-mono-fonts
+    dejavu-serif-fonts
+    urw-base35-nimbus-mono-ps-fonts
+    urw-base35-nimbus-roman-fonts
+    urw-base35-nimbus-sans-fonts
+    levien-inconsolata-fonts
   )
 
   sudo dnf install -y "${packages[@]}"
@@ -210,7 +227,62 @@ setup_xkb() {
 ' /usr/share/X11/xkb/rules/evdev.xml
   fi
 
-  gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:nocaps', 'shift:both_capslock', 'custom:basic', 'custom:lalt_as_lv3', 'custom:lwin_as_lv5', 'custom:lctrl_as_lwin', 'custom:ralt_as_rctrl', 'custom:rwin_as_ralt', 'custom:rctrl_as_rwin', 'custom:prtsc_as_ralt']"
+  gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:nocaps', 'shift:both_capslock', 'custom:basic', 'custom:lalt_as_lv3', 'custom:lwin_as_lv5', 'custom:lctrl_as_lwin', 'custom:ralt_as_rctrl', 'custom:rwin_as_ralt', 'custom:rctrl_as_rwin', 'custom:prtsc_as_ralt', 'lv3:menu_switch']"
+}
+
+setup_azure_cli() {
+  hash az &>/dev/null && return
+
+  sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+
+  echo '[azure-cli]
+name=Azure CLI
+baseurl=https://packages.microsoft.com/yumrepos/azure-cli
+enabled=1
+gpgcheck=1
+gpgkey=https://packages.microsoft.com/keys/microsoft.asc' |
+    sudo tee /etc/yum.repos.d/azure-cli.repo
+
+  sudo dnf install -y azure-cli
+}
+
+setup_kubectl() {
+  hash kubectl &>/dev/null && return
+
+  echo '[kubernetes]
+name=Kubernetes
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg' |
+    sudo tee /etc/yum.repos.d/kubernetes.repo
+
+  sudo dnf install -y kubectl
+}
+
+setup_terraform() {
+  hash terraform &>/dev/null && return
+
+  echo '[hashicorp]
+name=Hashicorp Stable - $basearch
+baseurl=https://rpm.releases.hashicorp.com/fedora/$releasever/$basearch/stable
+enabled=1
+gpgcheck=1
+gpgkey=https://rpm.releases.hashicorp.com/gpg' |
+    sudo tee /etc/yum.repos.d/hashicorp.repo
+
+  sudo dnf install -y terraform
+}
+
+setup_gelasio_fonts() {
+  local tmp=/tmp/gelasio.zip
+  local dir=$HOME/.local/share/fonts/gelasio
+  [[ -e "$dir" ]] && return
+
+  curl -fsSLo "$tmp" 'https://fonts.google.com/download?family=Gelasio'
+  mkdir -p "$dir"
+  unzip "$tmp" -d "$dir"
 }
 
 setup_packages
@@ -219,3 +291,7 @@ setup_shell
 setup_docker
 setup_gnome_keybindings
 setup_xkb
+setup_azure_cli
+setup_kubectl
+setup_terraform
+setup_gelasio_fonts

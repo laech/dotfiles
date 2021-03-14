@@ -32,7 +32,7 @@ setup_packages() {
 setup_azure_cli() {
   hash az &>/dev/null && return
 
-  curl -sL https://packages.microsoft.com/keys/microsoft.asc |
+  curl -fsSL https://packages.microsoft.com/keys/microsoft.asc |
     gpg --dearmor |
     sudo tee /etc/apt/trusted.gpg.d/microsoft-archive-keyring.gpg >/dev/null
 
@@ -59,7 +59,7 @@ setup_kubectl() {
 setup_terraform() {
   hash terraform &>/dev/null && return
 
-  curl -sL https://apt.releases.hashicorp.com/gpg |
+  curl -fsSL https://apt.releases.hashicorp.com/gpg |
     gpg --dearmor |
     sudo tee /etc/apt/trusted.gpg.d/hashicorp-archive-keyring.gpg >/dev/null
 
