@@ -2,6 +2,7 @@
   <option name="LINE_SEPARATOR" value="&#10;" />
   <option name="RIGHT_MARGIN" value="80" />
   <HCL-Terraform>
+    <option name="PROPERTY_ALIGNMENT" value="2" />
     <option name="OBJECT_WRAPPING" value="5" />
     <option name="ARRAY_WRAPPING" value="5" />
   </HCL-Terraform>
